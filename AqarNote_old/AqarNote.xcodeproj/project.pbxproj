@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C57A9FB18CF8CBE00DE6259 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C57A9FA18CF8CBE00DE6259 /* Parse.framework */; };
+		7C57AA0318CF8E2000DE6259 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57AA0018CF8E2000DE6259 /* LoginVC.m */; };
+		7C57AA0418CF8E2000DE6259 /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57AA0218CF8E2000DE6259 /* SignUpVC.m */; };
 		8496101C18A10C1100A94088 /* BrowseInspectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496101B18A10C1100A94088 /* BrowseInspectionVC.m */; };
 		84B904EF18A1FA5A003771E1 /* XCDFormInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B904EE18A1FA5A003771E1 /* XCDFormInputAccessoryView.m */; };
 		84B904F518A1FAC0003771E1 /* Accessory_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B904F118A1FAC0003771E1 /* Accessory_left.png */; };
@@ -43,7 +46,6 @@
 		84BFB531189E12FD0069A87A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFB513189E12FD0069A87A /* UIKit.framework */; };
 		84BFB539189E12FD0069A87A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84BFB537189E12FD0069A87A /* InfoPlist.strings */; };
 		84BFB53B189E12FD0069A87A /* AqarNoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BFB53A189E12FD0069A87A /* AqarNoteTests.m */; };
-		84BFB545189E17A00069A87A /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFB544189E17A00069A87A /* Parse.framework */; };
 		84BFB547189E18230069A87A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFB546189E18230069A87A /* AudioToolbox.framework */; };
 		84BFB549189E18290069A87A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFB548189E18290069A87A /* CFNetwork.framework */; };
 		84BFB54B189E18310069A87A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BFB54A189E18310069A87A /* CoreLocation.framework */; };
@@ -87,6 +89,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C57A9FA18CF8CBE00DE6259 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Libraries/Parse.framework; sourceTree = "<group>"; };
+		7C57A9FF18CF8E2000DE6259 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		7C57AA0018CF8E2000DE6259 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
+		7C57AA0118CF8E2000DE6259 /* SignUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpVC.h; sourceTree = "<group>"; };
+		7C57AA0218CF8E2000DE6259 /* SignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpVC.m; sourceTree = "<group>"; };
 		8496101A18A10C1100A94088 /* BrowseInspectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseInspectionVC.h; sourceTree = "<group>"; };
 		8496101B18A10C1100A94088 /* BrowseInspectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseInspectionVC.m; sourceTree = "<group>"; };
 		84B904ED18A1FA5A003771E1 /* XCDFormInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCDFormInputAccessoryView.h; sourceTree = "<group>"; };
@@ -131,7 +138,6 @@
 		84BFB536189E12FD0069A87A /* AqarNoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AqarNoteTests-Info.plist"; sourceTree = "<group>"; };
 		84BFB538189E12FD0069A87A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84BFB53A189E12FD0069A87A /* AqarNoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AqarNoteTests.m; sourceTree = "<group>"; };
-		84BFB544189E17A00069A87A /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Libraries/Parse.framework; sourceTree = "<group>"; };
 		84BFB546189E18230069A87A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		84BFB548189E18290069A87A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		84BFB54A189E18310069A87A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -183,6 +189,7 @@
 				84BFB553189E18560069A87A /* Security.framework in Frameworks */,
 				84BFB551189E184D0069A87A /* QuartzCore.framework in Frameworks */,
 				84BFB54F189E18470069A87A /* MobileCoreServices.framework in Frameworks */,
+				7C57A9FB18CF8CBE00DE6259 /* Parse.framework in Frameworks */,
 				84BFB54D189E183D0069A87A /* libz.dylib in Frameworks */,
 				84BFB54B189E18310069A87A /* CoreLocation.framework in Frameworks */,
 				84BFB549189E18290069A87A /* CFNetwork.framework in Frameworks */,
@@ -190,7 +197,6 @@
 				84BFB512189E12FD0069A87A /* CoreGraphics.framework in Frameworks */,
 				84CC6984189F79FE0027C844 /* SDWebImage.framework in Frameworks */,
 				84BFB514189E12FD0069A87A /* UIKit.framework in Frameworks */,
-				84BFB545189E17A00069A87A /* Parse.framework in Frameworks */,
 				84BFB510189E12FD0069A87A /* Foundation.framework in Frameworks */,
 				84BFB561189E4B220069A87A /* FacebookSDK.framework in Frameworks */,
 			);
@@ -209,6 +215,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C57A9FC18CF8E2000DE6259 /* User Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7C57A9FD18CF8E2000DE6259 /* Entities */,
+				7C57A9FE18CF8E2000DE6259 /* View */,
+			);
+			path = "User Controller";
+			sourceTree = "<group>";
+		};
+		7C57A9FD18CF8E2000DE6259 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		7C57A9FE18CF8E2000DE6259 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C57A9FF18CF8E2000DE6259 /* LoginVC.h */,
+				7C57AA0018CF8E2000DE6259 /* LoginVC.m */,
+				7C57AA0118CF8E2000DE6259 /* SignUpVC.h */,
+				7C57AA0218CF8E2000DE6259 /* SignUpVC.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		84B904F018A1FAC0003771E1 /* XCDFormInputAccessory Recources */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +292,7 @@
 		84BFB50E189E12FD0069A87A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C57A9FA18CF8CBE00DE6259 /* Parse.framework */,
 				84B9051D18A26BF9003771E1 /* MessageUI.framework */,
 				84CC6983189F79FE0027C844 /* SDWebImage.framework */,
 				84BFB560189E4B220069A87A /* FacebookSDK.framework */,
@@ -271,7 +305,6 @@
 				84BFB54A189E18310069A87A /* CoreLocation.framework */,
 				84BFB548189E18290069A87A /* CFNetwork.framework */,
 				84BFB546189E18230069A87A /* AudioToolbox.framework */,
-				84BFB544189E17A00069A87A /* Parse.framework */,
 				84BFB50F189E12FD0069A87A /* Foundation.framework */,
 				84BFB511189E12FD0069A87A /* CoreGraphics.framework */,
 				84BFB513189E12FD0069A87A /* UIKit.framework */,
@@ -288,6 +321,7 @@
 				84BFB521189E12FD0069A87A /* Main.storyboard */,
 				84B9051A18A26AFF003771E1 /* CallUsViewController.h */,
 				84B9051B18A26AFF003771E1 /* CallUsViewController.m */,
+				7C57A9FC18CF8E2000DE6259 /* User Controller */,
 				84CC699C189FC5640027C844 /* Inspection Controller */,
 				84BFB55C189E48540069A87A /* Listing Controller */,
 				84BFB527189E12FD0069A87A /* Images.xcassets */,
@@ -538,7 +572,9 @@
 			files = (
 				84BFB526189E12FD0069A87A /* HomePageVC.m in Sources */,
 				84CC698F189F95CA0027C844 /* InspectionCell.m in Sources */,
+				7C57AA0318CF8E2000DE6259 /* LoginVC.m in Sources */,
 				84CC6998189FA3620027C844 /* ChoosePropertyVC.m in Sources */,
+				7C57AA0418CF8E2000DE6259 /* SignUpVC.m in Sources */,
 				84BFB520189E12FD0069A87A /* AppDelegate.m in Sources */,
 				84B9051C18A26AFF003771E1 /* CallUsViewController.m in Sources */,
 				84CC698C189F95420027C844 /* InspectionsVC.m in Sources */,
@@ -677,6 +713,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/admin/Desktop/AqarNote/Libraries,
+					"/Users/noor/Documents/Danat\\ Projects/iOS\\ Projects/AqarNote/aqaarnote/AqarNote_old/Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AqarNote/AqarNote-Prefix.pch";
@@ -692,6 +729,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/admin/Desktop/AqarNote/Libraries,
+					"/Users/noor/Documents/Danat\\ Projects/iOS\\ Projects/AqarNote/aqaarnote/AqarNote_old/Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AqarNote/AqarNote-Prefix.pch";
