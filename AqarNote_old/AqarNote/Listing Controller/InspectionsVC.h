@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *inspectionsTable;
 @property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *addNewProperImg;
+@property (weak, nonatomic) IBOutlet UIImageView *addNewInspectImage;
 - (IBAction)logoutPressed:(id)sender;
 
 @end

@@ -43,6 +43,18 @@
 {
     [super viewWillAppear:YES];
     [self getInspections];
+    if (inspectionsArray.count>0) {
+        [self.inspectionsTable setHidden:NO];
+        [self.addNewInspectImage setHidden:YES];
+        [self.addNewProperImg setHidden:YES];
+        
+    }
+    else{
+        [self.inspectionsTable setHidden:YES];
+        [self.addNewInspectImage setHidden:NO];
+        [self.addNewProperImg setHidden:NO];
+
+    }
     [self getInspectionsImages];
 }
 

@@ -7,6 +7,8 @@
 //
 
 #import "HomePageVC.h"
+#import "LoginVC.h"
+#import "SignUpVC.h"
 
 @interface HomePageVC ()
 {
@@ -25,7 +27,7 @@
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];
     
-   
+    self.welcomeBgImage.image=[UIImage imageNamed:@""];
     /*
     [PFCloud callFunctionInBackground:@"hello"
                        withParameters:@{}
@@ -100,37 +102,53 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+        
     if ([PFUser currentUser]) {
+        [self.welcomeView setHidden:YES];
         [self getProperties];
+        if (propertiesArray.count>0) {
+            [self.propertiesTable setHidden:NO];
+            [self.addNewImage setHidden:YES];
+        }
+        else{
+            [self.propertiesTable setHidden:YES];
+            [self.addNewImage setHidden:NO];
+        }
+        [self showTabBar:self.tabBarController];
         //[self getPropertyImages];
+        
+    }
+    else{
+        [self.welcomeView setHidden:NO];
+        [self hideTabBar:self.tabBarController];
         
     }
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (![PFUser currentUser]) { // No user logged in
-        // Create the log in view controller
-        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
-        [logInViewController setDelegate:self]; // Set ourselves as the delegate
-        //[logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
-        //[logInViewController setFields: PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDismissButton];
-        
-        // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-        
-        
-        // Assign our sign up controller to be displayed from the login controller
-        [logInViewController setSignUpController:signUpViewController];
-        
-        // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
-    }
-    else
-    {
-        self.userNameLabel.text = [PFUser currentUser].username;
-    }
+//    if (![PFUser currentUser]) { // No user logged in
+//        // Create the log in view controller
+//        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+//        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+//        //[logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
+//        //[logInViewController setFields: PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDismissButton];
+//        
+//        // Create the sign up view controller
+//        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+//        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+//        
+//        
+//        // Assign our sign up controller to be displayed from the login controller
+//        [logInViewController setSignUpController:signUpViewController];
+//        
+//        // Present the log in view controller
+//        [self presentViewController:logInViewController animated:YES completion:NULL];
+//    }
+//    else
+//    {
+//        self.userNameLabel.text = [PFUser currentUser].username;
+//    }
     
 }
 
@@ -212,6 +230,8 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     NSLog(@"%@",user);
+    [self.welcomeView setHidden:YES];
+
     [self getProperties];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -256,6 +276,7 @@
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     NSLog(@"%@",user);
+    [self.welcomeView setHidden:YES];
     [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the PFSignUpViewController
 }
 
@@ -275,15 +296,95 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)logoutPressed:(id)sender {
-    [PFUser logOut];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - Buttons Actions
+
+- (IBAction)logoutPressed:(id)sender {
+    
+    [PFUser logOut];
+    [self.welcomeView setHidden:NO];
+}
+
+- (IBAction)signupBtnPrss:(id)sender {
+
+    // Customize the Sign Up View Controller
+    SignUpVC *signUpViewController = [[SignUpVC alloc] init];
+    signUpViewController.delegate = self;
+    signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
+    
+    // Present Sign Up View Controller
+    [self presentViewController:signUpViewController animated:YES completion:NULL];
+
+}
+
+- (IBAction)loginBtnPrss:(id)sender {
+    
+    // Customize the Log In View Controller
+    LoginVC *logInViewController = [[LoginVC alloc] init];
+    logInViewController.delegate = self;
+    logInViewController.facebookPermissions = @[@"friends_about_me"];
+    logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsSignUpButton | PFLogInFieldsDismissButton;
+    
+    // Customize the Sign Up View Controller
+    SignUpVC *signUpViewController = [[SignUpVC alloc] init];
+    signUpViewController.delegate = self;
+    signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
+    logInViewController.signUpController = signUpViewController;
+    
+    // Present Log In View Controller
+    [self presentViewController:logInViewController animated:YES completion:NULL];
+
+}
+
+
+#pragma mark - Hide Tab bar
+
+// Method implementations
+- (void)hideTabBar:(UITabBarController *) tabbarcontroller
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    
+    for(UIView *view in tabbarcontroller.view.subviews)
+    {
+        if([view isKindOfClass:[UITabBar class]])
+        {
+            [view setFrame:CGRectMake(view.frame.origin.x, 480, view.frame.size.width, view.frame.size.height)];
+        }
+        else
+        {
+            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, 480)];
+        }
+    }
+    
+    [UIView commitAnimations];
+}
+
+- (void)showTabBar:(UITabBarController *) tabbarcontroller
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    for(UIView *view in tabbarcontroller.view.subviews)
+    {
+        NSLog(@"%@", view);
+        
+        if([view isKindOfClass:[UITabBar class]])
+        {
+            [view setFrame:CGRectMake(view.frame.origin.x, 431, view.frame.size.width, view.frame.size.height)];
+            
+        }
+        else
+        {
+            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, 431)];
+        }
+    }
+    
+    [UIView commitAnimations];
+}
 
 @end

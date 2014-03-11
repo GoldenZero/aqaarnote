@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="kaD-5e-vc0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="kaD-5e-vc0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="pIj-mK-sc5">
             <objects>
-                <tabBarController definesPresentationContext="YES" hidesBottomBarWhenPushed="YES" id="kaD-5e-vc0" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="kaD-5e-vc0" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -17,9 +17,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="6ix-66-wFg"/>
-                        <segue destination="2Ed-Bo-d1S" kind="relationship" relationship="viewControllers" id="xO4-no-NUW"/>
                         <segue destination="SW6-19-1KX" kind="relationship" relationship="viewControllers" id="E0V-eu-ggR"/>
+                        <segue destination="2Ed-Bo-d1S" kind="relationship" relationship="viewControllers" id="xO4-no-NUW"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="6ix-66-wFg"/>
                         <segue destination="l20-VY-Aq0" kind="relationship" relationship="viewControllers" id="cOd-Vm-j5t"/>
                     </connections>
                 </tabBarController>
@@ -40,16 +40,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pCL-IU-K4p">
-                                        <rect key="frame" x="0.0" y="0.0" width="47" height="49"/>
+                                        <rect key="frame" x="14" y="15" width="19" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="add">
+                                        <state key="normal" image="plus.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="hqx-3z-eUH" kind="modal" id="ijE-8y-NFt"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_logo.png" id="SeX-pO-Dcg">
+                                        <rect key="frame" x="147" y="11" width="25" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pa3-zq-G6n">
                                         <rect key="frame" x="260" y="14" width="51" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -78,12 +82,22 @@
                                     <outlet property="delegate" destination="2Ed-Bo-d1S" id="t7e-LI-WpA"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_new_propority_arrow.png" id="uDF-8z-vEV">
+                                <rect key="frame" x="185" y="481" width="135" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_new_property_arrow.png" id="v9m-U1-qWr">
+                                <rect key="frame" x="20" y="58" width="135" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="الفحوصات" image="date_upcoming.png" id="cdk-ug-A09"/>
+                    <tabBarItem key="tabBarItem" title="" image="green_tabe_inspi.png" id="cdk-ug-A09"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="addNewInspectImage" destination="v9m-U1-qWr" id="Ll2-ze-d9F"/>
+                        <outlet property="addNewProperImg" destination="uDF-8z-vEV" id="d11-rz-qSs"/>
                         <outlet property="inspectionsTable" destination="Wfq-D6-EWb" id="egw-Xr-gVR"/>
                     </connections>
                 </viewController>
@@ -104,13 +118,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RZX-Kc-aJy">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="50"/>
+                                        <rect key="frame" x="15" y="15" width="19" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="add">
+                                        <state key="normal" image="plus.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_logo.png" id="Eqh-Av-Hva">
+                                        <rect key="frame" x="147" y="11" width="25" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sAZ-yV-uDF">
                                         <rect key="frame" x="260" y="14" width="51" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -141,7 +159,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ملاحظات" image="time_upcoming.png" id="ley-ll-UbR"/>
+                    <tabBarItem key="tabBarItem" title="" image="green_tabe_note.png" id="ley-ll-UbR"/>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dld-3U-qZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -185,7 +203,7 @@
         <!--HomePageVC-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="HomePageVC" customClass="HomePageVC" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="vXZ-lx-hvc" userLabel="HomePageVC" customClass="HomePageVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -194,7 +212,11 @@
                                 <rect key="frame" x="0.0" y="50" width="320" height="469"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mpf-Dr-TCm">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_new_property_arrow.png" id="T8F-bN-XBb">
+                                <rect key="frame" x="24" y="58" width="131" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mpf-Dr-TCm">
                                 <rect key="frame" x="0.0" y="50" width="320" height="469"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -208,16 +230,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4CU-MH-PGg">
-                                        <rect key="frame" x="0.0" y="0.0" width="53" height="51"/>
+                                        <rect key="frame" x="17" y="16" width="19" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="add">
+                                        <state key="normal" image="plus.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="gLd-EQ-14C" kind="modal" id="msq-C1-9A8"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_logo.png" id="rJ7-Jz-B7u">
+                                        <rect key="frame" x="140" y="11" width="25" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sln-u0-gNe">
                                         <rect key="frame" x="242" y="0.0" width="78" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -232,13 +258,49 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" id="RIe-xH-glS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="RUT-xa-qqT">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rUa-CY-Fqd">
+                                        <rect key="frame" x="43" y="254" width="235" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="register_new_account_btn.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="signupBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bvt-pn-sOb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NsU-Je-yPf">
+                                        <rect key="frame" x="43" y="307" width="235" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="sign_in_btn.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ycu-Le-psg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="العقارات" image="time_upcoming.png" id="a7K-EE-PI0"/>
+                    <tabBarItem key="tabBarItem" title="" image="green_tabe_prop.png" id="a7K-EE-PI0"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="addNewImage" destination="T8F-bN-XBb" id="go6-KZ-QAs"/>
+                        <outlet property="loginButton" destination="NsU-Je-yPf" id="wBA-X7-YEA"/>
                         <outlet property="propertiesTable" destination="Mpf-Dr-TCm" id="j3Q-qv-KxD"/>
+                        <outlet property="signupButton" destination="rUa-CY-Fqd" id="3uJ-1b-gwX"/>
+                        <outlet property="welcomeBgImage" destination="RUT-xa-qqT" id="DDI-6j-kV0"/>
+                        <outlet property="welcomeView" destination="RIe-xH-glS" id="2pn-oO-dio"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -670,11 +732,19 @@
     <resources>
         <image name="37x-Checkmark.png" width="37" height="37"/>
         <image name="Default.png" width="640" height="1136"/>
+        <image name="add_new_property_arrow.png" width="131" height="34"/>
+        <image name="add_new_propority_arrow.png" width="132" height="34"/>
         <image name="arrow_lift_side.png" width="40" height="43"/>
-        <image name="date_upcoming.png" width="35" height="35"/>
+        <image name="green_tabe_inspi.png" width="47" height="37"/>
+        <image name="green_tabe_note.png" width="47" height="35"/>
+        <image name="green_tabe_prop.png" width="37" height="37"/>
+        <image name="header_logo.png" width="25" height="28"/>
+        <image name="plus.png" width="19" height="19"/>
+        <image name="register_new_account_btn.png" width="235" height="45"/>
+        <image name="sign_in_btn.png" width="235" height="45"/>
         <image name="takePhotobkg.png" width="77" height="70"/>
-        <image name="time_upcoming.png" width="35" height="35"/>
     </resources>
+    <color key="tintColor" red="0.25882354378700256" green="0.59215688705444336" blue="0.21960785984992981" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
