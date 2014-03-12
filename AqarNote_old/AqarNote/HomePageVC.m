@@ -66,6 +66,7 @@
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
         }
     }];
+    [self.propertiesTable reloadData];
    
 }
 
@@ -162,7 +163,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 150;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -231,7 +232,8 @@
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     NSLog(@"%@",user);
     [self.welcomeView setHidden:YES];
-
+    [self.propertiesTable setHidden:NO];
+    [self.addNewImage setHidden:YES];
     [self getProperties];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
