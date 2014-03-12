@@ -347,18 +347,32 @@
 // Method implementations
 - (void)hideTabBar:(UITabBarController *) tabbarcontroller
 {
+    float offset;
+
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
-    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            offset=431.0f;
+        }
+        if(result.height == 568)
+        {
+            offset=519.0f;
+        }
+    }
+
     for(UIView *view in tabbarcontroller.view.subviews)
     {
         if([view isKindOfClass:[UITabBar class]])
         {
-            [view setFrame:CGRectMake(view.frame.origin.x, 480, view.frame.size.width, view.frame.size.height)];
+            [view setFrame:CGRectMake(view.frame.origin.x, offset+ 100, view.frame.size.width, view.frame.size.height)];
         }
         else
         {
-            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, 480)];
+            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, offset)];
         }
     }
     
@@ -367,20 +381,33 @@
 
 - (void)showTabBar:(UITabBarController *) tabbarcontroller
 {
+    float offset;
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.5];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            offset=431.0f;
+        }
+        if(result.height == 568)
+        {
+            offset=519.0f;
+        }
+    }
     for(UIView *view in tabbarcontroller.view.subviews)
     {
         NSLog(@"%@", view);
         
         if([view isKindOfClass:[UITabBar class]])
         {
-            [view setFrame:CGRectMake(view.frame.origin.x, 431, view.frame.size.width, view.frame.size.height)];
+            [view setFrame:CGRectMake(view.frame.origin.x, offset, view.frame.size.width, view.frame.size.height)];
             
         }
         else
         {
-            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, 431)];
+            [view setFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, offset)];
         }
     }
     
