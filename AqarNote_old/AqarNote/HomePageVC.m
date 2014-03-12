@@ -9,7 +9,7 @@
 #import "HomePageVC.h"
 #import "LoginVC.h"
 #import "SignUpVC.h"
-
+#import "MBProgressHUD.h"
 @interface HomePageVC ()
 {
     NSMutableArray* propertiesArray;
@@ -22,13 +22,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    ;
 
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];
     
-    self.welcomeBgImage.image=[UIImage imageNamed:@""];
-    /*
+    if ([PFUser currentUser]) {
+        [self.welcomeView setHidden:YES];
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [self getProperties];
+        
+        [self showTabBar:self.tabBarController];
+        //[self getPropertyImages];
+        
+    }
+    else{
+        [self.welcomeView setHidden:NO];
+        [self hideTabBar:self.tabBarController];
+        
+    }
+
+    
+        /*
     [PFCloud callFunctionInBackground:@"hello"
                        withParameters:@{}
                                 block:^(NSString *result, NSError *error) {
@@ -64,10 +80,22 @@
             }
             //Save results and update the table
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
+
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+        if (propertiesArray.count>0) {
+            [self.propertiesTable reloadData];
+            
+            [self.propertiesTable setHidden:NO];
+            [self.addNewImage setHidden:YES];
+        }
+        else{
+            [self.propertiesTable setHidden:YES];
+            [self.addNewImage setHidden:NO];
+        }
+
     }];
-    [self.propertiesTable reloadData];
-   
 }
 
 
@@ -103,27 +131,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-        
-    if ([PFUser currentUser]) {
-        [self.welcomeView setHidden:YES];
-        [self getProperties];
-        if (propertiesArray.count>0) {
-            [self.propertiesTable setHidden:NO];
-            [self.addNewImage setHidden:YES];
-        }
-        else{
-            [self.propertiesTable setHidden:YES];
-            [self.addNewImage setHidden:NO];
-        }
-        [self showTabBar:self.tabBarController];
-        //[self getPropertyImages];
-        
-    }
-    else{
-        [self.welcomeView setHidden:NO];
-        [self hideTabBar:self.tabBarController];
-        
-    }
+    
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -232,9 +240,13 @@
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     NSLog(@"%@",user);
     [self.welcomeView setHidden:YES];
-    [self.propertiesTable setHidden:NO];
-    [self.addNewImage setHidden:YES];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self getProperties];
+    
+    [self showTabBar:self.tabBarController];
+    //[self getPropertyImages];
+    
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -279,6 +291,13 @@
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     NSLog(@"%@",user);
     [self.welcomeView setHidden:YES];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self getProperties];
+        
+    [self showTabBar:self.tabBarController];
+    //[self getPropertyImages];
+    
     [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the PFSignUpViewController
 }
 
@@ -310,6 +329,7 @@
     
     [PFUser logOut];
     [self.welcomeView setHidden:NO];
+    
 }
 
 - (IBAction)signupBtnPrss:(id)sender {

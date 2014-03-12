@@ -7,6 +7,7 @@
 //
 
 #import "InspectionsVC.h"
+#import "MBProgressHUD.h"
 
 @interface InspectionsVC ()
 {
@@ -36,26 +37,14 @@
     propertiesArray = [NSMutableArray new];
     inspectionsImagesArray = [NSMutableArray new];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self getInspections];
    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    [self getInspections];
-    if (inspectionsArray.count>0) {
-        [self.inspectionsTable setHidden:NO];
-        [self.addNewInspectImage setHidden:YES];
-        [self.addNewProperImg setHidden:YES];
-        
-    }
-    else{
-        [self.inspectionsTable setHidden:YES];
-        [self.addNewInspectImage setHidden:NO];
-        [self.addNewProperImg setHidden:NO];
-
-    }
-    [self getInspectionsImages];
 }
 
 -(void)getInspections
@@ -82,6 +71,26 @@
                 inspectionsArray = [[NSMutableArray alloc]initWithArray:objects];
                 
             }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if (inspectionsArray.count>0) {
+                
+                [self.inspectionsTable reloadData];
+                [self.inspectionsTable setHidden:NO];
+                [self.addNewInspectImage setHidden:YES];
+                [self.addNewProperImg setHidden:YES];
+                [self.noInspecImage setHidden:YES];
+                [self getInspectionsImages];
+
+                
+            }
+            else{
+                [self.inspectionsTable setHidden:YES];
+                [self.addNewInspectImage setHidden:NO];
+                [self.addNewProperImg setHidden:NO];
+                [self.noInspecImage setHidden:NO];
+                
+            }
+
         }];
     }
 }
