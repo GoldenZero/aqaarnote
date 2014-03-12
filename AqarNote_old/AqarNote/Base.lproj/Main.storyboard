@@ -17,10 +17,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="l20-VY-Aq0" kind="relationship" relationship="viewControllers" id="cOd-Vm-j5t"/>
                         <segue destination="SW6-19-1KX" kind="relationship" relationship="viewControllers" id="E0V-eu-ggR"/>
                         <segue destination="2Ed-Bo-d1S" kind="relationship" relationship="viewControllers" id="xO4-no-NUW"/>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="6ix-66-wFg"/>
-                        <segue destination="l20-VY-Aq0" kind="relationship" relationship="viewControllers" id="cOd-Vm-j5t"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2eS-Ni-m3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,14 +86,14 @@
                                 <rect key="frame" x="185" y="481" width="135" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_new_property_arrow.png" id="v9m-U1-qWr">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_new_inspections_arrow.png" id="v9m-U1-qWr">
                                 <rect key="frame" x="20" y="58" width="135" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="green_tabe_inspi.png" id="cdk-ug-A09"/>
+                    <tabBarItem key="tabBarItem" title="الفحوصات" image="tabe_inspection.png" id="cdk-ug-A09"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="addNewInspectImage" destination="v9m-U1-qWr" id="Ll2-ze-d9F"/>
@@ -159,7 +159,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="green_tabe_note.png" id="ley-ll-UbR"/>
+                    <tabBarItem key="tabBarItem" title="ملاحظات" image="tabe_notes.png" id="ley-ll-UbR"/>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dld-3U-qZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -262,7 +262,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="RUT-xa-qqT">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homebkg.png" id="RUT-xa-qqT">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
@@ -292,7 +292,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="green_tabe_prop.png" id="a7K-EE-PI0"/>
+                    <tabBarItem key="tabBarItem" title="العقارات" image="tabe_propority.png" id="a7K-EE-PI0"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="addNewImage" destination="T8F-bN-XBb" id="go6-KZ-QAs"/>
@@ -732,16 +732,18 @@
     <resources>
         <image name="37x-Checkmark.png" width="37" height="37"/>
         <image name="Default.png" width="640" height="1136"/>
+        <image name="add_new_inspections_arrow.png" width="135" height="34"/>
         <image name="add_new_property_arrow.png" width="131" height="34"/>
         <image name="add_new_propority_arrow.png" width="132" height="34"/>
         <image name="arrow_lift_side.png" width="40" height="43"/>
-        <image name="green_tabe_inspi.png" width="47" height="37"/>
-        <image name="green_tabe_note.png" width="47" height="35"/>
-        <image name="green_tabe_prop.png" width="37" height="37"/>
         <image name="header_logo.png" width="25" height="28"/>
+        <image name="homebkg.png" width="320" height="596"/>
         <image name="plus.png" width="19" height="19"/>
         <image name="register_new_account_btn.png" width="235" height="45"/>
         <image name="sign_in_btn.png" width="235" height="45"/>
+        <image name="tabe_inspection.png" width="20" height="22"/>
+        <image name="tabe_notes.png" width="20" height="22"/>
+        <image name="tabe_propority.png" width="21" height="22"/>
         <image name="takePhotobkg.png" width="77" height="70"/>
     </resources>
     <color key="tintColor" red="0.25882354378700256" green="0.59215688705444336" blue="0.21960785984992981" alpha="1" colorSpace="deviceRGB"/>
