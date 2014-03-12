@@ -13,4 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *propertyTitle;
 @property (strong, nonatomic) IBOutlet UILabel *propertyLocation;
 @property (strong, nonatomic) IBOutlet UILabel *propertyDate;
+@property (strong, nonatomic) IBOutlet UITextView *detailTxtView;
+@property (strong, nonatomic) IBOutlet UIButton *moreButton;
+@property (strong, nonatomic) IBOutlet UIImageView *progressImage;
 @end

@@ -151,7 +151,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 150;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -198,6 +198,23 @@
 }
 
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+
+    UIImage *myImage = [UIImage imageNamed:@"select_property"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:myImage];
+    imageView.contentMode = UIViewContentModeCenter;
+
+    imageView.frame = CGRectMake(0,0,195,31);
+    imageView.image=myImage;
+    return imageView;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 31;
+}
 
 
 #pragma mark login delegate
