@@ -59,10 +59,10 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa3-zq-G6n">
-                                        <rect key="frame" x="260" y="14" width="51" height="22"/>
+                                        <rect key="frame" x="289" y="14" width="21" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="logout">
+                                        <state key="normal" image="logout_btn.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -87,7 +87,7 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add_new_propority_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="uDF-8z-vEV">
-                                <rect key="frame" x="183" y="483" width="135" height="35"/>
+                                <rect key="frame" x="35" y="483" width="135" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no_inspections_tit.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rux-Sg-RYb">
@@ -143,10 +143,10 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAZ-yV-uDF">
-                                        <rect key="frame" x="260" y="14" width="51" height="22"/>
+                                        <rect key="frame" x="289" y="14" width="21" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="logout">
+                                        <state key="normal" image="logout_btn.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -211,7 +211,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="إتصل بنا" image="37x-Checkmark.png" id="0lD-NO-JdC"/>
+                    <tabBarItem key="tabBarItem" title="إتصل بنا" image="contactus_tab_gray.png" id="0lD-NO-JdC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXT-En-ccY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -293,10 +293,10 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sln-u0-gNe">
-                                        <rect key="frame" x="242" y="0.0" width="78" height="51"/>
+                                        <rect key="frame" x="289" y="15" width="21" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="logout">
+                                        <state key="normal" image="logout_btn.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -799,15 +799,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="37x-Checkmark.png" width="37" height="37"/>
         <image name="Default.png" width="640" height="1136"/>
         <image name="add_new_inspections_arrow.png" width="135" height="34"/>
         <image name="add_new_property_arrow.png" width="131" height="34"/>
-        <image name="add_new_propority_arrow.png" width="132" height="34"/>
+        <image name="add_new_propority_arrow.png" width="130" height="34"/>
         <image name="arrow_lift_side.png" width="40" height="43"/>
         <image name="big_logo_white.png" width="115" height="146"/>
+        <image name="contactus_tab_gray.png" width="24" height="20"/>
         <image name="header_logo.png" width="25" height="28"/>
         <image name="homebkg.png" width="320" height="596"/>
+        <image name="logout_btn.png" width="21" height="19"/>
         <image name="no_inspections_tit.png" width="139" height="24"/>
         <image name="plus.png" width="19" height="19"/>
         <image name="register_new_account_btn.png" width="235" height="45"/>
