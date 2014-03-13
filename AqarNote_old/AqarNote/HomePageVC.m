@@ -27,22 +27,14 @@
     propertiesImagesArray = [NSMutableArray new];
     
     if ([PFUser currentUser]) {
-        [self.welcomeView setHidden:YES];
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         [self getProperties];
         
-        [self showTabBar:self.tabBarController];
         //[self getPropertyImages];
         
     }
-    else{
-        [self.welcomeView setHidden:NO];
-        [self hideTabBar:self.tabBarController];
-        
-    }
-
     
         /*
     [PFCloud callFunctionInBackground:@"hello"
@@ -131,7 +123,20 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    if ([PFUser currentUser]) {
+        [self.welcomeView setHidden:YES];
+        
+        [self showTabBar:self.tabBarController];
+        //[self getPropertyImages];
+        
+    }
+    else{
+        
+        [self.welcomeView setHidden:NO];
+        [self hideTabBar:self.tabBarController];
+        
+    }
+
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -329,6 +334,11 @@
     
     [PFUser logOut];
     [self.welcomeView setHidden:NO];
+    [self.propertiesTable setHidden:YES];
+    propertiesArray = [NSMutableArray new];
+    propertiesImagesArray = [NSMutableArray new];
+
+    [self hideTabBar:self.tabBarController];
     
 }
 

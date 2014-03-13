@@ -86,7 +86,7 @@
                                     <outlet property="delegate" destination="2Ed-Bo-d1S" id="t7e-LI-WpA"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add_new_propority_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="uDF-8z-vEV">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add_new_propority_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="uDF-8z-vEV">
                                 <rect key="frame" x="35" y="483" width="135" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>

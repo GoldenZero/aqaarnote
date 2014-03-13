@@ -37,14 +37,16 @@
     propertiesArray = [NSMutableArray new];
     inspectionsImagesArray = [NSMutableArray new];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self getInspections];
-   
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //TODO : chached data
+    [self getInspections];
+
 }
 
 -(void)getInspections
@@ -310,6 +312,11 @@
 
 - (IBAction)logoutPressed:(id)sender {
     [PFUser logOut];
+    inspectionsArray = [NSMutableArray new];
+    propertiesArray = [NSMutableArray new];
+    inspectionsImagesArray = [NSMutableArray new];
+
+    self.tabBarController.selectedIndex=0;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
