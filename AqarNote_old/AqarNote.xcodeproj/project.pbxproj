@@ -108,6 +108,8 @@
 		7C644FCD18D1F6C200E0FC63 /* contactus_tab_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C644FC918D1F6C100E0FC63 /* contactus_tab_gray@2x.png */; };
 		7C644FCE18D1F6C200E0FC63 /* green_bar_without_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C644FCA18D1F6C200E0FC63 /* green_bar_without_white.png */; };
 		7C644FCF18D1F6C200E0FC63 /* green_bar_without_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C644FCB18D1F6C200E0FC63 /* green_bar_without_white@2x.png */; };
+		7C644FD218D238D200E0FC63 /* SectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C644FD118D238D200E0FC63 /* SectionCell.m */; };
+		7C644FD418D238E500E0FC63 /* SectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C644FD318D238E500E0FC63 /* SectionCell.xib */; };
 		7C945FBA18D11B4B0042DF7D /* no_inspections_tit.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C945FB818D11B4B0042DF7D /* no_inspections_tit.png */; };
 		7C945FBB18D11B4B0042DF7D /* no_inspections_tit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C945FB918D11B4B0042DF7D /* no_inspections_tit@2x.png */; };
 		7CBC230518D0A7350035D3E4 /* add_new_inspections_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBC22FB18D0A7350035D3E4 /* add_new_inspections_arrow.png */; };
@@ -302,6 +304,9 @@
 		7C644FC918D1F6C100E0FC63 /* contactus_tab_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contactus_tab_gray@2x.png"; sourceTree = "<group>"; };
 		7C644FCA18D1F6C200E0FC63 /* green_bar_without_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_bar_without_white.png; sourceTree = "<group>"; };
 		7C644FCB18D1F6C200E0FC63 /* green_bar_without_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green_bar_without_white@2x.png"; sourceTree = "<group>"; };
+		7C644FD018D238D200E0FC63 /* SectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionCell.h; sourceTree = "<group>"; };
+		7C644FD118D238D200E0FC63 /* SectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionCell.m; sourceTree = "<group>"; };
+		7C644FD318D238E500E0FC63 /* SectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionCell.xib; sourceTree = "<group>"; };
 		7C945FB818D11B4B0042DF7D /* no_inspections_tit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_inspections_tit.png; sourceTree = "<group>"; };
 		7C945FB918D11B4B0042DF7D /* no_inspections_tit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_inspections_tit@2x.png"; sourceTree = "<group>"; };
 		7CBC22FB18D0A7350035D3E4 /* add_new_inspections_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_new_inspections_arrow.png; sourceTree = "<group>"; };
@@ -754,6 +759,9 @@
 				84CC6977189F760C0027C844 /* PropertyCell.h */,
 				84CC6978189F760C0027C844 /* PropertyCell.m */,
 				84CC697A189F761B0027C844 /* PropertyCell.xib */,
+				7C644FD018D238D200E0FC63 /* SectionCell.h */,
+				7C644FD118D238D200E0FC63 /* SectionCell.m */,
+				7C644FD318D238E500E0FC63 /* SectionCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -911,6 +919,7 @@
 				7C57AA6F18CF8EAE00DE6259 /* bathroom_icon@2x.png in Resources */,
 				7C57AA9918CF8EAE00DE6259 /* header_white_arrow@2x.png in Resources */,
 				7C57AA8918CF8EAE00DE6259 /* garden_room_icon@2x.png in Resources */,
+				7C644FD418D238E500E0FC63 /* SectionCell.xib in Resources */,
 				7C57AA7218CF8EAE00DE6259 /* blue_pin.png in Resources */,
 				7CBC230518D0A7350035D3E4 /* add_new_inspections_arrow.png in Resources */,
 				7C644FBE18D1F57700E0FC63 /* add_new_propority_arrow.png in Resources */,
@@ -1028,6 +1037,7 @@
 				84CC698C189F95420027C844 /* InspectionsVC.m in Sources */,
 				84CC6979189F760C0027C844 /* PropertyCell.m in Sources */,
 				84CC6989189F95270027C844 /* NotesVC.m in Sources */,
+				7C644FD218D238D200E0FC63 /* SectionCell.m in Sources */,
 				84B904EF18A1FA5A003771E1 /* XCDFormInputAccessoryView.m in Sources */,
 				84BFB56A189E5F0F0069A87A /* MBProgressHUD.m in Sources */,
 				84BFB55F189E48830069A87A /* AddNewAqarVC.m in Sources */,

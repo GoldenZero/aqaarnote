@@ -7,14 +7,14 @@
 //
 
 #import "AddNewAqarVC.h"
-
+#import "SectionCell.h"
 @interface AddNewAqarVC ()
 {
     NSMutableArray* mainSectionsArray;
     NSMutableArray* sectionsArray;
     NSMutableArray* chosenSectionArray;
+    NSMutableArray* chosenBooleanArray;
     PFObject * currentImageID;
-    int view_y;
     
 }
 @end
@@ -42,8 +42,9 @@
     [mainSectionsArray addObject:@"dining room"];
     [mainSectionsArray addObject:@"garden"];
     
+    [MBProgressHUD showHUDAddedTo:self.sectionsTableView animated:YES];
+  
     [self getExistSection];
-//    [self prepareSections];
 	// Do any additional setup after loading the view.
 }
 
@@ -57,6 +58,7 @@
         if (!error) {
             //Save results and update the table
             if ([objects count] == 0) {
+                
                 [self prepareSections];
             }else
             {
@@ -64,8 +66,8 @@
                 chosenSectionArray = [[NSMutableArray alloc] initWithArray:objects];
                 
                 sectionsArray = [self compareSectionsArray:mainSectionsArray andArray:sectionsArray];
-                
                 [self prepareExistingSections];
+
             }
         }
     }];
@@ -73,49 +75,17 @@
 
 -(void)prepareSections
 {
-    view_y = 0;
-
     sectionsArray = [NSMutableArray new];
     chosenSectionArray = [NSMutableArray new];
+    
     sectionsArray = mainSectionsArray;
-    
-    
-    for (int i = 0; i < [sectionsArray count]; i++) {
-        UIView* v = [[UIView alloc] initWithFrame:CGRectMake(0, view_y, 320, 50)];
-        UIImage* img = [UIImage imageNamed:@"secIcon.png"];
-        UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(285, 15, 15, 15)];
-        [imgView setImage:img];
-        
-        UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
-        titleLabel.textAlignment = NSTextAlignmentRight;
-        titleLabel.text = [sectionsArray objectAtIndex:i];
-        
-        UIButton* secBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        secBtn.frame = CGRectMake(0, 0, 320, 50);
-        secBtn.backgroundColor = [UIColor clearColor];
-        [secBtn setBackgroundImage:[UIImage imageNamed:@"UnActiveSelectDefuilt.png"] forState:UIControlStateNormal];
-        [secBtn setBackgroundImage:[UIImage imageNamed:@"activeSelectDefuilt.png"] forState:UIControlStateSelected];
-        [secBtn addTarget:self action:@selector(sectionPressed:) forControlEvents:UIControlEventTouchUpInside];
-        secBtn.tag = i;
-        
-        if (i == 0 || i == 1 || i == 3) {
-            [secBtn setSelected:YES];
-            [chosenSectionArray addObject:[sectionsArray objectAtIndex:i]];
-        }
-        
-        [v addSubview:titleLabel];
-        [v addSubview:imgView];
-        [v addSubview:secBtn];
-        
-        [self.sectionScrollView addSubview:v];
-        if (view_y > 236) {
-            self.sectionScrollView.contentSize = CGSizeMake(320, view_y + 50);
-        }
-        view_y += 50;
-        
-        
-        
+    chosenBooleanArray=[[NSMutableArray alloc] init];
+    for (int i=0; i<sectionsArray.count; i++) {
+        [chosenBooleanArray addObject:@NO];
     }
+
+    [self.sectionsTableView reloadData];
+    [MBProgressHUD hideHUDForView:self.sectionsTableView animated:YES];
 
 
 }
@@ -123,67 +93,37 @@
 
 -(void)prepareExistingSections
 {
-    view_y = 0;
     chosenSectionArray = [NSMutableArray new];
-
-    
-    for (int i = 0; i < [mainSectionsArray count]; i++) {
-        
-        //PFObject* sect = [sectionsArray objectAtIndex:i];
-        UIView* v = [[UIView alloc] initWithFrame:CGRectMake(0, view_y, 320, 50)];
-        UIImage* img = [UIImage imageNamed:@"secIcon.png"]; // TODO [sect objectForKey:@"icon"];
-        UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(285, 15, 15, 15)];
-        [imgView setImage:img];
-        
-        UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
-        titleLabel.textAlignment = NSTextAlignmentRight;
-        titleLabel.text = [mainSectionsArray objectAtIndex:i];
-        
-        UIButton* secBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        secBtn.frame = CGRectMake(0, 0, 320, 50);
-        secBtn.backgroundColor = [UIColor clearColor];
-        [secBtn setBackgroundImage:[UIImage imageNamed:@"UnActiveSelectDefuilt.png"] forState:UIControlStateNormal];
-        [secBtn setBackgroundImage:[UIImage imageNamed:@"activeSelectDefuilt.png"] forState:UIControlStateSelected];
-        [secBtn addTarget:self action:@selector(sectionPressed:) forControlEvents:UIControlEventTouchUpInside];
-        secBtn.tag = i;
-        
-        if (![self isExistingInArray:[mainSectionsArray objectAtIndex:i] andArray:sectionsArray]) {
-            [secBtn setSelected:YES];
-            [chosenSectionArray addObject:[mainSectionsArray objectAtIndex:i]];
-
-        }
-        
-       // [secBtn setSelected:![self isExistingInArray:[mainSectionsArray objectAtIndex:i] andArray:sectionsArray]];
-        
-        [v addSubview:titleLabel];
-        [v addSubview:imgView];
-        [v addSubview:secBtn];
-        
-        [self.sectionScrollView addSubview:v];
-        if (view_y > 236) {
-            self.sectionScrollView.contentSize = CGSizeMake(320, view_y + 50);
-        }
-        view_y += 50;
-    }
+    [self.sectionsTableView reloadData];
+    [MBProgressHUD hideHUDForView:self.sectionsTableView animated:YES];
 }
 
 -(NSMutableArray*)compareSectionsArray:(NSMutableArray*)arrOfString andArray:(NSMutableArray*)arrOfObject
 {
-    NSMutableArray* comparedArr = [NSMutableArray new];
+    NSMutableArray* comparedArr = arrOfString;
+    chosenBooleanArray=[[NSMutableArray alloc] init];
+    for (int i=0; i<arrOfString.count; i++) {
+        [chosenBooleanArray addObject:@NO];
+    }
     BOOL isMatching;
-    for (NSString* pfString in arrOfString) {
-        for (PFObject* pf in arrOfObject) {
+    for (PFObject* pf in arrOfObject) {
+
+        for (int i=0; i<arrOfString.count; i++) {
+            NSString* pfString = [arrOfString objectAtIndex:i];
             if ([[pf objectForKey:@"name"] isEqualToString:pfString]) {
                 isMatching = YES;
+                [chosenBooleanArray replaceObjectAtIndex:i withObject:@YES];
                 break;
             }else
             {
                 isMatching = NO;
                 continue;
             }
+            
         }
         if (!isMatching) {
-            [comparedArr addObject:pfString];
+            [comparedArr addObject:[pf objectForKey:@"name"]];
+            [chosenBooleanArray addObject:@YES];
         }
     }
     
@@ -211,9 +151,20 @@
 {
     UIButton* btn = (UIButton*)sender;
     int currentIndex = btn.tag;
-    [chosenSectionArray addObject:[mainSectionsArray objectAtIndex:currentIndex]];
-    [btn setSelected:YES];
-    
+
+    if ([[chosenBooleanArray objectAtIndex:currentIndex] boolValue]) {
+        [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@NO];
+        [btn setImage:[UIImage imageNamed:@"white_dot_option.png"] forState:UIControlStateNormal];
+
+    }
+    else{
+        [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@YES];
+        [btn setImage:[UIImage imageNamed:@"green_dot_option.png"] forState:UIControlStateNormal];
+
+
+    }
+
+   // [self.sectionsTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -222,6 +173,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Uploading Images Delegate
 - (IBAction)uploadImagePressed:(id)sender {
     
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:nil
@@ -346,8 +298,6 @@
     return YES;
 }
 
-
-
 - (IBAction)addButtonPressed:(id)sender {
     
   
@@ -355,6 +305,14 @@
 
 - (IBAction)saveButtonPressed:(id)sender {
     NSLog(@"post new property");
+    chosenSectionArray=[[NSMutableArray alloc]init];
+    // build chosenArray
+    for (int i=0; i<chosenBooleanArray.count; i++) {
+        if ([[chosenBooleanArray objectAtIndex:i] boolValue]) {
+            [chosenSectionArray addObject:[sectionsArray objectAtIndex:i]];
+        }
+    }
+    
     // Create Post
     PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
    
@@ -362,7 +320,7 @@
     [newPost setObject:self.propertyTitle.text forKey:@"Title"];
     [newPost setObject:self.country.text forKey:@"country"];
     [newPost setObject:self.city.text forKey:@"city"];
-    //[newPost setObject:chosenSectionArray forKey:@"sections"];
+    [newPost setObject:chosenSectionArray forKey:@"sections"];
     if (currentImageID)
         [newPost setObject:currentImageID forKey:@"imageID"];
     
@@ -371,7 +329,9 @@
     //set section with property
     NSMutableArray* arr = [[NSMutableArray alloc] init];
     [arr addObject:newPost];
-    for (int i = 0; i < [mainSectionsArray count]; i++) {
+    
+    // TODO : Ask Ghassan about this array
+    for (int i = 0; i < [chosenSectionArray count]; i++) {
         PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
         [newSec setObject:[PFUser currentUser] forKey:@"userID"];
         [newSec setObject:[chosenSectionArray objectAtIndex:i] forKey:@"name"];
@@ -415,6 +375,9 @@
 - (IBAction)cancelButtonPressed:(id)sender {
     //[self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)addSectionBtnPrss:(id)sender {
 }
 
 #pragma mark - UIActionSheetDelegate Method
@@ -462,6 +425,51 @@
 }
 
 
+#pragma mark - UITableView Delegate handler
 
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return sectionsArray.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    SectionCell *cell = (SectionCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SectionCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        
+    }
+    cell.sectionLabel.text=(NSString*)[sectionsArray objectAtIndex:indexPath.row];
+    [cell.sectionButtonPrssed setBackgroundColor:[UIColor clearColor]];
+    if ([[chosenBooleanArray objectAtIndex:indexPath.row] boolValue]) {
+        [cell.sectionButtonPrssed setImage:[UIImage imageNamed:@"green_dot_option.png"] forState:UIControlStateNormal];
+
+    }
+    else{
+        [cell.sectionButtonPrssed setImage:[UIImage imageNamed:@"white_dot_option.png"] forState:UIControlStateNormal];
+
+    }
+    [cell.sectionButtonPrssed addTarget:self action:@selector(sectionPressed:) forControlEvents:UIControlEventTouchUpInside];
+    cell.sectionButtonPrssed.tag = indexPath.row;
+
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 
 @end

@@ -373,7 +373,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mU-6X-Txa">
-                                <rect key="frame" x="227" y="66" width="77" height="70"/>
+                                <rect key="frame" x="116" y="58" width="92" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" backgroundImage="takePhotobkg.png">
@@ -400,7 +400,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWu-cb-tXY">
-                                        <rect key="frame" x="260" y="10" width="51" height="30"/>
+                                        <rect key="frame" x="258" y="10" width="51" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="إلغاء">
@@ -410,11 +410,18 @@
                                             <action selector="cancelButtonPressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="Qu1-NA-y6N"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="إضافة عقار جديد" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8T-kp-DaM">
+                                        <rect key="frame" x="104" y="14" width="113" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efv-aN-eXT">
-                                <rect key="frame" x="30" y="66" width="170" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="المدينة..." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efv-aN-eXT">
+                                <rect key="frame" x="20" y="199" width="284" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -422,8 +429,17 @@
                                     <outlet property="delegate" destination="gLd-EQ-14C" id="w7a-C1-gZX"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nf3-wU-83M">
-                                <rect key="frame" x="30" y="116" width="170" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="عنوان الشقة..." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ERG-Ik-6cZ">
+                                <rect key="frame" x="20" y="161" width="284" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gLd-EQ-14C" id="NK9-9Y-7Cz"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الدولة..." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nf3-wU-83M">
+                                <rect key="frame" x="20" y="237" width="284" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -431,8 +447,8 @@
                                     <outlet property="delegate" destination="gLd-EQ-14C" id="Re8-O2-FvD"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="city" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zti-yI-ynh">
-                                <rect key="frame" x="30" y="166" width="170" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="كود الدولة..." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zti-yI-ynh">
+                                <rect key="frame" x="20" y="275" width="284" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -440,27 +456,43 @@
                                     <outlet property="delegate" destination="gLd-EQ-14C" id="9ae-RX-bc5"/>
                                 </connections>
                             </textField>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X9H-y0-ivU">
-                                <rect key="frame" x="0.0" y="302" width="320" height="266"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
-                            </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  الأقسام" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVl-1W-Ojc">
-                                <rect key="frame" x="0.0" y="263" width="320" height="39"/>
-                                <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="r4i-cj-Cps">
+                                <rect key="frame" x="0.0" y="360" width="320" height="160"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gLd-EQ-14C" id="0FU-fc-c9j"/>
+                                    <outlet property="delegate" destination="gLd-EQ-14C" id="QxX-ni-k6M"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="     الأقسام" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVl-1W-Ojc">
+                                <rect key="frame" x="0.0" y="313" width="320" height="39"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7C-7I-Bc6">
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="orange_bar_addnew_section.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addSectionBtnPrss:" destination="gLd-EQ-14C" eventType="touchUpInside" id="mVa-xa-qIp"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.94901967050000002" green="0.94901967050000002" blue="0.94901967050000002" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="apartmentAddressTxt" destination="ERG-Ik-6cZ" id="YYG-Du-k9l"/>
                         <outlet property="city" destination="Zti-yI-ynh" id="0Yo-zi-m5S"/>
                         <outlet property="country" destination="nf3-wU-83M" id="81r-Cb-zOj"/>
                         <outlet property="propertyTitle" destination="Efv-aN-eXT" id="lk8-nY-EAc"/>
-                        <outlet property="sectionScrollView" destination="X9H-y0-ivU" id="G3x-ps-xAD"/>
+                        <outlet property="sectionsTableView" destination="r4i-cj-Cps" id="LTu-XN-hiz"/>
                         <outlet property="uploadImageBtn" destination="5mU-6X-Txa" id="XY8-hI-tQb"/>
                     </connections>
                 </viewController>
@@ -810,6 +842,7 @@
         <image name="homebkg.png" width="320" height="596"/>
         <image name="logout_btn.png" width="21" height="19"/>
         <image name="no_inspections_tit.png" width="139" height="24"/>
+        <image name="orange_bar_addnew_section.png" width="320" height="40"/>
         <image name="plus.png" width="19" height="19"/>
         <image name="register_new_account_btn.png" width="235" height="45"/>
         <image name="sign_in_btn.png" width="235" height="45"/>

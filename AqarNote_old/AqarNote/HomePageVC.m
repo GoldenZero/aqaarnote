@@ -26,15 +26,6 @@
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];
     
-    if ([PFUser currentUser]) {
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        [self getProperties];
-        
-        //[self getPropertyImages];
-        
-    }
     
         /*
     [PFCloud callFunctionInBackground:@"hello"
@@ -123,7 +114,12 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+
     if ([PFUser currentUser]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [self getProperties];
+
         [self.welcomeView setHidden:YES];
         
         [self showTabBar:self.tabBarController];

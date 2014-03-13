@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddNewAqarVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate>
+@interface AddNewAqarVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate>
 
 {
     MBProgressHUD *HUD;
@@ -17,8 +17,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *propertyTitle;
 @property (strong, nonatomic) IBOutlet UITextField *country;
 @property (strong, nonatomic) IBOutlet UITextField *city;
-@property (strong, nonatomic) IBOutlet UIScrollView *sectionScrollView;
 @property (strong, nonatomic) IBOutlet UIButton *uploadImageBtn;
+@property (strong, nonatomic) IBOutlet UITableView *sectionsTableView;
+@property (strong, nonatomic) IBOutlet UITextField *apartmentAddressTxt;
 
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;
@@ -26,5 +27,5 @@
 - (IBAction)addButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;
 - (IBAction)cancelButtonPressed:(id)sender;
-
+- (IBAction)addSectionBtnPrss:(id)sender;
 @end
