@@ -22,6 +22,13 @@
 @property (strong, nonatomic) IBOutlet UITextView *noteTextView;
 @property (strong, nonatomic) NSArray* PropArr;
 @property (strong, nonatomic) IBOutlet UIButton *uploadImageBtn;
+@property (strong, nonatomic) IBOutlet UIScrollView *pagingScrollView;
+@property (strong, nonatomic) IBOutlet UIButton *fairButton;
+@property (strong, nonatomic) IBOutlet UIButton *dirtyButton;
+@property (strong, nonatomic) IBOutlet UIButton *noticeButton;
+@property (strong, nonatomic) IBOutlet UIButton *goodButton;
+@property (strong, nonatomic) IBOutlet UIButton *cleanButton;
+@property (strong, nonatomic) IBOutlet UIButton *brokenButton;
 
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;

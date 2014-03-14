@@ -569,7 +569,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obr-fQ-jh1">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obr-fQ-jh1">
                                         <rect key="frame" x="269" y="0.0" width="51" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -692,25 +692,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2y-bP-E6R">
-                                <rect key="frame" x="127" y="54" width="67" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" backgroundImage="takePhotobkg.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="uploadImagePressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="PA0-lo-0WP"/>
-                                    <action selector="uploadImagePressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="a6x-DH-81Y"/>
-                                    <action selector="uploadImagePressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="qfC-2U-dr3"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9M-Zp-T7s">
-                                <rect key="frame" x="30" y="120" width="80" height="80"/>
+                                <rect key="frame" x="20" y="245" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="fair">
+                                <state key="normal" image="ok_circle_btn.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -719,11 +706,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLZ-qe-Reu">
-                                <rect key="frame" x="120" y="120" width="80" height="80"/>
+                                <rect key="frame" x="122" y="245" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="dirty">
+                                <state key="normal" image="dirty_circle_btn.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -732,11 +719,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACb-1V-3qH">
-                                <rect key="frame" x="210" y="120" width="80" height="80"/>
+                                <rect key="frame" x="221" y="245" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="noticed">
+                                <state key="normal" image="notice_circle_btn.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -745,11 +732,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCf-mw-6mE">
-                                <rect key="frame" x="30" y="210" width="80" height="80"/>
+                                <rect key="frame" x="22" y="349" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="good">
+                                <state key="normal" image="good_circvle_btn.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -758,11 +745,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATG-AU-fQ0">
-                                <rect key="frame" x="120" y="210" width="80" height="80"/>
+                                <rect key="frame" x="122" y="349" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="clean">
+                                <state key="normal" image="clean_circle_btn.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -771,11 +758,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfJ-ET-JYb">
-                                <rect key="frame" x="210" y="210" width="80" height="80"/>
+                                <rect key="frame" x="221" y="349" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="corrupt">
+                                <state key="normal" image="broken_circle_btn.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -783,18 +770,15 @@
                                     <action selector="chooseStatusPressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="UBG-IP-pY1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="إضافة ملاحظات" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z45-jX-bd7">
-                                <rect key="frame" x="0.0" y="298" width="320" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sgX-p8-O79">
-                                <rect key="frame" x="0.0" y="345" width="320" height="130"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="note_write_field.png" translatesAutoresizingMaskIntoConstraints="NO" id="6bw-WA-uo4">
+                                <rect key="frame" x="22" y="434" width="276" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="ملاحظات..." textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="sgX-p8-O79">
+                                <rect key="frame" x="22" y="434" width="276" height="86"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.94901967050000002" green="0.94901967050000002" blue="0.94901967050000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
@@ -802,11 +786,11 @@
                                 </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHA-Sx-B1e">
-                                <rect key="frame" x="94" y="524" width="133" height="30"/>
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.35294118520000001" blue="0.14901961389999999" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="حفظ">
+                                <state key="normal" image="orange_bar_save.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -814,13 +798,40 @@
                                     <action selector="saveButtonPressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="fLp-2h-37t"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BMu-6E-Wiz">
+                                <rect key="frame" x="0.0" y="50" width="320" height="187"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2y-bP-E6R">
+                                        <rect key="frame" x="91" y="40" width="139" height="108"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" backgroundImage="takePhotobkg.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadImagePressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="PA0-lo-0WP"/>
+                                            <action selector="uploadImagePressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="a6x-DH-81Y"/>
+                                            <action selector="uploadImagePressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="qfC-2U-dr3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.94901967050000002" green="0.94901967050000002" blue="0.94901967050000002" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="brokenButton" destination="qfJ-ET-JYb" id="9YW-Pp-BiB"/>
+                        <outlet property="cleanButton" destination="ATG-AU-fQ0" id="1yx-3a-uMm"/>
+                        <outlet property="dirtyButton" destination="jLZ-qe-Reu" id="x5p-6g-d2Q"/>
+                        <outlet property="fairButton" destination="e9M-Zp-T7s" id="lCa-5h-AYd"/>
+                        <outlet property="goodButton" destination="zCf-mw-6mE" id="TKf-wB-aNZ"/>
                         <outlet property="noteTextView" destination="sgX-p8-O79" id="KlV-oI-RAP"/>
+                        <outlet property="noticeButton" destination="ACb-1V-3qH" id="PFZ-ZG-eGN"/>
+                        <outlet property="pagingScrollView" destination="BMu-6E-Wiz" id="mA7-FR-1eq"/>
                         <outlet property="sectionTitle" destination="YDg-Tn-5dK" id="zgr-si-yV5"/>
                         <outlet property="uploadImageBtn" destination="R2y-bP-E6R" id="H0B-8Q-7k9"/>
                     </connections>
@@ -837,12 +848,20 @@
         <image name="add_new_propority_arrow.png" width="130" height="34"/>
         <image name="arrow_lift_side.png" width="40" height="43"/>
         <image name="big_logo_white.png" width="115" height="146"/>
+        <image name="broken_circle_btn.png" width="77" height="77"/>
+        <image name="clean_circle_btn.png" width="77" height="77"/>
         <image name="contactus_tab_gray.png" width="24" height="20"/>
+        <image name="dirty_circle_btn.png" width="77" height="77"/>
+        <image name="good_circvle_btn.png" width="77" height="77"/>
         <image name="header_logo.png" width="25" height="28"/>
         <image name="homebkg.png" width="320" height="596"/>
         <image name="logout_btn.png" width="21" height="19"/>
         <image name="no_inspections_tit.png" width="139" height="24"/>
+        <image name="note_write_field.png" width="276" height="86"/>
+        <image name="notice_circle_btn.png" width="77" height="77"/>
+        <image name="ok_circle_btn.png" width="77" height="77"/>
         <image name="orange_bar_addnew_section.png" width="320" height="40"/>
+        <image name="orange_bar_save.png" width="320" height="40"/>
         <image name="plus.png" width="19" height="19"/>
         <image name="register_new_account_btn.png" width="235" height="45"/>
         <image name="sign_in_btn.png" width="235" height="45"/>

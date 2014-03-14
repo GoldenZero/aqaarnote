@@ -37,6 +37,9 @@
     
 }
 
+#pragma mark - Buttons Actions 
+
+
 - (IBAction)uploadImagePressed:(id)sender {
     
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:nil
@@ -210,30 +213,76 @@
         case 0:
             //fair
             sectionStatus = [NSNumber numberWithInt:0];
+            [self.fairButton setImage:[UIImage imageNamed:@"ok_circle_green_btn"] forState:UIControlStateNormal];
+            [self.dirtyButton setImage:[UIImage imageNamed:@"dirty_circle_btn"] forState:UIControlStateNormal];
+            [self.noticeButton setImage:[UIImage imageNamed:@"notice_circle_btn"] forState:UIControlStateNormal];
+            [self.goodButton setImage:[UIImage imageNamed:@"good_circvle_btn"] forState:UIControlStateNormal];
+            [self.cleanButton setImage:[UIImage imageNamed:@"clean_circle_btn"] forState:UIControlStateNormal];
+            [self.brokenButton setImage:[UIImage imageNamed:@"broken_circle_btn"] forState:UIControlStateNormal];
+
             break;
         case 1:
             //dirty
             sectionStatus = [NSNumber numberWithInt:1];
+            [self.dirtyButton setImage:[UIImage imageNamed:@"dirty_circle_green_btn"] forState:UIControlStateNormal];
+            [self.fairButton setImage:[UIImage imageNamed:@"ok_circle_btn"] forState:UIControlStateNormal];
+            [self.noticeButton setImage:[UIImage imageNamed:@"notice_circle_btn"] forState:UIControlStateNormal];
+            [self.goodButton setImage:[UIImage imageNamed:@"good_circvle_btn"] forState:UIControlStateNormal];
+            [self.cleanButton setImage:[UIImage imageNamed:@"clean_circle_btn"] forState:UIControlStateNormal];
+            [self.brokenButton setImage:[UIImage imageNamed:@"broken_circle_btn"] forState:UIControlStateNormal];
+            
+
             break;
         case 2:
             //noticed
             sectionStatus = [NSNumber numberWithInt:2];
+            [self.noticeButton setImage:[UIImage imageNamed:@"notice_circle_green_btn"] forState:UIControlStateNormal];
+            [self.fairButton setImage:[UIImage imageNamed:@"ok_circle_btn"] forState:UIControlStateNormal];
+            [self.dirtyButton setImage:[UIImage imageNamed:@"dirty_circle_btn"] forState:UIControlStateNormal];
+            [self.goodButton setImage:[UIImage imageNamed:@"good_circvle_btn"] forState:UIControlStateNormal];
+            [self.cleanButton setImage:[UIImage imageNamed:@"clean_circle_btn"] forState:UIControlStateNormal];
+            [self.brokenButton setImage:[UIImage imageNamed:@"broken_circle_btn"] forState:UIControlStateNormal];
+            
+
             break;
         case 3:
             //good
             sectionStatus = [NSNumber numberWithInt:3];
+            [self.goodButton setImage:[UIImage imageNamed:@"good_circvle_green_btn"] forState:UIControlStateNormal];
+            [self.fairButton setImage:[UIImage imageNamed:@"ok_circle_btn"] forState:UIControlStateNormal];
+            [self.dirtyButton setImage:[UIImage imageNamed:@"dirty_circle_btn"] forState:UIControlStateNormal];
+            [self.noticeButton setImage:[UIImage imageNamed:@"notice_circle_btn"] forState:UIControlStateNormal];
+            [self.cleanButton setImage:[UIImage imageNamed:@"clean_circle_btn"] forState:UIControlStateNormal];
+            [self.brokenButton setImage:[UIImage imageNamed:@"broken_circle_btn"] forState:UIControlStateNormal];
+            
+
             break;
         case 4:
             //cleaned
             sectionStatus = [NSNumber numberWithInt:4];
+            [self.cleanButton setImage:[UIImage imageNamed:@"clean_circle_green_btn"] forState:UIControlStateNormal];
+            [self.fairButton setImage:[UIImage imageNamed:@"ok_circle_btn"] forState:UIControlStateNormal];
+            [self.dirtyButton setImage:[UIImage imageNamed:@"dirty_circle_btn"] forState:UIControlStateNormal];
+            [self.noticeButton setImage:[UIImage imageNamed:@"notice_circle_btn"] forState:UIControlStateNormal];
+            [self.goodButton setImage:[UIImage imageNamed:@"good_circvle_btn"] forState:UIControlStateNormal];
+            [self.brokenButton setImage:[UIImage imageNamed:@"broken_circle_btn"] forState:UIControlStateNormal];
+
             break;
         case 5:
             //corrupt
             sectionStatus = [NSNumber numberWithInt:5];
             break;
+            [self.brokenButton setImage:[UIImage imageNamed:@"broken_circle_green_btn"] forState:UIControlStateNormal];
+            [self.fairButton setImage:[UIImage imageNamed:@"ok_circle_btn"] forState:UIControlStateNormal];
+            [self.dirtyButton setImage:[UIImage imageNamed:@"dirty_circle_btn"] forState:UIControlStateNormal];
+            [self.noticeButton setImage:[UIImage imageNamed:@"notice_circle_btn"] forState:UIControlStateNormal];
+            [self.goodButton setImage:[UIImage imageNamed:@"good_circvle_btn"] forState:UIControlStateNormal];
+            [self.cleanButton setImage:[UIImage imageNamed:@"clean_circle_btn"] forState:UIControlStateNormal];
             
         default:
             sectionStatus = [NSNumber numberWithInt:0];
+            [self.fairButton setImage:[UIImage imageNamed:@"ok_circle_green_btn"] forState:UIControlStateNormal];
+
             break;
     }
 }
