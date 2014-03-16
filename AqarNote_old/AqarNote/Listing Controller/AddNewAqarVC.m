@@ -463,6 +463,34 @@
     }
     [cell.sectionButtonPrssed addTarget:self action:@selector(sectionPressed:) forControlEvents:UIControlEventTouchUpInside];
     cell.sectionButtonPrssed.tag = indexPath.row;
+    
+    // Load section icon
+    
+    if ([cell.sectionLabel.text isEqualToString:@"kitchen"]) {
+        cell.sectionImage.image=[UIImage imageNamed:@"cooknig_icon"];
+    }
+    
+    else if ([cell.sectionLabel.text isEqualToString:@"living room"]) {
+        cell.sectionImage.image=[UIImage imageNamed:@"Lobby_icon"];
+    }
+
+    else if ([cell.sectionLabel.text isEqualToString:@"bed room"]) {
+        cell.sectionImage.image=[UIImage imageNamed:@"badroom_icon"];
+    }
+
+    else if ([cell.sectionLabel.text isEqualToString:@"bath room"]) {
+        cell.sectionImage.image=[UIImage imageNamed:@"bathroom_icon"];
+    }
+
+    else if ([cell.sectionLabel.text isEqualToString:@"dining room"]) {
+        cell.sectionImage.image=[UIImage imageNamed:@"dining_room_icon"];
+    }
+    else if ([cell.sectionLabel.text isEqualToString:@"garden"]) {
+        cell.sectionImage.image=[UIImage imageNamed:@"garden_room_icon"];
+    }
+    else{
+        cell.sectionImage.image=[UIImage imageNamed:@""];
+    }
 
     return cell;
 }

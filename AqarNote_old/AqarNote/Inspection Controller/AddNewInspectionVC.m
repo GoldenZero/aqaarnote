@@ -79,10 +79,7 @@
     
     for (int i = 0; i < [sectionsArray count]; i++) {
         PFObject* sect = [sectionsArray objectAtIndex:i];
-        UIView* v = [[UIView alloc] initWithFrame:CGRectMake(0, view_y, 320, 50)];
-        UIImage* img = [UIImage imageNamed:@"secIcon.png"];
-        UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(285, 15, 15, 15)];
-        [imgView setImage:img];
+       
         
         UIImage* arrowImg = [UIImage imageNamed:@"list_side_arrow"];
         UIImageView* arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, 9, 16)];
@@ -91,6 +88,38 @@
         UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
         titleLabel.textAlignment = NSTextAlignmentRight;
         titleLabel.text = [sect objectForKey:@"name"];
+        
+        UIView* v = [[UIView alloc] initWithFrame:CGRectMake(0, view_y, 320, 50)];
+        UIImage* img;
+        if ([titleLabel.text isEqualToString:@"kitchen"]) {
+            img = [UIImage imageNamed:@"cooknig_icon"];
+        }
+        
+        else if ([titleLabel.text isEqualToString:@"living room"]) {
+           img = [UIImage imageNamed:@"Lobby_icon"];
+        }
+        
+        else if ([titleLabel.text isEqualToString:@"bed room"]) {
+           img = [UIImage imageNamed:@"badroom_icon"];
+
+        }
+        
+        else if ([titleLabel.text isEqualToString:@"bath room"]) {
+            img = [UIImage imageNamed:@"bathroom_icon"];
+        }
+        
+        else if ([titleLabel.text isEqualToString:@"dining room"]) {
+            img = [UIImage imageNamed:@"dining_room_icon"];
+        }
+        else if ([titleLabel.text isEqualToString:@"garden"]) {
+           img = [UIImage imageNamed:@"garden_room_icon"];
+        }
+        else{
+           img = [UIImage imageNamed:@""];
+
+        }
+        UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(285, 15, 15, 15)];
+        [imgView setImage:img];
         
         UILabel* statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 40, 50)];
         statusLabel.textAlignment = NSTextAlignmentCenter;
