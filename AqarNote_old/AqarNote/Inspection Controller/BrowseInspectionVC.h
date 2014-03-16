@@ -16,6 +16,7 @@
 }
 @property (nonatomic, strong) XCDFormInputAccessoryView *inputAccessoryView;
 
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UILabel *sectionTitle;
 @property (strong, nonatomic) PFObject* sectionID;
 @property (strong, nonatomic) PFObject* propertyID;

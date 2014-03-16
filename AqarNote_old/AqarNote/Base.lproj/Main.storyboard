@@ -803,8 +803,17 @@
                                             <action selector="uploadImagePressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="qfC-2U-dr3"/>
                                         </connections>
                                     </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="rHw-60-LRa">
+                                        <rect key="frame" x="141" y="150" width="39" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
+                                    </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="u0j-NF-wWS" id="xeX-9F-4bq"/>
+                                </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXW-fE-Fra">
                                 <rect key="frame" x="221" y="349" width="77" height="77"/>
@@ -829,6 +838,7 @@
                         <outlet property="goodButton" destination="zCf-mw-6mE" id="TKf-wB-aNZ"/>
                         <outlet property="noteTextView" destination="sgX-p8-O79" id="KlV-oI-RAP"/>
                         <outlet property="noticeButton" destination="ACb-1V-3qH" id="PFZ-ZG-eGN"/>
+                        <outlet property="pageControl" destination="rHw-60-LRa" id="llK-8O-7jL"/>
                         <outlet property="pagingScrollView" destination="BMu-6E-Wiz" id="mA7-FR-1eq"/>
                         <outlet property="sectionTitle" destination="YDg-Tn-5dK" id="zgr-si-yV5"/>
                         <outlet property="uploadImageBtn" destination="R2y-bP-E6R" id="H0B-8Q-7k9"/>

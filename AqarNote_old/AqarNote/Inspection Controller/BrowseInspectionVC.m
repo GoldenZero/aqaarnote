@@ -349,4 +349,95 @@
 
 
 
+- (IBAction)changePage:(id)sender{
+    
+//    CGRect frame;
+//    frame.origin.x = self.scrollView.frame.size.width * self.pageControl.currentPage;
+//    frame.origin.y = 0;
+//    frame.size = self.scrollView.frame.size;
+//    [self.scrollView scrollRectToVisible:frame animated:YES];
+//    pageControlUsed = YES;
+}
+
+//- (UIView *) prepareImge : (NSURL*) imageURL : (int) i{
+//    CGRect frame;
+//    frame.origin.x=self.scrollView.frame.size.width*i + 20;
+//    frame.origin.y=0;
+//    frame.size=self.scrollView.frame.size;
+//    
+//    //update by roula 18-6-2013:
+//    frame.size.width = frame.size.width - 40;
+//    UIView *subView=[[UIView alloc]initWithFrame:frame];
+//    [subView setBackgroundColor:[UIColor clearColor]];
+//    
+//    /*
+//     UIImageView *imageView=[[UIImageView alloc] init];
+//     CGRect imageFrame;
+//     imageFrame.origin.x=10;
+//     imageFrame.origin.y=10;
+//     imageFrame.size.width=256;
+//     imageFrame.size.height=256;
+//     imageView.frame=imageFrame;
+//     imageView.image=image;
+//     */
+//    
+//    //HJManagedImageV * imageView = [[HJManagedImageV alloc] init];
+//    UIImageView * imageView = [[UIImageView alloc] init];
+//    CGRect imageFrame;
+//    imageFrame.origin.x=0;
+//    imageFrame.origin.y=0;
+//    imageFrame.size.width=frame.size.width;
+//    imageFrame.size.height=frame.size.height;
+//    imageView.frame=imageFrame;
+//    
+//    //[imageView clear];
+//    [imageView setBackgroundColor:[UIColor clearColor]];
+//    
+//    //UIControl *mask = [[UIControl alloc] initWithFrame:imageView.frame];
+//    //[mask addTarget:self action:@selector(openImgs:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    NSString* temp = [currentDetailsObject.thumbnailURL absoluteString];
+//    
+//    if ([temp isEqualToString:@"UseAwaitingApprovalImage"]) {
+//        imageView.image = [UIImage imageNamed:@"waitForApprove.png"];
+//    }else {
+//        /*
+//         imageView.url = imageURL;
+//         [imageView showLoadingWheel];
+//         [asynchImgManager manage:imageView];
+//         */
+//        
+//        //update by roula 18-6-2013:
+//        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//        
+//        
+//        activityIndicator.hidesWhenStopped = YES;
+//        activityIndicator.hidden = NO;
+//        activityIndicator.center = CGPointMake(imageView.frame.size.width /2, imageView.frame.size.height/2);
+//        
+//        [imageView addSubview:activityIndicator];
+//        
+//        [activityIndicator startAnimating];
+//        [imageView setImageWithURL:imageURL
+//                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {  [activityIndicator stopAnimating];
+//                             [activityIndicator removeFromSuperview];}];
+//    }
+//    
+//    /*
+//     mask.tag = (i+1) * 10;
+//     [mask addSubview:imageView];
+//     [subView setUserInteractionEnabled:YES];
+//     [subView addSubview:mask];
+//     */
+//    //set the tag to observe the image ID
+//    UITapGestureRecognizer * imgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImgs:)];
+//    subView.tag = (i+1) * 10;
+//    [subView addGestureRecognizer:imgTap];
+//    [subView setUserInteractionEnabled:YES];
+//    [subView addSubview:imageView];
+//    return subView;
+    
+//}
+
+
 @end
