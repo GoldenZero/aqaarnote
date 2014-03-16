@@ -489,10 +489,10 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="apartmentAddressTxt" destination="ERG-Ik-6cZ" id="YYG-Du-k9l"/>
-                        <outlet property="city" destination="Zti-yI-ynh" id="0Yo-zi-m5S"/>
+                        <outlet property="city" destination="Efv-aN-eXT" id="dxn-59-BoN"/>
                         <outlet property="country" destination="nf3-wU-83M" id="81r-Cb-zOj"/>
-                        <outlet property="propertyTitle" destination="Efv-aN-eXT" id="lk8-nY-EAc"/>
+                        <outlet property="countryCodeTxt" destination="Zti-yI-ynh" id="oVF-Ji-ezA"/>
+                        <outlet property="propertyTitle" destination="ERG-Ik-6cZ" id="6KR-wF-J5k"/>
                         <outlet property="sectionsTableView" destination="r4i-cj-Cps" id="LTu-XN-hiz"/>
                         <outlet property="uploadImageBtn" destination="5mU-6X-Txa" id="XY8-hI-tQb"/>
                     </connections>

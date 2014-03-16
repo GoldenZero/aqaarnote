@@ -378,6 +378,11 @@
 }
 
 - (IBAction)addSectionBtnPrss:(id)sender {
+    
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"" message:@"إضافة قسم جديد" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"أضف", nil];
+    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [av textFieldAtIndex:0].delegate = self;
+    [av show];
 }
 
 #pragma mark - UIActionSheetDelegate Method
@@ -470,6 +475,31 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+
+#pragma mark - TextField Delegate handler
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    
+//        resultsLabel.text=@"Finished editing 2nd box";
+
+}
+
+
+#pragma mark - UIAlertView Delegate handler
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // if cancel
+    if (buttonIndex==0) {
+       // [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    }
+    // if add
+    else{
+        [sectionsArray addObject:[[alertView textFieldAtIndex:0] text]];
+        [chosenBooleanArray addObject:@YES];
+        [self.sectionsTableView reloadData];
+    }    
+
 }
 
 @end
