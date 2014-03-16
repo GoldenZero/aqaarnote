@@ -10,10 +10,12 @@
 #import "LoginVC.h"
 #import "SignUpVC.h"
 #import "MBProgressHUD.h"
+#import "AddNewInspectionVC.h"
 @interface HomePageVC ()
 {
     NSMutableArray* propertiesArray;
     NSMutableArray* propertiesImagesArray;
+    PFObject *choosenObject;
 }
 @end
 
@@ -215,11 +217,21 @@
     [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
     [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
     
+    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
+    cell.moreButton.tag = indexPath.row;
+
     return cell;
 }
 
+-(void)morePressed:(id)sender{
+    UIButton* btn = (UIButton*)sender;
+    int currentIndex = btn.tag;
+    choosenObject = [propertiesArray objectAtIndex:currentIndex];
+  
+    [self performSegueWithIdentifier:@"showPropretyDetail" sender:self];
 
 
+}
 
 #pragma mark login delegate
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
@@ -440,6 +452,19 @@
     }
     
     [UIView commitAnimations];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showPropretyDetail"]){
+        
+        AddNewInspectionVC *IVC=segue.destinationViewController;
+        [IVC setPropertyID:choosenObject];
+        [IVC setPropArr:propertiesArray];
+        
+    }
+    
 }
 
 @end

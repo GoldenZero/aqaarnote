@@ -354,6 +354,7 @@
                         <outlet property="signupButton" destination="rUa-CY-Fqd" id="3uJ-1b-gwX"/>
                         <outlet property="welcomeBgImage" destination="RUT-xa-qqT" id="DDI-6j-kV0"/>
                         <outlet property="welcomeView" destination="RIe-xH-glS" id="2pn-oO-dio"/>
+                        <segue destination="Pz3-3X-bKd" kind="modal" identifier="showPropretyDetail" id="V6h-qe-NuI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -876,4 +877,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="V6h-qe-NuI"/>
+    </inferredMetricsTieBreakers>
 </document>

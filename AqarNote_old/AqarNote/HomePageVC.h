@@ -15,13 +15,13 @@
 #pragma mark - Properties
 @property (strong, nonatomic) IBOutlet UITableView *propertiesTable;
 @property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *addNewImage;
+@property (strong, nonatomic) IBOutlet UIImageView *addNewImage;
 
 // Welcome view
-@property (weak, nonatomic) IBOutlet UIView *welcomeView;
-@property (weak, nonatomic) IBOutlet UIImageView *welcomeBgImage;
-@property (weak, nonatomic) IBOutlet UIButton *signupButton;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIView *welcomeView;
+@property (strong, nonatomic) IBOutlet UIImageView *welcomeBgImage;
+@property (strong, nonatomic) IBOutlet UIButton *signupButton;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
 
 #pragma mark - Actions
 - (IBAction)logoutPressed:(id)sender;

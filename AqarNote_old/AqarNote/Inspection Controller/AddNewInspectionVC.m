@@ -43,6 +43,7 @@
 
 -(void)getSectionsForProperty:(PFObject*)propID
 {
+    
     PFQuery *secQuery = [PFQuery queryWithClassName:@"Sections"];
     [secQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
     [secQuery whereKey:@"propertyID" equalTo:self.propertyID];
