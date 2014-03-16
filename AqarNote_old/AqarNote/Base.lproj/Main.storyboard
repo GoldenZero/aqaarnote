@@ -758,19 +758,6 @@
                                     <action selector="chooseStatusPressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="gST-E0-EHf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfJ-ET-JYb">
-                                <rect key="frame" x="221" y="349" width="77" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" image="broken_circle_btn.png">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="chooseStatusPressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="UBG-IP-pY1"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="note_write_field.png" translatesAutoresizingMaskIntoConstraints="NO" id="6bw-WA-uo4">
                                 <rect key="frame" x="22" y="434" width="276" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -819,13 +806,23 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXW-fE-Fra">
+                                <rect key="frame" x="221" y="349" width="77" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="broken_circle_btn.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonBrokenPrss:" destination="u0j-NF-wWS" eventType="touchUpInside" id="oDn-8n-9CI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="brokenButton" destination="qfJ-ET-JYb" id="9YW-Pp-BiB"/>
+                        <outlet property="buttonBroken" destination="bXW-fE-Fra" id="DpI-yE-cpT"/>
                         <outlet property="cleanButton" destination="ATG-AU-fQ0" id="1yx-3a-uMm"/>
                         <outlet property="dirtyButton" destination="jLZ-qe-Reu" id="x5p-6g-d2Q"/>
                         <outlet property="fairButton" destination="e9M-Zp-T7s" id="lCa-5h-AYd"/>

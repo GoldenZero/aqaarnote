@@ -28,11 +28,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *noticeButton;
 @property (strong, nonatomic) IBOutlet UIButton *goodButton;
 @property (strong, nonatomic) IBOutlet UIButton *cleanButton;
-@property (strong, nonatomic) IBOutlet UIButton *brokenButton;
+@property (strong, nonatomic) IBOutlet UIButton *buttonBroken;
 
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;
 - (IBAction)backButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;
 - (IBAction)chooseStatusPressed:(id)sender;
+- (IBAction)buttonBrokenPrss:(id)sender;
 @end

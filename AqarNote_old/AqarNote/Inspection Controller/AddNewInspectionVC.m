@@ -36,7 +36,14 @@
 	// Do any additional setup after loading the view.
     self.propertyTitle.text = [self.propertyID objectForKey:@"title"];
     self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
+   
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    for (UIView *subview in self.sectionScrollView.subviews) {
+        [subview removeFromSuperview];
+    }
     [self getSectionsForProperty:self.propertyID];
     //[self prepareSections];
 
