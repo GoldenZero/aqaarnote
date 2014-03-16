@@ -36,6 +36,7 @@
 	// Do any additional setup after loading the view.
     self.propertyTitle.text = [self.propertyID objectForKey:@"title"];
     self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self getSectionsForProperty:self.propertyID];
     //[self prepareSections];
 
@@ -76,8 +77,8 @@
         UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(285, 15, 15, 15)];
         [imgView setImage:img];
         
-        UIImage* arrowImg = [UIImage imageNamed:@"arrow_lift_side.png"];
-        UIImageView* arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        UIImage* arrowImg = [UIImage imageNamed:@"list_side_arrow"];
+        UIImageView* arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, 9, 16)];
         [arrowImgView setImage:arrowImg];
         
         UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
@@ -116,6 +117,7 @@
         
     }
     
+    [MBProgressHUD  hideHUDForView:self.view animated:YES];
     
 }
 

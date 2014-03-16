@@ -584,10 +584,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qp-21-VgH">
-                                        <rect key="frame" x="0.0" y="5" width="40" height="40"/>
+                                        <rect key="frame" x="14" y="15" width="12" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" backgroundImage="arrow_lift_side.png">
+                                        <state key="normal" image="header_white_arrow.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -622,15 +622,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SsN-XM-4O5">
-                                <rect key="frame" x="0.0" y="225" width="320" height="266"/>
+                                <rect key="frame" x="0.0" y="225" width="320" height="295"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxY="YES"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwp-Mj-ixO">
-                                <rect key="frame" x="94" y="520" width="133" height="30"/>
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.35294118523597717" blue="0.14901961386203766" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="إرسال التقرير">
+                                <state key="normal" image="orange_bar_send_report_btn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -670,10 +670,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ot-sF-IEb">
-                                        <rect key="frame" x="0.0" y="5" width="40" height="40"/>
+                                        <rect key="frame" x="14" y="14" width="12" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" backgroundImage="arrow_lift_side.png">
+                                        <state key="normal" image="header_white_arrow.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -684,7 +684,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDg-Tn-5dK">
-                                        <rect key="frame" x="4" y="15" width="312" height="21"/>
+                                        <rect key="frame" x="34" y="14" width="252" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -847,7 +847,6 @@
         <image name="add_new_inspections_arrow.png" width="135" height="34"/>
         <image name="add_new_property_arrow.png" width="131" height="34"/>
         <image name="add_new_propority_arrow.png" width="130" height="34"/>
-        <image name="arrow_lift_side.png" width="40" height="43"/>
         <image name="big_logo_white.png" width="115" height="146"/>
         <image name="broken_circle_btn.png" width="77" height="77"/>
         <image name="clean_circle_btn.png" width="77" height="77"/>
@@ -855,6 +854,7 @@
         <image name="dirty_circle_btn.png" width="77" height="77"/>
         <image name="good_circvle_btn.png" width="77" height="77"/>
         <image name="header_logo.png" width="25" height="28"/>
+        <image name="header_white_arrow.png" width="12" height="21"/>
         <image name="homebkg.png" width="320" height="596"/>
         <image name="logout_btn.png" width="21" height="19"/>
         <image name="no_inspections_tit.png" width="139" height="24"/>
@@ -863,6 +863,7 @@
         <image name="ok_circle_btn.png" width="77" height="77"/>
         <image name="orange_bar_addnew_section.png" width="320" height="40"/>
         <image name="orange_bar_save.png" width="320" height="40"/>
+        <image name="orange_bar_send_report_btn.png" width="320" height="40"/>
         <image name="plus.png" width="19" height="19"/>
         <image name="register_new_account_btn.png" width="235" height="45"/>
         <image name="sign_in_btn.png" width="235" height="45"/>
