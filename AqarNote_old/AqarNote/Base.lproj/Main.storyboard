@@ -58,6 +58,16 @@
                                         <rect key="frame" x="147" y="11" width="25" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As2-Bf-w0V">
+                                        <rect key="frame" x="260" y="14" width="21" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Search.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchBtnPrss:" destination="2Ed-Bo-d1S" eventType="touchUpInside" id="8nV-0D-Fa7"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa3-zq-G6n">
                                         <rect key="frame" x="289" y="14" width="21" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -108,6 +118,7 @@
                         <outlet property="addNewProperImg" destination="uDF-8z-vEV" id="d11-rz-qSs"/>
                         <outlet property="inspectionsTable" destination="Wfq-D6-EWb" id="egw-Xr-gVR"/>
                         <outlet property="noInspecImage" destination="Rux-Sg-RYb" id="ykh-KW-7z7"/>
+                        <outlet property="searchButton" destination="As2-Bf-w0V" id="l90-0s-Bue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcU-sQ-e7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,6 +303,16 @@
                                         <rect key="frame" x="143" y="11" width="25" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBJ-rd-IgN">
+                                        <rect key="frame" x="239" y="16" width="21" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Search.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2Pb-Bk-lCf"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sln-u0-gNe">
                                         <rect key="frame" x="289" y="15" width="21" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -351,6 +372,7 @@
                         <outlet property="addNewImage" destination="T8F-bN-XBb" id="go6-KZ-QAs"/>
                         <outlet property="loginButton" destination="NsU-Je-yPf" id="wBA-X7-YEA"/>
                         <outlet property="propertiesTable" destination="Mpf-Dr-TCm" id="j3Q-qv-KxD"/>
+                        <outlet property="searchButton" destination="SBJ-rd-IgN" id="sF7-Rb-zZI"/>
                         <outlet property="signupButton" destination="rUa-CY-Fqd" id="3uJ-1b-gwX"/>
                         <outlet property="welcomeBgImage" destination="RUT-xa-qqT" id="DDI-6j-kV0"/>
                         <outlet property="welcomeView" destination="RIe-xH-glS" id="2pn-oO-dio"/>
@@ -885,6 +907,7 @@
     </scenes>
     <resources>
         <image name="Default.png" width="640" height="1136"/>
+        <image name="Search.png" width="21" height="21"/>
         <image name="add_new_inspections_arrow.png" width="135" height="34"/>
         <image name="add_new_property_arrow.png" width="131" height="34"/>
         <image name="add_new_propority_arrow.png" width="130" height="34"/>

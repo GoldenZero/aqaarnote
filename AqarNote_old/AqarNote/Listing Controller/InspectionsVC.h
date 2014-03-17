@@ -10,14 +10,16 @@
 #import "InspectionCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface InspectionsVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface InspectionsVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 
 
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
 @property (strong, nonatomic) IBOutlet UITableView *inspectionsTable;
 @property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *addNewProperImg;
 @property (weak, nonatomic) IBOutlet UIImageView *addNewInspectImage;
 @property (strong, nonatomic) IBOutlet UIImageView *noInspecImage;
 - (IBAction)logoutPressed:(id)sender;
+- (IBAction)searchBtnPrss:(id)sender;
 
 @end

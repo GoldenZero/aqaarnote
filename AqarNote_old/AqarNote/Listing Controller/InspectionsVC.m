@@ -81,23 +81,20 @@
                 [self.addNewInspectImage setHidden:YES];
                 [self.addNewProperImg setHidden:YES];
                 [self.noInspecImage setHidden:YES];
+                [self.searchButton setHidden:NO];
                 [self getInspectionsImages];
-
-                
             }
             else{
                 [self.inspectionsTable setHidden:YES];
                 [self.addNewInspectImage setHidden:NO];
                 [self.addNewProperImg setHidden:NO];
                 [self.noInspecImage setHidden:NO];
-                
+                [self.searchButton setHidden:YES];
             }
 
         }];
     }
 }
-
-
 
 -(void)getInspectionsImages
 {
@@ -319,9 +316,57 @@
     self.tabBarController.selectedIndex=0;
 }
 
+- (IBAction)searchBtnPrss:(id)sender {
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"البحث عن عقار" message:@"أدخل عنوان العقار" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"ابحث", nil];
+    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [av textFieldAtIndex:0].delegate = self;
+    [av show];
+
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+#pragma mark - UIAlertView Delegate handler
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // if cancel
+    if (buttonIndex==0) {
+        // [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    }
+    // if add
+    else{
+        [self filterPropertiesWithTitle:[[alertView textFieldAtIndex:0] text]];
+        
+    }
+    
+}
+
+- (void) filterPropertiesWithTitle:(NSString*) title{
+    if ([title isEqualToString:@""]||[title isEqualToString:@" "]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [self getInspections];
+        
+    }
+    else{
+        NSMutableArray * filteredArray=[[NSMutableArray alloc] init];
+        for (int i=0; i<inspectionsArray.count; i++) {
+            PFObject *post = [inspectionsArray objectAtIndex:i];
+            
+            if ([[post objectForKey:@"Title"] isEqualToString:title]) {
+                [filteredArray addObject:post];
+            }
+        }
+        
+        inspectionsArray = filteredArray;
+        [self.inspectionsTable reloadData];
+        
+    }
+}
+
 @end

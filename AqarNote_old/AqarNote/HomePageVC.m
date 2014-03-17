@@ -16,6 +16,7 @@
     NSMutableArray* propertiesArray;
     NSMutableArray* propertiesImagesArray;
     PFObject *choosenObject;
+    NSMutableArray * filteredArray;
 }
 @end
 
@@ -41,6 +42,31 @@
     */
     
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    if ([PFUser currentUser]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [self getProperties];
+        
+        [self.welcomeView setHidden:YES];
+        
+        [self showTabBar:self.tabBarController];
+        //[self getPropertyImages];
+        
+    }
+    else{
+        
+        [self.welcomeView setHidden:NO];
+        [self hideTabBar:self.tabBarController];
+        
+    }
+    
 }
 
 -(void)getProperties
@@ -74,10 +100,13 @@
             
             [self.propertiesTable setHidden:NO];
             [self.addNewImage setHidden:YES];
+            [self.searchButton setHidden:NO];
         }
         else{
             [self.propertiesTable setHidden:YES];
             [self.addNewImage setHidden:NO];
+            [self.searchButton setHidden:YES];
+
         }
 
     }];
@@ -114,55 +143,6 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-
-    if ([PFUser currentUser]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        [self getProperties];
-
-        [self.welcomeView setHidden:YES];
-        
-        [self showTabBar:self.tabBarController];
-        //[self getPropertyImages];
-        
-    }
-    else{
-        
-        [self.welcomeView setHidden:NO];
-        [self hideTabBar:self.tabBarController];
-        
-    }
-
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-//    if (![PFUser currentUser]) { // No user logged in
-//        // Create the log in view controller
-//        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
-//        [logInViewController setDelegate:self]; // Set ourselves as the delegate
-//        //[logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
-//        //[logInViewController setFields: PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDismissButton];
-//        
-//        // Create the sign up view controller
-//        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-//        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-//        
-//        
-//        // Assign our sign up controller to be displayed from the login controller
-//        [logInViewController setSignUpController:signUpViewController];
-//        
-//        // Present the log in view controller
-//        [self presentViewController:logInViewController animated:YES completion:NULL];
-//    }
-//    else
-//    {
-//        self.userNameLabel.text = [PFUser currentUser].username;
-//    }
-    
-}
 
 #pragma mark - Table view data source
 
@@ -381,6 +361,14 @@
 
 }
 
+- (IBAction)searchBtnPrss:(id)sender {
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"البحث عن عقار" message:@"أدخل عنوان العقار" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"ابحث", nil];
+    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [av textFieldAtIndex:0].delegate = self;
+    [av show];
+
+}
+
 
 #pragma mark - Hide Tab bar
 
@@ -467,4 +455,44 @@
     
 }
 
+
+
+#pragma mark - UIAlertView Delegate handler
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // if cancel
+    if (buttonIndex==0) {
+        // [alertView dismissWithClickedButtonIndex:0 animated:YES];
+    }
+    // if add
+    else{
+        [self filterPropertiesWithTitle:[[alertView textFieldAtIndex:0] text]];
+        
+    }
+    
+}
+
+
+- (void) filterPropertiesWithTitle:(NSString*) title{
+    if ([title isEqualToString:@""]||[title isEqualToString:@" "]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [self getProperties];
+        
+    }
+    else{
+        filteredArray=[[NSMutableArray alloc] init];
+        for (int i=0; i<propertiesArray.count; i++) {
+            PFObject *post = [propertiesArray objectAtIndex:i];
+
+            if ([[post objectForKey:@"Title"] isEqualToString:title]) {
+                [filteredArray addObject:post];
+            }
+        }
+
+        propertiesArray = filteredArray;
+        [self.propertiesTable reloadData];
+
+    }
+}
 @end

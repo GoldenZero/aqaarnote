@@ -10,12 +10,14 @@
 #import "PropertyCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface HomePageVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface HomePageVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 
 #pragma mark - Properties
 @property (strong, nonatomic) IBOutlet UITableView *propertiesTable;
 @property (strong, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *addNewImage;
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
+
 
 // Welcome view
 @property (strong, nonatomic) IBOutlet UIView *welcomeView;
@@ -27,5 +29,6 @@
 - (IBAction)logoutPressed:(id)sender;
 - (IBAction)signupBtnPrss:(id)sender;
 - (IBAction)loginBtnPrss:(id)sender;
+- (IBAction)searchBtnPrss:(id)sender;
 
 @end
