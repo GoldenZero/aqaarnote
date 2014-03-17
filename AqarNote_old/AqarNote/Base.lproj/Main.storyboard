@@ -448,17 +448,8 @@
                                     <outlet property="delegate" destination="gLd-EQ-14C" id="Re8-O2-FvD"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="كود الدولة..." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zti-yI-ynh">
-                                <rect key="frame" x="20" y="275" width="284" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="gLd-EQ-14C" id="9ae-RX-bc5"/>
-                                </connections>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="r4i-cj-Cps">
-                                <rect key="frame" x="0.0" y="360" width="320" height="160"/>
+                                <rect key="frame" x="0.0" y="322" width="320" height="198"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
@@ -468,7 +459,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="     الأقسام" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVl-1W-Ojc">
-                                <rect key="frame" x="0.0" y="313" width="320" height="39"/>
+                                <rect key="frame" x="0.0" y="275" width="320" height="39"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -491,7 +482,6 @@
                     <connections>
                         <outlet property="city" destination="Efv-aN-eXT" id="dxn-59-BoN"/>
                         <outlet property="country" destination="nf3-wU-83M" id="81r-Cb-zOj"/>
-                        <outlet property="countryCodeTxt" destination="Zti-yI-ynh" id="oVF-Ji-ezA"/>
                         <outlet property="propertyTitle" destination="ERG-Ik-6cZ" id="6KR-wF-J5k"/>
                         <outlet property="sectionsTableView" destination="r4i-cj-Cps" id="LTu-XN-hiz"/>
                         <outlet property="uploadImageBtn" destination="5mU-6X-Txa" id="XY8-hI-tQb"/>

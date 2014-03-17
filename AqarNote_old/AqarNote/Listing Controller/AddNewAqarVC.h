@@ -19,7 +19,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *city;
 @property (strong, nonatomic) IBOutlet UIButton *uploadImageBtn;
 @property (strong, nonatomic) IBOutlet UITableView *sectionsTableView;
-@property (strong, nonatomic) IBOutlet UITextField *countryCodeTxt;
 
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;
