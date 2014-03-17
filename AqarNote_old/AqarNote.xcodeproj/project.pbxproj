@@ -122,6 +122,8 @@
 		7CBC230C18D0A7350035D3E4 /* tabe_notes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBC230218D0A7350035D3E4 /* tabe_notes@2x.png */; };
 		7CBC230D18D0A7350035D3E4 /* tabe_propority.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBC230318D0A7350035D3E4 /* tabe_propority.png */; };
 		7CBC230E18D0A7350035D3E4 /* tabe_propority@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBC230418D0A7350035D3E4 /* tabe_propority@2x.png */; };
+		7CC7809818D76AD0002ED19C /* countryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7809718D76AD0002ED19C /* countryObject.m */; };
+		7CC7809A18D76C4D002ED19C /* Countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 7CC7809918D76C4D002ED19C /* Countries.json */; };
 		8496101C18A10C1100A94088 /* BrowseInspectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496101B18A10C1100A94088 /* BrowseInspectionVC.m */; };
 		84B904EF18A1FA5A003771E1 /* XCDFormInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B904EE18A1FA5A003771E1 /* XCDFormInputAccessoryView.m */; };
 		84B904F518A1FAC0003771E1 /* Accessory_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B904F118A1FAC0003771E1 /* Accessory_left.png */; };
@@ -319,6 +321,9 @@
 		7CBC230218D0A7350035D3E4 /* tabe_notes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabe_notes@2x.png"; sourceTree = "<group>"; };
 		7CBC230318D0A7350035D3E4 /* tabe_propority.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabe_propority.png; sourceTree = "<group>"; };
 		7CBC230418D0A7350035D3E4 /* tabe_propority@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabe_propority@2x.png"; sourceTree = "<group>"; };
+		7CC7809618D76AD0002ED19C /* countryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = countryObject.h; sourceTree = "<group>"; };
+		7CC7809718D76AD0002ED19C /* countryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = countryObject.m; sourceTree = "<group>"; };
+		7CC7809918D76C4D002ED19C /* Countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countries.json; sourceTree = "<group>"; };
 		8496101A18A10C1100A94088 /* BrowseInspectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseInspectionVC.h; sourceTree = "<group>"; };
 		8496101B18A10C1100A94088 /* BrowseInspectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseInspectionVC.m; sourceTree = "<group>"; };
 		84B904ED18A1FA5A003771E1 /* XCDFormInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCDFormInputAccessoryView.h; sourceTree = "<group>"; };
@@ -734,6 +739,7 @@
 		84BFB56D189E7CC00069A87A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7CC7809918D76C4D002ED19C /* Countries.json */,
 				7C57AA0518CF8EAE00DE6259 /* AqarNote_iPhone_assets */,
 				84B904FE18A22F57003771E1 /* app icons */,
 				84B904F918A228E3003771E1 /* Default.png */,
@@ -762,6 +768,8 @@
 				7C644FD018D238D200E0FC63 /* SectionCell.h */,
 				7C644FD118D238D200E0FC63 /* SectionCell.m */,
 				7C644FD318D238E500E0FC63 /* SectionCell.xib */,
+				7CC7809618D76AD0002ED19C /* countryObject.h */,
+				7CC7809718D76AD0002ED19C /* countryObject.m */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -996,6 +1004,7 @@
 				84B904F718A1FAC0003771E1 /* Accessory_right.png in Resources */,
 				84CC6981189F77510027C844 /* time_upcoming.png in Resources */,
 				7C57AA8B18CF8EAE00DE6259 /* good_circvle_btn@2x.png in Resources */,
+				7CC7809A18D76C4D002ED19C /* Countries.json in Resources */,
 				7CBC230D18D0A7350035D3E4 /* tabe_propority.png in Resources */,
 				7C57AAA218CF8EAE00DE6259 /* notice_circle_btn.png in Resources */,
 				84CC697F189F77510027C844 /* date_upcoming.png in Resources */,
@@ -1034,6 +1043,7 @@
 				7C57AA0418CF8E2000DE6259 /* SignUpVC.m in Sources */,
 				84BFB520189E12FD0069A87A /* AppDelegate.m in Sources */,
 				84B9051C18A26AFF003771E1 /* CallUsViewController.m in Sources */,
+				7CC7809818D76AD0002ED19C /* countryObject.m in Sources */,
 				84CC698C189F95420027C844 /* InspectionsVC.m in Sources */,
 				84CC6979189F760C0027C844 /* PropertyCell.m in Sources */,
 				84CC6989189F95270027C844 /* NotesVC.m in Sources */,

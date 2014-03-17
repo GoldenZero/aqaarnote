@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddNewAqarVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate>
+@interface AddNewAqarVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 {
     MBProgressHUD *HUD;
@@ -19,7 +19,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *city;
 @property (strong, nonatomic) IBOutlet UIButton *uploadImageBtn;
 @property (strong, nonatomic) IBOutlet UITableView *sectionsTableView;
-
+@property (strong, nonatomic) IBOutlet UIButton *showPickerButton;
+@property (strong, nonatomic) IBOutlet UIPickerView *countriesPickerView;
+@property (strong, nonatomic) IBOutlet UIView *pickerView;
+- (IBAction)openCountryPickerBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;
 - (void)setUpImages:(NSArray *)images;
@@ -27,4 +30,5 @@
 - (IBAction)saveButtonPressed:(id)sender;
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)addSectionBtnPrss:(id)sender;
+- (IBAction)chooseCountryBtnPrss:(id)sender;
 @end

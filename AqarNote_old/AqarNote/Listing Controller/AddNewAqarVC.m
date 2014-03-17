@@ -8,6 +8,17 @@
 
 #import "AddNewAqarVC.h"
 #import "SectionCell.h"
+#import "countryObject.h"
+
+#define COUNTRIES_FILE_NAME         @"Countries"
+#define COUNTRY_ID_JSONK            @"CountryID"
+#define COUNTRY_NAME_JSONK          @"CountryName"
+#define COUNTRY_NAME_EN_JSONK       @"CountryNameEn"
+#define COUNTRY_CURRENCY_ID_JSONK   @"CurrencyID"
+#define COUNTRY_DISPLAY_ORDER_JSONK @"DisplayOrder"
+#define COUNTRY_CODE_JSONK          @"CountryCode"
+
+
 @interface AddNewAqarVC ()
 {
     NSMutableArray* mainSectionsArray;
@@ -15,6 +26,8 @@
     NSMutableArray* chosenSectionArray;
     NSMutableArray* chosenBooleanArray;
     PFObject * currentImageID;
+    NSArray *countriesArray;
+    countryObject * chosenCountry;
     
 }
 @end
@@ -43,7 +56,7 @@
     [mainSectionsArray addObject:@"garden"];
     
     [MBProgressHUD showHUDAddedTo:self.sectionsTableView animated:YES];
-  
+    [self loadCountries];
     [self getExistSection];
 	// Do any additional setup after loading the view.
 }
@@ -174,6 +187,10 @@
 }
 
 #pragma mark - Uploading Images Delegate
+- (IBAction)openCountryPickerBtnPrss:(id)sender {
+    [self showPicker];
+}
+
 - (IBAction)uploadImagePressed:(id)sender {
     
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:nil
@@ -318,7 +335,7 @@
    
     // Set property
     [newPost setObject:self.propertyTitle.text forKey:@"Title"];
-    [newPost setObject:self.country.text forKey:@"country"];
+    [newPost setObject:chosenCountry.countryName forKey:@"country"];
     [newPost setObject:self.city.text forKey:@"city"];
     [newPost setObject:chosenSectionArray forKey:@"sections"];
     if (currentImageID)
@@ -383,6 +400,10 @@
     av.alertViewStyle = UIAlertViewStylePlainTextInput;
     [av textFieldAtIndex:0].delegate = self;
     [av show];
+}
+
+- (IBAction)chooseCountryBtnPrss:(id)sender {
+    [self closePicker];
 }
 
 #pragma mark - UIActionSheetDelegate Method
@@ -530,4 +551,93 @@
 
 }
 
+
+
+
+#pragma mark - UIPicker view handler
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+
+    return countriesArray.count;
+   
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    // set label
+    UILabel *label= [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 50.0)];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setFont:[UIFont boldSystemFontOfSize:30.0]];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    
+    [label setText:[[countriesArray objectAtIndex:row]countryName]];
+    
+    return label;
+    
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    chosenCountry=(countryObject*)[countriesArray objectAtIndex:row];
+    self.showPickerButton.titleLabel.text=[NSString stringWithFormat:@"   %@",[chosenCountry countryName]];
+    
+}
+
+#pragma mark - Show and hide picker 
+
+-(IBAction)closePicker
+{
+    [self.pickerView setHidden:YES];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.pickerView.frame = CGRectMake(self.pickerView.frame.origin.x,
+                                            [[UIScreen mainScreen] bounds].size.height,
+                                            self.pickerView.frame.size.width,
+                                            self.pickerView.frame.size.height);
+    }];
+}
+
+
+-(IBAction)showPicker
+{
+    
+    [self.pickerView setHidden:NO];
+    [self.pickerView setHidden:NO];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.pickerView.frame = CGRectMake(self.pickerView.frame.origin.x,
+                                            [[UIScreen mainScreen] bounds].size.height-self.self.pickerView.frame.size.height,
+                                            self.pickerView.frame.size.width,
+                                            self.pickerView.frame.size.height);
+    }];
+}
+
+
+#pragma mark - Load countries form JSON file
+
+- (void) loadCountries{
+
+    NSData *countriesData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:COUNTRIES_FILE_NAME ofType:@"json"]];
+  
+     NSArray * countriesParsedArray = [NSJSONSerialization JSONObjectWithData:countriesData options:NSJSONReadingMutableContainers error:nil];
+    
+    NSMutableArray * resultCountries = [NSMutableArray new];
+    for (NSDictionary * countryDict in countriesParsedArray)
+    {
+        //create country object
+        countryObject * country = [[countryObject alloc]
+                             initWithCountryIDString:[countryDict objectForKey:COUNTRY_ID_JSONK]
+                             countryName:[countryDict objectForKey:COUNTRY_NAME_JSONK]
+                             countryNameEn:[countryDict objectForKey:COUNTRY_NAME_EN_JSONK]
+                             currencyIDString:[countryDict objectForKey:COUNTRY_CURRENCY_ID_JSONK]
+                             displayOrderString:[countryDict objectForKey:COUNTRY_DISPLAY_ORDER_JSONK]
+                             countryCodeString:[countryDict objectForKey:COUNTRY_CODE_JSONK]
+                             ];
+        
+        //add country
+        [resultCountries addObject:country];
+    }
+    countriesArray=resultCountries;
+    [self.countriesPickerView reloadAllComponents];
+}
 @end
