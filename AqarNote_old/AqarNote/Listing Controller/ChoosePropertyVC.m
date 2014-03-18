@@ -101,7 +101,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 150;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,6 +142,8 @@
     
     [cell.propertyTitle setText:[post objectForKey:@"Title"]];
     [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
+    [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
+
     [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
     
     return cell;

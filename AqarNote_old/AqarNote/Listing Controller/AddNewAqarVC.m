@@ -337,6 +337,8 @@
     [newPost setObject:self.propertyTitle.text forKey:@"Title"];
     [newPost setObject:chosenCountry.countryName forKey:@"country"];
     [newPost setObject:self.city.text forKey:@"city"];
+    [newPost setObject:self.descriptionsTxtView.text forKey:@"Description"];
+
     [newPost setObject:chosenSectionArray forKey:@"sections"];
     if (currentImageID)
         [newPost setObject:currentImageID forKey:@"imageID"];
@@ -642,13 +644,13 @@
 }
 
 
-+ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
-{
-    UIGraphicsBeginImageContext( newSize );
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
-    return newImage;
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 @end

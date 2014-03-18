@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddNewAqarVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+@interface AddNewAqarVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate>
 
 {
     MBProgressHUD *HUD;
 
 }
+@property (strong, nonatomic) IBOutlet UITextView *descriptionsTxtView;
 @property (strong, nonatomic) IBOutlet UITextField *propertyTitle;
 @property (strong, nonatomic) IBOutlet UITextField *country;
 @property (strong, nonatomic) IBOutlet UITextField *city;

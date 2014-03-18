@@ -199,6 +199,8 @@
     });
     
     [cell.propertyTitle setText:[post objectForKey:@"Title"]];
+    [cell.detailTxtView setText:[post objectForKey:@"Description"]];
+
     [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
     [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
     

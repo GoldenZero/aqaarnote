@@ -201,7 +201,7 @@
     [cell.propertyTitle setText:[post objectForKey:@"Title"]];
     [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
     [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
-    
+    [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
     [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
     cell.moreButton.tag = indexPath.row;
 
