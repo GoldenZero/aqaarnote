@@ -59,25 +59,13 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As2-Bf-w0V">
-                                        <rect key="frame" x="260" y="14" width="21" height="22"/>
+                                        <rect key="frame" x="279" y="14" width="21" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Search.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="searchBtnPrss:" destination="2Ed-Bo-d1S" eventType="touchUpInside" id="8nV-0D-Fa7"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa3-zq-G6n">
-                                        <rect key="frame" x="289" y="14" width="21" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="logout_btn.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logoutPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6uo-k7-fL3"/>
-                                            <action selector="logoutPressed:" destination="2Ed-Bo-d1S" eventType="touchUpInside" id="PFz-h5-xve"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -153,38 +141,29 @@
                                         <rect key="frame" x="147" y="11" width="25" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAZ-yV-uDF">
-                                        <rect key="frame" x="289" y="14" width="21" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="logout_btn.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logoutPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5Dk-nI-NmQ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8nI-Mu-YIA">
-                                <rect key="frame" x="0.0" y="49" width="320" height="469"/>
-                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-JD-5mF">
-                                <rect key="frame" x="1" y="49" width="320" height="469"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYW-mI-1Lq">
+                                <rect key="frame" x="96" y="269" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title=" تسجيل خروج">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="E5K-dX-zzw"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="be8-yt-gdr"/>
+                                    <action selector="logoutBtnPrss:" destination="SW6-19-1KX" eventType="touchUpInside" id="eiZ-Eq-xwC"/>
                                 </connections>
-                            </tableView>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ملاحظات" image="tabe_notes.png" id="ley-ll-UbR"/>
+                    <tabBarItem key="tabBarItem" title="حسابي" image="contactus_tab_gray.png" id="ley-ll-UbR"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="iYW-mI-1Lq" id="mdB-wC-QSn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dld-3U-qZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,7 +201,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="إتصل بنا" image="contactus_tab_gray.png" id="0lD-NO-JdC"/>
+                    <tabBarItem key="tabBarItem" title="أرسل ملاحظات" image="tabe_notes.png" id="0lD-NO-JdC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXT-En-ccY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -304,24 +283,13 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBJ-rd-IgN">
-                                        <rect key="frame" x="239" y="16" width="21" height="22"/>
+                                        <rect key="frame" x="279" y="14" width="21" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Search.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="searchBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2Pb-Bk-lCf"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sln-u0-gNe">
-                                        <rect key="frame" x="289" y="15" width="21" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="logout_btn.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logoutPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="alm-ef-NtA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -920,7 +888,6 @@
         <image name="header_logo.png" width="25" height="28"/>
         <image name="header_white_arrow.png" width="12" height="21"/>
         <image name="homebkg.png" width="320" height="596"/>
-        <image name="logout_btn.png" width="21" height="19"/>
         <image name="no_inspections_tit.png" width="139" height="24"/>
         <image name="note_write_field.png" width="276" height="86"/>
         <image name="notice_circle_btn.png" width="77" height="77"/>

@@ -307,14 +307,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)logoutPressed:(id)sender {
-    [PFUser logOut];
-    inspectionsArray = [NSMutableArray new];
-    propertiesArray = [NSMutableArray new];
-    inspectionsImagesArray = [NSMutableArray new];
-
-    self.tabBarController.selectedIndex=0;
-}
 
 - (IBAction)searchBtnPrss:(id)sender {
     UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"البحث عن عقار" message:@"أدخل عنوان العقار" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"ابحث", nil];

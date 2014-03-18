@@ -19,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *addNewProperImg;
 @property (weak, nonatomic) IBOutlet UIImageView *addNewInspectImage;
 @property (strong, nonatomic) IBOutlet UIImageView *noInspecImage;
-- (IBAction)logoutPressed:(id)sender;
+
+
 - (IBAction)searchBtnPrss:(id)sender;
 
 @end

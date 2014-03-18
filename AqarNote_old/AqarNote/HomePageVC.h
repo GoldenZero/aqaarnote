@@ -26,7 +26,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 
 #pragma mark - Actions
-- (IBAction)logoutPressed:(id)sender;
 - (IBAction)signupBtnPrss:(id)sender;
 - (IBAction)loginBtnPrss:(id)sender;
 - (IBAction)searchBtnPrss:(id)sender;

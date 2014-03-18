@@ -57,12 +57,16 @@
         [self.welcomeView setHidden:YES];
         
         [self showTabBar:self.tabBarController];
-        //[self getPropertyImages];
+        [self getPropertyImages];
         
     }
+    
     else{
-        
         [self.welcomeView setHidden:NO];
+        [self.propertiesTable setHidden:YES];
+        propertiesArray = [NSMutableArray new];
+        propertiesImagesArray = [NSMutableArray new];
+        
         [self hideTabBar:self.tabBarController];
         
     }
@@ -89,6 +93,7 @@
 
                 }];
             }
+            
             //Save results and update the table
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
 
@@ -234,7 +239,7 @@
     NSLog(@"%@",user);
     [self.welcomeView setHidden:YES];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+ //   [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self getProperties];
     
     [self showTabBar:self.tabBarController];
@@ -285,7 +290,7 @@
     NSLog(@"%@",user);
     [self.welcomeView setHidden:YES];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self getProperties];
         
     [self showTabBar:self.tabBarController];
@@ -318,17 +323,6 @@
 
 #pragma mark - Buttons Actions
 
-- (IBAction)logoutPressed:(id)sender {
-    
-    [PFUser logOut];
-    [self.welcomeView setHidden:NO];
-    [self.propertiesTable setHidden:YES];
-    propertiesArray = [NSMutableArray new];
-    propertiesImagesArray = [NSMutableArray new];
-
-    [self hideTabBar:self.tabBarController];
-    
-}
 
 - (IBAction)signupBtnPrss:(id)sender {
 

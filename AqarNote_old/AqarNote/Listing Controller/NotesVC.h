@@ -10,4 +10,10 @@
 
 @interface NotesVC : UIViewController
 
+#pragma mark - Properties
+@property (strong, nonatomic) IBOutlet UIButton *logoutButton;
+
+#pragma mark - Actions
+- (IBAction)logoutBtnPrss:(id)sender;
+
 @end

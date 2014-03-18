@@ -35,4 +35,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Buttons Actions
+
+- (IBAction)logoutBtnPrss:(id)sender {
+    
+    [PFUser logOut];
+    
+    self.tabBarController.selectedIndex=0;
+
+}
 @end

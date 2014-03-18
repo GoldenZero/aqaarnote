@@ -217,7 +217,7 @@
     [image drawInRect: CGRectMake(0, 0, 640, 960)];
     UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
+
     // Upload image
     NSData *imageData = UIImageJPEGRepresentation(image, 0.05f);
     [self uploadImage:imageData];
@@ -445,7 +445,7 @@
         picker.allowsEditing = YES;
         picker.delegate = self;
         
-            [self presentViewController:picker animated:YES completion:nil];
+        [self presentViewController:picker animated:YES completion:nil];
         
     }
 }
@@ -639,5 +639,16 @@
     }
     countriesArray=resultCountries;
     [self.countriesPickerView reloadAllComponents];
+}
+
+
++ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 @end
