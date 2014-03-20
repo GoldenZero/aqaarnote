@@ -9,7 +9,9 @@
 #import "SignUpVC.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface SignUpVC ()
+@interface SignUpVC (){
+    EnhancedKeyboard *enhancedKeyboard;
+}
 @property (nonatomic, strong) UIImageView *fieldsBackground;
 
 @end
@@ -20,7 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    enhancedKeyboard = [[EnhancedKeyboard alloc] init];
+    enhancedKeyboard.delegate = self;
+
    [self.signUpView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"homebkg.png"]]];
     [self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header_logo"]]];
 
@@ -53,6 +57,11 @@
     [self.signUpView.emailField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     [self.signUpView.additionalField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     
+    
+    [self.signUpView.usernameField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    [self.signUpView.passwordField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    [self.signUpView.emailField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    [self.signUpView.additionalField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     // Change "Additional" to match our use
     [self.signUpView.additionalField setPlaceholder:@"Phone number"];
     
@@ -99,5 +108,24 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)doneDidTouchDown
+{
+    if ([self.signUpView.usernameField isEditing]) {
+        [self.signUpView.usernameField resignFirstResponder];
+    }
+    
+    else if ([self.signUpView.passwordField isEditing]) {
+        [self.signUpView.passwordField resignFirstResponder];
+    }
+   
+    else if ([self.signUpView.emailField isEditing]) {
+        [self.signUpView.emailField resignFirstResponder];
+    }
+    
+    else{
+        [self.signUpView.additionalField resignFirstResponder];
+    }
+    
+}
 
 @end

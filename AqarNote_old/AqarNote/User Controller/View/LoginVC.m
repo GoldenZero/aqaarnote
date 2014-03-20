@@ -9,7 +9,10 @@
 #import "LoginVC.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface LoginVC ()
+@interface LoginVC (){
+    EnhancedKeyboard *enhancedKeyboard;
+
+}
 @property (nonatomic, strong) UIImageView *fieldsBackground;
 
 @end
@@ -20,7 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    enhancedKeyboard = [[EnhancedKeyboard alloc] init];
+    enhancedKeyboard.delegate = self;
     [self.logInView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"homebkg.png"]]];
     [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header_logo"]]];
     
@@ -58,6 +62,9 @@
     layer = self.logInView.passwordField.layer;
     layer.shadowOpacity = 0.0f;
     
+    [self.logInView.usernameField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    [self.logInView.passwordField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    
     // Set field text color
     [self.logInView.usernameField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     [self.logInView.passwordField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
@@ -79,6 +86,22 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+#pragma mark - KSEnhancedKeyboardDelegate Protocol
+
+- (void)doneDidTouchDown
+{
+    if ([self.logInView.usernameField isEditing]) {
+        [self.logInView.usernameField resignFirstResponder];
+    }
+    
+    else if ([self.logInView.passwordField  isEditing]) {
+        [self.logInView.passwordField  resignFirstResponder];
+    }
+   
+    
 }
 
 @end

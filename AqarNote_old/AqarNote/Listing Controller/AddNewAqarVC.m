@@ -27,6 +27,7 @@
     NSMutableArray* chosenBooleanArray;
     PFObject * currentImageID;
     NSArray *countriesArray;
+    EnhancedKeyboard *enhancedKeyboard;
     countryObject * chosenCountry;
     
 }
@@ -47,6 +48,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    enhancedKeyboard = [[EnhancedKeyboard alloc] init];
+    enhancedKeyboard.delegate = self;
+    HUD = [[MBProgressHUD alloc] initWithView:self.sectionsTableView];
+    HUD.delegate = self;
+
     mainSectionsArray = [NSMutableArray new];
     [mainSectionsArray addObject:@"kitchen"];
     [mainSectionsArray addObject:@"living room"];
@@ -55,7 +61,13 @@
     [mainSectionsArray addObject:@"dining room"];
     [mainSectionsArray addObject:@"garden"];
     
-    [MBProgressHUD showHUDAddedTo:self.sectionsTableView animated:YES];
+    [self.propertyTitle setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    [self.city setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    [self.descriptionsTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    
+    [HUD show:YES];
+    HUD.labelText = @"جاري تحميل الأقسام..";
+
     [self loadCountries];
     [self getExistSection];
 	// Do any additional setup after loading the view.
@@ -98,7 +110,7 @@
     }
 
     [self.sectionsTableView reloadData];
-    [MBProgressHUD hideHUDForView:self.sectionsTableView animated:YES];
+    [HUD hide:YES];
 
 
 }
@@ -108,7 +120,7 @@
 {
     chosenSectionArray = [NSMutableArray new];
     [self.sectionsTableView reloadData];
-    [MBProgressHUD hideHUDForView:self.sectionsTableView animated:YES];
+    [HUD hide:YES];
 }
 
 -(NSMutableArray*)compareSectionsArray:(NSMutableArray*)arrOfString andArray:(NSMutableArray*)arrOfObject
@@ -308,12 +320,7 @@
     
 }
 
-#pragma mark uitextField delegate
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
-}
+
 
 - (IBAction)addButtonPressed:(id)sender {
     
@@ -529,12 +536,6 @@
 }
 
 
-#pragma mark - TextField Delegate handler
--(void)textFieldDidEndEditing:(UITextField *)textField {
-    
-//        resultsLabel.text=@"Finished editing 2nd box";
-
-}
 
 
 #pragma mark - UIAlertView Delegate handler
@@ -653,4 +654,51 @@
     
     return YES;
 }
+
+
+#pragma mark - UITextFieldDelegate protocol
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return YES;
+}
+// --------------------------------------------------------------------
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+    [textField resignFirstResponder];
+    
+}
+// --------------------------------------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+// --------------------------------------------------------------------
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [textField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+
+}
+
+
+#pragma mark - KSEnhancedKeyboardDelegate Protocol
+
+- (void)doneDidTouchDown
+{
+    if ([self.propertyTitle isEditing]) {
+        [self.propertyTitle resignFirstResponder];
+    }
+    
+    else if ([self.city isEditing]) {
+        [self.city resignFirstResponder];
+    }
+    else{
+        [self.descriptionsTxtView resignFirstResponder];
+    }
+    
+}
+
 @end
