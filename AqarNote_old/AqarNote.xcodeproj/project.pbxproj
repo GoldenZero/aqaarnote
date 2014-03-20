@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C516C8E18DB7BAC00752390 /* camera_photo_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C516C8A18DB7BAC00752390 /* camera_photo_default.png */; };
+		7C516C8F18DB7BAC00752390 /* camera_photo_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C516C8B18DB7BAC00752390 /* camera_photo_default@2x.png */; };
+		7C516C9018DB7BAC00752390 /* default_image_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C516C8C18DB7BAC00752390 /* default_image_home.png */; };
+		7C516C9118DB7BAC00752390 /* default_image_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C516C8D18DB7BAC00752390 /* default_image_home@2x.png */; };
 		7C57A9FB18CF8CBE00DE6259 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C57A9FA18CF8CBE00DE6259 /* Parse.framework */; };
 		7C57AA0318CF8E2000DE6259 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57AA0018CF8E2000DE6259 /* LoginVC.m */; };
 		7C57AA0418CF8E2000DE6259 /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57AA0218CF8E2000DE6259 /* SignUpVC.m */; };
@@ -203,6 +207,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C516C8A18DB7BAC00752390 /* camera_photo_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_photo_default.png; sourceTree = "<group>"; };
+		7C516C8B18DB7BAC00752390 /* camera_photo_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_photo_default@2x.png"; sourceTree = "<group>"; };
+		7C516C8C18DB7BAC00752390 /* default_image_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_image_home.png; sourceTree = "<group>"; };
+		7C516C8D18DB7BAC00752390 /* default_image_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_image_home@2x.png"; sourceTree = "<group>"; };
 		7C57A9FA18CF8CBE00DE6259 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Libraries/Parse.framework; sourceTree = "<group>"; };
 		7C57A9FF18CF8E2000DE6259 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		7C57AA0018CF8E2000DE6259 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
@@ -475,6 +483,10 @@
 		7C57AA0518CF8EAE00DE6259 /* AqarNote_iPhone_assets */ = {
 			isa = PBXGroup;
 			children = (
+				7C516C8A18DB7BAC00752390 /* camera_photo_default.png */,
+				7C516C8B18DB7BAC00752390 /* camera_photo_default@2x.png */,
+				7C516C8C18DB7BAC00752390 /* default_image_home.png */,
+				7C516C8D18DB7BAC00752390 /* default_image_home@2x.png */,
 				7C644FC818D1F6C100E0FC63 /* contactus_tab_gray.png */,
 				7C644FC918D1F6C100E0FC63 /* contactus_tab_gray@2x.png */,
 				7C644FCA18D1F6C200E0FC63 /* green_bar_without_white.png */,
@@ -916,6 +928,7 @@
 				7C644FC318D1F57700E0FC63 /* orange_bar_without_white@2x.png in Resources */,
 				7C57AA7418CF8EAE00DE6259 /* broken_circle_btn.png in Resources */,
 				7C57AA9818CF8EAE00DE6259 /* header_white_arrow.png in Resources */,
+				7C516C8F18DB7BAC00752390 /* camera_photo_default@2x.png in Resources */,
 				7C644FC718D1F57700E0FC63 /* rating_driver_mask@2x.png in Resources */,
 				84CC699A189FC4030027C844 /* arrow_lift_side.png in Resources */,
 				7C57AAB718CF8EAE00DE6259 /* Search@2x.png in Resources */,
@@ -960,11 +973,13 @@
 				7C57AAC618CF8EAE00DE6259 /* white_dot_option.png in Resources */,
 				7C57AA6E18CF8EAE00DE6259 /* bathroom_icon.png in Resources */,
 				7C57AA7F18CF8EAE00DE6259 /* cooknig_icon@2x.png in Resources */,
+				7C516C9018DB7BAC00752390 /* default_image_home.png in Resources */,
 				7C57AAB518CF8EAE00DE6259 /* register_new_account_btn@2x.png in Resources */,
 				84B904F618A1FAC0003771E1 /* Accessory_left@2x.png in Resources */,
 				84B9051918A26356003771E1 /* takePhotobkg@2x.png in Resources */,
 				7C57AAB318CF8EAE00DE6259 /* plus@2x.png in Resources */,
 				7C57AA7B18CF8EAE00DE6259 /* clean_circle_green_btn@2x.png in Resources */,
+				7C516C9118DB7BAC00752390 /* default_image_home@2x.png in Resources */,
 				7C644FC218D1F57700E0FC63 /* orange_bar_without_white.png in Resources */,
 				7C57AA7918CF8EAE00DE6259 /* clean_circle_btn@2x.png in Resources */,
 				7C57AA7118CF8EAE00DE6259 /* big_logo_white@2x.png in Resources */,
@@ -996,6 +1011,7 @@
 				84B9050F18A22F57003771E1 /* 58.png in Resources */,
 				7C57AA8318CF8EAE00DE6259 /* dirty_circle_btn@2x.png in Resources */,
 				7C57AA8E18CF8EAE00DE6259 /* green_dot_option.png in Resources */,
+				7C516C8E18DB7BAC00752390 /* camera_photo_default.png in Resources */,
 				7C57AAA518CF8EAE00DE6259 /* notice_circle_green_btn@2x.png in Resources */,
 				7CBC230A18D0A7350035D3E4 /* tabe_inspection@2x.png in Resources */,
 				7C57AA8818CF8EAE00DE6259 /* garden_room_icon.png in Resources */,

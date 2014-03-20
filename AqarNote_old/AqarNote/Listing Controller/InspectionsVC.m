@@ -184,6 +184,7 @@
     // This method sets up the downloaded images and places them nicely in a grid
     // PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
     PFObject *eachObject = [post objectForKey:@"imageID"];
+    [cell.activityIndicator startAnimating];
     __block NSData *imageData;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
@@ -193,10 +194,13 @@
         
     });
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIImage *image = [UIImage imageWithData:imageData];
-        // Dispatch to main thread to update the UI
-        [cell.propertyImage setImage:image];
-    });
+        [cell.activityIndicator stopAnimating];
+        [cell.activityIndicator setHidden:YES];
+        if (imageData!=nil) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            [cell.propertyImage setImage:image];
+        }
+        });
     
     [cell.propertyTitle setText:[post objectForKey:@"Title"]];
     [cell.detailTxtView setText:[post objectForKey:@"Description"]];

@@ -17,6 +17,7 @@
     NSMutableArray* propertiesImagesArray;
     PFObject *choosenObject;
     NSMutableArray * filteredArray;
+    MBProgressHUD *HUD;
 }
 @end
 
@@ -25,11 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];
     
-    
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.delegate = self;
+
         /*
     [PFCloud callFunctionInBackground:@"hello"
                        withParameters:@{}
@@ -50,8 +53,11 @@
 {
     
     if ([PFUser currentUser]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self.view addSubview:HUD];
         
+        [HUD show:YES];
+        HUD.labelText = @"جاري التحميل...";
+
         [self getProperties];
         
         [self.welcomeView setHidden:YES];
@@ -98,8 +104,8 @@
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
 
         }
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
 
+        [HUD hide:YES];
         if (propertiesArray.count>0) {
             [self.propertiesTable reloadData];
             
@@ -177,6 +183,7 @@
     
     NSDateFormatter* df = [[NSDateFormatter alloc]init];
     [df setDateFormat:@"yyyy-MM-dd"];
+    [cell.activityIndicator startAnimating];
 
     // Configure the cell with the textContent of the Post as the cell's text label
     PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
@@ -193,10 +200,17 @@
 
     });
      dispatch_async(dispatch_get_main_queue(), ^{
-    UIImage *image = [UIImage imageWithData:imageData];
-    // Dispatch to main thread to update the UI
-    [cell.propertyImage setImage:image];
-     });
+         [cell.activityIndicator stopAnimating];
+         [cell.activityIndicator setHidden:YES];
+         if (imageData!=nil) {
+             UIImage *image = [UIImage imageWithData:imageData];
+             // Dispatch to main thread to update the UI
+             [cell.propertyImage setImage:image];
+         }
+         else{
+             [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
+         }
+         });
     
     [cell.propertyTitle setText:[post objectForKey:@"Title"]];
     [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
@@ -294,7 +308,7 @@
     [self getProperties];
         
     [self showTabBar:self.tabBarController];
-    //[self getPropertyImages];
+    [self getPropertyImages];
     
     [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the PFSignUpViewController
 }
@@ -469,7 +483,8 @@
 
 - (void) filterPropertiesWithTitle:(NSString*) title{
     if ([title isEqualToString:@""]||[title isEqualToString:@" "]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [HUD show:YES];
+        HUD.labelText = @"جاري البحث ...";
         
         [self getProperties];
         

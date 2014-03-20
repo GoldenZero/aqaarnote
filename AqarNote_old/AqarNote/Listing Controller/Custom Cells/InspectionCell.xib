@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0Am-FZ-c5n">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image_home.png" id="0Am-FZ-c5n">
                         <rect key="frame" x="217" y="27" width="83" height="96"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                     </imageView>
@@ -61,9 +61,15 @@
                         <rect key="frame" x="217" y="123" width="83" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="K0I-fi-aQh">
+                        <rect key="frame" x="240" y="56" width="37" height="37"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </activityIndicatorView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityIndicator" destination="K0I-fi-aQh" id="BQC-E6-wfp"/>
                 <outlet property="detailTxtView" destination="q6o-gn-VfN" id="3Gj-jB-UPt"/>
                 <outlet property="moreButton" destination="9zR-Mr-tig" id="UMk-SM-lLh"/>
                 <outlet property="progressImage" destination="zLS-YI-30f" id="1zg-e9-8bt"/>
@@ -76,6 +82,7 @@
     </objects>
     <resources>
         <image name="blue_pin.png" width="13" height="17"/>
+        <image name="default_image_home.png" width="119" height="119"/>
         <image name="list_side_arrow.png" width="9" height="16"/>
     </resources>
 </document>
