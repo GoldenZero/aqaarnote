@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AqarNote/Inspection Controller/BrowseInspectionVC.m"
-            timestampString = "416861576.051666"
+            filePath = "AqarNote/Listing Controller/AddNewAqarVC.m"
+            timestampString = "417286118.751772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
-            landmarkName = "-prepareImge::"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "-saveButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

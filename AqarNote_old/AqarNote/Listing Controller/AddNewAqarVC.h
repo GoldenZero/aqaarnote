@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EnhancedKeyboard.h"
-@interface AddNewAqarVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate>
+@interface AddNewAqarVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate>
 
 {
     MBProgressHUD *HUD;
@@ -23,6 +23,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *showPickerButton;
 @property (strong, nonatomic) IBOutlet UIPickerView *countriesPickerView;
 @property (strong, nonatomic) IBOutlet UIView *pickerView;
+@property (strong, nonatomic) IBOutlet UIScrollView *imageScrollView;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+
+
 - (IBAction)openCountryPickerBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;

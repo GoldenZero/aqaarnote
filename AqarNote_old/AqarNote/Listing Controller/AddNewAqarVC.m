@@ -29,7 +29,10 @@
     NSArray *countriesArray;
     EnhancedKeyboard *enhancedKeyboard;
     countryObject * chosenCountry;
+    NSMutableArray *pageImages;
+    NSInteger pageCount;
     
+    NSMutableArray *pageViews;
 }
 @end
 
@@ -50,6 +53,9 @@
     [super viewDidLoad];
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
+    
+    pageImages=[[NSMutableArray alloc] init];
+    
     HUD = [[MBProgressHUD alloc] initWithView:self.sectionsTableView];
     HUD.delegate = self;
 
@@ -73,6 +79,11 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    pageCount=pageImages.count;
+
+    [self setScrollView];
+}
 -(void)getExistSection
 {
     PFQuery *sectionQuery = [PFQuery queryWithClassName:@"Sections"];
@@ -204,7 +215,15 @@
 }
 
 - (IBAction)uploadImagePressed:(id)sender {
-    
+    // Add uploaded image to the scrollView
+    if (pageImages.count==3) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
+        
+        av.alertViewStyle = UIAlertViewStyleDefault;
+        [av show];
+        
+    }
+    else{
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:nil
                                                     delegate:self
                                            cancelButtonTitle:@"إلغاء"
@@ -212,6 +231,7 @@
                                            otherButtonTitles:@"من الكاميرا", @"من مكتبة الصور", nil];
     
         [as showInView:self.view];
+    }
 
 }
 
@@ -219,7 +239,7 @@
 {
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    [self.uploadImageBtn setBackgroundImage:image forState:UIControlStateNormal];
+  //  [self.uploadImageBtn setBackgroundImage:image forState:UIControlStateNormal];
     // Dismiss controller
    // [picker dismissModalViewControllerAnimated:YES];
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -237,82 +257,22 @@
 
 - (void)uploadImage:(NSData *)imageData
 {
-    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
     
-    //HUD creation here (see example for code)
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    
-    // Set determinate mode
-    HUD.mode = MBProgressHUDModeDeterminate;
-    HUD.delegate = self;
-    HUD.labelText = @"Uploading";
-    [HUD show:YES];
-    
-    // Save PFFile
-    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            // Hide old HUD, show completed HUD (see example for code)
-            [HUD hide:YES];
-            
-            // Show checkmark
-            HUD = [[MBProgressHUD alloc] initWithView:self.view];
-            [self.view addSubview:HUD];
-            
-            // The sample image is based on the work by http://www.pixelpressicons.com, http://creativecommons.org/licenses/by/2.5/ca/
-            // Make the customViews 37 by 37 pixels for best results (those are the bounds of the build-in progress indicators)
-            HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-            
-            // Set custom view mode
-            HUD.mode = MBProgressHUDModeCustomView;
-            
-            HUD.delegate = self;
-            
-            // Create a PFObject around a PFFile and associate it with the current user
-            PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
-            [userPhoto setObject:imageFile forKey:@"imageFile"];
-            
-            
-            // Set the access control list to current user for security purposes
-            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-            
-            PFUser *user = [PFUser currentUser];
-            [userPhoto setObject:user forKey:@"user"];
-            
-            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-                    [photoQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-                    
-                    // Run the query
-                    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                        if (!error) {
-                            if ([objects count] != 0) {
-                                PFObject *post = [objects objectAtIndex:[objects count] - 1];
-                                //Save results and update the table
-                                currentImageID = post;
-                                NSLog(@"got the object image");
-                            }
-                        }
-                    }];
+    // Add uploaded image to the scrollView
+    if (pageImages.count==3) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
+        
+        av.alertViewStyle = UIAlertViewStyleDefault;
+        [av show];
 
-                    //[self refresh:nil];
-                }
-                else{
-                    // Log details of the failure
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                }
-            }];
-        }
-        else{
-            [HUD hide:YES];
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    } progressBlock:^(int percentDone) {
-        // Update your progress spinner here. percentDone will be between 0 and 100.
-        HUD.progress = (float)percentDone/100;
-    }];
+    }
+    else{
+        UIImage *currentImage=[[UIImage alloc] initWithData:imageData];
+        [pageImages addObject:currentImage];
+        pageCount=[pageImages count];
+        [self setScrollView];
+        
+    }
 }
 
 - (void)setUpImages:(NSArray *)images
@@ -337,6 +297,72 @@
         }
     }
     
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"يتم الآن الحفظ";
+    [HUD show:YES];
+    
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    
+    for (int i=0; i<pageImages.count; i++) {
+        NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
+        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+        
+        // Save PFFile
+        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+                // Create a PFObject around a PFFile and associate it with the current user
+                PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
+                [userPhoto setObject:imageFile forKey:@"imageFile"];
+                
+                
+                // Set the access control list to current user for security purposes
+                userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+                
+                PFUser *user = [PFUser currentUser];
+                [userPhoto setObject:user forKey:@"user"];
+                
+                [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                        PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                        [photoQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+                        
+                        // Run the query
+                        [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                            if (!error) {
+                                if ([objects count] != 0) {
+                                    PFObject *post = [objects objectAtIndex:[objects count] - 1];
+                                    //Save results and update the table
+                                    currentImageID = post;
+                                    NSLog(@"got the object image");
+                                }
+                            }
+                        }];
+                        
+                        //[self refresh:nil];
+                    }
+                    else{
+                        // Log details of the failure
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
+            
+            else{
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        } progressBlock:^(int percentDone) {
+            // Update your progress spinner here. percentDone will be between 0 and 100.
+            HUD.progress = (float)percentDone/100;
+        }];
+        
+    }
+    [HUD hide:YES];
+    
     // Create Post
     PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
    
@@ -347,9 +373,8 @@
     [newPost setObject:self.descriptionsTxtView.text forKey:@"Description"];
 
     [newPost setObject:chosenSectionArray forKey:@"sections"];
-    if (currentImageID)
-        [newPost setObject:currentImageID forKey:@"imageID"];
-    
+
+
     [newPost setObject:[PFUser currentUser] forKey:@"userID"];
 
     //set section with property
@@ -701,4 +726,87 @@
     
 }
 
+
+#pragma mark - paging & scrollView
+
+-(void)setScrollView{
+    self.pageControl.currentPage = pageCount;
+    self.pageControl.numberOfPages = pageCount;
+    CGSize pagesScrollViewSize = self.imageScrollView.frame.size;
+    self.imageScrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * pageImages.count, pagesScrollViewSize.height);
+    pageViews = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < pageCount; ++i) {
+        [pageViews addObject:[NSNull null]];
+    }
+    [self loadVisiblePages];
+
+}
+
+- (void)loadVisiblePages {
+    // First, determine which page is currently visible
+    CGFloat pageWidth = self.imageScrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.imageScrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    
+    // Update the page control
+    self.pageControl.currentPage = page;
+    
+    // Work out which pages you want to load
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    // Purge anything before the first page
+    for (NSInteger i=0; i<firstPage; i++) {
+        [self purgePage:i];
+    }
+    for (NSInteger i=firstPage; i<=lastPage; i++) {
+        [self loadPage:i];
+    }
+    for (NSInteger i=lastPage+1; i<pageImages.count; i++) {
+        [self purgePage:i];
+    }
+}
+
+- (void)loadPage:(NSInteger)page {
+    if (page < 0 || page >= pageImages.count) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+
+    else{
+        // Load an individual page, first checking if you've already loaded it
+        UIView *pageView = [pageViews objectAtIndex:page];
+        if ((NSNull*)pageView == [NSNull null]) {
+            CGRect frame = self.imageScrollView.bounds;
+            frame.origin.x = frame.size.width * page;
+            frame.origin.y = 0.0f;
+            frame = CGRectInset(frame, 10.0f, 0.0f);
+            
+            UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+            newPageView.contentMode = UIViewContentModeScaleAspectFit;
+            newPageView.frame = frame;
+            [self.imageScrollView addSubview:newPageView];
+            [pageViews replaceObjectAtIndex:page withObject:newPageView];
+        }
+
+    }
+}
+
+- (void)purgePage:(NSInteger)page {
+    if (page < 0 || page >= pageImages.count) {
+        // If it's outside the range of what you have to display, then do nothing
+        return;
+    }
+    
+    // Remove a page from the scroll view and reset the container array
+    UIView *pageView = [pageViews objectAtIndex:page];
+    if ((NSNull*)pageView != [NSNull null]) {
+        [pageView removeFromSuperview];
+        [pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // Load the pages that are now on screen
+    [self loadVisiblePages];
+}
 @end
