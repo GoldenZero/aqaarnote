@@ -303,8 +303,10 @@
     HUD.delegate = self;
     HUD.labelText = @"يتم الآن الحفظ";
     [HUD show:YES];
-    
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    
+    PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
+
     
     for (int i=0; i<pageImages.count; i++) {
         NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
@@ -324,7 +326,8 @@
                 
                 PFUser *user = [PFUser currentUser];
                 [userPhoto setObject:user forKey:@"user"];
-                
+                [userPhoto setObject:newPost forKey:@"propertyID"];
+
                 [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (!error) {
                         PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
@@ -364,7 +367,6 @@
     [HUD hide:YES];
     
     // Create Post
-    PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
    
     // Set property
     [newPost setObject:self.propertyTitle.text forKey:@"Title"];

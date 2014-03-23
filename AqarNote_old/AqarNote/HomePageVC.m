@@ -59,7 +59,6 @@
         HUD.labelText = @"جاري التحميل...";
 
         [self getProperties];
-        
         [self.welcomeView setHidden:YES];
         
         [self showTabBar:self.tabBarController];
@@ -91,14 +90,14 @@
     // Run the query
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            for (PFObject* pf in objects) {
-                PFObject *imagesObj = pf[@"imageID"];
-                [imagesObj fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                    [propertiesImagesArray addObject:object];
-                    [self.propertiesTable reloadData];
-
-                }];
-            }
+//            for (PFObject* pf in objects) {
+//                PFObject *imagesObj = pf[@"imageID"];
+//                [imagesObj fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//                   // [propertiesImagesArray addObject:object];
+//                    [self.propertiesTable reloadData];
+//
+//                }];
+//            }
             
             //Save results and update the table
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
@@ -135,18 +134,19 @@
             if ([objects count] != 0) {
                 propertiesImagesArray = [[NSMutableArray alloc]initWithArray:objects];
                 //Save results and update the table
-                NSLog(@"got the object image");
             }
         }
     }];
 }
 
--(PFFile*)getCurrentImageForProperty:(PFObject*)currObj
+-(PFFile*)getCurrentImageForProperty:(NSString*)currObj
 {
     PFFile *theImage;
     for (PFObject* ob in propertiesImagesArray) {
-        if ([currObj.objectId isEqualToString:ob.objectId]) {
+        if ([currObj isEqualToString:[ob objectForKey:@"propertyID"]]) {
             theImage = [ob objectForKey:@"imageFile"];
+            NSLog(@"got the object image");
+
             break;
         }
     }
@@ -184,11 +184,11 @@
     [cell.activityIndicator startAnimating];
 
     // Configure the cell with the textContent of the Post as the cell's text label
-    PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
+    PFObject *post = (PFObject*)[propertiesArray objectAtIndex:indexPath.row];
     
     // This method sets up the downloaded images and places them nicely in a grid
-   // PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
-    PFObject *eachObject = [post objectForKey:@"imageID"];
+    NSString *eachObject =[post objectForKey:@"objectId"];
+    //[post objectForKey:@"objectId"];
     __block NSData *imageData;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{

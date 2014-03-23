@@ -33,21 +33,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     pageImages=[[NSMutableArray alloc] init];
-
 	// Do any additional setup after loading the view.
     self.sectionTitle.text = [self.sectionID objectForKey:@"name"];
     self.inputAccessoryView = [XCDFormInputAccessoryView new];
-    
+    [self loadSectionPhoto];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    pageCount=pageImages.count;
-    
     [self setScrollView];
+
 }
 
-#pragma mark - Buttons Actions 
+#pragma mark - Buttons Actions
 
 
 - (IBAction)uploadImagePressed:(id)sender {
@@ -77,7 +77,7 @@
 {
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    [self.uploadImageBtn setBackgroundImage:image forState:UIControlStateNormal];
+    //[self.uploadImageBtn setBackgroundImage:image forState:UIControlStateNormal];
     // Dismiss controller
     // [picker dismissModalViewControllerAnimated:YES];
     [picker dismissViewControllerAnimated:YES completion:nil];
@@ -150,29 +150,14 @@
             [userPhoto setObject:self.sectionID forKey:@"sectionID"];
     
             [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                PFQuery *photoQuery = [PFQuery queryWithClassName:@"SectionPhoto"];
-                [photoQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-                
-                // Run the query
-                [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 if (!error) {
-                    if ([objects count] != 0) {
-                        PFObject *post = [objects objectAtIndex:[objects count] - 1];
-                        //Save results and update the table
-                        currentImageID = post;
-                        NSLog(@"got the object image");
-                    }
                 }
-                }];
-    
-                //[self refresh:nil];
-            }
-            else{
-            // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
+            
+                else{
+                // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
         }
         else{
             // Log details of the failure
@@ -358,70 +343,6 @@
 
 
 
-//- (IBAction)changePage:(id)sender{
-//    
-//    CGRect frame;
-//    frame.origin.x = self.pagingScrollView.frame.size.width * self.pageControl.currentPage;
-//    frame.origin.y = 0;
-//    frame.size = self.pagingScrollView.frame.size;
-//    [self.pagingScrollView scrollRectToVisible:frame animated:YES];
-//  //  pageControlUsed = YES;
-//}
-
-- (UIView *) prepareImge : (NSURL*) imageURL : (int) i{
-
-    CGRect frame;
-    frame.origin.x=self.pagingScrollView.frame.size.width*i + 20;
-    frame.origin.y=0;
-    frame.size=self.pagingScrollView.frame.size;
-    
-    frame.size.width = frame.size.width - 40;
-    UIView *subView=[[UIView alloc]initWithFrame:frame];
-    [subView setBackgroundColor:[UIColor clearColor]];
-   
-   /*
-    UIImageView *imageView=[[UIImageView alloc] init];
-    CGRect imageFrame;
-    imageFrame.origin.x=10;
-    imageFrame.origin.y=10;
-    imageFrame.size.width=256;
-    imageFrame.size.height=256;
-    imageView.frame=imageFrame;
-    imageView.image=image;
-   */
-   
-    //HJManagedImageV * imageView = [[HJManagedImageV alloc] init];
-    UIImageView * imageView = [[UIImageView alloc] init];
-    CGRect imageFrame;
-    imageFrame.origin.x=0;
-    imageFrame.origin.y=0;
-    imageFrame.size.width=frame.size.width;
-    imageFrame.size.height=frame.size.height;
-    imageView.frame=imageFrame;
-    
-    //[imageView clear];
-    [imageView setBackgroundColor:[UIColor clearColor]];
-    
-    //UIControl *mask = [[UIControl alloc] initWithFrame:imageView.frame];
-    //[mask addTarget:self action:@selector(openImgs:) forControlEvents:UIControlEventTouchUpInside];
-    
-  //     mask.tag = (i+1) * 10;
-//     [mask addSubview:imageView];
-//     [subView setUserInteractionEnabled:YES];
-//     [subView addSubview:mask];
-//     */
-//    //set the tag to observe the image ID
-//    UITapGestureRecognizer * imgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImgs:)];
-//    subView.tag = (i+1) * 10;
-//    [subView addGestureRecognizer:imgTap];
-//    [subView setUserInteractionEnabled:YES];
-//    [subView addSubview:imageView];
-    return subView;
-    
-}
-
-
-
 #pragma mark - paging & scrollView
 
 -(void)setScrollView{
@@ -470,6 +391,7 @@
     else{
         // Load an individual page, first checking if you've already loaded it
         UIView *pageView = [pageViews objectAtIndex:page];
+        
         if ((NSNull*)pageView == [NSNull null]) {
             CGRect frame = self.pagingScrollView.bounds;
             frame.origin.x = frame.size.width * page;
@@ -477,6 +399,7 @@
             frame = CGRectInset(frame, 10.0f, 0.0f);
             
             UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+            
             newPageView.contentMode = UIViewContentModeScaleAspectFit;
             newPageView.frame = frame;
             [self.pagingScrollView addSubview:newPageView];
@@ -503,5 +426,29 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // Load the pages that are now on screen
     [self loadVisiblePages];
+}
+
+//
+-(void)loadSectionPhoto{
+    
+    PFQuery *currentSection = [PFQuery queryWithClassName:@"SectionPhoto"];
+    [currentSection whereKey:@"sectionID" equalTo:self.sectionID];
+    [currentSection whereKey:@"propertyID" equalTo:self.propertyID];
+    
+    [currentSection findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            PFFile *theImage;
+            for (PFObject* ob in objects) {
+                theImage = [ob objectForKey:@"imageFile"];
+                UIImage *image=[UIImage imageWithData:[theImage getData]];
+                [pageImages addObject:image];
+            }
+        }
+        pageCount=pageImages.count;
+        
+        [self setScrollView];
+    }];
+    
 }
 @end
