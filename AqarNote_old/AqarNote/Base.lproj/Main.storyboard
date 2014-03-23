@@ -843,34 +843,26 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BMu-6E-Wiz">
-                                <rect key="frame" x="0.0" y="50" width="320" height="187"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2y-bP-E6R">
-                                        <rect key="frame" x="91" y="40" width="139" height="108"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" backgroundImage="takePhotobkg.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="uploadImagePressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="PA0-lo-0WP"/>
-                                            <action selector="uploadImagePressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="a6x-DH-81Y"/>
-                                            <action selector="uploadImagePressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="qfC-2U-dr3"/>
-                                        </connections>
-                                    </button>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="rHw-60-LRa">
-                                        <rect key="frame" x="141" y="150" width="39" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="currentPageIndicatorTintColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
-                                    </pageControl>
-                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="u0j-NF-wWS" id="xeX-9F-4bq"/>
                                 </connections>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2y-bP-E6R">
+                                <rect key="frame" x="149" y="119" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadImagePressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="PA0-lo-0WP"/>
+                                    <action selector="uploadImagePressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="a6x-DH-81Y"/>
+                                    <action selector="uploadImagePressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="qfC-2U-dr3"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXW-fE-Fra">
                                 <rect key="frame" x="221" y="349" width="77" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -881,6 +873,12 @@
                                     <action selector="buttonBrokenPrss:" destination="u0j-NF-wWS" eventType="touchUpInside" id="oDn-8n-9CI"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="rHw-60-LRa">
+                                <rect key="frame" x="141" y="211" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -933,7 +931,6 @@
         <image name="tabe_inspection.png" width="20" height="22"/>
         <image name="tabe_notes.png" width="20" height="22"/>
         <image name="tabe_propority.png" width="21" height="22"/>
-        <image name="takePhotobkg.png" width="77" height="70"/>
     </resources>
     <color key="tintColor" red="0.25882354378700256" green="0.59215688705444336" blue="0.21960785984992981" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
