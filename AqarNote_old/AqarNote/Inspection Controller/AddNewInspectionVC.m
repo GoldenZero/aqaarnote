@@ -14,6 +14,10 @@
     NSMutableArray* chosenSectionArray;
     PFObject * currentImageID;
     PFObject* mySection;
+    NSMutableArray *pageImages;
+    NSInteger pageCount;
+    NSMutableArray *pageViews;
+    
     int view_y;
     
 }
@@ -34,13 +38,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.propertyTitle.text = [self.propertyID objectForKey:@"title"];
+    pageImages=[[NSMutableArray alloc] init];
+
+    self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
     self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
-   
+    NSString *note=[self.propertyID objectForKey:@"Description"];
+    if ([note isEqual:@" "]) {
+        self.notesTxtView.text=@"لا يوجد ملاحظات";
+    }
+    else{
+       
+        self.notesTxtView.text=note;
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    [self loadSectionPhoto];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     for (UIView *subview in self.sectionScrollView.subviews) {
         [subview removeFromSuperview];
     }
@@ -153,7 +168,6 @@
         
     }
     
-    [MBProgressHUD  hideHUDForView:self.view animated:YES];
     
 }
 
@@ -365,5 +379,121 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)loadSectionPhoto{
+    
+    PFQuery *currentProperty = [PFQuery queryWithClassName:@"PropertyPhoto"];
+    [currentProperty whereKey:@"propertyID" equalTo:self.propertyID];
+    
+    [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            PFFile *theImage;
+            for (PFObject* ob in objects) {
+                theImage = [ob objectForKey:@"imageFile"];
+                UIImage *image=[UIImage imageWithData:[theImage getData]];
+                [pageImages addObject:image];
+            }
+        }
+        if (pageImages.count==0) {
+            UIImage *image=[UIImage imageNamed:@"default_image_home"];
+            [pageImages addObject:image];
+
+        }
+        pageCount=pageImages.count;
+        
+        [self setScrollView];
+        [MBProgressHUD  hideHUDForView:self.view animated:YES];
+
+    }];
+    
+
+}
+
+#pragma mark - paging & scrollView
+
+-(void)setScrollView{
+    self.pageControl.currentPage = pageCount;
+    self.pageControl.numberOfPages = pageCount;
+    CGSize pagesScrollViewSize = self.imgScrollView.frame.size;
+    self.imgScrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * pageImages.count, pagesScrollViewSize.height);
+    pageViews = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < pageCount; ++i) {
+        [pageViews addObject:[NSNull null]];
+    }
+    [self loadVisiblePages];
+    
+}
+
+- (void)loadVisiblePages {
+    // First, determine which page is currently visible
+    CGFloat pageWidth = self.imgScrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.imgScrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    
+    // Update the page control
+    self.pageControl.currentPage = page;
+    
+    // Work out which pages you want to load
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    // Purge anything before the first page
+    for (NSInteger i=0; i<firstPage; i++) {
+        [self purgePage:i];
+    }
+    for (NSInteger i=firstPage; i<=lastPage; i++) {
+        [self loadPage:i];
+    }
+    for (NSInteger i=lastPage+1; i<pageImages.count; i++) {
+        [self purgePage:i];
+    }
+}
+
+- (void)loadPage:(NSInteger)page {
+    if (page < 0 || page >= pageImages.count) {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
+    }
+    
+    else{
+        // Load an individual page, first checking if you've already loaded it
+        UIView *pageView = [pageViews objectAtIndex:page];
+        
+        if ((NSNull*)pageView == [NSNull null]) {
+            CGRect frame = self.imgScrollView.bounds;
+            frame.origin.x = frame.size.width * page;
+            frame.origin.y = 0.0f;
+            frame = CGRectInset(frame, 10.0f, 0.0f);
+            
+            UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+            
+            newPageView.contentMode = UIViewContentModeScaleAspectFit;
+            newPageView.frame = frame;
+            [self.imgScrollView addSubview:newPageView];
+            [pageViews replaceObjectAtIndex:page withObject:newPageView];
+        }
+        
+    }
+}
+
+- (void)purgePage:(NSInteger)page {
+    if (page < 0 || page >= pageImages.count) {
+        // If it's outside the range of what you have to display, then do nothing
+        return;
+    }
+    
+    // Remove a page from the scroll view and reset the container array
+    UIView *pageView = [pageViews objectAtIndex:page];
+    if ((NSNull*)pageView != [NSNull null]) {
+        [pageView removeFromSuperview];
+        [pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // Load the pages that are now on screen
+    [self loadVisiblePages];
+}
+
 
 @end
