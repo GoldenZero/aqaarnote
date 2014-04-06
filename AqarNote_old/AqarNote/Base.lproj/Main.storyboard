@@ -107,6 +107,7 @@
                         <outlet property="inspectionsTable" destination="Wfq-D6-EWb" id="egw-Xr-gVR"/>
                         <outlet property="noInspecImage" destination="Rux-Sg-RYb" id="ykh-KW-7z7"/>
                         <outlet property="searchButton" destination="As2-Bf-w0V" id="l90-0s-Bue"/>
+                        <segue destination="Pz3-3X-bKd" kind="modal" identifier="showDetails" id="yRB-Ic-eoT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcU-sQ-e7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -497,11 +498,11 @@
                                 <rect key="frame" x="20" y="292" width="284" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="interactive" text="توصيف العقار" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="6JL-2N-YfB">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="interactive" text="  توصيف العقار" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="6JL-2N-YfB">
                                 <rect key="frame" x="20" y="292" width="284" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
@@ -608,7 +609,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Klm-W8-bMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839" y="321"/>
+            <point key="canvasLocation" x="1839" y="375"/>
         </scene>
         <!--AddNewInspectionVC-->
         <scene sceneID="WIV-O2-JZT">
@@ -939,6 +940,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="V6h-qe-NuI"/>
+        <segue reference="yRB-Ic-eoT"/>
     </inferredMetricsTieBreakers>
 </document>
