@@ -209,12 +209,13 @@
     [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
     [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
     [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
-    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
-    cell.moreButton.tag = indexPath.row;
+//    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
+//    cell.moreButton.tag = indexPath.row;
 
 
     return cell;
 }
+
 
 -(void)morePressed:(id)sender{
     UIButton* btn = (UIButton*)sender;
@@ -226,6 +227,13 @@
 
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    choosenObject = [propertiesArray objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:@"showPropretyDetail" sender:self];
+    
+
+}
 #pragma mark login delegate
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {

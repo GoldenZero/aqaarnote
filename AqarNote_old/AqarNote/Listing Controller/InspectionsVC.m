@@ -240,13 +240,19 @@
     [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
     
     
-    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
-    cell.moreButton.tag = indexPath.row;
+//    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
+//    cell.moreButton.tag = indexPath.row;
 
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    choosenObject = [inspectionsArray objectAtIndex:indexPath.row];
+    
+    [self performSegueWithIdentifier:@"showDetails" sender:self];
+    
+    
+}
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 
@@ -264,6 +270,7 @@
 {
     return 31;
 }
+
 
 
 -(void)morePressed:(id)sender{
