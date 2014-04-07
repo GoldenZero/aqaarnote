@@ -35,7 +35,7 @@
     propertiesImagesArray = nil;
     
     [self getProperties];
-    [self getPropertyImages];
+   // [self getPropertyImages];
 }
 
 -(void)getProperties
@@ -122,30 +122,55 @@
     
     // Configure the cell with the textContent of the Post as the cell's text label
     PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
+    cell.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
     
-    // This method sets up the downloaded images and places them nicely in a grid
-    // PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
-    [cell.activityIndicator startAnimating];
-    PFObject *eachObject = [post objectForKey:@"imageID"];
-    __block NSData *imageData;
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        PFFile *theImage = [self getCurrentImageForProperty:eachObject];
-        imageData = [theImage getData];
-        
-        
-    });
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [cell.activityIndicator setHidden:YES];
-        [cell.activityIndicator stopAnimating];
-        if (imageData!=nil) {
-            UIImage *image = [UIImage imageWithData:imageData];
-            // Dispatch to main thread to update the UI
-            [cell.propertyImage setImage:image];
+    PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
+    [photoQuery whereKey:@"propertyID" equalTo:post];
+    
+    // Run the query
+    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if ([objects count] != 0) {
+                PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
+                //Save results and update the table
+                NSData* imageData = [theImage getData];
+                if (imageData!=nil) {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    // Dispatch to main thread to update the UI
+                    cell.propertyImage.image=image;
+                }
+                else{
+                    [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
+                }
+                
+                NSLog(@"got the object image");
+            }
         }
-    
-    });
-    
+    }];
+
+//    // This method sets up the downloaded images and places them nicely in a grid
+//    // PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
+//    //[cell.activityIndicator startAnimating];
+//    PFObject *eachObject = [post objectForKey:@"imageID"];
+//    __block NSData *imageData;
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(queue, ^{
+//        PFFile *theImage = [self getCurrentImageForProperty:eachObject];
+//        imageData = [theImage getData];
+//        
+//        
+//    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//  //      [cell.activityIndicator setHidden:YES];
+//    //    [cell.activityIndicator stopAnimating];
+//        if (imageData!=nil) {
+//            UIImage *image = [UIImage imageWithData:imageData];
+//            // Dispatch to main thread to update the UI
+//            [cell.propertyImage setImage:image];
+//        }
+//    
+//    });
+//    
     [cell.propertyTitle setText:[post objectForKey:@"Title"]];
     [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
     [cell.detailsTxtView setText:[post objectForKey:@"Description"]];

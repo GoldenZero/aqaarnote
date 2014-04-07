@@ -16,5 +16,4 @@
 @property (strong, nonatomic) IBOutlet UITextView *detailTxtView;
 @property (strong, nonatomic) IBOutlet UIButton *moreButton;
 @property (strong, nonatomic) IBOutlet UIImageView *progressImage;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
