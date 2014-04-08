@@ -86,7 +86,16 @@
 
 -(void)prepareSections
 {
-    view_y = 0;
+    [self.sectionScrollView addSubview:self.propertyTitle];
+    [self.sectionScrollView addSubview:self.locationLabel];
+    [self.sectionScrollView addSubview:self.imgScrollView];
+    [self.sectionScrollView addSubview:self.pageControl];
+    [self.sectionScrollView addSubview:self.sectionsLabel];
+    [self.sectionScrollView addSubview:self.noteBgImg];
+    [self.sectionScrollView addSubview:self.notesTxtView];
+
+    
+    view_y = 315;
     
     //sectionsArray = [NSMutableArray new];
     //chosenSectionArray = [NSMutableArray new];
@@ -160,7 +169,7 @@
         [v addSubview:secBtn];
         
         [self.sectionScrollView addSubview:v];
-        if (view_y > 236) {
+        if (view_y > 285) {
             self.sectionScrollView.contentSize = CGSizeMake(320, view_y + 51);
         }
         view_y += 51;

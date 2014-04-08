@@ -23,6 +23,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *notesTxtView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UIScrollView *imgScrollView;
+@property (strong, nonatomic) IBOutlet UIImageView *noteBgImg;
+@property (strong, nonatomic) IBOutlet UILabel *sectionsLabel;
 
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;
