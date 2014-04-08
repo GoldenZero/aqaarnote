@@ -7,13 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface NotesVC : UIViewController
+#import "EnhancedKeyboard.h"
+#import "BaseViewController.h"
+@interface NotesVC : UIViewController<UITextFieldDelegate,UITextViewDelegate,EnhancedKeyboardDelegate>
 
 #pragma mark - Properties
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UITextField *nameTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *countryTxtField;
+@property (strong, nonatomic) IBOutlet UITextView *aboutTxtView;
+@property (strong, nonatomic) IBOutlet UITextField *emailTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTxtField;
+@property (strong, nonatomic) IBOutlet UITextField *confirmPasswordTxtField;
+@property (strong, nonatomic) IBOutlet UIView *pickerView;
+@property (strong, nonatomic) IBOutlet UIPickerView *countryPicker;
+@property (strong, nonatomic) IBOutlet UIButton *countryButton;
 
 #pragma mark - Actions
 - (IBAction)logoutBtnPrss:(id)sender;
+- (IBAction)editBtnPrss:(id)sender;
+- (IBAction)backBtnPrss:(id)sender;
+- (IBAction)chooseCountryBtnPrss:(id)sender;
+- (IBAction)countryBtnPrss:(id)sender;
 
 @end
