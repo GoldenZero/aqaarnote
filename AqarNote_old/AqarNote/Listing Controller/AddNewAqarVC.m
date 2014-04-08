@@ -128,6 +128,18 @@ CGFloat animatedDistance;
     }
 
     [self.sectionsTableView reloadData];
+    CGRect frame = self.sectionsTableView.frame;
+    frame.size.height = self.sectionsTableView.contentSize.height;
+    self.sectionsTableView.frame = frame;
+    
+    CGFloat scrollViewHeight = 0.0f;
+    for (UIView* view in self.contentScrollView.subviews)
+    {
+        scrollViewHeight += view.frame.size.height;
+    }
+    
+    [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
+
     [HUD hide:YES];
 
 
@@ -138,6 +150,25 @@ CGFloat animatedDistance;
 {
     chosenSectionArray = [NSMutableArray new];
     [self.sectionsTableView reloadData];
+   
+    CGRect frame = self.sectionsTableView.frame;
+    frame.size.height = self.sectionsTableView.contentSize.height;
+    self.sectionsTableView.frame = frame;
+    
+    CGFloat scrollViewHeight = 0.0f;
+    for (UIView* view in self.contentScrollView.subviews)
+    {
+        scrollViewHeight += view.frame.size.height;
+    }
+    
+    [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
+    
+    
+//    CGRect contentRect = CGRectZero;
+//    for (UIView *view in self.contentScrollView.subviews) {
+//        contentRect = CGRectUnion(contentRect, view.frame);
+//    }
+//    self.contentScrollView.contentSize = contentRect.size;
     [HUD hide:YES];
 }
 
@@ -588,6 +619,19 @@ CGFloat animatedDistance;
         [sectionsArray addObject:[[alertView textFieldAtIndex:0] text]];
         [chosenBooleanArray addObject:@YES];
         [self.sectionsTableView reloadData];
+        CGRect frame = self.sectionsTableView.frame;
+        frame.size.height = self.sectionsTableView.contentSize.height;
+        self.sectionsTableView.frame = frame;
+        
+        CGFloat scrollViewHeight = 0.0f;
+        for (UIView* view in self.contentScrollView.subviews)
+        {
+            scrollViewHeight += view.frame.size.height;
+        }
+        
+        [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
+        
+
     }    
 
 }

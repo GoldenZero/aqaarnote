@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
 - (IBAction)openCountryPickerBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;

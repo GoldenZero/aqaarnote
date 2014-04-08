@@ -34,6 +34,40 @@
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
 
+//    if ([PFUser currentUser]) {
+//        [self.view addSubview:HUD];
+//        
+//        [HUD show:YES];
+//        HUD.labelText = @"جاري التحميل...";
+//        
+//        [self getProperties];
+//        [self.welcomeView setHidden:YES];
+//        
+//        [self showTabBar:self.tabBarController];
+//        //   [self getPropertyImages];
+//        
+//    }
+//    
+//    else{
+//        [self.welcomeView setHidden:NO];
+//        [self.propertiesTable setHidden:YES];
+//        propertiesArray = [NSMutableArray new];
+//        propertiesImagesArray = [NSMutableArray new];
+//        
+//        [self hideTabBar:self.tabBarController];
+//        
+//    }
+
+}
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self hideSearchView];
+    
+    isSearchOpen=false;
+
     if ([PFUser currentUser]) {
         [self.view addSubview:HUD];
         
@@ -49,26 +83,8 @@
     }
     
     else{
-        [self.welcomeView setHidden:NO];
-        [self.propertiesTable setHidden:YES];
-        propertiesArray = [NSMutableArray new];
-        propertiesImagesArray = [NSMutableArray new];
-        
-        [self hideTabBar:self.tabBarController];
-        
-    }
-
-}
-
-
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [self hideSearchView];
-    isSearchOpen=false;
-    if (![PFUser currentUser]) {
         [self.view addSubview:HUD];
-        
+
         [self.welcomeView setHidden:NO];
         [self.propertiesTable setHidden:YES];
         propertiesArray = [NSMutableArray new];
@@ -76,9 +92,6 @@
         
         [self hideTabBar:self.tabBarController];
         
-    }    
-    else{
-    
     }
 
 }
