@@ -15,6 +15,7 @@
     NSMutableArray* inspectionsArray;
     NSMutableArray* propertiesArray;
     PFObject *choosenObject;
+    bool isSearchOpen;
 
     NSMutableArray* inspectionsImagesArray;
 }
@@ -44,6 +45,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self hideSearchView];
+    isSearchOpen=false;
+
     [super viewWillAppear:YES];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //TODO : chached data
@@ -366,13 +370,40 @@
 
 
 - (IBAction)searchBtnPrss:(id)sender {
-    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"البحث عن عقار" message:@"أدخل عنوان العقار" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"ابحث", nil];
-    av.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [av textFieldAtIndex:0].delegate = self;
-    [av show];
+
+    if (isSearchOpen) {
+        isSearchOpen=false;
+        [self hideSearchView];
+    }
+    else{
+        isSearchOpen=true;
+        [self showSearchView];
+    }
+
+//    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"البحث عن عقار" message:@"أدخل عنوان العقار" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"ابحث", nil];
+//    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    [av textFieldAtIndex:0].delegate = self;
+//    [av show];
 
 }
 
+- (IBAction)searchPanlBtnPrss:(id)sender {
+    [self.titleSearchTxtField resignFirstResponder];
+
+    [self hideSearchView];
+    isSearchOpen=false;
+    
+    [self filterPropertiesWithTitle:self.titleSearchTxtField.text];
+    
+}
+
+- (IBAction)cancelSearchBtnPrss:(id)sender {
+    [self.titleSearchTxtField resignFirstResponder];
+
+    [self hideSearchView];
+    isSearchOpen=false;
+    
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -428,6 +459,36 @@
         
     }
     
+}
+
+#pragma mark - Show search view
+
+-(void)showSearchView
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    self.searchView.hidden = NO;
+    self.searchView.frame = CGRectMake(self.searchView.frame.origin.x,  50, self.searchView.frame.size.width, self.searchView.frame.size.height);
+    [UIView commitAnimations];
+    //  [self.searchView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    
+    [self.searchView becomeFirstResponder];
+}
+
+-(void)hideSearchView
+{
+    [self.searchView resignFirstResponder];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    //    self.searchView.frame = CGRectMake(self.searchView.frame.origin.x, ([[UIScreen mainScreen] bounds].size.height == 568) ? 568 : 480, self.searchView.frame.size.width, self.searchView.frame.size.height);
+    self.searchView.frame = CGRectMake(self.searchView.frame.origin.x, -self.searchView.frame.size.height, self.searchView.frame.size.width, self.searchView.frame.size.height);
+    [UIView commitAnimations];
+    //  self.searchView.hidden = YES;
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [textField resignFirstResponder];
 }
 
 @end

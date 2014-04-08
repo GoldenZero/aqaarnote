@@ -19,8 +19,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *addNewProperImg;
 @property (weak, nonatomic) IBOutlet UIImageView *addNewInspectImage;
 @property (strong, nonatomic) IBOutlet UIImageView *noInspecImage;
+@property (strong, nonatomic) IBOutlet UITextField *titleSearchTxtField;
+
+@property (strong, nonatomic) IBOutlet UIView *searchView;
 
 
 - (IBAction)searchBtnPrss:(id)sender;
+- (IBAction)searchPanlBtnPrss:(id)sender;
+- (IBAction)cancelSearchBtnPrss:(id)sender;
+
 
 @end

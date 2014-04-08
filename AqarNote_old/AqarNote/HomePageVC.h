@@ -24,10 +24,14 @@
 @property (strong, nonatomic) IBOutlet UIImageView *welcomeBgImage;
 @property (strong, nonatomic) IBOutlet UIButton *signupButton;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UITextField *titleSearchTxtField;
 
+@property (strong, nonatomic) IBOutlet UIView *searchView;
 #pragma mark - Actions
 - (IBAction)signupBtnPrss:(id)sender;
 - (IBAction)loginBtnPrss:(id)sender;
 - (IBAction)searchBtnPrss:(id)sender;
+- (IBAction)searchPanlBtnPrss:(id)sender;
+- (IBAction)cancelSearchBtnPrss:(id)sender;
 
 @end
