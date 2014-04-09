@@ -52,8 +52,11 @@ CGFloat animatedDistance;
     [super viewDidLoad];
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
-    [self loadCountries];
+    [self.aboutTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 
+    [self loadCountries];
+    [self loadUserInfo];
+   
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -81,18 +84,33 @@ CGFloat animatedDistance;
 - (IBAction)editBtnPrss:(id)sender {
     [self closePicker];
     if (isEdit) {
-        isEdit=false;
-        self.backButton.hidden=YES;
-        [self.editButton setTitle:@"تعديل" forState:UIControlStateNormal];
-        [self.nameTxtField setEnabled:NO];
-        [self.emailTxtField setEnabled:NO];
-        [self.passwordTxtField setEnabled:NO];
-        self.countryButton.hidden=YES;
-        [self.confirmPasswordTxtField setEnabled:NO];
-        [self.aboutTxtView setEditable:NO];
+        // Check if password and its confirmation are equal
+        if (![self.confirmPasswordTxtField.text isEqualToString:self.passwordTxtField.text]) {
+            UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"كلمة المرور غير متطابقة" message:@"الرجاء إدخال كلمة المرور من جديد" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:@"", nil];
+            av.alertViewStyle = UIAlertViewStylePlainTextInput;
+            [av textFieldAtIndex:0].delegate = self;
+            [av show];
+            
+            
+        }
+        else{
 
+            isEdit=false;
+            self.backButton.hidden=YES;
+            [self.editButton setTitle:@"تعديل" forState:UIControlStateNormal];
+            [self.nameTxtField setEnabled:NO];
+            [self.emailTxtField setEnabled:NO];
+            [self.passwordTxtField setEnabled:NO];
+            self.countryButton.hidden=YES;
+            self.logoutButton.hidden=NO;
+            [self.confirmPasswordTxtField setEnabled:NO];
+            [self.aboutTxtView setEditable:NO];
+            [self updateUserInfo];
+
+        }
     }
     else{
+       
         isEdit=true;
         self.backButton.hidden=NO;
         [self.editButton setTitle:@"حفظ" forState:UIControlStateNormal];
@@ -102,10 +120,7 @@ CGFloat animatedDistance;
         [self.confirmPasswordTxtField setEnabled:YES];
         [self.aboutTxtView setEditable:YES];
         self.countryButton.hidden=NO;
-
-        // Check if password and its confirmation are equal
-        
-        // Upload the data
+        self.logoutButton.hidden=YES;
 
     }
 }
@@ -121,8 +136,8 @@ CGFloat animatedDistance;
     [self.confirmPasswordTxtField setEnabled:NO];
     [self.aboutTxtView setEditable:NO];
     self.countryButton.hidden=YES;
-
     [self closePicker];
+    [self loadUserInfo];
 }
 
 - (IBAction)chooseCountryBtnPrss:(id)sender {
@@ -130,12 +145,15 @@ CGFloat animatedDistance;
 }
 
 - (IBAction)countryBtnPrss:(id)sender {
+  
     [self showPicker];
 }
 
 #pragma mark - TextView Delegate 
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
+    [textView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+
     textView.text=@"";
     [self closePicker];
     
@@ -333,7 +351,11 @@ CGFloat animatedDistance;
 -(IBAction)showPicker
 {
     self.tabBarController.tabBar.hidden=YES;
-   
+    [self.nameTxtField resignFirstResponder];
+    [self.aboutTxtView resignFirstResponder];
+    [self.emailTxtField resignFirstResponder];
+    [self.passwordTxtField resignFirstResponder];
+    [self.confirmPasswordTxtField resignFirstResponder];
     [self.pickerView setHidden:NO];
     [UIView animateWithDuration:0.5 animations:^{
         self.pickerView.frame = CGRectMake(self.pickerView.frame.origin.x,
@@ -373,4 +395,29 @@ CGFloat animatedDistance;
 }
 
 
+
+- (void) updateUserInfo{
+    
+    [[PFUser currentUser] setUsername:self.nameTxtField.text];
+    [[PFUser currentUser] setEmail:self.emailTxtField.text];
+    [[PFUser currentUser] setPassword:self.passwordTxtField.text];
+    [[PFUser currentUser] setObject:self.aboutTxtView.text forKey:@"AboutUser"];
+    [[PFUser currentUser] setObject:self.countryTxtField.text forKey:@"Country"];
+    [[PFUser currentUser] saveInBackground];
+    
+}
+
+- (void)loadUserInfo{
+    self.nameTxtField.text=(NSString*)[[PFUser currentUser] username];
+    self.countryTxtField.text=(NSString*)[[PFUser currentUser] objectForKey:@"Country"];
+    self.emailTxtField.text=(NSString*)[[PFUser currentUser] email];
+    self.passwordTxtField.text=(NSString*)[[PFUser currentUser]password];
+    self.confirmPasswordTxtField.text=(NSString*)[[PFUser currentUser] password];
+    if ([[[PFUser currentUser] objectForKey:@"AboutUser"] isEqualToString:@""]) {
+        self.aboutTxtView.text=[[PFUser currentUser] objectForKey:@"AboutUser"];
+    }
+    else{
+        self.aboutTxtView.text=@"اكتب عن نفسك في بضعة كلمات";
+    }
+}
 @end
