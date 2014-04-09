@@ -390,12 +390,13 @@
 - (IBAction)searchBtnPrss:(id)sender {
     if (isSearchOpen) {
         isSearchOpen=false;
+        self.propertiesTable.userInteractionEnabled=YES;
         [self hideSearchView];
     }
     else{
         isSearchOpen=true;
         [self showSearchView];
-
+        self.propertiesTable.userInteractionEnabled=NO;
     }
     //    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"البحث عن عقار" message:@"أدخل عنوان العقار" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"ابحث", nil];
 //    av.alertViewStyle = UIAlertViewStylePlainTextInput;
@@ -408,6 +409,7 @@
     [self.titleSearchTxtField resignFirstResponder];
     [self hideSearchView];
     isSearchOpen=false;
+    self.propertiesTable.userInteractionEnabled=YES;
 
     [self filterPropertiesWithTitle:self.titleSearchTxtField.text];
 
@@ -416,6 +418,8 @@
 - (IBAction)cancelSearchBtnPrss:(id)sender {
     [self.titleSearchTxtField resignFirstResponder];
     [self hideSearchView];
+    self.propertiesTable.userInteractionEnabled=YES;
+
     isSearchOpen=false;
 
 }

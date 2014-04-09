@@ -413,7 +413,7 @@ CGFloat animatedDistance;
     self.emailTxtField.text=(NSString*)[[PFUser currentUser] email];
     self.passwordTxtField.text=(NSString*)[[PFUser currentUser]password];
     self.confirmPasswordTxtField.text=(NSString*)[[PFUser currentUser] password];
-    if ([[[PFUser currentUser] objectForKey:@"AboutUser"] isEqualToString:@""]) {
+    if (![[[PFUser currentUser] objectForKey:@"AboutUser"] isEqualToString:@""]) {
         self.aboutTxtView.text=[[PFUser currentUser] objectForKey:@"AboutUser"];
     }
     else{

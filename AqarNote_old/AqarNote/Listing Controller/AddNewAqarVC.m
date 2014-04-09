@@ -331,6 +331,30 @@ CGFloat animatedDistance;
 
 - (IBAction)saveButtonPressed:(id)sender {
     NSLog(@"post new property");
+    if ([self.propertyTitle.text isEqualToString:@""]) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال عنوان الشقة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:@"", nil];
+        av.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [av textFieldAtIndex:0].delegate = self;
+        [av show];
+ 
+    }
+    else if ([self.city.text isEqualToString:@""]) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال المدينة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:@"", nil];
+        av.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [av textFieldAtIndex:0].delegate = self;
+        [av show];
+        
+    }
+
+    else if ([chosenCountry isEqual:nil]) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء اختيار الدولة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:@"", nil];
+        av.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [av textFieldAtIndex:0].delegate = self;
+        [av show];
+        
+    }
+    
+    else{
     chosenSectionArray=[[NSMutableArray alloc]init];
     // build chosenArray
     for (int i=0; i<chosenBooleanArray.count; i++) {
@@ -406,7 +430,6 @@ CGFloat animatedDistance;
         }];
         
     }
-    [HUD hide:YES];
     
     // Create Post
    
@@ -441,12 +464,13 @@ CGFloat animatedDistance;
          if (!error) {
              
              // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-             
+             [HUD hide:YES];
+
              [self dismissViewControllerAnimated:YES completion:nil];
          }
          
      }];
-    
+    }
     // Create relationship
    // [newPost setObject:[PFUser currentUser] forKey:@"owner"];
     

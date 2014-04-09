@@ -374,10 +374,14 @@
     if (isSearchOpen) {
         isSearchOpen=false;
         [self hideSearchView];
+        self.inspectionsTable.userInteractionEnabled=YES;
+
     }
     else{
         isSearchOpen=true;
         [self showSearchView];
+        self.inspectionsTable.userInteractionEnabled=NO;
+
     }
 
 //    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"البحث عن عقار" message:@"أدخل عنوان العقار" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"ابحث", nil];
@@ -392,13 +396,15 @@
 
     [self hideSearchView];
     isSearchOpen=false;
-    
+    self.inspectionsTable.userInteractionEnabled=YES;
+
     [self filterPropertiesWithTitle:self.titleSearchTxtField.text];
     
 }
 
 - (IBAction)cancelSearchBtnPrss:(id)sender {
     [self.titleSearchTxtField resignFirstResponder];
+    self.inspectionsTable.userInteractionEnabled=YES;
 
     [self hideSearchView];
     isSearchOpen=false;
