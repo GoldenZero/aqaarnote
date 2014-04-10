@@ -222,11 +222,11 @@
                                     <action selector="logoutBtnPrss:" destination="SW6-19-1KX" eventType="touchUpInside" id="eiZ-Eq-xwC"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nHJ-9A-VRm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_top.png" id="nHJ-9A-VRm">
                                 <rect key="frame" x="20" y="58" width="280" height="166"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dwK-oC-QbN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_bottom.png" id="dwK-oC-QbN">
                                 <rect key="frame" x="20" y="278" width="280" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -259,7 +259,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاسم" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YW8-mp-z53">
-                                <rect key="frame" x="251" y="74" width="34" height="30"/>
+                                <rect key="frame" x="251" y="65" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -273,7 +273,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="7Ea-tN-egt">
-                                <rect key="frame" x="39" y="74" width="193" height="30"/>
+                                <rect key="frame" x="39" y="65" width="193" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -282,7 +282,7 @@
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="اكتب لمحة عن نفسك" textAlignment="center" id="INt-hL-KSg">
-                                <rect key="frame" x="40" y="112" width="245" height="63"/>
+                                <rect key="frame" x="40" y="109" width="245" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -945,7 +945,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="fDt-0y-dGq">
-                                        <rect key="frame" x="0.0" y="52.000000000000014" width="320" height="119"/>
+                                        <rect key="frame" x="0.0" y="52" width="320" height="119"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -1229,7 +1229,9 @@
         <image name="orange_bar_save.png" width="320" height="40"/>
         <image name="orange_bar_send_report_btn.png" width="320" height="40"/>
         <image name="plus.png" width="19" height="19"/>
+        <image name="profile_bottom.png" width="301" height="123"/>
         <image name="profile_icon.png" width="26" height="27"/>
+        <image name="profile_top.png" width="301" height="154"/>
         <image name="register_new_account_btn.png" width="235" height="45"/>
         <image name="sign_in_btn.png" width="235" height="45"/>
         <image name="tabe_inspection.png" width="20" height="22"/>

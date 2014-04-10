@@ -30,7 +30,8 @@
     
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];
-    
+    self.propertiesTable.userInteractionEnabled=YES;
+
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
 
