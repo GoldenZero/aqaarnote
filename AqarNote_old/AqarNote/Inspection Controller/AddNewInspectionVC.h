@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BrowseInspectionVC.h"
+#import "EnhancedKeyboard.h"
 
-@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate>
+@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate>
 {
     MBProgressHUD *HUD;
     

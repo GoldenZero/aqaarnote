@@ -28,6 +28,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 140;
 
 CGFloat animatedDistance;
 
+
+
 @implementation BrowseInspectionVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,6 +49,8 @@ CGFloat animatedDistance;
 	// Do any additional setup after loading the view.
     self.sectionTitle.text = [self.sectionID objectForKey:@"name"];
     self.inputAccessoryView = [XCDFormInputAccessoryView new];
+    self.contentScrollView.contentSize =CGSizeMake(320, 518);
+
     [self loadSectionPhoto];
 
 }
@@ -461,8 +465,18 @@ CGFloat animatedDistance;
     
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)textViewDidBeginEditing:(UITextView *)textView{
-    self.noteTextView.text=@"";
+    textView.text=@"";
     
     CGRect textViewRect = [self.view.window convertRect:textView.bounds fromView:textView];
     CGRect viewRect = [self.view.window convertRect:self.view.bounds fromView:self.view];
@@ -497,7 +511,5 @@ CGFloat animatedDistance;
     [self.view setFrame:viewFrame];
     
     [UIView commitAnimations];
-
 }
-
 @end

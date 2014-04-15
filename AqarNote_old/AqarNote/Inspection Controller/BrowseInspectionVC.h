@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "XCDFormInputAccessoryView.h"
-
-@interface BrowseInspectionVC : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate, UIImagePickerControllerDelegate,UITextViewDelegate,MBProgressHUDDelegate>
+#import "BaseViewController.h"
+@interface BrowseInspectionVC : BaseViewController<UINavigationControllerDelegate,UIScrollViewDelegate, UIImagePickerControllerDelegate,UITextViewDelegate,MBProgressHUDDelegate>
 {
     MBProgressHUD *HUD;
     
@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *goodButton;
 @property (strong, nonatomic) IBOutlet UIButton *cleanButton;
 @property (strong, nonatomic) IBOutlet UIButton *buttonBroken;
+@property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;

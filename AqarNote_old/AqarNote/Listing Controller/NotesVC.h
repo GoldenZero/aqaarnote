@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EnhancedKeyboard.h"
 #import "BaseViewController.h"
-@interface NotesVC : UIViewController<UITextFieldDelegate,UITextViewDelegate,EnhancedKeyboardDelegate>
+@interface NotesVC : UIViewController<UITextFieldDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate>
 
 #pragma mark - Properties
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIView *pickerView;
 @property (strong, nonatomic) IBOutlet UIPickerView *countryPicker;
 @property (strong, nonatomic) IBOutlet UIButton *countryButton;
+@property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
 #pragma mark - Actions
 - (IBAction)logoutBtnPrss:(id)sender;

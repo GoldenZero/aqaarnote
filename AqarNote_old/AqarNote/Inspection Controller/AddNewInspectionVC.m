@@ -17,7 +17,8 @@
     NSMutableArray *pageImages;
     NSInteger pageCount;
     NSMutableArray *pageViews;
-    
+    EnhancedKeyboard *enhancedKeyboard;
+
     int view_y;
     
 }
@@ -39,6 +40,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     pageImages=[[NSMutableArray alloc] init];
+    enhancedKeyboard = [[EnhancedKeyboard alloc] init];
+    enhancedKeyboard.delegate = self;
+
+    [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 
     self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
     self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
@@ -505,4 +510,18 @@
 }
 
 
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    
+    [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+
+}
+
+
+#pragma mark - KSEnhancedKeyboardDelegate Protocol
+
+- (void)doneDidTouchDown
+{
+    [self.notesTxtView resignFirstResponder];
+    
+}
 @end

@@ -54,6 +54,7 @@ CGFloat animatedDistance;
     enhancedKeyboard.delegate = self;
     [self.aboutTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 
+    self.contentScrollView.contentSize =CGSizeMake(320, 470);
     [self loadCountries];
     [self loadUserInfo];
    
