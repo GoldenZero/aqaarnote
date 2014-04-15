@@ -584,9 +584,9 @@ CGFloat animatedDistance;
         [cell.sectionButtonPrssed setImage:[UIImage imageNamed:@"white_dot_option.png"] forState:UIControlStateNormal];
 
     }
-    [cell.sectionButtonPrssed addTarget:self action:@selector(sectionPressed:) forControlEvents:UIControlEventTouchUpInside];
-    cell.sectionButtonPrssed.tag = indexPath.row;
-    
+//    [cell.sectionButtonPrssed addTarget:self action:@selector(sectionPressed:) forControlEvents:UIControlEventTouchUpInside];
+//    cell.sectionButtonPrssed.tag = indexPath.row;
+//    
     // Load section icon
     
     if ([cell.sectionLabel.text isEqualToString:@"kitchen"]) {
@@ -619,7 +619,24 @@ CGFloat animatedDistance;
 }
 
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SectionCell *cell = (SectionCell*)[tableView cellForRowAtIndexPath:indexPath];
+    
+    UIButton* btn = (UIButton*)[cell sectionButtonPrssed];
+    int currentIndex = indexPath.row;
+    
+    if ([[chosenBooleanArray objectAtIndex:currentIndex] boolValue]) {
+        [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@NO];
+        [btn setImage:[UIImage imageNamed:@"white_dot_option.png"] forState:UIControlStateNormal];
+        
+    }
+    else{
+        [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@YES];
+        [btn setImage:[UIImage imageNamed:@"green_dot_option.png"] forState:UIControlStateNormal];
+        
+        
+    }
+
     
 }
 
@@ -690,7 +707,7 @@ CGFloat animatedDistance;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     chosenCountry=(countryObject*)[countriesArray objectAtIndex:row];
-    self.showPickerButton.titleLabel.text=[NSString stringWithFormat:@"   %@",[chosenCountry countryName]];
+    self.country.text=[chosenCountry countryName];
     
 }
 
@@ -711,7 +728,6 @@ CGFloat animatedDistance;
 -(IBAction)showPicker
 {
     
-    [self.pickerView setHidden:NO];
     [self.pickerView setHidden:NO];
     [UIView animateWithDuration:0.3 animations:^{
         self.pickerView.frame = CGRectMake(self.pickerView.frame.origin.x,

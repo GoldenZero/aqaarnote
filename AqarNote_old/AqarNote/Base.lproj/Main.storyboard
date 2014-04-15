@@ -18,8 +18,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="6ix-66-wFg"/>
-                        <segue destination="SW6-19-1KX" kind="relationship" relationship="viewControllers" id="E0V-eu-ggR"/>
                         <segue destination="2Ed-Bo-d1S" kind="relationship" relationship="viewControllers" id="xO4-no-NUW"/>
+                        <segue destination="SW6-19-1KX" kind="relationship" relationship="viewControllers" id="E0V-eu-ggR"/>
                         <segue destination="l20-VY-Aq0" kind="relationship" relationship="viewControllers" id="cOd-Vm-j5t"/>
                     </connections>
                 </tabBarController>
@@ -690,7 +690,7 @@
                                             <outlet property="delegate" destination="gLd-EQ-14C" id="NK9-9Y-7Cz"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="nf3-wU-83M">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الدولة..." textAlignment="right" minimumFontSize="17" id="nf3-wU-83M">
                                         <rect key="frame" x="18" y="203" width="284" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -703,7 +703,7 @@
                                         <rect key="frame" x="19" y="203" width="282" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="  الدولة...  ">
+                                        <state key="normal" title="  ">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -945,7 +945,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="fDt-0y-dGq">
-                                        <rect key="frame" x="0.0" y="52" width="320" height="119"/>
+                                        <rect key="frame" x="0.0" y="52.000000000000014" width="320" height="119"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
