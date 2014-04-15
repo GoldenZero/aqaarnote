@@ -102,7 +102,7 @@ CGFloat animatedDistance;
             [self.emailTxtField setEnabled:NO];
             [self.passwordTxtField setEnabled:NO];
             self.countryButton.hidden=YES;
-            self.logoutButton.hidden=NO;
+        //    self.logoutButton.hidden=NO;
             [self.confirmPasswordTxtField setEnabled:NO];
             [self.aboutTxtView setEditable:NO];
             [self updateUserInfo];
@@ -120,7 +120,7 @@ CGFloat animatedDistance;
         [self.confirmPasswordTxtField setEnabled:YES];
         [self.aboutTxtView setEditable:YES];
         self.countryButton.hidden=NO;
-        self.logoutButton.hidden=YES;
+      //  self.logoutButton.hidden=YES;
 
     }
 }
