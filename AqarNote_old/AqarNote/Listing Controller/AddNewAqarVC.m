@@ -33,6 +33,10 @@
     NSInteger pageCount;
     
     NSMutableArray *pageViews;
+    
+    NSMutableArray *propertySections;
+    NSMutableArray *deletedSections;
+    NSMutableArray *toAddSections;
 }
 @end
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
@@ -80,7 +84,8 @@ CGFloat animatedDistance;
     
     [HUD show:YES];
     HUD.labelText = @"جاري تحميل الأقسام..";
-    
+    [self loadCountries];
+
     // Editing Property
     if (self.isEditable) {
         self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
@@ -103,7 +108,6 @@ CGFloat animatedDistance;
     else{
         
 
-        [self loadCountries];
         [self getExistSection];
     }
 	// Do any additional setup after loading the view.
@@ -346,7 +350,6 @@ CGFloat animatedDistance;
 }
 
 
-
 - (IBAction)addButtonPressed:(id)sender {
     
   
@@ -396,23 +399,7 @@ CGFloat animatedDistance;
     
         
         if (self.isEditable) {
-            // Create the PFQuery
-            PFQuery *query = [PFQuery queryWithClassName:@"Properties"];
-            
-            // Retrieve the object by id
-            [query getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
-                
-                [pfObject setObject:self.propertyTitle.text forKey:@"Title"];
-                [pfObject setObject:chosenCountry.countryName forKey:@"country"];
-                [pfObject setObject:self.city.text forKey:@"city"];
-                [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
-                
-                [pfObject setObject:chosenSectionArray forKey:@"sections"];
-                
-                
-                [pfObject setObject:[PFUser currentUser] forKey:@"userID"];
-                [pfObject saveInBackground];
-            }];
+            [self updateAfterEdit];
         }
         
         else{
@@ -455,8 +442,6 @@ CGFloat animatedDistance;
                                 }
                             }
                         }];
-                        
-                        //[self refresh:nil];
                     }
                     else{
                         // Log details of the failure
@@ -675,8 +660,6 @@ CGFloat animatedDistance;
 }
 
 
-
-
 #pragma mark - UIAlertView Delegate handler
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -705,9 +688,6 @@ CGFloat animatedDistance;
     }    
 
 }
-
-
-
 
 #pragma mark - UIPicker view handler
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -752,7 +732,6 @@ CGFloat animatedDistance;
                                             self.pickerView.frame.size.height);
     }];
 }
-
 
 -(IBAction)showPicker
 {
@@ -845,8 +824,6 @@ CGFloat animatedDistance;
     [UIView commitAnimations];
 }
 
-
-
 #pragma mark - UITextFieldDelegate protocol
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -876,7 +853,6 @@ CGFloat animatedDistance;
 
 }
 
-
 #pragma mark - KSEnhancedKeyboardDelegate Protocol
 
 - (void)doneDidTouchDown
@@ -894,10 +870,9 @@ CGFloat animatedDistance;
     
 }
 
-
 #pragma mark - paging & scrollView
 
--(void)setScrollView{
+- (void)setScrollView{
     self.pageControl.currentPage = pageCount;
     self.pageControl.numberOfPages = pageCount;
     CGSize pagesScrollViewSize = self.imageScrollView.frame.size;
@@ -907,7 +882,6 @@ CGFloat animatedDistance;
         [pageViews addObject:[NSNull null]];
     }
     [self loadVisiblePages];
-
 }
 
 - (void)loadVisiblePages {
@@ -978,8 +952,8 @@ CGFloat animatedDistance;
     [self loadVisiblePages];
 }
 
+#pragma mark - edit a property
 
-// Editing
 -(void)loadSectionPhoto{
     
     PFQuery *currentProperty = [PFQuery queryWithClassName:@"PropertyPhoto"];
@@ -1020,6 +994,7 @@ CGFloat animatedDistance;
     [secQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             //Save results and update the table
+            propertySections = [[NSMutableArray alloc] initWithArray:objects];
             sectionsArray = [[NSMutableArray alloc]initWithArray:objects];
             chosenSectionArray = [[NSMutableArray alloc]initWithArray:objects];
             sectionsArray = [self compareSectionsArray:mainSectionsArray andArray:sectionsArray];
@@ -1028,4 +1003,147 @@ CGFloat animatedDistance;
         }
     }];
 }
+
+
+- (void) updateAfterEdit{
+    
+    deletedSections=[[NSMutableArray alloc] init];
+    
+    for (int i=0; i<propertySections.count; i++) {
+        NSString *temp=(NSString*)[(PFObject*)[propertySections objectAtIndex:i] objectForKey:@"name"];
+        
+        if (![chosenSectionArray containsObject:temp]) {
+            [deletedSections addObject:[propertySections objectAtIndex:i]];
+        }
+    }
+    
+    toAddSections=[[NSMutableArray alloc] init];
+    BOOL isMatched;
+    for (int i=0; i<chosenSectionArray.count; i++) {
+        isMatched=false;
+        for (int j=0; j<propertySections.count; j++) {
+            NSString *temp=(NSString*)[(PFObject*)[propertySections objectAtIndex:j] objectForKey:@"name"];
+            if ([[chosenSectionArray objectAtIndex:i] isEqualToString:temp]) {
+                isMatched=true;
+                break;
+            }
+        }
+        if (!isMatched) {
+            [toAddSections addObject:[chosenSectionArray objectAtIndex:i]];
+        }
+    }
+    
+    
+    // 1- Delete photos of deletedSections from SectionsPhotos
+
+    for (int i=0; i<deletedSections.count; i++) {
+        PFQuery *query = [PFQuery queryWithClassName:@"SectionPhoto"];
+        [query whereKey:@"sectionID" equalTo:(PFObject*)[deletedSections objectAtIndex:i]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved %d scores.", objects.count);
+                // Do something with the found objects
+                [PFObject deleteAll:objects];
+               
+            }
+            else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
+    
+    // 2- Remove Deleted sections
+    if (deletedSections.count!=0) {
+        [PFObject deleteAll:deletedSections];
+
+    }
+    
+    // 3- Add new sections
+    
+    //set section with property
+    NSMutableArray* arr = [[NSMutableArray alloc] init];
+    
+    // TODO : Ask Ghassan about this array
+    for (int i = 0; i < [toAddSections count]; i++) {
+        PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
+        [newSec setObject:[PFUser currentUser] forKey:@"userID"];
+        [newSec setObject:[toAddSections objectAtIndex:i] forKey:@"name"];
+        [newSec setObject:@"secIcon.png" forKey:@"icon"];
+        [newSec setObject:self.propertyID forKey:@"propertyID"];
+        [arr addObject:newSec];
+        
+    }
+    if (arr.count!=0) {
+        [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
+         {
+             if (!error)
+             {
+                 // 4- Update property info
+                 // Create the PFQuery
+                 PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
+                 // Retrieve the object by id
+                 [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
+                     
+                     [pfObject setObject:self.propertyTitle.text forKey:@"Title"];
+                     
+                     [pfObject setObject:self.country.text forKey:@"country"];
+                     
+                     [pfObject setObject:self.city.text forKey:@"city"];
+                     
+                     [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
+                     
+                     [pfObject setObject:chosenSectionArray forKey:@"sections"];
+                     
+                     [pfObject setObject:[PFUser currentUser] forKey:@"userID"];
+                     
+                     if (!error) {
+                         [pfObject saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
+                             if (done) {
+                                 [HUD hide:YES];
+                                 
+                                 [self dismissViewControllerAnimated:YES completion:nil];
+                             }
+                         }];
+                     }
+                 }];
+             }
+             
+         }];
+
+    }
+    else{
+        PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
+        // Retrieve the object by id
+        [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
+            
+            [pfObject setObject:self.propertyTitle.text forKey:@"Title"];
+            
+            [pfObject setObject:self.country.text forKey:@"country"];
+            
+            [pfObject setObject:self.city.text forKey:@"city"];
+            
+            [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
+            
+            [pfObject setObject:chosenSectionArray forKey:@"sections"];
+            
+            [pfObject setObject:[PFUser currentUser] forKey:@"userID"];
+            
+            if (!error) {
+                [pfObject saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
+                    if (done) {
+                        [HUD hide:YES];
+                        
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }
+                }];
+            }
+            
+        }];
+
+    }
+    
+}
+
 @end

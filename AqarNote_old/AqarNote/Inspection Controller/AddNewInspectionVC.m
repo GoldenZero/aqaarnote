@@ -45,28 +45,35 @@
     enhancedKeyboard.delegate = self;
 
     [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-
-    self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
-    self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
-    NSString *note=[self.propertyID objectForKey:@"Description"];
-    if ([note isEqual:@" "]) {
-        self.notesTxtView.text=@"لا يوجد ملاحظات";
-    }
-    else{
-       
-        self.notesTxtView.text=note;
-    }
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
-    [self loadSectionPhoto];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    for (UIView *subview in self.sectionScrollView.subviews) {
-        [subview removeFromSuperview];
-    }
-    [self getSectionsForProperty:self.propertyID];
-    //[self prepareSections];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
+    // Retrieve the object by id
+    [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
+        self.propertyID=pfObject;
+        self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
+        self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
+        NSString *note=[self.propertyID objectForKey:@"Description"];
+        if ([note isEqual:@" "]) {
+            self.notesTxtView.text=@"لا يوجد ملاحظات";
+        }
+        else{
+            
+            self.notesTxtView.text=note;
+        }
+        
+        [self loadSectionPhoto];
+ 
+        for (UIView *subview in self.sectionScrollView.subviews) {
+            [subview removeFromSuperview];
+        }
+        [self getSectionsForProperty:self.propertyID];
+
+    }];
+       //[self prepareSections];
 
 }
 
