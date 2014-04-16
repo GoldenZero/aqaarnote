@@ -26,7 +26,8 @@
 @property (strong, nonatomic) IBOutlet UIView *pickerView;
 @property (strong, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
-
+@property (strong, nonatomic) PFObject* propertyID;
+@property BOOL isEditable;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
 - (IBAction)openCountryPickerBtnPrss:(id)sender;

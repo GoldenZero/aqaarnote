@@ -7,6 +7,7 @@
 //
 
 #import "AddNewInspectionVC.h"
+#import "AddNewAqarVC.h"
 
 @interface AddNewInspectionVC ()
 {
@@ -238,6 +239,13 @@
         vc.propertyID = self.propertyID;
         vc.sectionID = mySection;
     }
+    if ([[segue identifier] isEqualToString:@"editProperty"]){
+        
+        AddNewAqarVC *AVC=segue.destinationViewController;
+        AVC.propertyID=self.propertyID;
+        AVC.isEditable=YES;        
+    }
+
 }
 
 
@@ -373,6 +381,8 @@
 
 - (IBAction)editButtonPressed:(id)sender {
     
+    [self performSegueWithIdentifier:@"editProperty" sender:self];
+
     
 }
 
@@ -420,8 +430,6 @@
         [MBProgressHUD  hideHUDForView:self.view animated:YES];
 
     }];
-    
-
 }
 
 #pragma mark - paging & scrollView
@@ -524,4 +532,6 @@
     [self.notesTxtView resignFirstResponder];
     
 }
+
+
 @end

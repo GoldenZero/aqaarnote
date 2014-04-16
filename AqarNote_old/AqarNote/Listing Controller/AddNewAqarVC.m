@@ -80,9 +80,32 @@ CGFloat animatedDistance;
     
     [HUD show:YES];
     HUD.labelText = @"جاري تحميل الأقسام..";
+    
+    // Editing Property
+    if (self.isEditable) {
+        self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
+        self.country.text = [self.propertyID objectForKey:@"country"];
+        self.city.text=[self.propertyID objectForKey:@"city"];
+        NSString *note=[self.propertyID objectForKey:@"Description"];
+        if ([note isEqual:@" "]) {
+            self.descriptionsTxtView.text=@"لا يوجد ملاحظات";
+        }
+        else{
+            
+            self.descriptionsTxtView.text=note;
+        }
 
-    [self loadCountries];
-    [self getExistSection];
+        [self getSectionsForProperty:self.propertyID];
+        [self loadSectionPhoto];
+    }
+    
+    // Add property
+    else{
+        
+
+        [self loadCountries];
+        [self getExistSection];
+    }
 	// Do any additional setup after loading the view.
 }
 
@@ -371,6 +394,28 @@ CGFloat animatedDistance;
     [HUD show:YES];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
     
+        
+        if (self.isEditable) {
+            // Create the PFQuery
+            PFQuery *query = [PFQuery queryWithClassName:@"Properties"];
+            
+            // Retrieve the object by id
+            [query getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
+                
+                [pfObject setObject:self.propertyTitle.text forKey:@"Title"];
+                [pfObject setObject:chosenCountry.countryName forKey:@"country"];
+                [pfObject setObject:self.city.text forKey:@"city"];
+                [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
+                
+                [pfObject setObject:chosenSectionArray forKey:@"sections"];
+                
+                
+                [pfObject setObject:[PFUser currentUser] forKey:@"userID"];
+                [pfObject saveInBackground];
+            }];
+        }
+        
+        else{
     PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
 
     
@@ -471,24 +516,8 @@ CGFloat animatedDistance;
          
      }];
     }
-    // Create relationship
-   // [newPost setObject:[PFUser currentUser] forKey:@"owner"];
-    
-    // Save the new post
-  /*  [newPost saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            
-           // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-
-            [self dismissViewControllerAnimated:YES completion:nil];
-
-        }
-    }];*/
-
-    
-    //[self.navigationController popViewControllerAnimated:YES];
-    //[self dismissViewControllerAnimated:YES completion:nil];
-
+    }
+  
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
@@ -947,5 +976,56 @@ CGFloat animatedDistance;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // Load the pages that are now on screen
     [self loadVisiblePages];
+}
+
+
+// Editing
+-(void)loadSectionPhoto{
+    
+    PFQuery *currentProperty = [PFQuery queryWithClassName:@"PropertyPhoto"];
+    [currentProperty whereKey:@"propertyID" equalTo:self.propertyID];
+    
+    [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            PFFile *theImage;
+            for (PFObject* ob in objects) {
+                theImage = [ob objectForKey:@"imageFile"];
+                UIImage *image=[UIImage imageWithData:[theImage getData]];
+                [pageImages addObject:image];
+            }
+        }
+        if (pageImages.count==0) {
+            UIImage *image=[UIImage imageNamed:@"default_image_home"];
+            [pageImages addObject:image];
+            
+        }
+        pageCount=pageImages.count;
+        
+        [self setScrollView];
+        [MBProgressHUD  hideHUDForView:self.view animated:YES];
+        
+    }];
+}
+
+-(void)getSectionsForProperty:(PFObject*)propID
+{
+    
+    PFQuery *secQuery = [PFQuery queryWithClassName:@"Sections"];
+    [secQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
+    [secQuery whereKey:@"propertyID" equalTo:self.propertyID];
+    
+    
+    // Run the query
+    [secQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            //Save results and update the table
+            sectionsArray = [[NSMutableArray alloc]initWithArray:objects];
+            chosenSectionArray = [[NSMutableArray alloc]initWithArray:objects];
+            sectionsArray = [self compareSectionsArray:mainSectionsArray andArray:sectionsArray];
+
+            [self prepareExistingSections];
+        }
+    }];
 }
 @end

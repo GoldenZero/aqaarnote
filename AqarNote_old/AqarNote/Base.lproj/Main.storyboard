@@ -121,7 +121,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pCL-IU-K4p">
-                                        <rect key="frame" x="14" y="15" width="19" height="19"/>
+                                        <rect key="frame" x="0.0" y="3" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="plus.png">
@@ -136,7 +136,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="As2-Bf-w0V">
-                                        <rect key="frame" x="279" y="14" width="21" height="22"/>
+                                        <rect key="frame" x="276" y="3" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Search.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,7 +181,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RZX-Kc-aJy">
-                                        <rect key="frame" x="0.0" y="11" width="46" height="30"/>
+                                        <rect key="frame" x="0.0" y="4" width="46" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="رجوع">
@@ -196,7 +196,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2vB-PH-SPI">
-                                        <rect key="frame" x="274" y="11" width="46" height="30"/>
+                                        <rect key="frame" x="274" y="4" width="46" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="تعديل">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -552,7 +552,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4CU-MH-PGg">
-                                        <rect key="frame" x="17" y="16" width="19" height="19"/>
+                                        <rect key="frame" x="0.0" y="5" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="plus.png">
@@ -567,7 +567,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SBJ-rd-IgN">
-                                        <rect key="frame" x="279" y="14" width="21" height="22"/>
+                                        <rect key="frame" x="276" y="5" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Search.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -650,7 +650,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aja-E3-jlU">
-                                        <rect key="frame" x="11" y="10" width="30" height="30"/>
+                                        <rect key="frame" x="0.0" y="3" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="حفظ">
@@ -661,7 +661,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hWu-cb-tXY">
-                                        <rect key="frame" x="258" y="10" width="51" height="30"/>
+                                        <rect key="frame" x="276" y="3" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="إلغاء">
@@ -746,7 +746,7 @@
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="gMW-OX-0hh">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="gLd-EQ-14C" id="Sv1-pr-c8I"/>
                                         </connections>
@@ -870,7 +870,6 @@
                                         </state>
                                         <connections>
                                             <action selector="cancelButtonPressed:" destination="hqx-3z-eUH" eventType="touchUpInside" id="7A5-Re-PQk"/>
-                                            <action selector="cancelButtonPressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="Pxq-a1-aKP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -910,21 +909,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Obr-fQ-jh1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Obr-fQ-jh1">
                                         <rect key="frame" x="269" y="0.0" width="51" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="تحرير">
+                                        <state key="normal" title="تعديل">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelButtonPressed:" destination="hqx-3z-eUH" eventType="touchUpInside" id="XIQ-JD-lUd"/>
-                                            <action selector="cancelButtonPressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="nQt-ms-CyS"/>
-                                            <action selector="editButtonPressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="zFs-rK-p8I"/>
+                                            <action selector="editButtonPressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="U9b-pY-FKP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1qp-21-VgH">
-                                        <rect key="frame" x="14" y="15" width="12" height="21"/>
+                                        <rect key="frame" x="0.0" y="3" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="header_white_arrow.png">
@@ -932,8 +929,6 @@
                                         </state>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="u9h-yW-PtB"/>
-                                            <action selector="cancelButtonPressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="2Bj-Ko-xfr"/>
-                                            <action selector="cancelButtonPressed:" destination="hqx-3z-eUH" eventType="touchUpInside" id="yXI-Ya-25X"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -983,7 +978,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" id="Oid-nP-Blk">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" id="Oid-nP-Blk">
                                         <rect key="frame" x="22" y="192" width="276" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1022,6 +1017,7 @@
                         <outlet property="sectionScrollView" destination="SsN-XM-4O5" id="dyk-iR-J00"/>
                         <outlet property="sectionsLabel" destination="XQ6-mA-dRB" id="nfg-8l-wIH"/>
                         <segue destination="u0j-NF-wWS" kind="modal" identifier="showAddInspectVC" modalTransitionStyle="crossDissolve" id="nlo-Gd-lg6"/>
+                        <segue destination="gLd-EQ-14C" kind="modal" identifier="editProperty" id="wZ5-50-hoO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FT8-yt-Utl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1041,17 +1037,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5Ot-sF-IEb">
-                                        <rect key="frame" x="14" y="14" width="12" height="21"/>
+                                        <rect key="frame" x="0.0" y="3" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="header_white_arrow.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonPressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="WPa-gM-hDw"/>
                                             <action selector="backButtonPressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="adJ-PP-c6h"/>
-                                            <action selector="cancelButtonPressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="WG5-aB-Mvy"/>
-                                            <action selector="cancelButtonPressed:" destination="hqx-3z-eUH" eventType="touchUpInside" id="mhN-DG-Hxa"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YDg-Tn-5dK">
@@ -1268,6 +1261,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yRB-Ic-eoT"/>
+        <segue reference="V6h-qe-NuI"/>
+        <segue reference="wZ5-50-hoO"/>
     </inferredMetricsTieBreakers>
 </document>
