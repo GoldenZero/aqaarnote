@@ -15,6 +15,7 @@
 		7C516C9018DB7BAC00752390 /* default_image_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C516C8C18DB7BAC00752390 /* default_image_home.png */; };
 		7C516C9118DB7BAC00752390 /* default_image_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C516C8D18DB7BAC00752390 /* default_image_home@2x.png */; };
 		7C516C9518DB8FA200752390 /* EnhancedKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C516C9418DB8FA200752390 /* EnhancedKeyboard.m */; };
+		7C53FB7A1900563D00BE31AB /* deleteBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C53FB791900563D00BE31AB /* deleteBtn.png */; };
 		7C57A9FB18CF8CBE00DE6259 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C57A9FA18CF8CBE00DE6259 /* Parse.framework */; };
 		7C57AA0318CF8E2000DE6259 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57AA0018CF8E2000DE6259 /* LoginVC.m */; };
 		7C57AA0418CF8E2000DE6259 /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57AA0218CF8E2000DE6259 /* SignUpVC.m */; };
@@ -229,6 +230,7 @@
 		7C516C8D18DB7BAC00752390 /* default_image_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_image_home@2x.png"; sourceTree = "<group>"; };
 		7C516C9318DB8FA200752390 /* EnhancedKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnhancedKeyboard.h; sourceTree = "<group>"; };
 		7C516C9418DB8FA200752390 /* EnhancedKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnhancedKeyboard.m; sourceTree = "<group>"; };
+		7C53FB791900563D00BE31AB /* deleteBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteBtn.png; sourceTree = "<group>"; };
 		7C57A9FA18CF8CBE00DE6259 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Libraries/Parse.framework; sourceTree = "<group>"; };
 		7C57A9FF18CF8E2000DE6259 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		7C57AA0018CF8E2000DE6259 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 				84B904FE18A22F57003771E1 /* app icons */,
 				84B904F918A228E3003771E1 /* Default.png */,
 				84B9051618A26356003771E1 /* takePhotobkg.png */,
+				7C53FB791900563D00BE31AB /* deleteBtn.png */,
 				84B9051718A26356003771E1 /* takePhotobkg@2x.png */,
 				84B904FB18A22B8A003771E1 /* Default-690.png */,
 				84CC6999189FC4030027C844 /* arrow_lift_side.png */,
@@ -1043,6 +1046,7 @@
 				7C57AAC418CF8EAE00DE6259 /* text_green_field.png in Resources */,
 				7C57AA9718CF8EAE00DE6259 /* header_logo@2x.png in Resources */,
 				7C57AAAF18CF8EAE00DE6259 /* orange_bar_send_report_btn@2x.png in Resources */,
+				7C53FB7A1900563D00BE31AB /* deleteBtn.png in Resources */,
 				7C57AAA118CF8EAE00DE6259 /* note_write_field@2x.png in Resources */,
 				84B9050D18A22F57003771E1 /* 40.png in Resources */,
 				84CC6980189F77510027C844 /* icon_satellite.png in Resources */,

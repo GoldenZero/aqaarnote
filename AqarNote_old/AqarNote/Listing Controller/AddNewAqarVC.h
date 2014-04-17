@@ -29,6 +29,8 @@
 @property (strong, nonatomic) PFObject* propertyID;
 @property BOOL isEditable;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
+@property (strong, nonatomic) IBOutlet UIButton *addImgesButton;
+@property (strong, nonatomic) IBOutlet UIButton *deletePhotoButton;
 
 - (IBAction)openCountryPickerBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;
@@ -39,4 +41,5 @@
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)addSectionBtnPrss:(id)sender;
 - (IBAction)chooseCountryBtnPrss:(id)sender;
+- (IBAction)deletePhotoBtnPrss:(id)sender;
 @end

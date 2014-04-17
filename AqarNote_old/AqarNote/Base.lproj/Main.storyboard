@@ -751,8 +751,8 @@
                                             <outlet property="delegate" destination="gLd-EQ-14C" id="Sv1-pr-c8I"/>
                                         </connections>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="5mU-6X-Txa">
-                                        <rect key="frame" x="149" y="42" width="22" height="22"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="5mU-6X-Txa">
+                                        <rect key="frame" x="8" y="19" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -780,6 +780,26 @@
                                             <outlet property="delegate" destination="gLd-EQ-14C" id="QxX-ni-k6M"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CtS-a3-VCa">
+                                        <rect key="frame" x="123" y="19" width="77" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="takePhotobkg.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadImagePressed:" destination="gLd-EQ-14C" eventType="touchUpInside" id="FIo-IR-tsm"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DJ3-6b-ihR">
+                                        <rect key="frame" x="8" y="59" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="deleteBtn.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deletePhotoBtnPrss:" destination="gLd-EQ-14C" eventType="touchUpInside" id="IKe-eB-5Ww"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <connections>
                                     <outlet property="delegate" destination="gLd-EQ-14C" id="TRC-ny-zCp"/>
@@ -831,10 +851,12 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="addImgesButton" destination="CtS-a3-VCa" id="wvU-pU-9HD"/>
                         <outlet property="city" destination="Efv-aN-eXT" id="dxn-59-BoN"/>
                         <outlet property="contentScrollView" destination="khx-rg-lbv" id="kUB-Qy-T2M"/>
                         <outlet property="countriesPickerView" destination="XUk-Hq-bJC" id="5BN-Kb-DVz"/>
                         <outlet property="country" destination="nf3-wU-83M" id="81r-Cb-zOj"/>
+                        <outlet property="deletePhotoButton" destination="DJ3-6b-ihR" id="lzU-9g-69f"/>
                         <outlet property="descriptionsTxtView" destination="6JL-2N-YfB" id="HdR-DA-TQg"/>
                         <outlet property="imageScrollView" destination="gMW-OX-0hh" id="l8S-rY-Det"/>
                         <outlet property="pageControl" destination="6ks-vK-nXg" id="rnv-vR-owf"/>
@@ -1231,6 +1253,7 @@
         <image name="broken_circle_btn.png" width="77" height="77"/>
         <image name="clean_circle_btn.png" width="77" height="77"/>
         <image name="contactus_tab_gray.png" width="24" height="20"/>
+        <image name="deleteBtn.png" width="24" height="24"/>
         <image name="dirty_circle_btn.png" width="77" height="77"/>
         <image name="good_circvle_btn.png" width="77" height="77"/>
         <image name="header_logo.png" width="25" height="28"/>
@@ -1253,6 +1276,7 @@
         <image name="sign_in_btn.png" width="235" height="45"/>
         <image name="tabe_inspection.png" width="20" height="22"/>
         <image name="tabe_propority.png" width="21" height="22"/>
+        <image name="takePhotobkg.png" width="77" height="70"/>
     </resources>
     <color key="tintColor" red="0.25882354378700256" green="0.59215688705444336" blue="0.21960785984992981" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

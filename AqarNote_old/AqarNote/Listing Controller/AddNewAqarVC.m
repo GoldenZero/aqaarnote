@@ -189,13 +189,7 @@ CGFloat animatedDistance;
     }
     
     [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
-    
-    
-//    CGRect contentRect = CGRectZero;
-//    for (UIView *view in self.contentScrollView.subviews) {
-//        contentRect = CGRectUnion(contentRect, view.frame);
-//    }
-//    self.contentScrollView.contentSize = contentRect.size;
+
     [HUD hide:YES];
 }
 
@@ -306,6 +300,7 @@ CGFloat animatedDistance;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
   //  [self.uploadImageBtn setBackgroundImage:image forState:UIControlStateNormal];
@@ -522,6 +517,15 @@ CGFloat animatedDistance;
     [self closePicker];
 }
 
+- (IBAction)deletePhotoBtnPrss:(id)sender {
+    
+    [self purgePage:self.pageControl.currentPage];
+    [pageImages removeObjectAtIndex:self.pageControl.currentPage];
+    pageCount=pageImages.count;
+    [self setScrollView];
+    
+}
+
 #pragma mark - UIActionSheetDelegate Method
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -648,10 +652,7 @@ CGFloat animatedDistance;
         [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@YES];
         [btn setImage:[UIImage imageNamed:@"green_dot_option.png"] forState:UIControlStateNormal];
         
-        
     }
-
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -873,6 +874,18 @@ CGFloat animatedDistance;
 #pragma mark - paging & scrollView
 
 - (void)setScrollView{
+    if (pageImages.count!=0) {
+        self.addImgesButton.hidden=YES;
+        self.uploadImageBtn.hidden=NO;
+        self.deletePhotoButton.hidden=NO;
+    }
+    
+    else if (pageImages.count==0) {
+            self.addImgesButton.hidden=NO;
+            self.uploadImageBtn.hidden=YES;
+            self.deletePhotoButton.hidden=YES;
+        
+    }
     self.pageControl.currentPage = pageCount;
     self.pageControl.numberOfPages = pageCount;
     CGSize pagesScrollViewSize = self.imageScrollView.frame.size;
@@ -969,11 +982,6 @@ CGFloat animatedDistance;
                 [pageImages addObject:image];
             }
         }
-        if (pageImages.count==0) {
-            UIImage *image=[UIImage imageNamed:@"default_image_home"];
-            [pageImages addObject:image];
-            
-        }
         pageCount=pageImages.count;
         
         [self setScrollView];
@@ -1054,6 +1062,50 @@ CGFloat animatedDistance;
         }];
     }
     
+    // Delete all old properties photo
+    
+    PFQuery *currentProperty = [PFQuery queryWithClassName:@"PropertyPhoto"];
+    [currentProperty whereKey:@"propertyID" equalTo:self.propertyID];
+    
+    [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [PFObject deleteAll:objects];
+        }
+    }];
+    for (int i=0; i<pageImages.count; i++) {
+        NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
+        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+        
+        // Save PFFile
+        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+                // Create a PFObject around a PFFile and associate it with the current user
+                PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
+                [userPhoto setObject:imageFile forKey:@"imageFile"];
+                
+                
+                // Set the access control list to current user for security purposes
+                userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+                
+                PFUser *user = [PFUser currentUser];
+                [userPhoto setObject:user forKey:@"user"];
+                [userPhoto setObject:self.propertyID forKey:@"propertyID"];
+                
+                [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                    }
+                    else{
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    }
+                }];
+            }
+            else{
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
+
     // 2- Remove Deleted sections
     if (deletedSections.count!=0) {
         [PFObject deleteAll:deletedSections];
@@ -1075,14 +1127,13 @@ CGFloat animatedDistance;
         [arr addObject:newSec];
         
     }
+    PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
     if (arr.count!=0) {
         [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
          {
              if (!error)
              {
                  // 4- Update property info
-                 // Create the PFQuery
-                 PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
                  // Retrieve the object by id
                  [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
                      
@@ -1114,7 +1165,6 @@ CGFloat animatedDistance;
 
     }
     else{
-        PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
         // Retrieve the object by id
         [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
             
