@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XCDFormInputAccessoryView.h"
 #import "BaseViewController.h"
-@interface BrowseInspectionVC : BaseViewController<UINavigationControllerDelegate,UIScrollViewDelegate, UIImagePickerControllerDelegate,UITextViewDelegate,MBProgressHUDDelegate>
+@interface BrowseInspectionVC : BaseViewController<UINavigationControllerDelegate,UIScrollViewDelegate, UIImagePickerControllerDelegate,UITextViewDelegate,MBProgressHUDDelegate,UIAlertViewDelegate>
 {
     MBProgressHUD *HUD;
     

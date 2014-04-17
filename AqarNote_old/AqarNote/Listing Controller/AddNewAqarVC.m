@@ -518,13 +518,11 @@ CGFloat animatedDistance;
 }
 
 - (IBAction)deletePhotoBtnPrss:(id)sender {
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تأكيد" message:@"هل تريد بالتأكيد حذف هذه الصورة؟" delegate:self cancelButtonTitle:@"لا" otherButtonTitles:@"نعم", nil];
+    av.tag=2;
+    [av show];
     
-    [self purgePage:self.pageControl.currentPage];
-    [pageImages removeObjectAtIndex:self.pageControl.currentPage];
-    pageCount=pageImages.count;
-    [self setScrollView];
-    
-}
+   }
 
 #pragma mark - UIActionSheetDelegate Method
 
@@ -664,26 +662,39 @@ CGFloat animatedDistance;
 #pragma mark - UIAlertView Delegate handler
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    // if cancel
-    if (buttonIndex==0) {
-       // [alertView dismissWithClickedButtonIndex:0 animated:YES];
-    }
-    // if add
-    else{
-        [sectionsArray addObject:[[alertView textFieldAtIndex:0] text]];
-        [chosenBooleanArray addObject:@YES];
-        [self.sectionsTableView reloadData];
-        CGRect frame = self.sectionsTableView.frame;
-        frame.size.height = self.sectionsTableView.contentSize.height;
-        self.sectionsTableView.frame = frame;
-        
-        CGFloat scrollViewHeight = 0.0f;
-        for (UIView* view in self.contentScrollView.subviews)
-        {
-            scrollViewHeight += view.frame.size.height;
+    
+    // if confirm delete msg
+    if (alertView.tag==2) {
+        if (buttonIndex!=0) {
+            [self purgePage:self.pageControl.currentPage];
+            [pageImages removeObjectAtIndex:self.pageControl.currentPage];
+            pageCount=pageImages.count;
+            [self setScrollView];
+
         }
         
-        [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
+    }
+    // if add section msg
+    else{
+        
+        if (buttonIndex!=0) {
+            [sectionsArray addObject:[[alertView textFieldAtIndex:0] text]];
+            [chosenBooleanArray addObject:@YES];
+            [self.sectionsTableView reloadData];
+            CGRect frame = self.sectionsTableView.frame;
+            frame.size.height = self.sectionsTableView.contentSize.height;
+            self.sectionsTableView.frame = frame;
+            
+            CGFloat scrollViewHeight = 0.0f;
+            for (UIView* view in self.contentScrollView.subviews)
+            {
+                scrollViewHeight += view.frame.size.height;
+            }
+            
+            [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
+
+        }
+        
         
 
     }    

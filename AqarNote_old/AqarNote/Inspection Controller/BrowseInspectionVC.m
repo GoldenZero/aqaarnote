@@ -82,10 +82,10 @@ CGFloat animatedDistance;
 
 
 - (IBAction)deleteImgBtnPrss:(id)sender {
-    [self purgePage:self.pageControl.currentPage];
-    [pageImages removeObjectAtIndex:self.pageControl.currentPage];
-    pageCount=pageImages.count;
-    [self setScrollView];
+    
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تأكيد" message:@"هل تريد بالتأكيد حذف هذه الصورة؟" delegate:self cancelButtonTitle:@"لا" otherButtonTitles:@"نعم", nil];
+    av.tag=2;
+    [av show];
 
 }
 
@@ -577,4 +577,22 @@ CGFloat animatedDistance;
     
     [UIView commitAnimations];
 }
+
+#pragma mark - UIAlertView Delegate handler
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (alertView.tag==2) {
+        if (buttonIndex!=0) {
+            [self purgePage:self.pageControl.currentPage];
+            [pageImages removeObjectAtIndex:self.pageControl.currentPage];
+            pageCount=pageImages.count;
+            [self setScrollView];
+            
+        }
+        
+    }
+    
+}
+
 @end
