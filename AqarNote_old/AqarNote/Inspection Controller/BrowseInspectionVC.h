@@ -31,7 +31,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *cleanButton;
 @property (strong, nonatomic) IBOutlet UIButton *buttonBroken;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
+@property (strong, nonatomic) IBOutlet UIButton *addImgBtnPrss;
+@property (strong, nonatomic) IBOutlet UIButton *deleteImgButton;
 
+- (IBAction)deleteImgBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;
 - (IBAction)backButtonPressed:(id)sender;

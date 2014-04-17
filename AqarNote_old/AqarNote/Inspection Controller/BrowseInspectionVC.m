@@ -44,10 +44,27 @@ CGFloat animatedDistance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"يتم الآن التحميل";
+    [HUD show:YES];
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
     
     pageImages=[[NSMutableArray alloc] init];
 	// Do any additional setup after loading the view.
     self.sectionTitle.text = [self.sectionID objectForKey:@"name"];
+    NSString *note=[self.sectionID objectForKey:@"note"];
+    if (![note isEqualToString:@""]) {
+        self.noteTextView.text=note;
+    }
+    NSString *temp=[self.sectionID objectForKey:@"status"];
+    if (temp!=nil) {
+        UIButton* btn = [[UIButton alloc]init];
+        btn.tag=[temp integerValue];
+        [self chooseStatusPressed:btn];
+    }
     self.inputAccessoryView = [XCDFormInputAccessoryView new];
     self.contentScrollView.contentSize =CGSizeMake(320, 518);
 
@@ -56,12 +73,21 @@ CGFloat animatedDistance;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self setScrollView];
+    
+   // [self setScrollView];
 
 }
 
 #pragma mark - Buttons Actions
 
+
+- (IBAction)deleteImgBtnPrss:(id)sender {
+    [self purgePage:self.pageControl.currentPage];
+    [pageImages removeObjectAtIndex:self.pageControl.currentPage];
+    pageCount=pageImages.count;
+    [self setScrollView];
+
+}
 
 - (IBAction)uploadImagePressed:(id)sender {
     
@@ -108,8 +134,7 @@ CGFloat animatedDistance;
 
 - (void)uploadImage:(NSData *)imageData
 {
-  
-        // Add uploaded image to the scrollView
+          // Add uploaded image to the scrollView
         if (pageImages.count==3) {
             UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
             
@@ -122,7 +147,6 @@ CGFloat animatedDistance;
             [pageImages addObject:currentImage];
             pageCount=[pageImages count];
             [self setScrollView];
-            
         }
 
 }
@@ -142,47 +166,68 @@ CGFloat animatedDistance;
     [HUD show:YES];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
     
-    for (int i=0; i<pageImages.count; i++) {
-        NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
-        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-        
-        // Save PFFile
-        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    // Delete all old photos
+    
+    PFQuery *deleteQuery = [PFQuery queryWithClassName:@"SectionPhoto"];
+    [deleteQuery whereKey:@"sectionID" equalTo:self.sectionID];
+    [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
-            // Create a PFObject around a PFFile and associate it with the current user
-            PFObject *userPhoto = [PFObject objectWithClassName:@"SectionPhoto"];
-            [userPhoto setObject:imageFile forKey:@"imageFile"];
-
-            // Set the access control list to current user for security purposes
-            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-            PFUser *user = [PFUser currentUser];
-            [userPhoto setObject:user forKey:@"user"];
-    
-            [userPhoto setObject:self.propertyID forKey:@"propertyID"];
-            [userPhoto setObject:self.sectionID forKey:@"sectionID"];
-    
-            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                }
             
-                else{
-                // Log details of the failure
-                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                }
+            [PFObject deleteAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
+                // Add the new photos
+                if (pageImages.count!=0) {
+                    for (int i=0; i<pageImages.count; i++) {
+                        NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
+                        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+                        
+                        // Save PFFile
+                        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            if (!error) {
+                                
+                                // Create a PFObject around a PFFile and associate it with the current user
+                                PFObject *userPhoto = [PFObject objectWithClassName:@"SectionPhoto"];
+                                [userPhoto setObject:imageFile forKey:@"imageFile"];
+                                
+                                // Set the access control list to current user for security purposes
+                                userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+                                PFUser *user = [PFUser currentUser];
+                                [userPhoto setObject:user forKey:@"user"];
+                                
+                                [userPhoto setObject:self.propertyID forKey:@"propertyID"];
+                                [userPhoto setObject:self.sectionID forKey:@"sectionID"];
+                                
+                                [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                    if (!error) {
+                                    }
+                                    
+                                    else{
+                                        // Log details of the failure
+                                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                                    }
+                                }];
+                            }
+                            else{
+                                // Log details of the failure
+                                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                            }
+                        } progressBlock:^(int percentDone) {
+                            // Update your progress spinner here. percentDone will be between 0 and 100.
+                            HUD.progress = (float)percentDone/100;
+                        }];
+                        
+                    }// end for loop
+                    
+
+                }// end of if 
+               
             }];
         }
-        else{
-            // Log details of the failure
+        else {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-    } progressBlock:^(int percentDone) {
-        // Update your progress spinner here. percentDone will be between 0 and 100.
-        HUD.progress = (float)percentDone/100;
     }];
-        
-    }// end for loop
-    
+
     
     // Retrieve the object by id
     [query getObjectInBackgroundWithId:self.sectionID.objectId block:^(PFObject *CurrSection, NSError *error) {
@@ -363,6 +408,19 @@ CGFloat animatedDistance;
 #pragma mark - paging & scrollView
 
 -(void)setScrollView{
+    if (pageImages.count!=0) {
+        self.addImgBtnPrss.hidden=YES;
+        self.uploadImageBtn.hidden=NO;
+        self.deleteImgButton.hidden=NO;
+    }
+    
+    else if (pageImages.count==0) {
+        self.addImgBtnPrss.hidden=NO;
+        self.uploadImageBtn.hidden=YES;
+        self.deleteImgButton.hidden=YES;
+        
+    }
+
     self.pageControl.currentPage = pageCount;
     self.pageControl.numberOfPages = pageCount;
     CGSize pagesScrollViewSize = self.pagingScrollView.frame.size;
@@ -461,7 +519,10 @@ CGFloat animatedDistance;
                 UIImage *image=[UIImage imageWithData:[theImage getData]];
                 [pageImages addObject:image];
             }
+            
         }
+        [HUD hide:YES];
+
         pageCount=pageImages.count;
         
         [self setScrollView];

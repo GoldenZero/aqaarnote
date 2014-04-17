@@ -48,8 +48,13 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"يتم الآن التحميل";
+    [HUD show:YES];
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    
     PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
     // Retrieve the object by id
     [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
@@ -437,7 +442,7 @@
         [self setScrollView];
         [self prepareSections];
 
-        [MBProgressHUD  hideHUDForView:self.view animated:YES];
+        [HUD hide:YES];
 
     }];
 }
