@@ -183,7 +183,6 @@ CGFloat animatedDistance;
         
     }// end for loop
     
-    [HUD hide:YES];
     
     // Retrieve the object by id
     [query getObjectInBackgroundWithId:self.sectionID.objectId block:^(PFObject *CurrSection, NSError *error) {
@@ -206,8 +205,13 @@ CGFloat animatedDistance;
                  [query whereKey:@"userID" equalTo:[PFUser currentUser]];
                  [query getObjectInBackgroundWithId:self.propertyID.objectId block:^(PFObject *CurrProperty, NSError *error) {
                      CurrProperty[@"lastInspectionDate"] = [NSDate date];
-                     [CurrProperty saveInBackground];
-                     [self dismissViewControllerAnimated:YES completion:nil];
+                     [CurrProperty saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
+                         if (done) {
+                             [HUD hide:YES];
+                             
+                             [self dismissViewControllerAnimated:YES completion:nil];
+                         }
+                     }];
                  }];
              }
          }];

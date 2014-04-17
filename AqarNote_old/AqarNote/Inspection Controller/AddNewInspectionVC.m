@@ -65,11 +65,6 @@
             self.notesTxtView.text=note;
         }
         
-        [self loadSectionPhoto];
- 
-        for (UIView *subview in self.sectionScrollView.subviews) {
-            [subview removeFromSuperview];
-        }
         [self getSectionsForProperty:self.propertyID];
 
     }];
@@ -92,13 +87,18 @@
             sectionsArray = [[NSMutableArray alloc]initWithArray:objects];
             chosenSectionArray = [[NSMutableArray alloc]initWithArray:objects];
 
-            [self prepareSections];
+            [self loadSectionPhoto];
+
         }
     }];
 }
 
 -(void)prepareSections
 {
+    for (UIView *subview in self.sectionScrollView.subviews) {
+        [subview removeFromSuperview];
+    }
+
     [self.sectionScrollView addSubview:self.propertyTitle];
     [self.sectionScrollView addSubview:self.locationLabel];
     [self.sectionScrollView addSubview:self.imgScrollView];
@@ -420,6 +420,7 @@
         if (!error) {
             
             PFFile *theImage;
+            pageImages=[[NSMutableArray alloc] init];
             for (PFObject* ob in objects) {
                 theImage = [ob objectForKey:@"imageFile"];
                 UIImage *image=[UIImage imageWithData:[theImage getData]];
@@ -434,6 +435,8 @@
         pageCount=pageImages.count;
         
         [self setScrollView];
+        [self prepareSections];
+
         [MBProgressHUD  hideHUDForView:self.view animated:YES];
 
     }];
@@ -442,6 +445,10 @@
 #pragma mark - paging & scrollView
 
 -(void)setScrollView{
+    for (UIView *subview in self.imgScrollView.subviews) {
+        [subview removeFromSuperview];
+    }
+
     self.pageControl.currentPage = pageCount;
     self.pageControl.numberOfPages = pageCount;
     CGSize pagesScrollViewSize = self.imgScrollView.frame.size;
