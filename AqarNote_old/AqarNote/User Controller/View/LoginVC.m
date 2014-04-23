@@ -103,5 +103,10 @@
    
     
 }
+- (void)logInViewController:(PFLogInViewController*)logInController didFailToLogInWithError:(NSError*)error {
+    
+
+}
+
 
 @end

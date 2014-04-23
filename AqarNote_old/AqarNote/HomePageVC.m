@@ -18,6 +18,7 @@
     PFObject *choosenObject;
     NSMutableArray * filteredArray;
     MBProgressHUD *HUD;
+
     bool isSearchOpen;
 }
 @end
@@ -27,7 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];
     self.propertiesTable.userInteractionEnabled=YES;
@@ -259,10 +259,10 @@
         return YES; // Begin login process
     }
     
-    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                message:@"Make sure you fill out all of the information!"
+    [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
+                                message:@"تأكد من إدخال جميع المعلومات!"
                                delegate:nil
-                      cancelButtonTitle:@"ok"
+                      cancelButtonTitle:@"موافق"
                       otherButtonTitles:nil] show];
     return NO; // Interrupt login process
 }
@@ -284,6 +284,11 @@
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
     NSLog(@"Failed to log in...");
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"خطأ في الإدخال" message:@"الرجاء إعادة إدخال اسم المستخدم و كلمة المرور" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+    
+    av.alertViewStyle = UIAlertViewStyleDefault;
+    [av show];
+
 }
 
 // Sent to the delegate when the log in screen is dismissed.
@@ -308,10 +313,10 @@
     
     // Display an alert if a field wasn't completed
     if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                    message:@"Make sure you fill out all of the information!"
+        [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
+                                    message:@"الرجاء التأكد من إدخال كافة المعلومات!"
                                    delegate:nil
-                          cancelButtonTitle:@"ok"
+                          cancelButtonTitle:@"موافق"
                           otherButtonTitles:nil] show];
     }
     
@@ -335,6 +340,8 @@
 // Sent to the delegate when the sign up attempt fails.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
     NSLog(@"Failed to sign up...");
+
+
 }
 
 // Sent to the delegate when the sign up screen is dismissed.

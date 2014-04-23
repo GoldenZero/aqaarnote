@@ -10,6 +10,6 @@
 #import "EnhancedKeyboard.h"
 
 
-@interface LoginVC : PFLogInViewController<EnhancedKeyboardDelegate>
+@interface LoginVC : PFLogInViewController<EnhancedKeyboardDelegate,UIAlertViewDelegate>
 
 @end

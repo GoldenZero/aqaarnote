@@ -336,10 +336,10 @@
     
     // Display an alert if a field wasn't completed
     if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                    message:@"Make sure you fill out all of the information!"
+        [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
+                                    message:@"تأكد من إدخال كافة المعلومات!"
                                    delegate:nil
-                          cancelButtonTitle:@"ok"
+                          cancelButtonTitle:@"موافق"
                           otherButtonTitles:nil] show];
     }
     
