@@ -52,7 +52,7 @@
     [self.logInView.signUpButton setTitle:@"" forState:UIControlStateHighlighted];
     
     // Add login field background
-    fieldsBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"text_field"]];
+    //fieldsBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list_bar"]];
     [self.logInView addSubview:self.fieldsBackground];
     [self.logInView sendSubviewToBack:self.fieldsBackground];
     
@@ -79,9 +79,15 @@
     [self.logInView.facebookButton setFrame:CGRectMake(35.0f, 400.0f, 120.0f, 40.0f)];
     [self.logInView.twitterButton setFrame:CGRectMake(35.0f+130.0f, 400.0f, 120.0f, 40.0f)];
     [self.logInView.signUpButton setFrame:CGRectMake(35.0f, 490.0f, 250.0f, 40.0f)];
-    [self.logInView.usernameField setFrame:CGRectMake(35.0f, 145.0f, 250.0f, 50.0f)];
-    [self.logInView.passwordField setFrame:CGRectMake(35.0f, 195.0f, 250.0f, 50.0f)];
-    [self.fieldsBackground setFrame:CGRectMake(35.0f, 145.0f, 250.0f, 100.0f)];
+    [self.logInView.usernameField setFrame:CGRectMake(0.0f, 50.0f, 320.0f, 41.0f)];
+    [self.logInView.usernameField setBackground:[UIImage imageNamed:@"list_bar"]];
+    [self.logInView.usernameField setPlaceholder:@" اسم المستخدم "];
+    [self.logInView.usernameField setTextAlignment:NSTextAlignmentRight];
+    [self.logInView.passwordField setFrame:CGRectMake(0.0f, 91.0f, 320.0f, 41.0f)];
+    [self.logInView.passwordField setPlaceholder:@" كلمة المرور "];
+    [self.logInView.passwordField setBackground:[UIImage imageNamed:@"list_bar"]];
+    [self.logInView.passwordField setTextAlignment:NSTextAlignmentRight];
+    [self.fieldsBackground setFrame:CGRectMake(0.0f, 50.0f, 320.0f, 82.0f)];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -103,9 +109,10 @@
    
     
 }
-- (void)logInViewController:(PFLogInViewController*)logInController didFailToLogInWithError:(NSError*)error {
-    
-
+- (void) textFieldDidBeginEditing:(UITextField *)textField {
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 20)];
+    textField.rightView = paddingView;
+    textField.rightViewMode = UITextFieldViewModeAlways;
 }
 
 
