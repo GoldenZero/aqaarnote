@@ -23,7 +23,9 @@
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     [toolbarItems addObject:flexSpace];
     
-    UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneDidClick:)];
+    UIBarButtonItem *doneButton=[[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(doneDidClick:)];
+   // UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButton target:self action:@selector(doneDidClick:)];
+    doneButton.title=@"تم";
     [toolbarItems addObject:doneButton];
     
     toolbar.items = toolbarItems;
