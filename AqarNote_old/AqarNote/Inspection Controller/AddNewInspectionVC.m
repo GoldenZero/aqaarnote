@@ -112,7 +112,9 @@
     [self.sectionScrollView addSubview:self.noteBgImg];
     [self.sectionScrollView addSubview:self.notesTxtView];
 
-    
+    [self.sectionScrollView addSubview:self.nextImgButton];
+    [self.sectionScrollView addSubview:self.prevImgButton];
+
     view_y = 315;
     
     //sectionsArray = [NSMutableArray new];
@@ -398,6 +400,44 @@
     
 }
 
+- (IBAction)nxtImgBtnPrss:(id)sender {
+ 
+    [self.prevImgButton setHidden:NO];
+    int page=self.pageControl.currentPage;
+    if (page<pageImages.count) {
+        page++;
+        CGRect frame = self.imgScrollView.frame;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0;
+        [self.imgScrollView scrollRectToVisible:frame animated:YES];
+        
+        if (page==pageImages.count-1){
+            [self.nextImgButton setHidden:YES];
+        }
+
+    }
+    
+    
+}
+
+- (IBAction)prevImgBtnPrss:(id)sender {
+    [self.nextImgButton setHidden:NO];
+    int page=self.pageControl.currentPage;
+    if (page>0) {
+        page--;
+        CGRect frame = self.imgScrollView.frame;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0;
+        [self.imgScrollView scrollRectToVisible:frame animated:YES];
+        
+    }
+    if (page==0){
+        [self.prevImgButton setHidden:YES];
+    }
+
+   
+}
+
 - (IBAction)saveButtonPressed:(id)sender {
     NSLog(@"post new property");
     // Create Post
@@ -438,7 +478,10 @@
 
         }
         pageCount=pageImages.count;
-        
+        if (pageCount<=1) {
+            [self.nextImgButton setHidden:YES];
+            [self.prevImgButton setHidden:YES];
+        }
         [self setScrollView];
         [self prepareSections];
 
@@ -450,6 +493,7 @@
 #pragma mark - paging & scrollView
 
 -(void)setScrollView{
+    [self.prevImgButton setHidden:YES];
     for (UIView *subview in self.imgScrollView.subviews) {
         [subview removeFromSuperview];
     }
@@ -488,7 +532,7 @@
     for (NSInteger i=lastPage+1; i<pageImages.count; i++) {
         [self purgePage:i];
     }
-}
+  }
 
 - (void)loadPage:(NSInteger)page {
     if (page < 0 || page >= pageImages.count) {
@@ -502,9 +546,11 @@
         
         if ((NSNull*)pageView == [NSNull null]) {
             CGRect frame = self.imgScrollView.bounds;
+           // CGRect frame = CGRectMake(0, 0, 200 , 200);
+
             frame.origin.x = frame.size.width * page;
             frame.origin.y = 0.0f;
-            frame = CGRectInset(frame, 10.0f, 0.0f);
+            frame = CGRectInset(frame, 20.0f, 30.0f);
             
             UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
             

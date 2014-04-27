@@ -33,6 +33,8 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 @property (strong, nonatomic) IBOutlet UIButton *addImgBtnPrss;
 @property (strong, nonatomic) IBOutlet UIButton *deleteImgButton;
+@property (strong, nonatomic) IBOutlet UIButton *nextImgButton;
+@property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
 
 - (IBAction)deleteImgBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;
@@ -41,4 +43,6 @@
 - (IBAction)saveButtonPressed:(id)sender;
 - (IBAction)chooseStatusPressed:(id)sender;
 - (IBAction)buttonBrokenPrss:(id)sender;
+- (IBAction)nxtImgBtnPrss:(id)sender;
+- (IBAction)prevImgBtnPrss:(id)sender;
 @end

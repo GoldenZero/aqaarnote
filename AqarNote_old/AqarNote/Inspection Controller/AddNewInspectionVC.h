@@ -26,10 +26,14 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *imgScrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *noteBgImg;
 @property (strong, nonatomic) IBOutlet UILabel *sectionsLabel;
+@property (strong, nonatomic) IBOutlet UIButton *nextImgButton;
+@property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
 
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;
 - (IBAction)backButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;
 - (IBAction)editButtonPressed:(id)sender;
+- (IBAction)nxtImgBtnPrss:(id)sender;
+- (IBAction)prevImgBtnPrss:(id)sender;
 @end

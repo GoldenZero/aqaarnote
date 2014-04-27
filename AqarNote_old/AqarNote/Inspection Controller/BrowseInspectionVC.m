@@ -112,6 +112,45 @@ CGFloat animatedDistance;
     
 }
 
+- (IBAction)nxtImgBtnPrss:(id)sender {
+    
+    [self.prevImgButton setHidden:NO];
+    int page=self.pageControl.currentPage;
+    if (page<pageImages.count) {
+        page++;
+        CGRect frame = self.pagingScrollView.frame;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0;
+        [self.pagingScrollView scrollRectToVisible:frame animated:YES];
+        
+        if (page==pageImages.count-1){
+            [self.nextImgButton setHidden:YES];
+        }
+        
+    }
+    
+    
+}
+
+- (IBAction)prevImgBtnPrss:(id)sender {
+    [self.nextImgButton setHidden:NO];
+    int page=self.pageControl.currentPage;
+    if (page>0) {
+        page--;
+        CGRect frame = self.pagingScrollView.frame;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0;
+        [self.pagingScrollView scrollRectToVisible:frame animated:YES];
+        
+    }
+    if (page==0){
+        [self.prevImgButton setHidden:YES];
+    }
+    
+    
+}
+
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     // Access the uncropped image from info dictionary
@@ -412,14 +451,26 @@ CGFloat animatedDistance;
         self.addImgBtnPrss.hidden=YES;
         self.uploadImageBtn.hidden=NO;
         self.deleteImgButton.hidden=NO;
+        if (pageImages.count==1) {
+            self.prevImgButton.hidden=YES;
+            self.nextImgButton.hidden=YES;
+        }
+        else{
+            self.prevImgButton.hidden=NO;
+            self.nextImgButton.hidden=NO;
+
+        }
     }
     
     else if (pageImages.count==0) {
         self.addImgBtnPrss.hidden=NO;
         self.uploadImageBtn.hidden=YES;
         self.deleteImgButton.hidden=YES;
+        self.prevImgButton.hidden=YES;
+        self.nextImgButton.hidden=YES;
         
     }
+   
 
     self.pageControl.currentPage = pageCount;
     self.pageControl.numberOfPages = pageCount;
@@ -471,7 +522,7 @@ CGFloat animatedDistance;
             CGRect frame = self.pagingScrollView.bounds;
             frame.origin.x = frame.size.width * page;
             frame.origin.y = 0.0f;
-            frame = CGRectInset(frame, 10.0f, 0.0f);
+            frame = CGRectInset(frame, 20.0f, 30.0f);
             
             UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
             
@@ -521,9 +572,20 @@ CGFloat animatedDistance;
             }
             
         }
-        [HUD hide:YES];
-
+        
         pageCount=pageImages.count;
+        
+        [self.contentScrollView addSubview:self.addImgBtnPrss];
+        [self.contentScrollView addSubview:self.deleteImgButton];
+        [self.contentScrollView addSubview:self.nextImgButton];
+        [self.contentScrollView addSubview:self.prevImgButton];
+        if (pageCount<=1) {
+            [self.nextImgButton setHidden:YES];
+            [self.prevImgButton setHidden:YES];
+        }
+
+        [HUD hide:YES];
+       
         
         [self setScrollView];
     }];
