@@ -507,10 +507,12 @@ CGFloat animatedDistance;
 
 - (IBAction)addSectionBtnPrss:(id)sender {
     
-    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"" message:@"إضافة قسم جديد" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"أضف", nil];
-    av.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [av textFieldAtIndex:0].delegate = self;
-    [av show];
+    [self performSegueWithIdentifier:@"showAddSection" sender:self];
+
+//    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"" message:@"إضافة قسم جديد" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:@"أضف", nil];
+//    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+//    [av textFieldAtIndex:0].delegate = self;
+//    [av show];
 }
 
 - (IBAction)chooseCountryBtnPrss:(id)sender {
