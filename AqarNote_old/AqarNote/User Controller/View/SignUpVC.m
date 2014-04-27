@@ -87,7 +87,7 @@ CGFloat animatedDistance;
     
     [self.signUpView.dismissButton setFrame:CGRectMake(15.0f, 15.0f, 12.0f, 21.0f)];
     [self.signUpView.logo setFrame:CGRectMake(145.0f, 15.0f, 25.0f, 28.0f)];
-    [self.signUpView.signUpButton setFrame:CGRectMake(35.0f, 385.0f, 250.0f, 40.0f)];
+    [self.signUpView.signUpButton setFrame:CGRectMake(45.0f, 200.0f, 235.0f, 45.0f)];
     [self.fieldsBackground setFrame:CGRectMake(0.0f, 50.0f,320.0f,41*4)];
     
 //    [self.signUpView.usernameField setFrame:CGRectMake(fieldFrame.origin.x + 5.0f,

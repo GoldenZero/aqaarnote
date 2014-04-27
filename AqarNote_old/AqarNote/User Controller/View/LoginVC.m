@@ -32,26 +32,19 @@
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"header_white_arrow"] forState:UIControlStateNormal];
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"header_white_arrow"] forState:UIControlStateHighlighted];
     
-//    [self.logInView.facebookButton setImage:nil forState:UIControlStateNormal];
-//    [self.logInView.facebookButton setImage:nil forState:UIControlStateHighlighted];
-//    [self.logInView.facebookButton setBackgroundImage:[UIImage imageNamed:@"FacebookDown.png"] forState:UIControlStateHighlighted];
-//    [self.logInView.facebookButton setBackgroundImage:[UIImage imageNamed:@"Facebook.png"] forState:UIControlStateNormal];
-//    [self.logInView.facebookButton setTitle:@"" forState:UIControlStateNormal];
-//    [self.logInView.facebookButton setTitle:@"" forState:UIControlStateHighlighted];
-//    
-//    [self.logInView.twitterButton setImage:nil forState:UIControlStateNormal];
-//    [self.logInView.twitterButton setImage:nil forState:UIControlStateHighlighted];
-//    [self.logInView.twitterButton setBackgroundImage:[UIImage imageNamed:@"Twitter.png"] forState:UIControlStateNormal];
-//    [self.logInView.twitterButton setBackgroundImage:[UIImage imageNamed:@"TwitterDown.png"] forState:UIControlStateHighlighted];
-//    [self.logInView.twitterButton setTitle:@"" forState:UIControlStateNormal];
-//    [self.logInView.twitterButton setTitle:@"" forState:UIControlStateHighlighted];
+    [self.logInView.logInButton setBackgroundImage:[UIImage imageNamed:@"sign_in_btn"] forState:UIControlStateNormal];
+    [self.logInView.logInButton setBackgroundImage:[UIImage imageNamed:@"sign_in_btn"] forState:UIControlStateHighlighted];
+    [self.logInView.logInButton setTitle:@"" forState:UIControlStateNormal];
+    [self.logInView.logInButton setTitle:@"" forState:UIControlStateHighlighted];
+
+    [self.logInView.passwordForgottenButton setBackgroundColor:[UIColor clearColor]];
+    [self.logInView.passwordForgottenButton setTitle:@"نسيت كلمة المرور؟" forState:UIControlStateNormal];
+    [self.logInView.passwordForgottenButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.logInView.passwordForgottenButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
+
+    [self.logInView.passwordForgottenButton.titleLabel setFont:[UIFont fontWithName:@"" size:11.0f]];
     
-    [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"register_new_account_btn"] forState:UIControlStateNormal];
-    [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"register_new_account_btn"] forState:UIControlStateHighlighted];
-    [self.logInView.signUpButton setTitle:@"" forState:UIControlStateNormal];
-    [self.logInView.signUpButton setTitle:@"" forState:UIControlStateHighlighted];
-    
-    // Add login field background
+        // Add login field background
     //fieldsBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list_bar"]];
     [self.logInView addSubview:self.fieldsBackground];
     [self.logInView sendSubviewToBack:self.fieldsBackground];
@@ -76,9 +69,7 @@
     // Set frame for elements
     [self.logInView.dismissButton setFrame:CGRectMake(15.0f, 15.0f, 12.0f, 21.0f)];
     [self.logInView.logo setFrame:CGRectMake(145.0f, 15.0f, 25.0f, 28.0f)];
-    [self.logInView.facebookButton setFrame:CGRectMake(35.0f, 400.0f, 120.0f, 40.0f)];
-    [self.logInView.twitterButton setFrame:CGRectMake(35.0f+130.0f, 400.0f, 120.0f, 40.0f)];
-    [self.logInView.signUpButton setFrame:CGRectMake(35.0f, 490.0f, 250.0f, 40.0f)];
+    [self.logInView.logInButton setFrame:CGRectMake(45.0f, 175.0f, 235.0f, 45.0f)];
     [self.logInView.usernameField setFrame:CGRectMake(0.0f, 50.0f, 320.0f, 41.0f)];
     [self.logInView.usernameField setBackground:[UIImage imageNamed:@"list_bar"]];
     [self.logInView.usernameField setPlaceholder:@" اسم المستخدم "];
@@ -87,6 +78,7 @@
     [self.logInView.passwordField setPlaceholder:@" كلمة المرور "];
     [self.logInView.passwordField setBackground:[UIImage imageNamed:@"list_bar"]];
     [self.logInView.passwordField setTextAlignment:NSTextAlignmentRight];
+    [self.logInView.passwordForgottenButton setFrame:CGRectMake(75.0f, 230.0f, 150.0f, 45.0f)];
     [self.fieldsBackground setFrame:CGRectMake(0.0f, 50.0f, 320.0f, 82.0f)];
 }
 
