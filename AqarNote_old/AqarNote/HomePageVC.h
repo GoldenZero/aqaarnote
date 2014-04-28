@@ -10,7 +10,7 @@
 #import "PropertyCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface HomePageVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
+@interface HomePageVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,MBProgressHUDDelegate,UITextViewDelegate>
 
 #pragma mark - Properties
 @property (strong, nonatomic) IBOutlet UITableView *propertiesTable;

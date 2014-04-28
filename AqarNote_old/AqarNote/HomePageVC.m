@@ -173,10 +173,7 @@
     return propertiesArray.count;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 150;
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -211,7 +208,13 @@
                 if (imageData!=nil) {
                     UIImage *image = [UIImage imageWithData:imageData];
                     // Dispatch to main thread to update the UI
+                    CGRect frame=cell.propertyImage.frame;
                     cell.propertyImage.image=image;
+                    cell.propertyImage.backgroundColor=[UIColor blackColor];
+                    cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
+                    cell.propertyImage.layer.cornerRadius = 5.0;
+                    cell.propertyImage.layer.masksToBounds = YES;
+                    cell.propertyImage.frame=frame;
                 }
                 else{
                     [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
@@ -226,9 +229,9 @@
     [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
     [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
     [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
-//    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
-//    cell.moreButton.tag = indexPath.row;
-
+    [cell.detailsTxtView setFont:[UIFont fontWithName:@"System" size:8.0f]];
+    cell.detailsTxtView.textAlignment=NSTextAlignmentRight;
+    cell.detailsTxtView.textColor=[UIColor grayColor];
 
     return cell;
 }
