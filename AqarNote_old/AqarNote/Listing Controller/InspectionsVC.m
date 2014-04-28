@@ -176,81 +176,83 @@
         cell = [[InspectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"InspectionCell" owner:self options:nil];
         cell = [topLevelObjects objectAtIndex:0];
+        
+        NSDateFormatter* df = [[NSDateFormatter alloc]init];
+        [df setDateFormat:@"yyyy-MM-dd"];
+        [cell.activityIndicator startAnimating];
+        // Configure the cell with the textContent of the Post as the cell's text label
+        PFObject *post = [inspectionsArray objectAtIndex:indexPath.row];
+        
+        
+        cell.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
+        
+        PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
+        [photoQuery whereKey:@"propertyID" equalTo:post ];
+        
+        // Run the query
+        [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                [cell.activityIndicator stopAnimating];
+                [cell.activityIndicator setHidden:YES];
+                if ([objects count] != 0) {
+                    PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
+                    //Save results and update the table
+                    NSData* imageData = [theImage getData];
+                    if (imageData!=nil) {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        // Dispatch to main thread to update the UI
+                        CGRect frame=cell.propertyImage.frame;
+                        cell.propertyImage.image=image;
+                        cell.propertyImage.backgroundColor=[UIColor blackColor];
+                        cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
+                        cell.propertyImage.layer.cornerRadius = 5.0;
+                        cell.propertyImage.layer.masksToBounds = YES;
+                        cell.propertyImage.frame=frame;
+                        
+                    }
+                    else{
+                        [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
+                    }
+                    
+                    NSLog(@"got the object image");
+                }
+            }
+        }];
+        
+        //    // This method sets up the downloaded images and places them nicely in a grid
+        //    // PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
+        //    PFObject *eachObject = [post objectForKey:@"imageID"];
+        //    [cell.activityIndicator startAnimating];
+        //    __block NSData *imageData;
+        //    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        //    dispatch_async(queue, ^{
+        //        PFFile *theImage = [self getCurrentImageForInpesction:eachObject];
+        //        imageData = [theImage getData];
+        //
+        //
+        //    });
+        //    dispatch_async(dispatch_get_main_queue(), ^{
+        //        [cell.activityIndicator stopAnimating];
+        //        [cell.activityIndicator setHidden:YES];
+        //        if (imageData!=nil) {
+        //            UIImage *image = [UIImage imageWithData:imageData];
+        //            [cell.propertyImage setImage:image];
+        //        }
+        //        });
+        //
+        [cell.propertyTitle setText:[post objectForKey:@"Title"]];
+        [cell.detailTxtView setText:[post objectForKey:@"Description"]];
+        
+        [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
+        [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
+        
+        
+        //    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
+        //    cell.moreButton.tag = indexPath.row;
+
     }
     
-    
-    NSDateFormatter* df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"yyyy-MM-dd"];
-    
-    // Configure the cell with the textContent of the Post as the cell's text label
-    PFObject *post = [inspectionsArray objectAtIndex:indexPath.row];
-    
-    
-    
-    cell.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
-    
-    PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-    [photoQuery whereKey:@"propertyID" equalTo:post ];
-    
-    // Run the query
-    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            if ([objects count] != 0) {
-                PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
-                //Save results and update the table
-                NSData* imageData = [theImage getData];
-                if (imageData!=nil) {
-                    UIImage *image = [UIImage imageWithData:imageData];
-                    // Dispatch to main thread to update the UI
-                    CGRect frame=cell.propertyImage.frame;
-                    cell.propertyImage.image=image;
-                    cell.propertyImage.backgroundColor=[UIColor blackColor];
-                    cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
-                    cell.propertyImage.layer.cornerRadius = 5.0;
-                    cell.propertyImage.layer.masksToBounds = YES;
-                    cell.propertyImage.frame=frame;
-
-                }
-                else{
-                    [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
-                }
-                
-                NSLog(@"got the object image");
-            }
-        }
-    }];
-
-//    // This method sets up the downloaded images and places them nicely in a grid
-//    // PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
-//    PFObject *eachObject = [post objectForKey:@"imageID"];
-//    [cell.activityIndicator startAnimating];
-//    __block NSData *imageData;
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_async(queue, ^{
-//        PFFile *theImage = [self getCurrentImageForInpesction:eachObject];
-//        imageData = [theImage getData];
-//        
-//        
-//    });
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [cell.activityIndicator stopAnimating];
-//        [cell.activityIndicator setHidden:YES];
-//        if (imageData!=nil) {
-//            UIImage *image = [UIImage imageWithData:imageData];
-//            [cell.propertyImage setImage:image];
-//        }
-//        });
-//    
-    [cell.propertyTitle setText:[post objectForKey:@"Title"]];
-    [cell.detailTxtView setText:[post objectForKey:@"Description"]];
-
-    [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
-    [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
-    
-    
-//    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
-//    cell.moreButton.tag = indexPath.row;
-
+  
     return cell;
 }
 

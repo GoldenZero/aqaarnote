@@ -44,7 +44,7 @@
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
 
-    [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+  //  [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -61,15 +61,15 @@
         self.propertyID=pfObject;
         self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
         self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
-        NSString *note=[self.propertyID objectForKey:@"Description"];
-        if ([note isEqual:@" "]) {
-            self.notesTxtView.text=@"لا يوجد ملاحظات";
-        }
-        else{
-            
-            self.notesTxtView.text=note;
-        }
-        
+//        NSString *note=[self.propertyID objectForKey:@"Description"];
+//        if ([note isEqual:@" "]) {
+//            self.notesTxtView.text=@"لا يوجد ملاحظات";
+//        }
+//        else{
+//            
+//            self.notesTxtView.text=note;
+//        }
+//        
         [self getSectionsForProperty:self.propertyID];
 
     }];
@@ -110,7 +110,7 @@
     [self.sectionScrollView addSubview:self.pageControl];
     [self.sectionScrollView addSubview:self.sectionsLabel];
     [self.sectionScrollView addSubview:self.noteBgImg];
-    [self.sectionScrollView addSubview:self.notesTxtView];
+   // [self.sectionScrollView addSubview:self.notesTxtView];
 
     [self.sectionScrollView addSubview:self.nextImgButton];
     [self.sectionScrollView addSubview:self.prevImgButton];
@@ -585,7 +585,7 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     
-    [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    //[self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 
 }
 

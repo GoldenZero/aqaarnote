@@ -80,7 +80,7 @@ CGFloat animatedDistance;
     
     [self.propertyTitle setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     [self.city setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-    [self.descriptionsTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+//    [self.descriptionsTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     
     [HUD show:YES];
     HUD.labelText = @"جاري تحميل الأقسام..";
@@ -91,14 +91,14 @@ CGFloat animatedDistance;
         self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
         self.country.text = [self.propertyID objectForKey:@"country"];
         self.city.text=[self.propertyID objectForKey:@"city"];
-        NSString *note=[self.propertyID objectForKey:@"Description"];
-        if ([note isEqual:@" "]) {
-            self.descriptionsTxtView.text=@"لا يوجد ملاحظات";
-        }
-        else{
-            
-            self.descriptionsTxtView.text=note;
-        }
+//        NSString *note=[self.propertyID objectForKey:@"Description"];
+//        if ([note isEqual:@" "]) {
+//            self.descriptionsTxtView.text=@"لا يوجد ملاحظات";
+//        }
+//        else{
+//            
+//            self.descriptionsTxtView.text=note;
+//        }
 
         [self getSectionsForProperty:self.propertyID];
         [self loadSectionPhoto];
@@ -462,7 +462,7 @@ CGFloat animatedDistance;
     [newPost setObject:self.propertyTitle.text forKey:@"Title"];
     [newPost setObject:chosenCountry.countryName forKey:@"country"];
     [newPost setObject:self.city.text forKey:@"city"];
-    [newPost setObject:self.descriptionsTxtView.text forKey:@"Description"];
+  //  [newPost setObject:self.descriptionsTxtView.text forKey:@"Description"];
 
     [newPost setObject:chosenSectionArray forKey:@"sections"];
 
@@ -1214,7 +1214,7 @@ CGFloat animatedDistance;
                      
                      [pfObject setObject:self.city.text forKey:@"city"];
                      
-                     [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
+                    // [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
                      
                      [pfObject setObject:chosenSectionArray forKey:@"sections"];
                      
@@ -1245,7 +1245,7 @@ CGFloat animatedDistance;
             
             [pfObject setObject:self.city.text forKey:@"city"];
             
-            [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
+          //  [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
             
             [pfObject setObject:chosenSectionArray forKey:@"sections"];
             

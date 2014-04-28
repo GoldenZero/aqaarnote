@@ -185,53 +185,57 @@
         cell = [[PropertyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PropertyCell" owner:self options:nil];
         cell = [topLevelObjects objectAtIndex:0];
+        NSDateFormatter* df = [[NSDateFormatter alloc]init];
+        [df setDateFormat:@"yyyy-MM-dd"];
+        [cell.activityIndicator startAnimating];
+        // Configure the cell with the textContent of the Post as the cell's text label
+        PFObject *post = (PFObject*)[propertiesArray objectAtIndex:indexPath.row];
+        cell.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
+        
+        PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
+        [photoQuery whereKey:@"propertyID" equalTo:post];
+        
+        // Run the query
+        [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                [cell.activityIndicator stopAnimating];
+                [cell.activityIndicator setHidden:YES];
+                if ([objects count] != 0) {
+                    PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
+                    //Save results and update the table
+                    NSData* imageData = [theImage getData];
+                    
+                    if (imageData!=nil) {
+                        UIImage *image = [UIImage imageWithData:imageData];
+                        // Dispatch to main thread to update the UI
+                        CGRect frame=cell.propertyImage.frame;
+                        cell.propertyImage.image=image;
+                        cell.propertyImage.backgroundColor=[UIColor blackColor];
+                        cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
+                        cell.propertyImage.layer.cornerRadius = 5.0;
+                        cell.propertyImage.layer.masksToBounds = YES;
+                        cell.propertyImage.frame=frame;
+                    }
+                    else{
+                        [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
+                    }
+                    
+                    NSLog(@"got the object image");
+                }
+            }
+        }];
+        
+        [cell.propertyTitle setText:[post objectForKey:@"Title"]];
+        [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
+        [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
+        [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
+        [cell.detailsTxtView setFont:[UIFont fontWithName:@"System" size:8.0f]];
+        cell.detailsTxtView.textAlignment=NSTextAlignmentRight;
+        cell.detailsTxtView.textColor=[UIColor grayColor];
     }
     
     
-    NSDateFormatter* df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"yyyy-MM-dd"];
-
-    // Configure the cell with the textContent of the Post as the cell's text label
-    PFObject *post = (PFObject*)[propertiesArray objectAtIndex:indexPath.row];
-    cell.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
-    
-    PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-    [photoQuery whereKey:@"propertyID" equalTo:post];
-    
-    // Run the query
-    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            if ([objects count] != 0) {
-                PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
-                //Save results and update the table
-                NSData* imageData = [theImage getData];
-                if (imageData!=nil) {
-                    UIImage *image = [UIImage imageWithData:imageData];
-                    // Dispatch to main thread to update the UI
-                    CGRect frame=cell.propertyImage.frame;
-                    cell.propertyImage.image=image;
-                    cell.propertyImage.backgroundColor=[UIColor blackColor];
-                    cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
-                    cell.propertyImage.layer.cornerRadius = 5.0;
-                    cell.propertyImage.layer.masksToBounds = YES;
-                    cell.propertyImage.frame=frame;
-                }
-                else{
-                    [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
-                }
-
-                NSLog(@"got the object image");
-            }
-        }
-    }];
-    
-    [cell.propertyTitle setText:[post objectForKey:@"Title"]];
-    [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
-    [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
-    [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
-    [cell.detailsTxtView setFont:[UIFont fontWithName:@"System" size:8.0f]];
-    cell.detailsTxtView.textAlignment=NSTextAlignmentRight;
-    cell.detailsTxtView.textColor=[UIColor grayColor];
+   
 
     return cell;
 }
