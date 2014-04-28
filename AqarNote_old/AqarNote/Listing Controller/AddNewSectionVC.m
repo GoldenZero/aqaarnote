@@ -36,11 +36,42 @@
 }
 
 - (IBAction)saveBtnPrss:(id)sender {
+    if ([self.sectionNameTxt.text isEqualToString:@""]) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"الرجاء إدخال اسم القسم" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        av.alertViewStyle = UIAlertViewStyleDefault;
+        [av show];
+
+    }
+    else{
+        [self.delegate addedSection:self.sectionNameTxt.text];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (IBAction)cancelBtnPrss:(id)sender {
+    [self.delegate addedSection:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)addSectionBtnPrss:(id)sender {
+    if ([self.sectionNameTxt.text isEqualToString:@""]) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"الرجاء إدخال اسم القسم" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        av.alertViewStyle = UIAlertViewStyleDefault;
+        [av show];
+        
+    }
+    else{
+        [self.delegate addedSection:self.sectionNameTxt.text];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    [textField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return true;
 }
 @end

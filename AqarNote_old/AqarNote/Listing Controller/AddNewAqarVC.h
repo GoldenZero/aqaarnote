@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "EnhancedKeyboard.h"
 #import "BaseViewController.h"
-@interface AddNewAqarVC :BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate>
+#import "AddNewSectionVC.h"
+#import "EditSectionVC.h"
+@interface AddNewAqarVC :BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,AddSectionDelegate,EditSectionDelegate>
 
 {
     MBProgressHUD *HUD;

@@ -36,8 +36,21 @@
 }
 
 - (IBAction)editBtnPrss:(id)sender {
-}
+    if ([self.sectionNameTxt.text isEqualToString:@""]) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"الرجاء إدخال اسم القسم" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        av.alertViewStyle = UIAlertViewStyleDefault;
+        [av show];
+        
+    }
+    else{
+        [self.delegate editedSection:[self.sectionNameTxt text] withID:self.sectionIndex];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 
+}
 - (IBAction)cancelBtnPrss:(id)sender {
+    [self.delegate editedSection:nil withID:0];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 @end

@@ -718,20 +718,20 @@ CGFloat animatedDistance;
     else{
         
         if (buttonIndex!=0) {
-            [sectionsArray addObject:[[alertView textFieldAtIndex:0] text]];
-            [chosenBooleanArray addObject:@YES];
-            [self.sectionsTableView reloadData];
-            CGRect frame = self.sectionsTableView.frame;
-            frame.size.height = self.sectionsTableView.contentSize.height;
-            self.sectionsTableView.frame = frame;
-            
-            CGFloat scrollViewHeight = 0.0f;
-            for (UIView* view in self.contentScrollView.subviews)
-            {
-                scrollViewHeight += view.frame.size.height;
-            }
-            
-            [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
+//            [sectionsArray addObject:[[alertView textFieldAtIndex:0] text]];
+//            [chosenBooleanArray addObject:@YES];
+//            [self.sectionsTableView reloadData];
+//            CGRect frame = self.sectionsTableView.frame;
+//            frame.size.height = self.sectionsTableView.contentSize.height;
+//            self.sectionsTableView.frame = frame;
+//            
+//            CGFloat scrollViewHeight = 0.0f;
+//            for (UIView* view in self.contentScrollView.subviews)
+//            {
+//                scrollViewHeight += view.frame.size.height;
+//            }
+//            
+//            [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
 
         }
         
@@ -1267,4 +1267,45 @@ CGFloat animatedDistance;
     
 }
 
+
+#pragma mark - Add section delegate handler
+- (void) addedSection:(NSString *)sectionName{
+    
+    if (![sectionName isEqual:nil]) {
+        [sectionsArray addObject:sectionName];
+        [chosenBooleanArray addObject:@YES];
+        [self.sectionsTableView reloadData];
+        CGRect frame = self.sectionsTableView.frame;
+        frame.size.height = self.sectionsTableView.contentSize.height;
+        self.sectionsTableView.frame = frame;
+        
+        CGFloat scrollViewHeight = 0.0f;
+        for (UIView* view in self.contentScrollView.subviews)
+        {
+            scrollViewHeight += view.frame.size.height;
+        }
+        
+        [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
+
+    }
+    
+}
+
+- (void) editedSection:(NSString *)sectionName withID:(int)index{
+    [sectionsArray replaceObjectAtIndex:index withObject:sectionName];
+    [self.sectionsTableView reloadData];
+
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    
+    if ([[segue identifier] isEqualToString:@"showAddSection"])  //parameter to map for update
+    {
+        AddNewSectionVC* vc = segue.destinationViewController;
+        vc.delegate=self;
+
+    }
+}
 @end
