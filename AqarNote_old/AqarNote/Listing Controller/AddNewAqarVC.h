@@ -31,6 +31,8 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 @property (strong, nonatomic) IBOutlet UIButton *addImgesButton;
 @property (strong, nonatomic) IBOutlet UIButton *deletePhotoButton;
+@property (strong, nonatomic) IBOutlet UIButton *nextImgButton;
+@property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
 
 - (IBAction)openCountryPickerBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;
@@ -42,4 +44,6 @@
 - (IBAction)addSectionBtnPrss:(id)sender;
 - (IBAction)chooseCountryBtnPrss:(id)sender;
 - (IBAction)deletePhotoBtnPrss:(id)sender;
+- (IBAction)nxtImgBtnPrss:(id)sender;
+- (IBAction)prevImgBtnPrss:(id)sender;
 @end

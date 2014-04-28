@@ -500,6 +500,44 @@ CGFloat animatedDistance;
   
 }
 
+- (IBAction)nxtImgBtnPrss:(id)sender {
+    
+    [self.prevImgButton setHidden:NO];
+    int page=self.pageControl.currentPage;
+    if (page<pageImages.count) {
+        page++;
+        CGRect frame = self.imageScrollView.frame;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0;
+        [self.imageScrollView scrollRectToVisible:frame animated:YES];
+        
+        if (page==pageImages.count-1){
+            [self.nextImgButton setHidden:YES];
+        }
+        
+    }
+    
+    
+}
+
+- (IBAction)prevImgBtnPrss:(id)sender {
+    [self.nextImgButton setHidden:NO];
+    int page=self.pageControl.currentPage;
+    if (page>0) {
+        page--;
+        CGRect frame = self.imageScrollView.frame;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0;
+        [self.imageScrollView scrollRectToVisible:frame animated:YES];
+        
+    }
+    if (page==0){
+        [self.prevImgButton setHidden:YES];
+    }
+    
+    
+}
+
 - (IBAction)cancelButtonPressed:(id)sender {
     //[self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -891,12 +929,28 @@ CGFloat animatedDistance;
         self.addImgesButton.hidden=YES;
         self.uploadImageBtn.hidden=NO;
         self.deletePhotoButton.hidden=NO;
+        if (pageCount==1) {
+            [self.nextImgButton setHidden:YES];
+            [self.prevImgButton setHidden:YES];
+        }
+        else{
+            [self.nextImgButton setHidden:NO];
+            [self.prevImgButton setHidden:NO];
+ 
+        }
+
     }
     
     else if (pageImages.count==0) {
-            self.addImgesButton.hidden=NO;
-            self.uploadImageBtn.hidden=YES;
-            self.deletePhotoButton.hidden=YES;
+        for (UIView *subview in self.imageScrollView.subviews) {
+            [subview removeFromSuperview];
+        }
+        self.addImgesButton.hidden=NO;
+        self.uploadImageBtn.hidden=YES;
+        self.deletePhotoButton.hidden=YES;
+        [self.nextImgButton setHidden:YES];
+        [self.prevImgButton setHidden:YES];
+        
         
     }
     self.pageControl.currentPage = pageCount;
@@ -947,7 +1001,7 @@ CGFloat animatedDistance;
             CGRect frame = self.imageScrollView.bounds;
             frame.origin.x = frame.size.width * page;
             frame.origin.y = 0.0f;
-            frame = CGRectInset(frame, 10.0f, 0.0f);
+            frame = CGRectInset(frame, 20.0f, 30.0f);
             
             UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
             newPageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -996,7 +1050,11 @@ CGFloat animatedDistance;
             }
         }
         pageCount=pageImages.count;
-        
+        if (pageCount<=1) {
+            [self.nextImgButton setHidden:YES];
+            [self.prevImgButton setHidden:YES];
+        }
+
         [self setScrollView];
         [MBProgressHUD  hideHUDForView:self.view animated:YES];
         
