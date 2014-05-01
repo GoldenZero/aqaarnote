@@ -6,3 +6,7 @@
   Copyright (c) 2014 Danat. All rights reserved.
 */
 "OK"= "موافق";
+"Cancel"="إلغاء";
+"Enter Email"= "أدخل عنوان البريد";
+"Please enter the email address for your account."="الرجاء إدخال عنوان البريد الإلكتروني الخاص بحسابك";
+"Log in"="";

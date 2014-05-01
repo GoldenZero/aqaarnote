@@ -28,10 +28,11 @@
     [self.logInView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"homebkg.png"]]];
     [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header_logo"]]];
     
+    
     // Set buttons appearance
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"header_white_arrow"] forState:UIControlStateNormal];
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"header_white_arrow"] forState:UIControlStateHighlighted];
-    
+
     [self.logInView.logInButton setBackgroundImage:[UIImage imageNamed:@"sign_in_btn"] forState:UIControlStateNormal];
     [self.logInView.logInButton setBackgroundImage:[UIImage imageNamed:@"sign_in_btn"] forState:UIControlStateHighlighted];
     [self.logInView.logInButton setTitle:@"" forState:UIControlStateNormal];
@@ -67,8 +68,10 @@
     [super viewDidLayoutSubviews];
     
     // Set frame for elements
-    [self.logInView.dismissButton setFrame:CGRectMake(15.0f, 15.0f, 12.0f, 21.0f)];
+    [self.logInView.dismissButton setFrame:CGRectMake(0, 0, 50, 50)];
     [self.logInView.logo setFrame:CGRectMake(145.0f, 15.0f, 25.0f, 28.0f)];
+    
+    
     [self.logInView.logInButton setFrame:CGRectMake(45.0f, 175.0f, 235.0f, 45.0f)];
     [self.logInView.usernameField setFrame:CGRectMake(0.0f, 50.0f, 320.0f, 41.0f)];
     [self.logInView.usernameField setBackground:[UIImage imageNamed:@"list_bar"]];
