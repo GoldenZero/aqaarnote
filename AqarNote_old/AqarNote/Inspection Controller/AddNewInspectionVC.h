@@ -15,6 +15,7 @@
     MBProgressHUD *HUD;
     
 }
+@property (strong, nonatomic) IBOutlet UILabel *screenLabel;
 @property (strong, nonatomic) IBOutlet UIScrollView *sectionScrollView;
 @property (strong, nonatomic) IBOutlet UILabel *propertyTitle;
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;

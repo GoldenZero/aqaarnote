@@ -40,7 +40,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    pageImages=[[NSMutableArray alloc] init];
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
 
@@ -48,6 +47,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    pageImages=[[NSMutableArray alloc] init];
+
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
@@ -59,7 +60,9 @@
     // Retrieve the object by id
     [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
         self.propertyID=pfObject;
-        self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
+        self.propertyTitle.text = (NSString*)[self.propertyID objectForKey:@"Title"];
+        self.screenLabel.text = (NSString*)[self.propertyID objectForKey:@"Title"];
+
         self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
 //        NSString *note=[self.propertyID objectForKey:@"Description"];
 //        if ([note isEqual:@" "]) {
@@ -115,7 +118,7 @@
     [self.sectionScrollView addSubview:self.nextImgButton];
     [self.sectionScrollView addSubview:self.prevImgButton];
 
-    view_y = 315;
+    view_y = 300;
     
     //sectionsArray = [NSMutableArray new];
     //chosenSectionArray = [NSMutableArray new];
@@ -128,6 +131,7 @@
         UIImage* arrowImg = [UIImage imageNamed:@"list_side_arrow"];
         UIImageView* arrowImgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, 9, 16)];
         [arrowImgView setImage:arrowImg];
+ 
         
         UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
         titleLabel.textAlignment = NSTextAlignmentRight;
@@ -187,12 +191,13 @@
         [v addSubview:statusLabel];
         [v addSubview:arrowImgView];
         [v addSubview:secBtn];
-        
+        v.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        v.layer.borderWidth = 1.0f;
         [self.sectionScrollView addSubview:v];
         if (view_y > 285) {
-            self.sectionScrollView.contentSize = CGSizeMake(320, view_y + 51);
+            self.sectionScrollView.contentSize = CGSizeMake(320, view_y + 50);
         }
-        view_y += 51;
+        view_y += 50;
         
         
     }
@@ -283,6 +288,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
@@ -303,6 +309,8 @@
 
 - (void)uploadImage:(NSData *)imageData
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
     PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
     
     //HUD creation here (see example for code)

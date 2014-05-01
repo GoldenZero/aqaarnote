@@ -300,6 +300,7 @@ CGFloat animatedDistance;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+
     
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
@@ -321,6 +322,7 @@ CGFloat animatedDistance;
 
 - (void)uploadImage:(NSData *)imageData
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     
     // Add uploaded image to the scrollView
     if (pageImages.count==3) {

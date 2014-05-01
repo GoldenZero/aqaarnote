@@ -1088,7 +1088,7 @@
                                             <action selector="backButtonPressed:" destination="Pz3-3X-bKd" eventType="touchUpInside" id="u9h-yW-PtB"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عقار جديد" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uVr-3X-5yV">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uVr-3X-5yV">
                                         <rect key="frame" x="102" y="14" width="117" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1184,6 +1184,7 @@
                         <outlet property="pageControl" destination="8gM-w4-OqH" id="WzW-38-2DE"/>
                         <outlet property="prevImgButton" destination="93M-EB-4pE" id="zIs-jm-lA3"/>
                         <outlet property="propertyTitle" destination="SeI-x4-1x6" id="qgY-6J-eml"/>
+                        <outlet property="screenLabel" destination="uVr-3X-5yV" id="yu7-w4-I2M"/>
                         <outlet property="sectionScrollView" destination="SsN-XM-4O5" id="dyk-iR-J00"/>
                         <outlet property="sectionsLabel" destination="XQ6-mA-dRB" id="nfg-8l-wIH"/>
                         <segue destination="u0j-NF-wWS" kind="modal" identifier="showAddInspectVC" modalTransitionStyle="crossDissolve" id="nlo-Gd-lg6"/>
@@ -1476,7 +1477,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="msq-C1-9A8"/>
         <segue reference="yRB-Ic-eoT"/>
+        <segue reference="wZ5-50-hoO"/>
     </inferredMetricsTieBreakers>
 </document>

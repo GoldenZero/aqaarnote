@@ -60,10 +60,18 @@ CGFloat animatedDistance;
         self.noteTextView.text=note;
     }
     NSString *temp=[self.sectionID objectForKey:@"status"];
+   
     if (temp!=nil) {
-        UIButton* btn = [[UIButton alloc]init];
-        btn.tag=[temp integerValue];
-        [self chooseStatusPressed:btn];
+        if (temp.integerValue==5) {
+            UIButton* btn = [[UIButton alloc]init];
+            btn.tag=[temp integerValue];
+            [self buttonBrokenPrss:btn];
+        }
+        else{
+            UIButton* btn = [[UIButton alloc]init];
+            btn.tag=[temp integerValue];
+            [self chooseStatusPressed:btn];
+        }
     }
     self.inputAccessoryView = [XCDFormInputAccessoryView new];
     self.contentScrollView.contentSize =CGSizeMake(320, 518);
@@ -153,6 +161,7 @@ CGFloat animatedDistance;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     //[self.uploadImageBtn setBackgroundImage:image forState:UIControlStateNormal];
@@ -173,6 +182,8 @@ CGFloat animatedDistance;
 
 - (void)uploadImage:(NSData *)imageData
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
           // Add uploaded image to the scrollView
         if (pageImages.count==3) {
             UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
