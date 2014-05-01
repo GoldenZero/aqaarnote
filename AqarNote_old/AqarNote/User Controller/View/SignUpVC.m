@@ -47,7 +47,6 @@ CGFloat animatedDistance;
     [self.signUpView.signUpButton setTitle:@"" forState:UIControlStateHighlighted];
     
     // Add background for fields
- //   [self setFieldsBackground:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list_bar"]]];
     [self.signUpView insertSubview:fieldsBackground atIndex:1];
 
     // Remove text shadow
@@ -58,22 +57,17 @@ CGFloat animatedDistance;
     layer = self.signUpView.emailField.layer;
     layer.shadowOpacity = 0.0f;
     self.signUpView.additionalField.hidden=YES;
-//    layer = self.signUpView.additionalField.layer;
-//    layer.shadowOpacity = 0.0f;
-    
+
     // Set text color
     [self.signUpView.usernameField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     [self.signUpView.passwordField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     [self.signUpView.emailField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
-  //  [self.signUpView.additionalField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     
     
     [self.signUpView.usernameField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     [self.signUpView.passwordField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     [self.signUpView.emailField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-//    [self.signUpView.additionalField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-//    // Change "Additional" to match our use
-//    [self.signUpView.additionalField setPlaceholder:@"Phone number"];
+
     
 }
 
@@ -85,28 +79,21 @@ CGFloat animatedDistance;
     
     CGRect fieldFrame = self.signUpView.usernameField.frame;
     
-    [self.signUpView.dismissButton setFrame:CGRectMake(15.0f, 15.0f, 12.0f, 21.0f)];
+    [self.signUpView.dismissButton setFrame:CGRectMake(0.0f, 0.0f, 50.0f, 50.0f)];
     [self.signUpView.logo setFrame:CGRectMake(145.0f, 15.0f, 25.0f, 28.0f)];
     [self.signUpView.signUpButton setFrame:CGRectMake(45.0f, 200.0f, 235.0f, 45.0f)];
     [self.fieldsBackground setFrame:CGRectMake(0.0f, 50.0f,320.0f,41*4)];
     
-//    [self.signUpView.usernameField setFrame:CGRectMake(fieldFrame.origin.x + 5.0f,
-//                                                       fieldFrame.origin.y + yOffset,
-//                                                       fieldFrame.size.width - 10.0f,
-//                                                       fieldFrame.size.height)];
-    
-    [self.signUpView.usernameField setFrame:CGRectMake(0.0f,50.0f,320.0,41.0f)];
+
+    [self.signUpView.usernameField setFrame:CGRectMake(0.0f,91.0f,320.0,41.0f)];
     [self.signUpView.usernameField setPlaceholder:@" الاسم الكامل"];
     [self.signUpView.usernameField setTextAlignment:NSTextAlignmentRight];
     [self.signUpView.usernameField setBackground:[UIImage imageNamed:@"list_bar"]];
     yOffset += fieldFrame.size.height;
     
-//    [self.signUpView.passwordField setFrame:CGRectMake(fieldFrame.origin.x + 5.0f,
-//                                                       fieldFrame.origin.y + yOffset,
-//                                                       fieldFrame.size.width - 10.0f,
-//                                                       fieldFrame.size.height)];
-    
-    [self.signUpView.passwordField setFrame:CGRectMake(0.0f,91.0f,320.0,41.0f)];
+
+   
+    [self.signUpView.passwordField setFrame:CGRectMake (0.0f,132.0f,320.0,41.0f)];
     [self.signUpView.passwordField setPlaceholder:@" كلمة المرور"];
     [self.signUpView.passwordField setTextAlignment:NSTextAlignmentRight];
 
@@ -114,11 +101,8 @@ CGFloat animatedDistance;
 
     yOffset += fieldFrame.size.height;
     
-//    [self.signUpView.emailField setFrame:CGRectMake(fieldFrame.origin.x + 5.0f,
-//                                                    fieldFrame.origin.y + yOffset,
-//                                                    fieldFrame.size.width - 10.0f,
-//                                                    fieldFrame.size.height)];
-    [self.signUpView.emailField setFrame:CGRectMake(0.0f,132.0f,320.0,41.0f)];
+
+    [self.signUpView.emailField setFrame:CGRectMake(0.0f,50.0f,320.0,41.0f)];
     [self.signUpView.emailField setPlaceholder:@" البريد الإلكتروني"];
     [self.signUpView.emailField setTextAlignment:NSTextAlignmentRight];
 
@@ -126,11 +110,7 @@ CGFloat animatedDistance;
 
     
     yOffset += fieldFrame.size.height;
-    
-//    [self.signUpView.additionalField setFrame:CGRectMake(fieldFrame.origin.x + 5.0f,
-//                                                         fieldFrame.origin.y + yOffset,
-//                                                         fieldFrame.size.width - 10.0f,
-//                                                         fieldFrame.size.height)];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -172,52 +152,11 @@ CGFloat animatedDistance;
     aTextField.rightView = paddingView;
     aTextField.rightViewMode = UITextFieldViewModeAlways;
 
-    CGRect textFieldRect = [self.view.window convertRect:aTextField.bounds fromView:aTextField];
-    CGRect viewRect = [self.view.window convertRect:self.view.bounds fromView:self.view];
-    CGFloat midline = textFieldRect.origin.y + 0.5 * textFieldRect.size.height;
-    CGFloat numerator = midline - viewRect.origin.y - MINIMUM_SCROLL_FRACTION * viewRect.size.height;
-    CGFloat denominator = (MAXIMUM_SCROLL_FRACTION - MINIMUM_SCROLL_FRACTION) * viewRect.size.height;
-    CGFloat heightFraction = numerator / denominator;
-    
-    if (heightFraction < 0.0) {
-        heightFraction = 0.0;
-    }
-    else if (heightFraction > 1.0) {
-        heightFraction = 1.0;
-    }
-    
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    if (orientation == UIInterfaceOrientationPortrait ||
-        orientation == UIInterfaceOrientationPortraitUpsideDown) {
-        animatedDistance = floor(PORTRAIT_KEYBOARD_HEIGHT * heightFraction);
-    }
-    else {
-        animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
-    }
-    
-    CGRect viewFrame = self.view.frame;
-    viewFrame.origin.y -= animatedDistance;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
-    
-    [self.view setFrame:viewFrame];
-    
-    [UIView commitAnimations];
+
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    CGRect viewFrame = self.view.frame;
-    viewFrame.origin.y += animatedDistance;
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
-    
-    [self.view setFrame:viewFrame];
-    
-    [UIView commitAnimations];
+
 }
 
 @end
