@@ -109,7 +109,8 @@
     static NSString *CellIdentifier = @"Cell";
     
     PropertyCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     if (cell == nil) {
         cell = [[PropertyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PropertyCell" owner:self options:nil];

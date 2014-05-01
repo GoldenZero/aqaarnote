@@ -171,7 +171,8 @@
     static NSString *CellIdentifier = @"Cell";
     
     InspectionCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     if (cell == nil) {
         cell = [[InspectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"InspectionCell" owner:self options:nil];
@@ -450,7 +451,7 @@
         for (int i=0; i<inspectionsArray.count; i++) {
             PFObject *post = [inspectionsArray objectAtIndex:i];
             
-            if ([[post objectForKey:@"Title"] isEqualToString:title]) {
+            if (!([[post objectForKey:@"Title"] rangeOfString:title].location == NSNotFound)){
                 [filteredArray addObject:post];
             }
         }

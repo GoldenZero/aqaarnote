@@ -31,10 +31,8 @@
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];
     self.propertiesTable.userInteractionEnabled=YES;
-
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
-
 //    if ([PFUser currentUser]) {
 //        [self.view addSubview:HUD];
 //        
@@ -180,9 +178,12 @@
     static NSString *CellIdentifier = @"Cell";
     
     PropertyCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     if (cell == nil) {
         cell = [[PropertyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"PropertyCell" owner:self options:nil];
         cell = [topLevelObjects objectAtIndex:0];
         NSDateFormatter* df = [[NSDateFormatter alloc]init];
@@ -558,7 +559,8 @@
         for (int i=0; i<propertiesArray.count; i++) {
             PFObject *post = [propertiesArray objectAtIndex:i];
 
-            if ([[post objectForKey:@"Title"] isEqualToString:title]) {
+            if (!([[post objectForKey:@"Title"] rangeOfString:title].location == NSNotFound)){
+            //if ([[post objectForKey:@"Title"] isEqualToString:title]) {
                 [filteredArray addObject:post];
             }
         }
