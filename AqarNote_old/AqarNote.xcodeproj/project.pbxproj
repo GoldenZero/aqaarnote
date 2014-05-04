@@ -159,6 +159,8 @@
 		7C72AF1B1916A80B003D00ED /* AGPhotoBrowserOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C72AF151916A80B003D00ED /* AGPhotoBrowserOverlayView.m */; };
 		7C72AF1C1916A80B003D00ED /* AGPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C72AF171916A80B003D00ED /* AGPhotoBrowserView.m */; };
 		7C72AF1D1916A80B003D00ED /* AGPhotoBrowserZoomableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C72AF191916A80B003D00ED /* AGPhotoBrowserZoomableView.m */; };
+		7C72AF241916CC9D003D00ED /* SBPickerSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C72AF201916CC9D003D00ED /* SBPickerSelector.xib */; };
+		7C72AF251916CC9D003D00ED /* SBPickerSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C72AF231916CC9D003D00ED /* SBPickerSelector.m */; };
 		7C78E48518F707F400DDE286 /* profile_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C78E48118F707F400DDE286 /* profile_bottom.png */; };
 		7C78E48618F707F400DDE286 /* profile_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C78E48218F707F400DDE286 /* profile_bottom@2x.png */; };
 		7C78E48718F707F400DDE286 /* profile_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C78E48318F707F400DDE286 /* profile_top.png */; };
@@ -422,6 +424,9 @@
 		7C72AF171916A80B003D00ED /* AGPhotoBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserView.m; sourceTree = "<group>"; };
 		7C72AF181916A80B003D00ED /* AGPhotoBrowserZoomableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserZoomableView.h; sourceTree = "<group>"; };
 		7C72AF191916A80B003D00ED /* AGPhotoBrowserZoomableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserZoomableView.m; sourceTree = "<group>"; };
+		7C72AF201916CC9D003D00ED /* SBPickerSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBPickerSelector.xib; sourceTree = "<group>"; };
+		7C72AF221916CC9D003D00ED /* SBPickerSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPickerSelector.h; sourceTree = "<group>"; };
+		7C72AF231916CC9D003D00ED /* SBPickerSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPickerSelector.m; sourceTree = "<group>"; };
 		7C78E48118F707F400DDE286 /* profile_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_bottom.png; sourceTree = "<group>"; };
 		7C78E48218F707F400DDE286 /* profile_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_bottom@2x.png"; sourceTree = "<group>"; };
 		7C78E48318F707F400DDE286 /* profile_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_top.png; sourceTree = "<group>"; };
@@ -776,6 +781,32 @@
 			path = AGPhotoBrowser;
 			sourceTree = "<group>";
 		};
+		7C72AF1E1916CC9D003D00ED /* SBPickerSelector */ = {
+			isa = PBXGroup;
+			children = (
+				7C72AF1F1916CC9D003D00ED /* Resources */,
+				7C72AF211916CC9D003D00ED /* Source */,
+			);
+			path = SBPickerSelector;
+			sourceTree = "<group>";
+		};
+		7C72AF1F1916CC9D003D00ED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C72AF201916CC9D003D00ED /* SBPickerSelector.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7C72AF211916CC9D003D00ED /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7C72AF221916CC9D003D00ED /* SBPickerSelector.h */,
+				7C72AF231916CC9D003D00ED /* SBPickerSelector.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		84B904F018A1FAC0003771E1 /* XCDFormInputAccessory Recources */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +950,7 @@
 		84BFB567189E5F0F0069A87A /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7C72AF1E1916CC9D003D00ED /* SBPickerSelector */,
 				7C72AF0E1916A80B003D00ED /* AGPhotoBrowser */,
 				7C0F81CE190EE4B700047EA9 /* SDWebImage */,
 				7C47709F18F1E6A200F97168 /* BaseViewController.h */,
@@ -1193,6 +1225,7 @@
 				7C57AA7A18CF8EAE00DE6259 /* clean_circle_green_btn.png in Resources */,
 				7C57AA8D18CF8EAE00DE6259 /* good_circvle_green_btn@2x.png in Resources */,
 				7C57AAB918CF8EAE00DE6259 /* select_property@2x.png in Resources */,
+				7C72AF241916CC9D003D00ED /* SBPickerSelector.xib in Resources */,
 				7C644FC118D1F57700E0FC63 /* logout_btn@2x.png in Resources */,
 				7C57AABB18CF8EAE00DE6259 /* sign_in_btn@2x.png in Resources */,
 				7CBC230918D0A7350035D3E4 /* tabe_inspection.png in Resources */,
@@ -1262,6 +1295,7 @@
 				7C72AF1D1916A80B003D00ED /* AGPhotoBrowserZoomableView.m in Sources */,
 				7C0F81F1190EE4B700047EA9 /* SDWebImageDownloader.m in Sources */,
 				84CC698C189F95420027C844 /* InspectionsVC.m in Sources */,
+				7C72AF251916CC9D003D00ED /* SBPickerSelector.m in Sources */,
 				84CC6979189F760C0027C844 /* PropertyCell.m in Sources */,
 				84CC6989189F95270027C844 /* NotesVC.m in Sources */,
 				7C644FD218D238D200E0FC63 /* SectionCell.m in Sources */,

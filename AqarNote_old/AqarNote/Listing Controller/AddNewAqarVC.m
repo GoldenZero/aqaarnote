@@ -28,11 +28,11 @@
     PFObject * currentImageID;
     NSArray *countriesArray;
     EnhancedKeyboard *enhancedKeyboard;
-    countryObject * chosenCountry;
+    NSString * chosenCountry;
     NSMutableArray *pageImages;
     NSInteger pageCount;
     UIActionSheet *photoAction;
-    
+    SBPickerSelector *picker ;
     NSMutableArray *pageViews;
     
     NSMutableArray *propertySections;
@@ -70,6 +70,15 @@ CGFloat animatedDistance;
     
     HUD = [[MBProgressHUD alloc] initWithView:self.sectionsTableView];
     HUD.delegate = self;
+
+    
+    picker = [SBPickerSelector picker];
+    
+    
+    picker.delegate = self;
+    picker.pickerType = SBPickerSelectorTypeText;
+    picker.doneButtonTitle = @"تم";
+    picker.cancelButtonTitle = @"إغلاق";
 
     mainSectionsArray = [NSMutableArray new];
     [mainSectionsArray addObject:@"kitchen"];
@@ -275,7 +284,8 @@ CGFloat animatedDistance;
     [self.city resignFirstResponder];
     [self.propertyTitle resignFirstResponder];
     [self.descriptionsTxtView resignFirstResponder];
-    [self showPicker];
+    [self showPicker:nil];
+    //[self showPicker];
 }
 
 - (IBAction)uploadImagePressed:(id)sender {
@@ -463,7 +473,7 @@ CGFloat animatedDistance;
    
     // Set property
     [newPost setObject:self.propertyTitle.text forKey:@"Title"];
-    [newPost setObject:chosenCountry.countryName forKey:@"country"];
+    [newPost setObject:chosenCountry forKey:@"country"];
     [newPost setObject:self.city.text forKey:@"city"];
   //  [newPost setObject:self.descriptionsTxtView.text forKey:@"Description"];
 
@@ -804,7 +814,7 @@ CGFloat animatedDistance;
     [label setFont:[UIFont boldSystemFontOfSize:30.0]];
     [label setTextAlignment:NSTextAlignmentCenter];
     
-    [label setText:[[countriesArray objectAtIndex:row]countryName]];
+    [label setText:[countriesArray objectAtIndex:row]];
     
     return label;
     
@@ -813,7 +823,7 @@ CGFloat animatedDistance;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     chosenCountry=(countryObject*)[countriesArray objectAtIndex:row];
-    self.country.text=[chosenCountry countryName];
+    self.country.text=chosenCountry;
     
 }
 
@@ -865,9 +875,12 @@ CGFloat animatedDistance;
                              ];
         
         //add country
-        [resultCountries addObject:country];
+        [resultCountries addObject:country.countryName];
     }
     countriesArray=resultCountries;
+    
+    picker.pickerData = [[NSMutableArray alloc] initWithArray:countriesArray];
+
     [self.countriesPickerView reloadAllComponents];
 }
 
@@ -1443,5 +1456,50 @@ CGFloat animatedDistance;
 	return _browserView;
 }
 
+- (void) showPicker:(id)sender{
+    
+    
+    
+    //*********************
+    //setup here your picker
+    //*********************
+    
+    
+    
+    CGPoint point = [self.view convertPoint:[sender frame].origin fromView:[sender superview]];
+    CGRect frame = [sender frame];
+    frame.origin = point;
+    //[picker showPickerOver:self]; //classic picker display
+    
+    [picker showPickerIpadFromRect:CGRectZero inView:self.view];
+    
+}
+
+
+#pragma mark - SBPickerSelectorDelegate
+-(void) SBPickerSelector:(SBPickerSelector *)selector selectedValue:(NSString *)value index:(NSInteger)idx{
+    chosenCountry=(NSString*)[countriesArray objectAtIndex:idx];
+    self.country.text=chosenCountry ;
+}
+
+-(void) SBPickerSelector:(SBPickerSelector *)selector dateSelected:(NSDate *)date{
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+   // resultLbl_.text = [dateFormat stringFromDate:date];
+}
+
+-(void) SBPickerSelector:(SBPickerSelector *)selector cancelPicker:(BOOL)cancel{
+    NSLog(@"press cancel");
+}
+
+-(void) SBPickerSelector:(SBPickerSelector *)selector intermediatelySelectedValue:(id)value atIndex:(NSInteger)idx{
+    if ([value isMemberOfClass:[NSDate class]]) {
+        [self SBPickerSelector:selector dateSelected:value];
+    }else{
+        [self SBPickerSelector:selector selectedValue:value index:idx];
+    }
+}
 
 @end

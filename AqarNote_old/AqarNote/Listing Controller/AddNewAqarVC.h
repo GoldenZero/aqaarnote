@@ -12,9 +12,10 @@
 #import "AddNewSectionVC.h"
 #import "EditSectionVC.h"
 #import "AGPhotoBrowserView.h"
+#import "SBPickerSelector.h"
 
 
-@interface AddNewAqarVC :BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,AddSectionDelegate,EditSectionDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
+@interface AddNewAqarVC :BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,AddSectionDelegate,EditSectionDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource,SBPickerSelectorDelegate>
 
 {
     MBProgressHUD *HUD;
