@@ -44,7 +44,8 @@
         //Create query for all Post object by the current user
         PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
         [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
-        
+        [postQuery orderByDescending:@"createdAt"];
+
         // Run the query
         [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
