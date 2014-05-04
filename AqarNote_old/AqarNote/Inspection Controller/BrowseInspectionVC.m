@@ -14,6 +14,8 @@
     PFObject * currentImageID;
     NSMutableArray *pageImages;
     NSInteger pageCount;
+    UIActionSheet *photoAction;
+
     NSMutableArray *pageViews;
     
 }
@@ -412,13 +414,56 @@ CGFloat animatedDistance;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
-    if ([@"من الكاميرا" isEqualToString:buttonTitle]) {
-        [self takePhotoWithCamera];
+    
+    if (actionSheet==photoAction) {
+        NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if ([buttonTitle isEqualToString:@"حذف"]) {
+            [self.browserView hideWithCompletion:^(BOOL finished){
+                NSLog(@"Dismissed!");
+            }];
+            [self purgePage:actionSheet.tag];
+            [pageImages removeObjectAtIndex:actionSheet.tag];
+            pageCount=pageImages.count;
+            [self setScrollView];
+        }
+        else if ([buttonTitle isEqualToString:@"إضافة"]){
+            [self.browserView hideWithCompletion:^(BOOL finished){
+                NSLog(@"Dismissed!");
+            }];
+            
+            // Add uploaded image to the scrollView
+            if (pageImages.count==3) {
+                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
+                
+                av.alertViewStyle = UIAlertViewStyleDefault;
+                [av show];
+                
+            }
+            else{
+                UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:nil
+                                                                delegate:self
+                                                       cancelButtonTitle:@"إلغاء"
+                                                  destructiveButtonTitle:nil
+                                                       otherButtonTitles:@"من الكاميرا", @"من مكتبة الصور", nil];
+                
+                [as showInView:self.view];
+            }
+            
+            
+        }
+        
+        
     }
-    else if ([@"من مكتبة الصور" isEqualToString:buttonTitle]) {
-        [self selectPhotoFromLibrary];
+    else{
+        NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+        if ([@"من الكاميرا" isEqualToString:buttonTitle]) {
+            [self takePhotoWithCamera];
+        }
+        else if ([@"من مكتبة الصور" isEqualToString:buttonTitle]) {
+            [self selectPhotoFromLibrary];
+        }
     }
+
 }
 
 -(void) takePhotoWithCamera {
@@ -460,8 +505,8 @@ CGFloat animatedDistance;
 -(void)setScrollView{
     if (pageImages.count!=0) {
         self.addImgBtnPrss.hidden=YES;
-        self.uploadImageBtn.hidden=NO;
-        self.deleteImgButton.hidden=NO;
+      //  self.uploadImageBtn.hidden=NO;
+       // self.deleteImgButton.hidden=NO;
         if (pageImages.count==1) {
             self.prevImgButton.hidden=YES;
             self.nextImgButton.hidden=YES;
@@ -536,7 +581,15 @@ CGFloat animatedDistance;
             frame = CGRectInset(frame, 20.0f, 30.0f);
             
             UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+            newPageView.userInteractionEnabled = YES;
+            newPageView.tag=page;
             
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+            tap.numberOfTapsRequired = 1;
+            tap.cancelsTouchesInView=YES;
+            
+            [newPageView addGestureRecognizer:tap];
+
             newPageView.contentMode = UIViewContentModeScaleAspectFit;
             newPageView.frame = frame;
             [self.pagingScrollView addSubview:newPageView];
@@ -545,7 +598,12 @@ CGFloat animatedDistance;
         
     }
 }
-
+-(void)imageTapped:(UITapGestureRecognizer *)gesture
+{
+    
+    [self.browserView showFromIndex: gesture.view.tag];
+    
+}
 - (void)purgePage:(NSInteger)page {
     if (page < 0 || page >= pageImages.count) {
         // If it's outside the range of what you have to display, then do nothing
@@ -667,5 +725,80 @@ CGFloat animatedDistance;
     }
     
 }
+
+
+#pragma mark - AGPhotoBrowser datasource
+
+- (NSInteger)numberOfPhotosForPhotoBrowser:(AGPhotoBrowserView *)photoBrowser
+{
+	return pageImages.count;
+}
+
+- (UIImage *)photoBrowser:(AGPhotoBrowserView *)photoBrowser imageAtIndex:(NSInteger)index
+{
+	return [pageImages objectAtIndex:index];
+}
+
+- (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser titleForImageAtIndex:(NSInteger)index
+{
+	return @"";
+}
+
+- (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser descriptionForImageAtIndex:(NSInteger)index
+{
+	return @"";
+}
+
+- (BOOL)photoBrowser:(AGPhotoBrowserView *)photoBrowser willDisplayActionButtonAtIndex:(NSInteger)index
+{
+    // -- For testing purposes only
+//    if (index % 2) {
+//        return YES;
+//    }
+//    
+//    return NO;
+    return YES;
+}
+
+
+#pragma mark - AGPhotoBrowser delegate
+
+- (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnDoneButton:(UIButton *)doneButton
+{
+	// -- Dismiss
+	NSLog(@"Dismiss the photo browser here");
+	[self.browserView hideWithCompletion:^(BOOL finished){
+		NSLog(@"Dismissed!");
+	}];
+}
+
+- (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnActionButton:(UIButton *)actionButton atIndex:(NSInteger)index
+{
+    photoAction = [[UIActionSheet alloc] initWithTitle:@""
+                                              delegate:self
+                                     cancelButtonTitle:NSLocalizedString(@"إلغاء", @"Cancel button")
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:NSLocalizedString(@"حذف", @"Delete button"),NSLocalizedString(@"إضافة", @"Delete button"), nil];
+    photoAction.tag=index;
+    
+    
+    [photoAction showInView:self.view];
+}
+
+
+#pragma mark - Getters
+
+- (AGPhotoBrowserView *)browserView
+{
+	if (!_browserView) {
+		_browserView = [[AGPhotoBrowserView alloc] initWithFrame:CGRectZero];
+		_browserView.delegate = self;
+		_browserView.dataSource = self;
+	}
+	
+	return _browserView;
+}
+
+
 
 @end

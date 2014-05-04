@@ -11,7 +11,10 @@
 #import "BaseViewController.h"
 #import "AddNewSectionVC.h"
 #import "EditSectionVC.h"
-@interface AddNewAqarVC :BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,AddSectionDelegate,EditSectionDelegate>
+#import "AGPhotoBrowserView.h"
+
+
+@interface AddNewAqarVC :BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,AddSectionDelegate,EditSectionDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
 
 {
     MBProgressHUD *HUD;
@@ -35,6 +38,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *deletePhotoButton;
 @property (strong, nonatomic) IBOutlet UIButton *nextImgButton;
 @property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
+
+@property (nonatomic, strong) AGPhotoBrowserView *browserView;
+
 
 - (IBAction)openCountryPickerBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;

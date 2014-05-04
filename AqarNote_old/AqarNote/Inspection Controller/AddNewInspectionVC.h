@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BrowseInspectionVC.h"
 #import "EnhancedKeyboard.h"
+#import "AGPhotoBrowserView.h"
 
-@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate>
+@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
 {
     MBProgressHUD *HUD;
     
@@ -29,6 +30,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *sectionsLabel;
 @property (strong, nonatomic) IBOutlet UIButton *nextImgButton;
 @property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
+
+@property (nonatomic, strong) AGPhotoBrowserView *browserView;
 
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;

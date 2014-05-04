@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "XCDFormInputAccessoryView.h"
 #import "BaseViewController.h"
-@interface BrowseInspectionVC : BaseViewController<UINavigationControllerDelegate,UIScrollViewDelegate, UIImagePickerControllerDelegate,UITextViewDelegate,MBProgressHUDDelegate,UIAlertViewDelegate>
+#import "AGPhotoBrowserView.h"
+
+@interface BrowseInspectionVC : BaseViewController<UINavigationControllerDelegate,UIScrollViewDelegate, UIImagePickerControllerDelegate,UITextViewDelegate,MBProgressHUDDelegate,UIAlertViewDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
 {
     MBProgressHUD *HUD;
     
@@ -35,6 +37,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *deleteImgButton;
 @property (strong, nonatomic) IBOutlet UIButton *nextImgButton;
 @property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
+
+@property (nonatomic, strong) AGPhotoBrowserView *browserView;
 
 - (IBAction)deleteImgBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;

@@ -561,7 +561,14 @@
             frame = CGRectInset(frame, 20.0f, 30.0f);
             
             UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+            newPageView.userInteractionEnabled = YES;
+            newPageView.tag=page;
+
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+            tap.numberOfTapsRequired = 1;
+            tap.cancelsTouchesInView=YES;
             
+            [newPageView addGestureRecognizer:tap];
             newPageView.contentMode = UIViewContentModeScaleAspectFit;
             newPageView.frame = frame;
             [self.imgScrollView addSubview:newPageView];
@@ -569,6 +576,13 @@
         }
         
     }
+}
+
+-(void)imageTapped:(UITapGestureRecognizer *)gesture
+{
+
+    [self.browserView showFromIndex: gesture.view.tag];
+
 }
 
 - (void)purgePage:(NSInteger)page {
@@ -605,6 +619,77 @@
     [self.notesTxtView resignFirstResponder];
     
 }
+
+#pragma mark - AGPhotoBrowser datasource
+
+- (NSInteger)numberOfPhotosForPhotoBrowser:(AGPhotoBrowserView *)photoBrowser
+{
+	return pageImages.count;
+}
+
+- (UIImage *)photoBrowser:(AGPhotoBrowserView *)photoBrowser imageAtIndex:(NSInteger)index
+{
+	return [pageImages objectAtIndex:index];
+}
+
+- (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser titleForImageAtIndex:(NSInteger)index
+{
+	return @"";
+}
+
+- (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser descriptionForImageAtIndex:(NSInteger)index
+{
+	return @"";
+}
+
+- (BOOL)photoBrowser:(AGPhotoBrowserView *)photoBrowser willDisplayActionButtonAtIndex:(NSInteger)index
+{
+    // -- For testing purposes only
+//    if (index % 2) {
+//        return YES;
+//    }
+//    
+//    return NO;
+    return NO;
+}
+
+
+#pragma mark - AGPhotoBrowser delegate
+
+- (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnDoneButton:(UIButton *)doneButton
+{
+	// -- Dismiss
+	NSLog(@"Dismiss the photo browser here");
+	[self.browserView hideWithCompletion:^(BOOL finished){
+		NSLog(@"Dismissed!");
+	}];
+}
+
+- (void)photoBrowser:(AGPhotoBrowserView *)photoBrowser didTapOnActionButton:(UIButton *)actionButton atIndex:(NSInteger)index
+{
+//	NSLog(@"Action button tapped at index %d!", index);
+//	UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@""
+//														delegate:nil
+//											   cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button")
+//										  destructiveButtonTitle:NSLocalizedString(@"Delete", @"Delete button")
+//											   otherButtonTitles:NSLocalizedString(@"Share", @"Share button"), nil];
+//	[action showInView:self.view];
+}
+
+
+#pragma mark - Getters
+
+- (AGPhotoBrowserView *)browserView
+{
+	if (!_browserView) {
+		_browserView = [[AGPhotoBrowserView alloc] initWithFrame:CGRectZero];
+		_browserView.delegate = self;
+		_browserView.dataSource = self;
+	}
+	
+	return _browserView;
+}
+
 
 
 @end
