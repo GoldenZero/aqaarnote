@@ -32,7 +32,7 @@
     NSMutableArray *pageImages;
     NSInteger pageCount;
     UIActionSheet *photoAction;
-    SBPickerSelector *picker ;
+    SBPickerSelector *countriesPicker ;
     NSMutableArray *pageViews;
     
     NSMutableArray *propertySections;
@@ -72,13 +72,13 @@ CGFloat animatedDistance;
     HUD.delegate = self;
 
     
-    picker = [SBPickerSelector picker];
+    countriesPicker = [SBPickerSelector picker];
     
     
-    picker.delegate = self;
-    picker.pickerType = SBPickerSelectorTypeText;
-    picker.doneButtonTitle = @"تم";
-    picker.cancelButtonTitle = @"إغلاق";
+    countriesPicker.delegate = self;
+    countriesPicker.pickerType = SBPickerSelectorTypeText;
+    countriesPicker.doneButtonTitle = @"تم";
+    countriesPicker.cancelButtonTitle = @"إغلاق";
 
     mainSectionsArray = [NSMutableArray new];
     [mainSectionsArray addObject:@"kitchen"];
@@ -822,7 +822,7 @@ CGFloat animatedDistance;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    chosenCountry=(countryObject*)[countriesArray objectAtIndex:row];
+    chosenCountry=(NSString*)[countriesArray objectAtIndex:row];
     self.country.text=chosenCountry;
     
 }
@@ -879,7 +879,7 @@ CGFloat animatedDistance;
     }
     countriesArray=resultCountries;
     
-    picker.pickerData = [[NSMutableArray alloc] initWithArray:countriesArray];
+    countriesPicker.pickerData = [[NSMutableArray alloc] initWithArray:countriesArray];
 
     [self.countriesPickerView reloadAllComponents];
 }
@@ -1471,7 +1471,7 @@ CGFloat animatedDistance;
     frame.origin = point;
     //[picker showPickerOver:self]; //classic picker display
     
-    [picker showPickerIpadFromRect:CGRectZero inView:self.view];
+    [countriesPicker showPickerIpadFromRect:CGRectZero inView:self.view];
     
 }
 
