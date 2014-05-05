@@ -22,7 +22,8 @@
     bool isEdit;
     NSArray *countriesArray;
     EnhancedKeyboard *enhancedKeyboard;
-    countryObject * chosenCountry;
+    NSString * chosenCountry;
+    SBPickerSelector *countriesPicker ;
 
 }
 
@@ -53,6 +54,13 @@ CGFloat animatedDistance;
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
     [self.aboutTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    countriesPicker = [SBPickerSelector picker];
+    
+    
+    countriesPicker.delegate = self;
+    countriesPicker.pickerType = SBPickerSelectorTypeText;
+    countriesPicker.doneButtonTitle = @"تم";
+    countriesPicker.cancelButtonTitle = @"إغلاق";
 
     self.contentScrollView.contentSize =CGSizeMake(320, 470);
     [self loadCountries];
@@ -146,8 +154,8 @@ CGFloat animatedDistance;
 }
 
 - (IBAction)countryBtnPrss:(id)sender {
-  
-    [self showPicker];
+    [self showPicker:nil];
+ //   [self showPicker];
 }
 
 #pragma mark - TextView Delegate 
@@ -321,7 +329,7 @@ CGFloat animatedDistance;
     [label setFont:[UIFont boldSystemFontOfSize:30.0]];
     [label setTextAlignment:NSTextAlignmentCenter];
     
-    [label setText:[[countriesArray objectAtIndex:row]countryName]];
+    [label setText:[countriesArray objectAtIndex:row]];
     
     return label;
     
@@ -329,8 +337,8 @@ CGFloat animatedDistance;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    chosenCountry=(countryObject*)[countriesArray objectAtIndex:row];
-    self.countryTxtField.text=[NSString stringWithFormat:@"   %@",[chosenCountry countryName]];
+    chosenCountry=(NSString*)[countriesArray objectAtIndex:row];
+    self.countryTxtField.text=[NSString stringWithFormat:@"   %@",chosenCountry];
     
 }
 
@@ -388,10 +396,12 @@ CGFloat animatedDistance;
                                    countryCodeString:[countryDict objectForKey:COUNTRY_CODE_JSONK]
                                    ];
         
-        //add country
-        [resultCountries addObject:country];
+        [resultCountries addObject:country.countryName];
     }
     countriesArray=resultCountries;
+    
+    countriesPicker.pickerData = [[NSMutableArray alloc] initWithArray:countriesArray];
+    
     [self.countryPicker reloadAllComponents];
 }
 
@@ -421,4 +431,51 @@ CGFloat animatedDistance;
         self.aboutTxtView.text=@"اكتب عن نفسك في بضعة كلمات";
     }
 }
+
+- (void) showPicker:(id)sender{
+    
+    
+    
+    //*********************
+    //setup here your picker
+    //*********************
+    
+    
+    
+    CGPoint point = [self.view convertPoint:[sender frame].origin fromView:[sender superview]];
+    CGRect frame = [sender frame];
+    frame.origin = point;
+    //[picker showPickerOver:self]; //classic picker display
+    
+    [countriesPicker showPickerIpadFromRect:CGRectZero inView:self.view];
+    
+}
+
+
+#pragma mark - SBPickerSelectorDelegate
+-(void) SBPickerSelector:(SBPickerSelector *)selector selectedValue:(NSString *)value index:(NSInteger)idx{
+    chosenCountry=(NSString*)[countriesArray objectAtIndex:idx];
+    self.countryTxtField.text=chosenCountry ;
+}
+
+-(void) SBPickerSelector:(SBPickerSelector *)selector dateSelected:(NSDate *)date{
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    // resultLbl_.text = [dateFormat stringFromDate:date];
+}
+
+-(void) SBPickerSelector:(SBPickerSelector *)selector cancelPicker:(BOOL)cancel{
+    NSLog(@"press cancel");
+}
+
+-(void) SBPickerSelector:(SBPickerSelector *)selector intermediatelySelectedValue:(id)value atIndex:(NSInteger)idx{
+    if ([value isMemberOfClass:[NSDate class]]) {
+        [self SBPickerSelector:selector dateSelected:value];
+    }else{
+        [self SBPickerSelector:selector selectedValue:value index:idx];
+    }
+}
+
 @end

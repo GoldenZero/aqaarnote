@@ -10,7 +10,7 @@
 
 @interface PropertyCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *propertyImage;
+@property (strong, nonatomic) IBOutlet PFImageView *propertyImage;
 @property (strong, nonatomic) IBOutlet UILabel *propertyTitle;
 @property (strong, nonatomic) IBOutlet UILabel *propertyLocation;
 @property (strong, nonatomic) IBOutlet UILabel *propertyDate;

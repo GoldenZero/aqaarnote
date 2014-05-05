@@ -107,13 +107,31 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
+            for (int i=0; i<propertiesArray.count; i++) {
+                PFObject *post = (PFObject*)[propertiesArray objectAtIndex:i];
+                PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                [photoQuery whereKey:@"propertyID" equalTo:post];
+                [photoQuery orderByDescending:@"createdAt"];
 
+                // Run the query
+                [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    if (!error) {
+                            if ([objects count] != 0) {
+                                PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
+                                [propertiesImagesArray addObject:theImage];
+                                
+                                }
+                                NSLog(@"got the object image");
+                            }
+                    }
+                ];
 
+            }
         }
 
         [HUD hide:YES];
         if (propertiesArray.count>0) {
-            
+            [self getPropertyImages];
             [self.propertiesTable setHidden:NO];
             [self.addNewImage setHidden:YES];
             [self.searchButton setHidden:NO];
@@ -125,7 +143,6 @@
 
         }
         [self.propertiesTable reloadData];
-
 
     }];
 
@@ -144,9 +161,7 @@
                 propertiesImagesArray = [[NSMutableArray alloc]initWithArray:objects];
                 //Save results and update the table
             }
-            
         }
-
     }];
 }
 
@@ -161,7 +176,6 @@
             break;
         }
     }
-    
     return theImage;
 }
 
@@ -172,8 +186,6 @@
     // Return the number of rows in the section.
     return propertiesArray.count;
 }
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -190,45 +202,36 @@
         cell = [topLevelObjects objectAtIndex:0];
         NSDateFormatter* df = [[NSDateFormatter alloc]init];
         [df setDateFormat:@"yyyy-MM-dd"];
-        [cell.activityIndicator startAnimating];
         // Configure the cell with the textContent of the Post as the cell's text label
-        PFObject *post = (PFObject*)[propertiesArray objectAtIndex:indexPath.row];
-        cell.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
+    
         
+        PFObject *post = (PFObject*)[propertiesArray objectAtIndex:indexPath.row];
         PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
         [photoQuery whereKey:@"propertyID" equalTo:post];
         
         // Run the query
         [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
-                [cell.activityIndicator stopAnimating];
-                [cell.activityIndicator setHidden:YES];
-                if ([objects count] != 0) {
-                    PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
-                    //Save results and update the table
-                    NSData* imageData = [theImage getData];
-                    
-                    if (imageData!=nil) {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        // Dispatch to main thread to update the UI
-                        CGRect frame=cell.propertyImage.frame;
-                        cell.propertyImage.image=image;
-                        cell.propertyImage.backgroundColor=[UIColor blackColor];
-                        cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
-                        cell.propertyImage.layer.cornerRadius = 5.0;
-                        cell.propertyImage.layer.masksToBounds = YES;
-                        cell.propertyImage.frame=frame;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if ([objects count] != 0) {
+                        PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
+                        
+                        if (theImage!=nil) {
+                            
+                            cell.propertyImage.file = (PFFile *)theImage;
+                            [ cell.propertyImage loadInBackground];
+                            
+                        }
+                        NSLog(@"got the object image");
                     }
-                    else{
-                        [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
-                    }
-                    
-                    NSLog(@"got the object image");
-                }
+                });
             }
         }];
         
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
+        cell.propertyImage.layer.cornerRadius = 5.0;
+        cell.propertyImage.layer.masksToBounds = YES;
+
         [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
         [cell.detailsTxtView setText:[post objectForKey:@"Description"]];

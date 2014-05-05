@@ -424,8 +424,6 @@
         }
 
     }
-    
-    
 }
 
 - (IBAction)prevImgBtnPrss:(id)sender {
@@ -442,8 +440,6 @@
     if (page==0){
         [self.prevImgButton setHidden:YES];
     }
-
-   
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
@@ -455,6 +451,8 @@
 
 - (IBAction)backButtonPressed:(id)sender {
     //[self.navigationController popViewControllerAnimated:YES];
+   // [self performSegueWithIdentifier:@"showInspectionVC" sender:self];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -573,8 +571,7 @@
             newPageView.frame = frame;
             [self.imgScrollView addSubview:newPageView];
             [pageViews replaceObjectAtIndex:page withObject:newPageView];
-        }
-        
+        }        
     }
 }
 

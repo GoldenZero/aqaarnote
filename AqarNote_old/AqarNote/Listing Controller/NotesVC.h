@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "EnhancedKeyboard.h"
 #import "BaseViewController.h"
-@interface NotesVC : UIViewController<UITextFieldDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate>
+#import "SBPickerSelector.h"
+
+@interface NotesVC : UIViewController<UITextFieldDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,SBPickerSelectorDelegate>
 
 #pragma mark - Properties
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;

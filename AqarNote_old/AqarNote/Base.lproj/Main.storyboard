@@ -251,8 +251,17 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="الدولة" textAlignment="right" minimumFontSize="17" id="MXj-Bs-6QF">
+                                        <rect key="frame" x="36" y="150" width="193" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="SW6-19-1KX" id="CJx-0X-har"/>
+                                        </connections>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kbA-6P-3hr">
-                                        <rect key="frame" x="34" y="150" width="195" height="30"/>
+                                        <rect key="frame" x="34" y="150" width="223" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal">
@@ -262,15 +271,6 @@
                                             <action selector="countryBtnPrss:" destination="SW6-19-1KX" eventType="touchUpInside" id="3uJ-aC-bvR"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="الدولة" textAlignment="right" minimumFontSize="17" id="MXj-Bs-6QF">
-                                        <rect key="frame" x="36" y="150" width="193" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="SW6-19-1KX" id="CJx-0X-har"/>
-                                        </connections>
-                                    </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حسابي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DGO-dX-LmB">
                                         <rect key="frame" x="20" y="189" width="280" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1078,10 +1078,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1qp-21-VgH">
-                                        <rect key="frame" x="0.0" y="3" width="44" height="44"/>
+                                        <rect key="frame" x="2" y="3" width="40" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="إلغاء">
+                                        <state key="normal" title="عودة">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1189,11 +1189,12 @@
                         <outlet property="sectionsLabel" destination="XQ6-mA-dRB" id="nfg-8l-wIH"/>
                         <segue destination="u0j-NF-wWS" kind="modal" identifier="showAddInspectVC" modalTransitionStyle="crossDissolve" id="nlo-Gd-lg6"/>
                         <segue destination="gLd-EQ-14C" kind="modal" identifier="editProperty" id="wZ5-50-hoO"/>
+                        <segue destination="2Ed-Bo-d1S" kind="modal" identifier="showInspectionVC" id="Szq-qB-S6s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FT8-yt-Utl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2574" y="321"/>
+            <point key="canvasLocation" x="2578" y="397"/>
         </scene>
         <!--BrowseInspectionVC-->
         <scene sceneID="zKh-Eo-WWy">
@@ -1431,7 +1432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NS6-pV-Xyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3015" y="321"/>
+            <point key="canvasLocation" x="3263" y="381"/>
         </scene>
     </scenes>
     <resources>
@@ -1477,7 +1478,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yRB-Ic-eoT"/>
         <segue reference="wZ5-50-hoO"/>
+        <segue reference="yRB-Ic-eoT"/>
+        <segue reference="Szq-qB-S6s"/>
     </inferredMetricsTieBreakers>
 </document>
