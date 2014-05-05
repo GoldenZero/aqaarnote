@@ -11,6 +11,8 @@
 #import "SignUpVC.h"
 #import "MBProgressHUD.h"
 #import "AddNewInspectionVC.h"
+#import "ODRefreshControl.h"
+
 @interface HomePageVC ()
 {
     NSMutableArray* propertiesArray;
@@ -18,7 +20,7 @@
     PFObject *choosenObject;
     NSMutableArray * filteredArray;
     MBProgressHUD *HUD;
-
+    ODRefreshControl *refreshControl;
     bool isSearchOpen;
 }
 @end
@@ -33,6 +35,9 @@
     self.propertiesTable.userInteractionEnabled=YES;
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
+    
+    refreshControl = [[ODRefreshControl alloc] initInScrollView:self.propertiesTable];
+    [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
 
 }
 
@@ -108,7 +113,8 @@
                     }
                     if (propertiesArray.count==propertiesImagesArray.count) {
                         [HUD hide:YES];
-                        
+                        [refreshControl endRefreshing];
+
                         [self.propertiesTable setHidden:NO];
                         [self.addNewImage setHidden:YES];
                         [self.searchButton setHidden:NO];
@@ -123,6 +129,8 @@
 
         if (propertiesArray.count==0) {
             [HUD hide:YES];
+            [refreshControl endRefreshing];
+
             [self.propertiesTable setHidden:YES];
             [self.addNewImage setHidden:NO];
             [self.searchButton setHidden:YES];
@@ -579,4 +587,20 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     [textField resignFirstResponder];
 }
+
+
+- (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
+{
+    double delayInSeconds = 0.2;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.view addSubview:HUD];
+        
+        [HUD show:YES];
+        HUD.labelText = @"جاري التحميل...";
+
+        [self getProperties];
+    });
+}
+
 @end

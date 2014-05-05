@@ -9,13 +9,15 @@
 #import "InspectionsVC.h"
 #import "MBProgressHUD.h"
 #import "AddNewInspectionVC.h"
-
+#import "ODRefreshControl.h"
 @interface InspectionsVC ()
 {
     NSMutableArray* inspectionsArray;
     NSMutableArray* propertiesArray;
     PFObject *choosenObject;
     bool isSearchOpen;
+    ODRefreshControl *refreshControl;
+    MBProgressHUD *HUD;
 
     NSMutableArray* inspectionsImagesArray;
 }
@@ -40,6 +42,11 @@
     propertiesArray = [NSMutableArray new];
     inspectionsImagesArray = [NSMutableArray new];
     
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.delegate = self;
+
+    refreshControl = [[ODRefreshControl alloc] initInScrollView:self.inspectionsTable];
+    [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
 
 }
 
@@ -49,7 +56,10 @@
     isSearchOpen=false;
 
     [super viewWillAppear:YES];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.view addSubview:HUD];
+    
+    [HUD show:YES];
+    HUD.labelText = @"جاري التحميل...";
     //TODO : chached data
     [self getInspections];
     
@@ -92,8 +102,9 @@
                             }
                         }
                         if (inspectionsArray.count==inspectionsImagesArray.count) {
-                            [MBProgressHUD hideHUDForView:self.view animated:YES];
-                            
+                            [HUD hide:YES];
+                            [refreshControl endRefreshing];
+
                             [self.inspectionsTable reloadData];
                             [self.inspectionsTable setHidden:NO];
                             [self.addNewInspectImage setHidden:YES];
@@ -108,6 +119,9 @@
             }
             
             if (inspectionsArray.count==0) {
+                [HUD hide:YES];
+                [refreshControl endRefreshing];
+
                 [self.inspectionsTable setHidden:YES];
                 [self.addNewInspectImage setHidden:NO];
                 [self.addNewProperImg setHidden:NO];
@@ -476,4 +490,17 @@
     [textField resignFirstResponder];
 }
 
+- (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
+{
+    double delayInSeconds = 0.2;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.view addSubview:HUD];
+        
+        [HUD show:YES];
+        HUD.labelText = @"جاري التحميل...";
+        
+        [self getInspections];
+    });
+}
 @end
