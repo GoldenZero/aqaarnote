@@ -168,12 +168,21 @@ CGFloat animatedDistance;
     CGRect frame = self.sectionsTableView.frame;
     frame.size.height = self.sectionsTableView.contentSize.height;
     self.sectionsTableView.frame = frame;
-    
     CGFloat scrollViewHeight = 0.0f;
-    for (UIView* view in self.contentScrollView.subviews)
-    {
-        scrollViewHeight += view.frame.size.height;
-    }
+    scrollViewHeight+=self.imageScrollView.frame.size.height;
+    scrollViewHeight+=self.propertyTitle.frame.size.height;
+    scrollViewHeight+=self.city.frame.size.height;
+    scrollViewHeight+=self.country.frame.size.height;
+    scrollViewHeight+=self.sectionsTableView.frame.size.height;
+    
+//    for (UIView* view in self.contentScrollView.subviews)
+//    {
+//        if((view==self.imageScrollView)||[view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITableView class]])
+//        {
+//            scrollViewHeight += view.frame.size.height;
+//
+//        }
+//    }
     
     [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
 
@@ -364,57 +373,57 @@ CGFloat animatedDistance;
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
-    NSLog(@"post new property");
-    if ([self.propertyTitle.text isEqualToString:@""]) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال عنوان الشقة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:@"", nil];
-        av.alertViewStyle = UIAlertViewStylePlainTextInput;
-        [av textFieldAtIndex:0].delegate = self;
-        [av show];
+    if ([self.propertyTitle.text length] == 0 || self.propertyTitle.text == nil || [self.propertyTitle.text isEqual:@""] == TRUE) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال عنوان الشقة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        alert.tag=1;
+        [alert show];
  
     }
-    else if ([self.city.text isEqualToString:@""]) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال المدينة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:@"", nil];
-        av.alertViewStyle = UIAlertViewStylePlainTextInput;
-        [av textFieldAtIndex:0].delegate = self;
+    else if ([self.city.text length] == 0 || self.city.text == nil || [self.city.text isEqual:@""] == TRUE) {
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال المدينة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        av.tag=1;
         [av show];
         
     }
 
     else if ([chosenCountry isEqual:nil]) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء اختيار الدولة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:@"", nil];
-        av.alertViewStyle = UIAlertViewStylePlainTextInput;
-        [av textFieldAtIndex:0].delegate = self;
+        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء اختيار الدولة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        av.tag=1;
         [av show];
         
     }
     
     else{
-    chosenSectionArray=[[NSMutableArray alloc]init];
-    // build chosenArray
-    for (int i=0; i<chosenBooleanArray.count; i++) {
-        if ([[chosenBooleanArray objectAtIndex:i] boolValue]) {
-            [chosenSectionArray addObject:[sectionsArray objectAtIndex:i]];
+    
+        chosenSectionArray=[[NSMutableArray alloc]init];
+   
+        // build chosenArray
+    
+        for (int i=0; i<chosenBooleanArray.count; i++) {
+        
+            if ([[chosenBooleanArray objectAtIndex:i] boolValue]) {
+            
+                [chosenSectionArray addObject:[sectionsArray objectAtIndex:i]];
+            }
         }
-    }
+
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        HUD.delegate = self;
+        HUD.labelText = @"يتم الآن الحفظ";
+        [HUD show:YES];
     
-    
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelText = @"يتم الآن الحفظ";
-    [HUD show:YES];
-    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
         
         if (self.isEditable) {
             [self updateAfterEdit];
         }
         
         else{
-    PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
+   
+            PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
 
-    
-    for (int i=0; i<pageImages.count; i++) {
+            for (int i=0; i<pageImages.count; i++) {
         NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
         PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
         
@@ -457,36 +466,39 @@ CGFloat animatedDistance;
                     }
                 }];
             }
-            
             else{
                 // Log details of the failure
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
+    
         } progressBlock:^(int percentDone) {
             // Update your progress spinner here. percentDone will be between 0 and 100.
             HUD.progress = (float)percentDone/100;
+      
         }];
         
-    }
+            }
+            // Set property
+  
+            [newPost setObject:self.propertyTitle.text forKey:@"Title"];
     
-    // Create Post
+            [newPost setObject:chosenCountry forKey:@"country"];
    
-    // Set property
-    [newPost setObject:self.propertyTitle.text forKey:@"Title"];
-    [newPost setObject:chosenCountry forKey:@"country"];
-    [newPost setObject:self.city.text forKey:@"city"];
-  //  [newPost setObject:self.descriptionsTxtView.text forKey:@"Description"];
+            [newPost setObject:self.city.text forKey:@"city"];
+  
+            //  [newPost setObject:self.descriptionsTxtView.text forKey:@"Description"];
 
-    [newPost setObject:chosenSectionArray forKey:@"sections"];
+            [newPost setObject:chosenSectionArray forKey:@"sections"];
 
+            [newPost setObject:[PFUser currentUser] forKey:@"userID"];
 
-    [newPost setObject:[PFUser currentUser] forKey:@"userID"];
-
-    //set section with property
-    NSMutableArray* arr = [[NSMutableArray alloc] init];
-    [arr addObject:newPost];
+            //set section with property
+  
+            NSMutableArray* arr = [[NSMutableArray alloc] init];
     
-    // TODO : Ask Ghassan about this array
+            [arr addObject:newPost];
+    
+            // TODO : Ask Ghassan about this array
     for (int i = 0; i < [chosenSectionArray count]; i++) {
         PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
         [newSec setObject:[PFUser currentUser] forKey:@"userID"];
@@ -495,20 +507,24 @@ CGFloat animatedDistance;
         [newSec setObject:newPost forKey:@"propertyID"];
         [arr addObject:newSec];
 
+   
     }
 
-    [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
-     {
-         if (!error) {
+            [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
+             {
+                 if (!error) {
+                          // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
              
-             // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-             [HUD hide:YES];
+                     [HUD hide:YES];
+                     UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+                     av.tag=4;
+                     [av show];
 
-             [self dismissViewControllerAnimated:YES completion:nil];
-         }
-         
-     }];
-    }
+                 }
+             }];
+
+        }
+
     }
   
 }
@@ -770,6 +786,10 @@ CGFloat animatedDistance;
         
     }
     // if add section msg
+    else if (alertView.tag==4){
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     else{
         
         if (buttonIndex!=0) {
@@ -1300,7 +1320,9 @@ CGFloat animatedDistance;
                              if (done) {
                                  [HUD hide:YES];
                                  
-                                 [self dismissViewControllerAnimated:YES completion:nil];
+                                 UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+                                 av.tag=4;
+                                 [av show];
                              }
                          }];
                      }
@@ -1331,7 +1353,9 @@ CGFloat animatedDistance;
                     if (done) {
                         [HUD hide:YES];
                         
-                        [self dismissViewControllerAnimated:YES completion:nil];
+                        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+                        av.tag=4;
+                        [av show];
                     }
                 }];
             }
@@ -1346,7 +1370,10 @@ CGFloat animatedDistance;
 #pragma mark - Add section delegate handler
 - (void) addedSection:(NSString *)sectionName{
     
-    if (![sectionName isEqual:nil]) {
+    if (sectionName==nil) {
+        
+    }
+    else{
         [sectionsArray addObject:sectionName];
         [chosenBooleanArray addObject:@YES];
         [self.sectionsTableView reloadData];
@@ -1361,7 +1388,7 @@ CGFloat animatedDistance;
         }
         
         [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
-
+   
     }
     
 }

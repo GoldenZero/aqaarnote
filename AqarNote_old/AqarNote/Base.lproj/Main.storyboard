@@ -1033,7 +1033,7 @@
                                     <outlet property="delegate" destination="e5h-kl-iVC" id="Wqs-HH-ztQ"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sik-cx-TQx">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sik-cx-TQx">
                                 <rect key="frame" x="0.0" y="156" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="orange_bar_addnew_section.png">
