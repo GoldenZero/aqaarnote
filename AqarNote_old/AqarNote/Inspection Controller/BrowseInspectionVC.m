@@ -75,6 +75,12 @@ CGFloat animatedDistance;
             [self chooseStatusPressed:btn];
         }
     }
+    else{
+        UIButton* btn = [[UIButton alloc]init];
+        btn.tag=0;
+        [self chooseStatusPressed:btn];
+
+    }
     self.inputAccessoryView = [XCDFormInputAccessoryView new];
     self.contentScrollView.contentSize =CGSizeMake(320, 518);
 

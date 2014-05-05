@@ -1235,48 +1235,57 @@ CGFloat animatedDistance;
     
     [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject deleteAll:objects];
+            [PFObject deleteAllInBackground:objects block:^(BOOL done, NSError *error2){
+                if (done) {
+                    for (int i=0; i<pageImages.count; i++) {
+                        NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
+                        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+                        
+                        // Save PFFile
+                        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            if (!error) {
+                                
+                                // Create a PFObject around a PFFile and associate it with the current user
+                                PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
+                                [userPhoto setObject:imageFile forKey:@"imageFile"];
+                                
+                                
+                                // Set the access control list to current user for security purposes
+                                userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+                                
+                                PFUser *user = [PFUser currentUser];
+                                [userPhoto setObject:user forKey:@"user"];
+                                [userPhoto setObject:self.propertyID forKey:@"propertyID"];
+                                
+                                [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                    if (!error) {
+                                        // 2- Remove Deleted sections
+                                        if (deletedSections.count!=0) {
+                                            [PFObject deleteAllInBackground:deletedSections block:^(BOOL done, NSError *err){
+                                                if (done) {
+                                                    
+                                                }
+                                            }];
+                                            
+                                        }
+
+                                    }
+                                    else{
+                                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                                    }
+                                }];
+                            }
+                            else{
+                                NSLog(@"Error: %@ %@", error, [error userInfo]);
+                            }
+                        }];
+                    }
+
+                }
+            }];
         }
     }];
-    for (int i=0; i<pageImages.count; i++) {
-        NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
-        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-        
-        // Save PFFile
-        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                
-                // Create a PFObject around a PFFile and associate it with the current user
-                PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
-                [userPhoto setObject:imageFile forKey:@"imageFile"];
-                
-                
-                // Set the access control list to current user for security purposes
-                userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-                
-                PFUser *user = [PFUser currentUser];
-                [userPhoto setObject:user forKey:@"user"];
-                [userPhoto setObject:self.propertyID forKey:@"propertyID"];
-                
-                [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (!error) {
-                    }
-                    else{
-                        NSLog(@"Error: %@ %@", error, [error userInfo]);
-                    }
-                }];
-            }
-            else{
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
-    }
-
-    // 2- Remove Deleted sections
-    if (deletedSections.count!=0) {
-        [PFObject deleteAll:deletedSections];
-
-    }
+   
     
     // 3- Add new sections
     
