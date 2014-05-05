@@ -68,36 +68,52 @@
         // Run the query
         [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
-                
-                for (PFObject* pf in objects) {
-                    PFObject *imagesObj = pf[@"imageID"];
-                    [imagesObj fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                        [inspectionsImagesArray addObject:object];
-                        [self.inspectionsTable reloadData];
-                        
-                    }];
-                }
-                //Save results and update the table
+                inspectionsImagesArray=[[NSMutableArray alloc] init];
                 inspectionsArray = [[NSMutableArray alloc]initWithArray:objects];
-                
+                int i=0;
+                while (i<inspectionsArray.count) {
+                    
+                    
+                    PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                    PFObject *post = (PFObject*)[inspectionsArray objectAtIndex:i];
+                    [photoQuery whereKey:@"propertyID" equalTo:post];
+                    [photoQuery orderByDescending:@"createdAt"];
+                    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
+                        if (!error) {
+                            if (photos.count!=0) {
+                                PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
+                                [inspectionsImagesArray addObject:theImage];
+                                
+                            }
+                            else{
+                                PFFile *theImage = [[PFFile alloc] init];
+                                [inspectionsImagesArray addObject:theImage];
+                                
+                            }
+                        }
+                        if (inspectionsArray.count==inspectionsImagesArray.count) {
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            
+                            [self.inspectionsTable reloadData];
+                            [self.inspectionsTable setHidden:NO];
+                            [self.addNewInspectImage setHidden:YES];
+                            [self.addNewProperImg setHidden:YES];
+                            [self.noInspecImage setHidden:YES];
+                            [self.searchButton setHidden:NO];
+                        }
+                    }];
+                    i++;
+                    
+                }
             }
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            if (inspectionsArray.count>0) {
-                
-                [self.inspectionsTable reloadData];
-                [self.inspectionsTable setHidden:NO];
-                [self.addNewInspectImage setHidden:YES];
-                [self.addNewProperImg setHidden:YES];
-                [self.noInspecImage setHidden:YES];
-                [self.searchButton setHidden:NO];
-               // [self getInspectionsImages];
-            }
-            else{
+            
+            if (inspectionsArray.count==0) {
                 [self.inspectionsTable setHidden:YES];
                 [self.addNewInspectImage setHidden:NO];
                 [self.addNewProperImg setHidden:NO];
                 [self.noInspecImage setHidden:NO];
                 [self.searchButton setHidden:YES];
+
             }
 
         }];
@@ -185,72 +201,27 @@
         // Configure the cell with the textContent of the Post as the cell's text label
         PFObject *post = [inspectionsArray objectAtIndex:indexPath.row];
         
-        
-        cell.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
-        
-        PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-        [photoQuery whereKey:@"propertyID" equalTo:post ];
-        
-        // Run the query
-        [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                [cell.activityIndicator stopAnimating];
-                [cell.activityIndicator setHidden:YES];
-                if ([objects count] != 0) {
-                    PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
-                    //Save results and update the table
-                    NSData* imageData = [theImage getData];
-                    if (imageData!=nil) {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        // Dispatch to main thread to update the UI
-                        CGRect frame=cell.propertyImage.frame;
-                        cell.propertyImage.image=image;
-                        cell.propertyImage.backgroundColor=[UIColor blackColor];
-                        cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
-                        cell.propertyImage.layer.cornerRadius = 5.0;
-                        cell.propertyImage.layer.masksToBounds = YES;
-                        cell.propertyImage.frame=frame;
-                        
-                    }
-                    else{
-                        [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
-                    }
-                    
-                    NSLog(@"got the object image");
-                }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            PFFile *theImage = (PFFile*)[inspectionsImagesArray objectAtIndex:indexPath.row];
+            
+            if (theImage!=nil) {
+                
+                cell.propertyImage.file = (PFFile *)theImage;
+                [cell.propertyImage loadInBackground];
+                
             }
-        }];
+        });
+
+        cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
+        cell.propertyImage.backgroundColor=[UIColor blackColor];
+        cell.propertyImage.layer.cornerRadius = 5.0;
+        cell.propertyImage.layer.masksToBounds = YES;
         
-        //    // This method sets up the downloaded images and places them nicely in a grid
-        //    // PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
-        //    PFObject *eachObject = [post objectForKey:@"imageID"];
-        //    [cell.activityIndicator startAnimating];
-        //    __block NSData *imageData;
-        //    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        //    dispatch_async(queue, ^{
-        //        PFFile *theImage = [self getCurrentImageForInpesction:eachObject];
-        //        imageData = [theImage getData];
-        //
-        //
-        //    });
-        //    dispatch_async(dispatch_get_main_queue(), ^{
-        //        [cell.activityIndicator stopAnimating];
-        //        [cell.activityIndicator setHidden:YES];
-        //        if (imageData!=nil) {
-        //            UIImage *image = [UIImage imageWithData:imageData];
-        //            [cell.propertyImage setImage:image];
-        //        }
-        //        });
-        //
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
         [cell.detailTxtView setText:[post objectForKey:@"Description"]];
         
         [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
-        
-        
-        //    [cell.moreButton addTarget:self action:@selector(morePressed:) forControlEvents:UIControlEventTouchUpInside];
-        //    cell.moreButton.tag = indexPath.row;
 
     }
     

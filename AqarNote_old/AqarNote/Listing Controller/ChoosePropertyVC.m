@@ -11,8 +11,10 @@
 @interface ChoosePropertyVC ()
 {
     NSMutableArray* propertiesArray;
-    NSArray* propertiesImagesArray;
+    NSMutableArray* propertiesImagesArray;
     PFObject* propertySenderID;
+    MBProgressHUD *HUD;
+
 }
 @end
 
@@ -33,28 +35,68 @@
 	// Do any additional setup after loading the view.
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = nil;
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.delegate = self;
+    [self.view addSubview:HUD];
     
+    [HUD show:YES];
+    HUD.labelText = @"جاري التحميل...";
+
     [self getProperties];
    // [self getPropertyImages];
 }
 
 -(void)getProperties
 {
-    if ([PFUser currentUser]) {
-        //Create query for all Post object by the current user
-        PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
-        [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
-        [postQuery orderByDescending:@"createdAt"];
-
-        // Run the query
-        [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                //Save results and update the table
-                propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
-                [self.propertiesTable reloadData];
+    //Create query for all Post object by the current user
+    PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
+    [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
+    [postQuery orderByDescending:@"createdAt"];
+    
+    // Run the query
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            propertiesImagesArray=[[NSMutableArray alloc] init];
+            propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
+            int i=0;
+            while (i<propertiesArray.count) {
+                
+                
+                PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                PFObject *post = (PFObject*)[propertiesArray objectAtIndex:i];
+                [photoQuery whereKey:@"propertyID" equalTo:post];
+                [photoQuery orderByDescending:@"createdAt"];
+                [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
+                    if (!error) {
+                        if (photos.count!=0) {
+                            PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
+                            [propertiesImagesArray addObject:theImage];
+                            
+                        }
+                        else{
+                            PFFile *theImage = [[PFFile alloc] init];
+                            [propertiesImagesArray addObject:theImage];
+                            
+                        }
+                    }
+                    if (propertiesArray.count==propertiesImagesArray.count) {
+                        [HUD hide:YES];
+                        [self.propertiesTable setHidden:NO];
+                        [self.propertiesTable reloadData];
+                        [self.propertiesTable reloadData];
+                    }
+                }];
+                i++;
+                
             }
-        }];
-    }
+        }
+        
+        if (propertiesArray.count==0) {
+            [HUD hide:YES];
+            [self.propertiesTable setHidden:YES];
+        }
+    }];
+
 }
 
 
@@ -120,44 +162,24 @@
         [df setDateFormat:@"yyyy-MM-dd"];
         [cell.activityIndicator startAnimating];
 
-        // Configure the cell with the textContent of the Post as the cell's text label
-        PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
-        cell.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
         
-        PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-        [photoQuery whereKey:@"propertyID" equalTo:post];
+        PFObject *post = (PFObject*)[propertiesArray objectAtIndex:indexPath.row];
         
-        // Run the query
-        [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                [cell.activityIndicator stopAnimating];
-                [cell.activityIndicator setHidden:YES];
-
-                if ([objects count] != 0) {
-                    PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
-                    //Save results and update the table
-                    NSData* imageData = [theImage getData];
-                    if (imageData!=nil) {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        // Dispatch to main thread to update the UI
-                        cell.propertyImage.image=image;
-                        CGRect frame=cell.propertyImage.frame;
-                        cell.propertyImage.image=image;
-                        cell.propertyImage.backgroundColor=[UIColor blackColor];
-                        cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
-                        cell.propertyImage.layer.cornerRadius = 5.0;
-                        cell.propertyImage.layer.masksToBounds = YES;
-                        cell.propertyImage.frame=frame;
-                    }
-                    else{
-                        [cell.propertyImage setImage:[UIImage imageNamed:@"default_image_home.png"]];
-                    }
-                    
-                    NSLog(@"got the object image");
-                }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            PFFile *theImage = (PFFile*)[propertiesImagesArray objectAtIndex:indexPath.row];
+            
+            if (theImage!=nil) {
+                
+                cell.propertyImage.file = (PFFile *)theImage;
+                [ cell.propertyImage loadInBackground];
+                
             }
-        }];
+        });
+        
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
+        cell.propertyImage.layer.cornerRadius = 5.0;
+        cell.propertyImage.layer.masksToBounds = YES;
+        
         [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
         [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
         [cell.detailsTxtView setFont:[UIFont fontWithName:@"System" size:8.0f]];
@@ -168,32 +190,7 @@
 
 
     }
-    
-    
-    
-//    // This method sets up the downloaded images and places them nicely in a grid
-//    // PFObject *post = [propertiesArray objectAtIndex:indexPath.row];
-//    //[cell.activityIndicator startAnimating];
-//    PFObject *eachObject = [post objectForKey:@"imageID"];
-//    __block NSData *imageData;
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_async(queue, ^{
-//        PFFile *theImage = [self getCurrentImageForProperty:eachObject];
-//        imageData = [theImage getData];
-//        
-//        
-//    });
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//  //      [cell.activityIndicator setHidden:YES];
-//    //    [cell.activityIndicator stopAnimating];
-//        if (imageData!=nil) {
-//            UIImage *image = [UIImage imageWithData:imageData];
-//            // Dispatch to main thread to update the UI
-//            [cell.propertyImage setImage:image];
-//        }
-//    
-//    });
-//    
+ 
       return cell;
 }
 

@@ -33,29 +33,6 @@
     self.propertiesTable.userInteractionEnabled=YES;
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
-//    if ([PFUser currentUser]) {
-//        [self.view addSubview:HUD];
-//        
-//        [HUD show:YES];
-//        HUD.labelText = @"جاري التحميل...";
-//        
-//        [self getProperties];
-//        [self.welcomeView setHidden:YES];
-//        
-//        [self showTabBar:self.tabBarController];
-//        //   [self getPropertyImages];
-//        
-//    }
-//    
-//    else{
-//        [self.welcomeView setHidden:NO];
-//        [self.propertiesTable setHidden:YES];
-//        propertiesArray = [NSMutableArray new];
-//        propertiesImagesArray = [NSMutableArray new];
-//        
-//        [self hideTabBar:self.tabBarController];
-//        
-//    }
 
 }
 
@@ -106,44 +83,50 @@
     // Run the query
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            propertiesImagesArray=[[NSMutableArray alloc] init];
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
-            for (int i=0; i<propertiesArray.count; i++) {
-                PFObject *post = (PFObject*)[propertiesArray objectAtIndex:i];
+            int i=0;
+            while (i<propertiesArray.count) {
+                
+    
                 PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                PFObject *post = (PFObject*)[propertiesArray objectAtIndex:i];
                 [photoQuery whereKey:@"propertyID" equalTo:post];
                 [photoQuery orderByDescending:@"createdAt"];
-
-                // Run the query
-                [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
                     if (!error) {
-                            if ([objects count] != 0) {
-                                PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
-                                [propertiesImagesArray addObject:theImage];
-                                
-                                }
-                                NSLog(@"got the object image");
-                            }
+                        if (photos.count!=0) {
+                            PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
+                            [propertiesImagesArray addObject:theImage];
+
+                        }
+                        else{
+                            PFFile *theImage = [[PFFile alloc] init];
+                            [propertiesImagesArray addObject:theImage];
+
+                        }
                     }
-                ];
+                    if (propertiesArray.count==propertiesImagesArray.count) {
+                        [HUD hide:YES];
+                        
+                        [self.propertiesTable setHidden:NO];
+                        [self.addNewImage setHidden:YES];
+                        [self.searchButton setHidden:NO];
+                        [self.propertiesTable reloadData];
+                        [self.propertiesTable reloadData];
+                    }
+                }];
+                i++;
 
             }
         }
 
-        [HUD hide:YES];
-        if (propertiesArray.count>0) {
-            [self getPropertyImages];
-            [self.propertiesTable setHidden:NO];
-            [self.addNewImage setHidden:YES];
-            [self.searchButton setHidden:NO];
-        }
-        else{
+        if (propertiesArray.count==0) {
+            [HUD hide:YES];
             [self.propertiesTable setHidden:YES];
             [self.addNewImage setHidden:NO];
             [self.searchButton setHidden:YES];
-
         }
-        [self.propertiesTable reloadData];
-
     }];
 
 }
@@ -206,27 +189,18 @@
     
         
         PFObject *post = (PFObject*)[propertiesArray objectAtIndex:indexPath.row];
-        PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-        [photoQuery whereKey:@"propertyID" equalTo:post];
         
-        // Run the query
-        [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if ([objects count] != 0) {
-                        PFFile *theImage = [(PFObject*)[objects objectAtIndex:0] objectForKey:@"imageFile"];
-                        
-                        if (theImage!=nil) {
-                            
-                            cell.propertyImage.file = (PFFile *)theImage;
-                            [ cell.propertyImage loadInBackground];
-                            
-                        }
-                        NSLog(@"got the object image");
-                    }
-                });
+        dispatch_async(dispatch_get_main_queue(), ^{
+                PFFile *theImage = (PFFile*)[propertiesImagesArray objectAtIndex:indexPath.row];
+                
+                if (theImage!=nil) {
+                    
+                    cell.propertyImage.file = (PFFile *)theImage;
+                    [ cell.propertyImage loadInBackground];
+                    
+                }
             }
-        }];
+        );
         
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
         cell.propertyImage.layer.cornerRadius = 5.0;
