@@ -47,6 +47,14 @@
 
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.inspectionsTable];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:HUD];
+    
+    [HUD show:YES];
+    HUD.labelText = @"جاري التحميل...";
+    //TODO : chached data
+    [self getInspections];
+
 
 }
 
@@ -55,13 +63,6 @@
     [self hideSearchView];
     isSearchOpen=false;
 
-    [super viewWillAppear:YES];
-    [self.view addSubview:HUD];
-    
-    [HUD show:YES];
-    HUD.labelText = @"جاري التحميل...";
-    //TODO : chached data
-    [self getInspections];
     
 
 }

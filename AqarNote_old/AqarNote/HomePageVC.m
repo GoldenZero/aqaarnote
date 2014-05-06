@@ -38,17 +38,7 @@
     
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.propertiesTable];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
-
-}
-
-
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [self hideSearchView];
     
-    isSearchOpen=false;
-
     if ([PFUser currentUser]) {
         [self.view addSubview:HUD];
         
@@ -65,7 +55,7 @@
     
     else{
         [self.view addSubview:HUD];
-
+        
         [self.welcomeView setHidden:NO];
         [self.propertiesTable setHidden:YES];
         propertiesArray = [NSMutableArray new];
@@ -75,6 +65,17 @@
         
     }
 
+}
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self hideSearchView];
+    
+    isSearchOpen=false;
+
+  
 }
 
 -(void)getProperties
