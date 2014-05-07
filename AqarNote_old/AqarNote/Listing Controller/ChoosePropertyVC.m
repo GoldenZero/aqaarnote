@@ -59,38 +59,27 @@
     // Run the query
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            propertiesImagesArray=[[NSMutableArray alloc] init];
+            propertiesImagesArray=[[NSMutableArray alloc] initWithCapacity:objects.count];
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
-            int i=0;
-            while (i<propertiesArray.count) {
-                
-                
+            for (int i=0; i<propertiesArray.count; i++) {
                 PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
                 PFObject *post = (PFObject*)[propertiesArray objectAtIndex:i];
                 [photoQuery whereKey:@"propertyID" equalTo:post];
-                [photoQuery orderByDescending:@"createdAt"];
-                [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
-                    if (!error) {
-                        if (photos.count!=0) {
-                            PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
-                            [propertiesImagesArray addObject:theImage];
-                            
-                        }
-                        else{
-                            PFFile *theImage = [[PFFile alloc] init];
-                            [propertiesImagesArray addObject:theImage];
-                            
-                        }
-                    }
-                    if (propertiesArray.count==propertiesImagesArray.count) {
-                        [HUD hide:YES];
-                        [self.propertiesTable setHidden:NO];
-                        [self.propertiesTable reloadData];
-                        [self.propertiesTable reloadData];
-                    }
-                }];
-                i++;
+                NSArray *photos= [photoQuery findObjects];
+                if (photos.count!=0) {
+                    PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
+                    [propertiesImagesArray insertObject:theImage atIndex:i];
+                }
+                else{
+                    PFFile *theImage = [[PFFile alloc] init];
+                    [propertiesImagesArray insertObject:theImage atIndex:i];
+                }
                 
+                if (propertiesArray.count==propertiesImagesArray.count) {
+                    [HUD hide:YES];
+                    [self.propertiesTable setHidden:NO];
+                    [self.propertiesTable reloadData];
+                }
             }
         }
         

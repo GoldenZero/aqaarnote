@@ -80,43 +80,32 @@
         // Run the query
         [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
-                inspectionsImagesArray=[[NSMutableArray alloc] init];
+                inspectionsImagesArray=[[NSMutableArray alloc] initWithCapacity:objects.count];
                 inspectionsArray = [[NSMutableArray alloc]initWithArray:objects];
-                int i=0;
-                while (i<inspectionsArray.count) {
-                    
-                    
+                for (int i=0; i<inspectionsArray.count; i++) {
                     PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-                    PFObject *post = (PFObject*)[inspectionsArray objectAtIndex:i];
+                    PFObject *post = (PFObject*)[propertiesArray objectAtIndex:i];
                     [photoQuery whereKey:@"propertyID" equalTo:post];
-                    [photoQuery orderByDescending:@"createdAt"];
-                    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *photos, NSError *error) {
-                        if (!error) {
-                            if (photos.count!=0) {
-                                PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
-                                [inspectionsImagesArray addObject:theImage];
-                                
-                            }
-                            else{
-                                PFFile *theImage = [[PFFile alloc] init];
-                                [inspectionsImagesArray addObject:theImage];
-                                
-                            }
-                        }
-                        if (inspectionsArray.count==inspectionsImagesArray.count) {
-                            [HUD hide:YES];
-                            [refreshControl endRefreshing];
-
-                            [self.inspectionsTable reloadData];
-                            [self.inspectionsTable setHidden:NO];
-                            [self.addNewInspectImage setHidden:YES];
-                            [self.addNewProperImg setHidden:YES];
-                            [self.noInspecImage setHidden:YES];
-                            [self.searchButton setHidden:NO];
-                        }
-                    }];
-                    i++;
+                    NSArray *photos= [photoQuery findObjects];
+                    if (photos.count!=0) {
+                        PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
+                        [inspectionsImagesArray insertObject:theImage atIndex:i];
+                    }
+                    else{
+                        PFFile *theImage = [[PFFile alloc] init];
+                        [inspectionsImagesArray insertObject:theImage atIndex:i];
+                    }
                     
+                    if (inspectionsArray.count==inspectionsImagesArray.count) {
+                        [HUD hide:YES];
+                        [refreshControl endRefreshing];
+                        [self.inspectionsTable reloadData];
+                        [self.inspectionsTable setHidden:NO];
+                        [self.addNewInspectImage setHidden:YES];
+                        [self.addNewProperImg setHidden:YES];
+                        [self.noInspecImage setHidden:YES];
+                        [self.searchButton setHidden:NO];
+                    }
                 }
             }
             
