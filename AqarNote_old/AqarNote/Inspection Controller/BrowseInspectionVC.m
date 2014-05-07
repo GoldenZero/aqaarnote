@@ -499,6 +499,15 @@ CGFloat animatedDistance;
     }
 }
 
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
+    for (UIView *_currentView in actionSheet.subviews) {
+        if ([_currentView isKindOfClass:[UIButton class]]) {
+            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14]];
+            [((UIButton *)_currentView).titleLabel setTextColor:[UIColor blackColor]];
+            
+        }
+    }
+}
 -(void) selectPhotoFromLibrary {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
     {

@@ -462,10 +462,9 @@
 }
 
 - (IBAction)backButtonPressed:(id)sender {
-    //[self.navigationController popViewControllerAnimated:YES];
-   // [self performSegueWithIdentifier:@"showInspectionVC" sender:self];
 
     [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (void)didReceiveMemoryWarning

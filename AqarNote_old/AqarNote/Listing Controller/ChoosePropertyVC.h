@@ -10,7 +10,6 @@
 #import "PropertyCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "AddNewInspectionVC.h"
-
 @interface ChoosePropertyVC : UIViewController<UITableViewDataSource,UITableViewDelegate,MBProgressHUDDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *propertiesTable;

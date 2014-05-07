@@ -559,7 +559,7 @@ CGFloat animatedDistance;
 
 - (IBAction)cancelButtonPressed:(id)sender {
     //[self.navigationController popViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (IBAction)addSectionBtnPrss:(id)sender {
@@ -666,6 +666,17 @@ CGFloat animatedDistance;
         
         [self presentViewController:picker animated:YES completion:nil];
         
+    }
+}
+
+
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
+    for (UIView *_currentView in actionSheet.subviews) {
+        if ([_currentView isKindOfClass:[UIButton class]]) {
+            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14]];
+            [((UIButton *)_currentView).titleLabel setTextColor:[UIColor blackColor]];
+
+        }
     }
 }
 
@@ -804,6 +815,22 @@ CGFloat animatedDistance;
         
 
     }    
+
+}
+
+- (void) willPresentAlertView:(UIAlertView *)alertView{
+    for (UIView *_currentView in alertView.subviews) {
+        if ([_currentView isKindOfClass:[UIButton class]]) {
+            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14]];
+            [((UIButton *)_currentView).titleLabel setTextColor:[UIColor blackColor]];
+            
+        }
+        else if ([_currentView isKindOfClass:[UILabel class]]){
+            [((UILabel *)_currentView) setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12]];
+            [((UILabel *)_currentView) setTextColor:[UIColor blackColor]];
+
+        }
+    }
 
 }
 

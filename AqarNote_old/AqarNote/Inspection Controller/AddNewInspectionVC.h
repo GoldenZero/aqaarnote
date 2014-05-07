@@ -11,6 +11,8 @@
 #import "EnhancedKeyboard.h"
 #import "AGPhotoBrowserView.h"
 
+
+
 @interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
 {
     MBProgressHUD *HUD;

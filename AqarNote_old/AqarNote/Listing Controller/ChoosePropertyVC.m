@@ -132,10 +132,10 @@
     return theImage;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-}
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    
+//}
 
 #pragma mark - Table view data source
 
@@ -240,4 +240,12 @@
 - (IBAction)cancelButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(void)viewDidAppear:(BOOL)animated {
+    if (![self isBeingPresented]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
 @end
