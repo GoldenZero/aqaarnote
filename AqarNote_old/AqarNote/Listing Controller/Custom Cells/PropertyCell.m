@@ -15,7 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 
-        self.propertyImage=[[PFImageView alloc] init];
+        self.propertyImage=[[PFImageView alloc] init];        
         self.propertyImage.image = [UIImage imageNamed:@"default_image_home.png"];
         self.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
     

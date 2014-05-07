@@ -52,9 +52,17 @@
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
+    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+
     HUD.labelText = @"يتم الآن التحميل";
     [HUD show:YES];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    self.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.locationLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.sectionsLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    self.screenLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.editButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.backButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
     
     PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
     // Retrieve the object by id
@@ -62,8 +70,8 @@
         self.propertyID=pfObject;
         self.propertyTitle.text = (NSString*)[self.propertyID objectForKey:@"Title"];
         self.screenLabel.text = (NSString*)[self.propertyID objectForKey:@"Title"];
-
         self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
+        
 //        NSString *note=[self.propertyID objectForKey:@"Description"];
 //        if ([note isEqual:@" "]) {
 //            self.notesTxtView.text=@"لا يوجد ملاحظات";
@@ -112,6 +120,7 @@
     [self.sectionScrollView addSubview:self.imgScrollView];
     [self.sectionScrollView addSubview:self.pageControl];
     [self.sectionScrollView addSubview:self.sectionsLabel];
+
     [self.sectionScrollView addSubview:self.noteBgImg];
    // [self.sectionScrollView addSubview:self.notesTxtView];
 
@@ -134,6 +143,8 @@
  
         
         UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
+        titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+
         titleLabel.textAlignment = NSTextAlignmentRight;
         titleLabel.text = [sect objectForKey:@"name"];
         
@@ -171,6 +182,8 @@
         
         UILabel* statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 40, 50)];
         statusLabel.textAlignment = NSTextAlignmentCenter;
+        statusLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:13];
+
         statusLabel.text = [self getStatusOfSection:[sect objectForKey:@"status"]];
         
         UIButton* secBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -279,7 +292,6 @@
         
         // Delegate is self
         imagePicker.delegate = self;
-        
         // Show image picker
         //[self presentModalViewController:imagePicker animated:YES];
         [self presentViewController:imagePicker animated:YES completion:nil];

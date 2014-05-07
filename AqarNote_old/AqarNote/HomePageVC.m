@@ -35,7 +35,7 @@
     self.propertiesTable.userInteractionEnabled=YES;
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
-    
+    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.propertiesTable];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
     
@@ -44,7 +44,7 @@
         
         [HUD show:YES];
         HUD.labelText = @"جاري التحميل...";
-        
+
         [self getProperties];
         [self.welcomeView setHidden:YES];
         
@@ -212,19 +212,22 @@
         );
         
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
+        cell.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+
         cell.propertyImage.layer.cornerRadius = 5.0;
         cell.propertyImage.layer.masksToBounds = YES;
 
         [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
+        cell.propertyLocation.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
+        cell.propertyDate.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+
         [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
-        [cell.detailsTxtView setFont:[UIFont fontWithName:@"System" size:8.0f]];
+        cell.detailsTxtView.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
         cell.detailsTxtView.textAlignment=NSTextAlignmentRight;
         cell.detailsTxtView.textColor=[UIColor grayColor];
     }
-    
-    
-   
 
     return cell;
 }

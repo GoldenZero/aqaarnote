@@ -22,6 +22,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) PFObject* propertyID;
 @property (strong, nonatomic) NSArray* PropArr;
+@property (strong, nonatomic) IBOutlet UIButton *editButton;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
 
 @property (strong, nonatomic) IBOutlet UITextView *notesTxtView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;

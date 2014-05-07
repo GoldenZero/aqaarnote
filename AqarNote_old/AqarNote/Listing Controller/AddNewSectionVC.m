@@ -26,7 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.saveButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.aboutLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.sectionNameTxt.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    
 }
 
 - (void)didReceiveMemoryWarning

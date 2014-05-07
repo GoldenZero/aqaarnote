@@ -56,6 +56,18 @@ CGFloat animatedDistance;
     [self.aboutTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     countriesPicker = [SBPickerSelector picker];
     
+    self.backButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.editButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.nameLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.countryLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.emailLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.passwordLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.confirmPassLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:11];
+    self.myAccountLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    self.nameTxtField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.aboutTxtView.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.countryTxtField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.emailTxtField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
     
     countriesPicker.delegate = self;
     countriesPicker.pickerType = SBPickerSelectorTypeText;
@@ -446,7 +458,6 @@ CGFloat animatedDistance;
     CGRect frame = [sender frame];
     frame.origin = point;
     //[picker showPickerOver:self]; //classic picker display
-    
     [countriesPicker showPickerIpadFromRect:CGRectZero inView:self.view];
     
 }

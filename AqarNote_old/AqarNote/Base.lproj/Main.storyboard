@@ -388,15 +388,21 @@
                     <connections>
                         <outlet property="aboutTxtView" destination="INt-hL-KSg" id="NVm-V2-EGM"/>
                         <outlet property="backButton" destination="RZX-Kc-aJy" id="D0c-9c-Yfi"/>
+                        <outlet property="confirmPassLabel" destination="TEQ-se-4yk" id="g87-Q0-nlo"/>
                         <outlet property="confirmPasswordTxtField" destination="q53-Il-uXm" id="yOt-wv-gWr"/>
                         <outlet property="contentScrollView" destination="kJT-w6-3lg" id="yan-2n-sRm"/>
                         <outlet property="countryButton" destination="kbA-6P-3hr" id="dO7-cQ-aTk"/>
+                        <outlet property="countryLabel" destination="JmG-Ao-dV9" id="Yz6-rE-5MN"/>
                         <outlet property="countryPicker" destination="6Y6-Cc-bfj" id="eV7-JO-ice"/>
                         <outlet property="countryTxtField" destination="MXj-Bs-6QF" id="s90-6C-Uqv"/>
                         <outlet property="editButton" destination="2vB-PH-SPI" id="Tho-3p-g5f"/>
+                        <outlet property="emailLabel" destination="MmE-BB-S70" id="cSe-Qq-y3i"/>
                         <outlet property="emailTxtField" destination="PrR-cf-OUO" id="vtF-gq-2bF"/>
                         <outlet property="logoutButton" destination="iYW-mI-1Lq" id="mdB-wC-QSn"/>
+                        <outlet property="myAccountLabel" destination="DGO-dX-LmB" id="QjV-WR-FiR"/>
+                        <outlet property="nameLabel" destination="YW8-mp-z53" id="9n4-ju-wyD"/>
                         <outlet property="nameTxtField" destination="7Ea-tN-egt" id="Vz3-2P-c8Q"/>
+                        <outlet property="passwordLabel" destination="cco-bh-AML" id="Mfd-6O-Res"/>
                         <outlet property="passwordTxtField" destination="PUk-ZN-pgb" id="Pxr-R4-wjO"/>
                         <outlet property="pickerView" destination="fNp-Af-VEv" id="317-aj-A7a"/>
                     </connections>
@@ -833,6 +839,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addImgesButton" destination="CtS-a3-VCa" id="wvU-pU-9HD"/>
+                        <outlet property="cancelButton" destination="hWu-cb-tXY" id="xpM-ll-Swi"/>
                         <outlet property="city" destination="Efv-aN-eXT" id="dxn-59-BoN"/>
                         <outlet property="contentScrollView" destination="khx-rg-lbv" id="kUB-Qy-T2M"/>
                         <outlet property="countriesPickerView" destination="XUk-Hq-bJC" id="5BN-Kb-DVz"/>
@@ -844,8 +851,11 @@
                         <outlet property="pickerView" destination="5PX-ab-twv" id="RYV-gG-IbK"/>
                         <outlet property="prevImgButton" destination="638-GB-eTs" id="Swq-pK-PzS"/>
                         <outlet property="propertyTitle" destination="ERG-Ik-6cZ" id="6KR-wF-J5k"/>
+                        <outlet property="saveButton" destination="aja-E3-jlU" id="TjU-Vs-k5Y"/>
                         <outlet property="sectionsTableView" destination="r4i-cj-Cps" id="LTu-XN-hiz"/>
+                        <outlet property="sesctionsLabel" destination="KVl-1W-Ojc" id="QpN-uc-p1m"/>
                         <outlet property="showPickerButton" destination="wDE-cv-4jG" id="XjC-wC-vSM"/>
+                        <outlet property="titleLabel" destination="y8T-kp-DaM" id="akZ-VX-oj6"/>
                         <outlet property="uploadImageBtn" destination="5mU-6X-Txa" id="XY8-hI-tQb"/>
                         <segue destination="uqV-yG-Jia" kind="modal" identifier="showEditSection" id="jh0-Em-jb8"/>
                     </connections>
@@ -894,6 +904,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="ixL-Ck-bdO" id="jO9-D1-SWY"/>
                         <outlet property="propertiesTable" destination="WxJ-3x-ktY" id="EZe-04-p1Y"/>
                         <segue destination="Pz3-3X-bKd" kind="modal" identifier="showAddNewInspection" id="zQR-Ot-2e1"/>
                     </connections>
@@ -1047,7 +1058,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="aboutLabel" destination="4EK-Xy-mzZ" id="s8v-Hj-ER0"/>
+                        <outlet property="cancelButton" destination="UKd-4Y-PGI" id="15e-un-Wzz"/>
+                        <outlet property="saveButton" destination="lTA-55-hSL" id="Sim-lO-9yg"/>
                         <outlet property="sectionNameTxt" destination="Rvn-nT-z51" id="C2A-wq-8Fp"/>
+                        <outlet property="titleLabel" destination="nNn-8S-qhf" id="cGh-L3-zHL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nun-S3-fp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1178,6 +1193,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="backButton" destination="1qp-21-VgH" id="MkO-SQ-aE8"/>
+                        <outlet property="editButton" destination="Obr-fQ-jh1" id="qs2-uD-X2i"/>
                         <outlet property="imgScrollView" destination="fDt-0y-dGq" id="uap-yp-HyH"/>
                         <outlet property="locationLabel" destination="eB4-7K-awf" id="mgY-66-aSR"/>
                         <outlet property="nextImgButton" destination="bQW-kA-eGB" id="tBX-uu-aBT"/>
@@ -1414,6 +1431,7 @@
                     <connections>
                         <outlet property="addImgBtnPrss" destination="3Jv-Kh-lnT" id="Bny-Bn-iKf"/>
                         <outlet property="buttonBroken" destination="bXW-fE-Fra" id="DpI-yE-cpT"/>
+                        <outlet property="cancelButton" destination="5Ot-sF-IEb" id="QTC-6P-9Vt"/>
                         <outlet property="cleanButton" destination="ATG-AU-fQ0" id="1yx-3a-uMm"/>
                         <outlet property="contentScrollView" destination="6DP-4T-Qkp" id="ZnF-OQ-2OO"/>
                         <outlet property="deleteImgButton" destination="wsg-8i-jb2" id="l4A-UV-HCJ"/>
@@ -1432,7 +1450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NS6-pV-Xyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3263" y="381"/>
+            <point key="canvasLocation" x="3279" y="397"/>
         </scene>
     </scenes>
     <resources>
@@ -1479,7 +1497,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="wZ5-50-hoO"/>
-        <segue reference="yRB-Ic-eoT"/>
+        <segue reference="zQR-Ot-2e1"/>
         <segue reference="Szq-qB-S6s"/>
     </inferredMetricsTieBreakers>
 </document>

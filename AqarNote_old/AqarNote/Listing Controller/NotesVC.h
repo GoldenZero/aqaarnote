@@ -27,6 +27,12 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *countryPicker;
 @property (strong, nonatomic) IBOutlet UIButton *countryButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *countryLabel;
+@property (strong, nonatomic) IBOutlet UILabel *emailLabel;
+@property (strong, nonatomic) IBOutlet UILabel *passwordLabel;
+@property (strong, nonatomic) IBOutlet UILabel *myAccountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *confirmPassLabel;
 
 #pragma mark - Actions
 - (IBAction)logoutBtnPrss:(id)sender;

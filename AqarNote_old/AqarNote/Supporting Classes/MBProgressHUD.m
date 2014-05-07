@@ -760,6 +760,7 @@
 #pragma mark Lifecycle
 
 - (id)init {
+    
     return [self initWithFrame:CGRectMake(0.0f, 0.0f, 37.0f, 37.0f)];
 }
 

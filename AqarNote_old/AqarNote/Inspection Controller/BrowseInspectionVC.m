@@ -50,13 +50,20 @@ CGFloat animatedDistance;
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
+    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+
     HUD.labelText = @"يتم الآن التحميل";
+    
     [HUD show:YES];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
     
     pageImages=[[NSMutableArray alloc] init];
 	// Do any additional setup after loading the view.
     self.sectionTitle.text = [self.sectionID objectForKey:@"name"];
+    self.sectionTitle.font = [UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.cancelButton.titleLabel.font= [UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.noteTextView.font = [UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+    
     NSString *note=[self.sectionID objectForKey:@"note"];
     if (![note isEqualToString:@""]) {
         self.noteTextView.text=note;
@@ -123,6 +130,7 @@ CGFloat animatedDistance;
                                                otherButtonTitles:@"من الكاميرا", @"من مكتبة الصور", nil];
         
         [as showInView:self.view];
+        
     }
     
     

@@ -17,6 +17,7 @@
     
 }
 @property (nonatomic, strong) XCDFormInputAccessoryView *inputAccessoryView;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UILabel *sectionTitle;

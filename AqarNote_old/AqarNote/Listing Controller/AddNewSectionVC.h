@@ -24,6 +24,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *sectionNameTxt;
 
 @property (nonatomic, weak) id <AddSectionDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+@property (strong, nonatomic) IBOutlet UILabel *aboutLabel;
 
 
 #pragma mark - Actions

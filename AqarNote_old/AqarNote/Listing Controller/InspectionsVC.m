@@ -44,6 +44,7 @@
     
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
+    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
 
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.inspectionsTable];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
@@ -233,10 +234,17 @@
         cell.propertyImage.layer.masksToBounds = YES;
         
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
+        cell.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+
         [cell.detailTxtView setText:[post objectForKey:@"Description"]];
-        
+        cell.detailTxtView.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+
         [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
+        cell.propertyLocation.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
+        cell.propertyDate.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+
 
     }
     

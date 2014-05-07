@@ -39,6 +39,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *deletePhotoButton;
 @property (strong, nonatomic) IBOutlet UIButton *nextImgButton;
 @property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+@property (strong, nonatomic) IBOutlet UILabel *sesctionsLabel;
 
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
 

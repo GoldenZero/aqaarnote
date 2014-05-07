@@ -135,6 +135,10 @@
 }
 
 - (void) setDoneButtonTitle:(NSString *)doneButtonTitle{
+    [self.doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                               [UIColor blackColor],UITextAttributeTextColor,[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12],UITextAttributeFont,
+                                               nil] forState:UIControlStateNormal];
+
     self.doneButton.title = doneButtonTitle;
 }
 
@@ -143,6 +147,10 @@
 }
 
 - (void) setCancelButtonTitle:(NSString *)cancelButtonTitle{
+   
+    [self.cancelButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                                   [UIColor blackColor],UITextAttributeTextColor,[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12],UITextAttributeFont,
+                                                                                   nil] forState:UIControlStateNormal];
     self.cancelButton.title = cancelButtonTitle;
 }
 
@@ -228,6 +236,7 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
     if (self.numberOfComponents > 1) {
         NSMutableArray *comp = self.pickerData[component];
         return comp[row];
@@ -236,6 +245,17 @@
 }
 
 
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* tView = (UILabel*)view;
+    if (!tView){
+        tView = [[UILabel alloc] init];
+    }
+    tView.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    tView.textAlignment=NSTextAlignmentCenter;
+    tView.textColor=[UIColor blackColor];
+    tView.text=self.pickerData[row];
+    return tView;
+}
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if (self.pickerType == SBPickerSelectorTypeDate) {
         

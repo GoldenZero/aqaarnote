@@ -14,6 +14,8 @@
 @interface ChoosePropertyVC : UIViewController<UITableViewDataSource,UITableViewDelegate,MBProgressHUDDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *propertiesTable;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+
 - (IBAction)cancelButtonPressed:(id)sender;
 
 @end
