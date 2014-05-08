@@ -56,6 +56,7 @@ CGFloat animatedDistance;
     [self.aboutTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     countriesPicker = [SBPickerSelector picker];
     
+    // Set custom font
     self.backButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
     self.editButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
     self.nameLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
@@ -69,6 +70,7 @@ CGFloat animatedDistance;
     self.countryTxtField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
     self.emailTxtField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
     
+    // Set custom picker
     countriesPicker.delegate = self;
     countriesPicker.pickerType = SBPickerSelectorTypeText;
     countriesPicker.doneButtonTitle = @"تم";
@@ -89,7 +91,6 @@ CGFloat animatedDistance;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Buttons Actions
@@ -97,13 +98,12 @@ CGFloat animatedDistance;
 - (IBAction)logoutBtnPrss:(id)sender {
     
     [PFUser logOut];
-    
     self.tabBarController.selectedIndex=0;
 
 }
 
 - (IBAction)editBtnPrss:(id)sender {
-    [self closePicker];
+    [self SBPickerSelector:countriesPicker cancelPicker:YES];
     if (isEdit) {
         // Check if password and its confirmation are equal
         if (![self.confirmPasswordTxtField.text isEqualToString:self.passwordTxtField.text]) {
@@ -157,12 +157,8 @@ CGFloat animatedDistance;
     [self.confirmPasswordTxtField setEnabled:NO];
     [self.aboutTxtView setEditable:NO];
     self.countryButton.hidden=YES;
-    [self closePicker];
+    [self SBPickerSelector:countriesPicker cancelPicker:YES];
     [self loadUserInfo];
-}
-
-- (IBAction)chooseCountryBtnPrss:(id)sender {
-    [self closePicker];
 }
 
 - (IBAction)countryBtnPrss:(id)sender {
@@ -173,10 +169,10 @@ CGFloat animatedDistance;
 #pragma mark - TextView Delegate 
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
+    
     [textView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-
+    [self SBPickerSelector:countriesPicker cancelPicker:YES];
     textView.text=@"";
-    [self closePicker];
     
     CGRect textViewRect = [self.view.window convertRect:textView.bounds fromView:textView];
     CGRect viewRect = [self.view.window convertRect:self.view.bounds fromView:self.view];
@@ -249,18 +245,16 @@ CGFloat animatedDistance;
     [UIView commitAnimations];
 }
 
-
 // --------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
-
 // --------------------------------------------------------------------
 
 - (void)textFieldDidBeginEditing:(UITextField *)aTextField {
-    [self closePicker];
+    
     [aTextField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 
     CGRect textFieldRect = [self.view.window convertRect:aTextField.bounds fromView:aTextField];
@@ -354,38 +348,6 @@ CGFloat animatedDistance;
     
 }
 
-#pragma mark - Show and hide picker
-
--(IBAction)closePicker
-{
-    self.tabBarController.tabBar.hidden=NO;
-   [self.pickerView setHidden:YES];
-    [UIView animateWithDuration:0.5 animations:^{
-        self.pickerView.frame = CGRectMake(self.pickerView.frame.origin.x,
-                                           [[UIScreen mainScreen] bounds].size.height,
-                                           self.pickerView.frame.size.width,
-                                           self.pickerView.frame.size.height);
-    }];
-}
-
-
--(IBAction)showPicker
-{
-    self.tabBarController.tabBar.hidden=YES;
-    [self.nameTxtField resignFirstResponder];
-    [self.aboutTxtView resignFirstResponder];
-    [self.emailTxtField resignFirstResponder];
-    [self.passwordTxtField resignFirstResponder];
-    [self.confirmPasswordTxtField resignFirstResponder];
-    [self.pickerView setHidden:NO];
-    [UIView animateWithDuration:0.5 animations:^{
-        self.pickerView.frame = CGRectMake(self.pickerView.frame.origin.x,
-                                           [[UIScreen mainScreen] bounds].size.height-self.self.pickerView.frame.size.height,
-                                           self.pickerView.frame.size.width,
-                                           self.pickerView.frame.size.height);
-    }];
-}
-
 
 #pragma mark - Load countries form JSON file
 
@@ -414,19 +376,28 @@ CGFloat animatedDistance;
     
     countriesPicker.pickerData = [[NSMutableArray alloc] initWithArray:countriesArray];
     
-    [self.countryPicker reloadAllComponents];
 }
 
 
 
 - (void) updateUserInfo{
     
-    [[PFUser currentUser] setUsername:self.nameTxtField.text];
-    [[PFUser currentUser] setEmail:self.emailTxtField.text];
-    [[PFUser currentUser] setPassword:self.passwordTxtField.text];
-    [[PFUser currentUser] setObject:self.aboutTxtView.text forKey:@"AboutUser"];
-    [[PFUser currentUser] setObject:self.countryTxtField.text forKey:@"Country"];
-    [[PFUser currentUser] saveInBackground];
+    if ([self checkConnection]) {
+        [[PFUser currentUser] setUsername:self.nameTxtField.text];
+        [[PFUser currentUser] setEmail:self.emailTxtField.text];
+        [[PFUser currentUser] setPassword:self.passwordTxtField.text];
+        [[PFUser currentUser] setObject:self.aboutTxtView.text forKey:@"AboutUser"];
+        [[PFUser currentUser] setObject:self.countryTxtField.text forKey:@"Country"];
+        [[PFUser currentUser] saveInBackground];
+    }
+    
+    else{
+        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
+    }
     
 }
 
@@ -444,16 +415,16 @@ CGFloat animatedDistance;
     }
 }
 
+#pragma mark - SBPickerSelectorDelegate
+
 - (void) showPicker:(id)sender{
-    
-    
-    
-    //*********************
-    //setup here your picker
-    //*********************
-    
-    
-    
+    self.tabBarController.tabBar.hidden=YES;
+    [self.nameTxtField resignFirstResponder];
+    [self.aboutTxtView resignFirstResponder];
+    [self.emailTxtField resignFirstResponder];
+    [self.passwordTxtField resignFirstResponder];
+    [self.confirmPasswordTxtField resignFirstResponder];
+
     CGPoint point = [self.view convertPoint:[sender frame].origin fromView:[sender superview]];
     CGRect frame = [sender frame];
     frame.origin = point;
@@ -462,8 +433,6 @@ CGFloat animatedDistance;
     
 }
 
-
-#pragma mark - SBPickerSelectorDelegate
 -(void) SBPickerSelector:(SBPickerSelector *)selector selectedValue:(NSString *)value index:(NSInteger)idx{
     chosenCountry=(NSString*)[countriesArray objectAtIndex:idx];
     self.countryTxtField.text=chosenCountry ;
@@ -487,6 +456,21 @@ CGFloat animatedDistance;
     }else{
         [self SBPickerSelector:selector selectedValue:value index:idx];
     }
+}
+
+#pragma mark - Check internet connection
+
+- (bool) checkConnection{
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
 }
 
 @end

@@ -39,9 +39,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    // Set custom keyboard
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
+    
+    // Set custom font
+    self.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.locationLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.sectionsLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    self.screenLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.editButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.backButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+
+    // Set loading indicator
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+
 
   //  [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 }
@@ -49,43 +66,40 @@
 - (void)viewWillAppear:(BOOL)animated{
     pageImages=[[NSMutableArray alloc] init];
 
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
-
-    HUD.labelText = @"يتم الآن التحميل";
-    [HUD show:YES];
-    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-    self.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.locationLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.sectionsLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
-    self.screenLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.editButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.backButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    
-    PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
-    // Retrieve the object by id
-    [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
-        self.propertyID=pfObject;
-        self.propertyTitle.text = (NSString*)[self.propertyID objectForKey:@"Title"];
-        self.screenLabel.text = (NSString*)[self.propertyID objectForKey:@"Title"];
-        self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
+    if ([self checkConnection]) {
+        HUD.labelText = @"يتم الآن التحميل";
+        [HUD show:YES];
         
-//        NSString *note=[self.propertyID objectForKey:@"Description"];
-//        if ([note isEqual:@" "]) {
-//            self.notesTxtView.text=@"لا يوجد ملاحظات";
-//        }
-//        else{
-//            
-//            self.notesTxtView.text=note;
-//        }
-//        
-        [self getSectionsForProperty:self.propertyID];
+        PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
+        // Retrieve the object by id
+        [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
+            self.propertyID=pfObject;
+            self.propertyTitle.text = (NSString*)[self.propertyID objectForKey:@"Title"];
+            self.screenLabel.text = (NSString*)[self.propertyID objectForKey:@"Title"];
+            self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
+            
+            //        NSString *note=[self.propertyID objectForKey:@"Description"];
+            //        if ([note isEqual:@" "]) {
+            //            self.notesTxtView.text=@"لا يوجد ملاحظات";
+            //        }
+            //        else{
+            //
+            //            self.notesTxtView.text=note;
+            //        }
+            //        
+            [self getSectionsForProperty:self.propertyID];
+            
+        }];
+    }
+    else{
+        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
+        
 
-    }];
-       //[self prepareSections];
-
+    }
 }
 
 -(void)getSectionsForProperty:(PFObject*)propID
@@ -417,7 +431,6 @@
     
     [self performSegueWithIdentifier:@"editProperty" sender:self];
 
-    
 }
 
 - (IBAction)nxtImgBtnPrss:(id)sender {
@@ -652,12 +665,7 @@
 
 - (BOOL)photoBrowser:(AGPhotoBrowserView *)photoBrowser willDisplayActionButtonAtIndex:(NSInteger)index
 {
-    // -- For testing purposes only
-//    if (index % 2) {
-//        return YES;
-//    }
-//    
-//    return NO;
+ 
     return NO;
 }
 
@@ -699,5 +707,18 @@
 }
 
 
+#pragma mark - Check internet connection
 
+- (bool) checkConnection{
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
+}
 @end

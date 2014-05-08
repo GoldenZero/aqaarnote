@@ -28,8 +28,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *uploadImageBtn;
 @property (strong, nonatomic) IBOutlet UITableView *sectionsTableView;
 @property (strong, nonatomic) IBOutlet UIButton *showPickerButton;
-@property (strong, nonatomic) IBOutlet UIPickerView *countriesPickerView;
-@property (strong, nonatomic) IBOutlet UIView *pickerView;
 @property (strong, nonatomic) IBOutlet UIScrollView *imageScrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) PFObject* propertyID;
@@ -55,7 +53,6 @@
 - (IBAction)saveButtonPressed:(id)sender;
 - (IBAction)cancelButtonPressed:(id)sender;
 - (IBAction)addSectionBtnPrss:(id)sender;
-- (IBAction)chooseCountryBtnPrss:(id)sender;
 - (IBAction)deletePhotoBtnPrss:(id)sender;
 - (IBAction)nxtImgBtnPrss:(id)sender;
 - (IBAction)prevImgBtnPrss:(id)sender;

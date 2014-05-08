@@ -11,7 +11,7 @@
 #import "BaseViewController.h"
 #import "SBPickerSelector.h"
 
-@interface NotesVC : UIViewController<UITextFieldDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,SBPickerSelectorDelegate>
+@interface NotesVC : UIViewController<UITextFieldDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,SBPickerSelectorDelegate,UIAlertViewDelegate>
 
 #pragma mark - Properties
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
@@ -23,8 +23,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *emailTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *confirmPasswordTxtField;
-@property (strong, nonatomic) IBOutlet UIView *pickerView;
-@property (strong, nonatomic) IBOutlet UIPickerView *countryPicker;
 @property (strong, nonatomic) IBOutlet UIButton *countryButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
@@ -38,7 +36,6 @@
 - (IBAction)logoutBtnPrss:(id)sender;
 - (IBAction)editBtnPrss:(id)sender;
 - (IBAction)backBtnPrss:(id)sender;
-- (IBAction)chooseCountryBtnPrss:(id)sender;
 - (IBAction)countryBtnPrss:(id)sender;
 
 @end

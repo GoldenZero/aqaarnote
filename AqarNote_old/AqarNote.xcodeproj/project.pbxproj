@@ -460,6 +460,7 @@
 		7CC422A4191BDF8E00AD701C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		7CC422A6191BDF8E00AD701C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7CC422A7191BDF8E00AD701C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		7CC422AC191C058F00AD701C /* Globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		7CC7809618D76AD0002ED19C /* countryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = countryObject.h; sourceTree = "<group>"; };
 		7CC7809718D76AD0002ED19C /* countryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = countryObject.m; sourceTree = "<group>"; };
 		7CC7809918D76C4D002ED19C /* Countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countries.json; sourceTree = "<group>"; };
@@ -953,6 +954,7 @@
 				84BFB51B189E12FD0069A87A /* main.m */,
 				84BFB51D189E12FD0069A87A /* AqarNote-Prefix.pch */,
 				7CA1076B19082B3700F7B581 /* Localizable.strings */,
+				7CC422AC191C058F00AD701C /* Globals.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

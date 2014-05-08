@@ -10,7 +10,7 @@
 #import "InspectionCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface InspectionsVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
+@interface InspectionsVC : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;

@@ -32,31 +32,62 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    // Set custom font
+    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    
+    // initialize data
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = nil;
+    
+    // Set loading indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
     HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
-    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+     if ([self checkConnection]) {
+        [HUD show:YES];
+        HUD.labelText = @"جاري التحميل...";
+        [self.view addSubview:HUD];
+        [self getProperties];
 
-    [self.view addSubview:HUD];
-    
-    [HUD show:YES];
-    HUD.labelText = @"جاري التحميل...";
-
-    [self getProperties];
-   // [self getPropertyImages];
+    }
+     else{
+         [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                     message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                    delegate:nil
+                           cancelButtonTitle:@"موافق"
+                           otherButtonTitles:nil] show];
+     }
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    if (![self isBeingPresented]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
+#pragma  mark - loading data
 -(void)getProperties
 {
-    //Create query for all Post object by the current user
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
     [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
     [postQuery orderByDescending:@"createdAt"];
     
-    // Run the query
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             propertiesImagesArray=[[NSMutableArray alloc] initWithCapacity:objects.count];
@@ -92,45 +123,10 @@
 }
 
 
--(void)getPropertyImages
-{
-    PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-    [photoQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    
-    // Run the query
-    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            if ([objects count] != 0) {
-                propertiesImagesArray = objects;
-                //Save results and update the table
-                NSLog(@"got the object image");
-            }
-        }
-    }];
-}
-
--(PFFile*)getCurrentImageForProperty:(PFObject*)currObj
-{
-    PFFile *theImage;
-    for (PFObject* ob in propertiesImagesArray) {
-        if ([currObj.objectId isEqualToString:ob.objectId]) {
-            theImage = [ob objectForKey:@"imageFile"];
-            break;
-        }
-    }
-    return theImage;
-}
-
-//- (void)viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//    
-//}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return propertiesArray.count;
 }
 
@@ -183,9 +179,6 @@
         cell.detailsTxtView.textColor=[UIColor grayColor];
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
         cell.propertyDate.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-
-
-
     }
  
       return cell;
@@ -212,29 +205,18 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Check internet connection
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-
-- (IBAction)cancelButtonPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    if (![self isBeingPresented]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+- (bool) checkConnection{
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return false;
     }
+    else {
+        return true;
+    }
+    
 }
-
-
 @end

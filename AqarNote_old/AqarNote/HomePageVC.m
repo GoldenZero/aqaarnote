@@ -12,7 +12,7 @@
 #import "MBProgressHUD.h"
 #import "AddNewInspectionVC.h"
 #import "ODRefreshControl.h"
-
+#import "Globals.h"
 @interface HomePageVC ()
 {
     NSMutableArray* propertiesArray;
@@ -30,36 +30,57 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // 1- initialize data
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];
     self.propertiesTable.userInteractionEnabled=YES;
+    
+    // 2- Set loading indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
     [self.view addSubview:HUD];
     HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    
+    // 3- Set refresh control
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.propertiesTable];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
     
-    if ([PFUser currentUser]) {
-        [HUD show:YES];
-        HUD.labelText = @"جاري التحميل...";
-        [self getProperties];
+    // 4- check internet connection
+    if ([self checkConnection]) {
+        
+        // 5- Check if user control
+        if ([PFUser currentUser]) {
+            [HUD show:YES];
+            HUD.labelText = @"جاري التحميل...";
+            [self getProperties];
+        }
     }
+    else{
+        
+        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
 
+    }
+  
 }
-
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self hideSearchView];
     isSearchOpen=false;
 
+    // User logged in
     if([PFUser currentUser]){
         [self.welcomeView setHidden:YES];
         [self showTabBar:self.tabBarController];
 
     }
+    
+    // User not logged in
     else{
         [self.welcomeView setHidden:NO];
         [self.propertiesTable setHidden:YES];
@@ -73,12 +94,10 @@
 -(void)getProperties
 {
    
-    //Create query for all Post object by the current user
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
     [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
     [postQuery orderByDescending:@"createdAt"];
 
-    // Run the query
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             propertiesImagesArray=[[NSMutableArray alloc] initWithCapacity:objects.count];
@@ -111,6 +130,16 @@
         if (propertiesArray.count==0) {
             [HUD hide:YES];
             [refreshControl endRefreshing];
+
+            if (error) {
+                    [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                                message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                               delegate:nil
+                                      cancelButtonTitle:@"موافق"
+                                      otherButtonTitles:nil] show];
+
+            }
+            
             [self.propertiesTable setHidden:YES];
             [self.addNewImage setHidden:NO];
             [self.searchButton setHidden:YES];
@@ -120,41 +149,10 @@
 }
 
 
--(void)getPropertyImages
-{
-    PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-    [photoQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    
-    // Run the query
-    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            if ([objects count] != 0) {
-                propertiesImagesArray = [[NSMutableArray alloc]initWithArray:objects];
-                //Save results and update the table
-            }
-        }
-    }];
-}
-
--(PFFile*)getCurrentImageForProperty:(PFObject*)currObj
-{
-    PFFile *theImage;
-    for (PFObject* ob in propertiesImagesArray) {
-        if ([ [ob objectForKey:@"propertyID"] isEqual:currObj]) {
-            theImage = [ob objectForKey:@"imageFile"];
-            NSLog(@"got the object image");
-
-            break;
-        }
-    }
-    return theImage;
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return propertiesArray.count;
 }
 
@@ -173,7 +171,6 @@
         cell = [topLevelObjects objectAtIndex:0];
         NSDateFormatter* df = [[NSDateFormatter alloc]init];
         [df setDateFormat:@"yyyy-MM-dd"];
-        // Configure the cell with the textContent of the Post as the cell's text label
     
         
         PFObject *post = (PFObject*)[propertiesArray objectAtIndex:indexPath.row];
@@ -212,24 +209,14 @@
 }
 
 
--(void)morePressed:(id)sender{
-    UIButton* btn = (UIButton*)sender;
-    int currentIndex = btn.tag;
-    choosenObject = [propertiesArray objectAtIndex:currentIndex];
-  
-    [self performSegueWithIdentifier:@"showPropretyDetail" sender:self];
-
-
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    choosenObject = [propertiesArray objectAtIndex:indexPath.row];
     
+    choosenObject = [propertiesArray objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"showPropretyDetail" sender:self];
     
 
 }
-#pragma mark login delegate
+#pragma mark - login delegate
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
     // Check if both fields are completed
@@ -251,6 +238,7 @@
    
     [HUD show:YES];
     HUD.labelText = @"جاري التحميل...";
+    USER_CHANGED=TRUE;
     [self getProperties];
     
     [self showTabBar:self.tabBarController];
@@ -275,11 +263,12 @@
 }
 
 
-#pragma mark signUp delegate
+#pragma mark - signUp delegate
 // Sent to the delegate to determine whether the sign up request should be submitted to the server.
 - (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
     BOOL informationComplete = YES;
-    
+    USER_CHANGED=TRUE;
+
     // loop through all of the submitted data
     for (id key in info) {
         NSString *field = [info objectForKey:key];
@@ -306,11 +295,11 @@
     NSLog(@"%@",user);
     [self.welcomeView setHidden:YES];
     
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [HUD show:YES];
+    HUD.labelText = @"جاري التحميل...";
     [self getProperties];
         
     [self showTabBar:self.tabBarController];
-    [self getPropertyImages];
     
     [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the PFSignUpViewController
 }
@@ -318,6 +307,11 @@
 // Sent to the delegate when the sign up attempt fails.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
     NSLog(@"Failed to sign up...");
+    [[[UIAlertView alloc] initWithTitle:@"خطآ!"
+                                message:@"حدث خطأ أثناء تسجيل الحساب الرجاء المحاولة لاحقا."
+                               delegate:nil
+                      cancelButtonTitle:@"موافق"
+                      otherButtonTitles:nil] show];
 
 
 }
@@ -330,14 +324,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 #pragma mark - Buttons Actions
 
@@ -498,8 +486,6 @@
     
 }
 
-
-
 #pragma mark - UIAlertView Delegate handler
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -516,30 +502,6 @@
 }
 
 
-- (void) filterPropertiesWithTitle:(NSString*) title{
-    if ([title isEqualToString:@""]||[title isEqualToString:@" "]) {
-        [HUD show:YES];
-        HUD.labelText = @"جاري البحث ...";
-        
-        [self getProperties];
-        
-    }
-    else{
-        filteredArray=[[NSMutableArray alloc] init];
-        for (int i=0; i<propertiesArray.count; i++) {
-            PFObject *post = [propertiesArray objectAtIndex:i];
-
-            if (!([[post objectForKey:@"Title"] rangeOfString:title].location == NSNotFound)){
-            //if ([[post objectForKey:@"Title"] isEqualToString:title]) {
-                [filteredArray addObject:post];
-            }
-        }
-
-        propertiesArray = filteredArray;
-        [self.propertiesTable reloadData];
-
-    }
-}
 
 #pragma mark - Show search view
 
@@ -567,18 +529,45 @@
 
 }
 
+
+- (void) filterPropertiesWithTitle:(NSString*) title{
+    if ([title isEqualToString:@""]||[title isEqualToString:@" "]) {
+        [HUD show:YES];
+        HUD.labelText = @"جاري البحث ...";
+        
+        [self getProperties];
+        
+    }
+    else{
+        filteredArray=[[NSMutableArray alloc] init];
+        for (int i=0; i<propertiesArray.count; i++) {
+            PFObject *post = [propertiesArray objectAtIndex:i];
+            
+            if (!([[post objectForKey:@"Title"] rangeOfString:title].location == NSNotFound)){
+                //if ([[post objectForKey:@"Title"] isEqualToString:title]) {
+                [filteredArray addObject:post];
+            }
+        }
+        
+        propertiesArray = filteredArray;
+        [self.propertiesTable reloadData];
+        
+    }
+}
+
+#pragma mark - TextField delegate
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     [textField resignFirstResponder];
 }
 
 
+#pragma mark - Refresh control delegate
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
     double delayInSeconds = 0.2;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.view addSubview:HUD];
-        
         [HUD show:YES];
         HUD.labelText = @"جاري التحميل...";
 
@@ -586,4 +575,18 @@
     });
 }
 
+#pragma mark - Check internet connection
+
+- (bool) checkConnection{
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
+}
 @end

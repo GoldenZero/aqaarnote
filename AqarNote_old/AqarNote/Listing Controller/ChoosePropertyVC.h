@@ -10,7 +10,7 @@
 #import "PropertyCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "AddNewInspectionVC.h"
-@interface ChoosePropertyVC : UIViewController<UITableViewDataSource,UITableViewDelegate,MBProgressHUDDelegate>
+@interface ChoosePropertyVC : UIViewController<UITableViewDataSource,UITableViewDelegate,MBProgressHUDDelegate,UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *propertiesTable;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;

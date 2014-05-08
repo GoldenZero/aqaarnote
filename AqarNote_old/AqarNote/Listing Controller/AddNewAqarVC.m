@@ -71,8 +71,7 @@ CGFloat animatedDistance;
     HUD = [[MBProgressHUD alloc] initWithView:self.sectionsTableView];
     HUD.delegate = self;
 
-    
-    countriesPicker = [SBPickerSelector picker];
+    // Set custom font
     self.propertyTitle.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
     self.country.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
     self.city.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
@@ -81,6 +80,8 @@ CGFloat animatedDistance;
     self.cancelButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
     self.saveButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
 
+    // Set picker view
+    countriesPicker = [SBPickerSelector picker];
     countriesPicker.delegate = self;
     countriesPicker.pickerType = SBPickerSelectorTypeText;
     countriesPicker.doneButtonTitle = @"تم";
@@ -98,35 +99,34 @@ CGFloat animatedDistance;
     [self.city setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 //    [self.descriptionsTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     
-    [HUD show:YES];
-    HUD.labelText = @"جاري تحميل الأقسام..";
-    [self loadCountries];
-
-    // Editing Property
-    if (self.isEditable) {
-        self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
-        self.country.text = [self.propertyID objectForKey:@"country"];
-        self.city.text=[self.propertyID objectForKey:@"city"];
-//        NSString *note=[self.propertyID objectForKey:@"Description"];
-//        if ([note isEqual:@" "]) {
-//            self.descriptionsTxtView.text=@"لا يوجد ملاحظات";
-//        }
-//        else{
-//            
-//            self.descriptionsTxtView.text=note;
-//        }
-
-        [self getSectionsForProperty:self.propertyID];
-        [self loadSectionPhoto];
-    }
-    
-    // Add property
-    else{
+    if ([self checkConnection]) {
+        [HUD show:YES];
+        HUD.labelText = @"جاري تحميل الأقسام..";
+        [self loadCountries];
+        // Editing Property
+        if (self.isEditable) {
+            self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
+            self.country.text = [self.propertyID objectForKey:@"country"];
+            self.city.text=[self.propertyID objectForKey:@"city"];
+            
+            [self getSectionsForProperty:self.propertyID];
+            [self loadSectionPhoto];
+        }
         
-
-        [self getExistSection];
+        else{
+            [self getExistSection];
+        }
     }
-	// Do any additional setup after loading the view.
+    else{
+        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
+
+    }
+   
+  	// Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -572,9 +572,7 @@ CGFloat animatedDistance;
 //    [av show];
 }
 
-- (IBAction)chooseCountryBtnPrss:(id)sender {
-    [self closePicker];
-}
+
 
 - (IBAction)deletePhotoBtnPrss:(id)sender {
     UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تأكيد" message:@"هل تريد بالتأكيد حذف هذه الصورة؟" delegate:self cancelButtonTitle:@"لا" otherButtonTitles:@"نعم", nil];
@@ -865,31 +863,6 @@ CGFloat animatedDistance;
     
 }
 
-#pragma mark - Show and hide picker 
-
--(IBAction)closePicker
-{
-    [self.pickerView setHidden:YES];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.pickerView.frame = CGRectMake(self.pickerView.frame.origin.x,
-                                            [[UIScreen mainScreen] bounds].size.height,
-                                            self.pickerView.frame.size.width,
-                                            self.pickerView.frame.size.height);
-    }];
-}
-
--(IBAction)showPicker
-{
-    
-    [self.pickerView setHidden:NO];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.pickerView.frame = CGRectMake(self.pickerView.frame.origin.x,
-                                            [[UIScreen mainScreen] bounds].size.height-self.self.pickerView.frame.size.height,
-                                            self.pickerView.frame.size.width,
-                                            self.pickerView.frame.size.height);
-    }];
-}
-
 
 #pragma mark - Load countries form JSON file
 
@@ -919,7 +892,6 @@ CGFloat animatedDistance;
     
     countriesPicker.pickerData = [[NSMutableArray alloc] initWithArray:countriesArray];
 
-    [self.countriesPickerView reloadAllComponents];
 }
 
 
@@ -935,7 +907,7 @@ CGFloat animatedDistance;
 
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     textView.text=@"";
-    [self closePicker];
+    [self SBPickerSelector:countriesPicker cancelPicker:YES];
     
     CGRect textViewRect = [self.view.window convertRect:textView.bounds fromView:textView];
     CGRect viewRect = [self.view.window convertRect:self.view.bounds fromView:self.view];
@@ -995,7 +967,7 @@ CGFloat animatedDistance;
 // --------------------------------------------------------------------
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self closePicker];
+    [self SBPickerSelector:countriesPicker cancelPicker:YES];
     
     [textField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 
@@ -1490,4 +1462,18 @@ CGFloat animatedDistance;
     }
 }
 
+#pragma mark - Check internet connection
+
+- (bool) checkConnection{
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
+}
 @end

@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "AddNewInspectionVC.h"
 #import "ODRefreshControl.h"
+#import "Globals.h"
 @interface InspectionsVC ()
 {
     NSMutableArray* inspectionsArray;
@@ -48,15 +49,26 @@
     HUD.delegate = self;
     HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
     [self.view addSubview:HUD];
-    [HUD show:YES];
-    HUD.labelText = @"جاري التحميل...";
-
+  
     // Set refresh control
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.inspectionsTable];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
-    
-    // Get Data
-    [self getInspections];
+
+    if ([self checkConnection]) {
+        [HUD show:YES];
+        HUD.labelText = @"جاري التحميل...";
+        // Get Data
+        [self getInspections];
+
+    }
+    else{
+        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
+
+    }
 
 }
 
@@ -64,11 +76,34 @@
 {
     [self hideSearchView];
     isSearchOpen=false;
+    if (USER_CHANGED) {
+        if ([self checkConnection]) {
+            [HUD show:YES];
+            HUD.labelText = @"جاري التحميل...";
+            // Get Data
+            [self getInspections];
+            
+        }
+        else{
+            [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                        message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                       delegate:nil
+                              cancelButtonTitle:@"موافق"
+                              otherButtonTitles:nil] show];
+            
+        }
+
+    }
 
 }
 
 -(void)getInspections
 {
+ 
+  
+    if (USER_CHANGED) {
+        USER_CHANGED=FALSE;
+    }
     if ([PFUser currentUser]) {
 
         PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
@@ -124,30 +159,6 @@
     }
 }
 
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    if (![PFUser currentUser]) { // No user logged in
-        // Create the log in view controller
-        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
-        [logInViewController setDelegate:self]; // Set ourselves as the delegate
-        //[logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
-        //[logInViewController setFields: PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDismissButton];
-        
-        // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-        
-        
-        // Assign our sign up controller to be displayed from the login controller
-        [logInViewController setSignUpController:signUpViewController];
-        
-        // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
-    }
-    
-}
 
 #pragma mark - Table view data source
 
@@ -232,81 +243,7 @@
     return 31;
 }
 
-#pragma mark login delegate
 
-- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
-    // Check if both fields are completed
-    if (username && password && username.length != 0 && password.length != 0) {
-        return YES; // Begin login process
-    }
-    
-    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                message:@"Make sure you fill out all of the information!"
-                               delegate:nil
-                      cancelButtonTitle:@"ok"
-                      otherButtonTitles:nil] show];
-    return NO; // Interrupt login process
-}
-
-// Sent to the delegate when a PFUser is logged in.
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    NSLog(@"%@",user);
-    [self getInspections];
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-// Sent to the delegate when the log in attempt fails.
-- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in...");
-}
-
-// Sent to the delegate when the log in screen is dismissed.
-- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-#pragma mark signUp delegate
-// Sent to the delegate to determine whether the sign up request should be submitted to the server.
-- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController shouldBeginSignUp:(NSDictionary *)info {
-    BOOL informationComplete = YES;
-    
-    // loop through all of the submitted data
-    for (id key in info) {
-        NSString *field = [info objectForKey:key];
-        if (!field || field.length == 0) { // check completion
-            informationComplete = NO;
-            break;
-        }
-    }
-    
-    // Display an alert if a field wasn't completed
-    if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
-                                    message:@"تأكد من إدخال كافة المعلومات!"
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
-    }
-    
-    return informationComplete;
-}
-
-// Sent to the delegate when a PFUser is signed up.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
-    NSLog(@"%@",user);
-    [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the PFSignUpViewController
-}
-
-// Sent to the delegate when the sign up attempt fails.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
-    NSLog(@"Failed to sign up...");
-}
-
-// Sent to the delegate when the sign up screen is dismissed.
-- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-    NSLog(@"User dismissed the signUpViewController");
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -454,6 +391,21 @@
         HUD.labelText = @"جاري التحميل...";
         
         [self getInspections];
-    });
+  });
+}
+
+#pragma mark - Check internet connection
+
+- (bool) checkConnection{
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
 }
 @end
