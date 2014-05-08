@@ -174,13 +174,13 @@ CGFloat animatedDistance;
     CGRect frame = self.sectionsTableView.frame;
     frame.size.height = self.sectionsTableView.contentSize.height;
     self.sectionsTableView.frame = frame;
-    CGFloat scrollViewHeight = 0.0f;
+    CGFloat scrollViewHeight = 60.0f;
     scrollViewHeight+=self.imageScrollView.frame.size.height;
     scrollViewHeight+=self.propertyTitle.frame.size.height;
     scrollViewHeight+=self.city.frame.size.height;
     scrollViewHeight+=self.country.frame.size.height;
     scrollViewHeight+=self.sectionsTableView.frame.size.height;
-    
+    NSLog(@"height of sections table %f",self.sectionsTableView.frame.size.height);
 //    for (UIView* view in self.contentScrollView.subviews)
 //    {
 //        if((view==self.imageScrollView)||[view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITableView class]])
@@ -207,11 +207,19 @@ CGFloat animatedDistance;
     frame.size.height = self.sectionsTableView.contentSize.height;
     self.sectionsTableView.frame = frame;
     
-    CGFloat scrollViewHeight = 0.0f;
-    for (UIView* view in self.contentScrollView.subviews)
-    {
-        scrollViewHeight += view.frame.size.height;
-    }
+    CGFloat scrollViewHeight = 60.0f;
+    scrollViewHeight+=self.imageScrollView.frame.size.height;
+    scrollViewHeight+=self.propertyTitle.frame.size.height;
+    scrollViewHeight+=self.city.frame.size.height;
+    scrollViewHeight+=self.country.frame.size.height;
+    scrollViewHeight+=self.sectionsTableView.frame.size.height;
+    NSLog(@"height of sections table %f",self.sectionsTableView.frame.size.height);
+
+//    CGFloat scrollViewHeight = 0.0f;
+//    for (UIView* view in self.contentScrollView.subviews)
+//    {
+//        scrollViewHeight += view.frame.size.height;
+//    }
     
     [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
 
@@ -1326,12 +1334,19 @@ CGFloat animatedDistance;
         CGRect frame = self.sectionsTableView.frame;
         frame.size.height = self.sectionsTableView.contentSize.height;
         self.sectionsTableView.frame = frame;
-        
-        CGFloat scrollViewHeight = 0.0f;
-        for (UIView* view in self.contentScrollView.subviews)
-        {
-            scrollViewHeight += view.frame.size.height;
-        }
+        CGFloat scrollViewHeight = 60.0f;
+        scrollViewHeight+=self.imageScrollView.frame.size.height;
+        scrollViewHeight+=self.propertyTitle.frame.size.height;
+        scrollViewHeight+=self.city.frame.size.height;
+        scrollViewHeight+=self.country.frame.size.height;
+        scrollViewHeight+=self.sectionsTableView.frame.size.height;
+        NSLog(@"height of sections table %f",self.sectionsTableView.frame.size.height);
+
+//        CGFloat scrollViewHeight = 0.0f;
+//        for (UIView* view in self.contentScrollView.subviews)
+//        {
+//            scrollViewHeight += view.frame.size.height;
+//        }
         
         [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
    
