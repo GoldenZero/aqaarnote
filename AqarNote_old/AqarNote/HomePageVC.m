@@ -35,34 +35,15 @@
     self.propertiesTable.userInteractionEnabled=YES;
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
+    [self.view addSubview:HUD];
     HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.propertiesTable];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
     
     if ([PFUser currentUser]) {
-        [self.view addSubview:HUD];
-        
         [HUD show:YES];
         HUD.labelText = @"جاري التحميل...";
-
         [self getProperties];
-        [self.welcomeView setHidden:YES];
-        
-        [self showTabBar:self.tabBarController];
-        //   [self getPropertyImages];
-        
-    }
-    
-    else{
-        [self.view addSubview:HUD];
-        
-        [self.welcomeView setHidden:NO];
-        [self.propertiesTable setHidden:YES];
-        propertiesArray = [NSMutableArray new];
-        propertiesImagesArray = [NSMutableArray new];
-        
-        [self hideTabBar:self.tabBarController];
-        
     }
 
 }
@@ -72,10 +53,21 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self hideSearchView];
-    
     isSearchOpen=false;
 
-  
+    if([PFUser currentUser]){
+        [self.welcomeView setHidden:YES];
+        [self showTabBar:self.tabBarController];
+
+    }
+    else{
+        [self.welcomeView setHidden:NO];
+        [self.propertiesTable setHidden:YES];
+        propertiesArray = [NSMutableArray new];
+        propertiesImagesArray = [NSMutableArray new];
+        [self hideTabBar:self.tabBarController];
+
+    }
 }
 
 -(void)getProperties
@@ -256,9 +248,9 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     NSLog(@"%@",user);
-    [self.welcomeView setHidden:YES];
-    
- //   [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+   
+    [HUD show:YES];
+    HUD.labelText = @"جاري التحميل...";
     [self getProperties];
     
     [self showTabBar:self.tabBarController];

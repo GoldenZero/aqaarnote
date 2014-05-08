@@ -15,5 +15,6 @@
     #import <Foundation/Foundation.h>
     #import <Parse/Parse.h>
     #import <FacebookSDK/FacebookSDK.h>
+    #import "Reachability.h"
     #import "MBProgressHUD.h"
 #endif
