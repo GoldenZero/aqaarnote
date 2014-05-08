@@ -37,25 +37,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    // Initialize Data
     inspectionsArray = [NSMutableArray new];
     propertiesArray = [NSMutableArray new];
     inspectionsImagesArray = [NSMutableArray new];
     
+    // Set loading indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
     HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    [self.view addSubview:HUD];
+    [HUD show:YES];
+    HUD.labelText = @"جاري التحميل...";
 
+    // Set refresh control
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.inspectionsTable];
     [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
     
-    [self.view addSubview:HUD];
-    
-    [HUD show:YES];
-    HUD.labelText = @"جاري التحميل...";
-    //TODO : chached data
+    // Get Data
     [self getInspections];
-
 
 }
 
@@ -64,14 +65,12 @@
     [self hideSearchView];
     isSearchOpen=false;
 
-    
-
 }
 
 -(void)getInspections
 {
     if ([PFUser currentUser]) {
-        //Create query for all Post object by the current user
+
         PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
         [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
         [postQuery whereKeyExists:@"lastInspectionDate"];
@@ -84,7 +83,7 @@
                 inspectionsArray = [[NSMutableArray alloc]initWithArray:objects];
                 for (int i=0; i<inspectionsArray.count; i++) {
                     PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-                    PFObject *post = (PFObject*)[propertiesArray objectAtIndex:i];
+                    PFObject *post = (PFObject*)[inspectionsArray objectAtIndex:i];
                     [photoQuery whereKey:@"propertyID" equalTo:post];
                     NSArray *photos= [photoQuery findObjects];
                     if (photos.count!=0) {
@@ -125,34 +124,6 @@
     }
 }
 
--(void)getInspectionsImages
-{
-    PFQuery *photoQuery = [PFQuery queryWithClassName:@"SectionPhoto"];
-    [photoQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    
-    // Run the query
-    [photoQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            if ([objects count] != 0) {
-                inspectionsImagesArray =(NSArray*) objects;
-                //Save results and update the table
-                NSLog(@"got the object image");
-            }
-        }
-    }];
-}
-
--(PFFile*)getCurrentImageForInpesction:(PFObject*)currObj
-{
-    PFFile *theImage;
-    for (PFObject* ob in inspectionsImagesArray) {
-        if ([currObj.objectId isEqualToString:ob.objectId]) {
-            theImage = [ob objectForKey:@"imageFile"];
-            break;
-        }
-    }
-    return theImage;
-}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -186,8 +157,6 @@
     return inspectionsArray.count;
 }
 
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -203,7 +172,7 @@
         NSDateFormatter* df = [[NSDateFormatter alloc]init];
         [df setDateFormat:@"yyyy-MM-dd"];
         [cell.activityIndicator startAnimating];
-        // Configure the cell with the textContent of the Post as the cell's text label
+
         PFObject *post = [inspectionsArray objectAtIndex:indexPath.row];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -234,18 +203,15 @@
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
         cell.propertyDate.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
 
-
     }
     
-  
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
     choosenObject = [inspectionsArray objectAtIndex:indexPath.row];
-    
     [self performSegueWithIdentifier:@"showDetails" sender:self];
-    
     
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -266,19 +232,8 @@
     return 31;
 }
 
-
-
--(void)morePressed:(id)sender{
-    UIButton* btn = (UIButton*)sender;
-    int currentIndex = btn.tag;
-    choosenObject = [inspectionsArray objectAtIndex:currentIndex];
-    
-    [self performSegueWithIdentifier:@"showDetails" sender:self];
-    
-    
-}
 #pragma mark login delegate
-// Sent to the delegate to determine whether the log in request should be submitted to the server.
+
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
     // Check if both fields are completed
     if (username && password && username.length != 0 && password.length != 0) {
@@ -423,28 +378,6 @@
     
 }
 
-- (void) filterPropertiesWithTitle:(NSString*) title{
-    if ([title isEqualToString:@""]||[title isEqualToString:@" "]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        [self getInspections];
-        
-    }
-    else{
-        NSMutableArray * filteredArray=[[NSMutableArray alloc] init];
-        for (int i=0; i<inspectionsArray.count; i++) {
-            PFObject *post = [inspectionsArray objectAtIndex:i];
-            
-            if (!([[post objectForKey:@"Title"] rangeOfString:title].location == NSNotFound)){
-                [filteredArray addObject:post];
-            }
-        }
-        
-        inspectionsArray = filteredArray;
-        [self.inspectionsTable reloadData];
-        
-    }
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -453,9 +386,7 @@
         AddNewInspectionVC *IVC=segue.destinationViewController;
         [IVC setPropertyID:choosenObject];
         [IVC setPropArr:propertiesArray];
-        
-    }
-    
+    }    
 }
 
 #pragma mark - Show search view
@@ -484,9 +415,33 @@
     
 }
 
+- (void) filterPropertiesWithTitle:(NSString*) title{
+    if ([title isEqualToString:@""]||[title isEqualToString:@" "]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [self getInspections];
+        
+    }
+    else{
+        NSMutableArray * filteredArray=[[NSMutableArray alloc] init];
+        for (int i=0; i<inspectionsArray.count; i++) {
+            PFObject *post = [inspectionsArray objectAtIndex:i];
+            
+            if (!([[post objectForKey:@"Title"] rangeOfString:title].location == NSNotFound)){
+                [filteredArray addObject:post];
+            }
+        }
+        
+        inspectionsArray = filteredArray;
+        [self.inspectionsTable reloadData];
+        
+    }
+}
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     [textField resignFirstResponder];
 }
+
+#pragma mark - Refresh control delegate
 
 - (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
