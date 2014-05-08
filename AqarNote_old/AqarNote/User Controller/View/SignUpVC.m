@@ -88,7 +88,7 @@ CGFloat animatedDistance;
     [self.signUpView.usernameField setFrame:CGRectMake(0.0f,91.0f,320.0,41.0f)];
     [self.signUpView.usernameField setPlaceholder:@" الاسم الكامل"];
     [self.signUpView.usernameField setTextAlignment:NSTextAlignmentRight];
-    self.signUpView.usernameField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:14];
+   // self.signUpView.usernameField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:14];
 
     [self.signUpView.usernameField setBackground:[UIImage imageNamed:@"list_bar"]];
     yOffset += fieldFrame.size.height;
@@ -98,7 +98,7 @@ CGFloat animatedDistance;
     [self.signUpView.passwordField setFrame:CGRectMake (0.0f,132.0f,320.0,41.0f)];
     [self.signUpView.passwordField setPlaceholder:@" كلمة المرور"];
     [self.signUpView.passwordField setTextAlignment:NSTextAlignmentRight];
-    self.signUpView.passwordField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:14];
+   // self.signUpView.passwordField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:14];
 
     [self.signUpView.passwordField setBackground:[UIImage imageNamed:@"list_bar"]];
 
@@ -108,7 +108,7 @@ CGFloat animatedDistance;
     [self.signUpView.emailField setFrame:CGRectMake(0.0f,50.0f,320.0,41.0f)];
     [self.signUpView.emailField setPlaceholder:@" البريد الإلكتروني"];
     [self.signUpView.emailField setTextAlignment:NSTextAlignmentRight];
-    self.signUpView.emailField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:14];
+    //self.signUpView.emailField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:14];
 
     [self.signUpView.emailField setBackground:[UIImage imageNamed:@"list_bar"]];
 
