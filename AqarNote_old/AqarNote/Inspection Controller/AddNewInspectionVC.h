@@ -13,9 +13,10 @@
 
 
 
-@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
+@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
 {
-    MBProgressHUD *HUD;
+    MBProgressHUD *HUD1;
+    MBProgressHUD *HUD2;
     
 }
 @property (strong, nonatomic) IBOutlet UILabel *screenLabel;
@@ -37,8 +38,6 @@
 
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
 
-- (IBAction)uploadImagePressed:(id)sender;
-- (void)uploadImage:(NSData *)imageData;
 - (IBAction)backButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;
 - (IBAction)editButtonPressed:(id)sender;
