@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0D0ECF191FF8060023FF9C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C57A9FA18CF8CBE00DE6259 /* Parse.framework */; };
 		7C0F81CB190EC66000047EA9 /* bottom_green_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C0F81C9190EC66000047EA9 /* bottom_green_bar.png */; };
 		7C0F81CC190EC66000047EA9 /* bottom_green_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C0F81CA190EC66000047EA9 /* bottom_green_bar@2x.png */; };
 		7C0F81EC190EE4B700047EA9 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F81D0190EE4B700047EA9 /* MKAnnotationView+WebCache.m */; };
@@ -50,7 +51,6 @@
 		7C516C9118DB7BAC00752390 /* default_image_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C516C8D18DB7BAC00752390 /* default_image_home@2x.png */; };
 		7C516C9518DB8FA200752390 /* EnhancedKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C516C9418DB8FA200752390 /* EnhancedKeyboard.m */; };
 		7C53FB7A1900563D00BE31AB /* deleteBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C53FB791900563D00BE31AB /* deleteBtn.png */; };
-		7C57A9FB18CF8CBE00DE6259 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C57A9FA18CF8CBE00DE6259 /* Parse.framework */; };
 		7C57AA0318CF8E2000DE6259 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57AA0018CF8E2000DE6259 /* LoginVC.m */; };
 		7C57AA0418CF8E2000DE6259 /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57AA0218CF8E2000DE6259 /* SignUpVC.m */; };
 		7C57AA6818CF8EAE00DE6259 /* add_new_property_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C57AA0618CF8EAE00DE6259 /* add_new_property_arrow.png */; };
@@ -531,13 +531,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0D0ECF191FF8060023FF9C /* Parse.framework in Frameworks */,
 				84B9051E18A26BF9003771E1 /* MessageUI.framework in Frameworks */,
 				84BFB557189E18700069A87A /* SystemConfiguration.framework in Frameworks */,
 				84BFB555189E18640069A87A /* StoreKit.framework in Frameworks */,
 				84BFB553189E18560069A87A /* Security.framework in Frameworks */,
 				84BFB551189E184D0069A87A /* QuartzCore.framework in Frameworks */,
 				84BFB54F189E18470069A87A /* MobileCoreServices.framework in Frameworks */,
-				7C57A9FB18CF8CBE00DE6259 /* Parse.framework in Frameworks */,
 				84BFB54D189E183D0069A87A /* libz.dylib in Frameworks */,
 				84BFB54B189E18310069A87A /* CoreLocation.framework in Frameworks */,
 				84BFB549189E18290069A87A /* CFNetwork.framework in Frameworks */,
@@ -1504,12 +1504,17 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Desktop/AqarNote/Libraries,
-					"/Users/noor/Documents/Danat\\ Projects/iOS\\ Projects/AqarNote/aqaarnote/AqarNote_old/Libraries",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/\"Libraries\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AqarNote/AqarNote-Prefix.pch";
 				INFOPLIST_FILE = "AqarNote/AqarNote-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/\"Libraries\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1520,12 +1525,17 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Desktop/AqarNote/Libraries,
-					"/Users/noor/Documents/Danat\\ Projects/iOS\\ Projects/AqarNote/aqaarnote/AqarNote_old/Libraries",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/\"Libraries\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AqarNote/AqarNote-Prefix.pch";
 				INFOPLIST_FILE = "AqarNote/AqarNote-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/\"Libraries\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
