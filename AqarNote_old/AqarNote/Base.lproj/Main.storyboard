@@ -233,8 +233,8 @@
                                             <outlet property="delegate" destination="SW6-19-1KX" id="Qii-81-No1"/>
                                         </connections>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="اكتب لمحة عن نفسك" textAlignment="center" id="INt-hL-KSg">
-                                        <rect key="frame" x="34" y="71" width="252" height="63"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" id="INt-hL-KSg">
+                                        <rect key="frame" x="34" y="83" width="252" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -331,7 +331,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iYW-mI-1Lq">
-                                        <rect key="frame" x="0.0" y="392" width="320" height="40"/>
+                                        <rect key="frame" x="20" y="392" width="280" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -343,6 +343,13 @@
                                             <action selector="logoutBtnPrss:" destination="SW6-19-1KX" eventType="touchUpInside" id="eiZ-Eq-xwC"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="نبذة شخصية" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UVY-kg-9cO">
+                                        <rect key="frame" x="105" y="66" width="110" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <connections>
                                     <outlet property="delegate" destination="SW6-19-1KX" id="PRi-kL-ofU"/>
@@ -356,6 +363,7 @@
                     </tabBarItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="aboutLabel" destination="UVY-kg-9cO" id="4YB-hZ-fMM"/>
                         <outlet property="aboutTxtView" destination="INt-hL-KSg" id="NVm-V2-EGM"/>
                         <outlet property="backButton" destination="RZX-Kc-aJy" id="D0c-9c-Yfi"/>
                         <outlet property="confirmPassLabel" destination="TEQ-se-4yk" id="g87-Q0-nlo"/>

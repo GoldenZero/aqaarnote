@@ -307,12 +307,7 @@
 // Sent to the delegate when the sign up attempt fails.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
     NSLog(@"Failed to sign up...");
-    [[[UIAlertView alloc] initWithTitle:@"خطآ!"
-                                message:@"حدث خطأ أثناء تسجيل الحساب الرجاء المحاولة لاحقا."
-                               delegate:nil
-                      cancelButtonTitle:@"موافق"
-                      otherButtonTitles:nil] show];
-
+   
 
 }
 

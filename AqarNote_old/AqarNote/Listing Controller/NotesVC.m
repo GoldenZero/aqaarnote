@@ -56,19 +56,25 @@ CGFloat animatedDistance;
     [self.aboutTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     countriesPicker = [SBPickerSelector picker];
     
+    self.passwordLabel.hidden=YES;
+    self.confirmPassLabel.hidden=YES;
+    self.passwordTxtField.hidden=YES;
+    self.confirmPasswordTxtField.hidden=YES;
+
     // Set custom font
     self.backButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
     self.editButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.nameLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.countryLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.emailLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.passwordLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.confirmPassLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:11];
-    self.myAccountLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
-    self.nameTxtField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.aboutTxtView.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.countryTxtField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.emailTxtField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.nameLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.countryLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.emailLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.passwordLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.confirmPassLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:11];
+    self.myAccountLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:19];
+    self.nameTxtField.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.aboutTxtView.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.countryTxtField.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.emailTxtField.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.aboutLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
     
     // Set custom picker
     countriesPicker.delegate = self;
@@ -123,8 +129,12 @@ CGFloat animatedDistance;
             [self.emailTxtField setEnabled:NO];
             [self.passwordTxtField setEnabled:NO];
             self.countryButton.hidden=YES;
-        //    self.logoutButton.hidden=NO;
+            self.logoutButton.hidden=NO;
             [self.confirmPasswordTxtField setEnabled:NO];
+            self.passwordLabel.hidden=YES;
+            self.confirmPassLabel.hidden=YES;
+            self.passwordTxtField.hidden=YES;
+            self.confirmPasswordTxtField.hidden=YES;
             [self.aboutTxtView setEditable:NO];
             [self updateUserInfo];
 
@@ -135,13 +145,18 @@ CGFloat animatedDistance;
         isEdit=true;
         self.backButton.hidden=NO;
         [self.editButton setTitle:@"حفظ" forState:UIControlStateNormal];
+        [self.backButton setTitle:@"إلغاء" forState:UIControlStateNormal];
         [self.nameTxtField setEnabled:YES];
         [self.emailTxtField setEnabled:YES];
         [self.passwordTxtField setEnabled:YES];
+        self.passwordLabel.hidden=NO;
+        self.confirmPassLabel.hidden=NO;
+        self.passwordTxtField.hidden=NO;
+        self.confirmPasswordTxtField.hidden=NO;
         [self.confirmPasswordTxtField setEnabled:YES];
         [self.aboutTxtView setEditable:YES];
         self.countryButton.hidden=NO;
-      //  self.logoutButton.hidden=YES;
+        self.logoutButton.hidden=YES;
 
     }
 }
@@ -151,12 +166,17 @@ CGFloat animatedDistance;
     isEdit=false;
     self.backButton.hidden=YES;
     [self.editButton setTitle:@"تعديل" forState:UIControlStateNormal];
+    self.logoutButton.hidden=NO;
     [self.nameTxtField setEnabled:NO];
     [self.emailTxtField setEnabled:NO];
     [self.passwordTxtField setEnabled:NO];
     [self.confirmPasswordTxtField setEnabled:NO];
     [self.aboutTxtView setEditable:NO];
     self.countryButton.hidden=YES;
+    self.passwordLabel.hidden=YES;
+    self.confirmPassLabel.hidden=YES;
+    self.passwordTxtField.hidden=YES;
+    self.confirmPasswordTxtField.hidden=YES;
     [self SBPickerSelector:countriesPicker cancelPicker:YES];
     [self loadUserInfo];
 }
@@ -411,7 +431,7 @@ CGFloat animatedDistance;
         self.aboutTxtView.text=[[PFUser currentUser] objectForKey:@"AboutUser"];
     }
     else{
-        self.aboutTxtView.text=@"اكتب عن نفسك في بضعة كلمات";
+        self.aboutTxtView.text=@"نبذة شخصية";
     }
 }
 
@@ -428,12 +448,14 @@ CGFloat animatedDistance;
     CGPoint point = [self.view convertPoint:[sender frame].origin fromView:[sender superview]];
     CGRect frame = [sender frame];
     frame.origin = point;
-    //[picker showPickerOver:self]; //classic picker display
-    [countriesPicker showPickerIpadFromRect:CGRectZero inView:self.view];
+    [countriesPicker showPickerOver:self]; //classic picker display
+    //[countriesPicker showPickerIpadFromRect:CGRectZero inView:self.view];
     
 }
 
 -(void) SBPickerSelector:(SBPickerSelector *)selector selectedValue:(NSString *)value index:(NSInteger)idx{
+    self.tabBarController.tabBar.hidden=NO;
+
     chosenCountry=(NSString*)[countriesArray objectAtIndex:idx];
     self.countryTxtField.text=chosenCountry ;
 }
@@ -447,7 +469,8 @@ CGFloat animatedDistance;
 }
 
 -(void) SBPickerSelector:(SBPickerSelector *)selector cancelPicker:(BOOL)cancel{
-    NSLog(@"press cancel");
+    self.tabBarController.tabBar.hidden=NO;
+
 }
 
 -(void) SBPickerSelector:(SBPickerSelector *)selector intermediatelySelectedValue:(id)value atIndex:(NSInteger)idx{
@@ -472,5 +495,7 @@ CGFloat animatedDistance;
     }
     
 }
+
+
 
 @end

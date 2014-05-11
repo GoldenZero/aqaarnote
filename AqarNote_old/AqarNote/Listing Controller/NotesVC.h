@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *passwordLabel;
 @property (strong, nonatomic) IBOutlet UILabel *myAccountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *confirmPassLabel;
+@property (strong, nonatomic) IBOutlet UILabel *aboutLabel;
 
 #pragma mark - Actions
 - (IBAction)logoutBtnPrss:(id)sender;

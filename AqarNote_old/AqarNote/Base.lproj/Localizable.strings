@@ -6,7 +6,12 @@
   Copyright (c) 2014 Danat. All rights reserved.
 */
 "OK"= "موافق";
+"%C OK %C"= "موافق";
+
 "Cancel"="إلغاء";
 "Enter Email"= "أدخل عنوان البريد";
 "Please enter the email address for your account."="الرجاء إدخال عنوان البريد الإلكتروني الخاص بحسابك";
 "Log in"="";
+"Loading..."="الرجاء الانتظار...";
+"Sign Up Error"="خطأ في التسجيل";
+"The username \"%@\" is taken. Please try choosing another username."="إن اسم المستخدم \"%@\" محجوز مسبقا. الرجاء اختيار اسم آخر.";
