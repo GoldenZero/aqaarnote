@@ -105,6 +105,7 @@ CGFloat animatedDistance;
         [self loadCountries];
         // Editing Property
         if (self.isEditable) {
+            self.titleLabel.hidden=YES;
             self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
             self.country.text = [self.propertyID objectForKey:@"country"];
             self.city.text=[self.propertyID objectForKey:@"city"];
@@ -180,7 +181,6 @@ CGFloat animatedDistance;
     scrollViewHeight+=self.city.frame.size.height;
     scrollViewHeight+=self.country.frame.size.height;
     scrollViewHeight+=self.sectionsTableView.frame.size.height;
-    NSLog(@"height of sections table %f",self.sectionsTableView.frame.size.height);
 //    for (UIView* view in self.contentScrollView.subviews)
 //    {
 //        if((view==self.imageScrollView)||[view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITableView class]])
@@ -213,7 +213,6 @@ CGFloat animatedDistance;
     scrollViewHeight+=self.city.frame.size.height;
     scrollViewHeight+=self.country.frame.size.height;
     scrollViewHeight+=self.sectionsTableView.frame.size.height;
-    NSLog(@"height of sections table %f",self.sectionsTableView.frame.size.height);
 
 //    CGFloat scrollViewHeight = 0.0f;
 //    for (UIView* view in self.contentScrollView.subviews)
@@ -464,62 +463,79 @@ CGFloat animatedDistance;
             }
 
             // Save Images
-            
-            for (int i=0; i<pageImages.count; i++) {
-                NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
-                PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-                
-                // Save PFFile
-                [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (!error) {
-                        
-                        // Create a PFObject around a PFFile and associate it with the current user
-                        PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
-                        [userPhoto setObject:imageFile forKey:@"imageFile"];
-                        
-                        
-                        // Set the access control list to current user for security purposes
-                        userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-                        
-                        PFUser *user = [PFUser currentUser];
-                        [userPhoto setObject:user forKey:@"user"];
-                        [userPhoto setObject:newPost forKey:@"propertyID"];
-
-                        [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (succeeded) {
-                                if (i==pageImages.count-1) {
-                                    
-                                    // Save Property & Sections
-                                    [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
-                                     {
-                                         if (!error) {
-                                             // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-                                             
-                                             [HUD hide:YES];
-                                             UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-                                             av.tag=4;
-                                             [av show];
-                                             
-                                         }
-                                     }];
+            if (pageImages.count!=0) {
+                for (int i=0; i<pageImages.count; i++) {
+                    NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
+                    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+                    
+                    // Save PFFile
+                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!error) {
+                            
+                            // Create a PFObject around a PFFile and associate it with the current user
+                            PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
+                            [userPhoto setObject:imageFile forKey:@"imageFile"];
+                            
+                            
+                            // Set the access control list to current user for security purposes
+                            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+                            
+                            PFUser *user = [PFUser currentUser];
+                            [userPhoto setObject:user forKey:@"user"];
+                            [userPhoto setObject:newPost forKey:@"propertyID"];
+                            
+                            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) {
+                                    if (i==pageImages.count-1) {
+                                        
+                                        // Save Property & Sections
+                                        [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
+                                         {
+                                             if (!error) {
+                                                 // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
+                                                 
+                                                 [HUD hide:YES];
+                                                 UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+                                                 av.tag=4;
+                                                 [av show];
+                                                 
+                                             }
+                                         }];
+                                    }
                                 }
-                            }
-                            else{
-                                // Log details of the failure
-                                NSLog(@"Error: %@ %@", error, [error userInfo]);
-                            }
-                        }];
-                    }
-                    else{
-                        // Log details of the failure
-                        NSLog(@"Error: %@ %@", error, [error userInfo]);
-                    }
+                                else{
+                                    // Log details of the failure
+                                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                                }
+                            }];
+                        }
+                        else{
+                            // Log details of the failure
+                            NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        }
+                        
+                    } progressBlock:^(int percentDone) {
+                        // Update your progress spinner here. percentDone will be between 0 and 100.
+                        HUD.progress = (float)percentDone/100;
+                        
+                    }];
+                }
+            }
+            else{
+                // Save Property & Sections
+                [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
+                 {
+                     if (!error) {
+                         // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
+                         
+                         [HUD hide:YES];
+                         UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+                         av.tag=4;
+                         [av show];
+                         
+                     }
+                 }];
 
-                } progressBlock:^(int percentDone) {
-                    // Update your progress spinner here. percentDone will be between 0 and 100.
-                    HUD.progress = (float)percentDone/100;
-              
-                }];
             }
         }
 
@@ -1224,7 +1240,9 @@ CGFloat animatedDistance;
     }
     
     // 2- Delete old sections
-    [PFObject deleteAll:deletedSections];
+    if (deletedSections.count!=0) {
+        [PFObject deleteAll:deletedSections];
+    }
     
     // 3- Delete old properties photo
     PFQuery *currentProperty = [PFQuery queryWithClassName:@"PropertyPhoto"];
