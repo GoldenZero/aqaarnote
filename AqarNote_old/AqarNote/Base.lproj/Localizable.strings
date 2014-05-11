@@ -6,8 +6,7 @@
   Copyright (c) 2014 Danat. All rights reserved.
 */
 "OK"= "موافق";
-"%C OK %C"= "موافق";
-
+"Ok"="موافق";
 "Cancel"="إلغاء";
 "Enter Email"= "أدخل عنوان البريد";
 "Please enter the email address for your account."="الرجاء إدخال عنوان البريد الإلكتروني الخاص بحسابك";
@@ -15,3 +14,6 @@
 "Loading..."="الرجاء الانتظار...";
 "Sign Up Error"="خطأ في التسجيل";
 "The username \"%@\" is taken. Please try choosing another username."="إن اسم المستخدم \"%@\" محجوز مسبقا. الرجاء اختيار اسم آخر.";
+"Offline Error"="خطأ في الاتصال.";
+"Something went wrong. Please try again."="حدث خطأ أثناء التسجيل. الرجاء المحاولة لاحقاً.";
+"The email \"%@\" is taken. Please try using another email."="إن الايميل \"%@\" محجوز مسبقا. الرجاء استخدام ايميل آخر.";
