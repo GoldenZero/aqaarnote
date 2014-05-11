@@ -321,6 +321,7 @@
     if ([[segue identifier] isEqualToString:@"showDetails"]){
         
         AddNewInspectionVC *IVC=segue.destinationViewController;
+        IVC.isInspection=YES;
         [IVC setPropertyID:choosenObject];
         [IVC setPropArr:propertiesArray];
     }    

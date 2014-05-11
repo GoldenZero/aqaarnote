@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSArray* PropArr;
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
-
+@property BOOL isInspection;
 @property (strong, nonatomic) IBOutlet UITextView *notesTxtView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UIScrollView *imgScrollView;

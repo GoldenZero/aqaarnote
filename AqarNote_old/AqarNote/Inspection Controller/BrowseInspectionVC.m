@@ -47,8 +47,9 @@ CGFloat animatedDistance;
 {
     [super viewDidLoad];
   
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
+    HUD = [[MBProgressHUD alloc] initWithView:self.pagingScrollView];
+    
+    [self.pagingScrollView addSubview:HUD];
     HUD.delegate = self;
     HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
 
@@ -57,6 +58,7 @@ CGFloat animatedDistance;
     [HUD show:YES];
     HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
     
+    [self.addImgBtnPrss setHidden:YES];
     pageImages=[[NSMutableArray alloc] init];
 	// Do any additional setup after loading the view.
     self.sectionTitle.text = [self.sectionID objectForKey:@"name"];
@@ -666,17 +668,20 @@ CGFloat animatedDistance;
         }
         
         pageCount=pageImages.count;
-        
+        [HUD hide:YES];
+
         [self.contentScrollView addSubview:self.addImgBtnPrss];
         [self.contentScrollView addSubview:self.deleteImgButton];
         [self.contentScrollView addSubview:self.nextImgButton];
         [self.contentScrollView addSubview:self.prevImgButton];
+
         if (pageCount<=1) {
             [self.nextImgButton setHidden:YES];
             [self.prevImgButton setHidden:YES];
+            [self.addImgBtnPrss setHidden:YES];
+
         }
 
-        [HUD hide:YES];
        
         
         [self setScrollView];

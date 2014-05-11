@@ -65,7 +65,13 @@
     HUD2.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
     [self.imgScrollView addSubview:HUD2];
 
+    if (self.isInspection) {
+        [self.editButton setHidden:YES];
+    }
+    else{
+        [self.editButton setHidden:NO];
 
+    }
   //  [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 }
 
@@ -200,8 +206,8 @@
         UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(285, 15, 15, 15)];
         [imgView setImage:img];
         
-        UILabel* statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 40, 50)];
-        statusLabel.textAlignment = NSTextAlignmentCenter;
+        UILabel* statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 70, 50)];
+        statusLabel.textAlignment = NSTextAlignmentLeft;
         statusLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:13];
 
         statusLabel.text = [self getStatusOfSection:[sect objectForKey:@"status"]];

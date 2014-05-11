@@ -87,7 +87,7 @@
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
     [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
     [postQuery orderByDescending:@"createdAt"];
-    
+    [postQuery whereKey:@"lastInspectionDate" equalTo:[NSNull null]];
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             propertiesImagesArray=[[NSMutableArray alloc] initWithCapacity:objects.count];
@@ -199,6 +199,7 @@
     if ([[segue identifier] isEqualToString:@"showAddNewInspection"])
     {
         AddNewInspectionVC* vc = segue.destinationViewController;
+        vc.isInspection=YES;
         vc.propertyID = propertySenderID;
         vc.PropArr = propertiesArray;
 
