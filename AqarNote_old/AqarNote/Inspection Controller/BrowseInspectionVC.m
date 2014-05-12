@@ -93,7 +93,11 @@ CGFloat animatedDistance;
     self.inputAccessoryView = [XCDFormInputAccessoryView new];
     self.contentScrollView.contentSize =CGSizeMake(320, 518);
 
-    [self loadSectionPhoto];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self loadSectionPhoto];
+    });
+
 
 }
 

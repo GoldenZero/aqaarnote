@@ -129,7 +129,11 @@
             chosenSectionArray = [[NSMutableArray alloc]initWithArray:objects];
             [self prepareSections];
             [HUD2 show:YES];
-            [self loadSectionPhoto];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+                [self loadSectionPhoto];
+            });
 
         }
     }];
