@@ -54,19 +54,19 @@ CGFloat animatedDistance;
     layer.shadowOpacity = 0.0f;
     layer = self.signUpView.passwordField.layer;
     layer.shadowOpacity = 0.0f;
-    layer = self.signUpView.emailField.layer;
+    layer = self.signUpView.additionalField.layer;
     layer.shadowOpacity = 0.0f;
-    self.signUpView.additionalField.hidden=YES;
+    self.signUpView.additionalField.hidden=NO;
 
     // Set text color
     [self.signUpView.usernameField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     [self.signUpView.passwordField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
-    [self.signUpView.emailField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
+    [self.signUpView.additionalField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     
     
     [self.signUpView.usernameField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     [self.signUpView.passwordField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-    [self.signUpView.emailField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    [self.signUpView.additionalField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 
     
 }
@@ -85,8 +85,8 @@ CGFloat animatedDistance;
     [self.fieldsBackground setFrame:CGRectMake(0.0f, 50.0f,320.0f,41*4)];
     
 
-    [self.signUpView.usernameField setFrame:CGRectMake(0.0f,91.0f,320.0,41.0f)];
-    [self.signUpView.usernameField setPlaceholder:@" الاسم الكامل"];
+    [self.signUpView.usernameField setFrame:CGRectMake(0.0f,50.0f,320.0,41.0f)];
+    [self.signUpView.usernameField setPlaceholder:@" البريد الإلكتروني"];
     [self.signUpView.usernameField setTextAlignment:NSTextAlignmentRight];
     self.signUpView.usernameField.font=[UIFont fontWithName:@"Tahoma" size:14];
 
@@ -105,12 +105,12 @@ CGFloat animatedDistance;
     yOffset += fieldFrame.size.height;
     
 
-    [self.signUpView.emailField setFrame:CGRectMake(0.0f,50.0f,320.0,41.0f)];
-    [self.signUpView.emailField setPlaceholder:@" البريد الإلكتروني"];
-    [self.signUpView.emailField setTextAlignment:NSTextAlignmentRight];
-    self.signUpView.emailField.font=[UIFont fontWithName:@"Tahoma" size:14];
+    [self.signUpView.additionalField setFrame:CGRectMake(0.0f,91.0f,320.0,41.0f)];
+    [self.signUpView.additionalField setPlaceholder:@" الاسم الكامل"];
+    [self.signUpView.additionalField setTextAlignment:NSTextAlignmentRight];
+    self.signUpView.additionalField.font=[UIFont fontWithName:@"Tahoma" size:14];
 
-    [self.signUpView.emailField setBackground:[UIImage imageNamed:@"list_bar"]];
+    [self.signUpView.additionalField setBackground:[UIImage imageNamed:@"list_bar"]];
 
     
     yOffset += fieldFrame.size.height;
@@ -131,8 +131,8 @@ CGFloat animatedDistance;
         [self.signUpView.passwordField resignFirstResponder];
     }
    
-    else if ([self.signUpView.emailField isEditing]) {
-        [self.signUpView.emailField resignFirstResponder];
+    else if ([self.signUpView.additionalField isEditing]) {
+        [self.signUpView.additionalField resignFirstResponder];
     }
     
 //    else{

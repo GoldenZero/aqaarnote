@@ -13,7 +13,7 @@
 "Log in"="";
 "Loading..."="الرجاء الانتظار...";
 "Sign Up Error"="خطأ في التسجيل";
-"The username \"%@\" is taken. Please try choosing another username."="إن اسم المستخدم \"%@\" محجوز مسبقا. الرجاء اختيار اسم آخر.";
+"The username \"%@\" is taken. Please try choosing another username."="إن الإيميل \"%@\" محجوز مسبقا. الرجاء اختيار إيميل آخر.";
 "Offline Error"="خطأ في الاتصال.";
 "Something went wrong. Please try again."="حدث خطأ أثناء التسجيل. الرجاء المحاولة لاحقاً.";
 "The email \"%@\" is taken. Please try using another email."="إن الايميل \"%@\" محجوز مسبقا. الرجاء استخدام ايميل آخر.";

@@ -403,8 +403,8 @@ CGFloat animatedDistance;
 - (void) updateUserInfo{
     
     if ([self checkConnection]) {
-        [[PFUser currentUser] setUsername:self.nameTxtField.text];
-        [[PFUser currentUser] setEmail:self.emailTxtField.text];
+        [[PFUser currentUser] setUsername:self.emailTxtField.text];
+        [[PFUser currentUser] setObject:self.nameTxtField.text forKey:@"additional"];
         [[PFUser currentUser] setPassword:self.passwordTxtField.text];
         [[PFUser currentUser] setObject:self.aboutTxtView.text forKey:@"AboutUser"];
         [[PFUser currentUser] setObject:self.countryTxtField.text forKey:@"Country"];
@@ -422,9 +422,9 @@ CGFloat animatedDistance;
 }
 
 - (void)loadUserInfo{
-    self.nameTxtField.text=(NSString*)[[PFUser currentUser] username];
+    self.nameTxtField.text=(NSString*)[[PFUser currentUser] objectForKey:@"additional"];
     self.countryTxtField.text=(NSString*)[[PFUser currentUser] objectForKey:@"Country"];
-    self.emailTxtField.text=(NSString*)[[PFUser currentUser] email];
+    self.emailTxtField.text=(NSString*)[[PFUser currentUser] username];
     self.passwordTxtField.text=(NSString*)[[PFUser currentUser]password];
     self.confirmPasswordTxtField.text=(NSString*)[[PFUser currentUser] password];
     if (![[[PFUser currentUser] objectForKey:@"AboutUser"] isEqualToString:@""]) {

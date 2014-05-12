@@ -75,7 +75,7 @@
     [self.logInView.logInButton setFrame:CGRectMake(45.0f, 175.0f, 235.0f, 45.0f)];
     [self.logInView.usernameField setFrame:CGRectMake(0.0f, 50.0f, 320.0f, 41.0f)];
     [self.logInView.usernameField setBackground:[UIImage imageNamed:@"list_bar"]];
-    [self.logInView.usernameField setPlaceholder:@" اسم المستخدم "];
+    [self.logInView.usernameField setPlaceholder:@" البريد الإلكتروني "];
     self.logInView.usernameField.font=[UIFont fontWithName:@"Tahoma" size:14];
     [self.logInView.usernameField setTextAlignment:NSTextAlignmentRight];
     [self.logInView.passwordField setFrame:CGRectMake(0.0f, 91.0f, 320.0f, 41.0f)];

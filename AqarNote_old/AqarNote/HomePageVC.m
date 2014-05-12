@@ -252,7 +252,7 @@
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
     NSLog(@"Failed to log in...");
-    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"خطأ في الإدخال" message:@"الرجاء إعادة إدخال اسم المستخدم و كلمة المرور" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"خطأ في الإدخال" message:@"الرجاء إعادة إدخال الإيميل و كلمة المرور" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
     
     av.alertViewStyle = UIAlertViewStyleDefault;
     [av show];
@@ -332,7 +332,7 @@
     // Customize the Sign Up View Controller
     SignUpVC *signUpViewController = [[SignUpVC alloc] init];
     signUpViewController.delegate = self;
-    signUpViewController.fields = PFSignUpFieldsDefault;
+    signUpViewController.fields = PFSignUpFieldsAdditional|PFSignUpFieldsUsernameAndPassword|PFSignUpFieldsSignUpButton|PFSignUpFieldsDismissButton;
     
     // Present Sign Up View Controller
     [self presentViewController:signUpViewController animated:YES completion:NULL];
@@ -352,7 +352,7 @@
     // Customize the Sign Up View Controller
     SignUpVC *signUpViewController = [[SignUpVC alloc] init];
     signUpViewController.delegate = self;
-    signUpViewController.fields = PFSignUpFieldsDefault | PFSignUpFieldsAdditional;
+    signUpViewController.fields =  PFSignUpFieldsAdditional|PFSignUpFieldsUsernameAndPassword|PFSignUpFieldsSignUpButton|PFSignUpFieldsDismissButton;
     logInViewController.signUpController = signUpViewController;
     
     // Present Log In View Controller
