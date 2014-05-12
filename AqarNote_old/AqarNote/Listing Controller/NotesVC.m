@@ -62,19 +62,19 @@ CGFloat animatedDistance;
     self.confirmPasswordTxtField.hidden=YES;
 
     // Set custom font
-    self.backButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.editButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.nameLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.countryLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.emailLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.passwordLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.confirmPassLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:11];
-    self.myAccountLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:19];
-    self.nameTxtField.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.aboutTxtView.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.countryTxtField.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.emailTxtField.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.aboutLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:11];
+    self.backButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.editButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.nameLabel.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.countryLabel.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.emailLabel.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.passwordLabel.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.confirmPassLabel.font=[UIFont fontWithName:@"Tahoma" size:11];
+    self.myAccountLabel.font=[UIFont fontWithName:@"HacenSudan" size:19];
+    self.nameTxtField.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.aboutTxtView.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.countryTxtField.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.emailTxtField.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.aboutLabel.font=[UIFont fontWithName:@"Tahoma" size:11];
     
     // Set custom picker
     countriesPicker.delegate = self;

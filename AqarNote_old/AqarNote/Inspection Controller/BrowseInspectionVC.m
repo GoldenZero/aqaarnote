@@ -51,7 +51,7 @@ CGFloat animatedDistance;
     
     [self.pagingScrollView addSubview:HUD];
     HUD.delegate = self;
-    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    HUD.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
 
     HUD.labelText = @"يتم الآن التحميل";
     
@@ -62,9 +62,9 @@ CGFloat animatedDistance;
     pageImages=[[NSMutableArray alloc] init];
 	// Do any additional setup after loading the view.
     self.sectionTitle.text = [self.sectionID objectForKey:@"name"];
-    self.sectionTitle.font = [UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.cancelButton.titleLabel.font= [UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.noteTextView.font = [UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+    self.sectionTitle.font = [UIFont fontWithName:@"HacenSudan" size:14];
+    self.cancelButton.titleLabel.font= [UIFont fontWithName:@"HacenSudan" size:14];
+    self.noteTextView.font = [UIFont fontWithName:@"Tahoma" size:10];
     
     NSString *note=[self.sectionID objectForKey:@"note"];
     if (![note isEqualToString:@""]) {
@@ -226,7 +226,7 @@ CGFloat animatedDistance;
     PFQuery *query = [PFQuery queryWithClassName:@"Sections"];
     [query whereKey:@"userID" equalTo:[PFUser currentUser]];
     
-    
+    HUD.hidden=NO;
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
@@ -504,7 +504,7 @@ CGFloat animatedDistance;
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
     for (UIView *_currentView in actionSheet.subviews) {
         if ([_currentView isKindOfClass:[UIButton class]]) {
-            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14]];
+            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"HacenSudan" size:14]];
             [((UIButton *)_currentView).titleLabel setTextColor:[UIColor blackColor]];
             
         }
@@ -669,7 +669,7 @@ CGFloat animatedDistance;
         
         pageCount=pageImages.count;
         [HUD hide:YES];
-
+        HUD.hidden=YES;
         [self.contentScrollView addSubview:self.addImgBtnPrss];
         [self.contentScrollView addSubview:self.deleteImgButton];
         [self.contentScrollView addSubview:self.nextImgButton];

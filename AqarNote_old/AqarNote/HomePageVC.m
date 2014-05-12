@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+ 
     
     // 1- initialize data
     propertiesArray = [NSMutableArray new];
@@ -40,7 +41,7 @@
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
     [self.view addSubview:HUD];
-    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    HUD.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
     
     // 3- Set refresh control
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.propertiesTable];
@@ -189,19 +190,19 @@
         );
         
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
-        cell.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+        cell.propertyTitle.font=[UIFont fontWithName:@"HacenSudan" size:12];
 
         cell.propertyImage.layer.cornerRadius = 5.0;
         cell.propertyImage.layer.masksToBounds = YES;
 
         [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
-        cell.propertyLocation.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+        cell.propertyLocation.font=[UIFont fontWithName:@"HacenSudan" size:10];
 
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
-        cell.propertyDate.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+        cell.propertyDate.font=[UIFont fontWithName:@"HacenSudan" size:12];
 
         [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
-        cell.detailsTxtView.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+        cell.detailsTxtView.font=[UIFont fontWithName:@"Tahoma" size:10];
         cell.detailsTxtView.textAlignment=NSTextAlignmentRight;
         cell.detailsTxtView.textColor=[UIColor grayColor];
     }

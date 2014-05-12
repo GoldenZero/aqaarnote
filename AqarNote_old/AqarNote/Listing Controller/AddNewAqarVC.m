@@ -72,13 +72,13 @@ CGFloat animatedDistance;
     HUD.delegate = self;
 
     // Set custom font
-    self.propertyTitle.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.country.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.city.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.sesctionsLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
-    self.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.saveButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.propertyTitle.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.country.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.city.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.sesctionsLabel.font=[UIFont fontWithName:@"HacenSudan" size:16];
+    self.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.saveButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
 
     // Set picker view
     countriesPicker = [SBPickerSelector picker];
@@ -88,12 +88,12 @@ CGFloat animatedDistance;
     countriesPicker.cancelButtonTitle = @"إغلاق";
 
     mainSectionsArray = [NSMutableArray new];
-    [mainSectionsArray addObject:@"kitchen"];
-    [mainSectionsArray addObject:@"living room"];
-    [mainSectionsArray addObject:@"bed room"];
-    [mainSectionsArray addObject:@"bath room"];
-    [mainSectionsArray addObject:@"dining room"];
-    [mainSectionsArray addObject:@"garden"];
+    [mainSectionsArray addObject:@"المطبخ"];
+    [mainSectionsArray addObject:@"غرفة المعيشة"];
+    [mainSectionsArray addObject:@"غرفة النوم"];
+    [mainSectionsArray addObject:@"الحمام"];
+    [mainSectionsArray addObject:@"غرفة الطعام"];
+    [mainSectionsArray addObject:@"الحديقة"];
     
     [self.propertyTitle setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     [self.city setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
@@ -695,7 +695,7 @@ CGFloat animatedDistance;
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
     for (UIView *_currentView in actionSheet.subviews) {
         if ([_currentView isKindOfClass:[UIButton class]]) {
-            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14]];
+            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"HacenSudan" size:14]];
             [((UIButton *)_currentView).titleLabel setTextColor:[UIColor blackColor]];
 
         }
@@ -725,7 +725,7 @@ CGFloat animatedDistance;
         
     }
     cell.sectionLabel.text=(NSString*)[sectionsArray objectAtIndex:indexPath.row];
-    cell.sectionLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    cell.sectionLabel.font=[UIFont fontWithName:@"Tahoma" size:12];
     [cell.sectionButtonPrssed setBackgroundColor:[UIColor clearColor]];
     if ([[chosenBooleanArray objectAtIndex:indexPath.row] boolValue]) {
         [cell.sectionButtonPrssed setImage:[UIImage imageNamed:@"green_dot_option.png"] forState:UIControlStateNormal];
@@ -740,26 +740,26 @@ CGFloat animatedDistance;
 //    
     // Load section icon
     
-    if ([cell.sectionLabel.text isEqualToString:@"kitchen"]) {
+    if ([cell.sectionLabel.text isEqualToString:@"المطبخ"]||[cell.sectionLabel.text isEqualToString:@"Kitchen"]) {
         cell.sectionImage.image=[UIImage imageNamed:@"cooknig_icon"];
     }
     
-    else if ([cell.sectionLabel.text isEqualToString:@"living room"]) {
+    else if ([cell.sectionLabel.text isEqualToString:@"غرفة المعيشة"]||[cell.sectionLabel.text isEqualToString:@"living room"]) {
         cell.sectionImage.image=[UIImage imageNamed:@"Lobby_icon"];
     }
 
-    else if ([cell.sectionLabel.text isEqualToString:@"bed room"]) {
+    else if ([cell.sectionLabel.text isEqualToString:@"غرفة النوم"]||[cell.sectionLabel.text isEqualToString:@"bed room"]) {
         cell.sectionImage.image=[UIImage imageNamed:@"badroom_icon"];
     }
 
-    else if ([cell.sectionLabel.text isEqualToString:@"bath room"]) {
+    else if ([cell.sectionLabel.text isEqualToString:@"الحمام"]||[cell.sectionLabel.text isEqualToString:@"bath room"]) {
         cell.sectionImage.image=[UIImage imageNamed:@"bathroom_icon"];
     }
 
-    else if ([cell.sectionLabel.text isEqualToString:@"dining room"]) {
+    else if ([cell.sectionLabel.text isEqualToString:@"غرفة الطعام"]||[cell.sectionLabel.text isEqualToString:@"dining room"]) {
         cell.sectionImage.image=[UIImage imageNamed:@"dining_room_icon"];
     }
-    else if ([cell.sectionLabel.text isEqualToString:@"garden"]) {
+    else if ([cell.sectionLabel.text isEqualToString:@"الحديقة"]||[cell.sectionLabel.text isEqualToString:@"garden"]) {
         cell.sectionImage.image=[UIImage imageNamed:@"garden_room_icon"];
     }
     else{
@@ -843,12 +843,12 @@ CGFloat animatedDistance;
 - (void) willPresentAlertView:(UIAlertView *)alertView{
     for (UIView *_currentView in alertView.subviews) {
         if ([_currentView isKindOfClass:[UIButton class]]) {
-            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14]];
+            [((UIButton *)_currentView).titleLabel setFont:[UIFont fontWithName:@"HacenSudan" size:14]];
             [((UIButton *)_currentView).titleLabel setTextColor:[UIColor blackColor]];
             
         }
         else if ([_currentView isKindOfClass:[UILabel class]]){
-            [((UILabel *)_currentView) setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12]];
+            [((UILabel *)_currentView) setFont:[UIFont fontWithName:@"HacenSudan" size:12]];
             [((UILabel *)_currentView) setTextColor:[UIColor blackColor]];
 
         }

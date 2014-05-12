@@ -47,7 +47,7 @@
     // Set loading indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
-    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    HUD.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
     [self.view addSubview:HUD];
   
     // Set refresh control
@@ -203,16 +203,16 @@
         cell.propertyImage.layer.masksToBounds = YES;
         
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
-        cell.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+        cell.propertyTitle.font=[UIFont fontWithName:@"HacenSudan" size:12];
 
         [cell.detailTxtView setText:[post objectForKey:@"Description"]];
-        cell.detailTxtView.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+        cell.detailTxtView.font=[UIFont fontWithName:@"Tahoma" size:10];
 
         [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
-        cell.propertyLocation.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+        cell.propertyLocation.font=[UIFont fontWithName:@"HacenSudan" size:10];
 
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
-        cell.propertyDate.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+        cell.propertyDate.font=[UIFont fontWithName:@"HacenSudan" size:12];
 
     }
     

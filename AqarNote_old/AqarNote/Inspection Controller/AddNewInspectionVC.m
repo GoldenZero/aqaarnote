@@ -45,24 +45,24 @@
     enhancedKeyboard.delegate = self;
     
     // Set custom font
-    self.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.locationLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.sectionsLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
-    self.screenLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.editButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.backButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.propertyTitle.font=[UIFont fontWithName:@"Tahoma" size:14];
+    self.locationLabel.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
+    self.sectionsLabel.font=[UIFont fontWithName:@"HacenSudan" size:16];
+    self.screenLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.editButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.backButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
 
     // Set loading indicator
     HUD1 = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD1];
     HUD1.delegate = self;
-    HUD1.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    HUD1.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
     HUD1.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
     HUD1.labelText = @"يتم الآن التحميل";
 
     HUD2 = [[MBProgressHUD alloc] initWithView:self.imgScrollView];
     HUD2.delegate = self;
-    HUD2.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    HUD2.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
     [self.imgScrollView addSubview:HUD2];
 
     if (self.isInspection) {
@@ -169,46 +169,44 @@
  
         
         UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 280, 50)];
-        titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+        titleLabel.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
 
         titleLabel.textAlignment = NSTextAlignmentRight;
         titleLabel.text = [sect objectForKey:@"name"];
         
         UIView* v = [[UIView alloc] initWithFrame:CGRectMake(0, view_y, 320, 50)];
         UIImage* img;
-        if ([titleLabel.text isEqualToString:@"kitchen"]) {
-            img = [UIImage imageNamed:@"cooknig_icon"];
+        if ([titleLabel.text isEqualToString:@"المطبخ"]||[titleLabel.text isEqualToString:@"Kitchen"]) {
+            img=[UIImage imageNamed:@"cooknig_icon"];
         }
         
-        else if ([titleLabel.text isEqualToString:@"living room"]) {
-           img = [UIImage imageNamed:@"Lobby_icon"];
+        else if ([titleLabel.text isEqualToString:@"غرفة المعيشة"]||[titleLabel.text isEqualToString:@"living room"]) {
+            img=[UIImage imageNamed:@"Lobby_icon"];
         }
         
-        else if ([titleLabel.text isEqualToString:@"bed room"]) {
-           img = [UIImage imageNamed:@"badroom_icon"];
-
+        else if ([titleLabel.text isEqualToString:@"غرفة النوم"]||[titleLabel.text isEqualToString:@"bed room"]) {
+            img=[UIImage imageNamed:@"badroom_icon"];
         }
         
-        else if ([titleLabel.text isEqualToString:@"bath room"]) {
-            img = [UIImage imageNamed:@"bathroom_icon"];
+        else if ([titleLabel.text isEqualToString:@"الحمام"]||[titleLabel.text isEqualToString:@"bath room"]) {
+            img=[UIImage imageNamed:@"bathroom_icon"];
         }
         
-        else if ([titleLabel.text isEqualToString:@"dining room"]) {
-            img = [UIImage imageNamed:@"dining_room_icon"];
+        else if ([titleLabel.text isEqualToString:@"غرفة الطعام"]||[titleLabel.text isEqualToString:@"dining room"]) {
+            img=[UIImage imageNamed:@"dining_room_icon"];
         }
-        else if ([titleLabel.text isEqualToString:@"garden"]) {
-           img = [UIImage imageNamed:@"garden_room_icon"];
+        else if ([titleLabel.text isEqualToString:@"الحديقة"]||[titleLabel.text isEqualToString:@"garden"]) {
+            img=[UIImage imageNamed:@"garden_room_icon"];
         }
         else{
-           img = [UIImage imageNamed:@""];
-
+            img=[UIImage imageNamed:@""];
         }
         UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(285, 15, 15, 15)];
         [imgView setImage:img];
         
         UILabel* statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 70, 50)];
         statusLabel.textAlignment = NSTextAlignmentLeft;
-        statusLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:13];
+        statusLabel.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
 
         statusLabel.text = [self getStatusOfSection:[sect objectForKey:@"status"]];
         

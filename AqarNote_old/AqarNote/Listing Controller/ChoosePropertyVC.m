@@ -34,7 +34,7 @@
     [super viewDidLoad];
     
     // Set custom font
-    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
+    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
     
     // initialize data
     propertiesArray = [NSMutableArray new];
@@ -43,7 +43,7 @@
     // Set loading indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.delegate = self;
-    HUD.labelFont=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:16];
+    HUD.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
      if ([self checkConnection]) {
         [HUD show:YES];
         HUD.labelText = @"جاري التحميل...";
@@ -165,20 +165,20 @@
         });
         
         [cell.propertyTitle setText:[post objectForKey:@"Title"]];
-        cell.propertyTitle.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+        cell.propertyTitle.font=[UIFont fontWithName:@"HacenSudan" size:12];
 
         cell.propertyImage.layer.cornerRadius = 5.0;
         cell.propertyImage.layer.masksToBounds = YES;
         
         [cell.propertyLocation setText:[NSString stringWithFormat:@"%@ - %@",[post objectForKey:@"country"],[post objectForKey:@"city"]]];
-        cell.propertyLocation.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+        cell.propertyLocation.font=[UIFont fontWithName:@"HacenSudan" size:10];
 
         [cell.detailsTxtView setText:[post objectForKey:@"Description"]];
-        cell.detailsTxtView.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:10];
+        cell.detailsTxtView.font=[UIFont fontWithName:@"Tahoma" size:10];
         cell.detailsTxtView.textAlignment=NSTextAlignmentRight;
         cell.detailsTxtView.textColor=[UIColor grayColor];
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
-        cell.propertyDate.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+        cell.propertyDate.font=[UIFont fontWithName:@"HacenSudan" size:12];
     }
  
       return cell;

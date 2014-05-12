@@ -43,6 +43,11 @@
 		7C3112C019195F740073D75D /* ge_ss_two_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3112BE19195F740073D75D /* ge_ss_two_light.ttf */; };
 		7C3112C119195F740073D75D /* ge_ss_two_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3112BF19195F740073D75D /* ge_ss_two_medium.ttf */; };
 		7C3745461918569800387630 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3745451918569800387630 /* ODRefreshControl.m */; };
+		7C3D5E1819211C1B0066C1F7 /* hacen-sudan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3D5E1619211C1B0066C1F7 /* hacen-sudan.ttf */; };
+		7C3D5E1919211C1B0066C1F7 /* HelveticaNeueW23-Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3D5E1719211C1B0066C1F7 /* HelveticaNeueW23-Reg.ttf */; };
+		7C3D5E1C19212D720066C1F7 /* tahoma.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3D5E1A19212D710066C1F7 /* tahoma.ttf */; };
+		7C3D5E1D19212D720066C1F7 /* tahomabd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3D5E1B19212D710066C1F7 /* tahomabd.ttf */; };
+		7C3D5E1F192131D00066C1F7 /* HelveticaNeueW23-Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3D5E1E192131D00066C1F7 /* HelveticaNeueW23-Bd.ttf */; };
 		7C3DCC4118FDA7CB00B6386E /* profile_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3DCC3F18FDA7CB00B6386E /* profile_off.png */; };
 		7C3DCC4218FDA7CB00B6386E /* profile_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3DCC4018FDA7CB00B6386E /* profile_off@2x.png */; };
 		7C516C8E18DB7BAC00752390 /* camera_photo_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C516C8A18DB7BAC00752390 /* camera_photo_default.png */; };
@@ -300,6 +305,11 @@
 		7C3112BF19195F740073D75D /* ge_ss_two_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ge_ss_two_medium.ttf; path = Resources/ge_ss_two_medium.ttf; sourceTree = "<group>"; };
 		7C3745441918569800387630 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
 		7C3745451918569800387630 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
+		7C3D5E1619211C1B0066C1F7 /* hacen-sudan.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "hacen-sudan.ttf"; path = "Resources/hacen-sudan.ttf"; sourceTree = "<group>"; };
+		7C3D5E1719211C1B0066C1F7 /* HelveticaNeueW23-Reg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HelveticaNeueW23-Reg.ttf"; path = "Resources/HelveticaNeueW23-Reg.ttf"; sourceTree = "<group>"; };
+		7C3D5E1A19212D710066C1F7 /* tahoma.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tahoma.ttf; path = Resources/tahoma.ttf; sourceTree = "<group>"; };
+		7C3D5E1B19212D710066C1F7 /* tahomabd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tahomabd.ttf; path = Resources/tahomabd.ttf; sourceTree = "<group>"; };
+		7C3D5E1E192131D00066C1F7 /* HelveticaNeueW23-Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HelveticaNeueW23-Bd.ttf"; path = "Resources/HelveticaNeueW23-Bd.ttf"; sourceTree = "<group>"; };
 		7C3DCC3F18FDA7CB00B6386E /* profile_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_off.png; sourceTree = "<group>"; };
 		7C3DCC4018FDA7CB00B6386E /* profile_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_off@2x.png"; sourceTree = "<group>"; };
 		7C516C8A18DB7BAC00752390 /* camera_photo_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_photo_default.png; sourceTree = "<group>"; };
@@ -947,6 +957,11 @@
 		84BFB516189E12FD0069A87A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7C3D5E1E192131D00066C1F7 /* HelveticaNeueW23-Bd.ttf */,
+				7C3D5E1A19212D710066C1F7 /* tahoma.ttf */,
+				7C3D5E1B19212D710066C1F7 /* tahomabd.ttf */,
+				7C3D5E1619211C1B0066C1F7 /* hacen-sudan.ttf */,
+				7C3D5E1719211C1B0066C1F7 /* HelveticaNeueW23-Reg.ttf */,
 				7C3112BE19195F740073D75D /* ge_ss_two_light.ttf */,
 				7C3112BF19195F740073D75D /* ge_ss_two_medium.ttf */,
 				84BFB517189E12FD0069A87A /* AqarNote-Info.plist */,
@@ -1226,10 +1241,12 @@
 				7C57AA7318CF8EAE00DE6259 /* blue_pin@2x.png in Resources */,
 				7C57AA7818CF8EAE00DE6259 /* clean_circle_btn.png in Resources */,
 				7C57AA9C18CF8EAE00DE6259 /* living_room_icon.png in Resources */,
+				7C3D5E1D19212D720066C1F7 /* tahomabd.ttf in Resources */,
 				7C57AAAD18CF8EAE00DE6259 /* orange_bar_save@2x.png in Resources */,
 				7C57AAA618CF8EAE00DE6259 /* ok_circle_btn.png in Resources */,
 				7C57AA8F18CF8EAE00DE6259 /* green_dot_option@2x.png in Resources */,
 				7C57AAB618CF8EAE00DE6259 /* Search.png in Resources */,
+				7C3D5E1C19212D720066C1F7 /* tahoma.ttf in Resources */,
 				7C57AA6C18CF8EAE00DE6259 /* badroom_icon.png in Resources */,
 				7C57AAC218CF8EAE00DE6259 /* text_field.png in Resources */,
 				7C644FBF18D1F57700E0FC63 /* add_new_propority_arrow@2x.png in Resources */,
@@ -1262,6 +1279,7 @@
 				7C57AA9718CF8EAE00DE6259 /* header_logo@2x.png in Resources */,
 				7C57AAAF18CF8EAE00DE6259 /* orange_bar_send_report_btn@2x.png in Resources */,
 				7C304228190D5B6B00A77FA4 /* 1024.png in Resources */,
+				7C3D5E1919211C1B0066C1F7 /* HelveticaNeueW23-Reg.ttf in Resources */,
 				7C53FB7A1900563D00BE31AB /* deleteBtn.png in Resources */,
 				7C304225190D5B6B00A77FA4 /* 120.png in Resources */,
 				7C304221190D5B6B00A77FA4 /* 58.png in Resources */,
@@ -1299,11 +1317,13 @@
 				7CBC230718D0A7350035D3E4 /* homebkg.png in Resources */,
 				7C5CE05818F599F20002C823 /* profile_icon.png in Resources */,
 				7C57AA9A18CF8EAE00DE6259 /* list_side_arrow.png in Resources */,
+				7C3D5E1F192131D00066C1F7 /* HelveticaNeueW23-Bd.ttf in Resources */,
 				7C57AAA018CF8EAE00DE6259 /* note_write_field.png in Resources */,
 				7C57AA6818CF8EAE00DE6259 /* add_new_property_arrow.png in Resources */,
 				7C644FCC18D1F6C200E0FC63 /* contactus_tab_gray.png in Resources */,
 				7C57AA8A18CF8EAE00DE6259 /* good_circvle_btn.png in Resources */,
 				7C57AA9F18CF8EAE00DE6259 /* Lobby_icon@2x.png in Resources */,
+				7C3D5E1819211C1B0066C1F7 /* hacen-sudan.ttf in Resources */,
 				7C57AAA718CF8EAE00DE6259 /* ok_circle_btn@2x.png in Resources */,
 				7CA1076919082B3700F7B581 /* Localizable.strings in Resources */,
 				7C57AAC818CF8EAE00DE6259 /* you_have_account.png in Resources */,

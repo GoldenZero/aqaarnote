@@ -27,11 +27,11 @@
     [super viewDidLoad];
     
     // Set custom font
-    self.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.saveButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:14];
-    self.aboutLabel.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
-    self.sectionNameTxt.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:12];
+    self.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.saveButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.cancelButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
+    self.aboutLabel.font=[UIFont fontWithName:@"Tahoma" size:12];
+    self.sectionNameTxt.font=[UIFont fontWithName:@"Tahoma" size:12];
     
 }
 

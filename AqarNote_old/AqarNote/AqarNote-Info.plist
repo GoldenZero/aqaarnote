@@ -8,6 +8,11 @@
 	<array>
 		<string>ge_ss_two_light.ttf</string>
 		<string>ge_ss_two_medium.ttf</string>
+		<string>hacen-sudan.ttf</string>
+		<string>HelveticaNeueW23-Reg.ttf</string>
+		<string>tahoma.ttf</string>
+		<string>tahomabd.ttf</string>
+		<string>HelveticaNeueW23-Bd.ttf</string>
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>

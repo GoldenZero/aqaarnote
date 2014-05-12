@@ -43,7 +43,7 @@
     [self.logInView.passwordForgottenButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.logInView.passwordForgottenButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
 
-    [self.logInView.passwordForgottenButton.titleLabel setFont:[UIFont fontWithName:@"GESSTwoMedium-Medium" size:13]];
+    [self.logInView.passwordForgottenButton.titleLabel setFont:[UIFont fontWithName:@"HacenSudan" size:12]];
     
         // Add login field background
     //fieldsBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list_bar"]];
@@ -76,12 +76,12 @@
     [self.logInView.usernameField setFrame:CGRectMake(0.0f, 50.0f, 320.0f, 41.0f)];
     [self.logInView.usernameField setBackground:[UIImage imageNamed:@"list_bar"]];
     [self.logInView.usernameField setPlaceholder:@" اسم المستخدم "];
-  //  self.logInView.usernameField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:14];
+    self.logInView.usernameField.font=[UIFont fontWithName:@"Tahoma" size:14];
     [self.logInView.usernameField setTextAlignment:NSTextAlignmentRight];
     [self.logInView.passwordField setFrame:CGRectMake(0.0f, 91.0f, 320.0f, 41.0f)];
     [self.logInView.passwordField setPlaceholder:@" كلمة المرور "];
     [self.logInView.passwordField setBackground:[UIImage imageNamed:@"list_bar"]];
-//    self.logInView.passwordField.font=[UIFont fontWithName:@"GESSTwoLight-Light" size:14];
+    self.logInView.passwordField.font=[UIFont fontWithName:@"Tahoma" size:14];
 
     [self.logInView.passwordField setTextAlignment:NSTextAlignmentRight];
     [self.logInView.passwordForgottenButton setFrame:CGRectMake(75.0f, 230.0f, 150.0f, 45.0f)];
