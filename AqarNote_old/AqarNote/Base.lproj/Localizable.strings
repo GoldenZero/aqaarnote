@@ -17,3 +17,7 @@
 "Offline Error"="خطأ في الاتصال.";
 "Something went wrong. Please try again."="حدث خطأ أثناء التسجيل. الرجاء المحاولة لاحقاً.";
 "The email \"%@\" is taken. Please try using another email."="إن الايميل \"%@\" محجوز مسبقا. الرجاء استخدام ايميل آخر.";
+"Password Reset Failed"="فشل في إعادة ضبط كلمة المرور.";
+"The email address %@ is not registered."="إن البريد الإلكتروني غير مسجل.";
+"Password Reset"="إعادة تعيين كلمة المرور.";
+"An email with reset instructions has been sent to %@."="تم إسال تعليمات إعادة ضبط كلمة المرور إلى عنوان البريد %@.";

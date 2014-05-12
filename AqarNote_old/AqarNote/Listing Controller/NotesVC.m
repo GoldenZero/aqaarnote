@@ -74,7 +74,7 @@ CGFloat animatedDistance;
     self.aboutTxtView.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
     self.countryTxtField.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
     self.emailTxtField.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
-    self.aboutLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12];
+    self.aboutLabel.font=[UIFont fontWithName:@"GESSTwoMedium-Medium" size:11];
     
     // Set custom picker
     countriesPicker.delegate = self;

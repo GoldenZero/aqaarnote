@@ -82,6 +82,7 @@
     
     // User not logged in
     else{
+        [HUD hide:YES];
         [self.welcomeView setHidden:NO];
         [self.propertiesTable setHidden:YES];
         propertiesArray = [NSMutableArray new];
