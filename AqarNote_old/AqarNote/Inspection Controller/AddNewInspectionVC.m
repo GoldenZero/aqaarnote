@@ -386,9 +386,16 @@
 
         }
         pageCount=pageImages.count;
-        if (pageCount<=1) {
+     
+      
+        if (pageCount==1||pageCount==0) {
             [self.nextImgButton setHidden:YES];
             [self.prevImgButton setHidden:YES];
+        }
+        else {
+            self.nextImgButton.hidden=NO;
+            self.prevImgButton.hidden=YES;
+       
         }
         [self setScrollView];
 
@@ -400,10 +407,7 @@
 #pragma mark - paging & scrollView
 
 -(void)setScrollView{
-    [self.prevImgButton setHidden:YES];
-    for (UIView *subview in self.imgScrollView.subviews) {
-        [subview removeFromSuperview];
-    }
+
 
     self.pageControl.currentPage = pageCount;
     self.pageControl.numberOfPages = pageCount;
@@ -424,7 +428,31 @@
     
     // Update the page control
     self.pageControl.currentPage = page;
+
     
+    int pageIndex=self.pageControl.currentPage;
+ 
+    if ( (pageImages.count==1)||(pageImages.count==0)){
+        [self.prevImgButton setHidden:YES];
+        [self.nextImgButton setHidden:YES];
+        
+        
+    }
+    else if (pageIndex==0) {
+        [self.prevImgButton setHidden:YES];
+        [self.nextImgButton setHidden:NO];
+        
+        
+    }
+    else if (pageIndex==pageImages.count-1){
+        [self.nextImgButton setHidden:YES];
+        [self.prevImgButton setHidden:NO];
+        
+    }
+    else{
+        [self.prevImgButton setHidden:NO];
+        [self.nextImgButton setHidden:NO];
+    }
     // Work out which pages you want to load
     NSInteger firstPage = page - 1;
     NSInteger lastPage = page + 1;
