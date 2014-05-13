@@ -275,7 +275,11 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     NSLog(@"%@",user);
-   
+    if ([user.email isEqual:[NSNull null]]) {
+        [user setEmail:[user username]];
+        [user saveInBackground];
+
+    }
     [HUD show:YES];
     HUD.labelText = @"جاري التحميل...";
     USER_CHANGED=TRUE;
@@ -333,8 +337,12 @@
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     NSLog(@"%@",user);
-    [self.welcomeView setHidden:YES];
+    [user setEmail:[user username]];
+    [user saveInBackground];
     
+    [self.welcomeView setHidden:YES];
+   
+
     [HUD show:YES];
     HUD.labelText = @"جاري التحميل...";
     [self getProperties];
