@@ -221,17 +221,51 @@
 #pragma mark - login delegate
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
+    
+
     // Check if both fields are completed
-    if (username && password && username.length != 0 && password.length != 0) {
+    if ((username && password && username.length != 0 && password.length != 0)&&([self NSStringIsValidEmail:username])) {
         return YES; // Begin login process
     }
+    else if (username.length==0){
+        [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
+                                    message:@"الرجاء إدخال عنوان البريد الإلكتروني"
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
+        return NO; // Interrupt login process
+
+    }
     
-    [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
-                                message:@"تأكد من إدخال جميع المعلومات!"
-                               delegate:nil
-                      cancelButtonTitle:@"موافق"
-                      otherButtonTitles:nil] show];
-    return NO; // Interrupt login process
+    else if (password.length==0) {
+        [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
+                                    message:@"الرجاء إدخال كلمة المرور"
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
+        return NO; // Interrupt login process
+
+    }
+    else if(![self NSStringIsValidEmail:username]){
+        [[[UIAlertView alloc] initWithTitle:@"خطأ في الإدخال"
+                                    message:@"إن عنوان البريد الإلكتروني المدخل غير صالح. الرجاء إعادة الإدخال."
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
+        return NO; // Interrupt login process
+
+    }
+    else{
+        [[[UIAlertView alloc] initWithTitle:@"خطأ"
+                                    message:@"لقد حدث خطأ أثناء الدخول. الرجاء المحاولة لاحقاً."
+                                   delegate:nil
+                          cancelButtonTitle:@"موافق"
+                          otherButtonTitles:nil] show];
+
+        return NO; // Interrupt login process
+
+    }
+    
 }
 
 // Sent to the delegate when a PFUser is logged in.
@@ -585,5 +619,16 @@
         return true;
     }
     
+}
+
+
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = YES;
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
 }
 @end
