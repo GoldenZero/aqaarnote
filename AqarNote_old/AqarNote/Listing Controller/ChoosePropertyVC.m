@@ -7,6 +7,7 @@
 //
 
 #import "ChoosePropertyVC.h"
+#import "ODRefreshControl.h"
 
 @interface ChoosePropertyVC ()
 {
@@ -14,6 +15,7 @@
     NSMutableArray* propertiesImagesArray;
     PFObject* propertySenderID;
     MBProgressHUD *HUD;
+    ODRefreshControl *refreshControl;
 
 }
 @end
@@ -39,6 +41,9 @@
     // initialize data
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = nil;
+    
+    refreshControl = [[ODRefreshControl alloc] initInScrollView:self.propertiesTable];
+    [refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
     
     // Set loading indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -108,15 +113,35 @@
                 
                 if (propertiesArray.count==propertiesImagesArray.count) {
                     [HUD hide:YES];
+                    [refreshControl endRefreshing];
+
                     [self.propertiesTable setHidden:NO];
+                    self.propertiesTable.backgroundColor=[UIColor whiteColor];
+                    self.propertiesTable.separatorColor=[UIColor lightGrayColor];
                     [self.propertiesTable reloadData];
+                    [self.noInspecImg setHidden:YES];
+
                 }
             }
         }
         
         if (propertiesArray.count==0) {
             [HUD hide:YES];
-            [self.propertiesTable setHidden:YES];
+            [refreshControl endRefreshing];
+            if (error) {
+                [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
+                                            message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
+                                           delegate:nil
+                                  cancelButtonTitle:@"موافق"
+                                  otherButtonTitles:nil] show];
+                
+            }
+            [self.propertiesTable reloadData];
+            [self.propertiesTable setHidden:NO];
+            self.propertiesTable.backgroundColor=[UIColor clearColor];
+            self.propertiesTable.separatorColor=[UIColor clearColor];
+            [self.noInspecImg setHidden:NO];
+
         }
     }];
 
@@ -220,4 +245,20 @@
     }
     
 }
+
+
+#pragma mark - Refresh control delegate
+- (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
+{
+    double delayInSeconds = 0.2;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.view addSubview:HUD];
+        [HUD show:YES];
+        HUD.labelText = @"جاري التحميل...";
+        
+        [self getProperties];
+    });
+}
+
 @end

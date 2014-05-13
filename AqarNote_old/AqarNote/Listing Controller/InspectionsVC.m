@@ -133,8 +133,12 @@
                     if (inspectionsArray.count==inspectionsImagesArray.count) {
                         [HUD hide:YES];
                         [refreshControl endRefreshing];
-                        [self.inspectionsTable reloadData];
                         [self.inspectionsTable setHidden:NO];
+                        self.inspectionsTable.backgroundColor=[UIColor whiteColor];
+                        self.inspectionsTable.separatorColor=[UIColor lightGrayColor];
+                        self.inspectionsTable.sectionHeaderHeight=31.0;
+                        [self.inspectionsTable reloadData];
+
                         [self.addNewInspectImage setHidden:YES];
                         [self.addNewProperImg setHidden:YES];
                         [self.noInspecImage setHidden:YES];
@@ -147,7 +151,12 @@
                 [HUD hide:YES];
                 [refreshControl endRefreshing];
 
-                [self.inspectionsTable setHidden:YES];
+                [self.inspectionsTable setHidden:NO];
+                self.inspectionsTable.sectionHeaderHeight=0.0;
+                self.inspectionsTable.backgroundColor=[UIColor clearColor];
+                self.inspectionsTable.separatorColor=[UIColor clearColor];
+                [self.inspectionsTable reloadData];
+
                 [self.addNewInspectImage setHidden:NO];
                 [self.addNewProperImg setHidden:NO];
                 [self.noInspecImage setHidden:NO];
@@ -237,12 +246,6 @@
     return imageView;
     
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 31;
-}
-
 
 
 - (void)didReceiveMemoryWarning

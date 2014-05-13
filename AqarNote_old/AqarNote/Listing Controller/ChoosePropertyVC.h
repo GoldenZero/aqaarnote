@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *propertiesTable;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+@property (strong, nonatomic) IBOutlet UIImageView *noInspecImg;
 
 - (IBAction)cancelButtonPressed:(id)sender;
 

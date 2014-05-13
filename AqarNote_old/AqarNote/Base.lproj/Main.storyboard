@@ -43,6 +43,7 @@
                                 <rect key="frame" x="0.0" y="49" width="320" height="469"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2Ed-Bo-d1S" id="suD-NH-1Ff"/>
                                     <outlet property="delegate" destination="2Ed-Bo-d1S" id="t7e-LI-WpA"/>
@@ -441,6 +442,7 @@
                                 <rect key="frame" x="0.0" y="50" width="320" height="469"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="42c-Jy-g1M"/>
@@ -834,10 +836,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
                             </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_inspections_tit.png" id="uWl-k0-6dm">
+                                <rect key="frame" x="91" y="272" width="139" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WxJ-3x-ktY">
                                 <rect key="frame" x="0.0" y="50" width="320" height="518"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="hqx-3z-eUH" id="Jr3-JQ-kNd"/>
                                     <outlet property="delegate" destination="hqx-3z-eUH" id="yVX-hg-x9V"/>
@@ -849,6 +856,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="ixL-Ck-bdO" id="jO9-D1-SWY"/>
+                        <outlet property="noInspecImg" destination="uWl-k0-6dm" id="tS5-tz-OSk"/>
                         <outlet property="propertiesTable" destination="WxJ-3x-ktY" id="EZe-04-p1Y"/>
                         <segue destination="Pz3-3X-bKd" kind="modal" identifier="showAddNewInspection" id="zQR-Ot-2e1"/>
                     </connections>
@@ -1441,8 +1449,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="wZ5-50-hoO"/>
-        <segue reference="zQR-Ot-2e1"/>
+        <segue reference="msq-C1-9A8"/>
         <segue reference="Szq-qB-S6s"/>
+        <segue reference="zQR-Ot-2e1"/>
     </inferredMetricsTieBreakers>
 </document>

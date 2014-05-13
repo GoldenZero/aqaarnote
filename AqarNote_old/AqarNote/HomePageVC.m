@@ -124,6 +124,8 @@
                     [self.propertiesTable setHidden:NO];
                     [self.addNewImage setHidden:YES];
                     [self.searchButton setHidden:NO];
+                    self.propertiesTable.backgroundColor=[UIColor whiteColor];
+                    self.propertiesTable.separatorColor=[UIColor lightGrayColor];
                     [self.propertiesTable reloadData];
                 }
             }
@@ -141,8 +143,10 @@
                                       otherButtonTitles:nil] show];
 
             }
-            
-            [self.propertiesTable setHidden:YES];
+            [self.propertiesTable reloadData];
+            [self.propertiesTable setHidden:NO];
+            self.propertiesTable.backgroundColor=[UIColor clearColor];
+            self.propertiesTable.separatorColor=[UIColor clearColor];
             [self.addNewImage setHidden:NO];
             [self.searchButton setHidden:YES];
         }
