@@ -8,7 +8,8 @@
 
 #import "AddNewSectionVC.h"
 
-@interface AddNewSectionVC ()
+@interface AddNewSectionVC (){
+}
 
 @end
 
@@ -44,9 +45,11 @@
 #pragma mark - Buttons actions
 - (IBAction)saveBtnPrss:(id)sender {
     if ([self.sectionNameTxt.text isEqualToString:@""]) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"الرجاء إدخال اسم القسم" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-        av.alertViewStyle = UIAlertViewStyleDefault;
-        [av show];
+    
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"لعذراً" message:@"االرجاء إدخال اسم القسم" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
 
     }
     else{
@@ -55,12 +58,10 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
-            [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
-                                        message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
-                                       delegate:nil
-                              cancelButtonTitle:@"موافق"
-                              otherButtonTitles:nil] show];
-
+            AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+            alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+            alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+            [alert show];
         }
     }
 }
@@ -72,9 +73,10 @@
 
 - (IBAction)addSectionBtnPrss:(id)sender {
     if ([self.sectionNameTxt.text isEqualToString:@""]) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"الرجاء إدخال اسم القسم" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-        av.alertViewStyle = UIAlertViewStyleDefault;
-        [av show];
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"لعذراً" message:@"االرجاء إدخال اسم القسم" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
         
     }
     else{

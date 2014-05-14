@@ -15,7 +15,6 @@
     NSMutableArray *pageImages;
     NSInteger pageCount;
     UIActionSheet *photoAction;
-
     NSMutableArray *pageViews;
     
 }
@@ -111,10 +110,23 @@ CGFloat animatedDistance;
 
 
 - (IBAction)deleteImgBtnPrss:(id)sender {
+    AlertView *alert=[[AlertView alloc] initWithTitle:@"تأكيد" message:@"لهل تريد بالتأكيد حذف هذه الصورة؟" cancelButtonTitle:@"لا" WithFont:@"Tahoma"];
+    alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+    alert.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+    alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+    [alert addButtonWithTitle:@"نعم"
+                         type:AlertViewButtonTypeCustom
+                      handler:^(AlertView *alertView, AlertButtonItem *button) {
+                          // Dismiss alertview
+                          [alertView dismiss];
+                          [self purgePage:self.pageControl.currentPage];
+                          [pageImages removeObjectAtIndex:self.pageControl.currentPage];
+                          pageCount=pageImages.count;
+                          [self setScrollView];
+                          
+                      }];
     
-    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تأكيد" message:@"هل تريد بالتأكيد حذف هذه الصورة؟" delegate:self cancelButtonTitle:@"لا" otherButtonTitles:@"نعم", nil];
-    av.tag=2;
-    [av show];
+    [alert show];
 
 }
 
@@ -122,10 +134,10 @@ CGFloat animatedDistance;
     
     // Add uploaded image to the scrollView
     if (pageImages.count==3) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
-        
-        av.alertViewStyle = UIAlertViewStyleDefault;
-        [av show];
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" cancelButtonTitle:@"إلغاء" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
         
     }
     else{
@@ -208,10 +220,10 @@ CGFloat animatedDistance;
 
           // Add uploaded image to the scrollView
         if (pageImages.count==3) {
-            UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
-            
-            av.alertViewStyle = UIAlertViewStyleDefault;
-            [av show];
+            AlertView *alert=[[AlertView alloc] initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" cancelButtonTitle:@"إلغاء" WithFont:@"Tahoma"];
+            alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+            alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+            [alert show];
             
         }
         else{
@@ -453,10 +465,10 @@ CGFloat animatedDistance;
             
             // Add uploaded image to the scrollView
             if (pageImages.count==3) {
-                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
-                
-                av.alertViewStyle = UIAlertViewStyleDefault;
-                [av show];
+                AlertView *alert=[[AlertView alloc] initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" cancelButtonTitle:@"إلغاء" WithFont:@"Tahoma"];
+                alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                [alert show];
                 
             }
             else{

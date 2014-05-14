@@ -17,4 +17,5 @@
     #import <FacebookSDK/FacebookSDK.h>
     #import "Reachability.h"
     #import "MBProgressHUD.h"
+    #import "AlertView.h"
 #endif

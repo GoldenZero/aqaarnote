@@ -189,6 +189,13 @@
 		7CBC230C18D0A7350035D3E4 /* tabe_notes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBC230218D0A7350035D3E4 /* tabe_notes@2x.png */; };
 		7CBC230D18D0A7350035D3E4 /* tabe_propority.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBC230318D0A7350035D3E4 /* tabe_propority.png */; };
 		7CBC230E18D0A7350035D3E4 /* tabe_propority@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CBC230418D0A7350035D3E4 /* tabe_propority@2x.png */; };
+		7CBC4F141922B3F100519B07 /* AlertBackgroundWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC4F061922B3F100519B07 /* AlertBackgroundWindow.m */; };
+		7CBC4F151922B3F100519B07 /* AlertButtonContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC4F081922B3F100519B07 /* AlertButtonContainerView.m */; };
+		7CBC4F161922B3F100519B07 /* AlertButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC4F0A1922B3F100519B07 /* AlertButtonItem.m */; };
+		7CBC4F171922B3F100519B07 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC4F0C1922B3F100519B07 /* AlertView.m */; };
+		7CBC4F181922B3F100519B07 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC4F0E1922B3F100519B07 /* AlertViewController.m */; };
+		7CBC4F191922B3F100519B07 /* LFDisplayBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC4F101922B3F100519B07 /* LFDisplayBridge.m */; };
+		7CBC4F1A1922B3F100519B07 /* LFGlassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC4F121922B3F100519B07 /* LFGlassView.m */; };
 		7CC422A8191BDF8E00AD701C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC422A1191BDF8E00AD701C /* BaseViewController.m */; };
 		7CC422A9191BDF8E00AD701C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC422A4191BDF8E00AD701C /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CC422AA191BDF8E00AD701C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC422A7191BDF8E00AD701C /* MBProgressHUD.m */; };
@@ -464,6 +471,21 @@
 		7CBC230218D0A7350035D3E4 /* tabe_notes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabe_notes@2x.png"; sourceTree = "<group>"; };
 		7CBC230318D0A7350035D3E4 /* tabe_propority.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabe_propority.png; sourceTree = "<group>"; };
 		7CBC230418D0A7350035D3E4 /* tabe_propority@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabe_propority@2x.png"; sourceTree = "<group>"; };
+		7CBC4F051922B3F100519B07 /* AlertBackgroundWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertBackgroundWindow.h; sourceTree = "<group>"; };
+		7CBC4F061922B3F100519B07 /* AlertBackgroundWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertBackgroundWindow.m; sourceTree = "<group>"; };
+		7CBC4F071922B3F100519B07 /* AlertButtonContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertButtonContainerView.h; sourceTree = "<group>"; };
+		7CBC4F081922B3F100519B07 /* AlertButtonContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertButtonContainerView.m; sourceTree = "<group>"; };
+		7CBC4F091922B3F100519B07 /* AlertButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertButtonItem.h; sourceTree = "<group>"; };
+		7CBC4F0A1922B3F100519B07 /* AlertButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertButtonItem.m; sourceTree = "<group>"; };
+		7CBC4F0B1922B3F100519B07 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
+		7CBC4F0C1922B3F100519B07 /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
+		7CBC4F0D1922B3F100519B07 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		7CBC4F0E1922B3F100519B07 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		7CBC4F0F1922B3F100519B07 /* LFDisplayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFDisplayBridge.h; sourceTree = "<group>"; };
+		7CBC4F101922B3F100519B07 /* LFDisplayBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFDisplayBridge.m; sourceTree = "<group>"; };
+		7CBC4F111922B3F100519B07 /* LFGlassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFGlassView.h; sourceTree = "<group>"; };
+		7CBC4F121922B3F100519B07 /* LFGlassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFGlassView.m; sourceTree = "<group>"; };
+		7CBC4F131922B3F100519B07 /* LiveFrost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveFrost.h; sourceTree = "<group>"; };
 		7CC422A0191BDF8E00AD701C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		7CC422A1191BDF8E00AD701C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		7CC422A3191BDF8E00AD701C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -837,6 +859,28 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		7CBC4F041922B3F100519B07 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				7CBC4F051922B3F100519B07 /* AlertBackgroundWindow.h */,
+				7CBC4F061922B3F100519B07 /* AlertBackgroundWindow.m */,
+				7CBC4F071922B3F100519B07 /* AlertButtonContainerView.h */,
+				7CBC4F081922B3F100519B07 /* AlertButtonContainerView.m */,
+				7CBC4F091922B3F100519B07 /* AlertButtonItem.h */,
+				7CBC4F0A1922B3F100519B07 /* AlertButtonItem.m */,
+				7CBC4F0B1922B3F100519B07 /* AlertView.h */,
+				7CBC4F0C1922B3F100519B07 /* AlertView.m */,
+				7CBC4F0D1922B3F100519B07 /* AlertViewController.h */,
+				7CBC4F0E1922B3F100519B07 /* AlertViewController.m */,
+				7CBC4F0F1922B3F100519B07 /* LFDisplayBridge.h */,
+				7CBC4F101922B3F100519B07 /* LFDisplayBridge.m */,
+				7CBC4F111922B3F100519B07 /* LFGlassView.h */,
+				7CBC4F121922B3F100519B07 /* LFGlassView.m */,
+				7CBC4F131922B3F100519B07 /* LiveFrost.h */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		7CC4229F191BDF8E00AD701C /* BaseVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1015,6 +1059,7 @@
 		84BFB567189E5F0F0069A87A /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7CBC4F041922B3F100519B07 /* AlertView */,
 				7CC4229F191BDF8E00AD701C /* BaseVC */,
 				7CC422A2191BDF8E00AD701C /* Check internet connection */,
 				7CC422A5191BDF8E00AD701C /* HUD Loading indicator */,
@@ -1361,6 +1406,8 @@
 				84BFB520189E12FD0069A87A /* AppDelegate.m in Sources */,
 				7C0F81F0190EE4B700047EA9 /* SDWebImageDecoder.m in Sources */,
 				84B9051C18A26AFF003771E1 /* CallUsViewController.m in Sources */,
+				7CBC4F191922B3F100519B07 /* LFDisplayBridge.m in Sources */,
+				7CBC4F171922B3F100519B07 /* AlertView.m in Sources */,
 				7CC7809818D76AD0002ED19C /* countryObject.m in Sources */,
 				7C30422B190D64CB00A77FA4 /* AddNewSectionVC.m in Sources */,
 				7C0F81F9190EE4B700047EA9 /* UIImageView+WebCache.m in Sources */,
@@ -1369,17 +1416,22 @@
 				7C0F81F1190EE4B700047EA9 /* SDWebImageDownloader.m in Sources */,
 				84CC698C189F95420027C844 /* InspectionsVC.m in Sources */,
 				7C72AF251916CC9D003D00ED /* SBPickerSelector.m in Sources */,
+				7CBC4F181922B3F100519B07 /* AlertViewController.m in Sources */,
 				84CC6979189F760C0027C844 /* PropertyCell.m in Sources */,
 				84CC6989189F95270027C844 /* NotesVC.m in Sources */,
+				7CBC4F1A1922B3F100519B07 /* LFGlassView.m in Sources */,
 				7C644FD218D238D200E0FC63 /* SectionCell.m in Sources */,
 				7C516C9518DB8FA200752390 /* EnhancedKeyboard.m in Sources */,
 				84B904EF18A1FA5A003771E1 /* XCDFormInputAccessoryView.m in Sources */,
 				7C0F81EF190EE4B700047EA9 /* SDWebImageCompat.m in Sources */,
 				7C30422E190D64E200A77FA4 /* EditSectionVC.m in Sources */,
 				7C0F81EC190EE4B700047EA9 /* MKAnnotationView+WebCache.m in Sources */,
+				7CBC4F141922B3F100519B07 /* AlertBackgroundWindow.m in Sources */,
 				7CC422AA191BDF8E00AD701C /* MBProgressHUD.m in Sources */,
 				84BFB55F189E48830069A87A /* AddNewAqarVC.m in Sources */,
 				7C0F81F4190EE4B700047EA9 /* SDWebImagePrefetcher.m in Sources */,
+				7CBC4F151922B3F100519B07 /* AlertButtonContainerView.m in Sources */,
+				7CBC4F161922B3F100519B07 /* AlertButtonItem.m in Sources */,
 				84CC699F189FC5740027C844 /* AddNewInspectionVC.m in Sources */,
 				7C72AF1A1916A80B003D00ED /* AGPhotoBrowserCell.m in Sources */,
 				7C0F81F2190EE4B700047EA9 /* SDWebImageDownloaderOperation.m in Sources */,

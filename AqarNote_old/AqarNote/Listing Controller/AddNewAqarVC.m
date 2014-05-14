@@ -38,6 +38,8 @@
     NSMutableArray *propertySections;
     NSMutableArray *deletedSections;
     NSMutableArray *toAddSections;
+    
+    AlertView * alert;
 }
 @end
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
@@ -119,11 +121,11 @@ CGFloat animatedDistance;
         }
     }
     else{
-        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
-                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
+        AlertView *alert1=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert1 show];
+
 
     }
    
@@ -193,8 +195,6 @@ CGFloat animatedDistance;
     [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
 
     [HUD hide:YES];
-
-
 }
 
 
@@ -313,11 +313,13 @@ CGFloat animatedDistance;
 - (IBAction)uploadImagePressed:(id)sender {
     // Add uploaded image to the scrollView
     if (pageImages.count==3) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
         
-        av.alertViewStyle = UIAlertViewStyleDefault;
-        [av show];
-        
+        AlertView *alert1=[[AlertView alloc] initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" cancelButtonTitle:@"إلغاء" WithFont:@"Tahoma"];
+        alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert1 show];
+
+       
     }
     else{
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:nil
@@ -359,10 +361,10 @@ CGFloat animatedDistance;
     
     // Add uploaded image to the scrollView
     if (pageImages.count==3) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
-        
-        av.alertViewStyle = UIAlertViewStyleDefault;
-        [av show];
+        AlertView *alert1=[[AlertView alloc] initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert1 show];
 
     }
     else{
@@ -387,23 +389,27 @@ CGFloat animatedDistance;
 
 - (IBAction)saveButtonPressed:(id)sender {
     if ([self.propertyTitle.text length] == 0 || self.propertyTitle.text == nil || [self.propertyTitle.text isEqual:@""] == TRUE) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال عنوان الشقة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-        alert.tag=1;
-        [alert show];
+        
+        AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال عنوان الشقة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert1 show];
  
     }
     else if ([self.city.text length] == 0 || self.city.text == nil || [self.city.text isEqual:@""] == TRUE) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال المدينة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-        av.tag=1;
-        [av show];
+        AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال المدينة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert1 show];
         
     }
 
     else if ([chosenCountry isEqual:nil]) {
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء اختيار الدولة" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-        av.tag=1;
-        [av show];
-        
+        AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال الدولة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert1 show];
+
     }
     
     else{
@@ -495,9 +501,19 @@ CGFloat animatedDistance;
                                                  // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
                                                  
                                                  [HUD hide:YES];
-                                                 UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-                                                 av.tag=4;
-                                                 [av show];
+                                                 AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
+                                                 alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                                 alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                                 [alert2 addButtonWithTitle:@"موافق"
+                                                                      type:AlertViewButtonTypeCustom
+                                                                   handler:^(AlertView *alertView, AlertButtonItem *button) {
+                                                                       // Dismiss alertview
+                                                                       [alertView dismiss];
+                                                                       [self dismissView];
+                                                                       
+                                                                   }];
+                                                 
+                                                 [alert2 show];
                                                  
                                              }
                                          }];
@@ -529,9 +545,19 @@ CGFloat animatedDistance;
                          // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
                          
                          [HUD hide:YES];
-                         UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-                         av.tag=4;
-                         [av show];
+                         AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
+                         alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                         alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                         [alert2 addButtonWithTitle:@"موافق"
+                                              type:AlertViewButtonTypeCustom
+                                           handler:^(AlertView *alertView, AlertButtonItem *button) {
+                                               // Dismiss alertview
+                                               [alertView dismiss];
+                                               [self dismissView];
+                                               
+                                           }];
+                         
+                         [alert2 show];
                          
                      }
                  }];
@@ -599,9 +625,25 @@ CGFloat animatedDistance;
 
 
 - (IBAction)deletePhotoBtnPrss:(id)sender {
-    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تأكيد" message:@"هل تريد بالتأكيد حذف هذه الصورة؟" delegate:self cancelButtonTitle:@"لا" otherButtonTitles:@"نعم", nil];
-    av.tag=2;
-    [av show];
+    
+    AlertView *alert2=[[AlertView alloc] initWithTitle:@"تأكيد" message:@"لهل تريد بالتأكيد حذف هذه الصورة؟" cancelButtonTitle:@"لا" WithFont:@"Tahoma"];
+    alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+    alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+    alert2.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+    [alert2 addButtonWithTitle:@"نعم"
+                         type:AlertViewButtonTypeCustom
+                      handler:^(AlertView *alertView, AlertButtonItem *button) {
+                          // Dismiss alertview
+                          [alertView dismiss];
+                          [self purgePage:self.pageControl.currentPage];
+                          [pageImages removeObjectAtIndex:self.pageControl.currentPage];
+                          pageCount=pageImages.count;
+                          [self setScrollView];
+                          
+                      }];
+    
+    [alert2 show];
+
     
    }
 
@@ -626,10 +668,10 @@ CGFloat animatedDistance;
 
             // Add uploaded image to the scrollView
             if (pageImages.count==3) {
-                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" delegate:self cancelButtonTitle:@"إلغاء" otherButtonTitles:nil, nil];
-                
-                av.alertViewStyle = UIAlertViewStyleDefault;
-                [av show];
+                AlertView *alert1=[[AlertView alloc] initWithTitle:@"عذراً" message:@"لقد بلغت الحد الأعلى المسموح من الصور" cancelButtonTitle:@"إلغاء" WithFont:@"Tahoma"];
+                alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                [alert1 show];
                 
             }
             else{
@@ -1325,9 +1367,20 @@ CGFloat animatedDistance;
                                     if (done) {
                                         [HUD hide:YES];
                                         
-                                        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-                                        av.tag=4;
-                                        [av show];
+                                        AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
+                                        alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                        alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                        [alert2 addButtonWithTitle:@"موافق"
+                                                                 type:AlertViewButtonTypeCustom
+                                                              handler:^(AlertView *alertView, AlertButtonItem *button) {
+                                                                  // Dismiss alertview
+                                                                  [alertView dismiss];
+                                                                  [self dismissView];
+
+                                                              }];
+
+                                        [alert2 show];
+                                    
                                     }
                                 }];
                             }// end of error if
@@ -1353,9 +1406,19 @@ CGFloat animatedDistance;
                             if (done) {
                                 [HUD hide:YES];
                                 
-                                UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-                                av.tag=4;
-                                [av show];
+                                AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
+                                alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                [alert2 addButtonWithTitle:@"موافق"
+                                                     type:AlertViewButtonTypeCustom
+                                                  handler:^(AlertView *alertView, AlertButtonItem *button) {
+                                                      // Dismiss alertview
+                                                      [alertView dismiss];
+                                                      [self dismissView];
+                                                      
+                                                  }];
+                                
+                                [alert2 show];
                             }
                         }];
                     }
@@ -1537,5 +1600,10 @@ CGFloat animatedDistance;
         return true;
     }
     
+}
+
+- (void) dismissView{
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 @end

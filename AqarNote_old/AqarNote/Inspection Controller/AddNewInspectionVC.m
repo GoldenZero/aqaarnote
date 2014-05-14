@@ -19,7 +19,6 @@
     NSInteger pageCount;
     NSMutableArray *pageViews;
     EnhancedKeyboard *enhancedKeyboard;
-
     int view_y;
     
 }
@@ -103,13 +102,10 @@
         }];
     }
     else{
-        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
-                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
-        
-
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
     }
 }
 

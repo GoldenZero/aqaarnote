@@ -58,13 +58,10 @@
         }
     }
     else{
-        
-        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
-                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
-
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
     }
   
 }
@@ -136,12 +133,12 @@
             [refreshControl endRefreshing];
 
             if (error) {
-                    [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
-                                                message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
-                                               delegate:nil
-                                      cancelButtonTitle:@"موافق"
-                                      otherButtonTitles:nil] show];
-
+                
+                AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+                alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                [alert show];
+                
             }
             [self.propertiesTable reloadData];
             [self.propertiesTable setHidden:NO];
@@ -232,40 +229,40 @@
         return YES; // Begin login process
     }
     else if (username.length==0){
-        [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
-                                    message:@"الرجاء إدخال عنوان البريد الإلكتروني"
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"معلومات ناقصة" message:@"الرجاء إدخال عنوان البريد الإلكتروني" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
         return NO; // Interrupt login process
 
     }
     
     else if (password.length==0) {
-        [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
-                                    message:@"الرجاء إدخال كلمة المرور"
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"معلومات ناقصة" message:@"الرجاء إدخال كلمة المرور" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
+
         return NO; // Interrupt login process
 
     }
     else if(![self NSStringIsValidEmail:username]){
-        [[[UIAlertView alloc] initWithTitle:@"خطأ في الإدخال"
-                                    message:@"إن عنوان البريد الإلكتروني المدخل غير صالح. الرجاء إعادة الإدخال."
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
+        
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"معلومات ناقصة" message:@"إن عنوان البريد الإلكتروني المدخل غير صالح. الرجاء إعادة الإدخال." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
         return NO; // Interrupt login process
 
     }
     else{
-        [[[UIAlertView alloc] initWithTitle:@"خطأ"
-                                    message:@"لقد حدث خطأ أثناء الدخول. الرجاء المحاولة لاحقاً."
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
+        
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ" message:@"لقد حدث خطأ أثناء الدخول. الرجاء المحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
 
+    
         return NO; // Interrupt login process
 
     }
@@ -293,11 +290,11 @@
 
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in...");
-    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"خطأ في الإدخال" message:@"الرجاء إعادة إدخال الإيميل و كلمة المرور" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
     
-    av.alertViewStyle = UIAlertViewStyleDefault;
-    [av show];
+    AlertView *alert=[[AlertView alloc] initWithTitle:@"فشل الدخول" message:@"لقد حدث خطأ أثناء الدخول. الرجاء المحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+    alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+    alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+    [alert show];
 
 }
 
@@ -324,11 +321,12 @@
     
     // Display an alert if a field wasn't completed
     if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:@"معلومات ناقصة"
-                                    message:@"الرجاء التأكد من إدخال كافة المعلومات!"
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
+        
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"معلومات ناقصة" message:@"الرجاء التأكد من إدخال كافة المعلومات!" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
+
     }
     
     return informationComplete;
@@ -354,7 +352,11 @@
 
 // Sent to the delegate when the sign up attempt fails.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didFailToSignUpWithError:(NSError *)error {
-    NSLog(@"Failed to sign up...");
+    AlertView *alert=[[AlertView alloc] initWithTitle:@"فشل التسجيل" message:@"لقد حدث خطأ أثناء التسجيل. الرجاء المحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+    alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+    alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+    [alert show];
+    
    
 
 }
@@ -541,10 +543,7 @@
         [self filterPropertiesWithTitle:[[alertView textFieldAtIndex:0] text]];
         
     }
-    
 }
-
-
 
 #pragma mark - Show search view
 
@@ -630,7 +629,6 @@
     else {
         return true;
     }
-    
 }
 
 

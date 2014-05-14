@@ -57,11 +57,10 @@
 
     }
      else{
-         [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
-                                     message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
-                                    delegate:nil
-                           cancelButtonTitle:@"موافق"
-                           otherButtonTitles:nil] show];
+         AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+         alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+         alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+         [alert show];
      }
 }
 
@@ -129,11 +128,10 @@
             [HUD hide:YES];
             [refreshControl endRefreshing];
             if (error) {
-                [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
-                                            message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
-                                           delegate:nil
-                                  cancelButtonTitle:@"موافق"
-                                  otherButtonTitles:nil] show];
+                AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+                alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                [alert show];
                 
             }
             [self.propertiesTable reloadData];

@@ -25,6 +25,7 @@
     NSString * chosenCountry;
     SBPickerSelector *countriesPicker ;
 
+    AlertView *alert;
 }
 
 @end
@@ -113,10 +114,12 @@ CGFloat animatedDistance;
     if (isEdit) {
         // Check if password and its confirmation are equal
         if (![self.confirmPasswordTxtField.text isEqualToString:self.passwordTxtField.text]) {
-            UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"كلمة المرور غير متطابقة" message:@"الرجاء إدخال كلمة المرور من جديد" delegate:self cancelButtonTitle:@"موافق" otherButtonTitles:@"", nil];
-            av.alertViewStyle = UIAlertViewStylePlainTextInput;
-            [av textFieldAtIndex:0].delegate = self;
-            [av show];
+            
+            AlertView *alert1=[[AlertView alloc] initWithTitle:@"كلمة المرور غير متطابقة" message:@"الرجاء إدخال كلمة المرور من جديد" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+            alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+            alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+            [alert1 show];
+
             
             
         }
@@ -412,11 +415,10 @@ CGFloat animatedDistance;
     }
     
     else{
-        [[[UIAlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت"
-                                    message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا"
-                                   delegate:nil
-                          cancelButtonTitle:@"موافق"
-                          otherButtonTitles:nil] show];
+        alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
     }
     
 }
