@@ -509,6 +509,7 @@ CGFloat animatedDistance;
                                                                    handler:^(AlertView *alertView, AlertButtonItem *button) {
                                                                        // Dismiss alertview
                                                                        [alertView dismiss];
+                                                                       [self.delegate addedProperty:newPost withImage:userPhoto];
                                                                        [self dismissView];
                                                                        
                                                                    }];
@@ -520,13 +521,13 @@ CGFloat animatedDistance;
                                     }
                                 }
                                 else{
-                                    // Log details of the failure
+                                    // TODO : Add alertView of fail
                                     NSLog(@"Error: %@ %@", error, [error userInfo]);
                                 }
                             }];
                         }
                         else{
-                            // Log details of the failure
+                            // TODO : Add alertView of fail
                             NSLog(@"Error: %@ %@", error, [error userInfo]);
                         }
                         
@@ -553,6 +554,7 @@ CGFloat animatedDistance;
                                            handler:^(AlertView *alertView, AlertButtonItem *button) {
                                                // Dismiss alertview
                                                [alertView dismiss];
+                                               [self.delegate addedProperty:newPost withImage:nil];
                                                [self dismissView];
                                                
                                            }];
@@ -560,6 +562,8 @@ CGFloat animatedDistance;
                          [alert2 show];
                          
                      }
+                     
+                     // TODO : add alertView of fail
                  }];
 
             }

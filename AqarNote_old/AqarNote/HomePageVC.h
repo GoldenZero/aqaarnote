@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PropertyCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
-@interface HomePageVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,MBProgressHUDDelegate,UITextViewDelegate>
+#import "AddNewAqarVC.h"
+@interface HomePageVC : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,MBProgressHUDDelegate,UITextViewDelegate,AddPropertyDelegate>
 
 #pragma mark - Properties
 @property (strong, nonatomic) IBOutlet UITableView *propertiesTable;
@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *addNewImage;
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
 
+- (IBAction)addPropertyBtnPrss:(id)sender;
 
 // Welcome view
 @property (strong, nonatomic) IBOutlet UIView *welcomeView;

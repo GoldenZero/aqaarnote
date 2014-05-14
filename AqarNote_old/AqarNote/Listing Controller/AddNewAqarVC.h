@@ -14,6 +14,13 @@
 #import "AGPhotoBrowserView.h"
 #import "SBPickerSelector.h"
 
+@protocol AddPropertyDelegate <NSObject>
+
+@optional
+
+- (void) addedProperty:(PFObject*) property withImage:(PFObject*) image;
+
+@end
 
 @interface AddNewAqarVC :BaseViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,MBProgressHUDDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,EnhancedKeyboardDelegate,UIScrollViewDelegate,AddSectionDelegate,EditSectionDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource,SBPickerSelectorDelegate,UIActionSheetDelegate>
 
@@ -43,6 +50,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *sesctionsLabel;
 
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
+
+@property (nonatomic, strong) id <AddPropertyDelegate> delegate;
 
 
 - (IBAction)openCountryPickerBtnPrss:(id)sender;

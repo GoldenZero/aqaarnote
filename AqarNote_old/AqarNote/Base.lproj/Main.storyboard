@@ -517,7 +517,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="gLd-EQ-14C" kind="modal" id="msq-C1-9A8"/>
+                                            <action selector="addPropertyBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ryf-5w-5tp"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_logo.png" id="rJ7-Jz-B7u">
@@ -589,6 +589,7 @@
                         <outlet property="welcomeBgImage" destination="RUT-xa-qqT" id="DDI-6j-kV0"/>
                         <outlet property="welcomeView" destination="RIe-xH-glS" id="2pn-oO-dio"/>
                         <segue destination="Pz3-3X-bKd" kind="modal" identifier="showPropretyDetail" id="V6h-qe-NuI"/>
+                        <segue destination="gLd-EQ-14C" kind="modal" identifier="showAddProperty" id="3sl-VH-1fr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -1449,8 +1450,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="msq-C1-9A8"/>
+        <segue reference="3sl-VH-1fr"/>
+        <segue reference="V6h-qe-NuI"/>
         <segue reference="Szq-qB-S6s"/>
-        <segue reference="zQR-Ot-2e1"/>
     </inferredMetricsTieBreakers>
 </document>

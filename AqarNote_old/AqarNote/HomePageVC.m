@@ -529,6 +529,13 @@
         
     }
     
+    else if ([[segue identifier] isEqualToString:@"showAddProperty"]){
+        
+        AddNewAqarVC *IVC=segue.destinationViewController;
+        IVC.delegate=self;
+    }
+    
+    
 }
 
 #pragma mark - UIAlertView Delegate handler
@@ -640,5 +647,33 @@
     NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:checkString];
+}
+
+#pragma mark - Add new property
+
+- (void)addedProperty:(PFObject *)property withImage:(PFObject *)image{
+    if (property!= nil) {
+        [propertiesArray insertObject:property atIndex:0];
+        PFFile *imageFile;
+        if (image!=nil){
+            imageFile = (PFFile*)[image objectForKey:@"imageFile"];
+        }
+        else{
+            imageFile = [[PFFile alloc] init];
+
+        }
+        [propertiesImagesArray insertObject:imageFile atIndex:0];
+
+    }
+
+    if (property!=nil) {
+        [HUD show:YES];
+        [self.propertiesTable reloadData];
+        [HUD hide:YES];
+    }
+}
+- (IBAction)addPropertyBtnPrss:(id)sender {
+    [self performSegueWithIdentifier:@"showAddProperty" sender:self];
+    
 }
 @end

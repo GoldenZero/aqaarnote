@@ -91,13 +91,21 @@ CGFloat animatedDistance;
     }
     self.inputAccessoryView = [XCDFormInputAccessoryView new];
     self.contentScrollView.contentSize =CGSizeMake(320, 518);
+    if ([self checkConnection]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self loadSectionPhoto];
+        });
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [self loadSectionPhoto];
-    });
+    }
+   
+    else{
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
 
-
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -287,14 +295,20 @@ CGFloat animatedDistance;
                                     
                                     else{
                                         // Log details of the failure
-                                        NSLog(@"Error: %@ %@", error, [error userInfo]);
-                                    }
+                                        [HUD hide:YES];
+                                        AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ..الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+                                        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                        [alert show];                                    }
                                 }];
                             }
                             else{
                                 // Log details of the failure
-                                NSLog(@"Error: %@ %@", error, [error userInfo]);
-                            }
+                                [HUD hide:YES];
+                                AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ..الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+                                alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                                [alert show];                            }
                         } progressBlock:^(int percentDone) {
                             // Update your progress spinner here. percentDone will be between 0 and 100.
                             HUD.progress = (float)percentDone/100;
@@ -308,7 +322,12 @@ CGFloat animatedDistance;
             }];
         }
         else {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            [HUD hide:YES];
+            AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ..الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+            alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+            alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+            [alert show];
+
         }
     }];
 
@@ -342,6 +361,14 @@ CGFloat animatedDistance;
                          }
                      }];
                  }];
+             }
+             else{
+                 [HUD hide:YES];
+                 AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ.. الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+                 alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                 alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                 [alert show];
+
              }
          }];
         
@@ -844,5 +871,19 @@ CGFloat animatedDistance;
 }
 
 
+#pragma mark - Check internet connection
+
+- (bool) checkConnection{
+    
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
+}
 
 @end
