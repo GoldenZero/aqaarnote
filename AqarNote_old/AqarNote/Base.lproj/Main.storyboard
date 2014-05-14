@@ -129,7 +129,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="hqx-3z-eUH" kind="modal" id="ijE-8y-NFt"/>
+                                            <action selector="addInspectionBtnPrss:" destination="2Ed-Bo-d1S" eventType="touchUpInside" id="W00-GO-l1h"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_logo.png" id="SeX-pO-Dcg">
@@ -163,6 +163,7 @@
                         <outlet property="searchView" destination="gk6-aO-sDX" id="tmE-hV-1t1"/>
                         <outlet property="titleSearchTxtField" destination="b3z-nB-AMg" id="UwB-5m-EdK"/>
                         <segue destination="Pz3-3X-bKd" kind="modal" identifier="showDetails" id="yRB-Ic-eoT"/>
+                        <segue destination="hqx-3z-eUH" kind="modal" identifier="showProprties" id="KEt-2v-aMH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcU-sQ-e7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -864,7 +865,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Klm-W8-bMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839" y="375"/>
+            <point key="canvasLocation" x="1853" y="771"/>
         </scene>
         <!--Edit SectionVC-->
         <scene sceneID="Dw1-x3-5cZ">
@@ -1451,7 +1452,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="3sl-VH-1fr"/>
-        <segue reference="V6h-qe-NuI"/>
+        <segue reference="zQR-Ot-2e1"/>
         <segue reference="Szq-qB-S6s"/>
     </inferredMetricsTieBreakers>
 </document>

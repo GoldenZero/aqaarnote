@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "InspectionCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
-@interface InspectionsVC : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
+#import "ChoosePropertyVC.h"
+#import "AddNewInspectionVC.h"
+@interface InspectionsVC : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIAlertViewDelegate,MBProgressHUDDelegate,ChoosePropertyDelegate,InspectPropertyDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIButton *searchButton;
@@ -23,6 +24,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *searchView;
 
+- (IBAction)addInspectionBtnPrss:(id)sender;
 
 - (IBAction)searchBtnPrss:(id)sender;
 - (IBAction)searchPanlBtnPrss:(id)sender;

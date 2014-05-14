@@ -105,7 +105,7 @@
         PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
         [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
         [postQuery whereKeyExists:@"lastInspectionDate"];
-        [postQuery orderByDescending:@"createdAt"];
+        [postQuery orderByDescending:@"lastInspectionDate"];
 
         // Run the query
         [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -251,6 +251,11 @@
 }
 
 
+- (IBAction)addInspectionBtnPrss:(id)sender {
+    [self performSegueWithIdentifier:@"showProprties" sender:self];
+ 
+}
+
 - (IBAction)searchBtnPrss:(id)sender {
 
     if (isSearchOpen) {
@@ -321,9 +326,15 @@
         
         AddNewInspectionVC *IVC=segue.destinationViewController;
         IVC.isInspection=YES;
+        IVC.delegate=self;
         [IVC setPropertyID:choosenObject];
         [IVC setPropArr:propertiesArray];
-    }    
+    }
+    else if ([[segue identifier] isEqualToString:@"showProprties"]){
+        
+        ChoosePropertyVC *IVC=segue.destinationViewController;
+        IVC.delegate=self;
+    }
 }
 
 #pragma mark - Show search view
@@ -406,6 +417,30 @@
     else {
         return true;
     }
+    
+}
+
+#pragma mark - Delegate of choose property 
+- (void)chosenProperty:(PFObject *)property withImage:(PFObject *)img{
+    
+    if (property!=nil) {
+        [inspectionsArray insertObject:property atIndex:0];
+        
+        PFFile *imageFile;
+        if (img!=nil){
+            imageFile = (PFFile*)[img objectForKey:@"imageFile"];
+        }
+        else{
+            imageFile = [[PFFile alloc] init];
+            
+        }
+        [inspectionsImagesArray insertObject:imageFile atIndex:0];
+        [self.inspectionsTable reloadData];
+    }
+}
+
+#pragma mark - Delegate of property detils
+- (void)InspectedProperty:(PFObject *)propertyInspect WithImage:(PFObject *)img{
     
 }
 @end

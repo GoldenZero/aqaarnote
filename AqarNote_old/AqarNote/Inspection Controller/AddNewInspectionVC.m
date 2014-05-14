@@ -19,6 +19,8 @@
     NSInteger pageCount;
     NSMutableArray *pageViews;
     EnhancedKeyboard *enhancedKeyboard;
+    PFObject *tempImg;
+    BOOL inspected;
     int view_y;
     
 }
@@ -71,12 +73,8 @@
         [self.editButton setHidden:NO];
 
     }
-  //  [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
     pageImages=[[NSMutableArray alloc] init];
-
+    
     if ([self checkConnection]) {
         [HUD1 show:YES];
         
@@ -96,7 +94,7 @@
             //
             //            self.notesTxtView.text=note;
             //        }
-            //        
+            //
             [self getSectionsForProperty:self.propertyID];
             
         }];
@@ -107,6 +105,11 @@
         alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
         [alert show];
     }
+
+  //  [self.notesTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
 }
 
 -(void)getSectionsForProperty:(PFObject*)propID
@@ -293,6 +296,7 @@
     {
         BrowseInspectionVC* vc = segue.destinationViewController;
         vc.propertyID = self.propertyID;
+        vc.delegate=self;
         vc.sectionID = mySection;
     }
     if ([[segue identifier] isEqualToString:@"editProperty"]){
@@ -346,14 +350,37 @@
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
-    NSLog(@"post new property");
-    // Create Post
+    if (inspected) {
+        if (pageImages.count!=0) {
+            [self.delegate InspectedProperty:self.propertyID WithImage:tempImg];
+            
+        }
+        else{
+            [self.delegate InspectedProperty:self.propertyID WithImage:nil];
+            
+        }
+    }
+    else{
+        [self.delegate InspectedProperty:nil WithImage:nil];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 - (IBAction)backButtonPressed:(id)sender {
+    if (inspected) {
+        if (pageImages.count!=0) {
+            [self.delegate InspectedProperty:self.propertyID WithImage:tempImg];
 
+        }
+        else{
+            [self.delegate InspectedProperty:self.propertyID WithImage:nil];
+
+        }
+    }
+    else{
+        [self.delegate InspectedProperty:nil WithImage:nil];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
@@ -375,6 +402,7 @@
             PFFile *theImage;
             pageImages=[[NSMutableArray alloc] init];
             for (PFObject* ob in objects) {
+                tempImg=ob;
                 theImage = [ob objectForKey:@"imageFile"];
                 UIImage *image=[UIImage imageWithData:[theImage getData]];
                 [pageImages addObject:image];
@@ -625,5 +653,22 @@
         return true;
     }
     
+}
+
+#pragma mark - Inspect section Delegate 
+
+- (void)InspectedSection:(PFObject*)sectionInspect{
+    if (![sectionInspect isEqual:nil]) {
+        inspected=true;
+        for (int i=0; i<sectionsArray.count; i++) {
+            if ([(NSString*)[(PFObject*)[sectionsArray objectAtIndex:i] objectForKey:@"name"] isEqualToString:(NSString*)[sectionInspect objectForKey:@"name"]]) {
+                [sectionsArray replaceObjectAtIndex:i withObject:sectionInspect];
+                break;
+            }
+        }
+        [HUD1 show:YES];
+        [self prepareSections];
+        [HUD1 show:NO];
+    }
 }
 @end

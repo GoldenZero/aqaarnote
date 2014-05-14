@@ -223,6 +223,7 @@
     {
         AddNewInspectionVC* vc = segue.destinationViewController;
         vc.isInspection=YES;
+        vc.delegate=self;
         vc.propertyID = propertySenderID;
         vc.PropArr = propertiesArray;
 
@@ -259,4 +260,21 @@
     });
 }
 
+
+#pragma mark - Add new Inspection delegate
+
+- (void)InspectedProperty:(PFObject *)propertyInspect WithImage:(PFObject *)img{
+    if (propertyInspect!=nil) {
+        [self.delegate chosenProperty:propertyInspect withImage:img];
+    }
+    else{
+        [self.delegate chosenProperty:nil withImage:nil];
+        
+    }
+    if (![self isBeingPresented]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

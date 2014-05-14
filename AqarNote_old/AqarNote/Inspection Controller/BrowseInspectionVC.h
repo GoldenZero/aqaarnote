@@ -11,6 +11,14 @@
 #import "BaseViewController.h"
 #import "AGPhotoBrowserView.h"
 
+@protocol InspectSectionDelegate <NSObject>
+
+@optional
+
+- (void) InspectedSection:(PFObject*)sectionInspect;
+
+@end
+
 @interface BrowseInspectionVC : BaseViewController<UINavigationControllerDelegate,UIScrollViewDelegate, UIImagePickerControllerDelegate,UITextViewDelegate,MBProgressHUDDelegate,UIAlertViewDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
 {
     MBProgressHUD *HUD;
@@ -40,6 +48,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
 
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
+
+@property (nonatomic, strong) id <InspectSectionDelegate> delegate;
 
 - (IBAction)deleteImgBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;

@@ -10,10 +10,16 @@
 #import "BrowseInspectionVC.h"
 #import "EnhancedKeyboard.h"
 #import "AGPhotoBrowserView.h"
+#import "BrowseInspectionVC.h"
 
+@protocol InspectPropertyDelegate <NSObject>
 
+@optional
 
-@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource>
+- (void) InspectedProperty:(PFObject*)propertyInspect WithImage:(PFObject*) img;
+
+@end
+@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource,InspectSectionDelegate>
 {
     MBProgressHUD *HUD1;
     MBProgressHUD *HUD2;
@@ -37,6 +43,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
 
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
+
+@property (nonatomic, strong) id <InspectPropertyDelegate> delegate;
 
 - (IBAction)backButtonPressed:(id)sender;
 - (IBAction)saveButtonPressed:(id)sender;

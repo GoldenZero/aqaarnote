@@ -299,7 +299,8 @@ CGFloat animatedDistance;
                                         AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ..الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
                                         alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
                                         alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                        [alert show];                                    }
+                                        [alert show];
+                                    }
                                 }];
                             }
                             else{
@@ -308,7 +309,8 @@ CGFloat animatedDistance;
                                 AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ..الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
                                 alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
                                 alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                [alert show];                            }
+                                [alert show];
+                            }
                         } progressBlock:^(int percentDone) {
                             // Update your progress spinner here. percentDone will be between 0 and 100.
                             HUD.progress = (float)percentDone/100;
@@ -356,7 +358,7 @@ CGFloat animatedDistance;
                      [CurrProperty saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
                          if (done) {
                              [HUD hide:YES];
-                             
+                             [self.delegate InspectedSection:CurrSection];
                              [self dismissViewControllerAnimated:YES completion:nil];
                          }
                      }];
@@ -371,14 +373,13 @@ CGFloat animatedDistance;
 
              }
          }];
-        
     }];
-    
-    
 }
 
 - (IBAction)backButtonPressed:(id)sender {
     //[self.navigationController popViewControllerAnimated:YES];
+    [self.delegate InspectedSection:nil];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
