@@ -105,20 +105,8 @@ CGFloat animatedDistance;
         [HUD show:YES];
         HUD.labelText = @"جاري تحميل الأقسام..";
         [self loadCountries];
-        // Editing Property
-        if (self.isEditable) {
-            self.titleLabel.hidden=YES;
-            self.propertyTitle.text = [self.propertyID objectForKey:@"Title"];
-            self.country.text = [self.propertyID objectForKey:@"country"];
-            self.city.text=[self.propertyID objectForKey:@"city"];
-            
-            [self getSectionsForProperty:self.propertyID];
-            [self loadSectionPhoto];
-        }
-        
-        else{
+
             [self getExistSection];
-        }
     }
     else{
         AlertView *alert1=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
@@ -433,12 +421,7 @@ CGFloat animatedDistance;
         [HUD show:YES];
     
         HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-        
-        if (self.isEditable) {
-            [self updateAfterEdit];
-        }
-        
-        else{
+
    
             PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
 
@@ -567,7 +550,7 @@ CGFloat animatedDistance;
                  }];
 
             }
-        }
+        
 
     }
   
@@ -1189,7 +1172,7 @@ CGFloat animatedDistance;
 -(void)imageTapped:(UITapGestureRecognizer *)gesture
 {
     
-    [self.browserView showFromIndex: gesture.view.tag];
+    [self.browserView showFromIndex:0];
     
 }
 
@@ -1265,173 +1248,6 @@ CGFloat animatedDistance;
             [self prepareExistingSections];
         }
     }];
-}
-
-
-- (void) updateAfterEdit{
-    
-    deletedSections=[[NSMutableArray alloc] init];
-    
-    for (int i=0; i<propertySections.count; i++) {
-        NSString *temp=(NSString*)[(PFObject*)[propertySections objectAtIndex:i] objectForKey:@"name"];
-        
-        if (![chosenSectionArray containsObject:temp]) {
-            [deletedSections addObject:[propertySections objectAtIndex:i]];
-        }
-    }
-    
-    toAddSections=[[NSMutableArray alloc] init];
-    BOOL isMatched;
-    for (int i=0; i<chosenSectionArray.count; i++) {
-        isMatched=false;
-        for (int j=0; j<propertySections.count; j++) {
-            NSString *temp=(NSString*)[(PFObject*)[propertySections objectAtIndex:j] objectForKey:@"name"];
-            if ([[chosenSectionArray objectAtIndex:i] isEqualToString:temp]) {
-                isMatched=true;
-                break;
-            }
-        }
-        if (!isMatched) {
-            [toAddSections addObject:[chosenSectionArray objectAtIndex:i]];
-        }
-    }
-    
-    
-    // 1- Delete photos of deletedSections from SectionsPhotos
-
-    for (int i=0; i<deletedSections.count; i++) {
-        PFQuery *query = [PFQuery queryWithClassName:@"SectionPhoto"];
-        [query whereKey:@"sectionID" equalTo:(PFObject*)[deletedSections objectAtIndex:i]];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                // The find succeeded.
-                [PFObject deleteAll:objects];
-               
-            }
-            else {
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
-            }
-        }];
-    }
-    
-    // 2- Delete old sections
-    if (deletedSections.count!=0) {
-        [PFObject deleteAll:deletedSections];
-    }
-    
-    // 3- Delete old properties photo
-    PFQuery *currentProperty = [PFQuery queryWithClassName:@"PropertyPhoto"];
-    [currentProperty whereKey:@"propertyID" equalTo:self.propertyID];
-    [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if (!error) {
-            [PFObject deleteAll:objects];
-        
-            // 4- Save new images
-            for (int i=0; i<pageImages.count; i++) {
-                NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
-                PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-                [imageFile save];
-                PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
-                [userPhoto setObject:imageFile forKey:@"imageFile"];
-                userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-                PFUser *user = [PFUser currentUser];
-                [userPhoto setObject:user forKey:@"user"];
-                [userPhoto setObject:self.propertyID forKey:@"propertyID"];
-                [userPhoto save];
-                
-            }// end for loop
-            
-            // 5- Add new sections
-            NSMutableArray* arr = [[NSMutableArray alloc] init];
-
-            for (int i = 0; i < [toAddSections count]; i++) {
-                PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
-                [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-                [newSec setObject:[toAddSections objectAtIndex:i] forKey:@"name"];
-                [newSec setObject:@"secIcon.png" forKey:@"icon"];
-                [newSec setObject:self.propertyID forKey:@"propertyID"];
-                [arr addObject:newSec];
-                
-            }
-            PFQuery *queryProperty = [PFQuery queryWithClassName:@"Properties"];
-
-            if (arr.count!=0) {
-                [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error){
-                    if (succeeded) {
-                        // 6- Update property info
-                        [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
-                            [pfObject setObject:self.propertyTitle.text forKey:@"Title"];
-                            [pfObject setObject:self.country.text forKey:@"country"];
-                            [pfObject setObject:self.city.text forKey:@"city"];
-                            // [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
-                            [pfObject setObject:chosenSectionArray forKey:@"sections"];
-                            [pfObject setObject:[PFUser currentUser] forKey:@"userID"];
-                            if (!error) {
-                                [pfObject saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
-                                    if (done) {
-                                        [HUD hide:YES];
-                                        
-                                        AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
-                                        alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                        alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                        [alert2 addButtonWithTitle:@"موافق"
-                                                                 type:AlertViewButtonTypeCustom
-                                                              handler:^(AlertView *alertView, AlertButtonItem *button) {
-                                                                  // Dismiss alertview
-                                                                  [alertView dismiss];
-                                                                  [self dismissView];
-
-                                                              }];
-
-                                        [alert2 show];
-                                    
-                                    }
-                                }];
-                            }// end of error if
-                            
-
-                        }];//end of Updating Query
-
-                    }// end of succeddd if
-                }];//end of save
-            }// end of if
-            
-            else{
-                // Retrieve the object by id
-                [queryProperty getObjectInBackgroundWithId:[self.propertyID objectId] block:^(PFObject *pfObject, NSError *error) {
-                    [pfObject setObject:self.propertyTitle.text forKey:@"Title"];
-                    [pfObject setObject:self.country.text forKey:@"country"];
-                    [pfObject setObject:self.city.text forKey:@"city"];
-                    //  [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
-                    [pfObject setObject:chosenSectionArray forKey:@"sections"];
-                    [pfObject setObject:[PFUser currentUser] forKey:@"userID"];
-                    if (!error) {
-                        [pfObject saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
-                            if (done) {
-                                [HUD hide:YES];
-                                
-                                AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
-                                alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                [alert2 addButtonWithTitle:@"موافق"
-                                                     type:AlertViewButtonTypeCustom
-                                                  handler:^(AlertView *alertView, AlertButtonItem *button) {
-                                                      // Dismiss alertview
-                                                      [alertView dismiss];
-                                                      [self dismissView];
-                                                      
-                                                  }];
-                                
-                                [alert2 show];
-                            }
-                        }];
-                    }
-                    
-                }];
-
-            }// end of else
-        }
-    }];    
 }
 
 

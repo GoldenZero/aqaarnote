@@ -11,6 +11,7 @@
 #import "EnhancedKeyboard.h"
 #import "AGPhotoBrowserView.h"
 #import "BrowseInspectionVC.h"
+#import "EditPropertyVC.h"
 
 @protocol InspectPropertyDelegate <NSObject>
 
@@ -19,7 +20,7 @@
 - (void) InspectedProperty:(PFObject*)propertyInspect WithImage:(PFObject*) img;
 
 @end
-@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource,InspectSectionDelegate>
+@interface AddNewInspectionVC : UIViewController<UINavigationControllerDelegate,UIScrollViewDelegate,MBProgressHUDDelegate,EnhancedKeyboardDelegate,AGPhotoBrowserDelegate, AGPhotoBrowserDataSource,InspectSectionDelegate,EditPropertyDelegate>
 {
     MBProgressHUD *HUD1;
     MBProgressHUD *HUD2;

@@ -867,6 +867,210 @@
             </objects>
             <point key="canvasLocation" x="1853" y="771"/>
         </scene>
+        <!--Edit PropertyVC-->
+        <scene sceneID="GV8-vU-fam">
+            <objects>
+                <viewController id="ZCB-Cr-iF7" customClass="EditPropertyVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dyK-Wr-k3J">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AQh-nK-MKu">
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <state key="normal" image="orange_bar_addnew_section.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewSection:" destination="ZCB-Cr-iF7" eventType="touchUpInside" id="jkr-KJ-tXH"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" id="39s-NC-QO2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U9o-8O-o0S">
+                                        <rect key="frame" x="276" y="3" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="حفظ">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveBtnPrss:" destination="ZCB-Cr-iF7" eventType="touchUpInside" id="VXb-3X-Sn4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dC6-IR-CcU">
+                                        <rect key="frame" x="0.0" y="3" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="إلغاء">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelBtnPrss:" destination="ZCB-Cr-iF7" eventType="touchUpInside" id="vFm-YB-7kc"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعديل  عقار" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CEM-nd-UuI">
+                                        <rect key="frame" x="104" y="14" width="113" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="NrU-tj-jR1" userLabel="Content Scroll">
+                                <rect key="frame" x="0.0" y="50" width="320" height="478"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="المدينة..." textAlignment="right" minimumFontSize="17" id="fQx-X9-ewF">
+                                        <rect key="frame" x="18" y="235" width="284" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ZCB-Cr-iF7" id="k01-Lx-76P"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="عنوان الشقة..." textAlignment="right" minimumFontSize="17" id="xW9-GA-fqu">
+                                        <rect key="frame" x="18" y="197" width="284" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ZCB-Cr-iF7" id="b13-vm-X9j"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الدولة..." textAlignment="right" minimumFontSize="17" id="9U6-Ux-fP7">
+                                        <rect key="frame" x="18" y="273" width="284" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ZCB-Cr-iF7" id="xzq-cw-HUE"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="faV-Hj-8kG">
+                                        <rect key="frame" x="19" y="273" width="282" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="  ">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="countryBtnPrss:" destination="ZCB-Cr-iF7" eventType="touchUpInside" id="Uhk-cP-n51"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="     الأقسام" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EiS-Mg-nHh">
+                                        <rect key="frame" x="0.0" y="311" width="320" height="17"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="ZCo-aC-Pfr">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ZCB-Cr-iF7" id="M2A-gr-6jr"/>
+                                        </connections>
+                                    </scrollView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="geG-qp-eec">
+                                        <rect key="frame" x="278" y="155" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="vkl-iY-6MZ">
+                                        <rect key="frame" x="141" y="147" width="39" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
+                                    </pageControl>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Tfo-z7-uEQ">
+                                        <rect key="frame" x="0.0" y="336" width="320" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="separatorColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="ZCB-Cr-iF7" id="z07-F2-UyA"/>
+                                            <outlet property="delegate" destination="ZCB-Cr-iF7" id="egA-DK-uwD"/>
+                                        </connections>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="An8-yH-yxS">
+                                        <rect key="frame" x="93" y="20" width="135" height="135"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="photo_camera_btn.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadPhotoBtnPrss:" destination="ZCB-Cr-iF7" eventType="touchUpInside" id="QI7-aN-iTL"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5WY-0V-Qd1">
+                                        <rect key="frame" x="20" y="155" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="deleteBtn.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="apx-pT-LNW">
+                                        <rect key="frame" x="291" y="81" width="9" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="right.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nxtPhotoBtnPrss:" destination="ZCB-Cr-iF7" eventType="touchUpInside" id="fcD-pY-JUh"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Mz-Wi-3yE">
+                                        <rect key="frame" x="20" y="81" width="9" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="left.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="prevPhotoBtnPrss:" destination="ZCB-Cr-iF7" eventType="touchUpInside" id="uYd-ZA-3KH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="ZCB-Cr-iF7" id="SLS-wW-bNV"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="dC6-IR-CcU" id="UEg-TT-9uR"/>
+                        <outlet property="cityTxtField" destination="fQx-X9-ewF" id="agN-yU-mfS"/>
+                        <outlet property="contentScrollView" destination="NrU-tj-jR1" id="Bu9-uU-yM0"/>
+                        <outlet property="countryTxtField" destination="9U6-Ux-fP7" id="7bp-vx-BwK"/>
+                        <outlet property="imagesScrollView" destination="ZCo-aC-Pfr" id="QwV-At-Nzk"/>
+                        <outlet property="nxtPhotoButton" destination="apx-pT-LNW" id="Htt-I8-AnW"/>
+                        <outlet property="pageControl" destination="vkl-iY-6MZ" id="10h-XU-ZoN"/>
+                        <outlet property="prevPhotoButton" destination="9Mz-Wi-3yE" id="neD-bp-RmA"/>
+                        <outlet property="propertyTitleTxtField" destination="xW9-GA-fqu" id="dPY-bo-I7m"/>
+                        <outlet property="saveButton" destination="U9o-8O-o0S" id="OZK-Ur-EWp"/>
+                        <outlet property="screenLabel" destination="CEM-nd-UuI" id="520-bS-Kqm"/>
+                        <outlet property="sectionsLabel" destination="EiS-Mg-nHh" id="dic-EG-PBI"/>
+                        <outlet property="sectionsTableView" destination="Tfo-z7-uEQ" id="Sqa-Ug-rg7"/>
+                        <outlet property="uploadPhotoButton" destination="An8-yH-yxS" id="24C-fm-tQ8"/>
+                        <segue destination="e5h-kl-iVC" kind="modal" identifier="showAddSection" id="ICR-vy-SRi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6EF-pp-qHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3127" y="-383"/>
+        </scene>
         <!--Edit SectionVC-->
         <scene sceneID="Dw1-x3-5cZ">
             <objects>
@@ -1159,8 +1363,8 @@
                         <outlet property="sectionScrollView" destination="SsN-XM-4O5" id="dyk-iR-J00"/>
                         <outlet property="sectionsLabel" destination="XQ6-mA-dRB" id="nfg-8l-wIH"/>
                         <segue destination="u0j-NF-wWS" kind="modal" identifier="showAddInspectVC" modalTransitionStyle="crossDissolve" id="nlo-Gd-lg6"/>
-                        <segue destination="gLd-EQ-14C" kind="modal" identifier="editProperty" id="wZ5-50-hoO"/>
                         <segue destination="2Ed-Bo-d1S" kind="modal" identifier="showInspectionVC" id="Szq-qB-S6s"/>
+                        <segue destination="ZCB-Cr-iF7" kind="modal" identifier="showEditProperty" id="1O2-al-moR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FT8-yt-Utl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1451,8 +1655,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3sl-VH-1fr"/>
-        <segue reference="zQR-Ot-2e1"/>
         <segue reference="Szq-qB-S6s"/>
+        <segue reference="zQR-Ot-2e1"/>
+        <segue reference="ICR-vy-SRi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 #import "AddNewInspectionVC.h"
 #import "AddNewAqarVC.h"
-
+#import "EditPropertyVC.h"
 @interface AddNewInspectionVC ()
 {
     NSMutableArray* sectionsArray;
@@ -18,6 +18,7 @@
     NSMutableArray *pageImages;
     NSInteger pageCount;
     NSMutableArray *pageViews;
+    NSArray *forEditing;
     EnhancedKeyboard *enhancedKeyboard;
     PFObject *tempImg;
     BOOL inspected;
@@ -299,11 +300,12 @@
         vc.delegate=self;
         vc.sectionID = mySection;
     }
-    if ([[segue identifier] isEqualToString:@"editProperty"]){
+    if ([[segue identifier] isEqualToString:@"showEditProperty"]){
         
-        AddNewAqarVC *AVC=segue.destinationViewController;
+        EditPropertyVC *AVC=segue.destinationViewController;
         AVC.propertyID=self.propertyID;
-        AVC.isEditable=YES;        
+        AVC.propertyImages=forEditing;
+        AVC.delegate=self;
     }
 
 }
@@ -311,7 +313,7 @@
 
 - (IBAction)editButtonPressed:(id)sender {
     
-    [self performSegueWithIdentifier:@"editProperty" sender:self];
+    [self performSegueWithIdentifier:@"showEditProperty" sender:self];
 
 }
 
@@ -406,11 +408,14 @@
                 theImage = [ob objectForKey:@"imageFile"];
                 UIImage *image=[UIImage imageWithData:[theImage getData]];
                 [pageImages addObject:image];
+                
             }
+            forEditing=pageImages;
         }
         if (pageImages.count==0) {
             UIImage *image=[UIImage imageNamed:@"default_image_home"];
             [pageImages addObject:image];
+            forEditing=[[NSMutableArray alloc]init];
 
         }
         pageCount=pageImages.count;
@@ -670,5 +675,11 @@
         [self prepareSections];
         [HUD1 show:NO];
     }
+}
+
+#pragma mark - Edit Property Delegate 
+
+- (void)editedProperty:(PFObject *)property withImages:(NSArray *)image andSections:(NSArray *)sections{
+    
 }
 @end
