@@ -204,7 +204,7 @@
             img=[UIImage imageNamed:@"garden_room_icon"];
         }
         else{
-            img=[UIImage imageNamed:@""];
+            img=[UIImage imageNamed:@"icon9"];
         }
         UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(285, 15, 15, 15)];
         [imgView setImage:img];

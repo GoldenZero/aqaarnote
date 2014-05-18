@@ -792,7 +792,7 @@ CGFloat animatedDistance;
         cell.sectionImage.image=[UIImage imageNamed:@"garden_room_icon"];
     }
     else{
-        cell.sectionImage.image=[UIImage imageNamed:@""];
+        cell.sectionImage.image=[UIImage imageNamed:@"icon9"];
     }
 
     return cell;
