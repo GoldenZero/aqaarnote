@@ -59,6 +59,7 @@
 #pragma mark - Objects
 @property (strong, nonatomic) PFObject* propertyID;
 @property (strong, nonatomic) NSArray * propertyImages;
+@property (strong, nonatomic) NSArray * propertySectionsArray;
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
 @property (nonatomic, strong) id <EditPropertyDelegate> delegate;
 

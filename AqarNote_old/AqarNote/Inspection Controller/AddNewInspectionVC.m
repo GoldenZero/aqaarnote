@@ -9,6 +9,7 @@
 #import "AddNewInspectionVC.h"
 #import "AddNewAqarVC.h"
 #import "EditPropertyVC.h"
+#import "SectionObject.h"
 @interface AddNewInspectionVC ()
 {
     NSMutableArray* sectionsArray;
@@ -305,6 +306,7 @@
         EditPropertyVC *AVC=segue.destinationViewController;
         AVC.propertyID=self.propertyID;
         AVC.propertyImages=forEditing;
+        AVC.propertySectionsArray=sectionsArray;
         AVC.delegate=self;
     }
 
@@ -680,6 +682,52 @@
 #pragma mark - Edit Property Delegate 
 
 - (void)editedProperty:(PFObject *)property withImages:(NSArray *)image andSections:(NSArray *)sections{
+    HUD1 = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD1];
+    HUD1.delegate = self;
+    HUD1.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
+    HUD1.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    HUD1.labelText = @"يتم الآن التحديث";
+
     
+    self.propertyID=property;
+    self.propertyTitle.text = (NSString*)[self.propertyID objectForKey:@"Title"];
+    self.screenLabel.text = (NSString*)[self.propertyID objectForKey:@"Title"];
+    self.locationLabel.text = [NSString stringWithFormat:@"%@ - %@",[self.propertyID objectForKey:@"country"],[self.propertyID objectForKey:@"city"]];
+    
+    sectionsArray = [[NSMutableArray alloc]init];
+    chosenSectionArray = [[NSMutableArray alloc]init];
+    for (int i=0; i<sections.count; i++) {
+        if ([(SectionObject*)[sections objectAtIndex:i] SectionChosen]) {
+            [sectionsArray addObject:[(SectionObject*)[sections objectAtIndex:i] sectionPFObject]];
+            [chosenSectionArray addObject:[(SectionObject*)[sections objectAtIndex:i] sectionPFObject]];
+
+        }
+    }
+
+    [self prepareSections];
+    pageImages=[[NSMutableArray alloc] initWithArray:image];
+    if (pageImages.count==0) {
+        UIImage *image=[UIImage imageNamed:@"default_image_home"];
+        [pageImages addObject:image];
+        forEditing=[[NSMutableArray alloc]init];
+        
+    }
+    pageCount=pageImages.count;
+    
+    
+    if (pageCount==1||pageCount==0) {
+        [self.nextImgButton setHidden:YES];
+        [self.prevImgButton setHidden:YES];
+    }
+    else {
+        self.nextImgButton.hidden=NO;
+        self.prevImgButton.hidden=YES;
+        
+    }
+    [self setScrollView];
+    
+    [HUD1 hide:YES];
+
 }
 @end

@@ -202,6 +202,7 @@
 		7CC422AA191BDF8E00AD701C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC422A7191BDF8E00AD701C /* MBProgressHUD.m */; };
 		7CC7809818D76AD0002ED19C /* countryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC7809718D76AD0002ED19C /* countryObject.m */; };
 		7CC7809A18D76C4D002ED19C /* Countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 7CC7809918D76C4D002ED19C /* Countries.json */; };
+		7CE1E55E1928EF150004066D /* SectionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE1E55D1928EF150004066D /* SectionObject.m */; };
 		8496101C18A10C1100A94088 /* BrowseInspectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496101B18A10C1100A94088 /* BrowseInspectionVC.m */; };
 		84B904EF18A1FA5A003771E1 /* XCDFormInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B904EE18A1FA5A003771E1 /* XCDFormInputAccessoryView.m */; };
 		84B904F518A1FAC0003771E1 /* Accessory_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B904F118A1FAC0003771E1 /* Accessory_left.png */; };
@@ -499,6 +500,8 @@
 		7CC7809618D76AD0002ED19C /* countryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = countryObject.h; sourceTree = "<group>"; };
 		7CC7809718D76AD0002ED19C /* countryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = countryObject.m; sourceTree = "<group>"; };
 		7CC7809918D76C4D002ED19C /* Countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countries.json; sourceTree = "<group>"; };
+		7CE1E55C1928EF150004066D /* SectionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionObject.h; sourceTree = "<group>"; };
+		7CE1E55D1928EF150004066D /* SectionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionObject.m; sourceTree = "<group>"; };
 		8496101A18A10C1100A94088 /* BrowseInspectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseInspectionVC.h; sourceTree = "<group>"; };
 		8496101B18A10C1100A94088 /* BrowseInspectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseInspectionVC.m; sourceTree = "<group>"; };
 		84B904ED18A1FA5A003771E1 /* XCDFormInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCDFormInputAccessoryView.h; sourceTree = "<group>"; };
@@ -1107,6 +1110,8 @@
 				7C644FD318D238E500E0FC63 /* SectionCell.xib */,
 				7CC7809618D76AD0002ED19C /* countryObject.h */,
 				7CC7809718D76AD0002ED19C /* countryObject.m */,
+				7CE1E55C1928EF150004066D /* SectionObject.h */,
+				7CE1E55D1928EF150004066D /* SectionObject.m */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -1439,6 +1444,7 @@
 				7CBC4F161922B3F100519B07 /* AlertButtonItem.m in Sources */,
 				84CC699F189FC5740027C844 /* AddNewInspectionVC.m in Sources */,
 				7C72AF1A1916A80B003D00ED /* AGPhotoBrowserCell.m in Sources */,
+				7CE1E55E1928EF150004066D /* SectionObject.m in Sources */,
 				7C0F81F2190EE4B700047EA9 /* SDWebImageDownloaderOperation.m in Sources */,
 				8496101C18A10C1100A94088 /* BrowseInspectionVC.m in Sources */,
 				7C0F81F3190EE4B700047EA9 /* SDWebImageManager.m in Sources */,
