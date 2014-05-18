@@ -17,6 +17,7 @@
     PFObject * currentImageID;
     PFObject* mySection;
     NSMutableArray *pageImages;
+    NSArray *imagesObjects;
     NSInteger pageCount;
     NSMutableArray *pageViews;
     NSArray *forEditing;
@@ -305,7 +306,7 @@
         
         EditPropertyVC *AVC=segue.destinationViewController;
         AVC.propertyID=self.propertyID;
-        AVC.propertyImages=forEditing;
+        AVC.propertyImages=imagesObjects;
         AVC.propertySectionsArray=sectionsArray;
         AVC.delegate=self;
     }
@@ -402,7 +403,7 @@
     
     [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            
+            imagesObjects=objects;
             PFFile *theImage;
             pageImages=[[NSMutableArray alloc] init];
             for (PFObject* ob in objects) {

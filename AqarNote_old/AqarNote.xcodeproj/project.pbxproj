@@ -205,6 +205,7 @@
 		7CE1E55E1928EF150004066D /* SectionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE1E55D1928EF150004066D /* SectionObject.m */; };
 		7CE1E56119290FE40004066D /* icon9.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE1E55F19290FE40004066D /* icon9.png */; };
 		7CE1E56219290FE40004066D /* icon9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE1E56019290FE40004066D /* icon9@2x.png */; };
+		7CE1E56519291D900004066D /* PropertyImageObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE1E56419291D900004066D /* PropertyImageObj.m */; };
 		8496101C18A10C1100A94088 /* BrowseInspectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8496101B18A10C1100A94088 /* BrowseInspectionVC.m */; };
 		84B904EF18A1FA5A003771E1 /* XCDFormInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B904EE18A1FA5A003771E1 /* XCDFormInputAccessoryView.m */; };
 		84B904F518A1FAC0003771E1 /* Accessory_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B904F118A1FAC0003771E1 /* Accessory_left.png */; };
@@ -506,6 +507,8 @@
 		7CE1E55D1928EF150004066D /* SectionObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionObject.m; sourceTree = "<group>"; };
 		7CE1E55F19290FE40004066D /* icon9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon9.png; sourceTree = "<group>"; };
 		7CE1E56019290FE40004066D /* icon9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon9@2x.png"; sourceTree = "<group>"; };
+		7CE1E56319291D900004066D /* PropertyImageObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyImageObj.h; sourceTree = "<group>"; };
+		7CE1E56419291D900004066D /* PropertyImageObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyImageObj.m; sourceTree = "<group>"; };
 		8496101A18A10C1100A94088 /* BrowseInspectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseInspectionVC.h; sourceTree = "<group>"; };
 		8496101B18A10C1100A94088 /* BrowseInspectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseInspectionVC.m; sourceTree = "<group>"; };
 		84B904ED18A1FA5A003771E1 /* XCDFormInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCDFormInputAccessoryView.h; sourceTree = "<group>"; };
@@ -1118,6 +1121,8 @@
 				7CC7809718D76AD0002ED19C /* countryObject.m */,
 				7CE1E55C1928EF150004066D /* SectionObject.h */,
 				7CE1E55D1928EF150004066D /* SectionObject.m */,
+				7CE1E56319291D900004066D /* PropertyImageObj.h */,
+				7CE1E56419291D900004066D /* PropertyImageObj.m */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -1458,6 +1463,7 @@
 				7C0F81F3190EE4B700047EA9 /* SDWebImageManager.m in Sources */,
 				7C0F81F8190EE4B700047EA9 /* UIImage+WebP.m in Sources */,
 				7C72AF1C1916A80B003D00ED /* AGPhotoBrowserView.m in Sources */,
+				7CE1E56519291D900004066D /* PropertyImageObj.m in Sources */,
 				84BFB51C189E12FD0069A87A /* main.m in Sources */,
 				7C0F81EE190EE4B700047EA9 /* SDImageCache.m in Sources */,
 				7CC422A8191BDF8E00AD701C /* BaseViewController.m in Sources */,

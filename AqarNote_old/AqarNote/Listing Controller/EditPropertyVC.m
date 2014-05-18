@@ -10,7 +10,7 @@
 #import "SectionCell.h"
 #import "countryObject.h"
 #import "SectionObject.h"
-
+#import "PropertyImageObj.h"
 #pragma mark - Country JSON file keys
 
 #define COUNTRIES_FILE_NAME         @"Countries"
@@ -26,6 +26,7 @@
     
     NSMutableArray* mainSectionsArray;
     NSMutableArray *pageImages;
+    NSMutableArray *ImagesObjects;
     NSArray *countriesArray;
     NSMutableArray* sectionsArray;
     NSInteger pageCount;
@@ -53,40 +54,6 @@
     
     [self prepareViewComponents];
     
-    // Show loading indicator
-    loadingIndicator.labelText=@"جاري تحميل الأقسام..";
-    [loadingIndicator show:YES];
-
-    
-    sectionsArray=[[NSMutableArray alloc] init];
-    for (int i=0; i<self.propertySectionsArray.count; i++) {
-        PFObject *sect=[self.propertySectionsArray objectAtIndex:i];
-        SectionObject *obj=[[SectionObject alloc] initWithObject:sect andChosenFlag:YES andDeletFlag:YES andAddFlag:NO];
-        [sectionsArray addObject:obj];
-    }
-    
-    for (int i=0; i<mainSectionsArray.count; i++) {
-        BOOL equlFlag=false;
-        for (int j=0; j<sectionsArray.count; j++) {
-            if ([(NSString*)[mainSectionsArray objectAtIndex:i] isEqualToString:[[(SectionObject*)[ sectionsArray objectAtIndex:j] sectionPFObject] objectForKey:@"name"]]) {
-                equlFlag=true;
-                break;
-            }
-        }
-        if (!equlFlag) {
-            PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
-            [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-            [newSec setObject:(NSString*)[mainSectionsArray objectAtIndex:i] forKey:@"name"];
-            [newSec setObject:@"secIcon.png" forKey:@"icon"];
-            [newSec setObject:self.propertyID forKey:@"propertyID"];
-
-            [sectionsArray addObject:[[SectionObject alloc] initWithObject:newSec andChosenFlag:NO andDeletFlag:NO andAddFlag:YES]];
-        }
-     
-    }
-    
-    [self prepareExistingSections];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,7 +111,6 @@
     [mainSectionsArray addObject:@"الحديقة"];
     
     // Initialize Variables
-    pageImages=[[NSMutableArray alloc] init];
     [self loadCountries];
 
     // Load Property details to view
@@ -153,8 +119,13 @@
     self.cityTxtField.text=[self.propertyID objectForKey:@"city"];
     
     // Load property images
-    pageImages=[[NSMutableArray alloc] initWithArray:self.propertyImages];
-    
+    pageImages=[[NSMutableArray alloc] init];
+    ImagesObjects=[[NSMutableArray alloc] init];
+
+    for (int i=0; i<self.propertyImages.count; i++) {
+        [ImagesObjects addObject:[[PropertyImageObj alloc] initWithObject:(PFObject*)[self.propertyImages objectAtIndex:i] andDeleteFlag:NO andAddedFlag:NO withLocation:i]];
+        [pageImages addObject:[[PropertyImageObj alloc] initWithObject:(PFObject*)[self.propertyImages objectAtIndex:i] andDeleteFlag:NO andAddedFlag:NO withLocation:i]];
+    }
     pageCount=pageImages.count;
     if (pageCount==1||pageCount==0) {
         [self.nxtPhotoButton setHidden:YES];
@@ -166,6 +137,41 @@
         
     }
     [self setScrollView];
+
+    
+    // Prepare sections
+    // Show loading indicator
+    loadingIndicator.labelText=@"جاري تحميل الأقسام..";
+    [loadingIndicator show:YES];
+
+    sectionsArray=[[NSMutableArray alloc] init];
+    for (int i=0; i<self.propertySectionsArray.count; i++) {
+        PFObject *sect=[self.propertySectionsArray objectAtIndex:i];
+        SectionObject *obj=[[SectionObject alloc] initWithObject:sect andChosenFlag:YES andDeletFlag:YES andAddFlag:NO];
+        [sectionsArray addObject:obj];
+    }
+    
+    for (int i=0; i<mainSectionsArray.count; i++) {
+        BOOL equlFlag=false;
+        for (int j=0; j<sectionsArray.count; j++) {
+            if ([(NSString*)[mainSectionsArray objectAtIndex:i] isEqualToString:[[(SectionObject*)[ sectionsArray objectAtIndex:j] sectionPFObject] objectForKey:@"name"]]) {
+                equlFlag=true;
+                break;
+            }
+        }
+        if (!equlFlag) {
+            PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
+            [newSec setObject:[PFUser currentUser] forKey:@"userID"];
+            [newSec setObject:(NSString*)[mainSectionsArray objectAtIndex:i] forKey:@"name"];
+            [newSec setObject:@"secIcon.png" forKey:@"icon"];
+            [newSec setObject:self.propertyID forKey:@"propertyID"];
+            
+            [sectionsArray addObject:[[SectionObject alloc] initWithObject:newSec andChosenFlag:NO andDeletFlag:NO andAddFlag:YES]];
+        }
+        
+    }
+    
+    [self prepareExistingSections];
 
 
 }
@@ -260,73 +266,24 @@
             [PFObject deleteAll:deletedSections];
         }
         
-        // 3- Delete old properties photo
-        PFQuery *currentProperty = [PFQuery queryWithClassName:@"PropertyPhoto"];
-        [currentProperty whereKey:@"propertyID" equalTo:self.propertyID];
-        [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-            if (!error) {
-                [PFObject deleteAll:objects];
-                
-                // 4- Save new images
-                for (int i=0; i<pageImages.count; i++) {
-                    NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
-                    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-                    [imageFile save];
-                    PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
-                    [userPhoto setObject:imageFile forKey:@"imageFile"];
-                    userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-                    PFUser *user = [PFUser currentUser];
-                    [userPhoto setObject:user forKey:@"user"];
-                    [userPhoto setObject:self.propertyID forKey:@"propertyID"];
-                    [userPhoto save];
-                    
-                }// end for loop
-                
-                // 5- Add new sections
-        
-                
-                if (toAddSections.count!=0) {
-                    [PFObject saveAllInBackground:toAddSections block:^(BOOL succeeded, NSError* error){
-                        if (succeeded) {
-                            // 6- Update property info
-                                [self.propertyID setObject:self.propertyTitleTxtField.text forKey:@"Title"];
-                                [self.propertyID setObject:self.countryTxtField.text forKey:@"country"];
-                                [self.propertyID setObject:self.cityTxtField.text forKey:@"city"];
-                                // [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
-                                [self.propertyID setObject:[PFUser currentUser] forKey:@"userID"];
-                                [self.propertyID saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
-                                        if (done) {
-                                            [loadingIndicator hide:YES];
-                                            
-                                            AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
-                                            alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                            alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                            [alert2 addButtonWithTitle:@"موافق"
-                                                                  type:AlertViewButtonTypeCustom
-                                                               handler:^(AlertView *alertView, AlertButtonItem *button) {
-                                                                   // Dismiss alertview
-                                                                   [alertView dismiss];
-                                                                   [self.delegate editedProperty:self.propertyID withImages:pageImages andSections:sectionsArray];
-                                                                   
-                                                                   [self dismissViewControllerAnimated:YES completion:nil];
-                                                               }];
-                                            
-                                            [alert2 show];
-                                            
-                                        }
-                                }]; // End of save property
-                            
-                        }// end of succeddd if
-                    }];//end of save
-                }// end of if
-                
-                else{
-                    // Retrieve the object by id
+        // 3- Delete deleted properties photo
+        NSMutableArray *deletedPropertyImg=[[NSMutableArray alloc] init];
+        for (int i=0; i<ImagesObjects.count; i++) {
+            if (([(PropertyImageObj*)[ImagesObjects objectAtIndex:i] Deleted])&&!([(PropertyImageObj*)[ImagesObjects objectAtIndex:i] Added])) {
+                [deletedPropertyImg addObject:[(PropertyImageObj*)[ImagesObjects objectAtIndex:i] imagePFObject]];
+            }
+        }
+        [PFObject deleteAll:deletedPropertyImg];
+
+        // 5- Add new sections
+        if (toAddSections.count!=0) {
+            [PFObject saveAllInBackground:toAddSections block:^(BOOL succeeded, NSError* error){
+                if (succeeded) {
+                    // 6- Update property info
                         [self.propertyID setObject:self.propertyTitleTxtField.text forKey:@"Title"];
                         [self.propertyID setObject:self.countryTxtField.text forKey:@"country"];
                         [self.propertyID setObject:self.cityTxtField.text forKey:@"city"];
-                        //  [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
-                        //[pfObject setObject:chosenSectionArray forKey:@"sections"];
+                        // [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
                         [self.propertyID setObject:[PFUser currentUser] forKey:@"userID"];
                         [self.propertyID saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
                                 if (done) {
@@ -339,25 +296,79 @@
                                                           type:AlertViewButtonTypeCustom
                                                        handler:^(AlertView *alertView, AlertButtonItem *button) {
                                                            // Dismiss alertview
-                                                           [alertView dismiss];
-                                                           [self.delegate editedProperty:self.propertyID withImages:pageImages andSections:sectionsArray];
-                                                           
-                                                            [self dismissViewControllerAnimated:YES completion:nil];
-                                                       }];
-                                    
-                                    [alert2 show];
-                                }
-                        }]; // End of updating property data
-                    
-                }// end of else
-            }
-        }];    
+                                                           NSMutableArray *tempImg=[[NSMutableArray alloc] init];
+                                                           for (int i=0; i<pageImages.count; i++) {
+                                                               PFFile *theImage = [[(PropertyImageObj*)[pageImages objectAtIndex:i] imagePFObject] objectForKey:@"imageFile"];
+                                                               UIImage *image =[UIImage imageWithData:[theImage getData]];
 
+                                                               [tempImg addObject:image];
+                                                           }
+                                                           [alertView dismiss];
+                                                           [self.delegate editedProperty:self.propertyID withImages:tempImg andSections:sectionsArray];
+                                                           
+                                                           [self dismissViewControllerAnimated:YES completion:nil];
+                                                       }];
+                                    [alert2 show];
+                                    
+                                }
+                        }]; // End of save property
+                    
+                }// end of succeddd if
+            }];//end of save
+        }// end of if
+        
+        else{
+            // Retrieve the object by id
+                [self.propertyID setObject:self.propertyTitleTxtField.text forKey:@"Title"];
+                [self.propertyID setObject:self.countryTxtField.text forKey:@"country"];
+                [self.propertyID setObject:self.cityTxtField.text forKey:@"city"];
+                //  [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
+                //[pfObject setObject:chosenSectionArray forKey:@"sections"];
+                [self.propertyID setObject:[PFUser currentUser] forKey:@"userID"];
+                [self.propertyID saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
+                        if (done) {
+                            [loadingIndicator hide:YES];
+                            
+                            AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم تعديل عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
+                            alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                            alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                            [alert2 addButtonWithTitle:@"موافق"
+                                                  type:AlertViewButtonTypeCustom
+                                               handler:^(AlertView *alertView, AlertButtonItem *button) {
+                                                   // Dismiss alertview
+                                                   NSMutableArray *tempImg=[[NSMutableArray alloc] init];
+                                                   for (int i=0; i<pageImages.count; i++) {
+                                                       PFFile *theImage = [[(PropertyImageObj*)[pageImages objectAtIndex:i] imagePFObject] objectForKey:@"imageFile"];
+                                                       UIImage *image =[UIImage imageWithData:[theImage getData]];
+                                                       
+                                                       [tempImg addObject:image];
+                                                   }
+
+                                                   [alertView dismiss];
+                                                   [self.delegate editedProperty:self.propertyID withImages:tempImg andSections:sectionsArray];
+                                                   
+                                                    [self dismissViewControllerAnimated:YES completion:nil];
+                                               }];
+                            
+                            [alert2 show];
+                        }
+                }]; // End of updating property data
+            
+        }// end of else
     }
 
 }
 
 - (IBAction)cancelBtnPrss:(id)sender {
+    // 3- Delete deleted properties photo
+    NSMutableArray *deletedPropertyImg=[[NSMutableArray alloc] init];
+    for (int i=0; i<ImagesObjects.count; i++) {
+        if (([(PropertyImageObj*)[ImagesObjects objectAtIndex:i] Added])&&!([(PropertyImageObj*)[ImagesObjects objectAtIndex:i] Deleted])) {
+            [deletedPropertyImg addObject:[(PropertyImageObj*)[ImagesObjects objectAtIndex:i] imagePFObject]];
+        }
+    }
+    [PFObject deleteAll:deletedPropertyImg];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
@@ -605,8 +616,28 @@
         
     }
     else{
-        UIImage *currentImage=[[UIImage alloc] initWithData:imageData];
-        [pageImages addObject:currentImage];
+        // Set HUD
+        loadingIndicator = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view.window addSubview:loadingIndicator];
+        loadingIndicator.delegate = self;
+        loadingIndicator.labelFont=[UIFont fontWithName:@"Tahoma" size:15];
+        loadingIndicator.labelText = @"يتم الآن تحميل الصورة...";
+        [loadingIndicator show:YES];
+
+        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+        [imageFile save];
+        
+        PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
+        [userPhoto setObject:imageFile forKey:@"imageFile"];
+        [userPhoto setObject: [PFUser currentUser] forKey:@"user"];
+        [userPhoto setObject:self.propertyID forKey:@"propertyID"];
+        
+        [userPhoto save];
+
+       
+        
+        [pageImages addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count]];
+        [ImagesObjects addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count-1]];
         pageCount=[pageImages count];
         [self setScrollView];
         
@@ -627,7 +658,11 @@
 
 - (UIImage *)photoBrowser:(AGPhotoBrowserView *)photoBrowser imageAtIndex:(NSInteger)index
 {
-	return [pageImages objectAtIndex:index];
+ 
+        PFFile *theImage = [[(PropertyImageObj*)[pageImages objectAtIndex:index] imagePFObject] objectForKey:@"imageFile"];
+        UIImage *image=[UIImage imageWithData:[theImage getData]];
+
+	return image;
 }
 
 - (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser titleForImageAtIndex:(NSInteger)index
@@ -742,6 +777,16 @@
                 NSLog(@"Dismissed!");
             }];
             [self purgePage:actionSheet.tag];
+
+            int indexTemp=[(PropertyImageObj*)[pageImages objectAtIndex:actionSheet.tag] location];
+            if ([(PropertyImageObj*)[ImagesObjects objectAtIndex:indexTemp] Added]) {
+                // TODO delete from DB
+             
+                PFObject * imgFile=[(PropertyImageObj*)[ImagesObjects objectAtIndex:indexTemp] imagePFObject];
+                [imgFile deleteInBackground];
+            }
+            [(PropertyImageObj*)[ImagesObjects objectAtIndex:indexTemp] setDeleted:YES];
+            
             [pageImages removeObjectAtIndex:actionSheet.tag];
             pageCount=pageImages.count;
             [self setScrollView];
@@ -930,6 +975,7 @@
 
 
 - (void)loadVisiblePages {
+    [loadingIndicator hide:YES];
     // First, determine which page is currently visible
     CGFloat pageWidth = self.imagesScrollView.frame.size.width;
     NSInteger page = (NSInteger)floor((self.imagesScrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
@@ -992,8 +1038,11 @@
             frame.origin.x = frame.size.width * page;
             frame.origin.y = 0.0f;
             frame = CGRectInset(frame, 20.0f, 30.0f);
-            
-            UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+        
+            PFFile *theImage = [[(PropertyImageObj*)[pageImages objectAtIndex:page] imagePFObject] objectForKey:@"imageFile"];
+            UIImage *image =[UIImage imageWithData:[theImage getData]];
+
+            UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
             newPageView.userInteractionEnabled = YES;
             newPageView.tag=page;
             
