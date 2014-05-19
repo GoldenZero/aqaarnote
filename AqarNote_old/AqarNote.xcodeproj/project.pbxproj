@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7C0D0ECF191FF8060023FF9C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C57A9FA18CF8CBE00DE6259 /* Parse.framework */; };
+		7C0DDD3C192AC45800041B2C /* iRate.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0DDD39192AC43800041B2C /* iRate.bundle */; };
+		7C0DDD3D192AC58600041B2C /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0DDD3B192AC43800041B2C /* iRate.m */; };
 		7C0F81CB190EC66000047EA9 /* bottom_green_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C0F81C9190EC66000047EA9 /* bottom_green_bar.png */; };
 		7C0F81CC190EC66000047EA9 /* bottom_green_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C0F81CA190EC66000047EA9 /* bottom_green_bar@2x.png */; };
 		7C0F81EC190EE4B700047EA9 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0F81D0190EE4B700047EA9 /* MKAnnotationView+WebCache.m */; };
@@ -264,6 +266,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C0DDD39192AC43800041B2C /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		7C0DDD3A192AC43800041B2C /* iRate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		7C0DDD3B192AC43800041B2C /* iRate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		7C0F81C9190EC66000047EA9 /* bottom_green_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_green_bar.png; sourceTree = "<group>"; };
 		7C0F81CA190EC66000047EA9 /* bottom_green_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_green_bar@2x.png"; sourceTree = "<group>"; };
 		7C0F81CF190EE4B700047EA9 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -576,6 +581,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0DDD3C192AC45800041B2C /* iRate.bundle in Frameworks */,
 				7C0D0ECF191FF8060023FF9C /* Parse.framework in Frameworks */,
 				84B9051E18A26BF9003771E1 /* MessageUI.framework in Frameworks */,
 				84BFB557189E18700069A87A /* SystemConfiguration.framework in Frameworks */,
@@ -608,6 +614,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C0DDD38192AC43700041B2C /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				7C0DDD39192AC43800041B2C /* iRate.bundle */,
+				7C0DDD3A192AC43800041B2C /* iRate.h */,
+				7C0DDD3B192AC43800041B2C /* iRate.m */,
+			);
+			name = iRate;
+			path = Libraries/iRate;
+			sourceTree = "<group>";
+		};
 		7C0F81CE190EE4B700047EA9 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -973,6 +990,7 @@
 		84BFB50E189E12FD0069A87A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C0DDD38192AC43700041B2C /* iRate */,
 				7C57A9FA18CF8CBE00DE6259 /* Parse.framework */,
 				84B9051D18A26BF9003771E1 /* MessageUI.framework */,
 				84CC6983189F79FE0027C844 /* SDWebImage.framework */,
@@ -1415,6 +1433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0DDD3D192AC58600041B2C /* iRate.m in Sources */,
 				7C0F81F6190EE4B700047EA9 /* UIImage+GIF.m in Sources */,
 				84BFB526189E12FD0069A87A /* HomePageVC.m in Sources */,
 				7C72AF1B1916A80B003D00ED /* AGPhotoBrowserOverlayView.m in Sources */,

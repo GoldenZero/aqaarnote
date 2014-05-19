@@ -18,4 +18,5 @@
     #import "Reachability.h"
     #import "MBProgressHUD.h"
     #import "AlertView.h"
+    #import "iRate.h"
 #endif

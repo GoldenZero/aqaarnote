@@ -67,4 +67,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
++ (void)initialize
+{
+	//configure iRate
+	[iRate sharedInstance].appStoreID = 355313284; // Replace this
+}
+
 @end
