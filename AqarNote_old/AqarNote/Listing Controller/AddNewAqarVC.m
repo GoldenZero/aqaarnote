@@ -9,6 +9,8 @@
 #import "AddNewAqarVC.h"
 #import "SectionCell.h"
 #import "countryObject.h"
+#import "SectionObject.h"
+#import "PropertyImageObj.h"
 
 #define COUNTRIES_FILE_NAME         @"Countries"
 #define COUNTRY_ID_JSONK            @"CountryID"
@@ -23,8 +25,6 @@
 {
     NSMutableArray* mainSectionsArray;
     NSMutableArray* sectionsArray;
-    NSMutableArray* chosenSectionArray;
-    NSMutableArray* chosenBooleanArray;
     PFObject * currentImageID;
     NSArray *countriesArray;
     EnhancedKeyboard *enhancedKeyboard;
@@ -35,10 +35,7 @@
     SBPickerSelector *countriesPicker ;
     NSMutableArray *pageViews;
     
-    NSMutableArray *propertySections;
-    NSMutableArray *deletedSections;
-    NSMutableArray *toAddSections;
-    
+    PFObject *newProperty;
     AlertView * alert;
 }
 @end
@@ -65,14 +62,33 @@ CGFloat animatedDistance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    enhancedKeyboard = [[EnhancedKeyboard alloc] init];
-    enhancedKeyboard.delegate = self;
     
-    pageImages=[[NSMutableArray alloc] init];
+   // Initializing view
+    [self prepareViewComponents];
+   
+    // Loading sections
+    if ([self checkConnection]) {
+        [HUD show:YES];
+        HUD.labelText = @"جاري تحميل الأقسام..";
+        [self getExistSection];
+    }
+    // There is no internet connection
+    else{
+        AlertView *alert1=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert1 show];
+    }
+}
+
+
+- (void) prepareViewComponents{
     
+    // Init loading indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.sectionsTableView];
     HUD.delegate = self;
 
+    
     // Set custom font
     self.propertyTitle.font=[UIFont fontWithName:@"Tahoma" size:12];
     self.country.font=[UIFont fontWithName:@"Tahoma" size:12];
@@ -81,7 +97,7 @@ CGFloat animatedDistance;
     self.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
     self.cancelButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
     self.saveButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
-
+    
     // Set picker view
     countriesPicker = [SBPickerSelector picker];
     countriesPicker.delegate = self;
@@ -89,6 +105,7 @@ CGFloat animatedDistance;
     countriesPicker.doneButtonTitle = @"تم";
     countriesPicker.cancelButtonTitle = @"إغلاق";
 
+    // Initialize Main Array
     mainSectionsArray = [NSMutableArray new];
     [mainSectionsArray addObject:@"المطبخ"];
     [mainSectionsArray addObject:@"غرفة المعيشة"];
@@ -96,28 +113,25 @@ CGFloat animatedDistance;
     [mainSectionsArray addObject:@"الحمام"];
     [mainSectionsArray addObject:@"غرفة الطعام"];
     [mainSectionsArray addObject:@"الحديقة"];
-    
+
+    // Initialize keyboard
+    enhancedKeyboard = [[EnhancedKeyboard alloc] init];
+    enhancedKeyboard.delegate = self;
     [self.propertyTitle setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     [self.city setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-//    [self.descriptionsTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     
-    if ([self checkConnection]) {
-        [HUD show:YES];
-        HUD.labelText = @"جاري تحميل الأقسام..";
-        [self loadCountries];
+    // Load countries
+    [self loadCountries];
+    
+    pageImages=[[NSMutableArray alloc] init];
 
-            [self getExistSection];
-    }
-    else{
-        AlertView *alert1=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
-        alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-        alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-        [alert1 show];
+    // Intialize propety
+    newProperty = [PFObject objectWithClassName:@"Properties"];
+    [newProperty setObject:self.propertyTitle.text forKey:@"Title"];
+    [newProperty setObject:[NSNull null] forKey:@"country"];
+    [newProperty setObject:self.city.text forKey:@"city"];
+    [newProperty setObject:[PFUser currentUser] forKey:@"userID"];
 
-
-    }
-   
-  	// Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -133,17 +147,65 @@ CGFloat animatedDistance;
     // Run the query
     [sectionQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            sectionsArray=[[NSMutableArray alloc] init];
+
             //Save results and update the table
             if ([objects count] == 0) {
-                
+                for (int i=0; i<mainSectionsArray.count; i++) {
+                        PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
+                        [newSec setObject:[PFUser currentUser] forKey:@"userID"];
+                        [newSec setObject:(NSString*)[mainSectionsArray objectAtIndex:i] forKey:@"name"];
+                        [newSec setObject:@"secIcon.png" forKey:@"icon"];
+                        [newSec setObject:newProperty forKey:@"propertyID"];
+                        
+                        [sectionsArray addObject:[[SectionObject alloc] initWithObject:newSec andChosenFlag:NO andDeletFlag:NO andAddFlag:NO]];
+                }
+
                 [self prepareSections];
             }else
             {
-                sectionsArray = [[NSMutableArray alloc] initWithArray:objects];
-                chosenSectionArray = [[NSMutableArray alloc] initWithArray:objects];
+                for (int i=0; i<objects.count; i++) {
+                    bool flage=false;
+                    for (int j=0; j<i; j++) {
+                        if ([(NSString*)[(PFObject*)[objects objectAtIndex:j]objectForKey:@"name"] isEqualToString:(NSString*)[(PFObject*)[objects objectAtIndex:i]objectForKey:@"name"]]) {
+                            flage=true;
+                            break;
+                        }
+                    }
+                    if (!flage) {
+                        PFObject *sect=[objects objectAtIndex:i];
+                        
+                        PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
+                        [newSec setObject:[PFUser currentUser] forKey:@"userID"];
+                        [newSec setObject:[sect objectForKey:@"name"] forKey:@"name"];
+                        [newSec setObject:@"secIcon.png" forKey:@"icon"];
+                        [newSec setObject:newProperty forKey:@"propertyID"];
+                        
+                        SectionObject *obj=[[SectionObject alloc] initWithObject:newSec andChosenFlag:YES andDeletFlag:NO andAddFlag:NO];
+                        [sectionsArray addObject:obj];
+                    }
+                }
                 
-                sectionsArray = [self compareSectionsArray:mainSectionsArray andArray:sectionsArray];
-                [self prepareExistingSections];
+                for (int i=0; i<mainSectionsArray.count; i++) {
+                    BOOL equlFlag=false;
+                    for (int j=0; j<sectionsArray.count; j++) {
+                        if ([(NSString*)[mainSectionsArray objectAtIndex:i] isEqualToString:[[(SectionObject*)[ sectionsArray objectAtIndex:j] sectionPFObject] objectForKey:@"name"]]) {
+                            equlFlag=true;
+                            break;
+                        }
+                    }
+                    if (!equlFlag) {
+                        PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
+                        [newSec setObject:[PFUser currentUser] forKey:@"userID"];
+                        [newSec setObject:(NSString*)[mainSectionsArray objectAtIndex:i] forKey:@"name"];
+                        [newSec setObject:@"secIcon.png" forKey:@"icon"];
+                        [newSec setObject:newProperty forKey:@"propertyID"];
+                        
+                        [sectionsArray addObject:[[SectionObject alloc] initWithObject:newSec andChosenFlag:NO andDeletFlag:NO andAddFlag:NO]];
+                    }
+                    
+                }
+                [self prepareSections];
 
             }
         }
@@ -152,14 +214,6 @@ CGFloat animatedDistance;
 
 -(void)prepareSections
 {
-    sectionsArray = [NSMutableArray new];
-    chosenSectionArray = [NSMutableArray new];
-    
-    sectionsArray = mainSectionsArray;
-    chosenBooleanArray=[[NSMutableArray alloc] init];
-    for (int i=0; i<sectionsArray.count; i++) {
-        [chosenBooleanArray addObject:@NO];
-    }
 
     [self.sectionsTableView reloadData];
     CGRect frame = self.sectionsTableView.frame;
@@ -171,95 +225,10 @@ CGFloat animatedDistance;
     scrollViewHeight+=self.city.frame.size.height;
     scrollViewHeight+=self.country.frame.size.height;
     scrollViewHeight+=self.sectionsTableView.frame.size.height;
-//    for (UIView* view in self.contentScrollView.subviews)
-//    {
-//        if((view==self.imageScrollView)||[view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITableView class]])
-//        {
-//            scrollViewHeight += view.frame.size.height;
-//
-//        }
-//    }
     
     [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
 
     [HUD hide:YES];
-}
-
-
--(void)prepareExistingSections
-{
-    chosenSectionArray = [NSMutableArray new];
-    [self.sectionsTableView reloadData];
-   
-    CGRect frame = self.sectionsTableView.frame;
-    frame.size.height = self.sectionsTableView.contentSize.height;
-    self.sectionsTableView.frame = frame;
-    
-    CGFloat scrollViewHeight = 60.0f;
-    scrollViewHeight+=self.imageScrollView.frame.size.height;
-    scrollViewHeight+=self.propertyTitle.frame.size.height;
-    scrollViewHeight+=self.city.frame.size.height;
-    scrollViewHeight+=self.country.frame.size.height;
-    scrollViewHeight+=self.sectionsTableView.frame.size.height;
-
-//    CGFloat scrollViewHeight = 0.0f;
-//    for (UIView* view in self.contentScrollView.subviews)
-//    {
-//        scrollViewHeight += view.frame.size.height;
-//    }
-    
-    [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
-
-    [HUD hide:YES];
-}
-
--(NSMutableArray*)compareSectionsArray:(NSMutableArray*)arrOfString andArray:(NSMutableArray*)arrOfObject
-{
-    NSMutableArray* comparedArr = arrOfString;
-    chosenBooleanArray=[[NSMutableArray alloc] init];
-    for (int i=0; i<arrOfString.count; i++) {
-        [chosenBooleanArray addObject:@NO];
-    }
-    BOOL isMatching;
-    for (PFObject* pf in arrOfObject) {
-
-        for (int i=0; i<arrOfString.count; i++) {
-            NSString* pfString = [arrOfString objectAtIndex:i];
-            if ([[pf objectForKey:@"name"] isEqualToString:pfString]) {
-                isMatching = YES;
-                [chosenBooleanArray replaceObjectAtIndex:i withObject:@YES];
-                break;
-            }else
-            {
-                isMatching = NO;
-                continue;
-            }
-            
-        }
-        if (!isMatching) {
-            [comparedArr addObject:[pf objectForKey:@"name"]];
-            [chosenBooleanArray addObject:@YES];
-        }
-    }
-    
-    return comparedArr;
-}
-
--(BOOL)isExistingInArray:(NSString*)SecString andArray:(NSMutableArray*)arrOfString
-{
-    BOOL isMatching;
-        for (NSString* pf in arrOfString) {
-            if ([pf isEqualToString:SecString]) {
-                isMatching = YES;
-                break;
-            }else
-            {
-                isMatching = NO;
-                continue;
-            }
-        }
-    
-    return isMatching;
 }
 
 -(void)sectionPressed:(id)sender
@@ -267,19 +236,17 @@ CGFloat animatedDistance;
     UIButton* btn = (UIButton*)sender;
     int currentIndex = btn.tag;
 
-    if ([[chosenBooleanArray objectAtIndex:currentIndex] boolValue]) {
-        [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@NO];
+    if (  [(SectionObject*)[sectionsArray objectAtIndex:currentIndex] SectionChosen]) {
+        [(SectionObject*)[sectionsArray objectAtIndex:currentIndex] setSectionChosen:NO];
         [btn setImage:[UIImage imageNamed:@"white_dot_option.png"] forState:UIControlStateNormal];
-
+        
     }
     else{
-        [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@YES];
+        [(SectionObject*)[sectionsArray objectAtIndex:currentIndex] setSectionChosen:YES];
         [btn setImage:[UIImage imageNamed:@"green_dot_option.png"] forState:UIControlStateNormal];
-
-
+        
+        
     }
-
-   // [self.sectionsTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -356,8 +323,17 @@ CGFloat animatedDistance;
 
     }
     else{
-        UIImage *currentImage=[[UIImage alloc] initWithData:imageData];
-        [pageImages addObject:currentImage];
+        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+        [imageFile save];
+        
+        PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
+        [userPhoto setObject:imageFile forKey:@"imageFile"];
+        [userPhoto setObject: [PFUser currentUser] forKey:@"user"];
+        [userPhoto setObject:newProperty forKey:@"propertyID"];
+        
+        [userPhoto save];
+        
+        [pageImages addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count]];
         pageCount=[pageImages count];
         [self setScrollView];
         
@@ -376,6 +352,11 @@ CGFloat animatedDistance;
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
+    [self.country resignFirstResponder];
+    [self.city resignFirstResponder];
+    [self.propertyTitle resignFirstResponder];
+    [self SBPickerSelector:countriesPicker cancelPicker:YES];
+    
     if ([self.propertyTitle.text length] == 0 || self.propertyTitle.text == nil || [self.propertyTitle.text isEqual:@""] == TRUE) {
         
         AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال عنوان الشقة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
@@ -401,157 +382,54 @@ CGFloat animatedDistance;
     }
     
     else{
-    
-        chosenSectionArray=[[NSMutableArray alloc]init];
-   
-        // build chosenArray
-    
-        for (int i=0; i<chosenBooleanArray.count; i++) {
-        
-            if ([[chosenBooleanArray objectAtIndex:i] boolValue]) {
-            
-                [chosenSectionArray addObject:[sectionsArray objectAtIndex:i]];
-            }
-        }
-
+        // Set loading indicator
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:HUD];
+        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
         HUD.delegate = self;
         HUD.labelText = @"يتم الآن الحفظ";
         [HUD show:YES];
-    
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-
-   
-            PFObject *newPost = [PFObject objectWithClassName:@"Properties"];
-
-            // Set property
-            
-            [newPost setObject:self.propertyTitle.text forKey:@"Title"];
-            [newPost setObject:chosenCountry forKey:@"country"];
-            [newPost setObject:self.city.text forKey:@"city"];
-            //  [newPost setObject:self.descriptionsTxtView.text forKey:@"Description"];
-            [newPost setObject:chosenSectionArray forKey:@"sections"];
-            [newPost setObject:[PFUser currentUser] forKey:@"userID"];
-            
-            //set section with property
-            
-            NSMutableArray* arr = [[NSMutableArray alloc] init];
-            [arr addObject:newPost];
-
-            // Save Sections
-            for (int i = 0; i < [chosenSectionArray count]; i++) {
-                PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
-                [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-                [newSec setObject:[chosenSectionArray objectAtIndex:i] forKey:@"name"];
-                [newSec setObject:@"secIcon.png" forKey:@"icon"];
-                [newSec setObject:newPost forKey:@"propertyID"];
-                [arr addObject:newSec];
-                
-                
-            }
-
-            // Save Images
-            if (pageImages.count!=0) {
-                for (int i=0; i<pageImages.count; i++) {
-                    NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
-                    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-                    
-                    // Save PFFile
-                    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (!error) {
-                            
-                            // Create a PFObject around a PFFile and associate it with the current user
-                            PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
-                            [userPhoto setObject:imageFile forKey:@"imageFile"];
-                            
-                            
-                            // Set the access control list to current user for security purposes
-                            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-                            
-                            PFUser *user = [PFUser currentUser];
-                            [userPhoto setObject:user forKey:@"user"];
-                            [userPhoto setObject:newPost forKey:@"propertyID"];
-                            
-                            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    if (i==pageImages.count-1) {
-                                        
-                                        // Save Property & Sections
-                                        [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
-                                         {
-                                             if (!error) {
-                                                 // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-                                                 
-                                                 [HUD hide:YES];
-                                                 AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
-                                                 alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                                 alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                                 [alert2 addButtonWithTitle:@"موافق"
-                                                                      type:AlertViewButtonTypeCustom
-                                                                   handler:^(AlertView *alertView, AlertButtonItem *button) {
-                                                                       // Dismiss alertview
-                                                                       [alertView dismiss];
-                                                                       [self.delegate addedProperty:newPost withImage:userPhoto];
-                                                                       [self dismissView];
-                                                                       
-                                                                   }];
-                                                 
-                                                 [alert2 show];
-                                                 
-                                             }
-                                         }];
-                                    }
-                                }
-                                else{
-                                    // TODO : Add alertView of fail
-                                    NSLog(@"Error: %@ %@", error, [error userInfo]);
-                                }
-                            }];
-                        }
-                        else{
-                            // TODO : Add alertView of fail
-                            NSLog(@"Error: %@ %@", error, [error userInfo]);
-                        }
-                        
-                    } progressBlock:^(int percentDone) {
-                        // Update your progress spinner here. percentDone will be between 0 and 100.
-                        HUD.progress = (float)percentDone/100;
-                        
-                    }];
-                }
-            }
-            else{
-                // Save Property & Sections
-                [PFObject saveAllInBackground:arr block:^(BOOL succeeded, NSError* error)
-                 {
-                     if (!error) {
-                         // [newSec setObject:[PFUser currentUser] forKey:@"userID"];
-                         
-                         [HUD hide:YES];
-                         AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
-                         alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                         alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                         [alert2 addButtonWithTitle:@"موافق"
-                                              type:AlertViewButtonTypeCustom
-                                           handler:^(AlertView *alertView, AlertButtonItem *button) {
-                                               // Dismiss alertview
-                                               [alertView dismiss];
-                                               [self.delegate addedProperty:newPost withImage:nil];
-                                               [self dismissView];
-                                               
-                                           }];
-                         
-                         [alert2 show];
-                         
-                     }
-                     
-                     // TODO : add alertView of fail
-                 }];
-
-            }
         
-
+        // Set added sections
+        NSMutableArray *toAddSections=[[NSMutableArray alloc] init];
+        for (int i=0; i<sectionsArray.count; i++) {
+            
+            if ([(SectionObject*)[sectionsArray objectAtIndex:i] SectionChosen]) {
+                [toAddSections addObject:[(SectionObject*)[sectionsArray objectAtIndex:i] sectionPFObject]];
+            }
+        }
+        [PFObject saveAll:toAddSections];
+        // Set Preoperty
+        [newProperty setObject:self.propertyTitle.text forKey:@"Title"];
+        [newProperty setObject:chosenCountry forKey:@"country"];
+        [newProperty setObject:self.city.text forKey:@"city"];
+        [newProperty saveInBackgroundWithBlock:^(BOOL done , NSError *error){
+            if (done) {
+                
+                [HUD hide:YES];
+                AlertView *alert2=[[AlertView alloc] initWithTitle:@"تم" message:@"لقد تم إضافة عقارك بنجاح" cancelButtonTitle:nil WithFont:@"Tahoma"];
+                alert2.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                alert2.customButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                [alert2 addButtonWithTitle:@"موافق"
+                                      type:AlertViewButtonTypeCustom
+                                   handler:^(AlertView *alertView, AlertButtonItem *button) {
+                                       
+                                       [alertView dismiss];
+                                       if (pageImages.count!=0) {
+                                             [self.delegate addedProperty:newProperty withImage:[(PropertyImageObj*)[pageImages objectAtIndex:0] imagePFObject]];
+                                       }
+                                       else{
+                                             [self.delegate addedProperty:newProperty withImage:nil];
+                                       }
+                                       [self dismissView];
+                                       
+                                   }];
+                
+                [alert2 show];
+                    
+            }
+        }];
+        
     }
   
 }
@@ -572,7 +450,6 @@ CGFloat animatedDistance;
         }
         
     }
-    
     
 }
 
@@ -595,8 +472,15 @@ CGFloat animatedDistance;
 }
 
 - (IBAction)cancelButtonPressed:(id)sender {
-    //[self.navigationController popViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:NO completion:nil];
+    // 3- Delete deleted properties photo
+    NSMutableArray *deletedPropertyImg=[[NSMutableArray alloc] init];
+    for (int i=0; i<pageImages.count; i++) {
+            [deletedPropertyImg addObject:[(PropertyImageObj*)[pageImages objectAtIndex:i] imagePFObject]];
+    }
+    [PFObject deleteAll:deletedPropertyImg];
+    [newProperty deleteInBackground];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (IBAction)addSectionBtnPrss:(id)sender {
@@ -644,6 +528,8 @@ CGFloat animatedDistance;
                 NSLog(@"Dismissed!");
             }];
             [self purgePage:actionSheet.tag];
+            PFObject * imgFile=[(PropertyImageObj*)[pageImages objectAtIndex:actionSheet.tag] imagePFObject];
+            [imgFile deleteInBackground];
             [pageImages removeObjectAtIndex:actionSheet.tag];
             pageCount=pageImages.count;
             [self setScrollView];
@@ -753,16 +639,17 @@ CGFloat animatedDistance;
         cell = [nib objectAtIndex:0];
         
     }
-    cell.sectionLabel.text=(NSString*)[sectionsArray objectAtIndex:indexPath.row];
+    cell.sectionLabel.text=[[(SectionObject*)[ sectionsArray objectAtIndex:indexPath.row] sectionPFObject] objectForKey:@"name"];
+
     cell.sectionLabel.font=[UIFont fontWithName:@"Tahoma" size:12];
     [cell.sectionButtonPrssed setBackgroundColor:[UIColor clearColor]];
-    if ([[chosenBooleanArray objectAtIndex:indexPath.row] boolValue]) {
+    if ([(SectionObject*)[sectionsArray objectAtIndex:indexPath.row] SectionChosen]) {
         [cell.sectionButtonPrssed setImage:[UIImage imageNamed:@"green_dot_option.png"] forState:UIControlStateNormal];
-
+        
     }
     else{
         [cell.sectionButtonPrssed setImage:[UIImage imageNamed:@"white_dot_option.png"] forState:UIControlStateNormal];
-
+        
     }
 //    [cell.sectionButtonPrssed addTarget:self action:@selector(sectionPressed:) forControlEvents:UIControlEventTouchUpInside];
 //    cell.sectionButtonPrssed.tag = indexPath.row;
@@ -803,15 +690,14 @@ CGFloat animatedDistance;
     SectionCell *cell = (SectionCell*)[tableView cellForRowAtIndexPath:indexPath];
     
     UIButton* btn = (UIButton*)[cell sectionButtonPrssed];
-    int currentIndex = indexPath.row;
     
-    if ([[chosenBooleanArray objectAtIndex:currentIndex] boolValue]) {
-        [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@NO];
+    if ([(SectionObject*)[sectionsArray objectAtIndex:indexPath.row] SectionChosen]) {
+        [(SectionObject*)[sectionsArray objectAtIndex:indexPath.row] setSectionChosen:NO];
         [btn setImage:[UIImage imageNamed:@"white_dot_option.png"] forState:UIControlStateNormal];
         
     }
     else{
-        [chosenBooleanArray replaceObjectAtIndex:currentIndex withObject:@YES];
+        [(SectionObject*)[sectionsArray objectAtIndex:indexPath.row] setSectionChosen:YES];
         [btn setImage:[UIImage imageNamed:@"green_dot_option.png"] forState:UIControlStateNormal];
         
     }
@@ -1149,7 +1035,10 @@ CGFloat animatedDistance;
             frame.origin.y = 0.0f;
             frame = CGRectInset(frame, 20.0f, 30.0f);
             
-            UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+            PFFile *theImage = [[(PropertyImageObj*)[pageImages objectAtIndex:page] imagePFObject] objectForKey:@"imageFile"];
+            UIImage *image =[UIImage imageWithData:[theImage getData]];
+
+            UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
             newPageView.userInteractionEnabled = YES;
             newPageView.tag=page;
             
@@ -1195,61 +1084,6 @@ CGFloat animatedDistance;
     [self loadVisiblePages];
 }
 
-#pragma mark - edit a property
-
--(void)loadSectionPhoto{
-    
-    PFQuery *currentProperty = [PFQuery queryWithClassName:@"PropertyPhoto"];
-    [currentProperty whereKey:@"propertyID" equalTo:self.propertyID];
-    
-    [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            PFFile *theImage;
-            for (PFObject* ob in objects) {
-                theImage = [ob objectForKey:@"imageFile"];
-                UIImage *image=[UIImage imageWithData:[theImage getData]];
-                [pageImages addObject:image];
-            }
-        }
-        pageCount=pageImages.count;
-        if (pageCount==1||pageCount==0) {
-            [self.nextImgButton setHidden:YES];
-            [self.prevImgButton setHidden:YES];
-        }
-        else {
-            self.nextImgButton.hidden=NO;
-            self.prevImgButton.hidden=YES;
-            
-        }
-        [self setScrollView];
-        [MBProgressHUD  hideHUDForView:self.view animated:YES];
-        
-    }];
-}
-
--(void)getSectionsForProperty:(PFObject*)propID
-{
-    
-    PFQuery *secQuery = [PFQuery queryWithClassName:@"Sections"];
-    [secQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
-    [secQuery whereKey:@"propertyID" equalTo:self.propertyID];
-    
-    
-    // Run the query
-    [secQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            //Save results and update the table
-            propertySections = [[NSMutableArray alloc] initWithArray:objects];
-            sectionsArray = [[NSMutableArray alloc]initWithArray:objects];
-            chosenSectionArray = [[NSMutableArray alloc]initWithArray:objects];
-            sectionsArray = [self compareSectionsArray:mainSectionsArray andArray:sectionsArray];
-
-            [self prepareExistingSections];
-        }
-    }];
-}
-
 
 #pragma mark - Add section delegate handler
 - (void) addedSection:(NSString *)sectionName{
@@ -1258,8 +1092,13 @@ CGFloat animatedDistance;
         
     }
     else{
-        [sectionsArray addObject:sectionName];
-        [chosenBooleanArray addObject:@YES];
+        PFObject *newSec = [PFObject objectWithClassName:@"Sections"];
+        [newSec setObject:[PFUser currentUser] forKey:@"userID"];
+        [newSec setObject:sectionName forKey:@"name"];
+        [newSec setObject:@"secIcon.png" forKey:@"icon"];
+        [newSec setObject:newProperty forKey:@"propertyID"];
+        
+        [sectionsArray addObject:[[SectionObject alloc] initWithObject:newSec andChosenFlag:YES andDeletFlag:NO andAddFlag:YES]];
         [self.sectionsTableView reloadData];
         CGRect frame = self.sectionsTableView.frame;
         frame.size.height = self.sectionsTableView.contentSize.height;
