@@ -1239,7 +1239,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Obr-fQ-jh1">
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Obr-fQ-jh1">
                                         <rect key="frame" x="269" y="0.0" width="51" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1512,28 +1512,7 @@
                                             <outlet property="delegate" destination="u0j-NF-wWS" id="yjg-Ya-Ez2"/>
                                         </connections>
                                     </textView>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="R2y-bP-E6R">
-                                        <rect key="frame" x="278" y="164" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="uploadImagePressed:" destination="u0j-NF-wWS" eventType="touchUpInside" id="a6x-DH-81Y"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wsg-8i-jb2">
-                                        <rect key="frame" x="20" y="164" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="deleteBtn.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="deleteImgBtnPrss:" destination="u0j-NF-wWS" eventType="touchUpInside" id="BQY-ji-m3g"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dN9-0U-Zwl">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dN9-0U-Zwl">
                                         <rect key="frame" x="22" y="86" width="9" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="left.png">
@@ -1543,7 +1522,7 @@
                                             <action selector="prevImgBtnPrss:" destination="u0j-NF-wWS" eventType="touchUpInside" id="7jf-HR-3H5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2ZM-4f-Mc0">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2ZM-4f-Mc0">
                                         <rect key="frame" x="289" y="86" width="9" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="right.png">
@@ -1587,12 +1566,10 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="addImgBtnPrss" destination="3Jv-Kh-lnT" id="Bny-Bn-iKf"/>
                         <outlet property="buttonBroken" destination="bXW-fE-Fra" id="DpI-yE-cpT"/>
                         <outlet property="cancelButton" destination="5Ot-sF-IEb" id="QTC-6P-9Vt"/>
                         <outlet property="cleanButton" destination="ATG-AU-fQ0" id="1yx-3a-uMm"/>
                         <outlet property="contentScrollView" destination="6DP-4T-Qkp" id="ZnF-OQ-2OO"/>
-                        <outlet property="deleteImgButton" destination="wsg-8i-jb2" id="l4A-UV-HCJ"/>
                         <outlet property="dirtyButton" destination="jLZ-qe-Reu" id="x5p-6g-d2Q"/>
                         <outlet property="fairButton" destination="e9M-Zp-T7s" id="lCa-5h-AYd"/>
                         <outlet property="goodButton" destination="zCf-mw-6mE" id="TKf-wB-aNZ"/>
@@ -1603,7 +1580,7 @@
                         <outlet property="pagingScrollView" destination="BMu-6E-Wiz" id="mA7-FR-1eq"/>
                         <outlet property="prevImgButton" destination="dN9-0U-Zwl" id="UWa-NQ-yBG"/>
                         <outlet property="sectionTitle" destination="YDg-Tn-5dK" id="zgr-si-yV5"/>
-                        <outlet property="uploadImageBtn" destination="R2y-bP-E6R" id="H0B-8Q-7k9"/>
+                        <outlet property="uploadImageBtn" destination="3Jv-Kh-lnT" id="bXj-j2-K7e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NS6-pV-Xyr" userLabel="First Responder" sceneMemberID="firstResponder"/>

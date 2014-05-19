@@ -24,9 +24,7 @@
     MBProgressHUD *HUD;
     
 }
-@property (nonatomic, strong) XCDFormInputAccessoryView *inputAccessoryView;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
-
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UILabel *sectionTitle;
 @property (strong, nonatomic) PFObject* sectionID;
@@ -42,8 +40,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *cleanButton;
 @property (strong, nonatomic) IBOutlet UIButton *buttonBroken;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
-@property (strong, nonatomic) IBOutlet UIButton *addImgBtnPrss;
-@property (strong, nonatomic) IBOutlet UIButton *deleteImgButton;
 @property (strong, nonatomic) IBOutlet UIButton *nextImgButton;
 @property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
 
@@ -51,7 +47,6 @@
 
 @property (nonatomic, strong) id <InspectSectionDelegate> delegate;
 
-- (IBAction)deleteImgBtnPrss:(id)sender;
 - (IBAction)uploadImagePressed:(id)sender;
 - (void)uploadImage:(NSData *)imageData;
 - (IBAction)backButtonPressed:(id)sender;

@@ -69,6 +69,7 @@ CGFloat animatedDistance;
     // Loading sections
     if ([self checkConnection]) {
         [HUD show:YES];
+        [self.sectionsTableView addSubview:HUD];
         HUD.labelText = @"جاري تحميل الأقسام..";
         [self getExistSection];
     }
@@ -290,7 +291,7 @@ CGFloat animatedDistance;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-
+    
     
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
@@ -298,7 +299,6 @@ CGFloat animatedDistance;
     // Dismiss controller
    // [picker dismissModalViewControllerAnimated:YES];
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
     // Resize image
     UIGraphicsBeginImageContext(CGSizeMake(640, 960));
     [image drawInRect: CGRectMake(0, 0, 640, 960)];
@@ -325,13 +325,12 @@ CGFloat animatedDistance;
     else{
         PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
         [imageFile save];
-        
         PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
         [userPhoto setObject:imageFile forKey:@"imageFile"];
         [userPhoto setObject: [PFUser currentUser] forKey:@"user"];
         [userPhoto setObject:newProperty forKey:@"propertyID"];
         
-        [userPhoto save];
+        [userPhoto saveInBackground];
         
         [pageImages addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count]];
         pageCount=[pageImages count];

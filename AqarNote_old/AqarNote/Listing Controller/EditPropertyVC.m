@@ -633,8 +633,6 @@
         [userPhoto setObject:self.propertyID forKey:@"propertyID"];
         
         [userPhoto save];
-
-       
         
         [pageImages addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count]];
         [ImagesObjects addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count-1]];

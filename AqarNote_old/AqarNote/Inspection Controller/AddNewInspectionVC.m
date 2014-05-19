@@ -286,6 +286,7 @@
     UIButton* btn = (UIButton*)sender;
     int currentIndex = btn.tag;
     mySection = [sectionsArray objectAtIndex:currentIndex];
+
     [self performSegueWithIdentifier:@"showAddInspectVC" sender:self];
 
     //[chosenSectionArray addObject:[sectionsArray objectAtIndex:currentIndex]];
@@ -403,6 +404,7 @@
     
     [currentProperty findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            self.editButton.userInteractionEnabled=YES;
             imagesObjects=objects;
             PFFile *theImage;
             pageImages=[[NSMutableArray alloc] init];

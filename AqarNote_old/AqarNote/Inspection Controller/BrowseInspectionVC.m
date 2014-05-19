@@ -7,12 +7,14 @@
 //
 
 #import "BrowseInspectionVC.h"
+#import "PropertyImageObj.h"
 
 @interface BrowseInspectionVC ()
 {
     NSNumber* sectionStatus;
     PFObject * currentImageID;
     NSMutableArray *pageImages;
+    NSMutableArray *ImagesObjects;
     NSInteger pageCount;
     UIActionSheet *photoAction;
     NSMutableArray *pageViews;
@@ -46,31 +48,62 @@ CGFloat animatedDistance;
 {
     [super viewDidLoad];
   
-    HUD = [[MBProgressHUD alloc] initWithView:self.pagingScrollView];
+    // Set view
+    [self prepareViewComponent];
     
-    [self.pagingScrollView addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
+    // Load photo
+    if ([self checkConnection]) {
+        [self loadSectionPhoto];
+    }
+   
+    // There is no internet connection
+    else{
+        AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+        [alert show];
 
-    HUD.labelText = @"يتم الآن التحميل";
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     
-    [HUD show:YES];
-    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+   // [self setScrollView];
+
+}
+
+- (void) prepareViewComponent{
     
-    [self.addImgBtnPrss setHidden:YES];
-    pageImages=[[NSMutableArray alloc] init];
-	// Do any additional setup after loading the view.
+    // Set custom font
+    self.uploadImageBtn.hidden=YES;
     self.sectionTitle.text = [self.sectionID objectForKey:@"name"];
     self.sectionTitle.font = [UIFont fontWithName:@"HacenSudan" size:14];
     self.cancelButton.titleLabel.font= [UIFont fontWithName:@"HacenSudan" size:14];
     self.noteTextView.font = [UIFont fontWithName:@"Tahoma" size:10];
+
+    pageImages=[[NSMutableArray alloc] init];
+
+    // Initialize loading indicator
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelFont=[UIFont fontWithName:@"Tahoma" size:16];
+    HUD.labelText = @"يتم الآن التحميل";
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    [HUD show:YES];
     
+    // Set note view
     NSString *note=[self.sectionID objectForKey:@"note"];
     if (![note isEqualToString:@""]) {
         self.noteTextView.text=note;
     }
+    else{
+        self.noteTextView.text=@"ملاحظات...";
+    }
+    
+    // Set section status
     NSString *temp=[self.sectionID objectForKey:@"status"];
-   
+    
     if (temp!=nil) {
         if (temp.integerValue==5) {
             UIButton* btn = [[UIButton alloc]init];
@@ -87,33 +120,12 @@ CGFloat animatedDistance;
         UIButton* btn = [[UIButton alloc]init];
         btn.tag=0;
         [self chooseStatusPressed:btn];
-
+        
     }
-    self.inputAccessoryView = [XCDFormInputAccessoryView new];
-    self.contentScrollView.contentSize =CGSizeMake(320, 518);
-    if ([self checkConnection]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [self loadSectionPhoto];
-        });
-
-    }
-   
-    else{
-        AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
-        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-        [alert show];
-
-    }
-}
-
--(void)viewWillAppear:(BOOL)animated{
     
-   // [self setScrollView];
+    self.contentScrollView.contentSize =CGSizeMake(320, 518);
 
 }
-
 #pragma mark - Buttons Actions
 
 
@@ -235,8 +247,29 @@ CGFloat animatedDistance;
             
         }
         else{
-            UIImage *currentImage=[[UIImage alloc] initWithData:imageData];
-            [pageImages addObject:currentImage];
+            
+            // Set HUD
+            HUD = [[MBProgressHUD alloc] initWithView:self.view];
+            [self.view.window addSubview:HUD];
+            HUD.delegate = self;
+            HUD.labelFont=[UIFont fontWithName:@"Tahoma" size:15];
+            HUD.labelText = @"يتم الآن تحميل الصورة...";
+            [HUD show:YES];
+            
+            PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+            [imageFile save];
+            
+            PFObject *userPhoto = [PFObject objectWithClassName:@"SectionPhoto"];
+            [userPhoto setObject:imageFile forKey:@"imageFile"];
+            
+            [userPhoto setObject:[PFUser currentUser] forKey:@"user"];
+            [userPhoto setObject:self.propertyID forKey:@"propertyID"];
+            [userPhoto setObject:self.sectionID forKey:@"sectionID"];
+
+            [userPhoto save];
+            
+            [pageImages addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count]];
+            [ImagesObjects addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count-1]];
             pageCount=[pageImages count];
             [self setScrollView];
         }
@@ -245,139 +278,62 @@ CGFloat animatedDistance;
 
 
 - (IBAction)saveButtonPressed:(id)sender {
-    NSLog(@"post new inspection");
-    // update sections
-    PFQuery *query = [PFQuery queryWithClassName:@"Sections"];
-    [query whereKey:@"userID" equalTo:[PFUser currentUser]];
-    
-    HUD.hidden=NO;
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
     HUD.labelText = @"يتم الآن الحفظ";
     [HUD show:YES];
-    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
     
-    // Delete all old photos
-    
-    PFQuery *deleteQuery = [PFQuery queryWithClassName:@"SectionPhoto"];
-    [deleteQuery whereKey:@"sectionID" equalTo:self.sectionID];
-    [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            
-            [PFObject deleteAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
-                // Add the new photos
-                if (pageImages.count!=0) {
-                    for (int i=0; i<pageImages.count; i++) {
-                        NSData *imageData = UIImagePNGRepresentation((UIImage*)[pageImages objectAtIndex:i]);
-                        PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
-                        
-                        // Save PFFile
-                        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            if (!error) {
-                                
-                                // Create a PFObject around a PFFile and associate it with the current user
-                                PFObject *userPhoto = [PFObject objectWithClassName:@"SectionPhoto"];
-                                [userPhoto setObject:imageFile forKey:@"imageFile"];
-                                
-                                // Set the access control list to current user for security purposes
-                                userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-                                PFUser *user = [PFUser currentUser];
-                                [userPhoto setObject:user forKey:@"user"];
-                                
-                                [userPhoto setObject:self.propertyID forKey:@"propertyID"];
-                                [userPhoto setObject:self.sectionID forKey:@"sectionID"];
-                                
-                                [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                    if (!error) {
-                                    }
-                                    
-                                    else{
-                                        // Log details of the failure
-                                        [HUD hide:YES];
-                                        AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ..الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
-                                        alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                        alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                        [alert show];
-                                    }
-                                }];
-                            }
-                            else{
-                                // Log details of the failure
-                                [HUD hide:YES];
-                                AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ..الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
-                                alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                                [alert show];
-                            }
-                        } progressBlock:^(int percentDone) {
-                            // Update your progress spinner here. percentDone will be between 0 and 100.
-                            HUD.progress = (float)percentDone/100;
-                        }];
-                        
-                    }// end for loop
-                    
+    // Delete deleted section photo
+    NSMutableArray *deletedPropertyImg=[[NSMutableArray alloc] init];
+    for (int i=0; i<ImagesObjects.count; i++) {
+        if (([(PropertyImageObj*)[ImagesObjects objectAtIndex:i] Deleted])&&!([(PropertyImageObj*)[ImagesObjects objectAtIndex:i] Added])) {
+            [deletedPropertyImg addObject:[(PropertyImageObj*)[ImagesObjects objectAtIndex:i] imagePFObject]];
+        }
+    }
+    [PFObject deleteAll:deletedPropertyImg];
 
-                }// end of if 
-               
+    [self.sectionID setObject:sectionStatus forKey:@"status"];
+    [self.sectionID setObject:self.noteTextView.text forKey:@"note"];
+    [self.sectionID saveInBackgroundWithBlock:^(BOOL done, NSError *error){
+        if (done) {
+            [self.propertyID setObject:[NSDate date] forKey:@"lastInspectionDate"];
+            [self.propertyID saveInBackgroundWithBlock:^(BOOL succeded, NSError *error){
+                if (succeded) {
+                    [HUD hide:YES];
+                    [self.delegate InspectedSection:self.sectionID];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                else{
+                    [HUD hide:YES];
+                    AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ.. الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+                    alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                    alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                    [alert show];
+                }
             }];
         }
-        else {
+        else{
             [HUD hide:YES];
-            AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ..الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+            AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ.. الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
             alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
             alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
             [alert show];
-
         }
     }];
-
     
-    // Retrieve the object by id
-    [query getObjectInBackgroundWithId:self.sectionID.objectId block:^(PFObject *CurrSection, NSError *error) {
-        
-        // Now let's update it with some new data.
-        // will get sent to the cloud.
-        CurrSection[@"status"] = sectionStatus;
-              if ([self.noteTextView.text length] > 0)
-            CurrSection[@"note"] = self.noteTextView.text;
-        
-        [CurrSection saveInBackgroundWithBlock:^(BOOL succeeded , NSError* error)
-         {
-             if (succeeded) {
-                 PFObject *newPost = [PFObject objectWithClassName:@"Inspections"];
-                 [newPost setObject:self.propertyID forKey:@"propertyID"];
-                 [newPost setObject:[PFUser currentUser] forKey:@"userID"];
-                 [newPost saveInBackground];
-                 
-                 PFQuery *query = [PFQuery queryWithClassName:@"Properties"];
-                 [query whereKey:@"userID" equalTo:[PFUser currentUser]];
-                 [query getObjectInBackgroundWithId:self.propertyID.objectId block:^(PFObject *CurrProperty, NSError *error) {
-                     CurrProperty[@"lastInspectionDate"] = [NSDate date];
-                     [CurrProperty saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
-                         if (done) {
-                             [HUD hide:YES];
-                             [self.delegate InspectedSection:CurrSection];
-                             [self dismissViewControllerAnimated:YES completion:nil];
-                         }
-                     }];
-                 }];
-             }
-             else{
-                 [HUD hide:YES];
-                 AlertView *alert=[[AlertView alloc] initWithTitle:@"خطأ!" message:@"حدث خطأ أثناء الحفظ.. الرجاء التحقق من الاتصال والمحاولة لاحقاً." cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
-                 alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                 alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                 [alert show];
-
-             }
-         }];
-    }];
 }
 
 - (IBAction)backButtonPressed:(id)sender {
-    //[self.navigationController popViewControllerAnimated:YES];
+    NSMutableArray *deletedPropertyImg=[[NSMutableArray alloc] init];
+    for (int i=0; i<ImagesObjects.count; i++) {
+        if (([(PropertyImageObj*)[ImagesObjects objectAtIndex:i] Added])&&!([(PropertyImageObj*)[ImagesObjects objectAtIndex:i] Deleted])) {
+            [deletedPropertyImg addObject:[(PropertyImageObj*)[ImagesObjects objectAtIndex:i] imagePFObject]];
+        }
+    }
+    [PFObject deleteAll:deletedPropertyImg];
+
     [self.delegate InspectedSection:nil];
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -482,6 +438,15 @@ CGFloat animatedDistance;
                 NSLog(@"Dismissed!");
             }];
             [self purgePage:actionSheet.tag];
+            int indexTemp=[(PropertyImageObj*)[pageImages objectAtIndex:actionSheet.tag] location];
+            if ([(PropertyImageObj*)[ImagesObjects objectAtIndex:indexTemp] Added]) {
+                // TODO delete from DB
+                
+                PFObject * imgFile=[(PropertyImageObj*)[ImagesObjects objectAtIndex:indexTemp] imagePFObject];
+                [imgFile deleteInBackground];
+            }
+            [(PropertyImageObj*)[ImagesObjects objectAtIndex:indexTemp] setDeleted:YES];
+
             [pageImages removeObjectAtIndex:actionSheet.tag];
             pageCount=pageImages.count;
             [self setScrollView];
@@ -573,9 +538,7 @@ CGFloat animatedDistance;
 
 -(void)setScrollView{
     if (pageImages.count!=0) {
-        self.addImgBtnPrss.hidden=YES;
-      //  self.uploadImageBtn.hidden=NO;
-       // self.deleteImgButton.hidden=NO;
+        self.uploadImageBtn.hidden=YES;
         if (pageImages.count==1) {
             self.prevImgButton.hidden=YES;
             self.nextImgButton.hidden=YES;
@@ -588,15 +551,12 @@ CGFloat animatedDistance;
     }
     
     else if (pageImages.count==0) {
-        self.addImgBtnPrss.hidden=NO;
-        self.uploadImageBtn.hidden=YES;
-        self.deleteImgButton.hidden=YES;
+        self.uploadImageBtn.hidden=NO;
         self.prevImgButton.hidden=YES;
         self.nextImgButton.hidden=YES;
         
     }
    
-
     self.pageControl.currentPage = pageCount;
     self.pageControl.numberOfPages = pageCount;
     CGSize pagesScrollViewSize = self.pagingScrollView.frame.size;
@@ -616,6 +576,31 @@ CGFloat animatedDistance;
     
     // Update the page control
     self.pageControl.currentPage = page;
+    
+    int pageIndex=self.pageControl.currentPage;
+    
+    if( (pageImages.count==1)||(pageImages.count==0)) {
+        [self.prevImgButton setHidden:YES];
+        [self.nextImgButton setHidden:YES];
+        
+        
+    }
+    else if (pageIndex==0) {
+        [self.prevImgButton setHidden:YES];
+        [self.nextImgButton setHidden:NO];
+        
+        
+    }
+    else if (pageIndex==pageImages.count-1){
+        [self.prevImgButton setHidden:YES];
+        [self.nextImgButton setHidden:NO];
+        
+    }
+    else{
+        [self.prevImgButton setHidden:NO];
+        [self.nextImgButton setHidden:NO];
+    }
+
     
     // Work out which pages you want to load
     NSInteger firstPage = page - 1;
@@ -649,7 +634,10 @@ CGFloat animatedDistance;
             frame.origin.y = 0.0f;
             frame = CGRectInset(frame, 20.0f, 30.0f);
             
-            UIImageView *newPageView = [[UIImageView alloc] initWithImage:[pageImages objectAtIndex:page]];
+            PFFile *theImage = [[(PropertyImageObj*)[pageImages objectAtIndex:page] imagePFObject] objectForKey:@"imageFile"];
+            UIImage *image =[UIImage imageWithData:[theImage getData]];
+
+            UIImageView *newPageView = [[UIImageView alloc] initWithImage:image];
             newPageView.userInteractionEnabled = YES;
             newPageView.tag=page;
             
@@ -695,6 +683,10 @@ CGFloat animatedDistance;
 //
 -(void)loadSectionPhoto{
     
+    // Load property images
+    pageImages=[[NSMutableArray alloc] init];
+    ImagesObjects=[[NSMutableArray alloc] init];
+    
     PFQuery *currentSection = [PFQuery queryWithClassName:@"SectionPhoto"];
     [currentSection whereKey:@"sectionID" equalTo:self.sectionID];
     [currentSection whereKey:@"propertyID" equalTo:self.propertyID];
@@ -702,31 +694,26 @@ CGFloat animatedDistance;
     [currentSection findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
-            PFFile *theImage;
-            for (PFObject* ob in objects) {
-                theImage = [ob objectForKey:@"imageFile"];
-                UIImage *image=[UIImage imageWithData:[theImage getData]];
-                [pageImages addObject:image];
+                for (int i=0; i<objects.count; i++) {
+                [ImagesObjects addObject:[[PropertyImageObj alloc] initWithObject:(PFObject*)[objects objectAtIndex:i] andDeleteFlag:NO andAddedFlag:NO withLocation:i]];
+                [pageImages addObject:[[PropertyImageObj alloc] initWithObject:(PFObject*)[objects objectAtIndex:i] andDeleteFlag:NO andAddedFlag:NO withLocation:i]];
             }
-            
         }
         
         pageCount=pageImages.count;
         [HUD hide:YES];
-        HUD.hidden=YES;
-        [self.contentScrollView addSubview:self.addImgBtnPrss];
-        [self.contentScrollView addSubview:self.deleteImgButton];
+        
         [self.contentScrollView addSubview:self.nextImgButton];
         [self.contentScrollView addSubview:self.prevImgButton];
 
-        if (pageCount<=1) {
+        if (pageCount==1||pageCount==0) {
             [self.nextImgButton setHidden:YES];
             [self.prevImgButton setHidden:YES];
-            [self.addImgBtnPrss setHidden:YES];
-
         }
-
-       
+        else {
+            self.nextImgButton.hidden=NO;
+            self.prevImgButton.hidden=YES;
+        }
         
         [self setScrollView];
     }];
@@ -791,9 +778,7 @@ CGFloat animatedDistance;
             [pageImages removeObjectAtIndex:self.pageControl.currentPage];
             pageCount=pageImages.count;
             [self setScrollView];
-            
         }
-        
     }
     
 }
@@ -808,7 +793,10 @@ CGFloat animatedDistance;
 
 - (UIImage *)photoBrowser:(AGPhotoBrowserView *)photoBrowser imageAtIndex:(NSInteger)index
 {
-	return [pageImages objectAtIndex:index];
+    PFFile *theImage = [[(PropertyImageObj*)[pageImages objectAtIndex:index] imagePFObject] objectForKey:@"imageFile"];
+    UIImage *image=[UIImage imageWithData:[theImage getData]];
+    
+	return image;
 }
 
 - (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser titleForImageAtIndex:(NSInteger)index
