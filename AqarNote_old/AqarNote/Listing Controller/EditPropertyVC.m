@@ -190,10 +190,18 @@
     [self.propertyTitleTxtField resignFirstResponder];
     [self SBPickerSelector:countriesPicker cancelPicker:YES];
     
-    // Check filling information 
+    // Set HUD
+    loadingIndicator = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view.window addSubview:loadingIndicator];
+    loadingIndicator.delegate = self;
+    loadingIndicator.labelFont=[UIFont fontWithName:@"Tahoma" size:15];
+    loadingIndicator.labelText = @"يتم الآن التعديل...";
+    [loadingIndicator show:YES];
+
+    // Check filling information
     
     if ([self.propertyTitleTxtField.text length] == 0 || self.propertyTitleTxtField.text == nil || [self.propertyTitleTxtField.text isEqual:@""] == TRUE) {
-        
+        [loadingIndicator hide:YES];
         AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال عنوان الشقة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
         alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
         alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
@@ -201,6 +209,8 @@
         
     }
     else if ([self.cityTxtField.text length] == 0 || self.cityTxtField.text == nil || [self.cityTxtField.text isEqual:@""] == TRUE) {
+        [loadingIndicator hide:YES];
+
         AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال المدينة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
         alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
         alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
@@ -209,6 +219,8 @@
     }
     
     else if ([chosenCountry isEqual:nil]) {
+        [loadingIndicator hide:YES];
+
         AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال الدولة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
         alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
         alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
@@ -217,13 +229,6 @@
     }
     
     else{
-        // Set HUD
-        loadingIndicator = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view.window addSubview:loadingIndicator];
-        loadingIndicator.delegate = self;
-        loadingIndicator.labelFont=[UIFont fontWithName:@"Tahoma" size:15];
-        loadingIndicator.labelText = @"يتم الآن التعديل...";
-        [loadingIndicator show:YES];
         
         NSMutableArray  *deletedSections=[[NSMutableArray alloc] init];
         
@@ -283,8 +288,13 @@
                         [self.propertyID setObject:self.propertyTitleTxtField.text forKey:@"Title"];
                         [self.propertyID setObject:self.countryTxtField.text forKey:@"country"];
                         [self.propertyID setObject:self.cityTxtField.text forKey:@"city"];
-                        // [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
                         [self.propertyID setObject:[PFUser currentUser] forKey:@"userID"];
+                        if (pageImages.count!=0) {
+                            PFQuery *query = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                            [query whereKey:@"propertyID" equalTo:self.propertyID];
+                            [self.propertyID setObject:[query getFirstObject] forKey:@"imageID"];
+                            
+                        }
                         [self.propertyID saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
                                 if (done) {
                                     [loadingIndicator hide:YES];
@@ -322,9 +332,14 @@
                 [self.propertyID setObject:self.propertyTitleTxtField.text forKey:@"Title"];
                 [self.propertyID setObject:self.countryTxtField.text forKey:@"country"];
                 [self.propertyID setObject:self.cityTxtField.text forKey:@"city"];
-                //  [pfObject setObject:self.descriptionsTxtView.text forKey:@"Description"];
-                //[pfObject setObject:chosenSectionArray forKey:@"sections"];
+
                 [self.propertyID setObject:[PFUser currentUser] forKey:@"userID"];
+                if (pageImages.count!=0) {
+                    PFQuery *query = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                    [query whereKey:@"propertyID" equalTo:self.propertyID];
+                    [self.propertyID setObject:[query getFirstObject] forKey:@"imageID"];
+                    
+                }
                 [self.propertyID saveInBackgroundWithBlock:^(BOOL done, NSError *error) {
                         if (done) {
                             [loadingIndicator hide:YES];

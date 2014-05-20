@@ -237,7 +237,7 @@ CGFloat animatedDistance;
     UIButton* btn = (UIButton*)sender;
     int currentIndex = btn.tag;
 
-    if (  [(SectionObject*)[sectionsArray objectAtIndex:currentIndex] SectionChosen]) {
+    if ([(SectionObject*)[sectionsArray objectAtIndex:currentIndex] SectionChosen]) {
         [(SectionObject*)[sectionsArray objectAtIndex:currentIndex] setSectionChosen:NO];
         [btn setImage:[UIImage imageNamed:@"white_dot_option.png"] forState:UIControlStateNormal];
         
@@ -325,12 +325,15 @@ CGFloat animatedDistance;
     else{
         PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
         [imageFile save];
+        
         PFObject *userPhoto = [PFObject objectWithClassName:@"PropertyPhoto"];
         [userPhoto setObject:imageFile forKey:@"imageFile"];
         [userPhoto setObject: [PFUser currentUser] forKey:@"user"];
         [userPhoto setObject:newProperty forKey:@"propertyID"];
+      
         
         [userPhoto saveInBackground];
+        
         
         [pageImages addObject:[[PropertyImageObj alloc] initWithObject:userPhoto andDeleteFlag:NO andAddedFlag:YES withLocation:pageImages.count]];
         pageCount=[pageImages count];
@@ -356,8 +359,16 @@ CGFloat animatedDistance;
     [self.propertyTitle resignFirstResponder];
     [self SBPickerSelector:countriesPicker cancelPicker:YES];
     
+    // Set loading indicator
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    HUD.delegate = self;
+    HUD.labelText = @"يتم الآن الحفظ";
+    [HUD show:YES];
+
     if ([self.propertyTitle.text length] == 0 || self.propertyTitle.text == nil || [self.propertyTitle.text isEqual:@""] == TRUE) {
-        
+        [HUD hide:YES];
         AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال عنوان الشقة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
         alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
         alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
@@ -365,6 +376,8 @@ CGFloat animatedDistance;
  
     }
     else if ([self.city.text length] == 0 || self.city.text == nil || [self.city.text isEqual:@""] == TRUE) {
+        [HUD hide:YES];
+
         AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال المدينة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
         alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
         alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
@@ -373,6 +386,8 @@ CGFloat animatedDistance;
     }
 
     else if ([chosenCountry isEqual:nil]) {
+        [HUD hide:YES];
+
         AlertView *alert1=[[AlertView alloc] initWithTitle:@"المعلومات غير كاملة" message:@"الرجاء إدخال الدولة" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
         alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
         alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
@@ -381,13 +396,6 @@ CGFloat animatedDistance;
     }
     
     else{
-        // Set loading indicator
-        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.view addSubview:HUD];
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-        HUD.delegate = self;
-        HUD.labelText = @"يتم الآن الحفظ";
-        [HUD show:YES];
         
         // Set added sections
         NSMutableArray *toAddSections=[[NSMutableArray alloc] init];
@@ -397,11 +405,21 @@ CGFloat animatedDistance;
                 [toAddSections addObject:[(SectionObject*)[sectionsArray objectAtIndex:i] sectionPFObject]];
             }
         }
-        [PFObject saveAll:toAddSections];
+        [PFObject saveAllInBackground:toAddSections];
+        
+
         // Set Preoperty
         [newProperty setObject:self.propertyTitle.text forKey:@"Title"];
         [newProperty setObject:chosenCountry forKey:@"country"];
         [newProperty setObject:self.city.text forKey:@"city"];
+        // Save main Image for home
+
+        if (pageImages.count!=0) {
+            PFQuery *query = [PFQuery queryWithClassName:@"PropertyPhoto"];
+            [query whereKey:@"propertyID" equalTo:newProperty];
+            [newProperty setObject:[query getFirstObject] forKey:@"imageID"];
+
+        }
         [newProperty saveInBackgroundWithBlock:^(BOOL done , NSError *error){
             if (done) {
                 
@@ -415,20 +433,20 @@ CGFloat animatedDistance;
                                        
                                        [alertView dismiss];
                                        if (pageImages.count!=0) {
-                                             [self.delegate addedProperty:newProperty withImage:[(PropertyImageObj*)[pageImages objectAtIndex:0] imagePFObject]];
+                                           [self.delegate addedProperty:newProperty withImage:[(PropertyImageObj*)[pageImages objectAtIndex:0] imagePFObject]];
                                        }
                                        else{
-                                             [self.delegate addedProperty:newProperty withImage:nil];
+                                           [self.delegate addedProperty:newProperty withImage:nil];
                                        }
                                        [self dismissView];
                                        
                                    }];
                 
                 [alert2 show];
-                    
+                
             }
         }];
-        
+
     }
   
 }
@@ -1149,7 +1167,10 @@ CGFloat animatedDistance;
 
 - (UIImage *)photoBrowser:(AGPhotoBrowserView *)photoBrowser imageAtIndex:(NSInteger)index
 {
-	return [pageImages objectAtIndex:index];
+    PFFile *theImage = [[(PropertyImageObj*)[pageImages objectAtIndex:index] imagePFObject] objectForKey:@"imageFile"];
+    UIImage *image=[UIImage imageWithData:[theImage getData]];
+    
+	return image;
 }
 
 - (NSString *)photoBrowser:(AGPhotoBrowserView *)photoBrowser titleForImageAtIndex:(NSInteger)index

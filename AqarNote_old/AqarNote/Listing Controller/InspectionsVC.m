@@ -107,60 +107,70 @@
         [postQuery whereKeyExists:@"lastInspectionDate"];
         [postQuery orderByDescending:@"lastInspectionDate"];
 
-        // Run the query
-        [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
             if (!error) {
-                inspectionsImagesArray=[[NSMutableArray alloc] initWithCapacity:objects.count];
                 inspectionsArray = [[NSMutableArray alloc]initWithArray:objects];
+                inspectionsImagesArray=[[NSMutableArray alloc] init];
                 for (int i=0; i<inspectionsArray.count; i++) {
-                    PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-                    PFObject *post = (PFObject*)[inspectionsArray objectAtIndex:i];
-                    [photoQuery whereKey:@"propertyID" equalTo:post];
-                    NSArray *photos= [photoQuery findObjects];
-                    if (photos.count!=0) {
-                        PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
-                        [inspectionsImagesArray insertObject:theImage atIndex:i];
+                    
+                    PFObject *property = (PFObject*)[inspectionsArray objectAtIndex:i];
+                    PFObject *photo=[property objectForKey:@"imageID"];
+                    
+                    if (photo!=nil) {
+                        PFQuery *query = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                        [query whereKey:@"objectId" equalTo:photo.objectId];
+                        photo=[query getFirstObject];
+                        if (photo) {
+                            PFFile *img=[photo objectForKey:@"imageFile"];
+                            [inspectionsImagesArray addObject:img];
+                        }
+                        else{
+                            PFFile *theImage = [[PFFile alloc] init];
+                            [inspectionsImagesArray addObject:theImage];
+                        }
                     }
                     else{
                         PFFile *theImage = [[PFFile alloc] init];
-                        [inspectionsImagesArray insertObject:theImage atIndex:i];
-                    }
-                    
-                    if (inspectionsArray.count==inspectionsImagesArray.count) {
-                        [HUD hide:YES];
-                        [refreshControl endRefreshing];
-                        [self.inspectionsTable setHidden:NO];
-                        self.inspectionsTable.backgroundColor=[UIColor whiteColor];
-                        self.inspectionsTable.separatorColor=[UIColor lightGrayColor];
-                        self.inspectionsTable.sectionHeaderHeight=31.0;
-                        [self.inspectionsTable reloadData];
-
-                        [self.addNewInspectImage setHidden:YES];
-                        [self.addNewProperImg setHidden:YES];
-                        [self.noInspecImage setHidden:YES];
-                        [self.searchButton setHidden:NO];
+                        [inspectionsImagesArray addObject:theImage];
                     }
                 }
-            }
-            
-            if (inspectionsArray.count==0) {
                 [HUD hide:YES];
                 [refreshControl endRefreshing];
 
                 [self.inspectionsTable setHidden:NO];
-                self.inspectionsTable.sectionHeaderHeight=0.0;
-                self.inspectionsTable.backgroundColor=[UIColor clearColor];
-                self.inspectionsTable.separatorColor=[UIColor clearColor];
+                self.inspectionsTable.backgroundColor=[UIColor whiteColor];
+                self.inspectionsTable.separatorColor=[UIColor lightGrayColor];
+                self.inspectionsTable.sectionHeaderHeight=31.0;
+                
+                [self.addNewInspectImage setHidden:YES];
+                [self.addNewProperImg setHidden:YES];
+                [self.noInspecImage setHidden:YES];
+                [self.searchButton setHidden:NO];
+                
+                if (inspectionsArray.count==0) {
+                    
+                    self.inspectionsTable.sectionHeaderHeight=0.0;
+                    self.inspectionsTable.backgroundColor=[UIColor clearColor];
+                    self.inspectionsTable.separatorColor=[UIColor clearColor];
+                    
+                    [self.addNewInspectImage setHidden:NO];
+                    [self.addNewProperImg setHidden:NO];
+                    [self.noInspecImage setHidden:NO];
+                    [self.searchButton setHidden:YES];
+                    
+                }
                 [self.inspectionsTable reloadData];
 
-                [self.addNewInspectImage setHidden:NO];
-                [self.addNewProperImg setHidden:NO];
-                [self.noInspecImage setHidden:NO];
-                [self.searchButton setHidden:YES];
 
             }
-
+            else{
+                AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+                alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+                alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+                [alert show];
+            }
         }];
+
     }
 }
 
@@ -435,6 +445,30 @@
             
         }
         [inspectionsImagesArray insertObject:imageFile atIndex:0];
+        [self.inspectionsTable setHidden:NO];
+        self.inspectionsTable.backgroundColor=[UIColor whiteColor];
+        self.inspectionsTable.separatorColor=[UIColor lightGrayColor];
+        self.inspectionsTable.sectionHeaderHeight=31.0;
+        [self.inspectionsTable reloadData];
+        
+        [self.addNewInspectImage setHidden:YES];
+        [self.addNewProperImg setHidden:YES];
+        [self.noInspecImage setHidden:YES];
+        [self.searchButton setHidden:NO];
+        
+        if (inspectionsArray.count==0) {
+            
+            self.inspectionsTable.sectionHeaderHeight=0.0;
+            self.inspectionsTable.backgroundColor=[UIColor clearColor];
+            self.inspectionsTable.separatorColor=[UIColor clearColor];
+            
+            [self.addNewInspectImage setHidden:NO];
+            [self.addNewProperImg setHidden:NO];
+            [self.noInspecImage setHidden:NO];
+            [self.searchButton setHidden:YES];
+            
+        }
+
         [self.inspectionsTable reloadData];
     }
 }

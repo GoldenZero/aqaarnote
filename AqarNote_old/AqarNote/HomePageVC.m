@@ -92,63 +92,63 @@
 
 -(void)getProperties
 {
-   
+
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
     [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
     [postQuery orderByDescending:@"createdAt"];
-
-    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error) {
-            propertiesImagesArray=[[NSMutableArray alloc] initWithCapacity:objects.count];
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];
-            for (int i=0; i<propertiesArray.count; i++) {
-                PFQuery *photoQuery = [PFQuery queryWithClassName:@"PropertyPhoto"];
-                PFObject *post = (PFObject*)[propertiesArray objectAtIndex:i];
-                [photoQuery whereKey:@"propertyID" equalTo:post];
-                NSArray *photos= [photoQuery findObjects];
-                if (photos.count!=0) {
-                    PFFile *theImage = [(PFObject*)[photos objectAtIndex:0] objectForKey:@"imageFile"];
-                    [propertiesImagesArray insertObject:theImage atIndex:i];
+            propertiesImagesArray=[[NSMutableArray alloc] init];
+            for (int i=0; i<objects.count; i++) {
+                
+                PFObject *property = (PFObject*)[propertiesArray objectAtIndex:i];
+                PFObject *photo=[property objectForKey:@"imageID"];
+            
+                if (photo!=nil) {
+                    PFQuery *query = [PFQuery queryWithClassName:@"PropertyPhoto"];
+                    [query whereKey:@"objectId" equalTo:photo.objectId];
+                    photo=[query getFirstObject];
+                    if (photo) {
+                        PFFile *img=[photo objectForKey:@"imageFile"];
+                        [propertiesImagesArray addObject:img];
+                    }
+                    else{
+                        PFFile *theImage = [[PFFile alloc] init];
+                        [propertiesImagesArray addObject:theImage];
+                    }
                 }
                 else{
                     PFFile *theImage = [[PFFile alloc] init];
-                    [propertiesImagesArray insertObject:theImage atIndex:i];
-                }
-                
-                if (propertiesArray.count==propertiesImagesArray.count) {
-                    [HUD hide:YES];
-                    [refreshControl endRefreshing];
-                    [self.propertiesTable setHidden:NO];
-                    [self.addNewImage setHidden:YES];
-                    [self.searchButton setHidden:NO];
-                    self.propertiesTable.backgroundColor=[UIColor whiteColor];
-                    self.propertiesTable.separatorColor=[UIColor lightGrayColor];
-                    [self.propertiesTable reloadData];
+                    [propertiesImagesArray addObject:theImage];
                 }
             }
-        }
-
-        if (propertiesArray.count==0) {
             [HUD hide:YES];
             [refreshControl endRefreshing];
+            [self.propertiesTable setHidden:NO];
+            [self.addNewImage setHidden:YES];
+            [self.searchButton setHidden:NO];
+            self.propertiesTable.backgroundColor=[UIColor whiteColor];
+            self.propertiesTable.separatorColor=[UIColor lightGrayColor];
+            [self.propertiesTable reloadData];
 
-            if (error) {
+            if (propertiesArray.count==0) {
                 
-                AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
-                alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
-                alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
-                [alert show];
+                self.propertiesTable.backgroundColor=[UIColor clearColor];
+                self.propertiesTable.separatorColor=[UIColor clearColor];
+                [self.addNewImage setHidden:NO];
+                [self.searchButton setHidden:YES];
                 
             }
-            [self.propertiesTable reloadData];
-            [self.propertiesTable setHidden:NO];
-            self.propertiesTable.backgroundColor=[UIColor clearColor];
-            self.propertiesTable.separatorColor=[UIColor clearColor];
-            [self.addNewImage setHidden:NO];
-            [self.searchButton setHidden:YES];
+
+        }
+        else{
+            AlertView *alert=[[AlertView alloc] initWithTitle:@"لا يوجد اتصال بالانترنت" message:@"الرجاء التحقق من الاتصال و المحاولة لاحقا" cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+            alert.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+            alert.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+            [alert show];
         }
     }];
-
 }
 
 
