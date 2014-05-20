@@ -70,8 +70,20 @@
 
 + (void)initialize
 {
-	//configure iRate
-	[iRate sharedInstance].appStoreID = 355313284; // Replace this
+    //overriding the default iRate strings
+    [iRate sharedInstance].messageTitle = NSLocalizedString(@"قيم عقار نوت", @"iRate message title");
+    [iRate sharedInstance].message = NSLocalizedString(@"إن أعجبك عقار نوت، هل تسمح بلحظة لتقييمه؟ لن يتطلب الأمر أكثر من دقيقة واحدة. شكراً لدعمك.", @"iRate message");
+    [iRate sharedInstance].cancelButtonLabel = NSLocalizedString(@"لا شكراً.", @"iRate decline button");
+    [iRate sharedInstance].remindButtonLabel = NSLocalizedString(@"ذكرني لاحقاً.", @"iRate remind button");
+    [iRate sharedInstance].rateButtonLabel = NSLocalizedString(@"قيم الآن.", @"iRate accept button");
+
+    [iRate sharedInstance].applicationBundleID = @"com.AqarNote";
+	[iRate sharedInstance].onlyPromptIfLatestVersion = NO;
+    
+    [[iRate sharedInstance] openRatingsPageInAppStore];
+    //enable preview mode
+    //[iRate sharedInstance].previewMode = YES;
+
 }
 
 @end
