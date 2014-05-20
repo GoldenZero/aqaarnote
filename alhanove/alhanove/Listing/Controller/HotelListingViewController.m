@@ -85,6 +85,12 @@
     
 }
 
+#pragma mark - IBAction
+- (IBAction)backInvoked:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 #pragma mark - UITableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

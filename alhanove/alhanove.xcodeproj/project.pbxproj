@@ -42,6 +42,8 @@
 		84C294BC192B7E9B0027E782 /* rating_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C294B6192B7E9B0027E782 /* rating_3.png */; };
 		84C294BD192B7E9B0027E782 /* rating_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C294B7192B7E9B0027E782 /* rating_4.png */; };
 		84C294BE192B7E9B0027E782 /* rating_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C294B8192B7E9B0027E782 /* rating_5.png */; };
+		84C294C1192B84EC0027E782 /* back_header_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C294BF192B84EC0027E782 /* back_header_btn.png */; };
+		84C294C2192B84EC0027E782 /* back_header_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C294C0192B84EC0027E782 /* back_header_btn@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +92,8 @@
 		84C294B6192B7E9B0027E782 /* rating_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rating_3.png; sourceTree = "<group>"; };
 		84C294B7192B7E9B0027E782 /* rating_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rating_4.png; sourceTree = "<group>"; };
 		84C294B8192B7E9B0027E782 /* rating_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rating_5.png; sourceTree = "<group>"; };
+		84C294BF192B84EC0027E782 /* back_header_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_header_btn.png; sourceTree = "<group>"; };
+		84C294C0192B84EC0027E782 /* back_header_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_header_btn@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +379,8 @@
 				84C294B2192B7E9B0027E782 /* rates stars */,
 				84C294A2192B7BA50027E782 /* Demo hotels Img */,
 				84C2949A192B72830027E782 /* Fonts */,
+				84C294BF192B84EC0027E782 /* back_header_btn.png */,
+				84C294C0192B84EC0027E782 /* back_header_btn@2x.png */,
 				84C29490192B70B10027E782 /* left_arrow.png */,
 				84C29491192B70B10027E782 /* left_arrow@2x.png */,
 				84C29481192B61B70027E782 /* badge1.png */,
@@ -505,6 +511,7 @@
 				84C294A8192B7BA50027E782 /* Ajyad.jpg in Resources */,
 				84C294AB192B7BA50027E782 /* hilton.jpg in Resources */,
 				84C29488192B61B70027E782 /* badge3.png in Resources */,
+				84C294C2192B84EC0027E782 /* back_header_btn@2x.png in Resources */,
 				84C2948A192B61B70027E782 /* badge5.png in Resources */,
 				84C294B1192B7CAB0027E782 /* HotelCell.xib in Resources */,
 				84C29440192B56990027E782 /* Main.storyboard in Resources */,
@@ -513,6 +520,7 @@
 				84C294BB192B7E9B0027E782 /* rating_2.png in Resources */,
 				84C29487192B61B70027E782 /* badge2.png in Resources */,
 				84C2949E192B72830027E782 /* ge_ss_two_medium.ttf in Resources */,
+				84C294C1192B84EC0027E782 /* back_header_btn.png in Resources */,
 				84C294BD192B7E9B0027E782 /* rating_4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
