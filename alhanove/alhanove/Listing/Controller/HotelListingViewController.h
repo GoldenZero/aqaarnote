@@ -1,5 +1,5 @@
 //
-//  HomeViewController.h
+//  HotelListingViewController.h
 //  alhanove
 //
 //  Created by GALMarei on 5/20/14.
@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuCell.h"
-#import "HotelListingViewController.h"
+#import "HotelCell.h"
 
-@interface HomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface HotelListingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+
 @end

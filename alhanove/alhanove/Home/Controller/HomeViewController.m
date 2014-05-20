@@ -20,6 +20,8 @@
 {
     [super viewDidLoad];
     
+    [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
+    self.navigationController.title = @"الهنوف للحجوزات";
     //get the data for the menu
     [self getListMenuData];
     
@@ -87,14 +89,19 @@
     static NSString *CellIdentifier = @"MenuCell";
     NSDictionary* dictionary = [listMenu objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell = [[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
+        NSArray* topLevelObjects;
+            topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+        
+        cell = [topLevelObjects objectAtIndex:0];
+        
     }
-    cell.textLabel.text = dictionary[@"Title"];
-    [cell.imageView setImage:[UIImage imageNamed:dictionary[@"Image"]]];
+    cell.titleLbl.text = dictionary[@"Title"];
+    [cell.menuImg setImage:[UIImage imageNamed:dictionary[@"Image"]]];
     
     return cell;
 }
@@ -102,6 +109,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //al haj
+    if (indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"showHotelListing" sender:self];
+    }
 }
 
 @end
