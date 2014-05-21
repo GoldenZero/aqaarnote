@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "DYRateView.h"
+#import "AGPhotoBrowserView.h"
 
-@interface HotelDetailsVC : UIViewController<UIScrollViewDelegate,DYRateViewDelegate>
+@interface HotelDetailsVC : UIViewController<UIScrollViewDelegate,DYRateViewDelegate,AGPhotoBrowserDataSource,AGPhotoBrowserDelegate>
 
 #pragma mark -Properties
+@property (nonatomic, strong) AGPhotoBrowserView *browserView;
 
 
 #pragma mark - Buttons Actions
