@@ -111,8 +111,22 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //al haj
     if (indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"showHotelListing" sender:self];
+        
+        [self performSegueWithIdentifier:@"showMekkaListing" sender:self];
+    }else if (indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"showMekkaListing" sender:self];
     }
+}
+
+#pragma mark - storyBoard delegate
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+        if ([[segue identifier] isEqualToString:@"showMekkaListing"])   //parameter to login page
+        {
+            HotelListingViewController* vc = segue.destinationViewController;
+            vc.listingType = ListingTypeMekka;
+        }
 }
 
 @end

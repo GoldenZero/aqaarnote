@@ -42,7 +42,7 @@
                     <connections>
                         <outlet property="pageTitle" destination="wo9-GO-H23" id="MlQ-ZP-bRe"/>
                         <outlet property="tableView" destination="9h3-Iv-cUa" id="IVG-3L-ZwT"/>
-                        <segue destination="Zla-dz-aC0" kind="modal" identifier="showHotelListing" modalTransitionStyle="crossDissolve" id="TMZ-ZH-r4K"/>
+                        <segue destination="Zla-dz-aC0" kind="modal" identifier="showMekkaListing" modalTransitionStyle="crossDissolve" id="TMZ-ZH-r4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -101,6 +101,16 @@
                                             <action selector="backInvoked:" destination="Zla-dz-aC0" eventType="touchUpInside" id="ITr-la-Zsl"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zfv-xb-myU">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" title="التالي">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextInvoked:" destination="Zla-dz-aC0" eventType="touchUpInside" id="yA5-oD-xOu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
@@ -110,6 +120,8 @@
                     <navigationItem key="navigationItem" title="الهنوف للحجوزات" id="pHO-Gc-DVD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="backBtn" destination="MtF-mj-t8D" id="LVZ-VE-Tx6"/>
+                        <outlet property="nextBtn" destination="Zfv-xb-myU" id="1jU-KN-Q6E"/>
                         <outlet property="pageTitle" destination="tdk-vC-9B1" id="pvi-jF-fQH"/>
                         <outlet property="tableView" destination="lpH-J6-lOg" id="1XE-VX-fSb"/>
                     </connections>

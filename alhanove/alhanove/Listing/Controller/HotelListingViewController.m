@@ -30,12 +30,10 @@
     [super viewDidLoad];
     
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
-    self.pageTitle.text = @"فنادق مكة المكرمة";
+    [self.nextBtn.titleLabel setFont:[UIFont lightGeSSOfSize:17]];
+
     //get the data for the menu
     [self getListMenuData];
-    
-    //reflect to the table
-    [self.tableView reloadData];
     
 }
 
@@ -48,46 +46,134 @@
 #pragma mark - Methods
 -(void)getListMenuData
 {
-    hotelArrays = [NSMutableArray new];
-    NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
-                               @"Image" : @"hilton.jpg",
-                               @"Stars" : @"5",
-                               @"Cost" : @"480 SA"};
-    [hotelArrays addObject:MenuDict];
+    if (self.listingType == ListingTypeMekka) {
+        self.pageTitle.text = @"فنادق مكة المكرمة";
+        
+        hotelArrays = [NSMutableArray new];
+        NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
+                                   @"Image" : @"hilton.jpg",
+                                   @"Stars" : @"5",
+                                   @"Cost" : @"480 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict = @{@"Title" : @"دار التوحيد",
+                     @"Image" : @"dar al tawhed.jpg",
+                     @"Stars" : @"3",
+                     @"Cost" : @"200 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict  = @{@"Title" : @"ميريديان",
+                      @"Image" : @"meredian.jpg",
+                      @"Stars" : @"5",
+                      @"Cost" : @"600 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict = @{@"Title" : @"إيلاف كندا",
+                     @"Image" : @"elaf kinda.jpg",
+                     @"Stars" : @"4",
+                     @"Cost" : @"260 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict = @{@"Title" : @"أجياد مكة مكارم",
+                     @"Image" : @"Ajyad.jpg",
+                     @"Stars" : @"3",
+                     @"Cost" : @"320 SA"};
+        [hotelArrays addObject:MenuDict];
+    }else if (self.listingType == ListingTypeMadina) {
+        self.pageTitle.text = @"فنادق المدينة المنورة";
+
+        hotelArrays = [NSMutableArray new];
+        NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
+                                   @"Image" : @"hilton.jpg",
+                                   @"Stars" : @"5",
+                                   @"Cost" : @"600 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict = @{@"Title" : @"أوبروي",
+                     @"Image" : @"dar al tawhed.jpg",
+                     @"Stars" : @"3",
+                     @"Cost" : @"200 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict  = @{@"Title" : @"دار التقوى",
+                      @"Image" : @"meredian.jpg",
+                      @"Stars" : @"3",
+                      @"Cost" : @"440 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict = @{@"Title" : @"الحرم",
+                     @"Image" : @"elaf kinda.jpg",
+                     @"Stars" : @"4",
+                     @"Cost" : @"300 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict = @{@"Title" : @"ديار انترناشيونال",
+                     @"Image" : @"Ajyad.jpg",
+                     @"Stars" : @"4",
+                     @"Cost" : @"410 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict = @{@"Title" : @"ديار",
+                     @"Image" : @"hilton.jpg",
+                     @"Stars" : @"3",
+                     @"Cost" : @"360 SA"};
+        [hotelArrays addObject:MenuDict];
+        
+        MenuDict = nil;
+        MenuDict = @{@"Title" : @"موفينبيك انوار المدينة",
+                     @"Image" : @"meredian.jpg",
+                     @"Stars" : @"5",
+                     @"Cost" : @"520 SA"};
+        [hotelArrays addObject:MenuDict];
+    }
     
-    MenuDict = nil;
-    MenuDict = @{@"Title" : @"دار التوحيد",
-                   @"Image" : @"dar al tawhed.jpg",
-                   @"Stars" : @"3",
-                   @"Cost" : @"200 SA"};
-    [hotelArrays addObject:MenuDict];
-    
-    MenuDict = nil;
-    MenuDict  = @{@"Title" : @"ميريديان",
-                   @"Image" : @"meredian.jpg",
-                   @"Stars" : @"5",
-                   @"Cost" : @"600 SA"};
-    [hotelArrays addObject:MenuDict];
-    
-    MenuDict = nil;
-    MenuDict = @{@"Title" : @"إيلاف كندا",
-                   @"Image" : @"elaf kinda.jpg",
-                   @"Stars" : @"4",
-                   @"Cost" : @"260 SA"};
-    [hotelArrays addObject:MenuDict];
-    
-    MenuDict = nil;
-    MenuDict = @{@"Title" : @"أجياد مكة مكارم",
-                   @"Image" : @"Ajyad.jpg",
-                   @"Stars" : @"3",
-                   @"Cost" : @"320 SA"};
-    [hotelArrays addObject:MenuDict];
+    //reflect to the table
+    [self.tableView reloadData];
     
 }
 
 #pragma mark - IBAction
 - (IBAction)backInvoked:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.backBtn.tag == 0)
+        [self dismissViewControllerAnimated:YES completion:nil];
+    else if (self.backBtn.tag == 1)
+    {
+        self.listingType = ListingTypeMekka;
+        self.nextBtn.tag = 0;
+        self.backBtn.tag = 0;
+        [self.nextBtn setTitle:@"التالي" forState:UIControlStateNormal];
+        
+        [self.tableView setNeedsDisplay];
+        [self getListMenuData];
+
+    }
+}
+
+- (IBAction)nextInvoked:(id)sender {
+    if (self.nextBtn.tag == 0)
+    {
+        self.listingType = ListingTypeMadina;
+        self.nextBtn.tag = 1;
+        self.backBtn.tag = 1;
+        [self.nextBtn setTitle:@"تم" forState:UIControlStateNormal];
+        
+        [self.tableView setNeedsDisplay];
+        [self getListMenuData];
+        
+    }else if (self.nextBtn.tag == 1)
+    {
+        //go to the reservation details
+        
+    }
 }
 
 
@@ -96,7 +182,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
-    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

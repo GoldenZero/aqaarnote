@@ -14,4 +14,5 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @end
