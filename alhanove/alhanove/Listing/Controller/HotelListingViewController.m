@@ -53,35 +53,35 @@
         NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
                                    @"Image" : @"hilton.jpg",
                                    @"Stars" : @"5",
-                                   @"Cost" : @"480 SA"};
+                                   @"Cost" : @"480"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict = @{@"Title" : @"دار التوحيد",
                      @"Image" : @"dar al tawhed.jpg",
                      @"Stars" : @"3",
-                     @"Cost" : @"200 SA"};
+                     @"Cost" : @"200"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict  = @{@"Title" : @"ميريديان",
                       @"Image" : @"meredian.jpg",
                       @"Stars" : @"5",
-                      @"Cost" : @"600 SA"};
+                      @"Cost" : @"600"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict = @{@"Title" : @"إيلاف كندا",
                      @"Image" : @"elaf kinda.jpg",
                      @"Stars" : @"4",
-                     @"Cost" : @"260 SA"};
+                     @"Cost" : @"260"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict = @{@"Title" : @"أجياد مكة مكارم",
                      @"Image" : @"Ajyad.jpg",
                      @"Stars" : @"3",
-                     @"Cost" : @"320 SA"};
+                     @"Cost" : @"320"};
         [hotelArrays addObject:MenuDict];
     }else if (self.listingType == ListingTypeMadina) {
         self.pageTitle.text = @"فنادق المدينة المنورة";
@@ -90,49 +90,49 @@
         NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
                                    @"Image" : @"hilton.jpg",
                                    @"Stars" : @"5",
-                                   @"Cost" : @"600 SA"};
+                                   @"Cost" : @"600"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict = @{@"Title" : @"أوبروي",
                      @"Image" : @"dar al tawhed.jpg",
                      @"Stars" : @"3",
-                     @"Cost" : @"200 SA"};
+                     @"Cost" : @"200"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict  = @{@"Title" : @"دار التقوى",
                       @"Image" : @"meredian.jpg",
                       @"Stars" : @"3",
-                      @"Cost" : @"440 SA"};
+                      @"Cost" : @"440"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict = @{@"Title" : @"الحرم",
                      @"Image" : @"elaf kinda.jpg",
                      @"Stars" : @"4",
-                     @"Cost" : @"300 SA"};
+                     @"Cost" : @"300"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict = @{@"Title" : @"ديار انترناشيونال",
                      @"Image" : @"Ajyad.jpg",
                      @"Stars" : @"4",
-                     @"Cost" : @"410 SA"};
+                     @"Cost" : @"410"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict = @{@"Title" : @"ديار",
                      @"Image" : @"hilton.jpg",
                      @"Stars" : @"3",
-                     @"Cost" : @"360 SA"};
+                     @"Cost" : @"360"};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
         MenuDict = @{@"Title" : @"موفينبيك انوار المدينة",
                      @"Image" : @"meredian.jpg",
                      @"Stars" : @"5",
-                     @"Cost" : @"520 SA"};
+                     @"Cost" : @"520"};
         [hotelArrays addObject:MenuDict];
     }
     
@@ -176,6 +176,16 @@
     }
 }
 
+- (IBAction)sortByInvoked:(id)sender {
+    //show the picker for sorting types [price , stars , name]
+    
+}
+
+- (IBAction)changePriceInvoked:(id)sender {
+    //show the prices type [for one , for all]
+    
+}
+
 
 #pragma mark - UITableView
 
@@ -214,7 +224,7 @@
     cell.titleLbl.text = dictionary[@"Title"];
     [cell.menuImg setImage:[UIImage imageNamed:dictionary[@"Image"]]];
     [cell.rateStarImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"rating_%@",dictionary[@"Stars"]]]];
-    cell.costLbl.text = dictionary[@"Cost"];
+    cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary[@"Cost"]];
     
     return cell;
 }
@@ -222,9 +232,26 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [self nextInvoked:self];
 }
 
+
+#pragma mark - Array sorting
+-(NSArray*)sortArrayBy:(NSInteger)sortType
+{
+    NSMutableArray* sortedHotelArray = [NSMutableArray new];
+    NSMutableArray* tempArray = [NSMutableArray new];
+
+    for (NSDictionary* dict in hotelArrays) {
+        NSNumber* cost = dict[@"Cost"];
+        [tempArray addObject:cost];
+    }
+    
+    NSArray *array;
+    array = [tempArray sortedArrayUsingSelector: @selector(compare:)];
+    
+    return array;
+}
 
 /*
 #pragma mark - Navigation
