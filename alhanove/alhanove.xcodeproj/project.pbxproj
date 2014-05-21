@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */; };
+		7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7482192D15D400DBA803 /* FormViewController.m */; };
+		7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7484192D193800DBA803 /* ar_back_header_btn.png */; };
+		7C3F7487192D193800DBA803 /* ar_back_header_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7485192D193800DBA803 /* ar_back_header_btn@2x.png */; };
+		7C3F748E192D20CC00DBA803 /* SBPickerSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F748A192D20CC00DBA803 /* SBPickerSelector.xib */; };
+		7C3F748F192D20CC00DBA803 /* SBPickerSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F748D192D20CC00DBA803 /* SBPickerSelector.m */; };
 		84C2942D192B56990027E782 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2942C192B56990027E782 /* Foundation.framework */; };
 		84C2942F192B56990027E782 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2942E192B56990027E782 /* CoreGraphics.framework */; };
 		84C29431192B56990027E782 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C29430192B56990027E782 /* UIKit.framework */; };
@@ -47,6 +53,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C3F747E192D159E00DBA803 /* HotelDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsVC.h; sourceTree = "<group>"; };
+		7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsVC.m; sourceTree = "<group>"; };
+		7C3F7481192D15D400DBA803 /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = alhanove/From/Controller/FormViewController.h; sourceTree = SOURCE_ROOT; };
+		7C3F7482192D15D400DBA803 /* FormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormViewController.m; path = alhanove/From/Controller/FormViewController.m; sourceTree = SOURCE_ROOT; };
+		7C3F7484192D193800DBA803 /* ar_back_header_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_back_header_btn.png; sourceTree = "<group>"; };
+		7C3F7485192D193800DBA803 /* ar_back_header_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ar_back_header_btn@2x.png"; sourceTree = "<group>"; };
+		7C3F748A192D20CC00DBA803 /* SBPickerSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBPickerSelector.xib; sourceTree = "<group>"; };
+		7C3F748C192D20CC00DBA803 /* SBPickerSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPickerSelector.h; sourceTree = "<group>"; };
+		7C3F748D192D20CC00DBA803 /* SBPickerSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPickerSelector.m; sourceTree = "<group>"; };
 		84C29429192B56990027E782 /* alhanove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alhanove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C2942C192B56990027E782 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84C2942E192B56990027E782 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -110,6 +125,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C3F7488192D20CC00DBA803 /* SBPickerSelector */ = {
+			isa = PBXGroup;
+			children = (
+				7C3F7489192D20CC00DBA803 /* Resources */,
+				7C3F748B192D20CC00DBA803 /* Source */,
+			);
+			path = SBPickerSelector;
+			sourceTree = "<group>";
+		};
+		7C3F7489192D20CC00DBA803 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C3F748A192D20CC00DBA803 /* SBPickerSelector.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7C3F748B192D20CC00DBA803 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7C3F748C192D20CC00DBA803 /* SBPickerSelector.h */,
+				7C3F748D192D20CC00DBA803 /* SBPickerSelector.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		84C29420192B56990027E782 = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +267,8 @@
 		84C2946D192B589C0027E782 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7C3F747E192D159E00DBA803 /* HotelDetailsVC.h */,
+				7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +300,8 @@
 		84C29471192B589C0027E782 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7C3F7481192D15D400DBA803 /* FormViewController.h */,
+				7C3F7482192D15D400DBA803 /* FormViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -381,6 +426,8 @@
 				84C2949A192B72830027E782 /* Fonts */,
 				84C294BF192B84EC0027E782 /* back_header_btn.png */,
 				84C294C0192B84EC0027E782 /* back_header_btn@2x.png */,
+				7C3F7484192D193800DBA803 /* ar_back_header_btn.png */,
+				7C3F7485192D193800DBA803 /* ar_back_header_btn@2x.png */,
 				84C29490192B70B10027E782 /* left_arrow.png */,
 				84C29491192B70B10027E782 /* left_arrow@2x.png */,
 				84C29481192B61B70027E782 /* badge1.png */,
@@ -395,6 +442,7 @@
 		84C29495192B71FF0027E782 /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7C3F7488192D20CC00DBA803 /* SBPickerSelector */,
 				84C29496192B71FF0027E782 /* Custom Fonts classes */,
 			);
 			path = "Supporting Classes";
@@ -502,7 +550,9 @@
 				84C29486192B61B70027E782 /* badge1.png in Resources */,
 				84C294AC192B7BA50027E782 /* meredian.jpg in Resources */,
 				84C29489192B61B70027E782 /* badge4.png in Resources */,
+				7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */,
 				84C294BE192B7E9B0027E782 /* rating_5.png in Resources */,
+				7C3F748E192D20CC00DBA803 /* SBPickerSelector.xib in Resources */,
 				84C2948F192B6F310027E782 /* MenuCell.xib in Resources */,
 				84C294B9192B7E9B0027E782 /* rating_0.png in Resources */,
 				84C294BC192B7E9B0027E782 /* rating_3.png in Resources */,
@@ -519,6 +569,7 @@
 				84C29493192B70B10027E782 /* left_arrow@2x.png in Resources */,
 				84C294BB192B7E9B0027E782 /* rating_2.png in Resources */,
 				84C29487192B61B70027E782 /* badge2.png in Resources */,
+				7C3F7487192D193800DBA803 /* ar_back_header_btn@2x.png in Resources */,
 				84C2949E192B72830027E782 /* ge_ss_two_medium.ttf in Resources */,
 				84C294C1192B84EC0027E782 /* back_header_btn.png in Resources */,
 				84C294BD192B7E9B0027E782 /* rating_4.png in Resources */,
@@ -533,11 +584,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C2943D192B56990027E782 /* AppDelegate.m in Sources */,
+				7C3F748F192D20CC00DBA803 /* SBPickerSelector.m in Sources */,
 				84C29439192B56990027E782 /* main.m in Sources */,
 				84C294B0192B7CAB0027E782 /* HotelCell.m in Sources */,
 				84C294A1192B753B0027E782 /* HotelListingViewController.m in Sources */,
 				84C29499192B71FF0027E782 /* UIFont+CustomFonts.m in Sources */,
 				84C2948E192B6F310027E782 /* MenuCell.m in Sources */,
+				7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */,
+				7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */,
 				84C2946B192B57A90027E782 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,6 +696,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "alhanove/alhanove-Prefix.pch";
 				INFOPLIST_FILE = "alhanove/alhanove-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -655,6 +710,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "alhanove/alhanove-Prefix.pch";
 				INFOPLIST_FILE = "alhanove/alhanove-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

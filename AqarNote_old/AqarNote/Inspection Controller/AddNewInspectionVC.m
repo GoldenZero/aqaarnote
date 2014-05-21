@@ -25,6 +25,7 @@
     PFObject *tempImg;
     BOOL inspected;
     int view_y;
+    int numberOfInspected;
     
 }
 @end
@@ -143,6 +144,7 @@
 
 -(void)prepareSections
 {
+    numberOfInspected=0;
     for (UIView *subview in self.sectionScrollView.subviews) {
         [subview removeFromSuperview];
     }
@@ -214,6 +216,9 @@
         statusLabel.textAlignment = NSTextAlignmentLeft;
         statusLabel.font=[UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
 
+        if ([sect objectForKey:@"status"]!=nil) {
+            numberOfInspected++;
+        }
         statusLabel.text = [self getStatusOfSection:[sect objectForKey:@"status"]];
         
         UIButton* secBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -300,6 +305,8 @@
     {
         BrowseInspectionVC* vc = segue.destinationViewController;
         vc.propertyID = self.propertyID;
+        vc.numberOfSections=sectionsArray.count;
+        vc.numberOfInspected=numberOfInspected;
         vc.delegate=self;
         vc.sectionID = mySection;
     }

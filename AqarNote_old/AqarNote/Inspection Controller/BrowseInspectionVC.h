@@ -44,6 +44,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *prevImgButton;
 
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
+@property int numberOfSections;
+@property int numberOfInspected;
 
 @property (nonatomic, strong) id <InspectSectionDelegate> delegate;
 
