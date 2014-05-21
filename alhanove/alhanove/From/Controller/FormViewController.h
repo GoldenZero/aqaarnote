@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SBPickerSelector.h"
 
-@interface FormViewController : UIViewController
+@interface FormViewController : UIViewController<SBPickerSelectorDelegate>
 
 #pragma mark - Properties 
 
@@ -21,6 +22,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *toDateLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *flightClassLabel;
+
+@property (strong, nonatomic) IBOutlet UIStepper *guestStepper;
+
+@property (strong, nonatomic) IBOutlet UIStepper *roomStepper;
 
 #pragma mark - Buttons Actions
 
