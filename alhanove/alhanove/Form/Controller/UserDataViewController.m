@@ -62,7 +62,6 @@
     BookDatePicker.doneButtonTitle = @"تم";
     BookDatePicker.cancelButtonTitle = @"إلغاء";
     
-    
 }
 
 #pragma mark - IBAction

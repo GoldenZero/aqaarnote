@@ -20,7 +20,7 @@
 		7C3F74A7192D498200DBA803 /* AGPhotoBrowserOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F749E192D498200DBA803 /* AGPhotoBrowserOverlayView.m */; };
 		7C3F74A8192D498200DBA803 /* AGPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A0192D498200DBA803 /* AGPhotoBrowserView.m */; };
 		7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A2192D498200DBA803 /* AGPhotoBrowserZoomableView.m */; };
-		7C3F74AA192D498200DBA803 /* DYRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A5192D498200DBA803 /* DYRateView.m */; };
+		7C3F74AA192D498200DBA803 /* DYRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A5192D498200DBA803 /* DYRateView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84C2942D192B56990027E782 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2942C192B56990027E782 /* Foundation.framework */; };
 		84C2942F192B56990027E782 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2942E192B56990027E782 /* CoreGraphics.framework */; };
 		84C29431192B56990027E782 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C29430192B56990027E782 /* UIKit.framework */; };
@@ -60,6 +60,9 @@
 		84C294C2192B84EC0027E782 /* back_header_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C294C0192B84EC0027E782 /* back_header_btn@2x.png */; };
 		84CA94D0192CACBD002CA3B4 /* UserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA94CF192CACBD002CA3B4 /* UserDataViewController.m */; };
 		84CA94D4192CB135002CA3B4 /* EnhancedKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA94D3192CB135002CA3B4 /* EnhancedKeyboard.m */; };
+		84CA94D7192CCB40002CA3B4 /* PayNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA94D6192CCB40002CA3B4 /* PayNowViewController.m */; };
+		84CA94DA192CCB4D002CA3B4 /* PayLaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA94D9192CCB4D002CA3B4 /* PayLaterViewController.m */; };
+		84CA94DD192CCC65002CA3B4 /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA94DC192CCC65002CA3B4 /* TimeLineViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +143,12 @@
 		84CA94CF192CACBD002CA3B4 /* UserDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataViewController.m; sourceTree = "<group>"; };
 		84CA94D2192CB135002CA3B4 /* EnhancedKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnhancedKeyboard.h; sourceTree = "<group>"; };
 		84CA94D3192CB135002CA3B4 /* EnhancedKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnhancedKeyboard.m; sourceTree = "<group>"; };
+		84CA94D5192CCB40002CA3B4 /* PayNowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayNowViewController.h; sourceTree = "<group>"; };
+		84CA94D6192CCB40002CA3B4 /* PayNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayNowViewController.m; sourceTree = "<group>"; };
+		84CA94D8192CCB4D002CA3B4 /* PayLaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayLaterViewController.h; sourceTree = "<group>"; };
+		84CA94D9192CCB4D002CA3B4 /* PayLaterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayLaterViewController.m; sourceTree = "<group>"; };
+		84CA94DB192CCC65002CA3B4 /* TimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewController.h; sourceTree = "<group>"; };
+		84CA94DC192CCC65002CA3B4 /* TimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +371,10 @@
 				7C3F7482192D15D400DBA803 /* FormViewController.m */,
 				84CA94CE192CACBD002CA3B4 /* UserDataViewController.h */,
 				84CA94CF192CACBD002CA3B4 /* UserDataViewController.m */,
+				84CA94D5192CCB40002CA3B4 /* PayNowViewController.h */,
+				84CA94D6192CCB40002CA3B4 /* PayNowViewController.m */,
+				84CA94D8192CCB4D002CA3B4 /* PayLaterViewController.h */,
+				84CA94D9192CCB4D002CA3B4 /* PayLaterViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -462,6 +475,8 @@
 		84C2947D192B589C0027E782 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84CA94DB192CCC65002CA3B4 /* TimeLineViewController.h */,
+				84CA94DC192CCC65002CA3B4 /* TimeLineViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -665,11 +680,14 @@
 				84C2943D192B56990027E782 /* AppDelegate.m in Sources */,
 				7C3F748F192D20CC00DBA803 /* SBPickerSelector.m in Sources */,
 				84C29439192B56990027E782 /* main.m in Sources */,
+				84CA94DA192CCB4D002CA3B4 /* PayLaterViewController.m in Sources */,
 				84C294B0192B7CAB0027E782 /* HotelCell.m in Sources */,
 				84C294A1192B753B0027E782 /* HotelListingViewController.m in Sources */,
+				84CA94DD192CCC65002CA3B4 /* TimeLineViewController.m in Sources */,
 				7C3F74A6192D498200DBA803 /* AGPhotoBrowserCell.m in Sources */,
 				7C3F74A7192D498200DBA803 /* AGPhotoBrowserOverlayView.m in Sources */,
 				7C3F7492192D42E300DBA803 /* FormObject.m in Sources */,
+				84CA94D7192CCB40002CA3B4 /* PayNowViewController.m in Sources */,
 				7C3F74AA192D498200DBA803 /* DYRateView.m in Sources */,
 				84C29499192B71FF0027E782 /* UIFont+CustomFonts.m in Sources */,
 				84CA94D0192CACBD002CA3B4 /* UserDataViewController.m in Sources */,
