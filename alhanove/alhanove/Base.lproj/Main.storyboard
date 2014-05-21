@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Form View Controller-->
@@ -191,7 +191,7 @@
             </objects>
             <point key="canvasLocation" x="1151" y="-494"/>
         </scene>
-        <!--Home View Controller - الهنوف للحجوزات-->
+        <!--Home View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="StartWithHome" id="vXZ-lx-hvc" customClass="HomeViewController" sceneMemberID="viewController">
@@ -224,7 +224,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="الهنوف للحجوزات" id="lZ9-zS-jrM"/>
+                    <navigationItem key="navigationItem" id="lZ9-zS-jrM"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="pageTitle" destination="wo9-GO-H23" id="MlQ-ZP-bRe"/>
@@ -261,7 +261,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lpH-J6-lOg">
-                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -269,6 +269,35 @@
                                     <outlet property="delegate" destination="Zla-dz-aC0" id="huI-bv-k5p"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" id="Ak0-Xt-Wgp">
+                                <rect key="frame" x="0.0" y="68" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iIx-nw-o8I">
+                                        <rect key="frame" x="20" y="5" width="68" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Sort">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sortByInvoked:" destination="Zla-dz-aC0" eventType="touchUpInside" id="7nD-wR-UWN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="poK-he-8dd">
+                                        <rect key="frame" x="232" y="5" width="68" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Price">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changePriceInvoked:" destination="Zla-dz-aC0" eventType="touchUpInside" id="Ub0-MU-MM8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95686280729999995" green="0.95686280729999995" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" id="ees-f6-BfE">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -280,9 +309,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MtF-mj-t8D">
-                                        <rect key="frame" x="0.0" y="18" width="50" height="50"/>
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" image="back_header_btn.png">
+                                        <state key="normal" image="ar_back_header_btn.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -290,7 +319,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zfv-xb-myU">
-                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <state key="normal" title="التالي">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -311,6 +340,8 @@
                         <outlet property="backBtn" destination="MtF-mj-t8D" id="LVZ-VE-Tx6"/>
                         <outlet property="nextBtn" destination="Zfv-xb-myU" id="1jU-KN-Q6E"/>
                         <outlet property="pageTitle" destination="tdk-vC-9B1" id="pvi-jF-fQH"/>
+                        <outlet property="priceBtn" destination="poK-he-8dd" id="f2z-qy-Uzy"/>
+                        <outlet property="sortBtn" destination="iIx-nw-o8I" id="n1f-it-R39"/>
                         <outlet property="tableView" destination="lpH-J6-lOg" id="1XE-VX-fSb"/>
                         <segue destination="gXq-oN-B0N" kind="modal" identifier="showHotelDetails" id="psR-9V-nZE"/>
                     </connections>
@@ -371,7 +402,6 @@
     </scenes>
     <resources>
         <image name="ar_back_header_btn.png" width="25" height="26"/>
-        <image name="back_header_btn.png" width="25" height="26"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
