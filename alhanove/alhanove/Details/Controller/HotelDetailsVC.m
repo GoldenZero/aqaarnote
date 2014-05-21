@@ -35,9 +35,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - Buttons Actions
+
 - (IBAction)backBtnPrss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)nextBtnPrss:(id)sender {
+    
 }
+
+#pragma mark - Scroll View Delegate Handler
+
+
+
+#pragma mark - DYRateViewDelegate
+
+- (void)rateView:(DYRateView *)rateView changedToNewRate:(NSNumber *)rate {
+    
+}
+
 @end

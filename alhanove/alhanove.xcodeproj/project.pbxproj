@@ -13,6 +13,14 @@
 		7C3F7487192D193800DBA803 /* ar_back_header_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7485192D193800DBA803 /* ar_back_header_btn@2x.png */; };
 		7C3F748E192D20CC00DBA803 /* SBPickerSelector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F748A192D20CC00DBA803 /* SBPickerSelector.xib */; };
 		7C3F748F192D20CC00DBA803 /* SBPickerSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F748D192D20CC00DBA803 /* SBPickerSelector.m */; };
+		7C3F7492192D42E300DBA803 /* FormObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7491192D42E300DBA803 /* FormObject.m */; };
+		7C3F7495192D459500DBA803 /* people-icon-md.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7493192D459500DBA803 /* people-icon-md.png */; };
+		7C3F7496192D459500DBA803 /* room-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7494192D459500DBA803 /* room-128.png */; };
+		7C3F74A6192D498200DBA803 /* AGPhotoBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7499192D498200DBA803 /* AGPhotoBrowserCell.m */; };
+		7C3F74A7192D498200DBA803 /* AGPhotoBrowserOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F749E192D498200DBA803 /* AGPhotoBrowserOverlayView.m */; };
+		7C3F74A8192D498200DBA803 /* AGPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A0192D498200DBA803 /* AGPhotoBrowserView.m */; };
+		7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A2192D498200DBA803 /* AGPhotoBrowserZoomableView.m */; };
+		7C3F74AA192D498200DBA803 /* DYRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A5192D498200DBA803 /* DYRateView.m */; };
 		84C2942D192B56990027E782 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2942C192B56990027E782 /* Foundation.framework */; };
 		84C2942F192B56990027E782 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2942E192B56990027E782 /* CoreGraphics.framework */; };
 		84C29431192B56990027E782 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C29430192B56990027E782 /* UIKit.framework */; };
@@ -64,6 +72,23 @@
 		7C3F748A192D20CC00DBA803 /* SBPickerSelector.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBPickerSelector.xib; sourceTree = "<group>"; };
 		7C3F748C192D20CC00DBA803 /* SBPickerSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPickerSelector.h; sourceTree = "<group>"; };
 		7C3F748D192D20CC00DBA803 /* SBPickerSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPickerSelector.m; sourceTree = "<group>"; };
+		7C3F7490192D42E300DBA803 /* FormObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormObject.h; path = alhanove/From/Model/FormObject.h; sourceTree = SOURCE_ROOT; };
+		7C3F7491192D42E300DBA803 /* FormObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FormObject.m; path = alhanove/From/Model/FormObject.m; sourceTree = SOURCE_ROOT; };
+		7C3F7493192D459500DBA803 /* people-icon-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-icon-md.png"; sourceTree = "<group>"; };
+		7C3F7494192D459500DBA803 /* room-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room-128.png"; sourceTree = "<group>"; };
+		7C3F7498192D498200DBA803 /* AGPhotoBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserCell.h; sourceTree = "<group>"; };
+		7C3F7499192D498200DBA803 /* AGPhotoBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserCell.m; sourceTree = "<group>"; };
+		7C3F749A192D498200DBA803 /* AGPhotoBrowserCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserCellProtocol.h; sourceTree = "<group>"; };
+		7C3F749B192D498200DBA803 /* AGPhotoBrowserDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserDataSource.h; sourceTree = "<group>"; };
+		7C3F749C192D498200DBA803 /* AGPhotoBrowserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserDelegate.h; sourceTree = "<group>"; };
+		7C3F749D192D498200DBA803 /* AGPhotoBrowserOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserOverlayView.h; sourceTree = "<group>"; };
+		7C3F749E192D498200DBA803 /* AGPhotoBrowserOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserOverlayView.m; sourceTree = "<group>"; };
+		7C3F749F192D498200DBA803 /* AGPhotoBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserView.h; sourceTree = "<group>"; };
+		7C3F74A0192D498200DBA803 /* AGPhotoBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserView.m; sourceTree = "<group>"; };
+		7C3F74A1192D498200DBA803 /* AGPhotoBrowserZoomableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPhotoBrowserZoomableView.h; sourceTree = "<group>"; };
+		7C3F74A2192D498200DBA803 /* AGPhotoBrowserZoomableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserZoomableView.m; sourceTree = "<group>"; };
+		7C3F74A4192D498200DBA803 /* DYRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYRateView.h; sourceTree = "<group>"; };
+		7C3F74A5192D498200DBA803 /* DYRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYRateView.m; sourceTree = "<group>"; };
 		84C29429192B56990027E782 /* alhanove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alhanove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C2942C192B56990027E782 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84C2942E192B56990027E782 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -155,6 +180,33 @@
 				7C3F748D192D20CC00DBA803 /* SBPickerSelector.m */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		7C3F7497192D498200DBA803 /* AGPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				7C3F7498192D498200DBA803 /* AGPhotoBrowserCell.h */,
+				7C3F7499192D498200DBA803 /* AGPhotoBrowserCell.m */,
+				7C3F749A192D498200DBA803 /* AGPhotoBrowserCellProtocol.h */,
+				7C3F749B192D498200DBA803 /* AGPhotoBrowserDataSource.h */,
+				7C3F749C192D498200DBA803 /* AGPhotoBrowserDelegate.h */,
+				7C3F749D192D498200DBA803 /* AGPhotoBrowserOverlayView.h */,
+				7C3F749E192D498200DBA803 /* AGPhotoBrowserOverlayView.m */,
+				7C3F749F192D498200DBA803 /* AGPhotoBrowserView.h */,
+				7C3F74A0192D498200DBA803 /* AGPhotoBrowserView.m */,
+				7C3F74A1192D498200DBA803 /* AGPhotoBrowserZoomableView.h */,
+				7C3F74A2192D498200DBA803 /* AGPhotoBrowserZoomableView.m */,
+			);
+			path = AGPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		7C3F74A3192D498200DBA803 /* DYRateView */ = {
+			isa = PBXGroup;
+			children = (
+				7C3F74A4192D498200DBA803 /* DYRateView.h */,
+				7C3F74A5192D498200DBA803 /* DYRateView.m */,
+			);
+			path = DYRateView;
 			sourceTree = "<group>";
 		};
 		84C29420192B56990027E782 = {
@@ -317,6 +369,8 @@
 		84C29472192B589C0027E782 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C3F7490192D42E300DBA803 /* FormObject.h */,
+				7C3F7491192D42E300DBA803 /* FormObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,6 +490,8 @@
 				84C294C0192B84EC0027E782 /* back_header_btn@2x.png */,
 				7C3F7484192D193800DBA803 /* ar_back_header_btn.png */,
 				7C3F7485192D193800DBA803 /* ar_back_header_btn@2x.png */,
+				7C3F7493192D459500DBA803 /* people-icon-md.png */,
+				7C3F7494192D459500DBA803 /* room-128.png */,
 				84C29490192B70B10027E782 /* left_arrow.png */,
 				84C29491192B70B10027E782 /* left_arrow@2x.png */,
 				84C29481192B61B70027E782 /* badge1.png */,
@@ -450,6 +506,8 @@
 		84C29495192B71FF0027E782 /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7C3F7497192D498200DBA803 /* AGPhotoBrowser */,
+				7C3F74A3192D498200DBA803 /* DYRateView */,
 				84CA94D1192CB135002CA3B4 /* Enhanced Keyboard */,
 				7C3F7488192D20CC00DBA803 /* SBPickerSelector */,
 				84C29496192B71FF0027E782 /* Custom Fonts classes */,
@@ -565,6 +623,7 @@
 				84C2949D192B72830027E782 /* ge_ss_two_light.ttf in Resources */,
 				84C294BA192B7E9B0027E782 /* rating_1.png in Resources */,
 				84C29445192B56990027E782 /* Images.xcassets in Resources */,
+				7C3F7496192D459500DBA803 /* room-128.png in Resources */,
 				84C29486192B61B70027E782 /* badge1.png in Resources */,
 				84C294AC192B7BA50027E782 /* meredian.jpg in Resources */,
 				84C29489192B61B70027E782 /* badge4.png in Resources */,
@@ -572,6 +631,7 @@
 				84C294BE192B7E9B0027E782 /* rating_5.png in Resources */,
 				7C3F748E192D20CC00DBA803 /* SBPickerSelector.xib in Resources */,
 				84C2948F192B6F310027E782 /* MenuCell.xib in Resources */,
+				7C3F7495192D459500DBA803 /* people-icon-md.png in Resources */,
 				84C294B9192B7E9B0027E782 /* rating_0.png in Resources */,
 				84C294BC192B7E9B0027E782 /* rating_3.png in Resources */,
 				84C29437192B56990027E782 /* InfoPlist.strings in Resources */,
@@ -601,15 +661,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C3F74A8192D498200DBA803 /* AGPhotoBrowserView.m in Sources */,
 				84C2943D192B56990027E782 /* AppDelegate.m in Sources */,
 				7C3F748F192D20CC00DBA803 /* SBPickerSelector.m in Sources */,
 				84C29439192B56990027E782 /* main.m in Sources */,
 				84C294B0192B7CAB0027E782 /* HotelCell.m in Sources */,
 				84C294A1192B753B0027E782 /* HotelListingViewController.m in Sources */,
+				7C3F74A6192D498200DBA803 /* AGPhotoBrowserCell.m in Sources */,
+				7C3F74A7192D498200DBA803 /* AGPhotoBrowserOverlayView.m in Sources */,
+				7C3F7492192D42E300DBA803 /* FormObject.m in Sources */,
+				7C3F74AA192D498200DBA803 /* DYRateView.m in Sources */,
 				84C29499192B71FF0027E782 /* UIFont+CustomFonts.m in Sources */,
 				84CA94D0192CACBD002CA3B4 /* UserDataViewController.m in Sources */,
 				84C2948E192B6F310027E782 /* MenuCell.m in Sources */,
 				84CA94D4192CB135002CA3B4 /* EnhancedKeyboard.m in Sources */,
+				7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */,
 				7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */,
 				7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */,
 				84C2946B192B57A90027E782 /* HomeViewController.m in Sources */,

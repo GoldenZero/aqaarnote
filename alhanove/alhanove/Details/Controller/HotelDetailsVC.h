@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DYRateView.h"
 
-@interface HotelDetailsVC : UIViewController
+@interface HotelDetailsVC : UIViewController<UIScrollViewDelegate,DYRateViewDelegate>
 
 #pragma mark -Properties
 

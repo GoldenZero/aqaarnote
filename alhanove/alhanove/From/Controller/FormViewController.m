@@ -7,6 +7,7 @@
 //
 
 #import "FormViewController.h"
+#import "FormObject.h"
 
 @interface FormViewController (){
     
@@ -14,13 +15,12 @@
     
     SBPickerSelector *FlightClassPicker;
     
+    FormObject * form;
+    
     BOOL dateFromFlag;
 
     NSArray *flightClassesArray;
     
-    int guestsNumber;
-    
-    int roomsNumber;
 }
 
 @end
@@ -53,8 +53,10 @@
     
     flightClassesArray=[[NSArray alloc] initWithObjects:@"درجة أولى",@"درجة رجال الأعمال",@"درجة اقتصادية", nil];
     
-    guestsNumber=1;
-    roomsNumber=1;
+    form=[[FormObject alloc] init];
+    form.guestsNumber=1;
+    form.roomsNumber=1;
+    
     
     // Set picker view
     DatePicker = [SBPickerSelector picker];
@@ -106,30 +108,30 @@
 }
 
 - (IBAction)guestsStepPrss:(id)sender {
-    if (self.guestStepper.value>guestsNumber) {
-        guestsNumber++;
-        self.guestsLabel.text=[NSString stringWithFormat:@"%i",guestsNumber];
+    if (self.guestStepper.value>form.guestsNumber) {
+        form.guestsNumber++;
+        self.guestsLabel.text=[NSString stringWithFormat:@"%i",form.guestsNumber];
     }
     
     else {
-        if (guestsNumber!=1) {
-            guestsNumber--;
-            self.guestsLabel.text=[NSString stringWithFormat:@"%i",guestsNumber];
+        if (form.guestsNumber!=1) {
+            form.guestsNumber--;
+            self.guestsLabel.text=[NSString stringWithFormat:@"%i",form.guestsNumber];
         }
     }
 }
 
 - (IBAction)roomStepPrss:(id)sender {
     
-    if (self.roomStepper.value>roomsNumber) {
-        roomsNumber++;
-        self.roomsLabel.text=[NSString stringWithFormat:@"%i",roomsNumber];
+    if (self.roomStepper.value>form.roomsNumber) {
+        form.roomsNumber++;
+        self.roomsLabel.text=[NSString stringWithFormat:@"%i",form.roomsNumber];
     }
     
     else {
-        if (roomsNumber!=1) {
-            roomsNumber--;
-            self.roomsLabel.text=[NSString stringWithFormat:@"%i",roomsNumber];
+        if (form.roomsNumber!=1) {
+            form.roomsNumber--;
+            self.roomsLabel.text=[NSString stringWithFormat:@"%i",form.roomsNumber];
         }
     }
 }
@@ -154,6 +156,7 @@
 -(void) SBPickerSelector:(SBPickerSelector *)selector selectedValue:(NSString *)value index:(NSInteger)idx{
    
     self.flightClassLabel.text=value;
+    form.FlightClass=value;
 }
 
 -(void) SBPickerSelector:(SBPickerSelector *)selector dateSelected:(NSDate *)date{
@@ -161,10 +164,12 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     if (dateFromFlag) {
+        form.fromDate=date;
         self.fromDateLabel.text = [dateFormat stringFromDate:date];
 
     }
     else{
+        form.toDate=date;
         self.toDateLabel.text=[dateFormat stringFromDate:date];
 
     }
