@@ -12,10 +12,29 @@
 
 #pragma mark - Properties
 
+@property (nonatomic,strong) NSDictionary* MekkaHotelData;
+@property (nonatomic,strong) NSDictionary* MadinaHotelData;
+@property (nonatomic,strong) NSDictionary* HotelData;
+@property (nonatomic,strong) NSString* BookingType;
 @property (nonatomic,strong) NSDate *fromDate;
 @property (nonatomic,strong) NSDate *toDate;
 @property (nonatomic,strong) NSString *FlightClass;
 @property int guestsNumber;
 @property int roomsNumber;
+
+
+
+//User Data
+@property (nonatomic,strong) NSString* UserName;
+@property (nonatomic,strong) NSString* UserAddress;
+@property (nonatomic,strong) NSString* UserEmail;
+@property (nonatomic,strong) NSString* UserMobile;
+@property (nonatomic,strong) NSString* BookingDate;
+@property (nonatomic,strong) UIImage* PassportImage;
+@property (nonatomic,strong) UIImage* PersonalImage;
+@property (nonatomic,strong) NSString* BookingCost;
+
+
+
 
 @end

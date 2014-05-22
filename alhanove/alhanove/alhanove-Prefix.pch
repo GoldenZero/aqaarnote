@@ -15,5 +15,6 @@
     #import <Foundation/Foundation.h>
     #import "UIFont+CustomFonts.h"
     #import "EnhancedKeyboard.h"
+    #import "FormObject.h"
 
 #endif

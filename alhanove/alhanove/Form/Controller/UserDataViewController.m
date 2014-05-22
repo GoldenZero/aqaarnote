@@ -40,6 +40,7 @@
     enhancedKeyboard.delegate = self;
 
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
+    self.PriceLbl.text = self.formObj.BookingCost;
     
     //prepare the pickers
     [self preparePickers];
@@ -58,6 +59,7 @@
     BookDatePicker = [SBPickerSelector picker];
     BookDatePicker.tag = 0;
     BookDatePicker.pickerType = SBPickerSelectorTypeDate;
+    BookDatePicker.datePickerType=SBPickerSelectorDateTypeOnlyDay;
     BookDatePicker.delegate = self;
     BookDatePicker.doneButtonTitle = @"تم";
     BookDatePicker.cancelButtonTitle = @"إلغاء";
@@ -101,15 +103,32 @@
 
 - (IBAction)payNowInvoked:(id)sender
 {
+    [self initializeFormObject];
     //show the credit card dialog page
     [self performSegueWithIdentifier:@"showPayNow" sender:self];
 }
 
 - (IBAction)payLaterInvoked:(id)sender
 {
+    [self initializeFormObject];
     // show pay later page
     [self performSegueWithIdentifier:@"showPayLater" sender:self];
 
+}
+
+#pragma mark - FormObj
+-(void)initializeFormObject
+{
+    NSDateFormatter* df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    
+    self.formObj.UserName = self.NameText.text;
+    self.formObj.UserAddress = self.AddressText.text;
+    self.formObj.UserEmail = self.EmailText.text;
+    self.formObj.UserMobile = self.MobileText.text;
+    self.formObj.PassportImage = passportImage;
+    self.formObj.PersonalImage = personalImage;
+    self.formObj.BookingDate = [df stringFromDate:chosenDate];
 }
 
 
@@ -167,10 +186,14 @@
     
     // Access the uncropped image from info dictionary
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    if (imageForPassport)
+    if (imageForPassport){
         [self.passportAttachBtn setBackgroundImage:image forState:UIControlStateNormal];
-    else
+        passportImage = image;
+    }
+    else{
         [self.personalImgAttachBtn setBackgroundImage:image forState:UIControlStateNormal];
+        personalImage = image;
+    }
 
 
     // Dismiss controller

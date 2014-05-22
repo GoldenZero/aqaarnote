@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HotelCell.h"
 #import "SBPickerSelector.h"
+#import "TimeLineViewController.h"
 
 typedef enum ListingType
 {
@@ -18,9 +19,9 @@ typedef enum ListingType
 
 @interface HotelListingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SBPickerSelectorDelegate>
 
-@property (nonatomic, strong) NSNumber* guestNumber;
-
 @property (nonatomic, assign) ListingType listingType;
+@property (strong, nonatomic) FormObject* formObj;
+
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString* hotelType;

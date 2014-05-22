@@ -112,9 +112,9 @@
     //al haj
     if (indexPath.row == 0) {
         
-        [self performSegueWithIdentifier:@"showMekkaListing" sender:self];
+        [self performSegueWithIdentifier:@"showFormVC" sender:self];
     }else if (indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"showMekkaListing" sender:self];
+        [self performSegueWithIdentifier:@"showFormVC" sender:self];
     }
 }
 

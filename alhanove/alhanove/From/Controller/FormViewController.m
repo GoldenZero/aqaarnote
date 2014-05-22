@@ -7,7 +7,6 @@
 //
 
 #import "FormViewController.h"
-#import "FormObject.h"
 
 @interface FormViewController (){
     
@@ -83,6 +82,7 @@
 }
 
 - (IBAction)nextBtnPrss:(id)sender {
+    
     
     [self performSegueWithIdentifier:@"showHotelList" sender:self];
 }
@@ -188,5 +188,18 @@
         [self SBPickerSelector:selector selectedValue:value index:idx];
     }
 }
+
+#pragma mark - storyBoard delegate
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([[segue identifier] isEqualToString:@"showHotelList"])   //parameter to login page
+    {
+        HotelListingViewController* vc = segue.destinationViewController;
+        vc.listingType = ListingTypeMekka;
+        vc.formObj = form;
+    }
+}
+
 
 @end

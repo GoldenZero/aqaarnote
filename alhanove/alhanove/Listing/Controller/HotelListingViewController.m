@@ -19,6 +19,9 @@
     NSArray* sortPickerArr;
     NSArray* costPickerArr;
 
+    NSNumber* totalCost;
+    NSInteger mekkaCost;
+    NSInteger madinaCost;
 
 }
 @end
@@ -58,9 +61,6 @@
 #pragma mark - Methods
 -(void)getListMenuData
 {
-    if (!self.guestNumber)
-        self.guestNumber = [NSNumber numberWithInt:3];
-        
     if (self.listingType == ListingTypeMekka) {
         self.pageTitle.text = @"فنادق مكة المكرمة";
         
@@ -70,7 +70,7 @@
                                    @"Image" : @"hilton.jpg",
                                    @"Stars" : @"5",
                                    @"Cost" : @"480",
-                                   @"Cost_all" : [NSString stringWithFormat:@"%i",480 * [self.guestNumber integerValue]]};
+                                   @"Cost_all" : [NSString stringWithFormat:@"%i",480 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -78,7 +78,7 @@
                      @"Image" : @"dar al tawhed.jpg",
                      @"Stars" : @"3",
                      @"Cost" : @"200",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",200 * [self.guestNumber integerValue]]};
+                     @"Cost_all" : [NSString stringWithFormat:@"%i",200 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -86,7 +86,7 @@
                       @"Image" : @"meredian.jpg",
                       @"Stars" : @"5",
                       @"Cost" : @"600",
-                      @"Cost_all" : [NSString stringWithFormat:@"%i",600 * [self.guestNumber integerValue]]};
+                      @"Cost_all" : [NSString stringWithFormat:@"%i",600 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -94,7 +94,7 @@
                      @"Image" : @"elaf kinda.jpg",
                      @"Stars" : @"4",
                      @"Cost" : @"260",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",260 * [self.guestNumber integerValue]]};
+                     @"Cost_all" : [NSString stringWithFormat:@"%i",260 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -102,7 +102,7 @@
                      @"Image" : @"Ajyad.jpg",
                      @"Stars" : @"3",
                      @"Cost" : @"320",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",320 * [self.guestNumber integerValue]]};
+                     @"Cost_all" : [NSString stringWithFormat:@"%i",320 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
     }else if (self.listingType == ListingTypeMadina) {
         self.pageTitle.text = @"فنادق المدينة المنورة";
@@ -112,7 +112,7 @@
                                    @"Image" : @"hilton.jpg",
                                    @"Stars" : @"5",
                                    @"Cost" : @"600",
-                                   @"Cost_all" : [NSString stringWithFormat:@"%i",600 * [self.guestNumber integerValue]]};
+                                   @"Cost_all" : [NSString stringWithFormat:@"%i",600 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -120,7 +120,7 @@
                      @"Image" : @"dar al tawhed.jpg",
                      @"Stars" : @"3",
                      @"Cost" : @"200",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",200 * [self.guestNumber integerValue]]};
+                     @"Cost_all" : [NSString stringWithFormat:@"%i",200 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -128,7 +128,7 @@
                       @"Image" : @"meredian.jpg",
                       @"Stars" : @"3",
                       @"Cost" : @"440",
-                      @"Cost_all" : [NSString stringWithFormat:@"%i",440 * [self.guestNumber integerValue]]};
+                      @"Cost_all" : [NSString stringWithFormat:@"%i",440 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -136,7 +136,7 @@
                      @"Image" : @"elaf kinda.jpg",
                      @"Stars" : @"4",
                      @"Cost" : @"300",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",300 * [self.guestNumber integerValue]]};
+                     @"Cost_all" : [NSString stringWithFormat:@"%i",300 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -144,7 +144,7 @@
                      @"Image" : @"Ajyad.jpg",
                      @"Stars" : @"4",
                      @"Cost" : @"410",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",410 * [self.guestNumber integerValue]]};
+                     @"Cost_all" : [NSString stringWithFormat:@"%i",410 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -152,7 +152,7 @@
                      @"Image" : @"hilton.jpg",
                      @"Stars" : @"3",
                      @"Cost" : @"360",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",360 * [self.guestNumber integerValue]]};
+                     @"Cost_all" : [NSString stringWithFormat:@"%i",360 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
         
         MenuDict = nil;
@@ -160,7 +160,7 @@
                      @"Image" : @"meredian.jpg",
                      @"Stars" : @"5",
                      @"Cost" : @"520",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",520 * [self.guestNumber integerValue]]};
+                     @"Cost_all" : [NSString stringWithFormat:@"%i",520 * self.formObj.guestsNumber]};
         [hotelArrays addObject:MenuDict];
     }
     
@@ -201,6 +201,8 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     else if (self.backBtn.tag == 1)
     {
+        madinaCost = 0;
+        mekkaCost = 0;
         self.listingType = ListingTypeMekka;
         self.nextBtn.tag = 0;
         self.backBtn.tag = 0;
@@ -225,8 +227,9 @@
         
     }else if (self.nextBtn.tag == 1)
     {
+        self.formObj.BookingCost = [NSString stringWithFormat:@"%@",totalCost];
         //go to the reservation details
-        
+        [self performSegueWithIdentifier:@"showTimeLine" sender:self];
     }
 }
 
@@ -290,6 +293,19 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary* dictionary = [hotelArrays objectAtIndex:indexPath.row];
+    NSString* currCost = dictionary[@"Cost_all"];
+    if (self.listingType == ListingTypeMekka){
+        mekkaCost = [currCost integerValue];
+        self.formObj.MekkaHotelData = dictionary;
+    }
+    else if (self.listingType == ListingTypeMadina){
+        madinaCost = [currCost integerValue];
+        self.formObj.MadinaHotelData = dictionary;
+    }
+    
+    totalCost = [NSNumber numberWithInteger:mekkaCost + madinaCost];
+    
     [self nextInvoked:self];
 }
 
@@ -386,15 +402,18 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showTimeLine"])   //parameter to login page
+    {
+        TimeLineViewController* vc = segue.destinationViewController;
+        vc.formObj = self.formObj;
+    }
 }
-*/
+
 
 @end

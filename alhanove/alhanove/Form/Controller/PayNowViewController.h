@@ -10,4 +10,6 @@
 
 @interface PayNowViewController : UIViewController
 
+- (IBAction)backInvoked:(id)sender;
+- (IBAction)homeInvoked:(id)sender;
 @end

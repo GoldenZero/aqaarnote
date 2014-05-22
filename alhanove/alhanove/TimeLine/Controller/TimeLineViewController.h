@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserDataViewController.h"
+#import "MenuCell.h"
 
-@interface TimeLineViewController : UIViewController
+@interface TimeLineViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property (strong, nonatomic) FormObject* formObj;
+@property (strong, nonatomic) IBOutlet UILabel *pageTitle;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+- (IBAction)backInvoked:(id)sender;
+- (IBAction)nextInvoked:(id)sender;
 
 @end

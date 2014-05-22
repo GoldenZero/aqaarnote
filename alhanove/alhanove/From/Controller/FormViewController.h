@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SBPickerSelector.h"
+#import "HotelListingViewController.h"
 
 @interface FormViewController : UIViewController<SBPickerSelectorDelegate>
 

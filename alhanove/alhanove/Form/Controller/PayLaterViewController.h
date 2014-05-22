@@ -10,4 +10,7 @@
 
 @interface PayLaterViewController : UIViewController
 
+
+- (IBAction)backInvoked:(id)sender;
+- (IBAction)homeInvoked:(id)sender;
 @end

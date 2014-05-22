@@ -35,6 +35,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBAction
+- (IBAction)backInvoked:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)homeInvoked:(id)sender
+{
+    [self performSegueWithIdentifier:@"BackToHome" sender:self];
+}
+
 /*
 #pragma mark - Navigation
 

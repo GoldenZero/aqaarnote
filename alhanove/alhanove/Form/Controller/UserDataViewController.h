@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SBPickerSelector.h"
 
-@interface UserDataViewController : UIViewController<SBPickerSelectorDelegate,EnhancedKeyboardDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>
+@interface UserDataViewController : UIViewController<SBPickerSelectorDelegate,EnhancedKeyboardDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
 
@@ -26,7 +26,7 @@
 @property (nonatomic, strong) IBOutlet UILabel* PriceLbl;
 
 @property (strong, nonatomic) NSString *tripCost;
-
+@property (strong, nonatomic) FormObject* formObj;
 
 - (IBAction)backInvoked:(id)sender;
 - (IBAction)showDateInvoked:(id)sender;
