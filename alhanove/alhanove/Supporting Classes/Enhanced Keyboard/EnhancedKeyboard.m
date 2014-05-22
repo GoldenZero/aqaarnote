@@ -26,9 +26,6 @@
     UIBarButtonItem *doneButton=[[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(doneDidClick:)];
    // UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButton target:self action:@selector(doneDidClick:)];
     doneButton.title=@"تم";
-    [doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                             [UIColor blackColor],UITextAttributeTextColor,[UIFont fontWithName:@"GESSTwoMedium-Medium" size:12],UITextAttributeFont,
-                                             nil] forState:UIControlStateNormal];
 
 
     [toolbarItems addObject:doneButton];

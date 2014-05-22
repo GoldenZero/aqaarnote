@@ -21,6 +21,19 @@
 		7C3F74A8192D498200DBA803 /* AGPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A0192D498200DBA803 /* AGPhotoBrowserView.m */; };
 		7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A2192D498200DBA803 /* AGPhotoBrowserZoomableView.m */; };
 		7C3F74AA192D498200DBA803 /* DYRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A5192D498200DBA803 /* DYRateView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7CB4DFD5192E64FD00B2A9F2 /* StarEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFCD192E64FD00B2A9F2 /* StarEmpty.png */; };
+		7CB4DFD6192E64FD00B2A9F2 /* StarEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFCE192E64FD00B2A9F2 /* StarEmpty@2x.png */; };
+		7CB4DFD7192E64FD00B2A9F2 /* StarEmptyLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFCF192E64FD00B2A9F2 /* StarEmptyLarge.png */; };
+		7CB4DFD8192E64FD00B2A9F2 /* StarEmptyLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFD0192E64FD00B2A9F2 /* StarEmptyLarge@2x.png */; };
+		7CB4DFD9192E64FD00B2A9F2 /* StarFull.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFD1192E64FD00B2A9F2 /* StarFull.png */; };
+		7CB4DFDA192E64FD00B2A9F2 /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFD2192E64FD00B2A9F2 /* StarFull@2x.png */; };
+		7CB4DFDB192E64FD00B2A9F2 /* StarFullLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFD3192E64FD00B2A9F2 /* StarFullLarge.png */; };
+		7CB4DFDC192E64FD00B2A9F2 /* StarFullLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFD4192E64FD00B2A9F2 /* StarFullLarge@2x.png */; };
+		7CB4DFE1192E651400B2A9F2 /* hilton1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFDD192E651400B2A9F2 /* hilton1.jpg */; };
+		7CB4DFE2192E651400B2A9F2 /* hilton2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFDE192E651400B2A9F2 /* hilton2.jpg */; };
+		7CB4DFE3192E651400B2A9F2 /* hilton3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFDF192E651400B2A9F2 /* hilton3.jpg */; };
+		7CB4DFE4192E651400B2A9F2 /* hilton4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFE0192E651400B2A9F2 /* hilton4.jpg */; };
+		7CB4DFE6192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */; };
 		84C2942D192B56990027E782 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2942C192B56990027E782 /* Foundation.framework */; };
 		84C2942F192B56990027E782 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2942E192B56990027E782 /* CoreGraphics.framework */; };
 		84C29431192B56990027E782 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C29430192B56990027E782 /* UIKit.framework */; };
@@ -92,6 +105,19 @@
 		7C3F74A2192D498200DBA803 /* AGPhotoBrowserZoomableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserZoomableView.m; sourceTree = "<group>"; };
 		7C3F74A4192D498200DBA803 /* DYRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYRateView.h; sourceTree = "<group>"; };
 		7C3F74A5192D498200DBA803 /* DYRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYRateView.m; sourceTree = "<group>"; };
+		7CB4DFCD192E64FD00B2A9F2 /* StarEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarEmpty.png; sourceTree = "<group>"; };
+		7CB4DFCE192E64FD00B2A9F2 /* StarEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarEmpty@2x.png"; sourceTree = "<group>"; };
+		7CB4DFCF192E64FD00B2A9F2 /* StarEmptyLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarEmptyLarge.png; sourceTree = "<group>"; };
+		7CB4DFD0192E64FD00B2A9F2 /* StarEmptyLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarEmptyLarge@2x.png"; sourceTree = "<group>"; };
+		7CB4DFD1192E64FD00B2A9F2 /* StarFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarFull.png; sourceTree = "<group>"; };
+		7CB4DFD2192E64FD00B2A9F2 /* StarFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarFull@2x.png"; sourceTree = "<group>"; };
+		7CB4DFD3192E64FD00B2A9F2 /* StarFullLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarFullLarge.png; sourceTree = "<group>"; };
+		7CB4DFD4192E64FD00B2A9F2 /* StarFullLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarFullLarge@2x.png"; sourceTree = "<group>"; };
+		7CB4DFDD192E651400B2A9F2 /* hilton1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hilton1.jpg; sourceTree = "<group>"; };
+		7CB4DFDE192E651400B2A9F2 /* hilton2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hilton2.jpg; sourceTree = "<group>"; };
+		7CB4DFDF192E651400B2A9F2 /* hilton3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hilton3.jpg; sourceTree = "<group>"; };
+		7CB4DFE0192E651400B2A9F2 /* hilton4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hilton4.jpg; sourceTree = "<group>"; };
+		7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-05-22 at 11.55.06 AM.png"; sourceTree = "<group>"; };
 		84C29429192B56990027E782 /* alhanove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alhanove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C2942C192B56990027E782 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84C2942E192B56990027E782 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -216,6 +242,21 @@
 				7C3F74A5192D498200DBA803 /* DYRateView.m */,
 			);
 			path = DYRateView;
+			sourceTree = "<group>";
+		};
+		7CB4DFCC192E64FD00B2A9F2 /* Rating Stars */ = {
+			isa = PBXGroup;
+			children = (
+				7CB4DFCD192E64FD00B2A9F2 /* StarEmpty.png */,
+				7CB4DFCE192E64FD00B2A9F2 /* StarEmpty@2x.png */,
+				7CB4DFCF192E64FD00B2A9F2 /* StarEmptyLarge.png */,
+				7CB4DFD0192E64FD00B2A9F2 /* StarEmptyLarge@2x.png */,
+				7CB4DFD1192E64FD00B2A9F2 /* StarFull.png */,
+				7CB4DFD2192E64FD00B2A9F2 /* StarFull@2x.png */,
+				7CB4DFD3192E64FD00B2A9F2 /* StarFullLarge.png */,
+				7CB4DFD4192E64FD00B2A9F2 /* StarFullLarge@2x.png */,
+			);
+			path = "Rating Stars";
 			sourceTree = "<group>";
 		};
 		84C29420192B56990027E782 = {
@@ -498,6 +539,8 @@
 		84C29480192B61B70027E782 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */,
+				7CB4DFCC192E64FD00B2A9F2 /* Rating Stars */,
 				84C294B2192B7E9B0027E782 /* rates stars */,
 				84C294A2192B7BA50027E782 /* Demo hotels Img */,
 				84C2949A192B72830027E782 /* Fonts */,
@@ -551,6 +594,10 @@
 		84C294A2192B7BA50027E782 /* Demo hotels Img */ = {
 			isa = PBXGroup;
 			children = (
+				7CB4DFDD192E651400B2A9F2 /* hilton1.jpg */,
+				7CB4DFDE192E651400B2A9F2 /* hilton2.jpg */,
+				7CB4DFDF192E651400B2A9F2 /* hilton3.jpg */,
+				7CB4DFE0192E651400B2A9F2 /* hilton4.jpg */,
 				84C294A3192B7BA50027E782 /* Ajyad.jpg */,
 				84C294A4192B7BA50027E782 /* dar al tawhed.jpg */,
 				84C294A5192B7BA50027E782 /* elaf kinda.jpg */,
@@ -634,30 +681,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB4DFD5192E64FD00B2A9F2 /* StarEmpty.png in Resources */,
+				7CB4DFDC192E64FD00B2A9F2 /* StarFullLarge@2x.png in Resources */,
 				84C294A9192B7BA50027E782 /* dar al tawhed.jpg in Resources */,
 				84C2949D192B72830027E782 /* ge_ss_two_light.ttf in Resources */,
 				84C294BA192B7E9B0027E782 /* rating_1.png in Resources */,
 				84C29445192B56990027E782 /* Images.xcassets in Resources */,
 				7C3F7496192D459500DBA803 /* room-128.png in Resources */,
+				7CB4DFD8192E64FD00B2A9F2 /* StarEmptyLarge@2x.png in Resources */,
+				7CB4DFD6192E64FD00B2A9F2 /* StarEmpty@2x.png in Resources */,
 				84C29486192B61B70027E782 /* badge1.png in Resources */,
+				7CB4DFD7192E64FD00B2A9F2 /* StarEmptyLarge.png in Resources */,
 				84C294AC192B7BA50027E782 /* meredian.jpg in Resources */,
 				84C29489192B61B70027E782 /* badge4.png in Resources */,
 				7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */,
+				7CB4DFD9192E64FD00B2A9F2 /* StarFull.png in Resources */,
 				84C294BE192B7E9B0027E782 /* rating_5.png in Resources */,
+				7CB4DFE2192E651400B2A9F2 /* hilton2.jpg in Resources */,
 				7C3F748E192D20CC00DBA803 /* SBPickerSelector.xib in Resources */,
 				84C2948F192B6F310027E782 /* MenuCell.xib in Resources */,
 				7C3F7495192D459500DBA803 /* people-icon-md.png in Resources */,
+				7CB4DFE3192E651400B2A9F2 /* hilton3.jpg in Resources */,
 				84C294B9192B7E9B0027E782 /* rating_0.png in Resources */,
+				7CB4DFE1192E651400B2A9F2 /* hilton1.jpg in Resources */,
 				84C294BC192B7E9B0027E782 /* rating_3.png in Resources */,
 				84C29437192B56990027E782 /* InfoPlist.strings in Resources */,
 				84C29492192B70B10027E782 /* left_arrow.png in Resources */,
 				84C294A8192B7BA50027E782 /* Ajyad.jpg in Resources */,
 				84C294AB192B7BA50027E782 /* hilton.jpg in Resources */,
+				7CB4DFE4192E651400B2A9F2 /* hilton4.jpg in Resources */,
 				84C29488192B61B70027E782 /* badge3.png in Resources */,
 				84C294C2192B84EC0027E782 /* back_header_btn@2x.png in Resources */,
 				84C2948A192B61B70027E782 /* badge5.png in Resources */,
 				84C294B1192B7CAB0027E782 /* HotelCell.xib in Resources */,
 				84C29440192B56990027E782 /* Main.storyboard in Resources */,
+				7CB4DFDA192E64FD00B2A9F2 /* StarFull@2x.png in Resources */,
+				7CB4DFE6192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png in Resources */,
+				7CB4DFDB192E64FD00B2A9F2 /* StarFullLarge.png in Resources */,
 				84C294AA192B7BA50027E782 /* elaf kinda.jpg in Resources */,
 				84C29493192B70B10027E782 /* left_arrow@2x.png in Resources */,
 				84C294BB192B7E9B0027E782 /* rating_2.png in Resources */,

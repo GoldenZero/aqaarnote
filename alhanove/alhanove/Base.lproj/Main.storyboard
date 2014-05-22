@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Form View Controller-->
@@ -49,8 +49,8 @@
                                 <rect key="frame" x="0.0" y="76" width="320" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="9fe-1O-D8c">
-                                        <rect key="frame" x="252" y="3" width="68" height="55"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="people-icon-md.png" id="9fe-1O-D8c">
+                                        <rect key="frame" x="264" y="10" width="46" height="42"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عدد الأشخاص:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gMX-zT-PoD">
@@ -80,8 +80,8 @@
                                 <rect key="frame" x="0.0" y="145" width="320" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="mQ3-A4-bdc">
-                                        <rect key="frame" x="252" y="3" width="68" height="55"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room-128.png" id="mQ3-A4-bdc">
+                                        <rect key="frame" x="258" y="6" width="57" height="50"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عدد الغرف:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6WO-v7-K9y">
@@ -407,9 +407,84 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="cEn-AV-FiP">
+                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="VoJ-vZ-0uz">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="gXq-oN-B0N" id="fbF-8O-ZP7"/>
+                                        </connections>
+                                    </scrollView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="170 $" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IXZ-dk-kU8">
+                                        <rect key="frame" x="20" y="160" width="81" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="blT-Ba-fgj">
+                                        <rect key="frame" x="140" y="160" width="160" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="المملكة العربية السعودية - مكة المكرمة                              شارع ابراهيم الخليل" textAlignment="right" id="y0h-On-d9Q">
+                                        <rect key="frame" x="14" y="189" width="286" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" id="3cF-vT-3zR">
+                                        <rect key="frame" x="14" y="232" width="286" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <mutableString key="text">يُطل فندق هيلتون مكة على المسجد الحرام والكعبة المشرفة، ويقع في قلب مدينة مكة المكرمة بالمملكة العربية السعودية. ويمكن الاستمتاع بإطلالات على الحرم المكي عند أداء الصلوات في صالتين مُكيفتين ومفروشتين بالسجاد، وتسعان 10000 مُصلي.
+
+تتميز جميع الغرف في فندق هيلتون مكة بإطلالات على مدينة مكة أو الكعبة المُشرفة أو المسجد الحرام. وتحتوي كل غرفة على مكتب وأريكة. ويتميز الجناح بغرفة معيشة منفصلة تحتوي على منطقة لتناول الطعام، وتُوفر الغرفة التنفيذية إمكانية الدخول إلى الصالة رفيعة المستوى.
+
+يتميز مطعم الإطلالة بنوافذ مُقوسة تقليدية، ويُقدم المأكولات الآسيوية ومأكولات إقليمية خاصة.ويمكن الاستمتاع بالنكهات العربية في مطعم Al Fayhaa، أو يمكن الاختيار من المأكولات العالمية الأصيلة في مطعم Lagenda. فضلاً عن الاسترخاء وتناول القهوة العربية في مقهى Cino.
+
+استمتع بمول التسوق الواسع في الموقع، لما يحتويه من 450 متجر شهير وقاعة لتناول الطعام. وتضُم معالم الجذب في مكة المكرمة، والتي تقع على مقربة من فندق هيلتون مكة، الكعبة المُشرفة وبئر زمزم، فضلاً عن المواقع الإسلامية المقدسة الهامة الأخرى التي تبعُد أقل من 8 كم.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="gXq-oN-B0N" id="oUA-b0-Q2B"/>
+                                        </connections>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقييم الزوار" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PPc-s1-ysC">
+                                        <rect key="frame" x="225" y="315" width="81" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2014-05-22 at 11.55.06 AM.png" id="7U7-ft-D2c">
+                                        <rect key="frame" x="20" y="344" width="286" height="136"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="36Z-ks-g2H">
+                                        <rect key="frame" x="141" y="121" width="39" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </pageControl>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="gXq-oN-B0N" id="frk-82-VLm"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="contentScrollView" destination="cEn-AV-FiP" id="ueH-w0-CXe"/>
+                        <outlet property="describTxtView" destination="3cF-vT-3zR" id="lmo-He-mXc"/>
+                        <outlet property="imagesScrollView" destination="VoJ-vZ-0uz" id="raX-yL-4YW"/>
+                        <outlet property="locationTxtView" destination="y0h-On-d9Q" id="4k3-tc-sef"/>
+                        <outlet property="pageControl" destination="36Z-ks-g2H" id="Y3f-5V-1yE"/>
+                        <outlet property="priceLabel" destination="IXZ-dk-kU8" id="dKm-91-lX5"/>
+                        <outlet property="starsView" destination="blT-Ba-fgj" id="3gj-O2-Jqx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPe-dI-jMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -777,7 +852,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Screen Shot 2014-05-22 at 11.55.06 AM.png" width="515" height="257"/>
         <image name="ar_back_header_btn.png" width="25" height="26"/>
+        <image name="people-icon-md.png" width="298" height="261"/>
+        <image name="room-128.png" width="128" height="128"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -786,6 +864,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="DOd-GB-dcC"/>
-        <segue reference="TMZ-ZH-r4K"/>
+        <segue reference="qXM-TT-bWZ"/>
     </inferredMetricsTieBreakers>
 </document>
