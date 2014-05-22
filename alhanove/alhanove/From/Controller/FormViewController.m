@@ -17,7 +17,9 @@
     FormObject * form;
     
     BOOL dateFromFlag;
-
+    BOOL dateChoosed;
+    BOOL flightChoosed;
+    
     NSArray *flightClassesArray;
     
 }
@@ -83,6 +85,17 @@
 
 - (IBAction)nextBtnPrss:(id)sender {
     
+    if (!dateChoosed) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد تاريخ الإنطلاق" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    if (!flightChoosed) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد درجة الطيران" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
     
     [self performSegueWithIdentifier:@"showHotelList" sender:self];
 }
@@ -155,11 +168,27 @@
 
 -(void) SBPickerSelector:(SBPickerSelector *)selector selectedValue:(NSString *)value index:(NSInteger)idx{
    
+    flightChoosed = YES;
     self.flightClassLabel.text=value;
     form.FlightClass=value;
+    
+    switch (idx) {
+        case 0:
+            form.FlightCost = @"4000";
+            break;
+        case 1:
+            form.FlightCost = @"2500";
+            break;
+        case 2:
+            form.FlightCost = @"1000";
+            break;
+        default:
+            break;
+    }
 }
 
--(void) SBPickerSelector:(SBPickerSelector *)selector dateSelected:(NSDate *)date{
+-(void) SBPickerSelector:(SBPickerSelector *)selector dateSelected:(NSDate *)date
+{
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
@@ -173,6 +202,8 @@
         self.toDateLabel.text=[dateFormat stringFromDate:date];
 
     }
+    
+    dateChoosed = YES;
 }
 
 -(void) SBPickerSelector:(SBPickerSelector *)selector cancelPicker:(BOOL)cancel{

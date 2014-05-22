@@ -19,6 +19,7 @@
 @property (nonatomic,strong) NSDate *fromDate;
 @property (nonatomic,strong) NSDate *toDate;
 @property (nonatomic,strong) NSString *FlightClass;
+@property (nonatomic,strong) NSString* FlightCost;
 @property int guestsNumber;
 @property int roomsNumber;
 

@@ -29,6 +29,7 @@
 @property (strong, nonatomic) FormObject* formObj;
 
 - (IBAction)backInvoked:(id)sender;
+- (IBAction)homeInvoked:(id)sender;
 - (IBAction)showDateInvoked:(id)sender;
 - (IBAction)passportAttachInvoked:(id)sender;
 - (IBAction)personalImgInvoked:(id)sender;

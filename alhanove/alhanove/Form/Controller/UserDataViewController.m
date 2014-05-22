@@ -39,8 +39,12 @@
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
 
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
-    self.PriceLbl.text = self.formObj.BookingCost;
+    self.PriceLbl.text = [NSString stringWithFormat:@"السعر %@",[NSString stringWithFormat:@"%i ريال",[self.formObj.BookingCost integerValue] + [self.formObj.FlightCost integerValue]]];
+    [self.dateBtn setTitle:[dateFormat stringFromDate:self.formObj.fromDate] forState:UIControlStateNormal];
     
     //prepare the pickers
     [self preparePickers];
@@ -68,6 +72,11 @@
 
 #pragma mark - IBAction
 - (IBAction)backInvoked:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)homeInvoked:(id)sender
 {
     [self performSegueWithIdentifier:@"BackToHome" sender:self];
 }
