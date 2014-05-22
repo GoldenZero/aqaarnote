@@ -58,7 +58,6 @@
     form.guestsNumber=1;
     form.roomsNumber=1;
     
-    
     // Set picker view
     DatePicker = [SBPickerSelector picker];
     DatePicker.delegate = self;
@@ -73,6 +72,15 @@
     FlightClassPicker.pickerData=[[NSMutableArray alloc] initWithArray:flightClassesArray];
     FlightClassPicker.doneButtonTitle = @"تم";
     FlightClassPicker.cancelButtonTitle = @"إغلاق";
+    
+    // Set Custom font
+    [self.guestsLabel setFont:[UIFont mediumGeSSOfSize:14]];
+    [self.nextButton.titleLabel setFont:[UIFont mediumGeSSOfSize:14]];
+    [self.roomsLabel setFont:[UIFont mediumGeSSOfSize:14]];
+    [self.fromDateLabel setFont:[UIFont lightGeSSOfSize:12]];
+    [self.flightClassLabel setFont:[UIFont lightGeSSOfSize:12]];
+    [self.roomsTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
+    [self.guestTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
 
 }
 

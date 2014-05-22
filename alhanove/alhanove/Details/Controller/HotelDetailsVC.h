@@ -25,6 +25,7 @@
 
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
+@property (strong, nonatomic) IBOutlet UILabel *reviewLabel;
 
 @property (strong, nonatomic) NSMutableArray *pageImages;
 @property int starsNumber;

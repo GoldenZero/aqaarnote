@@ -45,6 +45,23 @@
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
     self.PriceLbl.text = [NSString stringWithFormat:@"السعر %@",[NSString stringWithFormat:@"%i ريال",[self.formObj.BookingCost integerValue] + [self.formObj.FlightCost integerValue]]];
     [self.dateBtn setTitle:[dateFormat stringFromDate:self.formObj.fromDate] forState:UIControlStateNormal];
+        
+    // Set Custom font
+    [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
+    [self.homeButton.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
+
+    [self.dateBtn.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
+    [self.passportAttachBtn.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
+    [self.personalImgAttachBtn.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
+    [self.payNowBtn.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
+    [self.payLaterBtn.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
+
+    [self.NameText setFont:[UIFont lightGeSSOfSize:12]];
+    [self.AddressText setFont:[UIFont lightGeSSOfSize:12]];
+    [self.EmailText setFont:[UIFont lightGeSSOfSize:12]];
+    [self.MobileText setFont:[UIFont lightGeSSOfSize:12]];
+    [self.dateLbl setFont:[UIFont lightGeSSOfSize:12]];
+    [self.PriceLbl setFont:[UIFont lightGeSSOfSize:12]];
     
     //prepare the pickers
     [self preparePickers];

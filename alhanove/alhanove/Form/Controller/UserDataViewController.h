@@ -12,7 +12,6 @@
 @interface UserDataViewController : UIViewController<SBPickerSelectorDelegate,EnhancedKeyboardDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
-
 @property (nonatomic, strong) IBOutlet UITextField* NameText;
 @property (nonatomic, strong) IBOutlet UITextField* AddressText;
 @property (nonatomic, strong) IBOutlet UITextField* EmailText;
@@ -24,6 +23,7 @@
 @property (nonatomic, strong) IBOutlet UIButton* payNowBtn;
 @property (nonatomic, strong) IBOutlet UIButton* payLaterBtn;
 @property (nonatomic, strong) IBOutlet UILabel* PriceLbl;
+@property (strong, nonatomic) IBOutlet UIButton *homeButton;
 
 @property (strong, nonatomic) NSString *tripCost;
 @property (strong, nonatomic) FormObject* formObj;

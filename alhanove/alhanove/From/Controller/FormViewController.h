@@ -13,6 +13,9 @@
 @interface FormViewController : UIViewController<SBPickerSelectorDelegate>
 
 #pragma mark - Properties 
+@property (strong, nonatomic) IBOutlet UILabel *guestTitleLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *roomsTitleLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *guestsLabel;
 
@@ -28,6 +31,7 @@
 
 @property (strong, nonatomic) IBOutlet UIStepper *roomStepper;
 
+@property (strong, nonatomic) IBOutlet UIButton *nextButton;
 #pragma mark - Buttons Actions
 
 - (IBAction)backBtnPrss:(id)sender;

@@ -168,9 +168,12 @@
                         <outlet property="flightClassLabel" destination="gsq-ak-0Nd" id="guH-Oq-XHJ"/>
                         <outlet property="fromDateLabel" destination="V23-DF-wST" id="UOQ-hI-At4"/>
                         <outlet property="guestStepper" destination="4zu-4m-smc" id="ouj-yq-eKv"/>
+                        <outlet property="guestTitleLabel" destination="gMX-zT-PoD" id="6A5-Nm-nKe"/>
                         <outlet property="guestsLabel" destination="n74-5X-dAb" id="fzg-RC-m7a"/>
+                        <outlet property="nextButton" destination="BIw-jd-AcC" id="iFT-Dp-Zj5"/>
                         <outlet property="roomStepper" destination="VIy-wq-J2m" id="qoZ-Um-1u6"/>
                         <outlet property="roomsLabel" destination="Vfb-uU-E43" id="aim-Wo-ckh"/>
+                        <outlet property="roomsTitleLabel" destination="6WO-v7-K9y" id="MSS-1t-ga5"/>
                         <segue destination="Zla-dz-aC0" kind="modal" identifier="showHotelList" id="qXM-TT-bWZ"/>
                     </connections>
                 </viewController>
@@ -453,7 +456,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="المملكة العربية السعودية - مكة المكرمة                              شارع ابراهيم الخليل" textAlignment="right" id="y0h-On-d9Q">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="المملكة العربية السعودية - مكة المكرمة                              شارع ابراهيم الخليل" textAlignment="right" id="y0h-On-d9Q">
                                         <rect key="frame" x="14" y="189" width="286" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -464,13 +467,13 @@
                                         <rect key="frame" x="14" y="232" width="286" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <mutableString key="text">يُطل فندق مكة على المسجد الحرام والكعبة المشرفة، ويقع في قلب مدينة مكة المكرمة بالمملكة العربية السعودية. ويمكن الاستمتاع بإطلالات على الحرم المكي عند أداء الصلوات في صالتين مُكيفتين ومفروشتين بالسجاد، وتسعان 10000 مُصلي.
+                                        <string key="text">يُطل فندق مكة على المسجد الحرام والكعبة المشرفة، ويقع في قلب مدينة مكة المكرمة بالمملكة العربية السعودية. ويمكن الاستمتاع بإطلالات على الحرم المكي عند أداء الصلوات في صالتين مُكيفتين ومفروشتين بالسجاد، وتسعان 10000 مُصلي.
 
 تتميز جميع الغرف في فندق مكة بإطلالات على مدينة مكة أو الكعبة المُشرفة أو المسجد الحرام. وتحتوي كل غرفة على مكتب وأريكة. ويتميز الجناح بغرفة معيشة منفصلة تحتوي على منطقة لتناول الطعام، وتُوفر الغرفة التنفيذية إمكانية الدخول إلى الصالة رفيعة المستوى.
 
 يتميز مطعم الإطلالة بنوافذ مُقوسة تقليدية، ويُقدم المأكولات الآسيوية ومأكولات إقليمية خاصة.ويمكن الاستمتاع بالنكهات العربية في مطعم Al Fayhaa، أو يمكن الاختيار من المأكولات العالمية الأصيلة في مطعم Lagenda. فضلاً عن الاسترخاء وتناول القهوة العربية في مقهى Cino.
 
-استمتع بمول التسوق الواسع في الموقع، لما يحتويه من 450 متجر شهير وقاعة لتناول الطعام. وتضُم معالم الجذب في مكة المكرمة، والتي تقع على مقربة من فندق هيلتون مكة، الكعبة المُشرفة وبئر زمزم، فضلاً عن المواقع الإسلامية المقدسة الهامة الأخرى التي تبعُد أقل من 8 كم.</mutableString>
+استمتع بمول التسوق الواسع في الموقع، لما يحتويه من 450 متجر شهير وقاعة لتناول الطعام. وتضُم معالم الجذب في مكة المكرمة، والتي تقع على مقربة من فندق هيلتون مكة، الكعبة المُشرفة وبئر زمزم، فضلاً عن المواقع الإسلامية المقدسة الهامة الأخرى التي تبعُد أقل من 8 كم.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
@@ -507,6 +510,7 @@
                         <outlet property="locationTxtView" destination="y0h-On-d9Q" id="4k3-tc-sef"/>
                         <outlet property="pageControl" destination="36Z-ks-g2H" id="Y3f-5V-1yE"/>
                         <outlet property="priceLabel" destination="IXZ-dk-kU8" id="dKm-91-lX5"/>
+                        <outlet property="reviewLabel" destination="PPc-s1-ysC" id="1dY-oT-Sys"/>
                         <outlet property="starsView" destination="blT-Ba-fgj" id="3gj-O2-Jqx"/>
                     </connections>
                 </viewController>
@@ -679,6 +683,7 @@
                         <outlet property="PriceLbl" destination="1tI-C0-ANP" id="cl6-tz-jaJ"/>
                         <outlet property="dateBtn" destination="1ka-ha-W0K" id="axe-xd-Jd0"/>
                         <outlet property="dateLbl" destination="NhY-TD-3vs" id="NRF-Go-0CY"/>
+                        <outlet property="homeButton" destination="eZ6-2a-Mhr" id="T2h-Ay-lTe"/>
                         <outlet property="pageTitle" destination="hzf-e6-noA" id="2Be-pn-a90"/>
                         <outlet property="passportAttachBtn" destination="u3M-wF-wDe" id="s77-U8-snx"/>
                         <outlet property="payLaterBtn" destination="3kk-5L-HfE" id="tZk-kR-SLA"/>
@@ -908,7 +913,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TMZ-ZH-r4K"/>
         <segue reference="ZUc-Ow-Nui"/>
+        <segue reference="qXM-TT-bWZ"/>
     </inferredMetricsTieBreakers>
 </document>

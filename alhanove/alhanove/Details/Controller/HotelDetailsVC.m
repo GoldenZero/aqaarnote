@@ -29,8 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.hotelTitle.text=self.hotelName;
-    self.priceLabel.text=[NSString stringWithFormat:@"%@ $",self.hotelCost];
     [self setUpLeftAlignedRateView:self.starsNumber];
     [self prepareViewContent];
 
@@ -43,6 +41,18 @@
 }
 
 - (void) prepareViewContent{
+    
+    // Set Custom font
+    self.hotelTitle.text=self.hotelName;
+    [self.hotelTitle setFont:[UIFont mediumGeSSOfSize:20]];
+    
+    self.priceLabel.text=[NSString stringWithFormat:@"%@ $",self.hotelCost];
+    [self.priceLabel setFont:[UIFont mediumGeSSOfSize:18]];
+    [self.locationTxtView setFont:[UIFont lightGeSSOfSize:12]];
+    [self.describTxtView setFont:[UIFont lightGeSSOfSize:12]];
+    [self.reviewLabel setFont:[UIFont mediumGeSSOfSize:13]];
+    
+
     
     if(!self.pageImages){
         pageImages=[[NSMutableArray alloc] initWithObjects:
