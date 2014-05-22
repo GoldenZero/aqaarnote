@@ -453,11 +453,11 @@
     else if ([[segue identifier] isEqualToString:@"showHotelDetails"]){
         HotelDetailsVC* vc = segue.destinationViewController;
         NSDictionary *hotelDictionary=[hotelArrays objectAtIndex:chosenHotelIndex];
-        vc.priceLabel.text=[hotelDictionary objectForKey:@"Cost"];
+        vc.hotelCost=[hotelDictionary objectForKey:@"Cost"];
         vc.starsNumber=[[hotelDictionary objectForKey:@"Stars"] integerValue];
         vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)[hotelDictionary objectForKey:@"Image"]], nil ];
-        vc.hotelTitle.text=[hotelDictionary objectForKey:@"Title"];
-
+        vc.hotelName=[hotelDictionary objectForKey:@"Title"];
+        
     }
 }
 
