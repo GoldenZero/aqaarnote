@@ -294,11 +294,15 @@ CGFloat animatedDistance;
     }
     [PFObject deleteAll:deletedPropertyImg];
 
+    if (![self.sectionID objectForKey:@"status"]) {
+        self.numberOfInspected++;
+    }
     [self.sectionID setObject:sectionStatus forKey:@"status"];
     [self.sectionID setObject:self.noteTextView.text forKey:@"note"];
     [self.sectionID saveInBackgroundWithBlock:^(BOOL done, NSError *error){
         if (done) {
             [self.propertyID setObject:[NSDate date] forKey:@"lastInspectionDate"];
+            [self.propertyID setObject:[NSNumber numberWithFloat:(self.numberOfInspected*100)/self.numberOfSections] forKey:@"InspectionRate"];
             [self.propertyID saveInBackgroundWithBlock:^(BOOL succeded, NSError *error){
                 if (succeded) {
                     [HUD hide:YES];

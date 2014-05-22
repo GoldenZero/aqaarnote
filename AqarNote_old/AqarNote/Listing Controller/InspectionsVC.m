@@ -228,6 +228,14 @@
 
         [cell.propertyDate setText:[df stringFromDate:post.createdAt]];
         cell.propertyDate.font=[UIFont fontWithName:@"HacenSudan" size:12];
+        
+        [cell.progressLabel setText:[NSString  stringWithFormat:@"%@ %% ",[post objectForKey:@"InspectionRate"]]];
+        cell.progressLabel.font=[UIFont fontWithName:@"HacenSudan" size:12];
+        if ([[post objectForKey:@"InspectionRate"]integerValue]<50) {
+           [cell.progressImage setImage:[UIImage imageNamed:@""]];
+            [cell.progressImage setBackgroundColor:[UIColor orangeColor]];
+        }
+
 
     }
     

@@ -62,12 +62,20 @@
                         <rect key="frame" x="181" y="136" width="119" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hwg-WK-koc">
+                        <rect key="frame" x="219" y="136" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="detailTxtView" destination="q6o-gn-VfN" id="3Gj-jB-UPt"/>
                 <outlet property="moreButton" destination="9zR-Mr-tig" id="UMk-SM-lLh"/>
                 <outlet property="progressImage" destination="zLS-YI-30f" id="1zg-e9-8bt"/>
+                <outlet property="progressLabel" destination="Hwg-WK-koc" id="ttW-tj-puy"/>
                 <outlet property="propertyDate" destination="wlY-C1-mpb" id="Hsx-MK-grb"/>
                 <outlet property="propertyImage" destination="0Am-FZ-c5n" id="jwC-73-Isf"/>
                 <outlet property="propertyLocation" destination="Rmc-sW-gi8" id="nba-Kv-dC0"/>
