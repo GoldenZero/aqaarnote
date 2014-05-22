@@ -25,6 +25,8 @@
     NSInteger madinaCost;
     
     int chosenHotelIndex;
+    NSInteger priceAscending;
+    NSInteger starsAscending;
 
 }
 @end
@@ -45,6 +47,9 @@
     [super viewDidLoad];
     
     priceForOneGuest = YES;
+    priceAscending = 0;
+    starsAscending = 2;
+
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
     [self.nextBtn.titleLabel setFont:[UIFont lightGeSSOfSize:17]];
 
@@ -238,12 +243,23 @@
 
 - (IBAction)sortByInvoked:(id)sender {
     //show the picker for sorting types [leastprice[0] ,mostprice[1] , stars[2] , name[3]]
-    [sortPicker showPickerOver:self];
+    //[sortPicker showPickerOver:self];
+    
+    NSArray* sortedArr = hotelArrays;
+    hotelArrays = [NSMutableArray new];
+    hotelArrays = [[NSMutableArray alloc]initWithArray:[self sortArrayBy:priceAscending andArray:sortedArr]]; // price
+    [self.tableView setNeedsDisplay];
+    [self.tableView reloadData];
 }
 
 - (IBAction)changePriceInvoked:(id)sender {
     //show the prices type [for one , for all]
-    [CostPicker showPickerOver:self];
+    //[CostPicker showPickerOver:self];
+    NSArray* sortedArr = hotelArrays;
+    hotelArrays = [NSMutableArray new];
+    hotelArrays = [[NSMutableArray alloc]initWithArray:[self sortArrayBy:starsAscending andArray:sortedArr]]; // price
+    [self.tableView setNeedsDisplay];
+    [self.tableView reloadData];
 }
 
 - (IBAction)openHotelDetails:(id)sender {
@@ -331,9 +347,9 @@
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Cost" ascending:YES];
             
             sorted = [myArr sortedArrayUsingDescriptors:@[sortDescriptor]];
-            
+            priceAscending = 1;
             return sorted;
-
+            
         }
             break;
             
@@ -342,24 +358,34 @@
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Cost" ascending:NO];
             
             sorted = [myArr sortedArrayUsingDescriptors:@[sortDescriptor]];
-            
+            priceAscending = 0;
             return sorted;
-
+            
         }
             break;
-        
+            
         case 2:
         {
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Stars" ascending:NO];
             
             sorted = [myArr sortedArrayUsingDescriptors:@[sortDescriptor]];
+            starsAscending = 3;
+            return sorted;
             
+        }
+            break;
+        case 3:
+        {
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Stars" ascending:YES];
+            
+            sorted = [myArr sortedArrayUsingDescriptors:@[sortDescriptor]];
+            starsAscending = 2;
             return sorted;
             
         }
             break;
             
-        case 3:
+        case 4:
         {
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Title" ascending:YES];
             
@@ -415,7 +441,6 @@
 
 
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
