@@ -10,9 +10,16 @@
 #import "MenuCell.h"
 #import "HotelListingViewController.h"
 
-@interface HomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface HomeViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+//@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+#pragma mark - Buttons Actions
+- (IBAction)oumraBtnPrss:(id)sender;
+- (IBAction)hajBtnPrss:(id)sender;
+- (IBAction)carsBtnPrss:(id)sender;
+- (IBAction)flightBtnPrss:(id)sender;
+- (IBAction)hotelsBtnPrss:(id)sender;
+- (IBAction)bookingsBtnPrss:(id)sender;
 @end

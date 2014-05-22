@@ -29,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.hotelTitle.text=self.hotelName;
+    self.priceLabel.text=[NSString stringWithFormat:@"%@ $",self.hotelCost];
     [self setUpLeftAlignedRateView:self.starsNumber];
     [self prepareViewContent];
 

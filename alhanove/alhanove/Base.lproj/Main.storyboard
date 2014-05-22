@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Form View Controller-->
@@ -186,15 +186,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9h3-Iv-cUa">
-                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="1ds-Lc-C0y"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="mQK-H3-0ut"/>
-                                </connections>
-                            </tableView>
                             <view contentMode="scaleToFill" id="l0R-FV-Zqb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -208,6 +199,78 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.92549026012420654" green="0.92549026012420654" blue="0.81176477670669556" alpha="1" colorSpace="deviceRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zyv-Ba-Kif">
+                                <rect key="frame" x="160" y="68" width="160" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="حجز العمرة">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="oumraBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wKg-cd-fgX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IlG-9f-iWX">
+                                <rect key="frame" x="0.0" y="68" width="160" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.043137256056070328" green="0.54117649793624878" blue="0.91764712333679199" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="حجز الحج">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hajBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Iro-ZS-ES2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B7j-6r-YtU">
+                                <rect key="frame" x="160" y="234" width="160" height="168"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <state key="normal" title="سيارات">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="carsBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MPQ-kC-0F0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rqZ-XK-xCO">
+                                <rect key="frame" x="0.0" y="234" width="160" height="168"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.45882356169999999" blue="0.1647058874" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="طيران">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="flightBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Y7I-7z-EJM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hcs-ON-swH">
+                                <rect key="frame" x="160" y="402" width="160" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.52549022436141968" green="0.090196080505847931" blue="0.58431375026702881" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="فنادق">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hotelsBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RX1-mI-yVQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hjb-EU-gVM">
+                                <rect key="frame" x="0.0" y="402" width="160" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92156869173049927" green="0.26274511218070984" blue="0.23137256503105164" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="حجوزاتي">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="bookingsBtnPrss:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1gz-t5-LE6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -215,7 +278,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="pageTitle" destination="wo9-GO-H23" id="MlQ-ZP-bRe"/>
-                        <outlet property="tableView" destination="9h3-Iv-cUa" id="IVG-3L-ZwT"/>
                         <segue destination="Zla-dz-aC0" kind="modal" identifier="showMekkaListing" modalTransitionStyle="crossDissolve" id="TMZ-ZH-r4K"/>
                         <segue destination="3OT-2Y-YwU" kind="modal" identifier="showFormVC" id="9p9-wv-uCI"/>
                     </connections>
@@ -365,16 +427,6 @@
                                             <action selector="backBtnPrss:" destination="gXq-oN-B0N" eventType="touchUpInside" id="GIP-M0-niB"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Koa-OS-y2V">
-                                        <rect key="frame" x="0.0" y="18" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" title="التالي">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextBtnPrss:" destination="gXq-oN-B0N" eventType="touchUpInside" id="OPu-Kh-mOf"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
@@ -389,7 +441,7 @@
                                             <outlet property="delegate" destination="gXq-oN-B0N" id="fbF-8O-ZP7"/>
                                         </connections>
                                     </scrollView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="170 $" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IXZ-dk-kU8">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IXZ-dk-kU8">
                                         <rect key="frame" x="20" y="160" width="81" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -412,13 +464,13 @@
                                         <rect key="frame" x="14" y="232" width="286" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <string key="text">يُطل فندق هيلتون مكة على المسجد الحرام والكعبة المشرفة، ويقع في قلب مدينة مكة المكرمة بالمملكة العربية السعودية. ويمكن الاستمتاع بإطلالات على الحرم المكي عند أداء الصلوات في صالتين مُكيفتين ومفروشتين بالسجاد، وتسعان 10000 مُصلي.
+                                        <mutableString key="text">يُطل فندق مكة على المسجد الحرام والكعبة المشرفة، ويقع في قلب مدينة مكة المكرمة بالمملكة العربية السعودية. ويمكن الاستمتاع بإطلالات على الحرم المكي عند أداء الصلوات في صالتين مُكيفتين ومفروشتين بالسجاد، وتسعان 10000 مُصلي.
 
-تتميز جميع الغرف في فندق هيلتون مكة بإطلالات على مدينة مكة أو الكعبة المُشرفة أو المسجد الحرام. وتحتوي كل غرفة على مكتب وأريكة. ويتميز الجناح بغرفة معيشة منفصلة تحتوي على منطقة لتناول الطعام، وتُوفر الغرفة التنفيذية إمكانية الدخول إلى الصالة رفيعة المستوى.
+تتميز جميع الغرف في فندق مكة بإطلالات على مدينة مكة أو الكعبة المُشرفة أو المسجد الحرام. وتحتوي كل غرفة على مكتب وأريكة. ويتميز الجناح بغرفة معيشة منفصلة تحتوي على منطقة لتناول الطعام، وتُوفر الغرفة التنفيذية إمكانية الدخول إلى الصالة رفيعة المستوى.
 
 يتميز مطعم الإطلالة بنوافذ مُقوسة تقليدية، ويُقدم المأكولات الآسيوية ومأكولات إقليمية خاصة.ويمكن الاستمتاع بالنكهات العربية في مطعم Al Fayhaa، أو يمكن الاختيار من المأكولات العالمية الأصيلة في مطعم Lagenda. فضلاً عن الاسترخاء وتناول القهوة العربية في مقهى Cino.
 
-استمتع بمول التسوق الواسع في الموقع، لما يحتويه من 450 متجر شهير وقاعة لتناول الطعام. وتضُم معالم الجذب في مكة المكرمة، والتي تقع على مقربة من فندق هيلتون مكة، الكعبة المُشرفة وبئر زمزم، فضلاً عن المواقع الإسلامية المقدسة الهامة الأخرى التي تبعُد أقل من 8 كم.</string>
+استمتع بمول التسوق الواسع في الموقع، لما يحتويه من 450 متجر شهير وقاعة لتناول الطعام. وتضُم معالم الجذب في مكة المكرمة، والتي تقع على مقربة من فندق هيلتون مكة، الكعبة المُشرفة وبئر زمزم، فضلاً عن المواقع الإسلامية المقدسة الهامة الأخرى التي تبعُد أقل من 8 كم.</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
@@ -450,6 +502,7 @@
                     <connections>
                         <outlet property="contentScrollView" destination="cEn-AV-FiP" id="ueH-w0-CXe"/>
                         <outlet property="describTxtView" destination="3cF-vT-3zR" id="lmo-He-mXc"/>
+                        <outlet property="hotelTitle" destination="CLY-y5-Z5l" id="rET-6s-35B"/>
                         <outlet property="imagesScrollView" destination="VoJ-vZ-0uz" id="raX-yL-4YW"/>
                         <outlet property="locationTxtView" destination="y0h-On-d9Q" id="4k3-tc-sef"/>
                         <outlet property="pageControl" destination="36Z-ks-g2H" id="Y3f-5V-1yE"/>
@@ -855,7 +908,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="qXM-TT-bWZ"/>
+        <segue reference="TMZ-ZH-r4K"/>
         <segue reference="ZUc-Ow-Nui"/>
     </inferredMetricsTieBreakers>
 </document>

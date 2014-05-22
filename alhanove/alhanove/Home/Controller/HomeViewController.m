@@ -26,7 +26,7 @@
     [self getListMenuData];
     
     //reflect to the table
-    [self.tableView reloadData];
+   // [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,59 +64,59 @@
     [listMenu addObject:MenuDict];
     
 }
-
-#pragma mark - UITableView
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-    
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [listMenu count];
-}
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 60.0;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"MenuCell";
-    NSDictionary* dictionary = [listMenu objectAtIndex:indexPath.row];
-    
-    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-
-        NSArray* topLevelObjects;
-            topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
-        
-        cell = [topLevelObjects objectAtIndex:0];
-        
-    }
-    cell.titleLbl.text = dictionary[@"Title"];
-    [cell.menuImg setImage:[UIImage imageNamed:dictionary[@"Image"]]];
-    
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //al haj
-    if (indexPath.row == 0) {
-        
-        [self performSegueWithIdentifier:@"showFormVC" sender:self];
-    }else if (indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"showFormVC" sender:self];
-    }
-}
+//
+//#pragma mark - UITableView
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 1;
+//    
+//}
+//
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return [listMenu count];
+//}
+//
+//
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 60.0;
+//}
+//
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *CellIdentifier = @"MenuCell";
+//    NSDictionary* dictionary = [listMenu objectAtIndex:indexPath.row];
+//    
+//    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    
+//    if (cell == nil) {
+//        cell = [[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//
+//        NSArray* topLevelObjects;
+//            topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"MenuCell" owner:self options:nil];
+//        
+//        cell = [topLevelObjects objectAtIndex:0];
+//        
+//    }
+//    cell.titleLbl.text = dictionary[@"Title"];
+//    [cell.menuImg setImage:[UIImage imageNamed:dictionary[@"Image"]]];
+//    
+//    return cell;
+//}
+//
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    //al haj
+//    if (indexPath.row == 0) {
+//        
+//        [self performSegueWithIdentifier:@"showFormVC" sender:self];
+//    }else if (indexPath.row == 1) {
+//        [self performSegueWithIdentifier:@"showFormVC" sender:self];
+//    }
+//}
 
 #pragma mark - storyBoard delegate
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -129,4 +129,26 @@
         }
 }
 
+#pragma mark - Buttons Actions
+- (IBAction)oumraBtnPrss:(id)sender {
+    [self performSegueWithIdentifier:@"showFormVC" sender:self];
+
+}
+
+- (IBAction)hajBtnPrss:(id)sender {
+    [self performSegueWithIdentifier:@"showFormVC" sender:self];
+
+}
+
+- (IBAction)carsBtnPrss:(id)sender {
+}
+
+- (IBAction)flightBtnPrss:(id)sender {
+}
+
+- (IBAction)hotelsBtnPrss:(id)sender {
+}
+
+- (IBAction)bookingsBtnPrss:(id)sender {
+}
 @end

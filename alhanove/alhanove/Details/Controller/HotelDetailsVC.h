@@ -28,6 +28,8 @@
 
 @property (strong, nonatomic) NSMutableArray *pageImages;
 @property int starsNumber;
+@property (strong,nonatomic) NSString *hotelName;
+@property (strong,nonatomic) NSString *hotelCost;
 
 #pragma mark - Buttons Actions
 - (IBAction)backBtnPrss:(id)sender;
