@@ -14,4 +14,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLbl;
 @property (strong, nonatomic) IBOutlet UIImageView *rateStarImg;
 @property (strong, nonatomic) IBOutlet UILabel *costLbl;
+@property (strong, nonatomic) IBOutlet UIButton *imgButton;
 @end

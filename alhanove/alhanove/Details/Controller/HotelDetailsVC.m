@@ -9,7 +9,6 @@
 #import "HotelDetailsVC.h"
 
 @interface HotelDetailsVC (){
-    NSMutableArray *pageImages;
     NSMutableArray *pageViews;
     NSInteger currentPage;
 }
@@ -17,7 +16,7 @@
 @end
 
 @implementation HotelDetailsVC
-
+@synthesize pageImages;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setUpLeftAlignedRateView:4];
+    [self setUpLeftAlignedRateView:self.starsNumber];
     [self prepareViewContent];
 
 }
@@ -42,11 +41,15 @@
 }
 
 - (void) prepareViewContent{
-    pageImages=[[NSMutableArray alloc] initWithObjects:
-                [UIImage imageNamed:@"hilton1.jpg"],
-                [UIImage imageNamed:@"hilton2.jpg"],
-                [UIImage imageNamed:@"hilton3.jpg"],
-                [UIImage imageNamed:@"hilton4.jpg"],nil];
+    
+    if(!self.pageImages){
+        pageImages=[[NSMutableArray alloc] initWithObjects:
+                     [UIImage imageNamed:@"hilton1.jpg"],
+                     [UIImage imageNamed:@"hilton2.jpg"],
+                     [UIImage imageNamed:@"hilton3.jpg"],
+                     [UIImage imageNamed:@"hilton4.jpg"],nil];
+
+    }
     [self setScrollView];
     [self loadBannerImgs];
 }

@@ -7,6 +7,7 @@
 //
 
 #import "HotelListingViewController.h"
+#import "HotelDetailsVC.h"
 
 @interface HotelListingViewController ()
 {
@@ -22,6 +23,8 @@
     NSNumber* totalCost;
     NSInteger mekkaCost;
     NSInteger madinaCost;
+    
+    int chosenHotelIndex;
 
 }
 @end
@@ -243,7 +246,12 @@
     [CostPicker showPickerOver:self];
 }
 
-
+- (IBAction)openHotelDetails:(id)sender {
+    UIButton* imgButton = (UIButton*)sender;
+    chosenHotelIndex=imgButton.tag;
+    [self performSegueWithIdentifier:@"showHotelDetails" sender:self];
+    
+}
 #pragma mark - UITableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -286,7 +294,10 @@
     else
         cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary[@"Cost_all"]];
 
-    
+    cell.imgButton.tag=indexPath.row;
+    [cell.imgButton addTarget:self
+                       action:@selector(openHotelDetails:)
+                     forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -412,6 +423,16 @@
     {
         TimeLineViewController* vc = segue.destinationViewController;
         vc.formObj = self.formObj;
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"showHotelDetails"]){
+        HotelDetailsVC* vc = segue.destinationViewController;
+        NSDictionary *hotelDictionary=[hotelArrays objectAtIndex:chosenHotelIndex];
+        vc.priceLabel.text=[hotelDictionary objectForKey:@"Cost"];
+        vc.starsNumber=[[hotelDictionary objectForKey:@"Stars"] integerValue];
+        vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)[hotelDictionary objectForKey:@"Image"]], nil ];
+        vc.hotelTitle.text=[hotelDictionary objectForKey:@"Title"];
+
     }
 }
 

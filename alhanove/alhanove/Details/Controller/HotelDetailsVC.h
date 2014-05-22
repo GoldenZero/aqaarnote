@@ -15,6 +15,7 @@
 #pragma mark -Properties
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *hotelTitle;
 
 @property (strong, nonatomic) IBOutlet UIView *starsView;
 @property (strong, nonatomic) IBOutlet UITextView *locationTxtView;
@@ -24,9 +25,12 @@
 
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
+
+@property (strong, nonatomic) NSMutableArray *pageImages;
+@property int starsNumber;
+
 #pragma mark - Buttons Actions
 - (IBAction)backBtnPrss:(id)sender;
-
 - (IBAction)nextBtnPrss:(id)sender;
 - (IBAction)contiueBtnPrss:(id)sender;
 @end
