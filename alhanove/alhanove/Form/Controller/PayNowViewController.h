@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PKView.h"
 
-@interface PayNowViewController : UIViewController
+@interface PayNowViewController : UIViewController<PKViewDelegate>
+
+@property IBOutlet PKView* paymentView;
+@property IBOutlet UILabel *helpLabel;
+
 
 - (IBAction)backInvoked:(id)sender;
 - (IBAction)homeInvoked:(id)sender;
+- (IBAction)save:(id)sender;
 @end
