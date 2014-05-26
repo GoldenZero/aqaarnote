@@ -46,7 +46,7 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
-    self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%i ريال",[self.formObj.BookingCost integerValue] + [self.formObj.FlightCost integerValue]]];
+    self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%li ريال",[self.formObj.BookingCost integerValue] + [self.formObj.FlightCost integerValue]]];
     [self.dateBtn setTitle:[dateFormat stringFromDate:self.formObj.fromDate] forState:UIControlStateNormal];
         
     // Set Custom font
