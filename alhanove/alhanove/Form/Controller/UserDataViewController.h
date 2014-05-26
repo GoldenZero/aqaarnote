@@ -28,6 +28,7 @@
 
 @property (strong, nonatomic) NSString *tripCost;
 @property (strong, nonatomic) FormObject* formObj;
+@property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
 
 - (IBAction)backInvoked:(id)sender;
 - (IBAction)homeInvoked:(id)sender;

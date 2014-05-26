@@ -15,6 +15,7 @@
 @property IBOutlet UILabel *helpLabel;
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
 @property (strong, nonatomic) IBOutlet UILabel *titleLbl;
+@property (strong, nonatomic) IBOutlet UIButton *homeBtn;
 
 
 - (IBAction)backInvoked:(id)sender;

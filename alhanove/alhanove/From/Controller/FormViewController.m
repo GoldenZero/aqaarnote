@@ -89,7 +89,7 @@
     NSDate *today = [NSDate date];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    self.fromDateLabel.text = [dateFormat stringFromDate:today];
+    self.fromDateLabel.text = @"حدد التاريخ";
 
 
 }

@@ -141,14 +141,26 @@
 }
 
 - (IBAction)carsBtnPrss:(id)sender {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+    [alert show];
+    return;
 }
 
 - (IBAction)flightBtnPrss:(id)sender {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+    [alert show];
+    return;
 }
 
 - (IBAction)hotelsBtnPrss:(id)sender {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+    [alert show];
+    return;
 }
 
 - (IBAction)bookingsBtnPrss:(id)sender {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+    [alert show];
+    return;
 }
 @end

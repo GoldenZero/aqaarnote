@@ -28,6 +28,7 @@
     [super viewDidLoad];
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
     [self.titleLbl setFont:[UIFont mediumGeSSOfSize:18]];
+    [self.homeBtn.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
 
     self.paymentView.delegate = self;
 	[self.paymentView becomeFirstResponder];

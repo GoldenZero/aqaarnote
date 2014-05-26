@@ -39,6 +39,9 @@
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
 
+    if ([[UIScreen mainScreen] bounds].size.height != 568){
+        self.mainScrollView.contentSize = CGSizeMake(320, 568);
+    }
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     

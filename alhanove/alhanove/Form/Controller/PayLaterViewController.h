@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
 @property (strong, nonatomic) IBOutlet UITextView *contentText;
 @property (strong, nonatomic) IBOutlet UILabel *bookIDLbl;
+@property (strong, nonatomic) IBOutlet UIButton *homeBtn;
 
 - (IBAction)backInvoked:(id)sender;
 - (IBAction)homeInvoked:(id)sender;

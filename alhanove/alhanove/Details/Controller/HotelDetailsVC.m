@@ -29,6 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([[UIScreen mainScreen] bounds].size.height != 568){
+        self.contentScrollView.contentSize = CGSizeMake(320, 600);
+    }
+    
     [self setUpLeftAlignedRateView:self.starsNumber];
     [self prepareViewContent];
 

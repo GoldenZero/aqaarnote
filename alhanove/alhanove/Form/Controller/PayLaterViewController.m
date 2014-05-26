@@ -32,6 +32,7 @@
     [self.contentText setFont:[UIFont lightGeSSOfSize:15]];
     [self.bookIDLbl setFont:[UIFont mediumGeSSOfSize:17]];
 
+    [self.homeBtn.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
 
 }
 
