@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Form View Controller-->
@@ -183,7 +183,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد تاريخ الانطلاق" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V23-DF-wST">
-                                        <rect key="frame" x="93" y="55" width="134" height="21"/>
+                                        <rect key="frame" x="20" y="55" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -217,7 +217,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الدرجة الأولى" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gsq-ak-0Nd">
-                                        <rect key="frame" x="93" y="54" width="134" height="21"/>
+                                        <rect key="frame" x="20" y="54" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -246,7 +246,7 @@
                         <outlet property="roomsLabel" destination="Vfb-uU-E43" id="aim-Wo-ckh"/>
                         <outlet property="roomsTitleLabel" destination="6WO-v7-K9y" id="MSS-1t-ga5"/>
                         <outlet property="screenLabel" destination="v7i-bk-MQH" id="zWa-Sn-b6J"/>
-                        <segue destination="Zla-dz-aC0" kind="modal" identifier="showHotelList" id="qXM-TT-bWZ"/>
+                        <segue destination="fFd-72-lel" kind="modal" identifier="showHotelList" id="Rkb-b5-CIo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3LI-ak-o5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -358,8 +358,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="pageTitle" destination="wo9-GO-H23" id="MlQ-ZP-bRe"/>
-                        <segue destination="Zla-dz-aC0" kind="modal" identifier="showMekkaListing" modalTransitionStyle="crossDissolve" id="TMZ-ZH-r4K"/>
                         <segue destination="3OT-2Y-YwU" kind="modal" identifier="showFormVC" id="9p9-wv-uCI"/>
+                        <segue destination="fFd-72-lel" kind="modal" identifier="showMekkaListing" modalTransitionStyle="crossDissolve" id="YyB-gV-x4h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -380,104 +380,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsM-bL-QDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="597" y="-73"/>
-        </scene>
-        <!--Hotel Listing View Controller - الهنوف للحجوزات-->
-        <scene sceneID="UDK-D9-l0V">
-            <objects>
-                <viewController id="Zla-dz-aC0" customClass="HotelListingViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d66-mu-toO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="lpH-J6-lOg">
-                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Zla-dz-aC0" id="f5k-na-bF8"/>
-                                    <outlet property="delegate" destination="Zla-dz-aC0" id="huI-bv-k5p"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" id="Ak0-Xt-Wgp">
-                                <rect key="frame" x="0.0" y="68" width="320" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iIx-nw-o8I">
-                                        <rect key="frame" x="-3" y="3" width="79" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="حسب السعر">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sortByInvoked:" destination="Zla-dz-aC0" eventType="touchUpInside" id="7nD-wR-UWN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="poK-he-8dd">
-                                        <rect key="frame" x="84" y="3" width="87" height="34"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="حسب الصنف">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changePriceInvoked:" destination="Zla-dz-aC0" eventType="touchUpInside" id="Ub0-MU-MM8"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.95686280729999995" green="0.95686280729999995" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="ees-f6-BfE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tdk-vC-9B1">
-                                        <rect key="frame" x="51" y="26" width="219" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MtF-mj-t8D">
-                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" image="ar_back_header_btn.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backInvoked:" destination="Zla-dz-aC0" eventType="touchUpInside" id="ITr-la-Zsl"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zfv-xb-myU">
-                                        <rect key="frame" x="0.0" y="18" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" title="التالي">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="الهنوف للحجوزات" id="pHO-Gc-DVD"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="backBtn" destination="MtF-mj-t8D" id="LVZ-VE-Tx6"/>
-                        <outlet property="nextBtn" destination="Zfv-xb-myU" id="CdC-hs-xlt"/>
-                        <outlet property="pageTitle" destination="tdk-vC-9B1" id="pvi-jF-fQH"/>
-                        <outlet property="priceBtn" destination="poK-he-8dd" id="f2z-qy-Uzy"/>
-                        <outlet property="sortBtn" destination="iIx-nw-o8I" id="n1f-it-R39"/>
-                        <outlet property="tableView" destination="lpH-J6-lOg" id="1XE-VX-fSb"/>
-                        <segue destination="gXq-oN-B0N" kind="modal" identifier="showHotelDetails" id="psR-9V-nZE"/>
-                        <segue destination="Th0-Dd-AQP" kind="modal" identifier="showTimeLine" id="SKk-E5-mdK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u6o-mG-bvE" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2335" y="-65"/>
         </scene>
         <!--Hotel DetailsVC-->
         <scene sceneID="Vvd-tS-LPq">
@@ -634,306 +536,431 @@
             </objects>
             <point key="canvasLocation" x="2795" y="-65"/>
         </scene>
-        <!--User Data View Controller-->
-        <scene sceneID="BSt-cX-Vqj">
+        <!--Hotel Listing View Controller - الهنوف للحجوزات-->
+        <scene sceneID="F5Y-Je-Z1C">
             <objects>
-                <viewController id="aVV-O3-FYG" customClass="UserDataViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="O7R-KP-foP">
+                <viewController id="fFd-72-lel" customClass="HotelListingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ILG-Nk-bgk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="FP1-l8-Mxd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="EF4-7d-DOF">
+                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wgd-0w-KrW">
+                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fFd-72-lel" id="QEF-gh-ug5"/>
+                                    <outlet property="delegate" destination="fFd-72-lel" id="VuN-1I-73h"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="O5i-yb-sij">
+                                <rect key="frame" x="0.0" y="68" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hzf-e6-noA">
-                                        <rect key="frame" x="51" y="26" width="219" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wY3-rc-Ur8">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NIk-D1-Z5H">
-                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" image="ar_back_header_btn.png">
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="السعر">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backInvoked:" destination="aVV-O3-FYG" eventType="touchUpInside" id="7hw-d0-uU5"/>
+                                            <action selector="sortByInvoked:" destination="fFd-72-lel" eventType="touchUpInside" id="cOH-WB-wAI"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eZ6-2a-Mhr">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dEJ-dA-DHr">
+                                        <rect key="frame" x="67" y="0.0" width="72" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="التصنيف">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changePriceInvoked:" destination="fFd-72-lel" eventType="touchUpInside" id="KLF-Rb-j62"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الترتيب حسب:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K7r-ij-NjB">
+                                        <rect key="frame" x="219" y="9" width="94" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20392158630000001" green="0.60000002379999995" blue="0.83529418710000003" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="FkM-s0-U7S">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WU4-Dx-ksV">
+                                        <rect key="frame" x="51" y="26" width="219" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="L4u-SK-bv3">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="back_arrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backInvoked:" destination="fFd-72-lel" eventType="touchUpInside" id="jMz-TT-yrc"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1w6-NT-8wQ">
+                                        <rect key="frame" x="0.0" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" title="التالي">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="الهنوف للحجوزات" id="Pu8-RB-8ax"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="backBtn" destination="L4u-SK-bv3" id="Bkl-FG-xY5"/>
+                        <outlet property="nextBtn" destination="1w6-NT-8wQ" id="Rpw-2I-EAY"/>
+                        <outlet property="orderByLbl" destination="K7r-ij-NjB" id="zfD-rb-71B"/>
+                        <outlet property="pageTitle" destination="WU4-Dx-ksV" id="ewY-3t-lIa"/>
+                        <outlet property="priceBtn" destination="dEJ-dA-DHr" id="ULP-wa-QPP"/>
+                        <outlet property="sortBtn" destination="wY3-rc-Ur8" id="lmB-3I-7t7"/>
+                        <outlet property="tableView" destination="Wgd-0w-KrW" id="uD2-dH-MAY"/>
+                        <segue destination="gXq-oN-B0N" kind="modal" identifier="showHotelDetails" id="Npc-iT-XxV"/>
+                        <segue destination="CG8-4K-yzV" kind="modal" identifier="showTimeLine" id="0Tw-o6-sxL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IpX-YL-2v8" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="-73"/>
+        </scene>
+        <!--Time Line View Controller-->
+        <scene sceneID="AaL-uV-ZbQ">
+            <objects>
+                <viewController id="CG8-4K-yzV" customClass="TimeLineViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pmk-vC-e4p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="9Tt-96-uYp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ملخص الرحلة" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="srP-Ci-BG5">
+                                        <rect key="frame" x="109" y="26" width="167" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Nt8-MX-eSL">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="back_arrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backInvoked:" destination="CG8-4K-yzV" eventType="touchUpInside" id="sG6-0J-o7e"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vVq-ky-g3a">
+                                        <rect key="frame" x="9" y="29" width="90" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="book_now.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextInvoked:" destination="CG8-4K-yzV" eventType="touchUpInside" id="Y6Z-LI-UAO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Miq-kz-rzp">
+                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CG8-4K-yzV" id="u4r-FU-P5p"/>
+                                    <outlet property="delegate" destination="CG8-4K-yzV" id="l8g-Ip-h5C"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageTitle" destination="srP-Ci-BG5" id="0mo-eV-I5e"/>
+                        <outlet property="tableView" destination="Miq-kz-rzp" id="Zd7-5H-cex"/>
+                        <segue destination="jPR-cS-GZh" kind="modal" identifier="showUserForm" id="FV5-Sg-0MX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GOM-r1-XCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="1601"/>
+        </scene>
+        <!--User Data View Controller-->
+        <scene sceneID="IcP-Hn-gTC">
+            <objects>
+                <viewController id="jPR-cS-GZh" customClass="UserDataViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M9e-wy-pLV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="nk0-ha-1Ei">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المعلومات الشخصية" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0AY-mB-4HV">
+                                        <rect key="frame" x="51" y="26" width="219" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2wZ-wp-jro">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="back_arrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backInvoked:" destination="jPR-cS-GZh" eventType="touchUpInside" id="YJd-Af-BEg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Itx-J2-Qk6">
                                         <rect key="frame" x="0.0" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="الرئيسية">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="homeInvoked:" destination="aVV-O3-FYG" eventType="touchUpInside" id="myG-c0-4v9"/>
+                                            <action selector="homeInvoked:" destination="jPR-cS-GZh" eventType="touchUpInside" id="HnY-sd-hLe"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الإسم" textAlignment="center" minimumFontSize="17" id="Yjy-2d-i8M">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="الإسم" textAlignment="center" minimumFontSize="17" background="form_field.png" id="DqL-hg-2ze">
                                 <rect key="frame" x="30" y="103" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="aVV-O3-FYG" id="xPA-WK-i7e"/>
+                                    <outlet property="delegate" destination="jPR-cS-GZh" id="8hD-dX-BWU"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="العنوان" textAlignment="center" minimumFontSize="17" id="iQa-4p-JAG">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="العنوان" textAlignment="center" minimumFontSize="17" background="form_field.png" id="CIH-fz-vQO">
                                 <rect key="frame" x="30" y="148" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="aVV-O3-FYG" id="bfV-lH-ijO"/>
+                                    <outlet property="delegate" destination="jPR-cS-GZh" id="IHa-bt-zCs"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="البريد الإلكتروني" textAlignment="center" minimumFontSize="17" id="3Hl-qk-nhK">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="البريد الإلكتروني" textAlignment="center" minimumFontSize="17" background="form_field.png" id="scO-WR-sUD">
                                 <rect key="frame" x="30" y="193" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
-                                    <outlet property="delegate" destination="aVV-O3-FYG" id="aHX-3W-RYe"/>
+                                    <outlet property="delegate" destination="jPR-cS-GZh" id="kbS-fd-41V"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="رقم الهاتف" textAlignment="center" minimumFontSize="17" id="l95-pi-H9Z">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="رقم الهاتف" textAlignment="center" minimumFontSize="17" background="form_field.png" id="HNM-8P-yx0">
                                 <rect key="frame" x="30" y="238" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 <connections>
-                                    <outlet property="delegate" destination="aVV-O3-FYG" id="uus-Wl-mmf"/>
+                                    <outlet property="delegate" destination="jPR-cS-GZh" id="Kbq-i3-Pz2"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NhY-TD-3vs">
-                                <rect key="frame" x="213" y="287" width="77" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LSF-Ln-Uai">
+                                <rect key="frame" x="30" y="280" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1ka-ha-W0K">
-                                <rect key="frame" x="30" y="283" width="205" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="حدد التاريخ">
+                                <state key="normal" title="11-04-2014" backgroundImage="date_field.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showDateInvoked:" destination="aVV-O3-FYG" eventType="touchUpInside" id="ZLV-hb-kMv"/>
+                                    <action selector="showDateInvoked:" destination="jPR-cS-GZh" eventType="touchUpInside" id="eeQ-fU-faR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="u3M-wF-wDe">
-                                <rect key="frame" x="186" y="350" width="98" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5zM-S7-Tke">
+                                <rect key="frame" x="171" y="363" width="139" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="جواز السفر">
+                                <state key="normal" image="passport_normal.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="passport_attached.png"/>
                                 <connections>
-                                    <action selector="passportAttachInvoked:" destination="aVV-O3-FYG" eventType="touchUpInside" id="i5e-8n-Vpo"/>
+                                    <action selector="passportAttachInvoked:" destination="jPR-cS-GZh" eventType="touchUpInside" id="s3n-MU-rwi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KxW-cB-JVV">
-                                <rect key="frame" x="36" y="350" width="98" height="85"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UY2-L7-5Ar">
+                                <rect key="frame" x="10" y="363" width="139" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="الصورة الشخصية">
+                                <state key="normal" image="photo_normal.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="photo_attached.png"/>
+                                <connections>
+                                    <action selector="personalImgInvoked:" destination="jPR-cS-GZh" eventType="touchUpInside" id="EyD-U1-eqf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HPt-9t-mcJ">
+                                <rect key="frame" x="171" y="503" width="139" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="pay_now.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="personalImgInvoked:" destination="aVV-O3-FYG" eventType="touchUpInside" id="nuM-YV-kf8"/>
+                                    <action selector="payNowInvoked:" destination="jPR-cS-GZh" eventType="touchUpInside" id="1b6-lx-aik"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3vX-1T-BNV">
-                                <rect key="frame" x="182" y="507" width="113" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="N3L-Fc-Gkr">
+                                <rect key="frame" x="12" y="503" width="139" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="ادفع الآن">
+                                <state key="normal" image="pay_later.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="payNowInvoked:" destination="aVV-O3-FYG" eventType="touchUpInside" id="Ff6-qQ-4fL"/>
+                                    <action selector="payLaterInvoked:" destination="jPR-cS-GZh" eventType="touchUpInside" id="Dp0-NM-ARJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3kk-5L-HfE">
-                                <rect key="frame" x="25" y="507" width="113" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مرفقات:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8en-ub-Unh">
+                                <rect key="frame" x="213" y="330" width="77" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="ادفع لاحقا">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="payLaterInvoked:" destination="aVV-O3-FYG" eventType="touchUpInside" id="4kE-5W-vis"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1250 SR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1tI-C0-ANP">
-                                <rect key="frame" x="7" y="453" width="306" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="total_box.png" id="Q2v-8k-7E3">
+                                <rect key="frame" x="99" y="449" width="123" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1250 SR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HJI-GA-J8c">
+                                <rect key="frame" x="7" y="451" width="306" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" red="1" green="0.45882356169999999" blue="0.1647058874" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المجموع:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1MN-rA-P6D">
+                                <rect key="frame" x="224" y="459" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="AddressText" destination="iQa-4p-JAG" id="T76-wC-oko"/>
-                        <outlet property="EmailText" destination="3Hl-qk-nhK" id="gOq-Ip-cmg"/>
-                        <outlet property="MobileText" destination="l95-pi-H9Z" id="XQK-ya-06f"/>
-                        <outlet property="NameText" destination="Yjy-2d-i8M" id="dNM-ZJ-0zw"/>
-                        <outlet property="PriceLbl" destination="1tI-C0-ANP" id="cl6-tz-jaJ"/>
-                        <outlet property="dateBtn" destination="1ka-ha-W0K" id="axe-xd-Jd0"/>
-                        <outlet property="dateLbl" destination="NhY-TD-3vs" id="NRF-Go-0CY"/>
-                        <outlet property="homeButton" destination="eZ6-2a-Mhr" id="T2h-Ay-lTe"/>
-                        <outlet property="pageTitle" destination="hzf-e6-noA" id="2Be-pn-a90"/>
-                        <outlet property="passportAttachBtn" destination="u3M-wF-wDe" id="s77-U8-snx"/>
-                        <outlet property="payLaterBtn" destination="3kk-5L-HfE" id="tZk-kR-SLA"/>
-                        <outlet property="payNowBtn" destination="3vX-1T-BNV" id="b45-aU-Cfd"/>
-                        <outlet property="personalImgAttachBtn" destination="KxW-cB-JVV" id="Gcv-as-Yqr"/>
-                        <segue destination="sVa-cY-Eko" kind="modal" identifier="showPayLater" id="W38-yP-TJF"/>
-                        <segue destination="7Dt-kq-lxS" kind="modal" identifier="showPayNow" id="zdn-QI-zEa"/>
-                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="ZUc-Ow-Nui"/>
+                        <outlet property="AddressText" destination="CIH-fz-vQO" id="lAZ-7E-78C"/>
+                        <outlet property="EmailText" destination="scO-WR-sUD" id="CDW-lY-xkV"/>
+                        <outlet property="MobileText" destination="HNM-8P-yx0" id="Nqr-f0-31N"/>
+                        <outlet property="NameText" destination="DqL-hg-2ze" id="Ckg-zt-7fZ"/>
+                        <outlet property="PriceLbl" destination="HJI-GA-J8c" id="UuF-pG-TaF"/>
+                        <outlet property="TotalLbl" destination="1MN-rA-P6D" id="vKo-RD-aRG"/>
+                        <outlet property="dateBtn" destination="LSF-Ln-Uai" id="nDN-GO-31O"/>
+                        <outlet property="dateLbl" destination="8en-ub-Unh" id="5L5-1B-b70"/>
+                        <outlet property="homeButton" destination="Itx-J2-Qk6" id="XdY-fO-tWG"/>
+                        <outlet property="pageTitle" destination="0AY-mB-4HV" id="3hd-Vh-P1B"/>
+                        <outlet property="passportAttachBtn" destination="5zM-S7-Tke" id="VJ6-bu-7Ue"/>
+                        <outlet property="payLaterBtn" destination="N3L-Fc-Gkr" id="tvc-3X-lhu"/>
+                        <outlet property="payNowBtn" destination="HPt-9t-mcJ" id="vie-RF-D7Z"/>
+                        <outlet property="personalImgAttachBtn" destination="UY2-L7-5Ar" id="8Tw-Ob-RBa"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="qS8-E4-kbI"/>
+                        <segue destination="Y3I-WR-y3B" kind="modal" identifier="showPayNow" id="3zr-9d-ced"/>
+                        <segue destination="qXN-ZO-mWI" kind="modal" identifier="showPayLater" id="xOO-Xh-TvA"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qVB-s4-daN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yR7-kb-pWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="130" y="1601"/>
         </scene>
-        <!--Pay Later View Controller-->
-        <scene sceneID="Bsc-yR-41Z">
-            <objects>
-                <viewController id="sVa-cY-Eko" customClass="PayLaterViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5wy-y0-NFc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="Orw-Hj-p4o">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MH1-gR-wQK">
-                                        <rect key="frame" x="51" y="26" width="219" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MzI-bz-uRA">
-                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" image="ar_back_header_btn.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backInvoked:" destination="sVa-cY-Eko" eventType="touchUpInside" id="3cc-54-tyA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6eQ-g1-hNr">
-                                        <rect key="frame" x="0.0" y="18" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="الرئيسية">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="homeInvoked:" destination="sVa-cY-Eko" eventType="touchUpInside" id="Dor-Nu-qcy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="9mW-Jo-XSu">
-                                <rect key="frame" x="40" y="139" width="240" height="289"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="2Qt-9h-C0k"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aBf-cf-qdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1151" y="1827"/>
-        </scene>
         <!--Pay Now View Controller-->
-        <scene sceneID="4AX-BB-Rpc">
+        <scene sceneID="gL9-Eh-ANJ">
             <objects>
-                <viewController id="7Dt-kq-lxS" customClass="PayNowViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ATg-ZL-Zfg">
+                <viewController id="Y3I-WR-y3B" customClass="PayNowViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L9X-46-BL8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="Unm-kw-ehv">
+                            <view contentMode="scaleToFill" id="unI-FO-j4d">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iNy-cc-lT8">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="إدفع الآن" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zC1-CV-j95">
                                         <rect key="frame" x="51" y="26" width="219" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8fo-y8-5Yz">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3OE-Eq-N8O">
                                         <rect key="frame" x="270" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" image="ar_back_header_btn.png">
+                                        <state key="normal" image="back_arrow.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backInvoked:" destination="7Dt-kq-lxS" eventType="touchUpInside" id="NZz-Hp-YSt"/>
+                                            <action selector="backInvoked:" destination="Y3I-WR-y3B" eventType="touchUpInside" id="Fb4-RB-f4o"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G2n-he-yP0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="frH-Y5-0nI">
                                         <rect key="frame" x="0.0" y="18" width="51" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <state key="normal" title="الرئيسية">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="homeInvoked:" destination="7Dt-kq-lxS" eventType="touchUpInside" id="7Oz-9l-RLh"/>
+                                            <action selector="homeInvoked:" destination="Y3I-WR-y3B" eventType="touchUpInside" id="Aqi-dO-5b3"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ykb-iX-jnE">
-                                <rect key="frame" x="99" y="176" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wry-Pb-l30">
+                                <rect key="frame" x="95" y="168" width="139" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.80000007149999997" green="0.80000007149999997" blue="0.80000007149999997" alpha="1" colorSpace="deviceRGB"/>
-                                <state key="normal" title="Pay">
+                                <state key="normal" image="pay_now.png">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="save:" destination="7Dt-kq-lxS" eventType="touchUpInside" id="yZZ-GB-ls7"/>
+                                    <action selector="save:" destination="Y3I-WR-y3B" eventType="touchUpInside" id="TRp-f9-I8J"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="n8T-vp-sGW" customClass="PKView">
+                            <view contentMode="scaleToFill" id="5UL-WW-eHc" customClass="PKView">
                                 <rect key="frame" x="34" y="112" width="260" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="أدخل رقم البطاقة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fb0-7d-7gv">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="أدخل رقم البطاقة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lrW-wO-U7c">
                                 <rect key="frame" x="34" y="83" width="260" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -944,88 +971,120 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="helpLabel" destination="fb0-7d-7gv" id="p9p-Tr-Ldf"/>
-                        <outlet property="paymentView" destination="n8T-vp-sGW" id="PjC-Jt-9hg"/>
-                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="DOd-GB-dcC"/>
+                        <outlet property="helpLabel" destination="lrW-wO-U7c" id="hSe-4R-Imn"/>
+                        <outlet property="pageTitle" destination="zC1-CV-j95" id="WnI-1J-ttR"/>
+                        <outlet property="paymentView" destination="5UL-WW-eHc" id="sJn-zJ-Dua"/>
+                        <outlet property="titleLbl" destination="lrW-wO-U7c" id="ILB-kV-jIa"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="QsW-FP-ugu"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JRs-1q-8zO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MaZ-p0-stF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1151" y="1135"/>
         </scene>
-        <!--Time Line View Controller-->
-        <scene sceneID="awA-Lp-qU7">
+        <!--Pay Later View Controller-->
+        <scene sceneID="jOj-ze-8La">
             <objects>
-                <viewController id="Th0-Dd-AQP" customClass="TimeLineViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GR6-wt-Q7V">
+                <viewController id="qXN-ZO-mWI" customClass="PayLaterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GF9-JM-rB5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="JU7-AM-SJQ">
+                            <view contentMode="scaleToFill" id="7e5-ur-c3G">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ChZ-d4-b5y">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="إدفع لاحقا" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rFN-NH-Vhh">
                                         <rect key="frame" x="51" y="26" width="219" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0yS-qZ-sSK">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hau-vz-P8m">
                                         <rect key="frame" x="270" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" image="ar_back_header_btn.png">
+                                        <state key="normal" image="back_arrow.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backInvoked:" destination="Th0-Dd-AQP" eventType="touchUpInside" id="V7R-5f-Ia7"/>
+                                            <action selector="backInvoked:" destination="qXN-ZO-mWI" eventType="touchUpInside" id="64R-1n-pV4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0l1-1O-bwX">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MnG-lJ-dRg">
                                         <rect key="frame" x="0.0" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" title="التالي">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="الرئيسية">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="nextInvoked:" destination="Th0-Dd-AQP" eventType="touchUpInside" id="nld-Ov-mbo"/>
+                                            <action selector="homeInvoked:" destination="qXN-ZO-mWI" eventType="touchUpInside" id="e1o-IR-EAj"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92549026010000002" green="0.92549026010000002" blue="0.81176477670000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nUB-aV-aoe">
-                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Th0-Dd-AQP" id="eOH-PW-p4m"/>
-                                    <outlet property="delegate" destination="Th0-Dd-AQP" id="9s7-97-xTW"/>
-                                </connections>
-                            </tableView>
+                            <view contentMode="scaleToFill" id="a5z-HN-wqm">
+                                <rect key="frame" x="0.0" y="68" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="شكرا لك" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wxQ-YD-XCl">
+                                        <rect key="frame" x="219" y="9" width="94" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.15686275059999999" green="0.80000007149999997" blue="0.48627454040000001" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" id="eBK-eF-Kls">
+                                <rect key="frame" x="40" y="139" width="240" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">سيتم التواصل معك من طرف خدمة  العملاء حول الحجز                                                               يمكنك الدفع في اجل لا يتعدى 48 ساعة لتفادي إلغاء الحجز، إختر احد الحسابات التالية لاتمام الدفع                                SA923782392999000093               QT434343545345353454               BE430239239823353454</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم الحجز:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aap-b7-lzx">
+                                <rect key="frame" x="172" y="344" width="108" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9023672" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VP8-Rc-1Sh">
+                                <rect key="frame" x="48" y="344" width="116" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="pageTitle" destination="ChZ-d4-b5y" id="5M1-Ja-IxI"/>
-                        <outlet property="tableView" destination="nUB-aV-aoe" id="P73-GN-3DT"/>
-                        <segue destination="aVV-O3-FYG" kind="modal" identifier="showUserForm" id="lTg-2j-InL"/>
+                        <outlet property="bookIDLbl" destination="aap-b7-lzx" id="LDe-zZ-Tpn"/>
+                        <outlet property="contentText" destination="eBK-eF-Kls" id="JK6-g1-cH3"/>
+                        <outlet property="pageTitle" destination="rFN-NH-Vhh" id="CUX-hy-thz"/>
+                        <outlet property="thanksTitleLbl" destination="wxQ-YD-XCl" id="9DK-qS-HTT"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="hSG-5C-uLc"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gFY-RK-wcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ox4-9O-5rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330" y="1601"/>
+            <point key="canvasLocation" x="1151" y="1827"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ar_back_header_btn.png" width="25" height="26"/>
         <image name="back_arrow.png" width="11" height="19"/>
         <image name="background.png" width="320" height="568"/>
+        <image name="book_now.png" width="90" height="30"/>
         <image name="box.png" width="280" height="58"/>
         <image name="cars.png" width="160" height="168"/>
         <image name="date.png" width="16" height="18"/>
+        <image name="date_field.png" width="262" height="36"/>
         <image name="description.png" width="13" height="8"/>
         <image name="flight.png" width="19" height="13"/>
+        <image name="form_field.png" width="262" height="36"/>
         <image name="guests.png" width="20" height="18"/>
         <image name="haj.png" width="160" height="168"/>
         <image name="hotels.png" width="160" height="168"/>
@@ -1037,9 +1096,16 @@
         <image name="next.png" width="90" height="30"/>
         <image name="next_hotel_details.png" width="121" height="39"/>
         <image name="omra.png" width="160" height="168"/>
+        <image name="passport_attached.png" width="139" height="49"/>
+        <image name="passport_normal.png" width="139" height="56"/>
+        <image name="pay_later.png" width="139" height="45"/>
+        <image name="pay_now.png" width="139" height="45"/>
+        <image name="photo_attached.png" width="139" height="49"/>
+        <image name="photo_normal.png" width="139" height="56"/>
         <image name="planes.png" width="160" height="168"/>
         <image name="rooms.png" width="21" height="13"/>
         <image name="top_bar_logo.png" width="31" height="35"/>
+        <image name="total_box.png" width="123" height="41"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1047,7 +1113,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="qXM-TT-bWZ"/>
-        <segue reference="ZUc-Ow-Nui"/>
+        <segue reference="Rkb-b5-CIo"/>
+        <segue reference="qS8-E4-kbI"/>
     </inferredMetricsTieBreakers>
 </document>

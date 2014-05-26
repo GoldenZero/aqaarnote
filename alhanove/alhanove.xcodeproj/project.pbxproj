@@ -94,7 +94,7 @@
 		7C182E7C193389C900DE2FE3 /* sort_arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E14193389C900DE2FE3 /* sort_arrow_up.png */; };
 		7C182E7D193389C900DE2FE3 /* sort_arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E15193389C900DE2FE3 /* sort_arrow_up@2x.png */; };
 		7C182E7E193389C900DE2FE3 /* splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E16193389C900DE2FE3 /* splashscreen.png */; };
-		7C182E7F193389C900DE2FE3 /* splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E17193389C900DE2FE3 /* splashscreen@2x.png */; };
+		7C182E7F193389C900DE2FE3 /* splashscreen 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E17193389C900DE2FE3 /* splashscreen 1.png */; };
 		7C182E80193389C900DE2FE3 /* stars_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E18193389C900DE2FE3 /* stars_off.png */; };
 		7C182E81193389C900DE2FE3 /* stars_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E19193389C900DE2FE3 /* stars_off@2x.png */; };
 		7C182E82193389C900DE2FE3 /* stars_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E1A193389C900DE2FE3 /* stars_on.png */; };
@@ -302,7 +302,7 @@
 		7C182E14193389C900DE2FE3 /* sort_arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sort_arrow_up.png; sourceTree = "<group>"; };
 		7C182E15193389C900DE2FE3 /* sort_arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sort_arrow_up@2x.png"; sourceTree = "<group>"; };
 		7C182E16193389C900DE2FE3 /* splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashscreen.png; sourceTree = "<group>"; };
-		7C182E17193389C900DE2FE3 /* splashscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen@2x.png"; sourceTree = "<group>"; };
+		7C182E17193389C900DE2FE3 /* splashscreen 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen 1.png"; sourceTree = "<group>"; };
 		7C182E18193389C900DE2FE3 /* stars_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_off.png; sourceTree = "<group>"; };
 		7C182E19193389C900DE2FE3 /* stars_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stars_off@2x.png"; sourceTree = "<group>"; };
 		7C182E1A193389C900DE2FE3 /* stars_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_on.png; sourceTree = "<group>"; };
@@ -563,7 +563,7 @@
 				7C182E14193389C900DE2FE3 /* sort_arrow_up.png */,
 				7C182E15193389C900DE2FE3 /* sort_arrow_up@2x.png */,
 				7C182E16193389C900DE2FE3 /* splashscreen.png */,
-				7C182E17193389C900DE2FE3 /* splashscreen@2x.png */,
+				7C182E17193389C900DE2FE3 /* splashscreen 1.png */,
 				7C182E18193389C900DE2FE3 /* stars_off.png */,
 				7C182E19193389C900DE2FE3 /* stars_off@2x.png */,
 				7C182E1A193389C900DE2FE3 /* stars_on.png */,
@@ -1307,7 +1307,7 @@
 				7C182E2E193389C900DE2FE3 /* box.png in Resources */,
 				7C182E8E193389C900DE2FE3 /* visa.png in Resources */,
 				7C182E72193389C900DE2FE3 /* room_image.png in Resources */,
-				7C182E7F193389C900DE2FE3 /* splashscreen@2x.png in Resources */,
+				7C182E7F193389C900DE2FE3 /* splashscreen 1.png in Resources */,
 				7C182E38193389C900DE2FE3 /* date.png in Resources */,
 				7C182E35193389C900DE2FE3 /* check_off@2x.png in Resources */,
 				84C294BD192B7E9B0027E782 /* rating_4.png in Resources */,
@@ -1450,7 +1450,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "alhanove/alhanove-Prefix.pch";
 				INFOPLIST_FILE = "alhanove/alhanove-Info.plist";
@@ -1464,7 +1463,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "alhanove/alhanove-Prefix.pch";
 				INFOPLIST_FILE = "alhanove/alhanove-Info.plist";

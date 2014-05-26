@@ -74,11 +74,11 @@
     FlightClassPicker.cancelButtonTitle = @"إغلاق";
     
     // Set Custom font
-    [self.guestsLabel setFont:[UIFont mediumGeSSOfSize:14]];
+    //[self.guestsLabel setFont:[UIFont mediumGeSSOfSize:14]];
     [self.nextButton.titleLabel setFont:[UIFont mediumGeSSOfSize:14]];
-    [self.roomsLabel setFont:[UIFont mediumGeSSOfSize:14]];
-    [self.fromDateLabel setFont:[UIFont lightGeSSOfSize:12]];
-    [self.flightClassLabel setFont:[UIFont lightGeSSOfSize:12]];
+    //[self.roomsLabel setFont:[UIFont mediumGeSSOfSize:14]];
+    //[self.fromDateLabel setFont:[UIFont lightGeSSOfSize:12]];
+    [self.flightClassLabel setFont:[UIFont lightGeSSOfSize:14]];
     [self.roomsTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
     [self.guestTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
     [self.fromDateTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
