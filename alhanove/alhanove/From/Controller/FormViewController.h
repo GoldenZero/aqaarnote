@@ -23,16 +23,23 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *fromDateLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *toDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *fromDateTitleLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *flightClassTitleLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *flightClassLabel;
 
-@property (strong, nonatomic) IBOutlet UIStepper *guestStepper;
-
-@property (strong, nonatomic) IBOutlet UIStepper *roomStepper;
-
 @property (strong, nonatomic) IBOutlet UIButton *nextButton;
+
+@property (strong, nonatomic) IBOutlet UILabel *screenLabel;
 #pragma mark - Buttons Actions
+- (IBAction)moreGuestsBtnPrss:(id)sender;
+
+- (IBAction)lessGuestsBtnPrss:(id)sender;
+
+- (IBAction)moreRoomsBtnPrss:(id)sender;
+
+- (IBAction)lessRoomsBtnPrss:(id)sender;
 
 - (IBAction)backBtnPrss:(id)sender;
 
@@ -40,11 +47,6 @@
 
 - (IBAction)fromDateBtnPrss:(id)sender;
 
-- (IBAction)toDateBtnPrss:(id)sender;
-
 - (IBAction)flightClassBtnPrss:(id)sender;
 
-- (IBAction)guestsStepPrss:(id)sender;
-
-- (IBAction)roomStepPrss:(id)sender;
 @end

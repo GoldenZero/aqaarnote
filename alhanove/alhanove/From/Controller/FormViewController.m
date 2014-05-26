@@ -81,10 +81,48 @@
     [self.flightClassLabel setFont:[UIFont lightGeSSOfSize:12]];
     [self.roomsTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
     [self.guestTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
+    [self.fromDateTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
+    [self.flightClassTitleLabel setFont:[UIFont lightGeSSOfSize:12]];
+    [self.screenLabel setFont:[UIFont mediumGeSSOfSize:18]];
+    
+    
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    self.fromDateLabel.text = [dateFormat stringFromDate:today];
+
 
 }
 
 #pragma mark - Buttons Actions 
+
+- (IBAction)moreGuestsBtnPrss:(id)sender {
+    form.guestsNumber++;
+    self.guestsLabel.text=[NSString stringWithFormat:@"%i",form.guestsNumber];
+
+}
+
+- (IBAction)lessGuestsBtnPrss:(id)sender {
+    if (form.guestsNumber!=1) {
+        form.guestsNumber--;
+        self.guestsLabel.text=[NSString stringWithFormat:@"%i",form.guestsNumber];
+    }
+}
+
+- (IBAction)moreRoomsBtnPrss:(id)sender {
+    form.roomsNumber++;
+    self.roomsLabel.text=[NSString stringWithFormat:@"%i",form.roomsNumber];
+
+}
+
+- (IBAction)lessRoomsBtnPrss:(id)sender {
+    if (form.roomsNumber!=1) {
+        form.roomsNumber--;
+        self.roomsLabel.text=[NSString stringWithFormat:@"%i",form.roomsNumber];
+
+    }
+   
+}
 
 - (IBAction)backBtnPrss:(id)sender {
     
@@ -126,35 +164,6 @@
     
     [self showPicker:sender];
 
-}
-
-- (IBAction)guestsStepPrss:(id)sender {
-    if (self.guestStepper.value>form.guestsNumber) {
-        form.guestsNumber++;
-        self.guestsLabel.text=[NSString stringWithFormat:@"%i",form.guestsNumber];
-    }
-    
-    else {
-        if (form.guestsNumber!=1) {
-            form.guestsNumber--;
-            self.guestsLabel.text=[NSString stringWithFormat:@"%i",form.guestsNumber];
-        }
-    }
-}
-
-- (IBAction)roomStepPrss:(id)sender {
-    
-    if (self.roomStepper.value>form.roomsNumber) {
-        form.roomsNumber++;
-        self.roomsLabel.text=[NSString stringWithFormat:@"%i",form.roomsNumber];
-    }
-    
-    else {
-        if (form.roomsNumber!=1) {
-            form.roomsNumber--;
-            self.roomsLabel.text=[NSString stringWithFormat:@"%i",form.roomsNumber];
-        }
-    }
 }
 
 #pragma mark - SBPickerSelectorDelegate
@@ -207,7 +216,7 @@
     }
     else{
         form.toDate=date;
-        self.toDateLabel.text=[dateFormat stringFromDate:date];
+     //   self.toDateLabel.text=[dateFormat stringFromDate:date];
 
     }
     
