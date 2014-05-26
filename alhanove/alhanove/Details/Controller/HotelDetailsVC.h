@@ -31,6 +31,7 @@
 @property int starsNumber;
 @property (strong,nonatomic) NSString *hotelName;
 @property (strong,nonatomic) NSString *hotelCost;
+@property (strong, nonatomic) IBOutlet UILabel *titlesScreen;
 
 #pragma mark - Buttons Actions
 - (IBAction)backBtnPrss:(id)sender;

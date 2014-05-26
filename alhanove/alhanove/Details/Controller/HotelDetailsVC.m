@@ -45,6 +45,7 @@
     // Set Custom font
     self.hotelTitle.text=self.hotelName;
     [self.hotelTitle setFont:[UIFont mediumGeSSOfSize:20]];
+    [self.titlesScreen setFont:[UIFont mediumGeSSOfSize:20]];
     
     self.priceLabel.text=[NSString stringWithFormat:@"%@ $",self.hotelCost];
     [self.priceLabel setFont:[UIFont mediumGeSSOfSize:18]];
@@ -287,9 +288,9 @@
 
 - (void)setUpLeftAlignedRateView:(int) stars {
 
-    DYRateView *rateView = [[DYRateView alloc] initWithFrame:CGRectMake(0, 0, 160, 21)];
+    DYRateView *rateView = [[DYRateView alloc] initWithFrame:CGRectMake(5, 10, 160, 21)];
     rateView.rate = stars;
-    rateView.alignment = RateViewAlignmentRight;
+    rateView.alignment = RateViewAlignmentLeft;
     [self.starsView addSubview:rateView];
 }
 
