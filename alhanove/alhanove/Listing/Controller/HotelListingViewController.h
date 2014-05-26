@@ -29,6 +29,7 @@ typedef enum ListingType
 @property (strong, nonatomic) IBOutlet UIButton *backBtn;
 @property (strong, nonatomic) IBOutlet UIButton *sortBtn;
 @property (strong, nonatomic) IBOutlet UIButton *priceBtn;
+@property (strong, nonatomic) IBOutlet UILabel *orderByLbl;
 
 - (IBAction)backInvoked:(id)sender;
 - (IBAction)nextInvoked:(id)sender;

@@ -10,6 +10,10 @@
 
 @interface PayLaterViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *thanksTitleLbl;
+@property (strong, nonatomic) IBOutlet UILabel *pageTitle;
+@property (strong, nonatomic) IBOutlet UITextView *contentText;
+@property (strong, nonatomic) IBOutlet UILabel *bookIDLbl;
 
 - (IBAction)backInvoked:(id)sender;
 - (IBAction)homeInvoked:(id)sender;

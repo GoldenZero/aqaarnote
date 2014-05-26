@@ -26,7 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
+    [self.titleLbl setFont:[UIFont mediumGeSSOfSize:18]];
+
     self.paymentView.delegate = self;
 	[self.paymentView becomeFirstResponder];
     

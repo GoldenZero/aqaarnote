@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     
+    [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
+
     //get the data for the timeline
     [self getTimeLineData];
 
@@ -50,7 +52,7 @@
     dict[@"sectionDate"] = @"2014/05/28";
     NSDictionary *MenuDict = @{@"Title" : @"بداية الرحلة",
                                @"Text" : @"الإنطلاق من نقطة التجمع",
-                               @"Type" : @"StartPoint"};
+                               @"Type" : @"step_1"};
     NSMutableArray* menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];
     dict[@"data"] = menuDictArr;
@@ -61,7 +63,7 @@
     dict[@"sectionDate"] = @"2014/05/29";
     MenuDict = @{@"Title" : @"حجز بالفندق",
                                @"Text" : self.formObj.MekkaHotelData[@"Title"],
-                               @"Type" : @"hotel"};
+                               @"Type" : @"step_2"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];
     dict[@"data"] = menuDictArr;
@@ -72,7 +74,7 @@
     dict[@"sectionDate"] = @"2014/05/30";
     MenuDict = @{@"Title" : @"وجبة غذاء",
                                @"Text" : self.formObj.MekkaHotelData[@"Title"],
-                               @"Type" : @"restaurant"};
+                               @"Type" : @"step_2"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];
     dict[@"data"] = menuDictArr;
@@ -83,7 +85,7 @@
     dict[@"sectionDate"] = @"2014/05/31";
     MenuDict = @{@"Title" : @"بدئ العمرة",
                  @"Text" : @"الذهاب إلى الحرم",
-                 @"Type" : @"Pray"};
+                 @"Type" : @"step_1"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];
     dict[@"data"] = menuDictArr;
@@ -94,7 +96,7 @@
     dict[@"sectionDate"] = @"2014/06/03";
     MenuDict = @{@"Title" : @"حجز بالفندق",
                  @"Text" : self.formObj.MadinaHotelData[@"Title"],
-                 @"Type" : @"hotel"};
+                 @"Type" : @"step_2"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];
     dict[@"data"] = menuDictArr;
@@ -105,7 +107,7 @@
     dict[@"sectionDate"] = @"2014/06/06";
     MenuDict = @{@"Title" : @"نهاية الرحلة",
                  @"Text" : @"تجهيز الاغراض والاستعداد للعودة",
-                 @"Type" : @"EndPoint"};
+                 @"Type" : @"step_3"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];
     dict[@"data"] = menuDictArr;
@@ -177,7 +179,7 @@
         
     }
     cell.titleLbl.text = rowDictionary[@"Title"];
-    
+    [cell.menuImg setImage:[UIImage imageNamed:rowDictionary[@"Type"]]];
     return cell;
 }
 

@@ -13,6 +13,8 @@
 
 @property IBOutlet PKView* paymentView;
 @property IBOutlet UILabel *helpLabel;
+@property (strong, nonatomic) IBOutlet UILabel *pageTitle;
+@property (strong, nonatomic) IBOutlet UILabel *titleLbl;
 
 
 - (IBAction)backInvoked:(id)sender;

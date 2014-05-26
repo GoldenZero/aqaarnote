@@ -19,6 +19,7 @@
 {
     [super setSelected:selected animated:animated];
     [self.titleLbl setFont:[UIFont lightGeSSOfSize:15]];
+    [self.addressLbl setFont:[UIFont lightGeSSOfSize:11]];
     // Configure the view for the selected state
 }
 

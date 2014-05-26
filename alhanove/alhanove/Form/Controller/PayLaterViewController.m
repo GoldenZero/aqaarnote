@@ -26,7 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
+    [self.thanksTitleLbl setFont:[UIFont mediumGeSSOfSize:15]];
+    [self.contentText setFont:[UIFont lightGeSSOfSize:15]];
+    [self.bookIDLbl setFont:[UIFont mediumGeSSOfSize:17]];
+
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="القائمة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S7U-Wp-N9P">
-                        <rect key="frame" x="25" y="5" width="210" height="37"/>
+                        <rect key="frame" x="25" y="5" width="210" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -25,32 +25,54 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_arrow.png" id="Ni8-aK-0zk">
-                        <rect key="frame" x="10" y="35" width="6" height="10"/>
+                        <rect key="frame" x="10" y="30" width="11" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rating_0.png" id="kZz-cp-ceg">
-                        <rect key="frame" x="160" y="50" width="75" height="13"/>
+                        <rect key="frame" x="160" y="62" width="75" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DBi-F0-P5J">
-                        <rect key="frame" x="21" y="29" width="79" height="21"/>
+                        <rect key="frame" x="99" y="58" width="62" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="woM-1f-Chg">
-                        <rect key="frame" x="243" y="8" width="70" height="65"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="woM-1f-Chg">
+                        <rect key="frame" x="243" y="7" width="70" height="65"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal">
+                        <state key="normal" image="magnifying.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1QQ-HC-36U">
+                        <rect key="frame" x="48" y="29" width="187" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotel_rooms.png" id="t1M-KT-8lf">
+                        <rect key="frame" x="75" y="62" width="21" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2x" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dhu-Nv-yuf">
+                        <rect key="frame" x="30" y="58" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="77" maxY="0.0"/>
             <connections>
+                <outlet property="addressLbl" destination="1QQ-HC-36U" id="TuP-5K-TXe"/>
                 <outlet property="costLbl" destination="DBi-F0-P5J" id="e5S-sF-du4"/>
+                <outlet property="guestNumbLbl" destination="Dhu-Nv-yuf" id="TZR-Xq-oNT"/>
                 <outlet property="imgButton" destination="woM-1f-Chg" id="B0J-G5-y32"/>
                 <outlet property="menuImg" destination="iPU-nX-BLr" id="APg-py-la4"/>
                 <outlet property="rateStarImg" destination="kZz-cp-ceg" id="qMq-Mx-W6L"/>
@@ -60,7 +82,9 @@
     </objects>
     <resources>
         <image name="badge1.png" width="51" height="53"/>
-        <image name="left_arrow.png" width="6" height="10"/>
+        <image name="hotel_rooms.png" width="21" height="13"/>
+        <image name="left_arrow.png" width="11" height="19"/>
+        <image name="magnifying.png" width="27" height="27"/>
         <image name="rating_0.png" width="75" height="13"/>
     </resources>
 </document>

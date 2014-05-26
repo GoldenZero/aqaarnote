@@ -50,8 +50,12 @@
     priceAscending = 0;
     starsAscending = 2;
 
-    [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
+    [self.pageTitle setFont:[UIFont mediumGeSSOfSize:17]];
     [self.nextBtn.titleLabel setFont:[UIFont lightGeSSOfSize:17]];
+    [self.priceBtn.titleLabel setFont:[UIFont lightGeSSOfSize:13]];
+    [self.sortBtn.titleLabel setFont:[UIFont lightGeSSOfSize:13]];
+    [self.orderByLbl setFont:[UIFont lightGeSSOfSize:13]];
+
 
     //prepare the pickers
     [self preparePickers];
@@ -302,6 +306,7 @@
         cell = [topLevelObjects objectAtIndex:0];
         
     }
+    cell.guestNumbLbl.text = [NSString stringWithFormat:@"%ix",self.formObj.guestsNumber];
     cell.titleLbl.text = dictionary[@"Title"];
     [cell.menuImg setImage:[UIImage imageNamed:dictionary[@"Image"]]];
     [cell.rateStarImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"rating_%@",dictionary[@"Stars"]]]];
@@ -344,6 +349,9 @@
     switch (sortType) {
         case 0:
         {
+            [self.sortBtn setImage:[UIImage imageNamed:@"sort_arrow_up"] forState:UIControlStateNormal];
+            [self.priceBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Cost" ascending:YES];
             
             sorted = [myArr sortedArrayUsingDescriptors:@[sortDescriptor]];
@@ -355,6 +363,9 @@
             
         case 1:
         {
+            [self.sortBtn setImage:[UIImage imageNamed:@"sort_arrow_down"] forState:UIControlStateNormal];
+            [self.priceBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Cost" ascending:NO];
             
             sorted = [myArr sortedArrayUsingDescriptors:@[sortDescriptor]];
@@ -366,6 +377,9 @@
             
         case 2:
         {
+            [self.priceBtn setImage:[UIImage imageNamed:@"sort_arrow_up"] forState:UIControlStateNormal];
+            [self.sortBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Stars" ascending:NO];
             
             sorted = [myArr sortedArrayUsingDescriptors:@[sortDescriptor]];
@@ -376,6 +390,9 @@
             break;
         case 3:
         {
+            [self.priceBtn setImage:[UIImage imageNamed:@"sort_arrow_down"] forState:UIControlStateNormal];
+            [self.sortBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Stars" ascending:YES];
             
             sorted = [myArr sortedArrayUsingDescriptors:@[sortDescriptor]];

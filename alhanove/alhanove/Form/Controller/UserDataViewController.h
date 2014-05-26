@@ -24,6 +24,7 @@
 @property (nonatomic, strong) IBOutlet UIButton* payLaterBtn;
 @property (nonatomic, strong) IBOutlet UILabel* PriceLbl;
 @property (strong, nonatomic) IBOutlet UIButton *homeButton;
+@property (strong, nonatomic) IBOutlet UILabel *TotalLbl;
 
 @property (strong, nonatomic) NSString *tripCost;
 @property (strong, nonatomic) FormObject* formObj;
