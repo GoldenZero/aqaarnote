@@ -24,7 +24,6 @@
 @property int roomsNumber;
 
 
-
 //User Data
 @property (nonatomic,strong) NSString* UserName;
 @property (nonatomic,strong) NSString* UserAddress;

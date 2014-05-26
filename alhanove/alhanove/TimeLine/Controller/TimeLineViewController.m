@@ -160,12 +160,27 @@
     dict = [NSMutableDictionary new];
     dict[@"sectionDate"] = @"2014/06/06";
     MenuDict = @{@"Title" : @"فندق المدينة المنورة",
-                 @"Text" : self.formObj.MekkaHotelData[@"Title"],
-                 @"Price": self.formObj.MekkaHotelData[@"Cost_all"],
+                 @"Text" : self.formObj.MadinaHotelData[@"Title"],
+                 @"Price": self.formObj.MadinaHotelData[@"Cost_all"],
                  @"Type" : @"step_4"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];
-    [timelineDataArr addObject:MenuDict];
+    dict[@"data"] = menuDictArr;
+
+    [timelineDataArr addObject:dict];
+    
+    MenuDict = nil;
+    dict = [NSMutableDictionary new];
+    dict[@"sectionDate"] = @"2014/06/06";
+    MenuDict = @{@"Title" : @"المجموع",
+                 @"Price": [NSNumber numberWithInt:[self.formObj.BookingCost integerValue] + [self.formObj.FlightCost integerValue]],
+                 @"Type" : @"step_5"};
+    menuDictArr = [NSMutableArray new];
+    [menuDictArr addObject:MenuDict];
+    dict[@"data"] = menuDictArr;
+    
+    [timelineDataArr addObject:dict];
+
     
     [self.tableView reloadData];
 
@@ -256,13 +271,14 @@
         
         if (cell == nil) {
             cell = [[TwoLineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            [cell.iconImg setImage:[UIImage imageNamed:rowDictionary[@"Type"]]];
-            cell.titleLabel.text = rowDictionary[@"Title"];
-            [cell.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
-            cell.subtitleLabel.text=rowDictionary[@"Text"];
-            [cell.subtitleLabel setFont:[UIFont lightGeSSOfSize:12]];
-            
         }
+        [cell.iconImg setImage:[UIImage imageNamed:rowDictionary[@"Type"]]];
+        cell.titleLabel.text = rowDictionary[@"Title"];
+        [cell.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
+        cell.subtitleLabel.text=rowDictionary[@"Text"];
+        [cell.subtitleLabel setFont:[UIFont lightGeSSOfSize:12]];
+        
+
         return cell;
         
     }
@@ -277,14 +293,16 @@
         
         if (cell == nil) {
             cell = [[FourLineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            // TODO : font
-            [cell.iconImg setImage:[UIImage imageNamed:rowDictionary[@"Type"]]];
-            cell.detailsLabel.text = rowDictionary[@"Title"];
-            cell.guestsNumLabel.text=rowDictionary[@"guestsNumber"];
-            cell.roomsNumLabel.text=rowDictionary[@"roomsNumber"];
-            cell.dateLabel.text=rowDictionary[@"date"];
             
         }
+        // TODO : font
+        [cell.iconImg setImage:[UIImage imageNamed:rowDictionary[@"Type"]]];
+        cell.detailsLabel.text = rowDictionary[@"Title"];
+        cell.guestsNumLabel.text=[NSString stringWithFormat:@"%@", rowDictionary[@"guestsNumber"]];
+        cell.roomsNumLabel.text=[NSString stringWithFormat:@"%@", rowDictionary[@"roomsNumber"]];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        cell.dateLabel.text=[dateFormat  stringFromDate: rowDictionary[@"date"] ];
         return cell;
         
     }
@@ -299,14 +317,16 @@
 
         
         if (cell == nil) {
-            // TODO : icon & font
-            [cell.iconImg setImage:[UIImage imageNamed:rowDictionary[@"Type"]]];
-            cell.titleLabel.text = rowDictionary[@"Title"];
-            cell.subtitleLabel.text=rowDictionary[@"Text"];
-            cell.priceLabel.text=rowDictionary[@"Price"];
-            cell.priceLabel.hidden=NO;
-            
+            cell = [[TwoLineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
         }
+        // TODO : icon & font
+        [cell.iconImg setImage:[UIImage imageNamed:@"step_3"]];
+        cell.titleLabel.text = rowDictionary[@"Title"];
+        cell.subtitleLabel.text=rowDictionary[@"Text"];
+        cell.priceLabel.text=[NSString stringWithFormat:@"%@ $", rowDictionary[@"Price"]];
+        cell.priceLabel.hidden=NO;
+
         return cell;
         
     }
@@ -321,14 +341,15 @@
 
         
         if (cell == nil) {
-            // TODO : icon and font
-            [cell.iconImg setImage:[UIImage imageNamed:rowDictionary[@"Type"]]];
-            cell.titleLabel.text = rowDictionary[@"Title"];
-            cell.subtitleLabel.text=rowDictionary[@"Text"];
-            cell.priceLabel.text=rowDictionary[@"Price"];
-            cell.priceLabel.hidden=NO;
-            
+            cell = [[TwoLineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
+        // TODO : icon and font
+        [cell.iconImg setImage:[UIImage imageNamed:@"step_3"]];
+        cell.titleLabel.text = rowDictionary[@"Title"];
+        cell.subtitleLabel.text=rowDictionary[@"Text"];
+        cell.priceLabel.text=[NSString stringWithFormat:@"%@ $", rowDictionary[@"Price"]];
+        cell.priceLabel.hidden=NO;
+
         return cell;
         
     }
@@ -346,7 +367,7 @@
             
         }
         // TODO : clac total price
-        cell.totalNumberLabel.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%li ريال",[self.formObj.BookingCost integerValue] + [self.formObj.FlightCost integerValue]]];
+        cell.totalNumberLabel.text = [NSString stringWithFormat:@"%@ ريال", rowDictionary[@"Price"]];
         return cell;
         
     }
