@@ -16,5 +16,10 @@
     #import "UIFont+CustomFonts.h"
     #import "EnhancedKeyboard.h"
     #import "FormObject.h"
+    #import "NetworkEngine.h"
+    #import "NSError+Description.h"
+    #import "GenericMethods.h"
+    #import "AppDelegate.h"
+    #import "UIImageView+WebCache.h"
 
 #endif

@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3LI-ak-o5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2033" y="-958"/>
+            <point key="canvasLocation" x="1521" y="-534"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -361,11 +361,12 @@
                         <outlet property="pageTitle" destination="wo9-GO-H23" id="MlQ-ZP-bRe"/>
                         <segue destination="3OT-2Y-YwU" kind="modal" identifier="showFormVC" id="9p9-wv-uCI"/>
                         <segue destination="fFd-72-lel" kind="modal" identifier="showMekkaListing" modalTransitionStyle="crossDissolve" id="YyB-gV-x4h"/>
+                        <segue destination="ri5-Va-JDu" kind="modal" identifier="showCarFormVC" id="aDk-Bc-JZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709" y="-65"/>
+            <point key="canvasLocation" x="-123" y="-113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jGB-rx-eH3">
@@ -380,7 +381,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsM-bL-QDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="597" y="-73"/>
+            <point key="canvasLocation" x="-859" y="-121"/>
         </scene>
         <!--Hotel DetailsVC-->
         <scene sceneID="Vvd-tS-LPq">
@@ -536,7 +537,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPe-dI-jMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2795" y="-65"/>
+            <point key="canvasLocation" x="2805" y="-73"/>
         </scene>
         <!--Hotel Listing View Controller - الهنوف للحجوزات-->
         <scene sceneID="F5Y-Je-Z1C">
@@ -711,7 +712,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOM-r1-XCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330" y="1601"/>
+            <point key="canvasLocation" x="2795" y="1233"/>
         </scene>
         <!--User Data View Controller-->
         <scene sceneID="IcP-Hn-gTC">
@@ -909,7 +910,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yR7-kb-pWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="1601"/>
+            <point key="canvasLocation" x="3255" y="1233"/>
         </scene>
         <!--Pay Now View Controller-->
         <scene sceneID="gL9-Eh-ANJ">
@@ -990,7 +991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MaZ-p0-stF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1151" y="1135"/>
+            <point key="canvasLocation" x="4276" y="767"/>
         </scene>
         <!--Pay Later View Controller-->
         <scene sceneID="jOj-ze-8La">
@@ -1082,7 +1083,509 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ox4-9O-5rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1151" y="1827"/>
+            <point key="canvasLocation" x="4276" y="1459"/>
+        </scene>
+        <!--Car Form View Controller-->
+        <scene sceneID="bzZ-c0-Tur">
+            <objects>
+                <viewController id="ri5-Va-JDu" customClass="CarFormViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PMZ-xh-aNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="xAO-cj-1AN" userLabel="HeaderView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تفاصيل الحجز" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bpp-jI-pTV">
+                                        <rect key="frame" x="107" y="26" width="155" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="seF-H5-0qo">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="back_arrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backBtnPrss:" destination="ri5-Va-JDu" eventType="touchUpInside" id="3Si-7B-L8d"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r4r-Ea-6kk">
+                                        <rect key="frame" x="9" y="28" width="90" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="next.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextBtnPrss:" destination="ri5-Va-JDu" eventType="touchUpInside" id="tdK-aa-4Bb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="9qu-3Y-GZT">
+                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="VcS-6G-pTK" userLabel="FromDateView">
+                                <rect key="frame" x="0.0" y="68" width="320" height="172"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date.png" id="lJN-6Q-fId">
+                                        <rect key="frame" x="284" y="9" width="16" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DsE-Wk-khl">
+                                        <rect key="frame" x="20" y="36" width="280" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="box.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="fromPlaceBtnPrss:" destination="ri5-Va-JDu" eventType="touchUpInside" id="4Rb-Tj-Deg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AxM-KY-UC2">
+                                        <rect key="frame" x="20" y="104" width="280" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="box.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="fromDateBtnPrss:" destination="ri5-Va-JDu" eventType="touchUpInside" id="nG9-5w-JIc"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد تاريخ الانطلاق" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nGq-IC-J6t">
+                                        <rect key="frame" x="20" y="122" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد مكان الانطلاق" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eb3-xr-Dmw">
+                                        <rect key="frame" x="20" y="54" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الإنطلاق" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2ik-va-0ld">
+                                        <rect key="frame" x="157" y="7" width="119" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="bE7-4D-9DC" userLabel="FromDateView">
+                                <rect key="frame" x="0.0" y="238" width="320" height="172"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date.png" id="RE8-Re-lFZ">
+                                        <rect key="frame" x="284" y="9" width="16" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ald-Xs-bYb">
+                                        <rect key="frame" x="20" y="36" width="280" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="box.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toPlaceBtnPrss:" destination="ri5-Va-JDu" eventType="touchUpInside" id="9ws-Yk-YG9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6y6-k3-znt">
+                                        <rect key="frame" x="20" y="104" width="280" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="box.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toDateBtnPrss:" destination="ri5-Va-JDu" eventType="touchUpInside" id="U7O-xh-Ct7"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد مكان العودة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="45M-LB-4Kv">
+                                        <rect key="frame" x="20" y="55" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد تاريخ العودة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5oQ-mY-ZCY">
+                                        <rect key="frame" x="20" y="122" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="العودة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="feS-p2-2GG">
+                                        <rect key="frame" x="157" y="7" width="119" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="dropofTitleLabel" destination="feS-p2-2GG" id="tyQ-wo-c9b"/>
+                        <outlet property="fromDateLabel" destination="nGq-IC-J6t" id="9Fg-UP-oJo"/>
+                        <outlet property="fromPlaceLabel" destination="eb3-xr-Dmw" id="kHa-ee-okb"/>
+                        <outlet property="nextButton" destination="r4r-Ea-6kk" id="Iji-Ya-8xV"/>
+                        <outlet property="pickupTitleLabel" destination="2ik-va-0ld" id="3fu-0W-btS"/>
+                        <outlet property="screenLabel" destination="bpp-jI-pTV" id="RYK-Hr-u9f"/>
+                        <outlet property="toDateLabel" destination="5oQ-mY-ZCY" id="JOT-Gp-yf6"/>
+                        <outlet property="toPlaceLabel" destination="45M-LB-4Kv" id="zg9-FJ-GLT"/>
+                        <segue destination="6wH-pP-AMj" kind="modal" identifier="showSearchDetails" id="kRD-VL-QdS"/>
+                        <segue destination="rm4-Za-1Z5" kind="modal" identifier="showCarsList" id="YaM-yw-QVj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gje-Ji-zn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-43" y="1058"/>
+        </scene>
+        <!--Search DetailsVC-->
+        <scene sceneID="4p5-Hp-O9X">
+            <objects>
+                <viewController id="6wH-pP-AMj" customClass="SearchDetailsVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ggu-2D-LYO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="KvH-sg-nzX">
+                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <searchBar contentMode="redraw" id="VlB-ti-8Us">
+                                <rect key="frame" x="0.0" y="68" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6wH-pP-AMj" id="FFh-iE-k4z"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="i5n-2t-bWa">
+                                <rect key="frame" x="0.0" y="112" width="320" height="456"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6wH-pP-AMj" id="Mgf-Fi-KjI"/>
+                                    <outlet property="delegate" destination="6wH-pP-AMj" id="WdU-f5-9nc"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="Fx8-Ry-n3X" userLabel="HeaderView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تفاصيل الحجز" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g0p-zu-awi">
+                                        <rect key="frame" x="83" y="26" width="155" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JtK-wT-Cmn">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="back_arrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backBtnPrss:" destination="ri5-Va-JDu" eventType="touchUpInside" id="tKt-Gq-whI"/>
+                                            <action selector="backButtonPressed:" destination="6wH-pP-AMj" eventType="touchUpInside" id="Juu-4n-l6c"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="K4G-gV-pFc" id="MTn-7g-Txo"/>
+                        <outlet property="searchsTableView" destination="i5n-2t-bWa" id="vbM-Gk-4dN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kwT-3Y-agc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="K4G-gV-pFc">
+                    <connections>
+                        <outlet property="delegate" destination="6wH-pP-AMj" id="CgM-cQ-XsN"/>
+                        <outlet property="searchBar" destination="VlB-ti-8Us" id="oBn-fA-aoe"/>
+                        <outlet property="searchContentsController" destination="6wH-pP-AMj" id="7BK-ov-1jB"/>
+                        <outlet property="searchResultsDataSource" destination="6wH-pP-AMj" id="6o3-aV-CY6"/>
+                        <outlet property="searchResultsDelegate" destination="6wH-pP-AMj" id="eGo-aE-e5t"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="414" y="1058"/>
+        </scene>
+        <!--Car Listing View Controller - الهنوف للحجوزات-->
+        <scene sceneID="gtc-Tn-kuQ">
+            <objects>
+                <viewController id="rm4-Za-1Z5" customClass="CarListingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GhQ-U9-nXH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="kZ2-Md-lzX">
+                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="G58-dM-HAk">
+                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="rm4-Za-1Z5" id="CQm-0L-shX"/>
+                                    <outlet property="delegate" destination="rm4-Za-1Z5" id="i3d-zp-urh"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="AOM-ZR-IRU">
+                                <rect key="frame" x="0.0" y="68" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZYb-8g-UJn">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="السعر">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sortByInvoked:" destination="rm4-Za-1Z5" eventType="touchUpInside" id="aYS-MR-UOP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hpg-VZ-BAK">
+                                        <rect key="frame" x="67" y="0.0" width="72" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="الاسم">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changePriceInvoked:" destination="rm4-Za-1Z5" eventType="touchUpInside" id="oOd-YV-Mhh"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الترتيب حسب:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p7O-JR-Uwa">
+                                        <rect key="frame" x="219" y="9" width="94" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20392158630000001" green="0.60000002379999995" blue="0.83529418710000003" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="1br-ZO-mQg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xay-y7-wh3">
+                                        <rect key="frame" x="51" y="26" width="219" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VHl-LZ-QBf">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="back_arrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backInvoked:" destination="rm4-Za-1Z5" eventType="touchUpInside" id="8Hk-mk-Z9d"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dna-I3-FBa">
+                                        <rect key="frame" x="0.0" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" title="التالي">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="الهنوف للحجوزات" id="4Wj-i0-Zt2"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="backBtn" destination="VHl-LZ-QBf" id="AJ0-D4-NSh"/>
+                        <outlet property="nextBtn" destination="Dna-I3-FBa" id="kHL-IT-joy"/>
+                        <outlet property="orderByLbl" destination="p7O-JR-Uwa" id="3aa-Nk-YZt"/>
+                        <outlet property="pageTitle" destination="Xay-y7-wh3" id="jat-uu-tER"/>
+                        <outlet property="priceBtn" destination="hpg-VZ-BAK" id="Kjl-RQ-hBD"/>
+                        <outlet property="sortBtn" destination="ZYb-8g-UJn" id="ygv-o6-y5o"/>
+                        <outlet property="tableView" destination="G58-dM-HAk" id="246-B9-hhU"/>
+                        <segue destination="b36-mE-1ho" kind="modal" identifier="showCarDetails" id="OpH-Jy-Yhn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zKD-VU-ZvB" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-37" y="1829"/>
+        </scene>
+        <!--Car DetailsVC-->
+        <scene sceneID="sIL-zV-R2e">
+            <objects>
+                <viewController id="b36-mE-1ho" customClass="CarDetailsVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N6a-jq-vHp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="OFT-Ci-8w2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2P4-O9-lkE">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="back_arrow.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backBtnPrss:" destination="b36-mE-1ho" eventType="touchUpInside" id="NwT-Up-Rbw"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تفاصيل السيارة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aVc-m4-n0n">
+                                        <rect key="frame" x="60" y="32" width="200" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="mIw-HO-YoQ">
+                                <rect key="frame" x="0.0" y="68" width="320" height="500"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="Gze-1G-6lR">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="b36-mE-1ho" id="lGp-qn-apQ"/>
+                                        </connections>
+                                    </scrollView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SZv-EW-IUH">
+                                        <rect key="frame" x="0.0" y="116" width="64" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.9450981021" green="0.27450981740000002" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view alpha="0.69999998807907104" contentMode="scaleToFill" id="WL0-ZQ-3Ci">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0N3-67-24A">
+                                                <rect key="frame" x="151" y="9" width="160" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.043137256059999997" green="0.5411764979" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" id="Act-bT-5In">
+                                        <rect key="frame" x="14" y="255" width="286" height="178"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">سيارة اقتصادية ، ٤ ابواب ، مكيف ، جير اتوماتيك ، مع عدد كيلومترات مفتوح  ، مكيف ، جير اتوماتيك ، مع عدد كيلومترات مفتوح ، مكيف ، جير اتوماتيك ، مع عدد كيلومترات مفتوح ، مكيف ، جير اتوماتيك ، مع عدد كيلومترات مفتوح ، مكيف ، جير اتوماتيك ، مع عدد</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="b36-mE-1ho" id="Dm6-9U-jeL"/>
+                                        </connections>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="وصف السيارة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ztI-Ao-f6R">
+                                        <rect key="frame" x="186" y="226" width="83" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="smB-aL-Qc8">
+                                        <rect key="frame" x="267" y="121" width="39" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </pageControl>
+                                    <view contentMode="scaleToFill" id="kfm-nZ-65L" userLabel="Location View">
+                                        <rect key="frame" x="0.0" y="151" width="320" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_left.png" id="z4G-BR-nuU">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="67"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="المملكة العربية السعودية - مكة المكرمة                              شارع ابراهيم الخليل" textAlignment="right" id="hF5-W5-tBs">
+                                                <rect key="frame" x="72" y="12" width="198" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_icon_right.png" id="bV5-wg-Mmb">
+                                                <rect key="frame" x="278" y="20" width="13" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="description.png" id="lzo-DN-AUg">
+                                        <rect key="frame" x="280" y="233" width="13" height="8"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="g3J-Cg-pZK">
+                                        <rect key="frame" x="100" y="441" width="121" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="next_hotel_details.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="contiueBtnPrss:" destination="b36-mE-1ho" eventType="touchUpInside" id="XWr-Vc-FwA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="b36-mE-1ho" id="0CL-9Z-Fhf"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="contentScrollView" destination="mIw-HO-YoQ" id="zcy-Ri-9IY"/>
+                        <outlet property="describTxtView" destination="Act-bT-5In" id="vot-Ze-aVV"/>
+                        <outlet property="hotelTitle" destination="0N3-67-24A" id="WE7-FV-Hh0"/>
+                        <outlet property="imagesScrollView" destination="Gze-1G-6lR" id="v4F-J3-SAj"/>
+                        <outlet property="locationTxtView" destination="hF5-W5-tBs" id="nq5-0b-gX3"/>
+                        <outlet property="pageControl" destination="smB-aL-Qc8" id="xR5-iF-EEB"/>
+                        <outlet property="priceLabel" destination="SZv-EW-IUH" id="gEt-Td-S1U"/>
+                        <outlet property="reviewLabel" destination="ztI-Ao-f6R" id="tZB-bU-VVe"/>
+                        <outlet property="starsView" destination="WL0-ZQ-3Ci" id="Ob3-WI-fjG"/>
+                        <outlet property="titlesScreen" destination="aVc-m4-n0n" id="PuH-eW-GyH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9D-zR-dAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="414" y="1829"/>
         </scene>
     </scenes>
     <resources>
@@ -1124,7 +1627,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QsW-FP-ugu"/>
         <segue reference="Rkb-b5-CIo"/>
+        <segue reference="Jn0-Op-MJ4"/>
     </inferredMetricsTieBreakers>
 </document>

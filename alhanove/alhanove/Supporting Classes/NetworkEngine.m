@@ -1,0 +1,223 @@
+    /******************************************************************************
+ *
+ * Copyright (C) 2013 T Dispatch Ltd
+ *
+ * Licensed under the GPL License, Version 3.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ ******************************************************************************
+ *
+ * @author Marcin Orlowski <marcin.orlowski@webnet.pl>
+ *
+ ****/
+
+#import "NetworkEngine.h"
+#import "MKNetworkKit.h"
+
+#define PASSENGER_SERVER_URL @"wishlist.com"
+#define FLEET_API_KEY @"c24fe46b6bafd28a713ae440dada178a"
+#define PASSENGER_CLIENT_ID @"1111"
+#define PASSENGER_CLIENT_SECRET @"1111"
+
+#define PASSENGER_AUTH_URL @"http://wishlist.com/oauth/access_token"
+//#define PASSENGER_AUTH_URL @"http://jaziil.com/oauth/access_token"
+
+#define API_URL @"http://wishlist.com/passenger/api/v2"
+//#define API_URL @"http://jaziil.com/passenger/api/v2"
+#define USE_SSL NO
+
+// API
+#define PASSENGER_API_PATH @"wishlist/api/v1"
+
+@interface NetworkEngine()
+{
+    NSString *_accessToken;
+}
+
+@end
+
+@implementation NetworkEngine
+
++ (NetworkEngine *)getInstance
+{
+	static NetworkEngine *ineInstance;
+	
+	@synchronized(self)
+	{
+		if (!ineInstance)
+		{
+			ineInstance = [[NetworkEngine alloc] initWithHostName:PASSENGER_SERVER_URL
+                                                          apiPath:PASSENGER_API_PATH
+                                               customHeaderFields:@{@"Accept-Encoding" : @"gzip"}
+                           ];
+		}
+		return ineInstance;
+	}
+}
+
+- (NSString*)redirectUrl
+{
+    return @"http://127.0.0.1";
+}
+
+- (NSString*)authUrl
+{
+    NSString* url = [NSString stringWithFormat:@"%@?response_type=code&client_id=%@&redirect_uri=%@&scope=&key=%@", PASSENGER_AUTH_URL, @"", [self redirectUrl], FLEET_API_KEY];
+    return [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (void)getRefreshToken:(NSString*)authorizationCode
+               withUser:(NSString*)email
+               password:(NSString*)password
+        completionBlock:(NetworkEngineCompletionBlock)completionBlock
+           failureBlock:(NetworkEngineFailureBlock)failureBlock
+{
+    /*
+     //2- check connectivity
+     if (![GenericMethods connectedToInternet])
+     {
+     [(AppDelegate *)[[UIApplication sharedApplication] delegate] onErrorScreen];
+     return;
+     }
+     */
+    
+    NSString* path = PASSENGER_AUTH_URL;
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+    params[@"grant_type"] = @"password_mobile";
+    params[@"username"] = (email) ? email : @"";
+    params[@"client_id"] = @"";
+    params[@"client_secret"] = @"";
+    params[@"password"] = password;
+    params[@"code"]  = authorizationCode;
+    params[@"scope"] = @"passengerapi";
+    
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:params httpMethod:@"TOKEN" ssl:NO];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSDictionary* response = operation.responseJSON;
+        NSNumber* status = response[@"status"];
+        if ([status integerValue] == 401) {
+            completionBlock(response);
+        }else{
+            _accessToken = response[@"access_token"];
+            
+            NSNumber* expiresIn = response[@"expires_in"];
+            NSMutableDictionary* timeDict = [[NSMutableDictionary alloc]init];
+            timeDict[@"time_now"] = [NSDate date];
+            timeDict[@"expire_in"] = expiresIn;
+            timeDict[@"expire_at"] = expiresIn;
+            
+            [[NSUserDefaults standardUserDefaults] setObject:timeDict forKey:@"expired_access"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            completionBlock(nil);
+        }
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        if (error.code == 400) {
+            
+            NSError* err = [[NSError alloc] initWithDomain:error.domain code:400 userInfo:nil];
+            failureBlock(err);
+        }else{
+            failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+        }
+    }];
+    
+    [self enqueueOperation:op];
+    
+}
+
+//TODO updated get access token for refresh token
+-(void)getAccessTokenForRefreshToken:(NSString*)token
+                      completionBlock:(NetworkEngineCompletionBlock)completionBlock
+                         failureBlock:(NetworkEngineFailureBlock)failureBlock
+{
+    //2- check connectivity
+    if (![GenericMethods connectedToInternet])
+    {
+        [(AppDelegate *)[[UIApplication sharedApplication] delegate] onErrorScreen];
+        return;
+    }
+    
+    NSString* path = PASSENGER_AUTH_URL;
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+    params[@"grant_type"] = @"refresh_token";
+    params[@"refresh_token"] = (token) ? token : @"";
+    params[@"client_id"] =@"";
+    params[@"client_secret"] = @"";
+
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:params httpMethod:@"TOKEN" ssl:NO];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        
+        NSDictionary* response = operation.responseJSON;
+        _accessToken = response[@"access_token"];
+        NSNumber* expiresIn = response[@"expires_in"];
+        NSMutableDictionary* timeDict = [[NSMutableDictionary alloc]init];
+        timeDict[@"time_now"] = [NSDate date];
+        timeDict[@"expire_in"] = expiresIn;
+        
+        [[NSUserDefaults standardUserDefaults] setObject:timeDict forKey:@"expired_access"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        completionBlock(operation.responseJSON);
+        
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+    }];
+    
+    [self enqueueOperation:op];
+    
+}
+
+
+
+- (void)searchForLocation:(NSString *)location
+                 latitude:(NSString*)lat
+                longitude:(NSString*)lng
+                    token:(NSString*)pageToken
+          completionBlock:(NetworkEngineCompletionBlockTrack)completionBlock
+             failureBlock:(NetworkEngineFailureBlock)failureBlock
+{
+    //2- check connectivity
+    if (![GenericMethods connectedToInternet])
+    {
+        [(AppDelegate *)[[UIApplication sharedApplication] delegate] onErrorScreen];
+        return;
+    }
+    NSString* path;
+    
+    location = [location stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSString* keyApi = @"AIzaSyD9uVPJ6IY4gTyvOKd5LQLsb5LAujvaBtQ";
+    //NSString* latlng = [NSString stringWithFormat:@"%@,%@",lat,lng];
+    if([[[NSUserDefaults standardUserDefaults] objectForKey:@"Default_Language"] isEqualToString:@"ar"])
+        path = [NSString stringWithFormat:@"%@?query=%@&sensor=true&radius=50000&sensor=true&language=ar&key=%@&pagetoken=%@", @"https://maps.googleapis.com/maps/api/place/textsearch/json", location, keyApi,pageToken];
+    else
+        path = [NSString stringWithFormat:@"%@?query=%@&sensor=true&&radius=50000&sensor=true&language=en&key=%@&pagetoken=%@", @"https://maps.googleapis.com/maps/api/place/textsearch/json", location, keyApi,pageToken];
+    
+    
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:nil httpMethod:@"GET" ssl:YES];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSDictionary* response = operation.responseJSON;
+        completionBlock(response[@"results"] , response[@"next_page_token"]);
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
+- (void)cancelReverseForLocationOperations
+{
+    [MKNetworkEngine cancelOperationsContainingURLString:@"http://maps.googleapis.com/maps/api/geocode/"];
+}
+
+@end

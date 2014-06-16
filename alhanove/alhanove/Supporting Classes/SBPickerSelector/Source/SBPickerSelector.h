@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, SBPickerSelectorDateType) {
     SBPickerSelectorDateTypeDefault = 0,
     SBPickerSelectorDateTypeOnlyDay,
     SBPickerSelectorDateTypeOnlyHour,
+    SBPickerSelectorDateTypeOnlyDayTime,
 };
 
 

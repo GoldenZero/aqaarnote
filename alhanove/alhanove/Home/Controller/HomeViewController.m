@@ -141,9 +141,14 @@
 }
 
 - (IBAction)carsBtnPrss:(id)sender {
+    
+    [self performSegueWithIdentifier:@"showCarFormVC" sender:self];
+
+    /*
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
     [alert show];
     return;
+     */
 }
 
 - (IBAction)flightBtnPrss:(id)sender {

@@ -53,4 +53,15 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL) onErrorScreen {
+    //2- check connectivity
+    if (![GenericMethods connectedToInternet])
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"wrong_error",@"") message:NSLocalizedString(@"connection_error",@"") delegate:nil cancelButtonTitle:NSLocalizedString(@"dialog_button_ok", @"") otherButtonTitles:nil, nil];
+        [alert show];
+        return YES;
+    }
+    return NO;
+}
+
 @end

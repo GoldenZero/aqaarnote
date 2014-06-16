@@ -124,6 +124,9 @@
         case SBPickerSelectorDateTypeOnlyHour:
             self.datePickerView.datePickerMode = UIDatePickerModeTime;
             break;
+        case SBPickerSelectorDateTypeOnlyDayTime:
+            self.datePickerView.datePickerMode = UIDatePickerModeDateAndTime;
+            break;
         default:
             break;
     }

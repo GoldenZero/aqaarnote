@@ -22,6 +22,7 @@
 @property (nonatomic,strong) NSString* FlightCost;
 @property int guestsNumber;
 @property int roomsNumber;
+@property (nonatomic) NSInteger rentalDays;
 
 
 //User Data
@@ -34,7 +35,10 @@
 @property (nonatomic,strong) UIImage* PersonalImage;
 @property (nonatomic,strong) NSString* BookingCost;
 
-
+#pragma mark - Car Object Properties
+@property (nonatomic,strong) NSDictionary* CarData;
+@property (nonatomic,strong) NSString *FromPlace;
+@property (nonatomic,strong) NSString *ToPlace;
 
 
 @end
