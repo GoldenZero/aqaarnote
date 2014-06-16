@@ -138,6 +138,21 @@
 		7CB4DFE3192E651400B2A9F2 /* hilton3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFDF192E651400B2A9F2 /* hilton3.jpg */; };
 		7CB4DFE4192E651400B2A9F2 /* hilton4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFE0192E651400B2A9F2 /* hilton4.jpg */; };
 		7CB4DFE6192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */; };
+		7CD7778F194F0575005C3A9D /* chevrolet_aveo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77780194F0575005C3A9D /* chevrolet_aveo_1.jpg */; };
+		7CD77790194F0575005C3A9D /* chevrolet_aveo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77781194F0575005C3A9D /* chevrolet_aveo_2.jpg */; };
+		7CD77791194F0575005C3A9D /* chevrolet_aveo_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77782194F0575005C3A9D /* chevrolet_aveo_3.png */; };
+		7CD77792194F0575005C3A9D /* chevrolet_spark_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77783194F0575005C3A9D /* chevrolet_spark_1.jpg */; };
+		7CD77793194F0575005C3A9D /* chevrolet_spark_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77784194F0575005C3A9D /* chevrolet_spark_2.jpg */; };
+		7CD77794194F0575005C3A9D /* chevrolet_spark_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77785194F0575005C3A9D /* chevrolet_spark_3.jpg */; };
+		7CD77795194F0575005C3A9D /* dodge_avenger_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77786194F0575005C3A9D /* dodge_avenger_1.jpg */; };
+		7CD77796194F0575005C3A9D /* dodge_avenger_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77787194F0575005C3A9D /* dodge_avenger_2.jpg */; };
+		7CD77797194F0575005C3A9D /* dodge_avenger_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77788194F0575005C3A9D /* dodge_avenger_3.jpg */; };
+		7CD77798194F0575005C3A9D /* nissan_altima_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77789194F0575005C3A9D /* nissan_altima_1.jpg */; };
+		7CD77799194F0575005C3A9D /* nissan_altima_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7778A194F0575005C3A9D /* nissan_altima_2.jpg */; };
+		7CD7779A194F0575005C3A9D /* nissan_altima_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7778B194F0575005C3A9D /* nissan_altima_3.jpg */; };
+		7CD7779B194F0575005C3A9D /* nissan_sunny_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7778C194F0575005C3A9D /* nissan_sunny_1.jpg */; };
+		7CD7779C194F0575005C3A9D /* nissan_sunny_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7778D194F0575005C3A9D /* nissan_sunny_2.jpg */; };
+		7CD7779D194F0575005C3A9D /* nissan_sunny_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD7778E194F0575005C3A9D /* nissan_sunny_3.jpg */; };
 		847D9979193338B5000CBDFA /* FourLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D9971193338B5000CBDFA /* FourLineCell.m */; };
 		847D997A193338B5000CBDFA /* FourLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D9972193338B5000CBDFA /* FourLineCell.xib */; };
 		847D997B193338B5000CBDFA /* TotalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D9974193338B5000CBDFA /* TotalCell.m */; };
@@ -415,6 +430,21 @@
 		7CB4DFDF192E651400B2A9F2 /* hilton3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hilton3.jpg; sourceTree = "<group>"; };
 		7CB4DFE0192E651400B2A9F2 /* hilton4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hilton4.jpg; sourceTree = "<group>"; };
 		7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-05-22 at 11.55.06 AM.png"; sourceTree = "<group>"; };
+		7CD77780194F0575005C3A9D /* chevrolet_aveo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chevrolet_aveo_1.jpg; sourceTree = "<group>"; };
+		7CD77781194F0575005C3A9D /* chevrolet_aveo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chevrolet_aveo_2.jpg; sourceTree = "<group>"; };
+		7CD77782194F0575005C3A9D /* chevrolet_aveo_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chevrolet_aveo_3.png; sourceTree = "<group>"; };
+		7CD77783194F0575005C3A9D /* chevrolet_spark_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chevrolet_spark_1.jpg; sourceTree = "<group>"; };
+		7CD77784194F0575005C3A9D /* chevrolet_spark_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chevrolet_spark_2.jpg; sourceTree = "<group>"; };
+		7CD77785194F0575005C3A9D /* chevrolet_spark_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chevrolet_spark_3.jpg; sourceTree = "<group>"; };
+		7CD77786194F0575005C3A9D /* dodge_avenger_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dodge_avenger_1.jpg; sourceTree = "<group>"; };
+		7CD77787194F0575005C3A9D /* dodge_avenger_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dodge_avenger_2.jpg; sourceTree = "<group>"; };
+		7CD77788194F0575005C3A9D /* dodge_avenger_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dodge_avenger_3.jpg; sourceTree = "<group>"; };
+		7CD77789194F0575005C3A9D /* nissan_altima_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nissan_altima_1.jpg; sourceTree = "<group>"; };
+		7CD7778A194F0575005C3A9D /* nissan_altima_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nissan_altima_2.jpg; sourceTree = "<group>"; };
+		7CD7778B194F0575005C3A9D /* nissan_altima_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nissan_altima_3.jpg; sourceTree = "<group>"; };
+		7CD7778C194F0575005C3A9D /* nissan_sunny_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nissan_sunny_1.jpg; sourceTree = "<group>"; };
+		7CD7778D194F0575005C3A9D /* nissan_sunny_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nissan_sunny_2.jpg; sourceTree = "<group>"; };
+		7CD7778E194F0575005C3A9D /* nissan_sunny_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nissan_sunny_3.jpg; sourceTree = "<group>"; };
 		847D9970193338B5000CBDFA /* FourLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourLineCell.h; sourceTree = "<group>"; };
 		847D9971193338B5000CBDFA /* FourLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourLineCell.m; sourceTree = "<group>"; };
 		847D9972193338B5000CBDFA /* FourLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourLineCell.xib; sourceTree = "<group>"; };
@@ -810,6 +840,28 @@
 			path = "Rating Stars";
 			sourceTree = "<group>";
 		};
+		7CD7777F194F0575005C3A9D /* Details Cars Images */ = {
+			isa = PBXGroup;
+			children = (
+				7CD77780194F0575005C3A9D /* chevrolet_aveo_1.jpg */,
+				7CD77781194F0575005C3A9D /* chevrolet_aveo_2.jpg */,
+				7CD77782194F0575005C3A9D /* chevrolet_aveo_3.png */,
+				7CD77783194F0575005C3A9D /* chevrolet_spark_1.jpg */,
+				7CD77784194F0575005C3A9D /* chevrolet_spark_2.jpg */,
+				7CD77785194F0575005C3A9D /* chevrolet_spark_3.jpg */,
+				7CD77786194F0575005C3A9D /* dodge_avenger_1.jpg */,
+				7CD77787194F0575005C3A9D /* dodge_avenger_2.jpg */,
+				7CD77788194F0575005C3A9D /* dodge_avenger_3.jpg */,
+				7CD77789194F0575005C3A9D /* nissan_altima_1.jpg */,
+				7CD7778A194F0575005C3A9D /* nissan_altima_2.jpg */,
+				7CD7778B194F0575005C3A9D /* nissan_altima_3.jpg */,
+				7CD7778C194F0575005C3A9D /* nissan_sunny_1.jpg */,
+				7CD7778D194F0575005C3A9D /* nissan_sunny_2.jpg */,
+				7CD7778E194F0575005C3A9D /* nissan_sunny_3.jpg */,
+			);
+			path = "Details Cars Images";
+			sourceTree = "<group>";
+		};
 		847D997F19333C38000CBDFA /* App icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1232,7 @@
 		84C29480192B61B70027E782 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7CD7777F194F0575005C3A9D /* Details Cars Images */,
 				84E4F1E2194F0031002B7B03 /* AirCondition.1.jpg */,
 				84E4F1E3194F0031002B7B03 /* doors.4.jpg */,
 				84E4F1E4194F0031002B7B03 /* seats.4.jpg */,
@@ -1473,6 +1526,7 @@
 				7C182E42193389C900DE2FE3 /* form_field_error.png in Resources */,
 				84AE31EF192E056C0072D805 /* jcb@2x.png in Resources */,
 				7C182E30193389C900DE2FE3 /* card_num.png in Resources */,
+				7CD77795194F0575005C3A9D /* dodge_avenger_1.jpg in Resources */,
 				84E4F1DC194EB7CE002B7B03 /* cheverolet.jpg in Resources */,
 				7C182E5F193389C900DE2FE3 /* omra@2x.png in Resources */,
 				7C182E7D193389C900DE2FE3 /* sort_arrow_up@2x.png in Resources */,
@@ -1501,6 +1555,7 @@
 				7C182E50193389C900DE2FE3 /* location_icon_right.png in Resources */,
 				84E4F1DA194EB7CE002B7B03 /* altima.jpg in Resources */,
 				7C182E68193389C900DE2FE3 /* pay_now__button_page.png in Resources */,
+				7CD77792194F0575005C3A9D /* chevrolet_spark_1.jpg in Resources */,
 				7CB4DFD7192E64FD00B2A9F2 /* StarEmptyLarge.png in Resources */,
 				84C294AC192B7BA50027E782 /* meredian.jpg in Resources */,
 				7C182E5B193389C900DE2FE3 /* next@2x.png in Resources */,
@@ -1515,6 +1570,7 @@
 				7CB4DFD9192E64FD00B2A9F2 /* StarFull.png in Resources */,
 				7C182E3C193389C900DE2FE3 /* description.png in Resources */,
 				7C182E87193389C900DE2FE3 /* step_2@2x.png in Resources */,
+				7CD77791194F0575005C3A9D /* chevrolet_aveo_3.png in Resources */,
 				84C294BE192B7E9B0027E782 /* rating_5.png in Resources */,
 				7CB4DFE2192E651400B2A9F2 /* hilton2.jpg in Resources */,
 				7C182E58193389C900DE2FE3 /* my_res.png in Resources */,
@@ -1528,6 +1584,7 @@
 				84E4F1E9194F0031002B7B03 /* TransmissionType.1.jpg in Resources */,
 				847D998419333C38000CBDFA /* 58X58.png in Resources */,
 				84AE31E4192E056C0072D805 /* amex@2x.png in Resources */,
+				7CD77793194F0575005C3A9D /* chevrolet_spark_2.jpg in Resources */,
 				7C182E39193389C900DE2FE3 /* date@2x.png in Resources */,
 				7C182E73193389C900DE2FE3 /* room_image@2x.png in Resources */,
 				84C2948F192B6F310027E782 /* MenuCell.xib in Resources */,
@@ -1542,17 +1599,21 @@
 				84AE31E9192E056C0072D805 /* diners.png in Resources */,
 				7C182E3F193389C900DE2FE3 /* flight@2x.png in Resources */,
 				84AE31F3192E056C0072D805 /* placeholder-outline@2x.png in Resources */,
+				7CD77799194F0575005C3A9D /* nissan_altima_2.jpg in Resources */,
 				7C182E67193389C900DE2FE3 /* pay_now@2x.png in Resources */,
 				84E4F1E7194F0031002B7B03 /* doors.4.jpg in Resources */,
 				7C182E62193389C900DE2FE3 /* passport_normal.png in Resources */,
+				7CD7779B194F0575005C3A9D /* nissan_sunny_1.jpg in Resources */,
 				7C182E8A193389C900DE2FE3 /* top_bar_logo.png in Resources */,
 				84AE31F2192E056C0072D805 /* mastercard@2x.png in Resources */,
 				7C182E41193389C900DE2FE3 /* form_field@2x.png in Resources */,
 				7C182E85193389C900DE2FE3 /* step_1@2x.png in Resources */,
+				7CD77790194F0575005C3A9D /* chevrolet_aveo_2.jpg in Resources */,
 				7C182E31193389C900DE2FE3 /* card_num@2x.png in Resources */,
 				84C294BC192B7E9B0027E782 /* rating_3.png in Resources */,
 				84AE31E2192E056C0072D805 /* amex-outline@2x.png in Resources */,
 				7C182E59193389C900DE2FE3 /* my_res@2x.png in Resources */,
+				7CD77794194F0575005C3A9D /* chevrolet_spark_3.jpg in Resources */,
 				84AE31E8192E056C0072D805 /* cvc@2x.png in Resources */,
 				84AE31F0192E056C0072D805 /* mastercard-outline@2x.png in Resources */,
 				84C29437192B56990027E782 /* InfoPlist.strings in Resources */,
@@ -1564,7 +1625,9 @@
 				7C182E56193389C900DE2FE3 /* more.png in Resources */,
 				84C294A8192B7BA50027E782 /* Ajyad.jpg in Resources */,
 				7C182E5C193389C900DE2FE3 /* next_hotel_details.png in Resources */,
+				7CD77796194F0575005C3A9D /* dodge_avenger_2.jpg in Resources */,
 				7C182E64193389C900DE2FE3 /* pay_later.png in Resources */,
+				7CD77798194F0575005C3A9D /* nissan_altima_1.jpg in Resources */,
 				7C182E54193389C900DE2FE3 /* map_left.png in Resources */,
 				7C182E81193389C900DE2FE3 /* stars_off@2x.png in Resources */,
 				7C182E60193389C900DE2FE3 /* passport_attached.png in Resources */,
@@ -1573,6 +1636,7 @@
 				7C182E4D193389C900DE2FE3 /* left_arrow@2x.png in Resources */,
 				7C182E52193389C900DE2FE3 /* magnifying.png in Resources */,
 				84C294AB192B7BA50027E782 /* hilton.jpg in Resources */,
+				7CD7778F194F0575005C3A9D /* chevrolet_aveo_1.jpg in Resources */,
 				7C182E8D193389C900DE2FE3 /* total_box@2x.png in Resources */,
 				84E4F1DB194EB7CE002B7B03 /* Aveo.jpg in Resources */,
 				7C182E2B193389C900DE2FE3 /* background@2x.png in Resources */,
@@ -1606,6 +1670,7 @@
 				7C182E84193389C900DE2FE3 /* step_1.png in Resources */,
 				7CB4DFE6192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png in Resources */,
 				7C182E55193389C900DE2FE3 /* map_left@2x.png in Resources */,
+				7CD7779D194F0575005C3A9D /* nissan_sunny_3.jpg in Resources */,
 				7C182E5D193389C900DE2FE3 /* next_hotel_details@2x.png in Resources */,
 				7C182E75193389C900DE2FE3 /* rooms@2x.png in Resources */,
 				7C182E7A193389C900DE2FE3 /* sort_arrow_down.png in Resources */,
@@ -1618,6 +1683,7 @@
 				84E4F1E6194F0031002B7B03 /* AirCondition.1.jpg in Resources */,
 				7C182E32193389C900DE2FE3 /* cars.png in Resources */,
 				84AE31EA192E056C0072D805 /* diners@2x.png in Resources */,
+				7CD7779A194F0575005C3A9D /* nissan_altima_3.jpg in Resources */,
 				84C294AA192B7BA50027E782 /* elaf kinda.jpg in Resources */,
 				847D998319333C38000CBDFA /* 120X120.png in Resources */,
 				7C182E47193389C900DE2FE3 /* haj@2x.png in Resources */,
@@ -1635,6 +1701,7 @@
 				7C182E7B193389C900DE2FE3 /* sort_arrow_down@2x.png in Resources */,
 				7C182E4C193389C900DE2FE3 /* left_arrow.png in Resources */,
 				7C182E70193389C900DE2FE3 /* planes.png in Resources */,
+				7CD77797194F0575005C3A9D /* dodge_avenger_3.jpg in Resources */,
 				847D997C193338B5000CBDFA /* TotalCell.xib in Resources */,
 				7C182E6C193389C900DE2FE3 /* photo_normal.png in Resources */,
 				7C182E61193389C900DE2FE3 /* passport_attached@2x.png in Resources */,
@@ -1650,6 +1717,7 @@
 				84C294C1192B84EC0027E782 /* back_header_btn.png in Resources */,
 				7C182E2E193389C900DE2FE3 /* box.png in Resources */,
 				7C182E8E193389C900DE2FE3 /* visa.png in Resources */,
+				7CD7779C194F0575005C3A9D /* nissan_sunny_2.jpg in Resources */,
 				7C182E72193389C900DE2FE3 /* room_image.png in Resources */,
 				7C182E7F193389C900DE2FE3 /* splashscreen 1.png in Resources */,
 				7C182E38193389C900DE2FE3 /* date.png in Resources */,
@@ -1841,7 +1909,7 @@
 				INFOPLIST_FILE = "alhanove/alhanove-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9B220F9C-2158-44FB-80D0-30EBD464D521";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1855,7 +1923,7 @@
 				INFOPLIST_FILE = "alhanove/alhanove-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9B220F9C-2158-44FB-80D0-30EBD464D521";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -1539,19 +1539,8 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.043137256059999997" green="0.5411764979" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" id="Act-bT-5In">
-                                        <rect key="frame" x="14" y="255" width="286" height="178"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <string key="text">سيارة اقتصادية ، ٤ ابواب ، مكيف ، جير اتوماتيك ، مع عدد كيلومترات مفتوح  ، مكيف ، جير اتوماتيك ، مع عدد كيلومترات مفتوح ، مكيف ، جير اتوماتيك ، مع عدد كيلومترات مفتوح ، مكيف ، جير اتوماتيك ، مع عدد كيلومترات مفتوح ، مكيف ، جير اتوماتيك ، مع عدد</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="b36-mE-1ho" id="Dm6-9U-jeL"/>
-                                        </connections>
-                                    </textView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="وصف السيارة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ztI-Ao-f6R">
-                                        <rect key="frame" x="186" y="226" width="83" height="21"/>
+                                        <rect key="frame" x="186" y="166" width="83" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -1561,30 +1550,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </pageControl>
-                                    <view contentMode="scaleToFill" id="kfm-nZ-65L" userLabel="Location View">
-                                        <rect key="frame" x="0.0" y="151" width="320" height="67"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_left.png" id="z4G-BR-nuU">
-                                                <rect key="frame" x="0.0" y="0.0" width="64" height="67"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="المملكة العربية السعودية - مكة المكرمة                              شارع ابراهيم الخليل" textAlignment="right" id="hF5-W5-tBs">
-                                                <rect key="frame" x="72" y="12" width="198" height="43"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_icon_right.png" id="bV5-wg-Mmb">
-                                                <rect key="frame" x="278" y="20" width="13" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="description.png" id="lzo-DN-AUg">
-                                        <rect key="frame" x="280" y="233" width="13" height="8"/>
+                                        <rect key="frame" x="280" y="173" width="13" height="8"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="g3J-Cg-pZK">
@@ -1597,6 +1564,15 @@
                                             <action selector="contiueBtnPrss:" destination="b36-mE-1ho" eventType="touchUpInside" id="XWr-Vc-FwA"/>
                                         </connections>
                                     </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1FD-fq-3yf">
+                                        <rect key="frame" x="20" y="195" width="273" height="238"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="b36-mE-1ho" id="pLW-Bm-R3H"/>
+                                            <outlet property="delegate" destination="b36-mE-1ho" id="Hbg-6b-Zhz"/>
+                                        </connections>
+                                    </tableView>
                                 </subviews>
                                 <connections>
                                     <outlet property="delegate" destination="b36-mE-1ho" id="0CL-9Z-Fhf"/>
@@ -1608,10 +1584,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="contentScrollView" destination="mIw-HO-YoQ" id="zcy-Ri-9IY"/>
-                        <outlet property="describTxtView" destination="Act-bT-5In" id="vot-Ze-aVV"/>
+                        <outlet property="featuresTableView" destination="1FD-fq-3yf" id="NTg-7O-iKR"/>
                         <outlet property="hotelTitle" destination="0N3-67-24A" id="WE7-FV-Hh0"/>
                         <outlet property="imagesScrollView" destination="Gze-1G-6lR" id="v4F-J3-SAj"/>
-                        <outlet property="locationTxtView" destination="hF5-W5-tBs" id="nq5-0b-gX3"/>
                         <outlet property="pageControl" destination="smB-aL-Qc8" id="xR5-iF-EEB"/>
                         <outlet property="priceLabel" destination="SZv-EW-IUH" id="gEt-Td-S1U"/>
                         <outlet property="reviewLabel" destination="ztI-Ao-f6R" id="tZB-bU-VVe"/>

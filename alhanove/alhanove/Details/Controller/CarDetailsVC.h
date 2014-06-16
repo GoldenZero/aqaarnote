@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AGPhotoBrowserView.h"
 
-@interface CarDetailsVC : UIViewController<AGPhotoBrowserDataSource,AGPhotoBrowserDelegate,UIScrollViewDelegate>
+@interface CarDetailsVC : UIViewController<AGPhotoBrowserDataSource,AGPhotoBrowserDelegate,UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 #pragma mark -Properties
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
@@ -17,11 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *hotelTitle;
 
 @property (strong, nonatomic) IBOutlet UIView *starsView;
-@property (strong, nonatomic) IBOutlet UITextView *locationTxtView;
-
 @property (strong, nonatomic) IBOutlet UIScrollView *imagesScrollView;
-@property (strong, nonatomic) IBOutlet UITextView *describTxtView;
-
+@property (strong, nonatomic) IBOutlet UITableView *featuresTableView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 @property (strong, nonatomic) IBOutlet UILabel *reviewLabel;

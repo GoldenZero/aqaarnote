@@ -12,6 +12,9 @@
 {
     NSMutableArray *pageViews;
     NSInteger currentPage;
+    NSMutableArray *capacityArray;
+    NSMutableArray *equipmentArray;
+    
 }
 
 @end
@@ -46,17 +49,49 @@
     
     // Set Custom font
     self.hotelTitle.text=self.hotelName;
-    self.locationTxtView.text = self.carLocation;
     [self.hotelTitle setFont:[UIFont mediumGeSSOfSize:20]];
     [self.titlesScreen setFont:[UIFont mediumGeSSOfSize:20]];
-    
     self.priceLabel.text=[NSString stringWithFormat:@"%@ $",self.hotelCost];
     [self.priceLabel setFont:[UIFont mediumGeSSOfSize:18]];
-    [self.locationTxtView setFont:[UIFont lightGeSSOfSize:12]];
-    [self.describTxtView setFont:[UIFont lightGeSSOfSize:12]];
     [self.reviewLabel setFont:[UIFont mediumGeSSOfSize:13]];
     
+    capacityArray=[[NSMutableArray alloc] init];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"عدد الراكبين" forKey:@"Label"];
+    [dic setObject:@"٥" forKey:@"Value"];
+    [dic setObject:@"" forKey:@"Image"];
+    [capacityArray addObject:dic];
     
+    dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"عدد الحقائب" forKey:@"Label"];
+    [dic setObject:@"٣" forKey:@"Value"];
+    [dic setObject:@"" forKey:@"Image"];
+    [capacityArray addObject:dic];
+    
+    equipmentArray=[[NSMutableArray alloc] init];
+    dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"عدد الأبواب" forKey:@"Label"];
+    [dic setObject:@"٤" forKey:@"Value"];
+    [dic setObject:@"" forKey:@"Image"];
+    [equipmentArray addObject:dic];
+
+    dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"تكييف" forKey:@"Label"];
+    [dic setObject:@"متوفر" forKey:@"Value"];
+    [dic setObject:@"" forKey:@"Image"];
+    [equipmentArray addObject:dic];
+
+    dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"GPS" forKey:@"Label"];
+    [dic setObject:@"متوفر" forKey:@"Value"];
+    [dic setObject:@"" forKey:@"Image"];
+    [equipmentArray addObject:dic];
+ 
+    dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"Automatic" forKey:@"Label"];
+    [dic setObject:@"متوفر" forKey:@"Value"];
+    [dic setObject:@"" forKey:@"Image"];
+    [equipmentArray addObject:dic];
     
     if(!self.pageImages){
         pageImages=[[NSMutableArray alloc] initWithObjects:
@@ -69,6 +104,7 @@
     [self setScrollView];
     [self loadBannerImgs];
 }
+
 #pragma mark - Buttons Actions
 
 - (IBAction)backBtnPrss:(id)sender {
@@ -299,4 +335,57 @@
 }
 */
 
+#pragma mark - Table View Delegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+
+    if (indexPath.section==0) {
+        NSDictionary *dic=[capacityArray objectAtIndex:indexPath.row];
+        cell.textLabel.text=[dic objectForKey:@"Label"];
+        cell.textLabel.textAlignment=NSTextAlignmentRight;
+        cell.detailTextLabel.text=[dic objectForKey:@"Value"];
+        cell.detailTextLabel.textAlignment=NSTextAlignmentRight;
+
+    }
+    else{
+        NSDictionary *dic=[equipmentArray objectAtIndex:indexPath.row];
+        cell.textLabel.text=[dic objectForKey:@"Label"];
+        cell.textLabel.textAlignment=NSTextAlignmentRight;
+        cell.detailTextLabel.text=[dic objectForKey:@"Value"];
+        cell.detailTextLabel.textAlignment=NSTextAlignmentRight;
+
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section==0) {
+        return capacityArray.count;
+    }
+    else{
+        return equipmentArray.count;
+    }
+    
+}
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section==0) {
+        return @"معدات";
+    }
+    else{
+        return @"السعة";
+    }
+}
 @end
