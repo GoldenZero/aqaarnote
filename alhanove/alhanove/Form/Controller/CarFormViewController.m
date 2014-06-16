@@ -88,7 +88,6 @@
     carTypePicker = [SBPickerSelector picker];
     carTypePicker.delegate = self;
     carTypePicker.pickerData = [[NSMutableArray alloc] initWithArray:carTypesArray]; //picker content
-
     carTypePicker.pickerType=SBPickerSelectorTypeText;
     carTypePicker.doneButtonTitle = @"تم";
     carTypePicker.cancelButtonTitle = @"إغلاق";

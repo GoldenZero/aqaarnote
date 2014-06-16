@@ -15,7 +15,6 @@
 @interface CarListingViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,SBPickerSelectorDelegate>
 
 @property (strong, nonatomic) FormObject* formObj;
-
 @property (strong, nonatomic) IBOutlet UILabel *pageTitle;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIButton *nextBtn;

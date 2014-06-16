@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="left_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="T7z-md-vTh">
-                        <rect key="frame" x="10" y="30" width="11" height="19"/>
+                        <rect key="frame" x="10" y="50" width="11" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="doors.4.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ga8-BJ-7Rb">
@@ -45,14 +45,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47h-Ln-kFv">
-                        <rect key="frame" x="60" y="58" width="62" height="21"/>
+                        <rect key="frame" x="65" y="49" width="62" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBf-Al-1UY">
-                        <rect key="frame" x="15" y="58" width="42" height="21"/>
+                        <rect key="frame" x="20" y="49" width="42" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
