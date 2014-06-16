@@ -7,7 +7,7 @@
 //
 
 #import "CarDetailsVC.h"
-
+#import "CarFeatureCell.h"
 @interface CarDetailsVC ()
 {
     NSMutableArray *pageViews;
@@ -59,38 +59,38 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"عدد الراكبين" forKey:@"Label"];
     [dic setObject:@"٥" forKey:@"Value"];
-    [dic setObject:@"" forKey:@"Image"];
+    [dic setObject:@"passenger" forKey:@"Image"];
     [capacityArray addObject:dic];
     
     dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"عدد الحقائب" forKey:@"Label"];
     [dic setObject:@"٣" forKey:@"Value"];
-    [dic setObject:@"" forKey:@"Image"];
+    [dic setObject:@"baggage" forKey:@"Image"];
     [capacityArray addObject:dic];
     
     equipmentArray=[[NSMutableArray alloc] init];
     dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"عدد الأبواب" forKey:@"Label"];
     [dic setObject:@"٤" forKey:@"Value"];
-    [dic setObject:@"" forKey:@"Image"];
+    [dic setObject:@"car" forKey:@"Image"];
     [equipmentArray addObject:dic];
 
     dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"تكييف" forKey:@"Label"];
     [dic setObject:@"متوفر" forKey:@"Value"];
-    [dic setObject:@"" forKey:@"Image"];
+    [dic setObject:@"AC" forKey:@"Image"];
     [equipmentArray addObject:dic];
 
     dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"GPS" forKey:@"Label"];
     [dic setObject:@"متوفر" forKey:@"Value"];
-    [dic setObject:@"" forKey:@"Image"];
+    [dic setObject:@"gps" forKey:@"Image"];
     [equipmentArray addObject:dic];
  
     dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"Automatic" forKey:@"Label"];
     [dic setObject:@"متوفر" forKey:@"Value"];
-    [dic setObject:@"" forKey:@"Image"];
+    [dic setObject:@"gear_shift" forKey:@"Image"];
     [equipmentArray addObject:dic];
     
     if(!self.pageImages){
@@ -342,29 +342,22 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CarFeatureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[CarFeatureCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                  reuseIdentifier:@"CellIdentifier@"];
     }
-
+    NSDictionary *dic;
     if (indexPath.section==0) {
-        NSDictionary *dic=[capacityArray objectAtIndex:indexPath.row];
-        cell.textLabel.text=[dic objectForKey:@"Label"];
-        cell.textLabel.textAlignment=NSTextAlignmentRight;
-        cell.detailTextLabel.text=[dic objectForKey:@"Value"];
-        cell.detailTextLabel.textAlignment=NSTextAlignmentRight;
+       dic=[capacityArray objectAtIndex:indexPath.row];
 
     }
     else{
-        NSDictionary *dic=[equipmentArray objectAtIndex:indexPath.row];
-        cell.textLabel.text=[dic objectForKey:@"Label"];
-        cell.textLabel.textAlignment=NSTextAlignmentRight;
-        cell.detailTextLabel.text=[dic objectForKey:@"Value"];
-        cell.detailTextLabel.textAlignment=NSTextAlignmentRight;
-
+        dic=[equipmentArray objectAtIndex:indexPath.row];
     }
+    cell.title.text=[NSString stringWithFormat:@"%@ : %@" ,[dic objectForKey:@"Label"],[dic objectForKey:@"Value"]];
+    cell.icon.image=[UIImage imageNamed:[dic objectForKey:@"Image"]];
     return cell;
 }
 
