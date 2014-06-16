@@ -246,6 +246,12 @@
 		84E4F1E7194F0031002B7B03 /* doors.4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1E3194F0031002B7B03 /* doors.4.jpg */; };
 		84E4F1E8194F0031002B7B03 /* seats.4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1E4194F0031002B7B03 /* seats.4.jpg */; };
 		84E4F1E9194F0031002B7B03 /* TransmissionType.1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1E5194F0031002B7B03 /* TransmissionType.1.jpg */; };
+		84E4F1EC194F1F6A002B7B03 /* CarUserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F1EB194F1F6A002B7B03 /* CarUserDataViewController.m */; };
+		84E4F1F1194F1F96002B7B03 /* btn_check_off_focused_holo_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1ED194F1F96002B7B03 /* btn_check_off_focused_holo_light.png */; };
+		84E4F1F2194F1F96002B7B03 /* btn_check_off_holo_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1EE194F1F96002B7B03 /* btn_check_off_holo_light.png */; };
+		84E4F1F3194F1F96002B7B03 /* btn_check_on_focused_holo_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1EF194F1F96002B7B03 /* btn_check_on_focused_holo_light.png */; };
+		84E4F1F4194F1F96002B7B03 /* btn_check_on_holo_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1F0194F1F96002B7B03 /* btn_check_on_holo_light.png */; };
+		84E4F1F7194F1FC1002B7B03 /* CarSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F1F6194F1FC1002B7B03 /* CarSummaryViewController.m */; };
 		84EFCFC5194DA47D0034140B /* CarFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFCFC4194DA47D0034140B /* CarFormViewController.m */; };
 		84EFCFE0194DA5EE0034140B /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFCFC9194DA5EE0034140B /* NSAlert+MKNetworkKitAdditions.m */; };
 		84EFCFE1194DA5EE0034140B /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFCFCB194DA5EE0034140B /* NSData+MKBase64.m */; };
@@ -566,6 +572,14 @@
 		84E4F1E3194F0031002B7B03 /* doors.4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doors.4.jpg; sourceTree = "<group>"; };
 		84E4F1E4194F0031002B7B03 /* seats.4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seats.4.jpg; sourceTree = "<group>"; };
 		84E4F1E5194F0031002B7B03 /* TransmissionType.1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TransmissionType.1.jpg; sourceTree = "<group>"; };
+		84E4F1EA194F1F6A002B7B03 /* CarUserDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarUserDataViewController.h; sourceTree = "<group>"; };
+		84E4F1EB194F1F6A002B7B03 /* CarUserDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarUserDataViewController.m; sourceTree = "<group>"; };
+		84E4F1ED194F1F96002B7B03 /* btn_check_off_focused_holo_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_check_off_focused_holo_light.png; sourceTree = "<group>"; };
+		84E4F1EE194F1F96002B7B03 /* btn_check_off_holo_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_check_off_holo_light.png; sourceTree = "<group>"; };
+		84E4F1EF194F1F96002B7B03 /* btn_check_on_focused_holo_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_check_on_focused_holo_light.png; sourceTree = "<group>"; };
+		84E4F1F0194F1F96002B7B03 /* btn_check_on_holo_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_check_on_holo_light.png; sourceTree = "<group>"; };
+		84E4F1F5194F1FC1002B7B03 /* CarSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarSummaryViewController.h; sourceTree = "<group>"; };
+		84E4F1F6194F1FC1002B7B03 /* CarSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarSummaryViewController.m; sourceTree = "<group>"; };
 		84EFCFC3194DA47D0034140B /* CarFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarFormViewController.h; sourceTree = "<group>"; };
 		84EFCFC4194DA47D0034140B /* CarFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarFormViewController.m; sourceTree = "<group>"; };
 		84EFCFC8194DA5EE0034140B /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
@@ -1202,6 +1216,8 @@
 			children = (
 				84CA94DB192CCC65002CA3B4 /* TimeLineViewController.h */,
 				84CA94DC192CCC65002CA3B4 /* TimeLineViewController.m */,
+				84E4F1F5194F1FC1002B7B03 /* CarSummaryViewController.h */,
+				84E4F1F6194F1FC1002B7B03 /* CarSummaryViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1232,6 +1248,10 @@
 		84C29480192B61B70027E782 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84E4F1ED194F1F96002B7B03 /* btn_check_off_focused_holo_light.png */,
+				84E4F1EE194F1F96002B7B03 /* btn_check_off_holo_light.png */,
+				84E4F1EF194F1F96002B7B03 /* btn_check_on_focused_holo_light.png */,
+				84E4F1F0194F1F96002B7B03 /* btn_check_on_holo_light.png */,
 				7CD7777F194F0575005C3A9D /* Details Cars Images */,
 				84E4F1E2194F0031002B7B03 /* AirCondition.1.jpg */,
 				84E4F1E3194F0031002B7B03 /* doors.4.jpg */,
@@ -1365,6 +1385,8 @@
 			children = (
 				84EFCFC3194DA47D0034140B /* CarFormViewController.h */,
 				84EFCFC4194DA47D0034140B /* CarFormViewController.m */,
+				84E4F1EA194F1F6A002B7B03 /* CarUserDataViewController.h */,
+				84E4F1EB194F1F6A002B7B03 /* CarUserDataViewController.m */,
 			);
 			name = Car;
 			sourceTree = "<group>";
@@ -1637,6 +1659,7 @@
 				7C182E52193389C900DE2FE3 /* magnifying.png in Resources */,
 				84C294AB192B7BA50027E782 /* hilton.jpg in Resources */,
 				7CD7778F194F0575005C3A9D /* chevrolet_aveo_1.jpg in Resources */,
+				84E4F1F2194F1F96002B7B03 /* btn_check_off_holo_light.png in Resources */,
 				7C182E8D193389C900DE2FE3 /* total_box@2x.png in Resources */,
 				84E4F1DB194EB7CE002B7B03 /* Aveo.jpg in Resources */,
 				7C182E2B193389C900DE2FE3 /* background@2x.png in Resources */,
@@ -1670,6 +1693,7 @@
 				7C182E84193389C900DE2FE3 /* step_1.png in Resources */,
 				7CB4DFE6192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png in Resources */,
 				7C182E55193389C900DE2FE3 /* map_left@2x.png in Resources */,
+				84E4F1F3194F1F96002B7B03 /* btn_check_on_focused_holo_light.png in Resources */,
 				7CD7779D194F0575005C3A9D /* nissan_sunny_3.jpg in Resources */,
 				7C182E5D193389C900DE2FE3 /* next_hotel_details@2x.png in Resources */,
 				7C182E75193389C900DE2FE3 /* rooms@2x.png in Resources */,
@@ -1683,6 +1707,7 @@
 				84E4F1E6194F0031002B7B03 /* AirCondition.1.jpg in Resources */,
 				7C182E32193389C900DE2FE3 /* cars.png in Resources */,
 				84AE31EA192E056C0072D805 /* diners@2x.png in Resources */,
+				84E4F1F4194F1F96002B7B03 /* btn_check_on_holo_light.png in Resources */,
 				7CD7779A194F0575005C3A9D /* nissan_altima_3.jpg in Resources */,
 				84C294AA192B7BA50027E782 /* elaf kinda.jpg in Resources */,
 				847D998319333C38000CBDFA /* 120X120.png in Resources */,
@@ -1704,6 +1729,7 @@
 				7CD77797194F0575005C3A9D /* dodge_avenger_3.jpg in Resources */,
 				847D997C193338B5000CBDFA /* TotalCell.xib in Resources */,
 				7C182E6C193389C900DE2FE3 /* photo_normal.png in Resources */,
+				84E4F1F1194F1F96002B7B03 /* btn_check_off_focused_holo_light.png in Resources */,
 				7C182E61193389C900DE2FE3 /* passport_attached@2x.png in Resources */,
 				7C182E5E193389C900DE2FE3 /* omra.png in Resources */,
 				7C3F7487192D193800DBA803 /* ar_back_header_btn@2x.png in Resources */,
@@ -1793,11 +1819,13 @@
 				7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */,
 				7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */,
 				84EFD031194DC7600034140B /* UIImage+MultiFormat.m in Sources */,
+				84E4F1EC194F1F6A002B7B03 /* CarUserDataViewController.m in Sources */,
 				7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */,
 				84EFCFEA194DA5EE0034140B /* NetworkEngine.m in Sources */,
 				847D997B193338B5000CBDFA /* TotalCell.m in Sources */,
 				84EFCFFF194DB70C0034140B /* NSError+Description.m in Sources */,
 				84EFCFC5194DA47D0034140B /* CarFormViewController.m in Sources */,
+				84E4F1F7194F1FC1002B7B03 /* CarSummaryViewController.m in Sources */,
 				84EFD02E194DC7600034140B /* SDWebImagePrefetcher.m in Sources */,
 				84C2946B192B57A90027E782 /* HomeViewController.m in Sources */,
 				84AE31DC192E056C0072D805 /* PKCardCVC.m in Sources */,
