@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *dropofTitleLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *carTypeTitleLabel;
+
 @property (strong, nonatomic) IBOutlet UILabel *fromDateLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *fromPlaceLabel;
@@ -29,6 +31,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *nextButton;
 
 @property (strong, nonatomic) IBOutlet UILabel *screenLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *carTypeLabel;
+
 #pragma mark - Buttons Actions
 
 - (IBAction)backBtnPrss:(id)sender;
@@ -42,5 +47,8 @@
 - (IBAction)toDateBtnPrss:(id)sender;
 
 - (IBAction)toPlaceBtnPrss:(id)sender;
+
+- (IBAction)carTypeBtnPrss:(id)sender;
+
 
 @end

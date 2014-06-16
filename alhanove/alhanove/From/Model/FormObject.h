@@ -36,6 +36,7 @@
 @property (nonatomic,strong) NSString* BookingCost;
 
 #pragma mark - Car Object Properties
+@property (nonatomic,strong) NSString* carType;
 @property (nonatomic,strong) NSDictionary* CarData;
 @property (nonatomic,strong) NSString *FromPlace;
 @property (nonatomic,strong) NSString *ToPlace;

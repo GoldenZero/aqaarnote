@@ -227,6 +227,10 @@
 		84E4F1DD194EB7CE002B7B03 /* dodge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1D8194EB7CE002B7B03 /* dodge.jpg */; };
 		84E4F1DE194EB7CE002B7B03 /* Sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1D9194EB7CE002B7B03 /* Sunny.jpg */; };
 		84E4F1E1194EBA81002B7B03 /* CarDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F1E0194EBA81002B7B03 /* CarDetailsVC.m */; };
+		84E4F1E6194F0031002B7B03 /* AirCondition.1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1E2194F0031002B7B03 /* AirCondition.1.jpg */; };
+		84E4F1E7194F0031002B7B03 /* doors.4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1E3194F0031002B7B03 /* doors.4.jpg */; };
+		84E4F1E8194F0031002B7B03 /* seats.4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1E4194F0031002B7B03 /* seats.4.jpg */; };
+		84E4F1E9194F0031002B7B03 /* TransmissionType.1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F1E5194F0031002B7B03 /* TransmissionType.1.jpg */; };
 		84EFCFC5194DA47D0034140B /* CarFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFCFC4194DA47D0034140B /* CarFormViewController.m */; };
 		84EFCFE0194DA5EE0034140B /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFCFC9194DA5EE0034140B /* NSAlert+MKNetworkKitAdditions.m */; };
 		84EFCFE1194DA5EE0034140B /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EFCFCB194DA5EE0034140B /* NSData+MKBase64.m */; };
@@ -528,6 +532,10 @@
 		84E4F1D9194EB7CE002B7B03 /* Sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sunny.jpg; sourceTree = "<group>"; };
 		84E4F1DF194EBA81002B7B03 /* CarDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarDetailsVC.h; sourceTree = "<group>"; };
 		84E4F1E0194EBA81002B7B03 /* CarDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarDetailsVC.m; sourceTree = "<group>"; };
+		84E4F1E2194F0031002B7B03 /* AirCondition.1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AirCondition.1.jpg; sourceTree = "<group>"; };
+		84E4F1E3194F0031002B7B03 /* doors.4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doors.4.jpg; sourceTree = "<group>"; };
+		84E4F1E4194F0031002B7B03 /* seats.4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seats.4.jpg; sourceTree = "<group>"; };
+		84E4F1E5194F0031002B7B03 /* TransmissionType.1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TransmissionType.1.jpg; sourceTree = "<group>"; };
 		84EFCFC3194DA47D0034140B /* CarFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarFormViewController.h; sourceTree = "<group>"; };
 		84EFCFC4194DA47D0034140B /* CarFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarFormViewController.m; sourceTree = "<group>"; };
 		84EFCFC8194DA5EE0034140B /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
@@ -1172,6 +1180,10 @@
 		84C29480192B61B70027E782 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84E4F1E2194F0031002B7B03 /* AirCondition.1.jpg */,
+				84E4F1E3194F0031002B7B03 /* doors.4.jpg */,
+				84E4F1E4194F0031002B7B03 /* seats.4.jpg */,
+				84E4F1E5194F0031002B7B03 /* TransmissionType.1.jpg */,
 				84E4F1D4194EB7CE002B7B03 /* demo cars images */,
 				7C182DBF193389C900DE2FE3 /* design images */,
 				7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */,
@@ -1513,6 +1525,7 @@
 				7C182E74193389C900DE2FE3 /* rooms.png in Resources */,
 				847D997A193338B5000CBDFA /* FourLineCell.xib in Resources */,
 				84AE31E3192E056C0072D805 /* amex.png in Resources */,
+				84E4F1E9194F0031002B7B03 /* TransmissionType.1.jpg in Resources */,
 				847D998419333C38000CBDFA /* 58X58.png in Resources */,
 				84AE31E4192E056C0072D805 /* amex@2x.png in Resources */,
 				7C182E39193389C900DE2FE3 /* date@2x.png in Resources */,
@@ -1530,6 +1543,7 @@
 				7C182E3F193389C900DE2FE3 /* flight@2x.png in Resources */,
 				84AE31F3192E056C0072D805 /* placeholder-outline@2x.png in Resources */,
 				7C182E67193389C900DE2FE3 /* pay_now@2x.png in Resources */,
+				84E4F1E7194F0031002B7B03 /* doors.4.jpg in Resources */,
 				7C182E62193389C900DE2FE3 /* passport_normal.png in Resources */,
 				7C182E8A193389C900DE2FE3 /* top_bar_logo.png in Resources */,
 				84AE31F2192E056C0072D805 /* mastercard@2x.png in Resources */,
@@ -1577,6 +1591,7 @@
 				7C182E49193389C900DE2FE3 /* hotel_rooms@2x.png in Resources */,
 				7C182E77193389C900DE2FE3 /* slider_active@2x.png in Resources */,
 				84AE31E7192E056C0072D805 /* cvc.png in Resources */,
+				84E4F1E8194F0031002B7B03 /* seats.4.jpg in Resources */,
 				7C182E65193389C900DE2FE3 /* pay_later@2x.png in Resources */,
 				84C2948A192B61B70027E782 /* badge5.png in Resources */,
 				84C294B1192B7CAB0027E782 /* HotelCell.xib in Resources */,
@@ -1600,6 +1615,7 @@
 				84AE31F5192E056C0072D805 /* placeholder@2x.png in Resources */,
 				7C182E53193389C900DE2FE3 /* magnifying@2x.png in Resources */,
 				7C182E6D193389C900DE2FE3 /* photo_normal@2x.png in Resources */,
+				84E4F1E6194F0031002B7B03 /* AirCondition.1.jpg in Resources */,
 				7C182E32193389C900DE2FE3 /* cars.png in Resources */,
 				84AE31EA192E056C0072D805 /* diners@2x.png in Resources */,
 				84C294AA192B7BA50027E782 /* elaf kinda.jpg in Resources */,

@@ -12,6 +12,7 @@
     
     SBPickerSelector *FromDatePicker;
     SBPickerSelector *ToDatePicker;
+    SBPickerSelector *carTypePicker;
 
     FormObject * form;
     
@@ -27,7 +28,8 @@
     BOOL placeToFlag;
     BOOL placeToChoosed;
 
-    NSArray *flightClassesArray;
+    BOOL carTypeChoosed;
+    NSArray *carTypesArray;
     
 }
 
@@ -60,7 +62,7 @@
 - (void) setViewDetails{
     
     
-    flightClassesArray=[[NSArray alloc] initWithObjects:@"درجة أولى",@"درجة رجال الأعمال",@"درجة اقتصادية", nil];
+    carTypesArray=[[NSArray alloc] initWithObjects:@"سيارة اقتصادية",@"سيارة متوسطة الحجم",@"سيارة عائلية",@"سيارة فخمة", nil];
     
     form=[[FormObject alloc] init];
     form.guestsNumber=1;
@@ -82,14 +84,25 @@
     ToDatePicker.doneButtonTitle = @"تم";
     ToDatePicker.cancelButtonTitle = @"إغلاق";
     
+    // Set picker view
+    carTypePicker = [SBPickerSelector picker];
+    carTypePicker.delegate = self;
+    carTypePicker.pickerData = [[NSMutableArray alloc] initWithArray:carTypesArray]; //picker content
+
+    carTypePicker.pickerType=SBPickerSelectorTypeText;
+    carTypePicker.doneButtonTitle = @"تم";
+    carTypePicker.cancelButtonTitle = @"إغلاق";
+    
     // Set Custom font
     [self.pickupTitleLabel setFont:[UIFont mediumGeSSOfSize:14]];
     [self.dropofTitleLabel setFont:[UIFont mediumGeSSOfSize:14]];
+    [self.carTypeTitleLabel setFont:[UIFont mediumGeSSOfSize:14]];
     [self.nextButton.titleLabel setFont:[UIFont mediumGeSSOfSize:14]];
     [self.fromDateLabel setFont:[UIFont lightGeSSOfSize:12]];
     [self.fromPlaceLabel setFont:[UIFont lightGeSSOfSize:12]];
     [self.toDateLabel setFont:[UIFont lightGeSSOfSize:12]];
     [self.toPlaceLabel setFont:[UIFont lightGeSSOfSize:12]];
+    [self.carTypeLabel setFont:[UIFont lightGeSSOfSize:12]];
     [self.screenLabel setFont:[UIFont mediumGeSSOfSize:18]];
     
     
@@ -100,6 +113,7 @@
     self.toDateLabel.text = @"حدد التاريخ";
     self.fromPlaceLabel.text = @"حدد المكان";
     self.toPlaceLabel.text = @"حدد المكان";
+    self.carTypeLabel.text = @"حدد الفئة";
     
     
 }
@@ -133,6 +147,12 @@
     }
     if (!placeToChoosed) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد مكان العودة" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    if (!carTypeChoosed) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد فئة السيارة" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
@@ -176,9 +196,16 @@
 
 }
 
+- (IBAction)carTypeBtnPrss:(id)sender
+{
+    [carTypePicker showPickerOver:self];
+}
+
 #pragma mark - SBPickerSelectorDelegate
 -(void) SBPickerSelector:(SBPickerSelector *)selector selectedValue:(NSString *)value index:(NSInteger)idx{
-    
+    form.carType = value;
+    self.carTypeLabel.text = value;
+    carTypeChoosed = YES;
 }
 
 -(void) SBPickerSelector:(SBPickerSelector *)selector dateSelected:(NSDate *)date

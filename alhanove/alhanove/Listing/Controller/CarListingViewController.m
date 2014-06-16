@@ -67,7 +67,7 @@
     
     carArrays = [NSMutableArray new];
     
-    NSDictionary *MenuDict = @{@"Type" : @"سيارة صغيره",
+    NSDictionary *MenuDict = @{@"Type" : self.formObj.carType,
                                @"Image" : @"cheverolet.jpg",
                                @"Title" : @"cheverolet spark",
                                @"Cost" : @"38",
@@ -76,7 +76,7 @@
     [carArrays addObject:MenuDict];
     
     MenuDict = nil;
-    MenuDict = @{@"Type" : @"سيارة إقتصادية",
+    MenuDict = @{@"Type" : self.formObj.carType,
                  @"Image" : @"Sunny.jpg",
                  @"Title" : @"Nissan Sunny",
                  @"Cost" : @"42",
@@ -84,7 +84,7 @@
     [carArrays addObject:MenuDict];
     
     MenuDict = nil;
-    MenuDict = @{@"Type" : @"سيارة إقتصادية",
+    MenuDict = @{@"Type" :self.formObj.carType,
                  @"Image" : @"Aveo.jpg",
                  @"Title" : @"Cheverolet Aveo",
                  @"Cost" : @"46",
@@ -92,7 +92,7 @@
     [carArrays addObject:MenuDict];
     
     MenuDict = nil;
-    MenuDict = @{@"Type" : @"سيارة متوسطة الحجم",
+    MenuDict = @{@"Type" : self.formObj.carType,
                  @"Image" : @"dodge.jpg",
                  @"Title" : @"Dodge Avenger",
                  @"Cost" : @"80",
@@ -100,7 +100,7 @@
     [carArrays addObject:MenuDict];
     
     MenuDict = nil;
-    MenuDict = @{@"Type" : @"سيارة عائلية",
+    MenuDict = @{@"Type" : self.formObj.carType,
                  @"Image" : @"altima.jpg",
                  @"Title" : @"Nissan Altima",
                  @"Cost" : @"89",
@@ -194,7 +194,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80.0;
+    return 120.0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
