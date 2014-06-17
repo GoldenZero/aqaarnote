@@ -146,9 +146,9 @@
 
 - (IBAction)nextInvoked:(id)sender {
    
-        self.formObj.BookingCost = [NSString stringWithFormat:@"%@",totalCost];
+        self.formObj.carCost = [NSString stringWithFormat:@"%@",totalCost];
         //go to the reservation details
-        [self performSegueWithIdentifier:@"showTimeLine" sender:self];
+        [self performSegueWithIdentifier:@"showCarUserForm" sender:self];
     
 }
 
@@ -354,9 +354,11 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showTimeLine"])   //parameter to login page
+    if ([[segue identifier] isEqualToString:@"showCarUserForm"])   //parameter to login page
     {
-        TimeLineViewController* vc = segue.destinationViewController;
+        //TimeLineViewController* vc = segue.destinationViewController;
+        //vc.formObj = self.formObj;
+        CarUserDataViewController* vc = segue.destinationViewController;
         vc.formObj = self.formObj;
     }
     

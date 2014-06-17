@@ -40,6 +40,7 @@
 @property (nonatomic,strong) NSDictionary* CarData;
 @property (nonatomic,strong) NSString *FromPlace;
 @property (nonatomic,strong) NSString *ToPlace;
+@property (nonatomic,strong) NSString* carCost;
 
 
 @end

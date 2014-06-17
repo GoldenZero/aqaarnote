@@ -50,7 +50,7 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
-    self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%li ريال",[self.formObj.BookingCost integerValue] + [self.formObj.FlightCost integerValue]]];
+    self.PriceLbl.text = [NSString stringWithFormat:@"%@ ريال",self.formObj.carCost];
     [self.dateBtn setTitle:[dateFormat stringFromDate:self.formObj.fromDate] forState:UIControlStateNormal];
     
     // Set Custom font
@@ -132,7 +132,7 @@
 {
     [self initializeFormObject];
     //show the credit card dialog page
-    [self performSegueWithIdentifier:@"showPayNow" sender:self];
+    [self performSegueWithIdentifier:@"showCarPayNow" sender:self];
 }
 
 - (IBAction)payLaterInvoked:(id)sender
@@ -150,12 +150,21 @@
         [self.checkInsuranceBtn setImage:[UIImage imageNamed:@"btn_check_on_focused_holo_light.png"] forState:UIControlStateHighlighted];
         isInsuranceAccepted = YES;
         //add value to total
+        NSInteger temp = [self.formObj.carCost integerValue];
+        temp += 250;
+        self.formObj.carCost = [NSString stringWithFormat:@"%li",temp];
+        self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@ ريال",self.formObj.carCost ]];
+        
     }else
     {
         self.checkInsuranceBtn.selected = NO;
         [self.checkInsuranceBtn setImage:[UIImage imageNamed:@"btn_check_off_focused_holo_light.png"] forState:UIControlStateHighlighted];
         isInsuranceAccepted = NO;
         //remove value to total
+        NSInteger temp = [self.formObj.carCost integerValue];
+        temp -= 250;
+        self.formObj.carCost = [NSString stringWithFormat:@"%li",temp];
+        self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@ ريال",self.formObj.carCost ]];
 
     }
 }
@@ -167,12 +176,21 @@
         [self.checkGPSBtn setImage:[UIImage imageNamed:@"btn_check_on_focused_holo_light.png"] forState:UIControlStateHighlighted];
         isGPSAccepted = YES;
         //add value to total
+        NSInteger temp = [self.formObj.carCost integerValue];
+        temp += 50;
+        self.formObj.carCost = [NSString stringWithFormat:@"%li",temp];
+        self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@ ريال",self.formObj.carCost ]];
+
     }else
     {
         self.checkGPSBtn.selected = NO;
         [self.checkGPSBtn setImage:[UIImage imageNamed:@"btn_check_off_focused_holo_light.png"] forState:UIControlStateHighlighted];
         isGPSAccepted = NO;
         //remove value to total
+        NSInteger temp = [self.formObj.carCost integerValue];
+        temp -= 50;
+        self.formObj.carCost = [NSString stringWithFormat:@"%li",temp];
+        self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@ ريال",self.formObj.carCost ]];
         
     }
 }
@@ -184,12 +202,21 @@
         [self.checkChildBtn setImage:[UIImage imageNamed:@"btn_check_on_focused_holo_light.png"] forState:UIControlStateHighlighted];
         isChildAccepted = YES;
         //add value to total
+        NSInteger temp = [self.formObj.carCost integerValue];
+        temp += 25;
+        self.formObj.carCost = [NSString stringWithFormat:@"%li",temp];
+        self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@ ريال",self.formObj.carCost ]];
+
     }else
     {
         self.checkChildBtn.selected = NO;
         [self.checkChildBtn setImage:[UIImage imageNamed:@"btn_check_off_focused_holo_light.png"] forState:UIControlStateHighlighted];
         isChildAccepted = NO;
         //remove value to total
+        NSInteger temp = [self.formObj.carCost integerValue];
+        temp -= 25;
+        self.formObj.carCost = [NSString stringWithFormat:@"%li",temp];
+        self.PriceLbl.text = [NSString stringWithFormat:@"%@",[NSString stringWithFormat:@"%@ ريال",self.formObj.carCost ]];
         
     }
 }

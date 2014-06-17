@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="GYo-6E-5sp">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -1467,11 +1467,13 @@
                         <outlet property="sortBtn" destination="ZYb-8g-UJn" id="ygv-o6-y5o"/>
                         <outlet property="tableView" destination="G58-dM-HAk" id="246-B9-hhU"/>
                         <segue destination="b36-mE-1ho" kind="modal" identifier="showCarDetails" id="OpH-Jy-Yhn"/>
+                        <segue destination="FfA-xc-et6" kind="modal" identifier="showCarUserForm" id="DnK-r5-Je9"/>
+                        <segue destination="U3m-7E-dc2" kind="modal" identifier="showCarSummary" id="ETT-vy-Jde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKD-VU-ZvB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-37" y="1829"/>
+            <point key="canvasLocation" x="-20" y="1829"/>
         </scene>
         <!--Car DetailsVC-->
         <scene sceneID="sIL-zV-R2e">
@@ -1769,6 +1771,9 @@
                                         <state key="disabled" image="btn_check_on_focused_holo_light.png"/>
                                         <state key="selected" image="btn_check_on_holo_light.png"/>
                                         <state key="highlighted" image="btn_check_off_focused_holo_light.png"/>
+                                        <connections>
+                                            <action selector="InsuranceCheckPressed:" destination="FfA-xc-et6" eventType="touchUpInside" id="xuK-kW-6RM"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="total_box.png" id="0jg-1S-JUN">
                                         <rect key="frame" x="112" y="396" width="123" height="41"/>
@@ -1803,6 +1808,9 @@
                                         <state key="disabled" image="btn_check_on_focused_holo_light.png"/>
                                         <state key="selected" image="btn_check_on_holo_light.png"/>
                                         <state key="highlighted" image="btn_check_off_focused_holo_light.png"/>
+                                        <connections>
+                                            <action selector="GPSCheckPressed:" destination="FfA-xc-et6" eventType="touchUpInside" id="T3o-Ox-bnF"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خرائط 50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GHB-TJ-e6T">
                                         <rect key="frame" x="126" y="52" width="54" height="21"/>
@@ -1819,6 +1827,9 @@
                                         <state key="disabled" image="btn_check_on_focused_holo_light.png"/>
                                         <state key="selected" image="btn_check_on_holo_light.png"/>
                                         <state key="highlighted" image="btn_check_off_focused_holo_light.png"/>
+                                        <connections>
+                                            <action selector="ChildCheckPressed:" destination="FfA-xc-et6" eventType="touchUpInside" id="glo-QO-VPx"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="كرسي اطفال 25" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6PS-yz-NER">
                                         <rect key="frame" x="17" y="52" width="72" height="21"/>
@@ -1838,6 +1849,9 @@
                         <outlet property="NameText" destination="Ztw-7T-y95" id="JzQ-m1-mGG"/>
                         <outlet property="PriceLbl" destination="DrU-Ot-cvL" id="ef7-Hk-8Jz"/>
                         <outlet property="TotalLbl" destination="ELb-1m-3qR" id="9si-sT-KIP"/>
+                        <outlet property="checkChildBtn" destination="1qj-uS-sgP" id="DY7-bs-Qyo"/>
+                        <outlet property="checkGPSBtn" destination="erS-M8-Kcj" id="tWT-Ik-dcb"/>
+                        <outlet property="checkInsuranceBtn" destination="JZi-eA-f9h" id="bqC-vq-SOf"/>
                         <outlet property="dateLbl" destination="OvZ-HS-7Ed" id="314-HG-5IE"/>
                         <outlet property="homeButton" destination="qXA-he-nnT" id="Vl8-0W-TgL"/>
                         <outlet property="mainScrollView" destination="TCB-8s-Rh5" id="wxw-gx-xvW"/>
@@ -1845,6 +1859,7 @@
                         <outlet property="passportAttachBtn" destination="glc-0e-RSg" id="aVn-Ib-0gI"/>
                         <outlet property="payNowBtn" destination="X6C-bZ-fWn" id="u6d-7P-MHk"/>
                         <outlet property="personalImgAttachBtn" destination="nks-L5-XPB" id="Ktc-Rw-OtO"/>
+                        <segue destination="Y3I-WR-y3B" kind="modal" identifier="showCarPayNow" id="fj8-ro-EdL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fB-6m-kro" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2085,6 +2100,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Rkb-b5-CIo"/>
-        <segue reference="Jn0-Op-MJ4"/>
+        <segue reference="QsW-FP-ugu"/>
+        <segue reference="fj8-ro-EdL"/>
     </inferredMetricsTieBreakers>
 </document>
