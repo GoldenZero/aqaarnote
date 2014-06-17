@@ -213,12 +213,14 @@
 }
 
 -(void)scrollToPage:(NSInteger)aPage{
+    
     float myPageWidth = [self.imagesScrollView frame].size.width;
-    [UIView animateKeyframesWithDuration:0 delay:1 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:1 animations:^{
-            [self.imagesScrollView setContentOffset:CGPointMake(aPage * myPageWidth, 0)];
+
+    [UIView animateKeyframesWithDuration:0.5 delay:1 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.75 animations:^{
+            [self.imagesScrollView setContentOffset:CGPointMake(floorf(aPage/2) * myPageWidth, 0)];
         }];
-        [UIView addKeyframeWithRelativeStartTime:0.75 relativeDuration:1 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:1 relativeDuration:0.75 animations:^{
             [self.imagesScrollView setContentOffset:CGPointMake(aPage*myPageWidth, 0)];
         }];
     } completion:^(BOOL finished) {
@@ -247,13 +249,12 @@
 }
 
 -(void)scrollPages{
-    
-    [self scrollToPage:currentPage];
-    currentPage++;
-    
     if (currentPage==pageImages.count) {
         currentPage=0;
     }
+    
+    [self scrollToPage:currentPage];
+    currentPage++;
     
 }
 
@@ -336,7 +337,25 @@
 */
 
 #pragma mark - Table View Delegate
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UILabel *label = [[UILabel alloc] init];
+    if (section==0) {
+         label.text= @"معدات";
+    }
+    else{
+         label.text= @"السعة";
+    }
+    [label setFont:[UIFont lightGeSSOfSize:12]];
 
+    label.backgroundColor=[UIColor clearColor];
+    label.textAlignment=NSTextAlignmentRight;
+    return label;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
@@ -357,6 +376,8 @@
         dic=[equipmentArray objectAtIndex:indexPath.row];
     }
     cell.title.text=[NSString stringWithFormat:@"%@ : %@" ,[dic objectForKey:@"Label"],[dic objectForKey:@"Value"]];
+    [cell.title setFont:[UIFont lightGeSSOfSize:12]];
+
     cell.icon.image=[UIImage imageNamed:[dic objectForKey:@"Image"]];
     return cell;
 }

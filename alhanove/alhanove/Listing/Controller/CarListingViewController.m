@@ -366,8 +366,59 @@
         CarDetailsVC* vc = segue.destinationViewController;
         NSDictionary *carDictionary=[carArrays objectAtIndex:chosenCarIndex];
         vc.hotelCost=[carDictionary objectForKey:@"Cost"];
-        vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)[carDictionary objectForKey:@"Image"]], nil ];
         vc.hotelName=[carDictionary objectForKey:@"Title"];
+        if ([[carDictionary objectForKey:@"Title"] isEqualToString:@"cheverolet spark"]) {
+            
+            vc.pageImages=[[NSMutableArray alloc] initWithObjects:
+                           [UIImage imageNamed:@"chevrolet_spark_1.jpg"],
+                           [UIImage imageNamed:@"chevrolet_spark_2.jpg"],
+                           [UIImage imageNamed:@"chevrolet_spark_3.jpg"],
+                           nil ];
+            
+        }
+        else if ([[carDictionary objectForKey:@"Title"] isEqualToString:@"Nissan Sunny"]) {
+            
+            vc.pageImages=[[NSMutableArray alloc] initWithObjects:
+                           [UIImage imageNamed:@"nissan_sunny_1.jpg"],
+                           [UIImage imageNamed:@"nissan_sunny_2.jpg"],
+                           [UIImage imageNamed:@"nissan_sunny_3.jpg"],
+                           nil ];
+
+        }
+        
+        else if ([[carDictionary objectForKey:@"Title"] isEqualToString:@"Cheverolet Aveo"]) {
+    
+            vc.pageImages=[[NSMutableArray alloc] initWithObjects:
+                           [UIImage imageNamed:@"chevrolet_aveo_1.jpg"],
+                           [UIImage imageNamed:@"chevrolet_aveo_2.jpg"],
+                           [UIImage imageNamed:@"chevrolet_aveo_3.png"],
+                           nil ];
+            
+        }
+        
+        else if ([[carDictionary objectForKey:@"Title"] isEqualToString:@"Dodge Avenger"]) {
+            
+            vc.pageImages=[[NSMutableArray alloc] initWithObjects:
+                           [UIImage imageNamed:@"dodge_avenger_1.jpg"],
+                           [UIImage imageNamed:@"dodge_avenger_2.jpg"],
+                           [UIImage imageNamed:@"dodge_avenger_3.jpg"],
+                           nil ];
+            
+        }
+        
+        else if ([[carDictionary objectForKey:@"Title"] isEqualToString:@"Nissan Altima"]) {
+            
+            vc.pageImages=[[NSMutableArray alloc] initWithObjects:
+                           [UIImage imageNamed:@"nissan_altima_1.jpg"],
+                           [UIImage imageNamed:@"nissan_altima_2.jpg"],
+                           [UIImage imageNamed:@"nissan_altima_3.jpg"],
+                           nil ];
+            
+        }
+        
+        else{
+            vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)[carDictionary objectForKey:@"Image"]], nil ];
+        }
         vc.carLocation = self.formObj.FromPlace;
         
     }

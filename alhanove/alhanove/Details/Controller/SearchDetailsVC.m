@@ -7,7 +7,7 @@
 //
 
 #import "SearchDetailsVC.h"
-
+#import "SearchDetailCell.h"
 @interface SearchDetailsVC ()
 {
     NSMutableArray * searchsArray;
@@ -38,10 +38,6 @@
 
 #pragma mark - UITableView data source and delegate methods
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 70;
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [searchsArray count];
@@ -54,11 +50,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    SearchDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[SearchDetailCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                     reuseIdentifier:CellIdentifier];
     }
     NSDictionary *term;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -69,13 +64,14 @@
     }
     
 
-    cell.textLabel.text=term[@"name"];
+    cell.title.text=term[@"name"];
 
-    [cell.imageView setImageWithURL:[NSURL URLWithString:term[@"icon"]]
-                   placeholderImage:[UIImage imageNamed:@""]];
+    [cell.icon setImageWithURL:[NSURL URLWithString:term[@"icon"]]
+                   placeholderImage:[UIImage imageNamed:@"airplane"]];
     
-    
-    //cell.imageView.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:wish.WishImage]]];
+    [cell.title setFont:[UIFont lightGeSSOfSize:14]];
+
+ //   cell.icon.image=[UIImage imageNamed:@"airplane"];
     
    	return cell;
 }

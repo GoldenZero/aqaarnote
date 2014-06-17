@@ -111,6 +111,9 @@
 		7C182E8D193389C900DE2FE3 /* total_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E25193389C900DE2FE3 /* total_box@2x.png */; };
 		7C182E8E193389C900DE2FE3 /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E26193389C900DE2FE3 /* visa.png */; };
 		7C182E8F193389C900DE2FE3 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E27193389C900DE2FE3 /* visa@2x.png */; };
+		7C2F736E1950249D00B9BB1F /* SearchDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F736D1950249D00B9BB1F /* SearchDetailCell.m */; };
+		7C2F737D19502B1A00B9BB1F /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F737B19502B1A00B9BB1F /* airplane.png */; };
+		7C2F737E19502B1A00B9BB1F /* airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F737C19502B1A00B9BB1F /* airplane@2x.png */; };
 		7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */; };
 		7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7482192D15D400DBA803 /* FormViewController.m */; };
 		7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7484192D193800DBA803 /* ar_back_header_btn.png */; };
@@ -410,6 +413,10 @@
 		7C182E25193389C900DE2FE3 /* total_box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "total_box@2x.png"; sourceTree = "<group>"; };
 		7C182E26193389C900DE2FE3 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
 		7C182E27193389C900DE2FE3 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
+		7C2F736C1950249D00B9BB1F /* SearchDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDetailCell.h; sourceTree = "<group>"; };
+		7C2F736D1950249D00B9BB1F /* SearchDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDetailCell.m; sourceTree = "<group>"; };
+		7C2F737B19502B1A00B9BB1F /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
+		7C2F737C19502B1A00B9BB1F /* airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "airplane@2x.png"; sourceTree = "<group>"; };
 		7C3F747E192D159E00DBA803 /* HotelDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsVC.h; sourceTree = "<group>"; };
 		7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsVC.m; sourceTree = "<group>"; };
 		7C3F7481192D15D400DBA803 /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = alhanove/From/Controller/FormViewController.h; sourceTree = SOURCE_ROOT; };
@@ -906,6 +913,8 @@
 		7CD777A1194F265D005C3A9D /* Details Car Icons */ = {
 			isa = PBXGroup;
 			children = (
+				7C2F737B19502B1A00B9BB1F /* airplane.png */,
+				7C2F737C19502B1A00B9BB1F /* airplane@2x.png */,
 				7CD777A2194F265D005C3A9D /* AC.png */,
 				7CD777A3194F265D005C3A9D /* AC@2x.png */,
 				7CD777A4194F265D005C3A9D /* baggage.png */,
@@ -1134,6 +1143,8 @@
 			children = (
 				7CD7779E194F23EC005C3A9D /* CarFeatureCell.h */,
 				7CD7779F194F23EC005C3A9D /* CarFeatureCell.m */,
+				7C2F736C1950249D00B9BB1F /* SearchDetailCell.h */,
+				7C2F736D1950249D00B9BB1F /* SearchDetailCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1688,6 +1699,8 @@
 				84AE31E2192E056C0072D805 /* amex-outline@2x.png in Resources */,
 				7CD777B8194F265D005C3A9D /* passenger.png in Resources */,
 				7C182E59193389C900DE2FE3 /* my_res@2x.png in Resources */,
+				7C2F737E19502B1A00B9BB1F /* airplane@2x.png in Resources */,
+				7C2F737D19502B1A00B9BB1F /* airplane.png in Resources */,
 				7CD77794194F0575005C3A9D /* chevrolet_spark_3.jpg in Resources */,
 				84AE31E8192E056C0072D805 /* cvc@2x.png in Resources */,
 				84AE31F0192E056C0072D805 /* mastercard-outline@2x.png in Resources */,
@@ -1852,6 +1865,7 @@
 				84EFD02D194DC7600034140B /* SDWebImageManager.m in Sources */,
 				84EFD033194DC7600034140B /* UIImageView+WebCache.m in Sources */,
 				84EFCFE1194DA5EE0034140B /* NSData+MKBase64.m in Sources */,
+				7C2F736E1950249D00B9BB1F /* SearchDetailCell.m in Sources */,
 				7C3F74A7192D498200DBA803 /* AGPhotoBrowserOverlayView.m in Sources */,
 				84EFCFE0194DA5EE0034140B /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				84EFCFE3194DA5EE0034140B /* NSDictionary+RequestEncoding.m in Sources */,
