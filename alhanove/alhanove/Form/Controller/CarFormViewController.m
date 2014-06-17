@@ -261,6 +261,8 @@
     {
         CarListingViewController* vc = segue.destinationViewController;
         //vc.listingType = ListingTypeMekka;
+        form.FromPlace=self.fromPlaceLabel.text;
+        form.ToPlace=self.toPlaceLabel.text;
         vc.formObj = form;
     }
     else if ([segue.identifier isEqualToString:@"showSearchDetails"]) {

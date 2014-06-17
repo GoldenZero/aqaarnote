@@ -1286,7 +1286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gje-Ji-zn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-43" y="1058"/>
+            <point key="canvasLocation" x="1" y="1058"/>
         </scene>
         <!--Search DetailsVC-->
         <scene sceneID="4p5-Hp-O9X">
@@ -1388,7 +1388,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="414" y="1058"/>
+            <point key="canvasLocation" x="532" y="1058"/>
         </scene>
         <!--Car Listing View Controller - الهنوف للحجوزات-->
         <scene sceneID="gtc-Tn-kuQ">
@@ -1494,13 +1494,12 @@
                         <outlet property="sortBtn" destination="ZYb-8g-UJn" id="ygv-o6-y5o"/>
                         <outlet property="tableView" destination="G58-dM-HAk" id="246-B9-hhU"/>
                         <segue destination="b36-mE-1ho" kind="modal" identifier="showCarDetails" id="OpH-Jy-Yhn"/>
-                        <segue destination="FfA-xc-et6" kind="modal" identifier="showCarUserForm" id="DnK-r5-Je9"/>
                         <segue destination="U3m-7E-dc2" kind="modal" identifier="showCarSummary" id="ETT-vy-Jde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKD-VU-ZvB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20" y="1829"/>
+            <point key="canvasLocation" x="532" y="1829"/>
         </scene>
         <!--Car DetailsVC-->
         <scene sceneID="sIL-zV-R2e">
@@ -1652,7 +1651,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9D-zR-dAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="414" y="1829"/>
+            <point key="canvasLocation" x="996" y="1829"/>
         </scene>
         <!--Car User Data View Controller-->
         <scene sceneID="wQT-aP-clS">
@@ -1891,7 +1890,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fB-6m-kro" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1308" y="1829"/>
+            <point key="canvasLocation" x="1872" y="1829"/>
         </scene>
         <!--Car Summary View Controller-->
         <scene sceneID="Xv2-qx-CY8">
@@ -1909,12 +1908,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cnm-TK-dwL">
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cnm-TK-dwL">
                                         <rect key="frame" x="270" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" image="back_arrow.png">
+                                        <state key="normal" image="edit.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="editBtnPrss:" destination="U3m-7E-dc2" eventType="touchUpInside" id="fZS-V1-GTi"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تفاصيل الطلب" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fic-wk-ggG">
                                         <rect key="frame" x="60" y="32" width="200" height="21"/>
@@ -1923,6 +1925,16 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="y6X-4g-H03">
+                                        <rect key="frame" x="6" y="28" width="90" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" image="next.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextBtnPrss:" destination="U3m-7E-dc2" eventType="touchUpInside" id="40Y-cx-yGu"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
@@ -1938,7 +1950,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sd1-BR-0xC">
-                                        <rect key="frame" x="48" y="29" width="187" height="21"/>
+                                        <rect key="frame" x="48" y="27" width="187" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -1946,10 +1958,6 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badge1.png" id="nvh-lK-Ndt">
                                         <rect key="frame" x="243" y="27" width="70" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_arrow.png" id="anR-RK-BsF">
-                                        <rect key="frame" x="10" y="50" width="11" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car2.png" id="whd-gx-iqO">
@@ -2000,7 +2008,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Day" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WJ3-wC-OMd">
-                                        <rect key="frame" x="22" y="49" width="42" height="21"/>
+                                        <rect key="frame" x="17" y="49" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -2066,15 +2074,37 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="acLabel" destination="KNu-kC-yb1" id="ArH-dT-5Kg"/>
+                        <outlet property="autoLabel" destination="zbr-AI-fre" id="tIC-Sy-NXe"/>
+                        <outlet property="carDoorsLabel" destination="6iv-mU-hmp" id="loH-q0-zeO"/>
+                        <outlet property="carImage" destination="nvh-lK-Ndt" id="NlX-qq-Yka"/>
+                        <outlet property="carNameLabel" destination="SGi-L1-fYk" id="4lo-qh-0ne"/>
+                        <outlet property="carTypeLabel" destination="Sd1-BR-0xC" id="INJ-hN-dY8"/>
+                        <outlet property="costLabel" destination="lwl-FO-K5c" id="y0q-aP-S4v"/>
+                        <outlet property="daysLabel" destination="WJ3-wC-OMd" id="4Mq-Lb-umL"/>
+                        <outlet property="fromDateLabel" destination="Cgr-td-YDB" id="Fvd-WW-Tdw"/>
+                        <outlet property="fromPlaceLabel" destination="KUP-hC-38u" id="udl-TI-3FP"/>
+                        <outlet property="label1" destination="XfY-tB-Wwb" id="6mn-cz-rJW"/>
+                        <outlet property="label2" destination="agT-HL-XyC" id="QHr-g0-S9d"/>
+                        <outlet property="label3" destination="VQ9-et-sqX" id="Iye-KU-Vpp"/>
+                        <outlet property="label4" destination="FIR-UW-AZc" id="rwV-ih-QX9"/>
+                        <outlet property="passengersLabel" destination="ABB-fR-uzL" id="dHn-1y-uMn"/>
+                        <outlet property="titleLabel" destination="Fic-wk-ggG" id="Fps-5a-nNr"/>
+                        <outlet property="toDateLabel" destination="azi-LT-wHL" id="0vg-GT-xB9"/>
+                        <outlet property="toPlaceLabel" destination="9ZG-AU-pTk" id="XTb-UA-Ity"/>
+                        <segue destination="FfA-xc-et6" kind="modal" identifier="showCarUserForm" id="p0w-KV-bwo"/>
+                        <segue destination="ri5-Va-JDu" kind="modal" identifier="showEditCarFormVC" id="k4Y-Vf-G4L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srN-GP-Uif" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="873" y="1829"/>
+            <point key="canvasLocation" x="1419" y="1829"/>
         </scene>
     </scenes>
     <resources>
@@ -2094,12 +2124,12 @@
         <image name="date.png" width="16" height="18"/>
         <image name="date_field.png" width="262" height="36"/>
         <image name="description.png" width="13" height="8"/>
+        <image name="edit.png" width="32" height="32"/>
         <image name="flight.png" width="19" height="13"/>
         <image name="form_field.png" width="262" height="36"/>
         <image name="guests.png" width="20" height="18"/>
         <image name="haj.png" width="160" height="168"/>
         <image name="hotels.png" width="160" height="168"/>
-        <image name="left_arrow.png" width="11" height="19"/>
         <image name="less.png" width="66" height="58"/>
         <image name="location_icon_right.png" width="13" height="20"/>
         <image name="map_left.png" width="64" height="67"/>
@@ -2126,8 +2156,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Rkb-b5-CIo"/>
         <segue reference="QsW-FP-ugu"/>
         <segue reference="fj8-ro-EdL"/>
+        <segue reference="k4Y-Vf-G4L"/>
+        <segue reference="Rkb-b5-CIo"/>
     </inferredMetricsTieBreakers>
 </document>

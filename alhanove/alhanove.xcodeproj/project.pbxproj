@@ -115,13 +115,10 @@
 		7C2F737D19502B1A00B9BB1F /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F737B19502B1A00B9BB1F /* airplane.png */; };
 		7C2F737E19502B1A00B9BB1F /* airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F737C19502B1A00B9BB1F /* airplane@2x.png */; };
 		7C2F73871950480B00B9BB1F /* AC2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F737F1950480B00B9BB1F /* AC2.png */; };
-		7C2F73881950480B00B9BB1F /* AC2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73801950480B00B9BB1F /* AC2@2x.png */; };
 		7C2F73891950480B00B9BB1F /* auto2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73811950480B00B9BB1F /* auto2.png */; };
-		7C2F738A1950480B00B9BB1F /* auto2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73821950480B00B9BB1F /* auto2@2x.png */; };
 		7C2F738B1950480B00B9BB1F /* car2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73831950480B00B9BB1F /* car2.png */; };
-		7C2F738C1950480B00B9BB1F /* car2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73841950480B00B9BB1F /* car2@2x.png */; };
 		7C2F738D1950480B00B9BB1F /* people2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73851950480B00B9BB1F /* people2.png */; };
-		7C2F738E1950480B00B9BB1F /* people2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73861950480B00B9BB1F /* people2@2x.png */; };
+		7C2F739419504C1F00B9BB1F /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F739319504C1F00B9BB1F /* edit.png */; };
 		7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */; };
 		7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7482192D15D400DBA803 /* FormViewController.m */; };
 		7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7484192D193800DBA803 /* ar_back_header_btn.png */; };
@@ -426,13 +423,10 @@
 		7C2F737B19502B1A00B9BB1F /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
 		7C2F737C19502B1A00B9BB1F /* airplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "airplane@2x.png"; sourceTree = "<group>"; };
 		7C2F737F1950480B00B9BB1F /* AC2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AC2.png; sourceTree = "<group>"; };
-		7C2F73801950480B00B9BB1F /* AC2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AC2@2x.png"; sourceTree = "<group>"; };
 		7C2F73811950480B00B9BB1F /* auto2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = auto2.png; sourceTree = "<group>"; };
-		7C2F73821950480B00B9BB1F /* auto2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auto2@2x.png"; sourceTree = "<group>"; };
 		7C2F73831950480B00B9BB1F /* car2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car2.png; sourceTree = "<group>"; };
-		7C2F73841950480B00B9BB1F /* car2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car2@2x.png"; sourceTree = "<group>"; };
 		7C2F73851950480B00B9BB1F /* people2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people2.png; sourceTree = "<group>"; };
-		7C2F73861950480B00B9BB1F /* people2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people2@2x.png"; sourceTree = "<group>"; };
+		7C2F739319504C1F00B9BB1F /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		7C3F747E192D159E00DBA803 /* HotelDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsVC.h; sourceTree = "<group>"; };
 		7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsVC.m; sourceTree = "<group>"; };
 		7C3F7481192D15D400DBA803 /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = alhanove/From/Controller/FormViewController.h; sourceTree = SOURCE_ROOT; };
@@ -930,13 +924,9 @@
 			isa = PBXGroup;
 			children = (
 				7C2F737F1950480B00B9BB1F /* AC2.png */,
-				7C2F73801950480B00B9BB1F /* AC2@2x.png */,
 				7C2F73811950480B00B9BB1F /* auto2.png */,
-				7C2F73821950480B00B9BB1F /* auto2@2x.png */,
 				7C2F73831950480B00B9BB1F /* car2.png */,
-				7C2F73841950480B00B9BB1F /* car2@2x.png */,
 				7C2F73851950480B00B9BB1F /* people2.png */,
-				7C2F73861950480B00B9BB1F /* people2@2x.png */,
 				7C2F737B19502B1A00B9BB1F /* airplane.png */,
 				7C2F737C19502B1A00B9BB1F /* airplane@2x.png */,
 				7CD777A2194F265D005C3A9D /* AC.png */,
@@ -1331,6 +1321,7 @@
 		84C29480192B61B70027E782 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7C2F739319504C1F00B9BB1F /* edit.png */,
 				7CD777A1194F265D005C3A9D /* Details Car Icons */,
 				84E4F1ED194F1F96002B7B03 /* btn_check_off_focused_holo_light.png */,
 				84E4F1EE194F1F96002B7B03 /* btn_check_off_holo_light.png */,
@@ -1657,7 +1648,6 @@
 				7C3F7496192D459500DBA803 /* room-128.png in Resources */,
 				7CB4DFD8192E64FD00B2A9F2 /* StarEmptyLarge@2x.png in Resources */,
 				84AE31EB192E056C0072D805 /* discover.png in Resources */,
-				7C2F73881950480B00B9BB1F /* AC2@2x.png in Resources */,
 				7CB4DFD6192E64FD00B2A9F2 /* StarEmpty@2x.png in Resources */,
 				84C29486192B61B70027E782 /* badge1.png in Resources */,
 				7C182E2D193389C900DE2FE3 /* book_now@2x.png in Resources */,
@@ -1730,7 +1720,6 @@
 				7CD77794194F0575005C3A9D /* chevrolet_spark_3.jpg in Resources */,
 				84AE31E8192E056C0072D805 /* cvc@2x.png in Resources */,
 				84AE31F0192E056C0072D805 /* mastercard-outline@2x.png in Resources */,
-				7C2F738C1950480B00B9BB1F /* car2@2x.png in Resources */,
 				84C29437192B56990027E782 /* InfoPlist.strings in Resources */,
 				7CD777AF194F265D005C3A9D /* AC@2x.png in Resources */,
 				7C2F73871950480B00B9BB1F /* AC2.png in Resources */,
@@ -1802,7 +1791,6 @@
 				7C182E7A193389C900DE2FE3 /* sort_arrow_down.png in Resources */,
 				7C182E66193389C900DE2FE3 /* pay_now.png in Resources */,
 				7C182E82193389C900DE2FE3 /* stars_on.png in Resources */,
-				7C2F738A1950480B00B9BB1F /* auto2@2x.png in Resources */,
 				7CB4DFDB192E64FD00B2A9F2 /* StarFullLarge.png in Resources */,
 				84AE31F5192E056C0072D805 /* placeholder@2x.png in Resources */,
 				7C182E53193389C900DE2FE3 /* magnifying@2x.png in Resources */,
@@ -1814,7 +1802,6 @@
 				7CD7779A194F0575005C3A9D /* nissan_altima_3.jpg in Resources */,
 				84C294AA192B7BA50027E782 /* elaf kinda.jpg in Resources */,
 				847D998319333C38000CBDFA /* 120X120.png in Resources */,
-				7C2F738E1950480B00B9BB1F /* people2@2x.png in Resources */,
 				7C182E47193389C900DE2FE3 /* haj@2x.png in Resources */,
 				7C182E5A193389C900DE2FE3 /* next.png in Resources */,
 				84E4F1DE194EB7CE002B7B03 /* Sunny.jpg in Resources */,
@@ -1851,6 +1838,7 @@
 				7CD7779C194F0575005C3A9D /* nissan_sunny_2.jpg in Resources */,
 				7C182E72193389C900DE2FE3 /* room_image.png in Resources */,
 				7C2F738D1950480B00B9BB1F /* people2.png in Resources */,
+				7C2F739419504C1F00B9BB1F /* edit.png in Resources */,
 				7C182E7F193389C900DE2FE3 /* splashscreen 1.png in Resources */,
 				7C182E38193389C900DE2FE3 /* date.png in Resources */,
 				7C182E35193389C900DE2FE3 /* check_off@2x.png in Resources */,

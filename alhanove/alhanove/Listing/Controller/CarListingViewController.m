@@ -7,7 +7,7 @@
 //
 
 #import "CarListingViewController.h"
-
+#import "CarSummaryViewController.h"
 @interface CarListingViewController ()
 {
     NSMutableArray* carArrays;
@@ -148,7 +148,7 @@
    
         self.formObj.carCost = [NSString stringWithFormat:@"%@",totalCost];
         //go to the reservation details
-        [self performSegueWithIdentifier:@"showCarUserForm" sender:self];
+    [self performSegueWithIdentifier:@"showCarSummary" sender:self];
     
 }
 
@@ -176,7 +176,8 @@
 - (IBAction)openHotelDetails:(id)sender {
     UIButton* imgButton = (UIButton*)sender;
     chosenCarIndex=imgButton.tag;
-    [self performSegueWithIdentifier:@"showCarDetails" sender:self];
+
+   [self performSegueWithIdentifier:@"showCarDetails" sender:self];
     
 }
 #pragma mark - UITableView
@@ -354,11 +355,11 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showCarUserForm"])   //parameter to login page
+    if ([[segue identifier] isEqualToString:@"showCarSummary"])   //parameter to login page
     {
         //TimeLineViewController* vc = segue.destinationViewController;
         //vc.formObj = self.formObj;
-        CarUserDataViewController* vc = segue.destinationViewController;
+        CarSummaryViewController* vc = segue.destinationViewController;
         vc.formObj = self.formObj;
     }
     
