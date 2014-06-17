@@ -119,6 +119,11 @@
 		7C2F738B1950480B00B9BB1F /* car2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73831950480B00B9BB1F /* car2.png */; };
 		7C2F738D1950480B00B9BB1F /* people2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F73851950480B00B9BB1F /* people2.png */; };
 		7C2F739419504C1F00B9BB1F /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F739319504C1F00B9BB1F /* edit.png */; };
+		7C2F739719507E2000B9BB1F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F739619507E2000B9BB1F /* RegisterViewController.m */; };
+		7C2F739A19507E3100B9BB1F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F739919507E3100B9BB1F /* LoginViewController.m */; };
+		7C2F739D19507E8700B9BB1F /* ActivationCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F739C19507E8700B9BB1F /* ActivationCodeViewController.m */; };
+		7C2F73A019507EA700B9BB1F /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F739F19507EA700B9BB1F /* ForgetPasswordViewController.m */; };
+		7C2F73A319507EC300B9BB1F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F73A219507EC300B9BB1F /* ProfileViewController.m */; };
 		7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */; };
 		7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7482192D15D400DBA803 /* FormViewController.m */; };
 		7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7484192D193800DBA803 /* ar_back_header_btn.png */; };
@@ -427,6 +432,16 @@
 		7C2F73831950480B00B9BB1F /* car2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car2.png; sourceTree = "<group>"; };
 		7C2F73851950480B00B9BB1F /* people2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people2.png; sourceTree = "<group>"; };
 		7C2F739319504C1F00B9BB1F /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		7C2F739519507E2000B9BB1F /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		7C2F739619507E2000B9BB1F /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		7C2F739819507E3100B9BB1F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7C2F739919507E3100B9BB1F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7C2F739B19507E8700B9BB1F /* ActivationCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivationCodeViewController.h; sourceTree = "<group>"; };
+		7C2F739C19507E8700B9BB1F /* ActivationCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivationCodeViewController.m; sourceTree = "<group>"; };
+		7C2F739E19507EA700B9BB1F /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		7C2F739F19507EA700B9BB1F /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		7C2F73A119507EC300B9BB1F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		7C2F73A219507EC300B9BB1F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		7C3F747E192D159E00DBA803 /* HotelDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsVC.h; sourceTree = "<group>"; };
 		7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsVC.m; sourceTree = "<group>"; };
 		7C3F7481192D15D400DBA803 /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = alhanove/From/Controller/FormViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1256,6 +1271,16 @@
 		84C29479192B589C0027E782 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7C2F739519507E2000B9BB1F /* RegisterViewController.h */,
+				7C2F739619507E2000B9BB1F /* RegisterViewController.m */,
+				7C2F739819507E3100B9BB1F /* LoginViewController.h */,
+				7C2F739919507E3100B9BB1F /* LoginViewController.m */,
+				7C2F739B19507E8700B9BB1F /* ActivationCodeViewController.h */,
+				7C2F739C19507E8700B9BB1F /* ActivationCodeViewController.m */,
+				7C2F739E19507EA700B9BB1F /* ForgetPasswordViewController.h */,
+				7C2F739F19507EA700B9BB1F /* ForgetPasswordViewController.m */,
+				7C2F73A119507EC300B9BB1F /* ProfileViewController.h */,
+				7C2F73A219507EC300B9BB1F /* ProfileViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1887,6 +1912,7 @@
 				84EFCFE1194DA5EE0034140B /* NSData+MKBase64.m in Sources */,
 				7C2F736E1950249D00B9BB1F /* SearchDetailCell.m in Sources */,
 				7C3F74A7192D498200DBA803 /* AGPhotoBrowserOverlayView.m in Sources */,
+				7C2F73A019507EA700B9BB1F /* ForgetPasswordViewController.m in Sources */,
 				84EFCFE0194DA5EE0034140B /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				84EFCFE3194DA5EE0034140B /* NSDictionary+RequestEncoding.m in Sources */,
 				84E4F1E1194EBA81002B7B03 /* CarDetailsVC.m in Sources */,
@@ -1895,6 +1921,7 @@
 				847D9979193338B5000CBDFA /* FourLineCell.m in Sources */,
 				84CA94D7192CCB40002CA3B4 /* PayNowViewController.m in Sources */,
 				84EFD001194DB70C0034140B /* NSString+FontSizeWithFont.m in Sources */,
+				7C2F739719507E2000B9BB1F /* RegisterViewController.m in Sources */,
 				84EFCFE8194DA5EE0034140B /* MKNetworkOperation.m in Sources */,
 				7C3F74AA192D498200DBA803 /* DYRateView.m in Sources */,
 				84AE31DF192E056C0072D805 /* PKTextField.m in Sources */,
@@ -1908,6 +1935,7 @@
 				84EFCFE9194DA5EE0034140B /* Reachability.m in Sources */,
 				84CA94D0192CACBD002CA3B4 /* UserDataViewController.m in Sources */,
 				84C2948E192B6F310027E782 /* MenuCell.m in Sources */,
+				7C2F739D19507E8700B9BB1F /* ActivationCodeViewController.m in Sources */,
 				84CA94D4192CB135002CA3B4 /* EnhancedKeyboard.m in Sources */,
 				84AE31DA192E056C0072D805 /* PKAddressZip.m in Sources */,
 				84EFCFFE194DB70C0034140B /* NSDate+CabOfficeSettings.m in Sources */,
@@ -1916,6 +1944,7 @@
 				7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */,
 				84EFD031194DC7600034140B /* UIImage+MultiFormat.m in Sources */,
 				84E4F1EC194F1F6A002B7B03 /* CarUserDataViewController.m in Sources */,
+				7C2F73A319507EC300B9BB1F /* ProfileViewController.m in Sources */,
 				7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */,
 				84EFCFEA194DA5EE0034140B /* NetworkEngine.m in Sources */,
 				847D997B193338B5000CBDFA /* TotalCell.m in Sources */,
@@ -1926,6 +1955,7 @@
 				84C2946B192B57A90027E782 /* HomeViewController.m in Sources */,
 				84AE31DC192E056C0072D805 /* PKCardCVC.m in Sources */,
 				84EFD003194DB70C0034140B /* UIColor+CustomColors.m in Sources */,
+				7C2F739A19507E3100B9BB1F /* LoginViewController.m in Sources */,
 				84EFCFEE194DA8120034140B /* SearchDetailsVC.m in Sources */,
 				84AE31DE192E056C0072D805 /* PKCardNumber.m in Sources */,
 				84EFD028194DC7600034140B /* SDImageCache.m in Sources */,
