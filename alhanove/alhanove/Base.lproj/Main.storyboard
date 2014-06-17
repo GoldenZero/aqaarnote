@@ -1952,7 +1952,7 @@
                                         <rect key="frame" x="10" y="50" width="11" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doors.4.jpg" id="whd-gx-iqO">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car2.png" id="whd-gx-iqO">
                                         <rect key="frame" x="215" y="84" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
@@ -1962,8 +1962,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seats.4.jpg" id="Sxs-H1-Qhe">
-                                        <rect key="frame" x="164" y="84" width="30" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="people2.png" id="Sxs-H1-Qhe">
+                                        <rect key="frame" x="165" y="85" width="28" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ABB-fR-uzL">
@@ -1972,18 +1972,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransmissionType.1.jpg" id="oBJ-Ua-Gz7">
-                                        <rect key="frame" x="110" y="82" width="30" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="auto2.png" id="oBJ-Ua-Gz7">
+                                        <rect key="frame" x="111" y="85" width="28" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zbr-AI-fre">
-                                        <rect key="frame" x="68" y="88" width="47" height="21"/>
+                                        <rect key="frame" x="67" y="88" width="47" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AirCondition.1.jpg" id="8kR-tP-0Ec">
-                                        <rect key="frame" x="39" y="82" width="30" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AC2.png" id="8kR-tP-0Ec">
+                                        <rect key="frame" x="36" y="85" width="28" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KNu-kC-yb1">
@@ -2078,8 +2078,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AirCondition.1.jpg" width="40" height="40"/>
-        <image name="TransmissionType.1.jpg" width="40" height="40"/>
+        <image name="AC2.png" width="32" height="32"/>
+        <image name="auto2.png" width="32" height="32"/>
         <image name="back_arrow.png" width="11" height="19"/>
         <image name="background.png" width="320" height="568"/>
         <image name="badge1.png" width="51" height="53"/>
@@ -2089,11 +2089,11 @@
         <image name="btn_check_off_holo_light.png" width="64" height="64"/>
         <image name="btn_check_on_focused_holo_light.png" width="64" height="64"/>
         <image name="btn_check_on_holo_light.png" width="64" height="64"/>
+        <image name="car2.png" width="32" height="32"/>
         <image name="cars.png" width="160" height="168"/>
         <image name="date.png" width="16" height="18"/>
         <image name="date_field.png" width="262" height="36"/>
         <image name="description.png" width="13" height="8"/>
-        <image name="doors.4.jpg" width="40" height="40"/>
         <image name="flight.png" width="19" height="13"/>
         <image name="form_field.png" width="262" height="36"/>
         <image name="guests.png" width="20" height="18"/>
@@ -2112,11 +2112,11 @@
         <image name="passport_normal.png" width="139" height="56"/>
         <image name="pay_later.png" width="139" height="45"/>
         <image name="pay_now.png" width="139" height="45"/>
+        <image name="people2.png" width="32" height="32"/>
         <image name="photo_attached.png" width="139" height="49"/>
         <image name="photo_normal.png" width="139" height="56"/>
         <image name="planes.png" width="160" height="168"/>
         <image name="rooms.png" width="21" height="13"/>
-        <image name="seats.4.jpg" width="40" height="40"/>
         <image name="top_bar_logo.png" width="31" height="35"/>
         <image name="total_box.png" width="123" height="41"/>
     </resources>
