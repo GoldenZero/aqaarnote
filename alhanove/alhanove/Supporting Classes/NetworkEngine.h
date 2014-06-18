@@ -67,4 +67,20 @@ typedef enum LocationType
 
 - (void)cancelReverseForLocationOperations;
 
+- (void)createAccount:(NSString *)firstName
+             lastName:(NSString *)lastName
+                email:(NSString *)email
+                phone:(NSString *)phone
+          countryCode:(NSString *)countryCode
+             timeZone:(NSString *)zone
+             password:(NSString *)password
+            dateBirth:(NSString *)birthDate
+               gender:(NSString *)gender
+      completionBlock:(NetworkEngineCompletionBlock)completionBlock
+         failureBlock:(NetworkEngineFailureBlock)failureBlock;
+
+- (void)sendConfirmationCode:(NSString*)mobNum
+             completionBlock:(NetworkEngineCompletionBlock)completionBlock
+                failureBlock:(NetworkEngineFailureBlock)failureBlock;
+
 @end

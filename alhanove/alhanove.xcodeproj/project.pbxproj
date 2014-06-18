@@ -127,6 +127,12 @@
 		7C314B2A19515C1500ADF03C /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C314B2519515C1500ADF03C /* countries.json */; };
 		7C314B2B19515C1500ADF03C /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C314B2719515C1500ADF03C /* Country.m */; };
 		7C314B2C19515C1500ADF03C /* CountryListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C314B2919515C1500ADF03C /* CountryListDataSource.m */; };
+		7C314B3619519D8600ADF03C /* flag_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C314B3119519D8600ADF03C /* flag_back.png */; };
+		7C314B3719519D8600ADF03C /* flag_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C314B3219519D8600ADF03C /* flag_back@2x.png */; };
+		7C314B3819519D8600ADF03C /* sign_uo_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C314B3319519D8600ADF03C /* sign_uo_back.png */; };
+		7C314B3919519D8600ADF03C /* type_of_cars.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C314B3419519D8600ADF03C /* type_of_cars.png */; };
+		7C314B3A19519D8600ADF03C /* type_of_cars@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C314B3519519D8600ADF03C /* type_of_cars@2x.png */; };
+		7C314B3C19519D9F00ADF03C /* sign_uo_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C314B3B19519D9F00ADF03C /* sign_uo_back@2x.png */; };
 		7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */; };
 		7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7482192D15D400DBA803 /* FormViewController.m */; };
 		7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7484192D193800DBA803 /* ar_back_header_btn.png */; };
@@ -450,6 +456,12 @@
 		7C314B2719515C1500ADF03C /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		7C314B2819515C1500ADF03C /* CountryListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListDataSource.h; sourceTree = "<group>"; };
 		7C314B2919515C1500ADF03C /* CountryListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListDataSource.m; sourceTree = "<group>"; };
+		7C314B3119519D8600ADF03C /* flag_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_back.png; sourceTree = "<group>"; };
+		7C314B3219519D8600ADF03C /* flag_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag_back@2x.png"; sourceTree = "<group>"; };
+		7C314B3319519D8600ADF03C /* sign_uo_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign_uo_back.png; sourceTree = "<group>"; };
+		7C314B3419519D8600ADF03C /* type_of_cars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = type_of_cars.png; sourceTree = "<group>"; };
+		7C314B3519519D8600ADF03C /* type_of_cars@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_of_cars@2x.png"; sourceTree = "<group>"; };
+		7C314B3B19519D9F00ADF03C /* sign_uo_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign_uo_back@2x.png"; sourceTree = "<group>"; };
 		7C3F747E192D159E00DBA803 /* HotelDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsVC.h; sourceTree = "<group>"; };
 		7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsVC.m; sourceTree = "<group>"; };
 		7C3F7481192D15D400DBA803 /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = alhanove/From/Controller/FormViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1359,6 +1371,12 @@
 		84C29480192B61B70027E782 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7C314B3B19519D9F00ADF03C /* sign_uo_back@2x.png */,
+				7C314B3119519D8600ADF03C /* flag_back.png */,
+				7C314B3219519D8600ADF03C /* flag_back@2x.png */,
+				7C314B3319519D8600ADF03C /* sign_uo_back.png */,
+				7C314B3419519D8600ADF03C /* type_of_cars.png */,
+				7C314B3519519D8600ADF03C /* type_of_cars@2x.png */,
 				7C2F739319504C1F00B9BB1F /* edit.png */,
 				7CD777A1194F265D005C3A9D /* Details Car Icons */,
 				84E4F1ED194F1F96002B7B03 /* btn_check_off_focused_holo_light.png */,
@@ -1679,6 +1697,7 @@
 				84AE31F4192E056C0072D805 /* placeholder.png in Resources */,
 				7C182E88193389C900DE2FE3 /* step_3.png in Resources */,
 				84C294BA192B7E9B0027E782 /* rating_1.png in Resources */,
+				7C314B3A19519D8600ADF03C /* type_of_cars@2x.png in Resources */,
 				7C182E6F193389C900DE2FE3 /* pin@2x.png in Resources */,
 				7C182E78193389C900DE2FE3 /* slider_off.png in Resources */,
 				7C182E4A193389C900DE2FE3 /* hotels.png in Resources */,
@@ -1716,14 +1735,17 @@
 				7C182E86193389C900DE2FE3 /* step_2.png in Resources */,
 				7C182E2F193389C900DE2FE3 /* box@2x.png in Resources */,
 				7C3F748E192D20CC00DBA803 /* SBPickerSelector.xib in Resources */,
+				7C314B3919519D8600ADF03C /* type_of_cars.png in Resources */,
 				84AE31EC192E056C0072D805 /* discover@2x.png in Resources */,
 				7C182E74193389C900DE2FE3 /* rooms.png in Resources */,
 				847D997A193338B5000CBDFA /* FourLineCell.xib in Resources */,
 				84AE31E3192E056C0072D805 /* amex.png in Resources */,
+				7C314B3819519D8600ADF03C /* sign_uo_back.png in Resources */,
 				84E4F1E9194F0031002B7B03 /* TransmissionType.1.jpg in Resources */,
 				847D998419333C38000CBDFA /* 58X58.png in Resources */,
 				84AE31E4192E056C0072D805 /* amex@2x.png in Resources */,
 				7CD777B9194F265D005C3A9D /* passenger@2x.png in Resources */,
+				7C314B3C19519D9F00ADF03C /* sign_uo_back@2x.png in Resources */,
 				7CD77793194F0575005C3A9D /* chevrolet_spark_2.jpg in Resources */,
 				7C182E39193389C900DE2FE3 /* date@2x.png in Resources */,
 				7C182E73193389C900DE2FE3 /* room_image@2x.png in Resources */,
@@ -1767,6 +1789,7 @@
 				84C29492192B70B10027E782 /* left_arrow.png in Resources */,
 				7C182E4B193389C900DE2FE3 /* hotels@2x.png in Resources */,
 				7CD777B1194F265D005C3A9D /* baggage@2x.png in Resources */,
+				7C314B3719519D8600ADF03C /* flag_back@2x.png in Resources */,
 				84AE31F1192E056C0072D805 /* mastercard.png in Resources */,
 				7C182E56193389C900DE2FE3 /* more.png in Resources */,
 				7CD777B2194F265D005C3A9D /* car.png in Resources */,
@@ -1779,6 +1802,7 @@
 				7C182E54193389C900DE2FE3 /* map_left.png in Resources */,
 				7C182E81193389C900DE2FE3 /* stars_off@2x.png in Resources */,
 				7C182E60193389C900DE2FE3 /* passport_attached.png in Resources */,
+				7C314B3619519D8600ADF03C /* flag_back.png in Resources */,
 				7C182E8F193389C900DE2FE3 /* visa@2x.png in Resources */,
 				84AE31F6192E056C0072D805 /* visa-outline@2x.png in Resources */,
 				7C182E4D193389C900DE2FE3 /* left_arrow@2x.png in Resources */,

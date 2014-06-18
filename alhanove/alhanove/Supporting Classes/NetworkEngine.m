@@ -220,4 +220,76 @@
     [MKNetworkEngine cancelOperationsContainingURLString:@"http://maps.googleapis.com/maps/api/geocode/"];
 }
 
+- (void)createAccount:(NSString *)firstName
+             lastName:(NSString *)lastName
+                email:(NSString *)email
+                phone:(NSString *)phone
+          countryCode:(NSString *)countryCode
+             timeZone:(NSString *)zone
+             password:(NSString *)password
+            dateBirth:(NSString *)birthDate
+               gender:(NSString *)gender
+      completionBlock:(NetworkEngineCompletionBlock)completionBlock
+         failureBlock:(NetworkEngineFailureBlock)failureBlock{
+    
+    NSString* path = [NSString stringWithFormat:@"%@/passengers",API_URL];
+    
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithDictionary:@{
+                                                                                    @"firstname": firstName,
+                                                                                    @"lastname" : lastName,
+                                                                                    @"email" : email,
+                                                                                    @"mobile" : phone,
+                                                                                    @"country_code" : countryCode,
+                                                                                    @"time_zone" : zone,
+                                                                                    @"origin" : @"IOS",
+                                                                                    @"password" : password,
+                                                                                    @"password_confirmation" : password,
+                                                                                    @"gender" : gender,
+                                                                                    @"birthday" : (birthDate) ? birthDate : @""
+                                                                                    }];
+    
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:params httpMethod:@"POST" ssl:NO];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        completionBlock(operation.responseJSON);
+        _accessToken = @"amb0P2jRtA8qjni6Ut95y2r8Uoy0yzvzRe8CLDRN";
+        
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        NSDictionary* response = errorOp.responseJSON;
+        NSNumber* status = response[@"status"];
+        if ([status integerValue] == 403 || [status integerValue] == 401) {
+            NSError* err = [[NSError alloc] initWithDomain:response[@"error_message"] code:403 userInfo:nil];
+            failureBlock(err);
+        }else
+            failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+    }];
+    
+    [self enqueueOperation:op];
+
+}
+
+- (void)sendConfirmationCode:(NSString*)mobNum
+             completionBlock:(NetworkEngineCompletionBlock)completionBlock
+                failureBlock:(NetworkEngineFailureBlock)failureBlock{
+    
+    NSString* path = [NSString stringWithFormat:@"%@/passengers/send-confirm-code/%@",API_URL,mobNum];
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:nil httpMethod:@"GET" ssl:NO];
+    
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSDictionary* response = operation.responseJSON;
+        completionBlock(response);
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        NSDictionary* response = errorOp.responseJSON;
+        NSNumber* status = response[@"status"];
+        if ([status integerValue] == 403 || [status integerValue] == 401) {
+            NSError* err = [[NSError alloc] initWithDomain:response[@"error_message"] code:403 userInfo:nil];
+            failureBlock(err);
+        }else
+            failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+    }];
+    
+    [self enqueueOperation:op];
+
+}
 @end
