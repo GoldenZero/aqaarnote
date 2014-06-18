@@ -277,6 +277,17 @@
                                         <rect key="frame" x="247" y="25" width="31" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wjr-mZ-kXB">
+                                        <rect key="frame" x="14" y="28" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="aVC-qp-WO4" kind="modal" id="GrQ-kz-DoR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10588236153125763" green="0.20000001788139343" blue="0.29803922772407532" alpha="1" colorSpace="deviceRGB"/>
                             </view>
@@ -404,7 +415,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lbW-9a-cXc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="lbW-9a-cXc">
                                 <rect key="frame" x="0.0" y="68" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -414,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1O8-TZ-4Oo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-84" y="-1147"/>
+            <point key="canvasLocation" x="-123" y="-1147"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="GCI-Z6-w5T">
@@ -424,7 +435,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="XNB-Qd-6hn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="XNB-Qd-6hn">
                                 <rect key="frame" x="0.0" y="68" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -455,7 +466,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDe-li-cPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311" y="-1147"/>
+            <point key="canvasLocation" x="958" y="-1147"/>
         </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="qrD-6J-piE">
@@ -465,7 +476,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ay4-Uq-SZz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="ay4-Uq-SZz">
                                 <rect key="frame" x="0.0" y="68" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -493,10 +504,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="y0n-Rf-DS6" kind="modal" identifier="showActiveCodeView" id="cl0-bd-xyr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFr-rF-0En" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311" y="-1884"/>
+            <point key="canvasLocation" x="958" y="-1860"/>
         </scene>
         <!--Activation Code View Controller-->
         <scene sceneID="9VA-nX-AlN">
@@ -506,7 +520,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Erx-mj-P89">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="Erx-mj-P89">
                                 <rect key="frame" x="0.0" y="68" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -537,7 +551,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAb-Vb-xIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="-1884"/>
+            <point key="canvasLocation" x="1363" y="-1860"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="5Sa-ug-5ds">
@@ -547,10 +561,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aNE-BO-OzS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" id="aNE-BO-OzS">
                                 <rect key="frame" x="0.0" y="68" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" id="Qx6-WC-StI">
+                                <rect key="frame" x="21" y="159" width="280" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="eEH-M5-zMC">
+                                        <rect key="frame" x="116" y="4" width="156" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="aVC-qp-WO4" id="sfZ-NF-IOU"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" id="Iod-7R-6fr">
                                 <rect key="frame" x="26" y="164" width="100" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -559,7 +589,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" backgroundImage="flag_back.png">
+                                        <state key="normal" title="Code">
+                                            <color key="titleColor" red="0.043137256059999997" green="0.5411764979" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -570,19 +601,6 @@
                                         <rect key="frame" x="5" y="2" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="Qx6-WC-StI">
-                                <rect key="frame" x="21" y="159" width="280" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="eEH-M5-zMC">
-                                        <rect key="frame" x="116" y="4" width="156" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -622,9 +640,12 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="aVC-qp-WO4" id="ek3-Yz-Ndd"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ATI-hb-SMx">
                                 <rect key="frame" x="190" y="256" width="111" height="35"/>
@@ -632,7 +653,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="تسجيل دخول">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -667,18 +688,21 @@
                                 <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="countriesButton" destination="RlJ-ir-gl5" id="qCZ-FG-4YV"/>
                         <outlet property="countryImgView" destination="Z5b-Lr-jGh" id="fB9-dA-RIf"/>
                         <outlet property="mobileTxtField" destination="eEH-M5-zMC" id="n6G-2d-gCM"/>
                         <outlet property="passwordTxtField" destination="7u7-A0-brS" id="YTo-Qs-fUF"/>
                         <outlet property="titleLabel" destination="YaQ-VM-YZm" id="1fI-Ty-GI6"/>
+                        <segue destination="vpg-1D-HZM" kind="modal" identifier="showRegisterView" id="tgA-W1-dAv"/>
+                        <segue destination="vdo-j4-EYf" kind="modal" identifier="ShowForgetPassView" id="ODL-uy-dJD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yd2-Rb-dhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="-1147"/>
+            <point key="canvasLocation" x="433" y="-1147"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jGB-rx-eH3">
@@ -2437,7 +2461,6 @@
         <image name="date_field.png" width="262" height="36"/>
         <image name="description.png" width="13" height="8"/>
         <image name="edit.png" width="32" height="32"/>
-        <image name="flag_back.png" width="35" height="35"/>
         <image name="flight.png" width="19" height="13"/>
         <image name="form_field.png" width="262" height="36"/>
         <image name="guests.png" width="20" height="18"/>
@@ -2469,9 +2492,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="aDk-Bc-JZa"/>
         <segue reference="QsW-FP-ugu"/>
         <segue reference="fj8-ro-EdL"/>
-        <segue reference="k4Y-Vf-G4L"/>
-        <segue reference="Rkb-b5-CIo"/>
+        <segue reference="YyB-gV-x4h"/>
     </inferredMetricsTieBreakers>
 </document>
