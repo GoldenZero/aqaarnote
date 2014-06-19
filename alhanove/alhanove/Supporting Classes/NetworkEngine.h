@@ -83,4 +83,8 @@ typedef enum LocationType
              completionBlock:(NetworkEngineCompletionBlock)completionBlock
                 failureBlock:(NetworkEngineFailureBlock)failureBlock;
 
+- (void)forgetPasswordForMobile:(NSString*)mobile
+                completionBlock:(NetworkEngineCompletionBlock)completionBlock
+                   failureBlock:(NetworkEngineFailureBlock)failureBlock;
+
 @end

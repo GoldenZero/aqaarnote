@@ -790,6 +790,74 @@
                                 <rect key="frame" x="0.0" y="68" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0tY-gD-Mng">
+                                <rect key="frame" x="175" y="214" width="125" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="تأكيد">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmBtnPrss:" destination="vdo-j4-EYf" eventType="touchUpInside" id="kmb-86-ENx"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" id="04F-4K-VbF">
+                                <rect key="frame" x="20" y="144" width="280" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" id="hWT-9P-GId">
+                                        <rect key="frame" x="116" y="4" width="156" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="vdo-j4-EYf" id="DTy-do-bW0"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="xgG-cD-Ayw">
+                                <rect key="frame" x="25" y="149" width="100" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Uf-6s-pCd">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" backgroundImage="flag_back.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="countriesBtnPrss:" destination="vdo-j4-EYf" eventType="touchUpInside" id="aWF-e5-1CC"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="swd-Zj-vBP">
+                                        <rect key="frame" x="5" y="2" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5sb-88-hCg">
+                                <rect key="frame" x="20" y="214" width="125" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="إلغاء">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelBtnPrss:" destination="vdo-j4-EYf" eventType="touchUpInside" id="om2-ZW-4gz"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" id="KdY-xt-TSs" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -807,6 +875,9 @@
                                         <state key="normal" image="back_arrow.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backBtnPrss:" destination="vdo-j4-EYf" eventType="touchUpInside" id="l4F-Ey-nKI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
@@ -815,7 +886,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="5sb-88-hCg" id="ltc-ED-K4i"/>
+                        <outlet property="confirmButton" destination="0tY-gD-Mng" id="t0A-iT-q5P"/>
+                        <outlet property="countriesButton" destination="4Uf-6s-pCd" id="lTh-3s-w4k"/>
+                        <outlet property="flagImeg" destination="swd-Zj-vBP" id="ih1-Gf-dTb"/>
+                        <outlet property="phoneTxtField" destination="hWT-9P-GId" id="H1t-6p-FvC"/>
+                        <outlet property="titleLabel" destination="nUT-Jf-lXc" id="9Yb-uz-G5N"/>
                         <segue destination="y0n-Rf-DS6" kind="modal" identifier="showActiveCodeView" id="cl0-bd-xyr"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="Q00-RJ-C0D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFr-rF-0En" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2806,11 +2884,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aDk-Bc-JZa"/>
-        <segue reference="QsW-FP-ugu"/>
-        <segue reference="fj8-ro-EdL"/>
-        <segue reference="YyB-gV-x4h"/>
-        <segue reference="Vou-9j-aU0"/>
+        <segue reference="cl0-bd-xyr"/>
         <segue reference="tda-7z-m7O"/>
+        <segue reference="Q00-RJ-C0D"/>
+        <segue reference="YyB-gV-x4h"/>
+        <segue reference="aDk-Bc-JZa"/>
+        <segue reference="fj8-ro-EdL"/>
     </inferredMetricsTieBreakers>
 </document>

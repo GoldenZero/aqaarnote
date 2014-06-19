@@ -292,4 +292,28 @@
     [self enqueueOperation:op];
 
 }
+
+- (void)forgetPasswordForMobile:(NSString*)mobile
+                completionBlock:(NetworkEngineCompletionBlock)completionBlock
+                   failureBlock:(NetworkEngineFailureBlock)failureBlock{
+    NSString* path = [NSString stringWithFormat:@"%@/passengers/reset-password/%@/ios",API_URL,mobile];
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:nil httpMethod:@"GET" ssl:NO];
+    
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSDictionary* response = operation.responseJSON;
+        completionBlock(response);
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        NSDictionary* response = errorOp.responseJSON;
+        NSNumber* status = response[@"status"];
+        if ([status integerValue] == 403 || [status integerValue] == 401) {
+            NSError* err = [[NSError alloc] initWithDomain:response[@"error_message"] code:403 userInfo:nil];
+            failureBlock(err);
+        }else
+            failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+    }];
+    
+    [self enqueueOperation:op];
+
+}
 @end
