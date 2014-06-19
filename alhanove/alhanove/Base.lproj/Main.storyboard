@@ -912,6 +912,47 @@
                                 <rect key="frame" x="0.0" y="68" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" id="E7g-Kf-gXy">
+                                <rect key="frame" x="80" y="123" width="161" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="y0n-Rf-DS6" id="sC0-lf-R4t"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="كود التفعيل" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1HF-ll-alR">
+                                <rect key="frame" x="20" y="76" width="280" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ApN-I2-pmf">
+                                <rect key="frame" x="70" y="254" width="180" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="إعادة إرسال الكود">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resendBtnPrss:" destination="y0n-Rf-DS6" eventType="touchUpInside" id="YvE-bD-e15"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تم إرسال رسالة قصيرة إلي رقم هاتفك الرجاء إدخال كود التفعيل" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bTW-Ie-YR2">
+                                <rect key="frame" x="0.0" y="211" width="320" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="إلى الرقم :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="run-Ha-KRM">
+                                <rect key="frame" x="47" y="227" width="226" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.03529411927" green="0.65882354970000001" blue="0.93333339689999995" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" id="lE3-nU-rDY" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -924,11 +965,24 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5nS-98-bLe">
-                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                        <state key="normal" image="back_arrow.png">
+                                        <state key="normal" title="تأكيد">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="confirmBtnPrss:" destination="y0n-Rf-DS6" eventType="touchUpInside" id="YGH-p2-V4E"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VDu-Wt-U8g">
+                                        <rect key="frame" x="270" y="18" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <state key="normal" title="تخطي">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="skipBtnPrss:" destination="y0n-Rf-DS6" eventType="touchUpInside" id="uyp-Sn-stm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10588236149999999" green="0.20000001789999999" blue="0.29803922770000002" alpha="1" colorSpace="deviceRGB"/>
@@ -936,6 +990,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="code" destination="E7g-Kf-gXy" id="k5W-bL-SRL"/>
+                        <outlet property="header1Label" destination="1HF-ll-alR" id="oX4-w6-H94"/>
+                        <outlet property="header2Label" destination="bTW-Ie-YR2" id="DNT-cr-ksg"/>
+                        <outlet property="header3Label" destination="run-Ha-KRM" id="qJG-Hw-6mB"/>
+                        <outlet property="titleLabel" destination="L0m-31-cf4" id="nkZ-Th-UYx"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="djM-dg-d5Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAb-Vb-xIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2884,11 +2946,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="djM-dg-d5Q"/>
         <segue reference="cl0-bd-xyr"/>
         <segue reference="tda-7z-m7O"/>
-        <segue reference="Q00-RJ-C0D"/>
-        <segue reference="YyB-gV-x4h"/>
         <segue reference="aDk-Bc-JZa"/>
+        <segue reference="YyB-gV-x4h"/>
         <segue reference="fj8-ro-EdL"/>
     </inferredMetricsTieBreakers>
 </document>

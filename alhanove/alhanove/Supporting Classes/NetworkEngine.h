@@ -87,4 +87,8 @@ typedef enum LocationType
                 completionBlock:(NetworkEngineCompletionBlock)completionBlock
                    failureBlock:(NetworkEngineFailureBlock)failureBlock;
 
+- (void)activateConfirmationCode:(NSString*)code
+                    mobileNumber:(NSString*)mobNum
+                 completionBlock:(NetworkEngineCompletionBlock)completionBlock
+                    failureBlock:(NetworkEngineFailureBlock)failureBlock;
 @end
