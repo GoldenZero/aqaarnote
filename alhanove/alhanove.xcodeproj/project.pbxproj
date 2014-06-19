@@ -147,6 +147,31 @@
 		7C3F74A8192D498200DBA803 /* AGPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A0192D498200DBA803 /* AGPhotoBrowserView.m */; };
 		7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A2192D498200DBA803 /* AGPhotoBrowserZoomableView.m */; };
 		7C3F74AA192D498200DBA803 /* DYRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F74A5192D498200DBA803 /* DYRateView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7CAC0B26195311B500606F43 /* b_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B10195311B500606F43 /* b_button.png */; };
+		7CAC0B27195311B500606F43 /* b_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B11195311B500606F43 /* b_button@2x.png */; };
+		7CAC0B28195311B500606F43 /* calendar_side.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B12195311B500606F43 /* calendar_side.png */; };
+		7CAC0B29195311B500606F43 /* calendar_side@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B13195311B500606F43 /* calendar_side@2x.png */; };
+		7CAC0B2A195311B500606F43 /* cancel_ss.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B14195311B500606F43 /* cancel_ss.png */; };
+		7CAC0B2B195311B500606F43 /* cancel_ss@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B15195311B500606F43 /* cancel_ss@2x.png */; };
+		7CAC0B2C195311B500606F43 /* car_type_price.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B16195311B500606F43 /* car_type_price.png */; };
+		7CAC0B2D195311B500606F43 /* car_type_price@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B17195311B500606F43 /* car_type_price@2x.png */; };
+		7CAC0B2E195311B500606F43 /* com_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B18195311B500606F43 /* com_s.png */; };
+		7CAC0B2F195311B500606F43 /* com_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B19195311B500606F43 /* com_s@2x.png */; };
+		7CAC0B30195311B500606F43 /* edit_upcoming.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B1A195311B500606F43 /* edit_upcoming.png */; };
+		7CAC0B31195311B500606F43 /* edit_upcoming@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B1B195311B500606F43 /* edit_upcoming@2x.png */; };
+		7CAC0B32195311B500606F43 /* from_to.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B1C195311B500606F43 /* from_to.png */; };
+		7CAC0B33195311B500606F43 /* from_to@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B1D195311B500606F43 /* from_to@2x.png */; };
+		7CAC0B34195311B500606F43 /* map_marker_pickup.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B1E195311B500606F43 /* map_marker_pickup.png */; };
+		7CAC0B35195311B500606F43 /* map_marker_pickup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B1F195311B500606F43 /* map_marker_pickup@2x.png */; };
+		7CAC0B36195311B500606F43 /* next_res_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B20195311B500606F43 /* next_res_b.png */; };
+		7CAC0B37195311B500606F43 /* next_res_b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B21195311B500606F43 /* next_res_b@2x.png */; };
+		7CAC0B38195311B500606F43 /* price_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B22195311B500606F43 /* price_s.png */; };
+		7CAC0B39195311B500606F43 /* price_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B23195311B500606F43 /* price_s@2x.png */; };
+		7CAC0B3A195311B500606F43 /* s_gray_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B24195311B500606F43 /* s_gray_location.png */; };
+		7CAC0B3B195311B500606F43 /* s_gray_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0B25195311B500606F43 /* s_gray_location@2x.png */; };
+		7CAE5EEF1952F7A2006AD3F7 /* MyBookingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE5EEE1952F7A2006AD3F7 /* MyBookingsViewController.m */; };
+		7CAE5EF219530BBB006AD3F7 /* BookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE5EF119530BBB006AD3F7 /* BookingCell.m */; };
+		7CAE5EF419530BD3006AD3F7 /* BookingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CAE5EF319530BD3006AD3F7 /* BookingCell.xib */; };
 		7CB4DFD5192E64FD00B2A9F2 /* StarEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFCD192E64FD00B2A9F2 /* StarEmpty.png */; };
 		7CB4DFD6192E64FD00B2A9F2 /* StarEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFCE192E64FD00B2A9F2 /* StarEmpty@2x.png */; };
 		7CB4DFD7192E64FD00B2A9F2 /* StarEmptyLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFCF192E64FD00B2A9F2 /* StarEmptyLarge.png */; };
@@ -488,6 +513,33 @@
 		7C3F74A2192D498200DBA803 /* AGPhotoBrowserZoomableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPhotoBrowserZoomableView.m; sourceTree = "<group>"; };
 		7C3F74A4192D498200DBA803 /* DYRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYRateView.h; sourceTree = "<group>"; };
 		7C3F74A5192D498200DBA803 /* DYRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYRateView.m; sourceTree = "<group>"; };
+		7CAC0B10195311B500606F43 /* b_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b_button.png; sourceTree = "<group>"; };
+		7CAC0B11195311B500606F43 /* b_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b_button@2x.png"; sourceTree = "<group>"; };
+		7CAC0B12195311B500606F43 /* calendar_side.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_side.png; sourceTree = "<group>"; };
+		7CAC0B13195311B500606F43 /* calendar_side@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_side@2x.png"; sourceTree = "<group>"; };
+		7CAC0B14195311B500606F43 /* cancel_ss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_ss.png; sourceTree = "<group>"; };
+		7CAC0B15195311B500606F43 /* cancel_ss@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_ss@2x.png"; sourceTree = "<group>"; };
+		7CAC0B16195311B500606F43 /* car_type_price.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_type_price.png; sourceTree = "<group>"; };
+		7CAC0B17195311B500606F43 /* car_type_price@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car_type_price@2x.png"; sourceTree = "<group>"; };
+		7CAC0B18195311B500606F43 /* com_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = com_s.png; sourceTree = "<group>"; };
+		7CAC0B19195311B500606F43 /* com_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "com_s@2x.png"; sourceTree = "<group>"; };
+		7CAC0B1A195311B500606F43 /* edit_upcoming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_upcoming.png; sourceTree = "<group>"; };
+		7CAC0B1B195311B500606F43 /* edit_upcoming@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_upcoming@2x.png"; sourceTree = "<group>"; };
+		7CAC0B1C195311B500606F43 /* from_to.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = from_to.png; sourceTree = "<group>"; };
+		7CAC0B1D195311B500606F43 /* from_to@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "from_to@2x.png"; sourceTree = "<group>"; };
+		7CAC0B1E195311B500606F43 /* map_marker_pickup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_marker_pickup.png; sourceTree = "<group>"; };
+		7CAC0B1F195311B500606F43 /* map_marker_pickup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_marker_pickup@2x.png"; sourceTree = "<group>"; };
+		7CAC0B20195311B500606F43 /* next_res_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next_res_b.png; sourceTree = "<group>"; };
+		7CAC0B21195311B500606F43 /* next_res_b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next_res_b@2x.png"; sourceTree = "<group>"; };
+		7CAC0B22195311B500606F43 /* price_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = price_s.png; sourceTree = "<group>"; };
+		7CAC0B23195311B500606F43 /* price_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "price_s@2x.png"; sourceTree = "<group>"; };
+		7CAC0B24195311B500606F43 /* s_gray_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s_gray_location.png; sourceTree = "<group>"; };
+		7CAC0B25195311B500606F43 /* s_gray_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "s_gray_location@2x.png"; sourceTree = "<group>"; };
+		7CAE5EED1952F7A2006AD3F7 /* MyBookingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBookingsViewController.h; sourceTree = "<group>"; };
+		7CAE5EEE1952F7A2006AD3F7 /* MyBookingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBookingsViewController.m; sourceTree = "<group>"; };
+		7CAE5EF019530BBB006AD3F7 /* BookingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingCell.h; sourceTree = "<group>"; };
+		7CAE5EF119530BBB006AD3F7 /* BookingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingCell.m; sourceTree = "<group>"; };
+		7CAE5EF319530BD3006AD3F7 /* BookingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookingCell.xib; sourceTree = "<group>"; };
 		7CB4DFCD192E64FD00B2A9F2 /* StarEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarEmpty.png; sourceTree = "<group>"; };
 		7CB4DFCE192E64FD00B2A9F2 /* StarEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarEmpty@2x.png"; sourceTree = "<group>"; };
 		7CB4DFCF192E64FD00B2A9F2 /* StarEmptyLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarEmptyLarge.png; sourceTree = "<group>"; };
@@ -918,6 +970,35 @@
 			path = DYRateView;
 			sourceTree = "<group>";
 		};
+		7CAC0B0F195311B500606F43 /* Booking Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7CAC0B10195311B500606F43 /* b_button.png */,
+				7CAC0B11195311B500606F43 /* b_button@2x.png */,
+				7CAC0B12195311B500606F43 /* calendar_side.png */,
+				7CAC0B13195311B500606F43 /* calendar_side@2x.png */,
+				7CAC0B14195311B500606F43 /* cancel_ss.png */,
+				7CAC0B15195311B500606F43 /* cancel_ss@2x.png */,
+				7CAC0B16195311B500606F43 /* car_type_price.png */,
+				7CAC0B17195311B500606F43 /* car_type_price@2x.png */,
+				7CAC0B18195311B500606F43 /* com_s.png */,
+				7CAC0B19195311B500606F43 /* com_s@2x.png */,
+				7CAC0B1A195311B500606F43 /* edit_upcoming.png */,
+				7CAC0B1B195311B500606F43 /* edit_upcoming@2x.png */,
+				7CAC0B1C195311B500606F43 /* from_to.png */,
+				7CAC0B1D195311B500606F43 /* from_to@2x.png */,
+				7CAC0B1E195311B500606F43 /* map_marker_pickup.png */,
+				7CAC0B1F195311B500606F43 /* map_marker_pickup@2x.png */,
+				7CAC0B20195311B500606F43 /* next_res_b.png */,
+				7CAC0B21195311B500606F43 /* next_res_b@2x.png */,
+				7CAC0B22195311B500606F43 /* price_s.png */,
+				7CAC0B23195311B500606F43 /* price_s@2x.png */,
+				7CAC0B24195311B500606F43 /* s_gray_location.png */,
+				7CAC0B25195311B500606F43 /* s_gray_location@2x.png */,
+			);
+			path = "Booking Cell";
+			sourceTree = "<group>";
+		};
 		7CB4DFCC192E64FD00B2A9F2 /* Rating Stars */ = {
 			isa = PBXGroup;
 			children = (
@@ -1254,6 +1335,8 @@
 				84C294A0192B753B0027E782 /* HotelListingViewController.m */,
 				84EFD034194DCCB70034140B /* CarListingViewController.h */,
 				84EFD035194DCCB70034140B /* CarListingViewController.m */,
+				7CAE5EED1952F7A2006AD3F7 /* MyBookingsViewController.h */,
+				7CAE5EEE1952F7A2006AD3F7 /* MyBookingsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1274,6 +1357,9 @@
 				84EFD037194DCFB60034140B /* CarCell.h */,
 				84EFD038194DCFB60034140B /* CarCell.m */,
 				84EFD039194DCFB60034140B /* CarCell.xib */,
+				7CAE5EF019530BBB006AD3F7 /* BookingCell.h */,
+				7CAE5EF119530BBB006AD3F7 /* BookingCell.m */,
+				7CAE5EF319530BD3006AD3F7 /* BookingCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1371,6 +1457,7 @@
 		84C29480192B61B70027E782 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7CAC0B0F195311B500606F43 /* Booking Cell */,
 				7C314B3B19519D9F00ADF03C /* sign_uo_back@2x.png */,
 				7C314B3119519D8600ADF03C /* flag_back.png */,
 				7C314B3219519D8600ADF03C /* flag_back@2x.png */,
@@ -1686,6 +1773,7 @@
 				7CB4DFD5192E64FD00B2A9F2 /* StarEmpty.png in Resources */,
 				7CB4DFDC192E64FD00B2A9F2 /* StarFullLarge@2x.png in Resources */,
 				7C182E89193389C900DE2FE3 /* step_3@2x.png in Resources */,
+				7CAC0B37195311B500606F43 /* next_res_b@2x.png in Resources */,
 				84C294A9192B7BA50027E782 /* dar al tawhed.jpg in Resources */,
 				84C2949D192B72830027E782 /* ge_ss_two_light.ttf in Resources */,
 				7CD777AE194F265D005C3A9D /* AC.png in Resources */,
@@ -1719,11 +1807,13 @@
 				7C182E5B193389C900DE2FE3 /* next@2x.png in Resources */,
 				84AE31EE192E056C0072D805 /* jcb.png in Resources */,
 				7C182E43193389C900DE2FE3 /* form_field_error@2x.png in Resources */,
+				7CAC0B38195311B500606F43 /* price_s.png in Resources */,
 				84C29489192B61B70027E782 /* badge4.png in Resources */,
 				7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */,
 				7C182E2A193389C900DE2FE3 /* background.png in Resources */,
 				7C182E71193389C900DE2FE3 /* planes@2x.png in Resources */,
 				847D998519333C38000CBDFA /* 80X80.png in Resources */,
+				7CAC0B35195311B500606F43 /* map_marker_pickup@2x.png in Resources */,
 				7C182E7E193389C900DE2FE3 /* splashscreen.png in Resources */,
 				7CB4DFD9192E64FD00B2A9F2 /* StarFull.png in Resources */,
 				7C182E3C193389C900DE2FE3 /* description.png in Resources */,
@@ -1744,16 +1834,19 @@
 				84E4F1E9194F0031002B7B03 /* TransmissionType.1.jpg in Resources */,
 				847D998419333C38000CBDFA /* 58X58.png in Resources */,
 				84AE31E4192E056C0072D805 /* amex@2x.png in Resources */,
+				7CAC0B27195311B500606F43 /* b_button@2x.png in Resources */,
 				7CD777B9194F265D005C3A9D /* passenger@2x.png in Resources */,
 				7C314B3C19519D9F00ADF03C /* sign_uo_back@2x.png in Resources */,
 				7CD77793194F0575005C3A9D /* chevrolet_spark_2.jpg in Resources */,
 				7C182E39193389C900DE2FE3 /* date@2x.png in Resources */,
 				7C182E73193389C900DE2FE3 /* room_image@2x.png in Resources */,
 				84C2948F192B6F310027E782 /* MenuCell.xib in Resources */,
+				7CAC0B31195311B500606F43 /* edit_upcoming@2x.png in Resources */,
 				7C3F7495192D459500DBA803 /* people-icon-md.png in Resources */,
 				7CB4DFE3192E651400B2A9F2 /* hilton3.jpg in Resources */,
 				7C182E83193389C900DE2FE3 /* stars_on@2x.png in Resources */,
 				7C182E33193389C900DE2FE3 /* cars@2x.png in Resources */,
+				7CAC0B33195311B500606F43 /* from_to@2x.png in Resources */,
 				84C294B9192B7E9B0027E782 /* rating_0.png in Resources */,
 				7C182E2C193389C900DE2FE3 /* book_now.png in Resources */,
 				7CB4DFE1192E651400B2A9F2 /* hilton1.jpg in Resources */,
@@ -1766,6 +1859,8 @@
 				84E4F1E7194F0031002B7B03 /* doors.4.jpg in Resources */,
 				7C182E62193389C900DE2FE3 /* passport_normal.png in Resources */,
 				7CD7779B194F0575005C3A9D /* nissan_sunny_1.jpg in Resources */,
+				7CAC0B28195311B500606F43 /* calendar_side.png in Resources */,
+				7CAC0B2A195311B500606F43 /* cancel_ss.png in Resources */,
 				7C182E8A193389C900DE2FE3 /* top_bar_logo.png in Resources */,
 				84AE31F2192E056C0072D805 /* mastercard@2x.png in Resources */,
 				7C182E41193389C900DE2FE3 /* form_field@2x.png in Resources */,
@@ -1816,12 +1911,14 @@
 				7C182E69193389C900DE2FE3 /* pay_now__button_page@2x.png in Resources */,
 				7CB4DFE4192E651400B2A9F2 /* hilton4.jpg in Resources */,
 				7C182E6B193389C900DE2FE3 /* photo_attached@2x.png in Resources */,
+				7CAC0B34195311B500606F43 /* map_marker_pickup.png in Resources */,
 				7CD777B7194F265D005C3A9D /* gps@2x.png in Resources */,
 				7CD777B5194F265D005C3A9D /* gear_shift@2x.png in Resources */,
 				7C182E76193389C900DE2FE3 /* slider_active.png in Resources */,
 				7C182E37193389C900DE2FE3 /* check_on@2x.png in Resources */,
 				7C182E8C193389C900DE2FE3 /* total_box.png in Resources */,
 				7C182E80193389C900DE2FE3 /* stars_off.png in Resources */,
+				7CAC0B30195311B500606F43 /* edit_upcoming.png in Resources */,
 				7C182E3D193389C900DE2FE3 /* description@2x.png in Resources */,
 				7C182E3A193389C900DE2FE3 /* date_field.png in Resources */,
 				7CD777B3194F265D005C3A9D /* car@2x.png in Resources */,
@@ -1837,15 +1934,19 @@
 				84C2948A192B61B70027E782 /* badge5.png in Resources */,
 				84C294B1192B7CAB0027E782 /* HotelCell.xib in Resources */,
 				7C182E63193389C900DE2FE3 /* passport_normal@2x.png in Resources */,
+				7CAC0B2D195311B500606F43 /* car_type_price@2x.png in Resources */,
 				7C182E34193389C900DE2FE3 /* check_off.png in Resources */,
 				84C29440192B56990027E782 /* Main.storyboard in Resources */,
 				7C182E40193389C900DE2FE3 /* form_field.png in Resources */,
+				7CAC0B3B195311B500606F43 /* s_gray_location@2x.png in Resources */,
 				7C182E57193389C900DE2FE3 /* more@2x.png in Resources */,
 				7CB4DFDA192E64FD00B2A9F2 /* StarFull@2x.png in Resources */,
 				84AE31ED192E056C0072D805 /* jcb-outline@2x.png in Resources */,
+				7CAC0B32195311B500606F43 /* from_to.png in Resources */,
 				7C182E46193389C900DE2FE3 /* haj.png in Resources */,
 				7C182E84193389C900DE2FE3 /* step_1.png in Resources */,
 				7CB4DFE6192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png in Resources */,
+				7CAC0B29195311B500606F43 /* calendar_side@2x.png in Resources */,
 				7C182E55193389C900DE2FE3 /* map_left@2x.png in Resources */,
 				84E4F1F3194F1F96002B7B03 /* btn_check_on_focused_holo_light.png in Resources */,
 				7CD7779D194F0575005C3A9D /* nissan_sunny_3.jpg in Resources */,
@@ -1854,10 +1955,13 @@
 				7C182E7A193389C900DE2FE3 /* sort_arrow_down.png in Resources */,
 				7C182E66193389C900DE2FE3 /* pay_now.png in Resources */,
 				7C182E82193389C900DE2FE3 /* stars_on.png in Resources */,
+				7CAC0B26195311B500606F43 /* b_button.png in Resources */,
 				7CB4DFDB192E64FD00B2A9F2 /* StarFullLarge.png in Resources */,
 				84AE31F5192E056C0072D805 /* placeholder@2x.png in Resources */,
 				7C182E53193389C900DE2FE3 /* magnifying@2x.png in Resources */,
 				7C182E6D193389C900DE2FE3 /* photo_normal@2x.png in Resources */,
+				7CAC0B2E195311B500606F43 /* com_s.png in Resources */,
+				7CAC0B2F195311B500606F43 /* com_s@2x.png in Resources */,
 				84E4F1E6194F0031002B7B03 /* AirCondition.1.jpg in Resources */,
 				7C182E32193389C900DE2FE3 /* cars.png in Resources */,
 				84AE31EA192E056C0072D805 /* diners@2x.png in Resources */,
@@ -1870,7 +1974,10 @@
 				84E4F1DE194EB7CE002B7B03 /* Sunny.jpg in Resources */,
 				7C182E79193389C900DE2FE3 /* slider_off@2x.png in Resources */,
 				7C182E3E193389C900DE2FE3 /* flight.png in Resources */,
+				7CAC0B2B195311B500606F43 /* cancel_ss@2x.png in Resources */,
+				7CAC0B3A195311B500606F43 /* s_gray_location.png in Resources */,
 				84C29493192B70B10027E782 /* left_arrow@2x.png in Resources */,
+				7CAC0B36195311B500606F43 /* next_res_b.png in Resources */,
 				7C182E29193389C900DE2FE3 /* back_arrow@2x.png in Resources */,
 				7C182E36193389C900DE2FE3 /* check_on.png in Resources */,
 				7C182E8B193389C900DE2FE3 /* top_bar_logo@2x.png in Resources */,
@@ -1883,6 +1990,7 @@
 				7CD77797194F0575005C3A9D /* dodge_avenger_3.jpg in Resources */,
 				7C2F73891950480B00B9BB1F /* auto2.png in Resources */,
 				847D997C193338B5000CBDFA /* TotalCell.xib in Resources */,
+				7CAC0B2C195311B500606F43 /* car_type_price.png in Resources */,
 				7C182E6C193389C900DE2FE3 /* photo_normal.png in Resources */,
 				84E4F1F1194F1F96002B7B03 /* btn_check_off_focused_holo_light.png in Resources */,
 				7C182E61193389C900DE2FE3 /* passport_attached@2x.png in Resources */,
@@ -1896,6 +2004,7 @@
 				7C182E28193389C900DE2FE3 /* back_arrow.png in Resources */,
 				84C2949E192B72830027E782 /* ge_ss_two_medium.ttf in Resources */,
 				84C294C1192B84EC0027E782 /* back_header_btn.png in Resources */,
+				7CAC0B39195311B500606F43 /* price_s@2x.png in Resources */,
 				7C182E2E193389C900DE2FE3 /* box.png in Resources */,
 				7C182E8E193389C900DE2FE3 /* visa.png in Resources */,
 				7CD7779C194F0575005C3A9D /* nissan_sunny_2.jpg in Resources */,
@@ -1906,6 +2015,7 @@
 				7C182E38193389C900DE2FE3 /* date.png in Resources */,
 				7C182E35193389C900DE2FE3 /* check_off@2x.png in Resources */,
 				847D997E193338B5000CBDFA /* TwoLineCell.xib in Resources */,
+				7CAE5EF419530BD3006AD3F7 /* BookingCell.xib in Resources */,
 				84C294BD192B7E9B0027E782 /* rating_4.png in Resources */,
 				84AE31F8192E056C0072D805 /* visa@2x.png in Resources */,
 			);
@@ -1975,6 +2085,7 @@
 				84EFCFE9194DA5EE0034140B /* Reachability.m in Sources */,
 				84CA94D0192CACBD002CA3B4 /* UserDataViewController.m in Sources */,
 				84C2948E192B6F310027E782 /* MenuCell.m in Sources */,
+				7CAE5EF219530BBB006AD3F7 /* BookingCell.m in Sources */,
 				7C2F739D19507E8700B9BB1F /* ActivationCodeViewController.m in Sources */,
 				84CA94D4192CB135002CA3B4 /* EnhancedKeyboard.m in Sources */,
 				84AE31DA192E056C0072D805 /* PKAddressZip.m in Sources */,
@@ -1982,6 +2093,7 @@
 				84AE31DD192E056C0072D805 /* PKCardExpiry.m in Sources */,
 				7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */,
 				7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */,
+				7CAE5EEF1952F7A2006AD3F7 /* MyBookingsViewController.m in Sources */,
 				84EFD031194DC7600034140B /* UIImage+MultiFormat.m in Sources */,
 				84E4F1EC194F1F6A002B7B03 /* CarUserDataViewController.m in Sources */,
 				7C2F73A319507EC300B9BB1F /* ProfileViewController.m in Sources */,
