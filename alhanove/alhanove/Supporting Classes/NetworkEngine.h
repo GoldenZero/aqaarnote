@@ -91,4 +91,13 @@ typedef enum LocationType
                     mobileNumber:(NSString*)mobNum
                  completionBlock:(NetworkEngineCompletionBlock)completionBlock
                     failureBlock:(NetworkEngineFailureBlock)failureBlock;
+
+- (void)getLatestBookings:(NetworkEngineCompletionBlock)completionBlock
+             failureBlock:(NetworkEngineFailureBlock)failureBlock;
+
+- (void)cancelBooking:(NSString *)pk
+WithcancellationReason:(NSString *)reason
+      completionBlock:(NetworkEngineCompletionBlock)completionBlock
+         failureBlock:(NetworkEngineFailureBlock)failureBlock;
+
 @end

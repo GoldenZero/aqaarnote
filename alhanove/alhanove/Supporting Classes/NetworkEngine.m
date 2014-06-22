@@ -342,4 +342,109 @@
     [self enqueueOperation:op];
 
 }
+
+- (void)getLatestBookings:(NetworkEngineCompletionBlock)completionBlock
+             failureBlock:(NetworkEngineFailureBlock)failureBlock{
+    NSString* path = [NSString stringWithFormat:@"%@/bookings?status=0|1|2|4|5|7",API_URL];
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:nil httpMethod:@"GET" ssl:NO];
+    
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSDictionary* response = operation.responseJSON;
+        completionBlock(response[@"bookings"]);
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        NSDictionary* response = errorOp.responseJSON;
+        NSNumber* status = response[@"status"];
+        if ([status integerValue] == 403 || [status integerValue] == 401) {
+            NSError* err = [[NSError alloc] initWithDomain:response[@"error_message"] code:403 userInfo:nil];
+            failureBlock(err);
+        }else
+            failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+    }];
+    
+    [self enqueueOperation:op];
+    
+}
+
+- (void)cancelBooking:(NSString *)pk
+WithcancellationReason:(NSString *)reason
+      completionBlock:(NetworkEngineCompletionBlock)completionBlock
+         failureBlock:(NetworkEngineFailureBlock)failureBlock{
+    NSMutableDictionary* params = [[NSMutableDictionary alloc]init];
+    params[@"reason"] = reason;
+    NSString* path = [NSString stringWithFormat:@"%@/bookings/%@/cancel",API_URL,pk];
+    
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:params httpMethod:@"POST" ssl:NO];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        completionBlock(operation.responseJSON);
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        NSDictionary* response = errorOp.responseJSON;
+        NSNumber* status = response[@"status"];
+        if ([status integerValue] == 403 || [status integerValue] == 401) {
+            NSError* err = [[NSError alloc] initWithDomain:response[@"error_message"] code:403 userInfo:nil];
+            failureBlock(err);
+        }else
+            failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+    }];
+    
+    [self enqueueOperation:op];
+}
+
+- (void)updateBooking:(NSString *)pk
+          withBooking:(NSDictionary *)bookingJson
+      completionBlock:(NetworkEngineCompletionBlock)completionBlock
+         failureBlock:(NetworkEngineFailureBlock)failureBlock
+{
+
+    
+    NSString* path = [NSString stringWithFormat:@"%@/bookings/%@",API_URL,pk];
+    NSMutableDictionary* params = [[NSMutableDictionary alloc]init];
+    // TODO : set params 
+    
+//    params[@"type"] = bookingJson.type;
+//    if ([bookingJson.type isEqualToString:@"0"]) {
+//        params[@"allocated_hours"] = bookingJson.allocated_hours;
+//    }
+//    params[@"vehicle_category"] = bookingJson.vehicle_category;
+//    params[@"pickup_position_lat"] = bookingJson.pickup_position_lat;
+//    params[@"pickup_position_lng"] = bookingJson.pickup_position_lng;
+//    params[@"pickup_address"] = bookingJson.pickup_address ? bookingJson.pickup_address : @"";
+//    
+//    params[@"dropoff_position_lat"] = bookingJson.dropoff_position_lat;
+//    params[@"dropoff_position_lng"] = bookingJson.dropoff_position_lng;
+//    params[@"dropoff_address"] = bookingJson.dropoff_position_address ? bookingJson.dropoff_position_address : @"";
+//    
+//    if (bookingJson.pickup_time)
+//    {
+//        params[@"pickup_time"] = bookingJson.pickup_time;
+//    }
+//    
+//    
+//    params[@"payment_method"] = bookingJson.payment_method;
+//    
+//    params[@"extra_instructions"] = bookingJson.extra_instructions;
+//    params[@"pickup_type"] = bookingJson.pickup_type;
+//    params[@"trip_dir"] = (bookingJson.trip_dir) ? bookingJson.trip_dir : @"";
+    
+    MKNetworkOperation *op = [self operationWithLocationPath:path params:params httpMethod:@"POST" ssl:NO];
+    [op setPostDataEncoding:MKNKPostDataEncodingTypeJSON];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        completionBlock(operation.responseJSON);
+    } errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
+        NSDictionary* response = errorOp.responseJSON;
+        NSNumber* status = response[@"status"];
+        if ([status integerValue] == 403 || [status integerValue] == 401) {
+            NSError* err = [[NSError alloc] initWithDomain:response[@"error_message"] code:403 userInfo:nil];
+            failureBlock(err);
+        }else
+            failureBlock([NSError errorFromAPIResponse:errorOp.responseJSON andError:error]);
+    }];
+    
+    [self enqueueOperation:op];
+    
+}
+
+
 @end

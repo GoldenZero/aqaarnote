@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UITableView *bookingsTable;
 @property (nonatomic, strong) NSMutableArray* bookings;
+@property (strong, nonatomic) UITextField* reasonText;
 
 
 - (IBAction)backBtnPrss:(id)sender;

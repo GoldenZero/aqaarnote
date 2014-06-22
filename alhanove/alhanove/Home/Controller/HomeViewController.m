@@ -164,8 +164,8 @@
 }
 
 - (IBAction)bookingsBtnPrss:(id)sender {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+//    [alert show];
     return;
 }
 @end
