@@ -7,9 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "CarEntity.h"
 
 @implementation AppDelegate
-
+@synthesize managedObjectContext,managedObjectModel,persistentStoreCoordinator;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -64,4 +65,49 @@
     return NO;
 }
 
+// 1
+- (NSManagedObjectContext *) managedObjectContext {
+    if (managedObjectContext != nil) {
+        return managedObjectContext;
+    }
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        //[NSManagedObjectContext setPersistentStoreCoordinator: coordinator];
+    }
+    
+    return managedObjectContext;
+}
+
+//2
+- (NSManagedObjectModel *)managedObjectModel {
+    if (managedObjectModel != nil) {
+        return managedObjectModel;
+    }
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    
+    return managedObjectModel;
+}
+
+//3
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if (persistentStoreCoordinator != nil) {
+        return persistentStoreCoordinator;
+    }
+    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
+                                               stringByAppendingPathComponent: @"PhoneBook.sqlite"]];
+    NSError *error = nil;
+    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+                                   initWithManagedObjectModel:[self managedObjectModel]];
+//    if(![NSPersistentStoreCoordinator  addPersistentStoreWithType:NSSQLiteStoreType
+//                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
+//        /*Error for store creation should be handled in here*/
+//    }
+//    
+    return persistentStoreCoordinator;
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
 @end

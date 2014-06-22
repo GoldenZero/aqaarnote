@@ -135,6 +135,9 @@
 		7C314B3C19519D9F00ADF03C /* sign_uo_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C314B3B19519D9F00ADF03C /* sign_uo_back@2x.png */; };
 		7C3AF6771956BB6B00E852C7 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF6741956BB6B00E852C7 /* UIScrollView+SVInfiniteScrolling.m */; };
 		7C3AF6781956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF6761956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.m */; };
+		7C3AF67A1956F75C00E852C7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3AF6791956F75C00E852C7 /* CoreData.framework */; };
+		7C3AF67F1956FE0500E852C7 /* CarsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF67D1956FE0500E852C7 /* CarsData.xcdatamodeld */; };
+		7C3AF6821957102700E852C7 /* CarEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF6811957102700E852C7 /* CarEntity.m */; };
 		7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */; };
 		7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7482192D15D400DBA803 /* FormViewController.m */; };
 		7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7484192D193800DBA803 /* ar_back_header_btn.png */; };
@@ -494,6 +497,10 @@
 		7C3AF6741956BB6B00E852C7 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		7C3AF6751956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		7C3AF6761956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		7C3AF6791956F75C00E852C7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7C3AF67E1956FE0500E852C7 /* CarsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarsData.xcdatamodel; sourceTree = "<group>"; };
+		7C3AF6801957102700E852C7 /* CarEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarEntity.h; sourceTree = "<group>"; };
+		7C3AF6811957102700E852C7 /* CarEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarEntity.m; sourceTree = "<group>"; };
 		7C3F747E192D159E00DBA803 /* HotelDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsVC.h; sourceTree = "<group>"; };
 		7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsVC.m; sourceTree = "<group>"; };
 		7C3F7481192D15D400DBA803 /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = alhanove/From/Controller/FormViewController.h; sourceTree = SOURCE_ROOT; };
@@ -802,6 +809,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C3AF67A1956F75C00E852C7 /* CoreData.framework in Frameworks */,
 				84AE31FA192E05C00072D805 /* QuartzCore.framework in Frameworks */,
 				84C2942F192B56990027E782 /* CoreGraphics.framework in Frameworks */,
 				84C29431192B56990027E782 /* UIKit.framework in Frameworks */,
@@ -1173,6 +1181,7 @@
 		84C2942B192B56990027E782 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C3AF6791956F75C00E852C7 /* CoreData.framework */,
 				84AE31F9192E05C00072D805 /* QuartzCore.framework */,
 				84C2942C192B56990027E782 /* Foundation.framework */,
 				84C2942E192B56990027E782 /* CoreGraphics.framework */,
@@ -1363,6 +1372,9 @@
 		84C29476192B589C0027E782 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C3AF67D1956FE0500E852C7 /* CarsData.xcdatamodeld */,
+				7C3AF6801957102700E852C7 /* CarEntity.h */,
+				7C3AF6811957102700E852C7 /* CarEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2048,6 +2060,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C3AF67F1956FE0500E852C7 /* CarsData.xcdatamodeld in Sources */,
 				7C3F74A8192D498200DBA803 /* AGPhotoBrowserView.m in Sources */,
 				84AE31DB192E056C0072D805 /* PKCard.m in Sources */,
 				7CD777A0194F23EC005C3A9D /* CarFeatureCell.m in Sources */,
@@ -2114,6 +2127,7 @@
 				84AE31DD192E056C0072D805 /* PKCardExpiry.m in Sources */,
 				7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */,
 				7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */,
+				7C3AF6821957102700E852C7 /* CarEntity.m in Sources */,
 				7CAE5EEF1952F7A2006AD3F7 /* MyBookingsViewController.m in Sources */,
 				84EFD031194DC7600034140B /* UIImage+MultiFormat.m in Sources */,
 				84E4F1EC194F1F6A002B7B03 /* CarUserDataViewController.m in Sources */,
@@ -2278,6 +2292,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7C3AF67D1956FE0500E852C7 /* CarsData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7C3AF67E1956FE0500E852C7 /* CarsData.xcdatamodel */,
+			);
+			currentVersion = 7C3AF67E1956FE0500E852C7 /* CarsData.xcdatamodel */;
+			path = CarsData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 84C29421192B56990027E782 /* Project object */;
 }
