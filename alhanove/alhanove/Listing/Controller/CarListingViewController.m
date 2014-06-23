@@ -8,9 +8,11 @@
 
 #import "CarListingViewController.h"
 #import "CarSummaryViewController.h"
+#import "CarEntity.h"
+
 @interface CarListingViewController ()
 {
-    NSMutableArray* carArrays;
+    NSArray* carArrays;
     
     SBPickerSelector *sortPicker;
     SBPickerSelector *CostPicker;
@@ -45,7 +47,13 @@
     [super viewDidLoad];
     priceAscending = 0;
     nameAscending = 2;
-    
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    self.managedObjectContext = appDelegate.managedObjectContext;
+
+    // Fetching Records and saving it in "fetchedRecordsArray" object
+    carArrays = [appDelegate getAllCarsRecords];
+    [self.tableView reloadData];
+
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:17]];
     [self.nextBtn.titleLabel setFont:[UIFont lightGeSSOfSize:17]];
     [self.priceBtn.titleLabel setFont:[UIFont lightGeSSOfSize:13]];
@@ -56,7 +64,6 @@
     //prepare the pickers
     //[self preparePickers];
     //get the data for the menu
-    [self getListMenuData];
 
 }
 
@@ -67,49 +74,66 @@
     
     carArrays = [NSMutableArray new];
     
-    NSDictionary *MenuDict = @{@"Type" : self.formObj.carType,
-                               @"Image" : @"cheverolet.jpg",
-                               @"Title" : @"cheverolet spark",
-                               @"Cost" : @"38",
-                               @"Cost_all" : [NSString stringWithFormat:@"%li",38 * self.formObj.rentalDays]};
-    
-    [carArrays addObject:MenuDict];
-    
-    MenuDict = nil;
-    MenuDict = @{@"Type" : self.formObj.carType,
-                 @"Image" : @"Sunny.jpg",
-                 @"Title" : @"Nissan Sunny",
-                 @"Cost" : @"42",
-                 @"Cost_all" : [NSString stringWithFormat:@"%li",42 * self.formObj.rentalDays]};
-    [carArrays addObject:MenuDict];
-    
-    MenuDict = nil;
-    MenuDict = @{@"Type" :self.formObj.carType,
-                 @"Image" : @"Aveo.jpg",
-                 @"Title" : @"Cheverolet Aveo",
-                 @"Cost" : @"46",
-                 @"Cost_all" : [NSString stringWithFormat:@"%li",46 * self.formObj.rentalDays]};
-    [carArrays addObject:MenuDict];
-    
-    MenuDict = nil;
-    MenuDict = @{@"Type" : self.formObj.carType,
-                 @"Image" : @"dodge.jpg",
-                 @"Title" : @"Dodge Avenger",
-                 @"Cost" : @"80",
-                 @"Cost_all" : [NSString stringWithFormat:@"%li",80 * self.formObj.rentalDays]};
-    [carArrays addObject:MenuDict];
-    
-    MenuDict = nil;
-    MenuDict = @{@"Type" : self.formObj.carType,
-                 @"Image" : @"altima.jpg",
-                 @"Title" : @"Nissan Altima",
-                 @"Cost" : @"89",
-                 @"Cost_all" : [NSString stringWithFormat:@"%li",89 * self.formObj.rentalDays]};
-    [carArrays addObject:MenuDict];
+    CarEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                                      inManagedObjectContext:self.managedObjectContext];
+
+    newEntry.title=@"cheverolet spark";
+    newEntry.type=self.formObj.carType;
+    newEntry.image= @"cheverolet.jpg";
+    newEntry.cost=[NSNumber numberWithInt:38];
+    newEntry.cost_all=[NSNumber numberWithLong:38 * self.formObj.rentalDays];
     
     
+    newEntry=nil;
+    
+    newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                  inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"Nissan Sunny";
+    newEntry.type=self.formObj.carType;
+    newEntry.image= @"Sunny.jpg";
+    newEntry.cost=[NSNumber numberWithInt:42];
+    newEntry.cost_all=[NSNumber numberWithLong:42 * self.formObj.rentalDays];
+
+    
+    newEntry=nil;
+    
+    newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                            inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"Cheverolet Aveo";
+    newEntry.type=self.formObj.carType;
+    newEntry.image= @"Aveo.jpg";
+    newEntry.cost=[NSNumber numberWithInt:46];
+    newEntry.cost_all=[NSNumber numberWithLong:46 * self.formObj.rentalDays];
+
+ 
+    
+    newEntry=nil;
+    
+    newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                            inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"Dodge Avenger";
+    newEntry.type=self.formObj.carType;
+    newEntry.image= @"dodge.jpg";
+    newEntry.cost=[NSNumber numberWithInt:80];
+    newEntry.cost_all=[NSNumber numberWithLong:80 * self.formObj.rentalDays];
+  
+    
+    newEntry=nil;
+    
+    newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                            inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"Nissan Altima";
+    newEntry.type=self.formObj.carType;
+    newEntry.image= @"altima.jpg";
+    newEntry.cost=[NSNumber numberWithInt:89];
+    newEntry.cost_all=[NSNumber numberWithLong:89 * self.formObj.rentalDays];
+    
+
     //reflect to the table
-    [self.tableView reloadData];
     
 }
 
@@ -201,7 +225,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MenuCell";
-    NSDictionary* dictionary = [carArrays objectAtIndex:indexPath.row];
+    CarEntity* car = [carArrays objectAtIndex:indexPath.row];
     
     CarCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -215,11 +239,11 @@
         
     }
     
-    cell.titleLbl.text = dictionary[@"Title"];
-    cell.typeLbl.text = dictionary[@"Type"];
+    cell.titleLbl.text = car.title;
+    cell.typeLbl.text = car.type;
     cell.rentalDaysLbl.text = [NSString stringWithFormat:@"%li Days",(long)self.formObj.rentalDays];
-    [cell.menuImg setImage:[UIImage imageNamed:dictionary[@"Image"]]];
-        cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary[@"Cost_all"]];
+    [cell.menuImg setImage:[UIImage imageNamed:car.image]];
+        cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",car.cost];
     cell.imgButton.tag=indexPath.row;
     [cell.imgButton addTarget:self
                        action:@selector(openHotelDetails:)
@@ -230,10 +254,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary* dictionary = [carArrays objectAtIndex:indexPath.row];
-    NSString* currCost = dictionary[@"Cost_all"];
-    self.formObj.CarData = dictionary;
-    totalCost = [NSNumber numberWithInteger:[currCost integerValue]];
+    CarEntity* car = [carArrays objectAtIndex:indexPath.row];
+    self.formObj.CarData = car;
+    totalCost = [NSNumber numberWithInteger:[car.cost integerValue] *self.formObj.rentalDays];
     [self nextInvoked:self];
 }
 

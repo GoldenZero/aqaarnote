@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CarEntity.h"
+#import "HotelEntity.h"
+#import "HotelMadinaEntity.h"
 
 @interface FormObject : NSObject
 
 #pragma mark - Properties
 
-@property (nonatomic,strong) NSDictionary* MekkaHotelData;
-@property (nonatomic,strong) NSDictionary* MadinaHotelData;
+@property (nonatomic,strong) HotelEntity* MekkaHotelData;
+@property (nonatomic,strong) HotelMadinaEntity* MadinaHotelData;
 @property (nonatomic,strong) NSDictionary* HotelData;
 @property (nonatomic,strong) NSString* BookingType;
 @property (nonatomic,strong) NSDate *fromDate;
@@ -37,7 +40,7 @@
 
 #pragma mark - Car Object Properties
 @property (nonatomic,strong) NSString* carType;
-@property (nonatomic,strong) NSDictionary* CarData;
+@property (nonatomic,strong) CarEntity* CarData;
 @property (nonatomic,strong) NSString *FromPlace;
 @property (nonatomic,strong) NSString *ToPlace;
 @property (nonatomic,strong) NSString* carCost;

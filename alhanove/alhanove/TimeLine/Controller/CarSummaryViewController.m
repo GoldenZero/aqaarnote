@@ -58,10 +58,10 @@
     
     // Fill Data
 
-    self.carNameLabel.text=[self.formObj.CarData objectForKey:@"Title"];
+    self.carNameLabel.text=self.formObj.CarData.title;
     self.carTypeLabel.text=self.formObj.carType;
     self.daysLabel.text=[NSString stringWithFormat:@"%li Days" ,(long)self.formObj.rentalDays];
-    self.carImage.image=[UIImage imageNamed:[self.formObj.CarData objectForKey:@"Image"]];
+    self.carImage.image=[UIImage imageNamed:self.formObj.CarData.image];
     self.carDoorsLabel.text=@"4";//[self.formObj.CarData objectForKey:@""];
     self.passengersLabel.text=@"5";//[self.formObj.CarData objectForKey:@""];
     self.autoLabel.text=@"Auto";//[self.formObj.CarData objectForKey:@""];

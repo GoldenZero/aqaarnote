@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BookingEntity" representedClassName="BookingEntity" syncable="YES">
+        <attribute name="bookingID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="formPlace" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fromDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="toDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="toPlace" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CarEntity" syncable="YES"/>
+    </entity>
+    <entity name="CarEntity" representedClassName="CarEntity" syncable="YES">
+        <attribute name="airCond" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="automatic" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="cost_all" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="doors" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passengers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="HotelEntity" representedClassName="HotelEntity" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="cost_all" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stars" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="HotelMadinaEntity" representedClassName="HotelMadinaEntity" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="cost_all" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stars" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CarEntity" positionX="-9" positionY="36" width="128" height="178"/>
+        <element name="HotelEntity" positionX="-9" positionY="72" width="128" height="148"/>
+        <element name="BookingEntity" positionX="0" positionY="81" width="128" height="133"/>
+        <element name="HotelMadinaEntity" positionX="9" positionY="126" width="128" height="148"/>
+    </elements>
+</model>

@@ -136,8 +136,7 @@
 		7C3AF6771956BB6B00E852C7 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF6741956BB6B00E852C7 /* UIScrollView+SVInfiniteScrolling.m */; };
 		7C3AF6781956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF6761956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.m */; };
 		7C3AF67A1956F75C00E852C7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3AF6791956F75C00E852C7 /* CoreData.framework */; };
-		7C3AF67F1956FE0500E852C7 /* CarsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF67D1956FE0500E852C7 /* CarsData.xcdatamodeld */; };
-		7C3AF6821957102700E852C7 /* CarEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF6811957102700E852C7 /* CarEntity.m */; };
+		7C3AF67F1956FE0500E852C7 /* Data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C3AF67D1956FE0500E852C7 /* Data.xcdatamodeld */; };
 		7C3F7480192D159E00DBA803 /* HotelDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */; };
 		7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3F7482192D15D400DBA803 /* FormViewController.m */; };
 		7C3F7486192D193800DBA803 /* ar_back_header_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C3F7484192D193800DBA803 /* ar_back_header_btn.png */; };
@@ -190,6 +189,10 @@
 		7CB4DFE3192E651400B2A9F2 /* hilton3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFDF192E651400B2A9F2 /* hilton3.jpg */; };
 		7CB4DFE4192E651400B2A9F2 /* hilton4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFE0192E651400B2A9F2 /* hilton4.jpg */; };
 		7CB4DFE6192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */; };
+		7CC9C8D4195838390015D3ED /* CarEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9C8D3195838390015D3ED /* CarEntity.m */; };
+		7CC9C8D7195838390015D3ED /* HotelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9C8D6195838390015D3ED /* HotelEntity.m */; };
+		7CC9C8DA195838390015D3ED /* BookingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9C8D9195838390015D3ED /* BookingEntity.m */; };
+		7CC9C8DD19584E550015D3ED /* HotelMadinaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9C8DC19584E550015D3ED /* HotelMadinaEntity.m */; };
 		7CD7778F194F0575005C3A9D /* chevrolet_aveo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77780194F0575005C3A9D /* chevrolet_aveo_1.jpg */; };
 		7CD77790194F0575005C3A9D /* chevrolet_aveo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77781194F0575005C3A9D /* chevrolet_aveo_2.jpg */; };
 		7CD77791194F0575005C3A9D /* chevrolet_aveo_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77782194F0575005C3A9D /* chevrolet_aveo_3.png */; };
@@ -498,9 +501,7 @@
 		7C3AF6751956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		7C3AF6761956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		7C3AF6791956F75C00E852C7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		7C3AF67E1956FE0500E852C7 /* CarsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarsData.xcdatamodel; sourceTree = "<group>"; };
-		7C3AF6801957102700E852C7 /* CarEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarEntity.h; sourceTree = "<group>"; };
-		7C3AF6811957102700E852C7 /* CarEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarEntity.m; sourceTree = "<group>"; };
+		7C3AF67E1956FE0500E852C7 /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
 		7C3F747E192D159E00DBA803 /* HotelDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsVC.h; sourceTree = "<group>"; };
 		7C3F747F192D159E00DBA803 /* HotelDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsVC.m; sourceTree = "<group>"; };
 		7C3F7481192D15D400DBA803 /* FormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FormViewController.h; path = alhanove/From/Controller/FormViewController.h; sourceTree = SOURCE_ROOT; };
@@ -567,6 +568,14 @@
 		7CB4DFDF192E651400B2A9F2 /* hilton3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hilton3.jpg; sourceTree = "<group>"; };
 		7CB4DFE0192E651400B2A9F2 /* hilton4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hilton4.jpg; sourceTree = "<group>"; };
 		7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-05-22 at 11.55.06 AM.png"; sourceTree = "<group>"; };
+		7CC9C8D2195838390015D3ED /* CarEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarEntity.h; sourceTree = "<group>"; };
+		7CC9C8D3195838390015D3ED /* CarEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarEntity.m; sourceTree = "<group>"; };
+		7CC9C8D5195838390015D3ED /* HotelEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelEntity.h; sourceTree = "<group>"; };
+		7CC9C8D6195838390015D3ED /* HotelEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelEntity.m; sourceTree = "<group>"; };
+		7CC9C8D8195838390015D3ED /* BookingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingEntity.h; sourceTree = "<group>"; };
+		7CC9C8D9195838390015D3ED /* BookingEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingEntity.m; sourceTree = "<group>"; };
+		7CC9C8DB19584E550015D3ED /* HotelMadinaEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelMadinaEntity.h; sourceTree = "<group>"; };
+		7CC9C8DC19584E550015D3ED /* HotelMadinaEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelMadinaEntity.m; sourceTree = "<group>"; };
 		7CD77780194F0575005C3A9D /* chevrolet_aveo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chevrolet_aveo_1.jpg; sourceTree = "<group>"; };
 		7CD77781194F0575005C3A9D /* chevrolet_aveo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chevrolet_aveo_2.jpg; sourceTree = "<group>"; };
 		7CD77782194F0575005C3A9D /* chevrolet_aveo_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chevrolet_aveo_3.png; sourceTree = "<group>"; };
@@ -1372,9 +1381,15 @@
 		84C29476192B589C0027E782 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7C3AF67D1956FE0500E852C7 /* CarsData.xcdatamodeld */,
-				7C3AF6801957102700E852C7 /* CarEntity.h */,
-				7C3AF6811957102700E852C7 /* CarEntity.m */,
+				7C3AF67D1956FE0500E852C7 /* Data.xcdatamodeld */,
+				7CC9C8D8195838390015D3ED /* BookingEntity.h */,
+				7CC9C8D9195838390015D3ED /* BookingEntity.m */,
+				7CC9C8D5195838390015D3ED /* HotelEntity.h */,
+				7CC9C8D6195838390015D3ED /* HotelEntity.m */,
+				7CC9C8D2195838390015D3ED /* CarEntity.h */,
+				7CC9C8D3195838390015D3ED /* CarEntity.m */,
+				7CC9C8DB19584E550015D3ED /* HotelMadinaEntity.h */,
+				7CC9C8DC19584E550015D3ED /* HotelMadinaEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2060,7 +2075,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C3AF67F1956FE0500E852C7 /* CarsData.xcdatamodeld in Sources */,
+				7C3AF67F1956FE0500E852C7 /* Data.xcdatamodeld in Sources */,
 				7C3F74A8192D498200DBA803 /* AGPhotoBrowserView.m in Sources */,
 				84AE31DB192E056C0072D805 /* PKCard.m in Sources */,
 				7CD777A0194F23EC005C3A9D /* CarFeatureCell.m in Sources */,
@@ -2077,6 +2092,7 @@
 				84EFD029194DC7600034140B /* SDWebImageCompat.m in Sources */,
 				7C3AF6781956BB6B00E852C7 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				84EFD02B194DC7600034140B /* SDWebImageDownloader.m in Sources */,
+				7CC9C8D7195838390015D3ED /* HotelEntity.m in Sources */,
 				84EFD027194DC7600034140B /* NSData+ImageContentType.m in Sources */,
 				84CA94DA192CCB4D002CA3B4 /* PayLaterViewController.m in Sources */,
 				84EFCFE5194DA5EE0034140B /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
@@ -2094,6 +2110,7 @@
 				84EFD02D194DC7600034140B /* SDWebImageManager.m in Sources */,
 				84EFD033194DC7600034140B /* UIImageView+WebCache.m in Sources */,
 				84EFCFE1194DA5EE0034140B /* NSData+MKBase64.m in Sources */,
+				7CC9C8DA195838390015D3ED /* BookingEntity.m in Sources */,
 				7C2F736E1950249D00B9BB1F /* SearchDetailCell.m in Sources */,
 				7C3F74A7192D498200DBA803 /* AGPhotoBrowserOverlayView.m in Sources */,
 				7C2F73A019507EA700B9BB1F /* ForgetPasswordViewController.m in Sources */,
@@ -2103,6 +2120,7 @@
 				7C3F7492192D42E300DBA803 /* FormObject.m in Sources */,
 				84EFD004194DB70C0034140B /* UIFont+CustomFonts.m in Sources */,
 				847D9979193338B5000CBDFA /* FourLineCell.m in Sources */,
+				7CC9C8DD19584E550015D3ED /* HotelMadinaEntity.m in Sources */,
 				84CA94D7192CCB40002CA3B4 /* PayNowViewController.m in Sources */,
 				84EFD001194DB70C0034140B /* NSString+FontSizeWithFont.m in Sources */,
 				7C2F739719507E2000B9BB1F /* RegisterViewController.m in Sources */,
@@ -2127,7 +2145,7 @@
 				84AE31DD192E056C0072D805 /* PKCardExpiry.m in Sources */,
 				7C3F74A9192D498200DBA803 /* AGPhotoBrowserZoomableView.m in Sources */,
 				7C3F7483192D15D400DBA803 /* FormViewController.m in Sources */,
-				7C3AF6821957102700E852C7 /* CarEntity.m in Sources */,
+				7CC9C8D4195838390015D3ED /* CarEntity.m in Sources */,
 				7CAE5EEF1952F7A2006AD3F7 /* MyBookingsViewController.m in Sources */,
 				84EFD031194DC7600034140B /* UIImage+MultiFormat.m in Sources */,
 				84E4F1EC194F1F6A002B7B03 /* CarUserDataViewController.m in Sources */,
@@ -2294,13 +2312,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7C3AF67D1956FE0500E852C7 /* CarsData.xcdatamodeld */ = {
+		7C3AF67D1956FE0500E852C7 /* Data.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7C3AF67E1956FE0500E852C7 /* CarsData.xcdatamodel */,
+				7C3AF67E1956FE0500E852C7 /* Data.xcdatamodel */,
 			);
-			currentVersion = 7C3AF67E1956FE0500E852C7 /* CarsData.xcdatamodel */;
-			path = CarsData.xcdatamodeld;
+			currentVersion = 7C3AF67E1956FE0500E852C7 /* Data.xcdatamodel */;
+			path = Data.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

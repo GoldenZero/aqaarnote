@@ -132,23 +132,23 @@
         [alert show];
         return;
     }
-    if (!placeFromChoosed) {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد مكان الإنطلاق" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-        [alert show];
-        return;
-    }
-    
+//    if (!placeFromChoosed) {
+//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد مكان الإنطلاق" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+//        [alert show];
+//        return;
+//    }
+//    
     
     if (!dateToChoosed) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد تاريخ العودة" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }
-    if (!placeToChoosed) {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد مكان العودة" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-        [alert show];
-        return;
-    }
+//    if (!placeToChoosed) {
+//        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد مكان العودة" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+//        [alert show];
+//        return;
+//    }
     
     if (!carTypeChoosed) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء تحديد فئة السيارة" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];

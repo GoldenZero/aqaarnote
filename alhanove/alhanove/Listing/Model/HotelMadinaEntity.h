@@ -1,5 +1,5 @@
 //
-//  CarEntity.h
+//  HotelMadinaEntity.h
 //  alhanove
 //
 //  Created by Noor on 6/23/14.
@@ -10,16 +10,14 @@
 #import <CoreData/CoreData.h>
 
 
-@interface CarEntity : NSManagedObject
+@interface HotelMadinaEntity : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * cost;
 @property (nonatomic, retain) NSNumber * cost_all;
 @property (nonatomic, retain) NSString * image;
+@property (nonatomic, retain) NSString * location;
+@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * type;
-@property (nonatomic, retain) NSNumber * doors;
-@property (nonatomic, retain) NSNumber * airCond;
-@property (nonatomic, retain) NSNumber * automatic;
-@property (nonatomic, retain) NSNumber * passengers;
+@property (nonatomic, retain) NSNumber * stars;
 
 @end

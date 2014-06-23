@@ -148,8 +148,8 @@
     dict = [NSMutableDictionary new];
     dict[@"sectionDate"] = @"2014/05/30";
     MenuDict = @{@"Title" : @"فندق مكة المكرمة",
-                 @"Text" : self.formObj.MekkaHotelData[@"Title"],
-                 @"Price": self.formObj.MekkaHotelData[@"Cost_all"],
+                 @"Text" : self.formObj.MekkaHotelData.title,
+                 @"Price": self.formObj.MekkaHotelData.cost_all,
                  @"Type" : @"step_3"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];
@@ -160,8 +160,8 @@
     dict = [NSMutableDictionary new];
     dict[@"sectionDate"] = @"2014/06/06";
     MenuDict = @{@"Title" : @"فندق المدينة المنورة",
-                 @"Text" : self.formObj.MadinaHotelData[@"Title"],
-                 @"Price": self.formObj.MadinaHotelData[@"Cost_all"],
+                 @"Text" : self.formObj.MadinaHotelData.title,
+                 @"Price": self.formObj.MadinaHotelData.cost_all,
                  @"Type" : @"step_4"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];

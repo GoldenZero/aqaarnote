@@ -8,11 +8,30 @@
 
 #import "AppDelegate.h"
 #import "CarEntity.h"
+#import "HotelEntity.h"
+#import "HotelMadinaEntity.h"
 
 @implementation AppDelegate
-@synthesize managedObjectContext,managedObjectModel,persistentStoreCoordinator;
+
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize managedObjectModel = _managedObjectModel;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        [self saveCarsData];
+        [self saveMadinaHotelsData];
+        [self saveMekkaHotelsData];
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        // This is the first launch ever
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UINavigationController* vc;
     
@@ -24,6 +43,8 @@
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
     
+    
+
     return YES;
 }
 							
@@ -65,48 +86,294 @@
     return NO;
 }
 
-// 1
 - (NSManagedObjectContext *) managedObjectContext {
-    if (managedObjectContext != nil) {
-        return managedObjectContext;
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
     }
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        managedObjectContext = [[NSManagedObjectContext alloc] init];
-        //[NSManagedObjectContext setPersistentStoreCoordinator: coordinator];
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator: coordinator];
     }
     
-    return managedObjectContext;
+    return _managedObjectContext;
 }
 
-//2
 - (NSManagedObjectModel *)managedObjectModel {
-    if (managedObjectModel != nil) {
-        return managedObjectModel;
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
     }
-    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
     
-    return managedObjectModel;
+    return _managedObjectModel;
 }
 
-//3
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    if (persistentStoreCoordinator != nil) {
-        return persistentStoreCoordinator;
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
     }
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
-                                               stringByAppendingPathComponent: @"PhoneBook.sqlite"]];
+                                               stringByAppendingPathComponent: @"Data.sqlite"]];
     NSError *error = nil;
-    persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                    initWithManagedObjectModel:[self managedObjectModel]];
-//    if(![NSPersistentStoreCoordinator  addPersistentStoreWithType:NSSQLiteStoreType
-//                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
-//        /*Error for store creation should be handled in here*/
-//    }
-//    
-    return persistentStoreCoordinator;
+    if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
+        /*Error for store creation should be handled in here*/
+    }
+    
+    return _persistentStoreCoordinator;
 }
 
+
+-(NSArray*)getAllCarsRecords
+{
+    // initializing NSFetchRequest
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    //Setting Entity to be Queried
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CarEntity"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError* error;
+    
+    // Query on managedObjectContext With Generated fetchRequest
+    NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    // Returning Fetched Records
+    return fetchedRecords;
+}
+
+- (NSArray*)getAllHotels{
+    
+    // initializing NSFetchRequest
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    //Setting Entity to be Queried
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"HotelEntity"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError* error;
+    
+    // Query on managedObjectContext With Generated fetchRequest
+    NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    // Returning Fetched Records
+    return fetchedRecords;
+
+}
+
+- (NSArray*)getAllMadinaHotels{
+    
+    // initializing NSFetchRequest
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    //Setting Entity to be Queried
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"HotelMadinaEntity"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError* error;
+    
+    // Query on managedObjectContext With Generated fetchRequest
+    NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    // Returning Fetched Records
+    return fetchedRecords;
+    
+}
+
+-(void)saveCarsData
+{
+    
+    CarEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"cheverolet spark";
+    newEntry.type=@"";
+    newEntry.image= @"cheverolet.jpg";
+    newEntry.cost=[NSNumber numberWithInt:38];
+    newEntry.cost_all=[NSNumber numberWithLong:38 * 1];
+    
+    
+    newEntry=nil;
+    
+    newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                            inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"Nissan Sunny";
+    newEntry.type=@"";
+    newEntry.image= @"Sunny.jpg";
+    newEntry.cost=[NSNumber numberWithInt:42];
+    newEntry.cost_all=[NSNumber numberWithLong:42 * 1];
+    
+    
+    newEntry=nil;
+    
+    newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                            inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"Cheverolet Aveo";
+    newEntry.type=@"";
+    newEntry.image= @"Aveo.jpg";
+    newEntry.cost=[NSNumber numberWithInt:46];
+    newEntry.cost_all=[NSNumber numberWithLong:46 * 1];
+    
+    
+    
+    newEntry=nil;
+    
+    newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                            inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"Dodge Avenger";
+    newEntry.type=@"";
+    newEntry.image= @"dodge.jpg";
+    newEntry.cost=[NSNumber numberWithInt:80];
+    newEntry.cost_all=[NSNumber numberWithLong:80 * 1];
+    
+    
+    newEntry=nil;
+    
+    newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
+                                            inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"Nissan Altima";
+    newEntry.type=@"";
+    newEntry.image= @"altima.jpg";
+    newEntry.cost=[NSNumber numberWithInt:89];
+    newEntry.cost_all=[NSNumber numberWithLong:89 * 1];
+    
+}
+
+- (void) saveMekkaHotelsData{
+    
+    HotelEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelEntity"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"هيلتون";
+    newEntry.stars=[NSNumber numberWithInt:5];
+    newEntry.image= @"hilton.jpg";
+    newEntry.cost=[NSNumber numberWithInt:480];
+    newEntry.cost_all=[NSNumber numberWithLong:480 * 1];
+
+  
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"دار التوحيد";
+    newEntry.stars=[NSNumber numberWithInt:3];
+    newEntry.image= @"dar al tawhed.jpg";
+    newEntry.cost=[NSNumber numberWithInt:200];
+    newEntry.cost_all=[NSNumber numberWithLong:200 * 1];
+   
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"ميريديان";
+    newEntry.stars=[NSNumber numberWithInt:5];
+    newEntry.image= @"meredian.jpg";
+    newEntry.cost=[NSNumber numberWithInt:600];
+    newEntry.cost_all=[NSNumber numberWithLong:600 * 1];
+
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"إيلاف كندا";
+    newEntry.stars=[NSNumber numberWithInt:4];
+    newEntry.image= @"elaf kinda.jpg";
+    newEntry.cost=[NSNumber numberWithInt:260];
+    newEntry.cost_all=[NSNumber numberWithLong:260 * 1];
+    
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"أجياد مكة مكارم";
+    newEntry.stars=[NSNumber numberWithInt:3];
+    newEntry.image= @"Ajyad.jpg";
+    newEntry.cost=[NSNumber numberWithInt:320];
+    newEntry.cost_all=[NSNumber numberWithLong:320 * 1];
+    
+}
+
+
+- (void) saveMadinaHotelsData{
+    
+    HotelMadinaEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelMadinaEntity"
+                                                           inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"هيلتون";
+    newEntry.stars=[NSNumber numberWithInt:5];
+    newEntry.image= @"hilton.jpg";
+    newEntry.cost=[NSNumber numberWithInt:600];
+    newEntry.cost_all=[NSNumber numberWithLong:600 * 1];
+    
+    
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelMadinaEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"أوبروي";
+    newEntry.stars=[NSNumber numberWithInt:3];
+    newEntry.image= @"dar al tawhed.jpg";
+    newEntry.cost=[NSNumber numberWithInt:200];
+    newEntry.cost_all=[NSNumber numberWithLong:200 * 1];
+    
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelMadinaEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"دار التقوى";
+    newEntry.stars=[NSNumber numberWithInt:3];
+    newEntry.image= @"meredian.jpg";
+    newEntry.cost=[NSNumber numberWithInt:440];
+    newEntry.cost_all=[NSNumber numberWithLong:440 * 1];
+    
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelMadinaEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"الحرم";
+    newEntry.stars=[NSNumber numberWithInt:4];
+    newEntry.image= @"elaf kinda.jpg";
+    newEntry.cost=[NSNumber numberWithInt:300];
+    newEntry.cost_all=[NSNumber numberWithLong:300 * 1];
+    
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelMadinaEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"ديار انترناشيونال";
+    newEntry.stars=[NSNumber numberWithInt:4];
+    newEntry.image= @"Ajyad.jpg";
+    newEntry.cost=[NSNumber numberWithInt:410];
+    newEntry.cost_all=[NSNumber numberWithLong:410 * 1];
+    
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelMadinaEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"ديار";
+    newEntry.stars=[NSNumber numberWithInt:3];
+    newEntry.image= @"hilton.jpg";
+    newEntry.cost=[NSNumber numberWithInt:360];
+    newEntry.cost_all=[NSNumber numberWithLong:360 * 1];
+    
+    
+    newEntry = nil;
+    newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"HotelMadinaEntity"
+                                             inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.title=@"موفينبيك انوار المدينة";
+    newEntry.stars=[NSNumber numberWithInt:5];
+    newEntry.image= @"meredian.jpg";
+    newEntry.cost=[NSNumber numberWithInt:520];
+    newEntry.cost_all=[NSNumber numberWithLong:520 * 1];
+
+}
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }

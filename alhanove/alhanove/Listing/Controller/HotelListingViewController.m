@@ -8,10 +8,12 @@
 
 #import "HotelListingViewController.h"
 #import "HotelDetailsVC.h"
+#import "HotelMadinaEntity.h"
+#import "HotelEntity.h"
 
 @interface HotelListingViewController ()
 {
-    NSMutableArray* hotelArrays;
+    NSArray* hotelArrays;
     BOOL priceForOneGuest;
     
     SBPickerSelector *sortPicker;
@@ -27,6 +29,8 @@
     int chosenHotelIndex;
     NSInteger priceAscending;
     NSInteger starsAscending;
+    
+    AppDelegate* appDelegate;
 
 }
 @end
@@ -46,6 +50,10 @@
 {
     [super viewDidLoad];
     
+    appDelegate = [UIApplication sharedApplication].delegate;
+    self.managedObjectContext = appDelegate.managedObjectContext;
+    
+
     priceForOneGuest = YES;
     priceAscending = 0;
     starsAscending = 2;
@@ -76,104 +84,104 @@
     if (self.listingType == ListingTypeMekka) {
         self.pageTitle.text = @"فنادق مكة المكرمة";
         
-        hotelArrays = [NSMutableArray new];
-        
-        NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
-                                   @"Image" : @"hilton.jpg",
-                                   @"Stars" : @"5",
-                                   @"Cost" : @"480",
-                                   @"Cost_all" : [NSString stringWithFormat:@"%i",480 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict = @{@"Title" : @"دار التوحيد",
-                     @"Image" : @"dar al tawhed.jpg",
-                     @"Stars" : @"3",
-                     @"Cost" : @"200",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",200 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict  = @{@"Title" : @"ميريديان",
-                      @"Image" : @"meredian.jpg",
-                      @"Stars" : @"5",
-                      @"Cost" : @"600",
-                      @"Cost_all" : [NSString stringWithFormat:@"%i",600 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict = @{@"Title" : @"إيلاف كندا",
-                     @"Image" : @"elaf kinda.jpg",
-                     @"Stars" : @"4",
-                     @"Cost" : @"260",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",260 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict = @{@"Title" : @"أجياد مكة مكارم",
-                     @"Image" : @"Ajyad.jpg",
-                     @"Stars" : @"3",
-                     @"Cost" : @"320",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",320 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
+        hotelArrays =  [appDelegate getAllHotels ];
+
+//        NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
+//                                   @"Image" : @"hilton.jpg",
+//                                   @"Stars" : @"5",
+//                                   @"Cost" : @"480",
+//                                   @"Cost_all" : [NSString stringWithFormat:@"%i",480 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict = @{@"Title" : @"دار التوحيد",
+//                     @"Image" : @"dar al tawhed.jpg",
+//                     @"Stars" : @"3",
+//                     @"Cost" : @"200",
+//                     @"Cost_all" : [NSString stringWithFormat:@"%i",200 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict  = @{@"Title" : @"ميريديان",
+//                      @"Image" : @"meredian.jpg",
+//                      @"Stars" : @"5",
+//                      @"Cost" : @"600",
+//                      @"Cost_all" : [NSString stringWithFormat:@"%i",600 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict = @{@"Title" : @"إيلاف كندا",
+//                     @"Image" : @"elaf kinda.jpg",
+//                     @"Stars" : @"4",
+//                     @"Cost" : @"260",
+//                     @"Cost_all" : [NSString stringWithFormat:@"%i",260 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict = @{@"Title" : @"أجياد مكة مكارم",
+//                     @"Image" : @"Ajyad.jpg",
+//                     @"Stars" : @"3",
+//                     @"Cost" : @"320",
+//                     @"Cost_all" : [NSString stringWithFormat:@"%i",320 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
     }else if (self.listingType == ListingTypeMadina) {
         self.pageTitle.text = @"فنادق المدينة المنورة";
 
-        hotelArrays = [NSMutableArray new];
-        NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
-                                   @"Image" : @"hilton.jpg",
-                                   @"Stars" : @"5",
-                                   @"Cost" : @"600",
-                                   @"Cost_all" : [NSString stringWithFormat:@"%i",600 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict = @{@"Title" : @"أوبروي",
-                     @"Image" : @"dar al tawhed.jpg",
-                     @"Stars" : @"3",
-                     @"Cost" : @"200",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",200 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict  = @{@"Title" : @"دار التقوى",
-                      @"Image" : @"meredian.jpg",
-                      @"Stars" : @"3",
-                      @"Cost" : @"440",
-                      @"Cost_all" : [NSString stringWithFormat:@"%i",440 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict = @{@"Title" : @"الحرم",
-                     @"Image" : @"elaf kinda.jpg",
-                     @"Stars" : @"4",
-                     @"Cost" : @"300",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",300 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict = @{@"Title" : @"ديار انترناشيونال",
-                     @"Image" : @"Ajyad.jpg",
-                     @"Stars" : @"4",
-                     @"Cost" : @"410",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",410 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict = @{@"Title" : @"ديار",
-                     @"Image" : @"hilton.jpg",
-                     @"Stars" : @"3",
-                     @"Cost" : @"360",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",360 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
-        
-        MenuDict = nil;
-        MenuDict = @{@"Title" : @"موفينبيك انوار المدينة",
-                     @"Image" : @"meredian.jpg",
-                     @"Stars" : @"5",
-                     @"Cost" : @"520",
-                     @"Cost_all" : [NSString stringWithFormat:@"%i",520 * self.formObj.guestsNumber]};
-        [hotelArrays addObject:MenuDict];
+        hotelArrays =  [appDelegate getAllMadinaHotels ];
+//        NSDictionary *MenuDict = @{@"Title" : @"هيلتون",
+//                                   @"Image" : @"hilton.jpg",
+//                                   @"Stars" : @"5",
+//                                   @"Cost" : @"600",
+//                                   @"Cost_all" : [NSString stringWithFormat:@"%i",600 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict = @{@"Title" : @"أوبروي",
+//                     @"Image" : @"dar al tawhed.jpg",
+//                     @"Stars" : @"3",
+//                     @"Cost" : @"200",
+//                     @"Cost_all" : [NSString stringWithFormat:@"%i",200 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict  = @{@"Title" : @"دار التقوى",
+//                      @"Image" : @"meredian.jpg",
+//                      @"Stars" : @"3",
+//                      @"Cost" : @"440",
+//                      @"Cost_all" : [NSString stringWithFormat:@"%i",440 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict = @{@"Title" : @"الحرم",
+//                     @"Image" : @"elaf kinda.jpg",
+//                     @"Stars" : @"4",
+//                     @"Cost" : @"300",
+//                     @"Cost_all" : [NSString stringWithFormat:@"%i",300 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict = @{@"Title" : @"ديار انترناشيونال",
+//                     @"Image" : @"Ajyad.jpg",
+//                     @"Stars" : @"4",
+//                     @"Cost" : @"410",
+//                     @"Cost_all" : [NSString stringWithFormat:@"%i",410 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict = @{@"Title" : @"ديار",
+//                     @"Image" : @"hilton.jpg",
+//                     @"Stars" : @"3",
+//                     @"Cost" : @"360",
+//                     @"Cost_all" : [NSString stringWithFormat:@"%i",360 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
+//        
+//        MenuDict = nil;
+//        MenuDict = @{@"Title" : @"موفينبيك انوار المدينة",
+//                     @"Image" : @"meredian.jpg",
+//                     @"Stars" : @"5",
+//                     @"Cost" : @"520",
+//                     @"Cost_all" : [NSString stringWithFormat:@"%i",520 * self.formObj.guestsNumber]};
+//        [hotelArrays addObject:MenuDict];
     }
     
     //reflect to the table
@@ -293,8 +301,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MenuCell";
-    NSDictionary* dictionary = [hotelArrays objectAtIndex:indexPath.row];
-    
     HotelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
@@ -306,15 +312,35 @@
         cell = [topLevelObjects objectAtIndex:0];
         
     }
-    cell.guestNumbLbl.text = [NSString stringWithFormat:@"%ix",self.formObj.guestsNumber];
-    cell.titleLbl.text = dictionary[@"Title"];
-    [cell.menuImg setImage:[UIImage imageNamed:dictionary[@"Image"]]];
-    [cell.rateStarImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"rating_%@",dictionary[@"Stars"]]]];
-    if (priceForOneGuest)
-        cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary[@"Cost"]];
-    else
-        cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary[@"Cost_all"]];
+    
+    if (self.listingType == ListingTypeMekka) {
+        HotelEntity* dictionary = [hotelArrays objectAtIndex:indexPath.row];
+        
+        cell.guestNumbLbl.text = [NSString stringWithFormat:@"%ix",self.formObj.guestsNumber];
+        cell.titleLbl.text = dictionary.title;
+        [cell.menuImg setImage:[UIImage imageNamed:dictionary.image]];
+        [cell.rateStarImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"rating_%@",dictionary.stars]]];
+        if (priceForOneGuest)
+            cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary.cost];
+        else
+            cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary.cost_all];
 
+    }
+    else if (self.listingType == ListingTypeMadina) {
+        HotelMadinaEntity* dictionary = [hotelArrays objectAtIndex:indexPath.row];
+        
+        cell.guestNumbLbl.text = [NSString stringWithFormat:@"%ix",self.formObj.guestsNumber];
+        cell.titleLbl.text = dictionary.title;
+        [cell.menuImg setImage:[UIImage imageNamed:dictionary.image]];
+        [cell.rateStarImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"rating_%@",dictionary.stars]]];
+        if (priceForOneGuest)
+            cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary.cost];
+        else
+            cell.costLbl.text = [NSString stringWithFormat:@"%@ SR",dictionary.cost_all];
+
+    }
+    
+   
     cell.imgButton.tag=indexPath.row;
     [cell.imgButton addTarget:self
                        action:@selector(openHotelDetails:)
@@ -325,13 +351,17 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary* dictionary = [hotelArrays objectAtIndex:indexPath.row];
-    NSString* currCost = dictionary[@"Cost_all"];
     if (self.listingType == ListingTypeMekka){
+        HotelEntity* dictionary = [hotelArrays objectAtIndex:indexPath.row];
+        NSString* currCost =[NSString stringWithFormat:@"%@", dictionary.cost_all];
+
         mekkaCost = [currCost integerValue];
         self.formObj.MekkaHotelData = dictionary;
     }
     else if (self.listingType == ListingTypeMadina){
+        HotelMadinaEntity* dictionary = [hotelArrays objectAtIndex:indexPath.row];
+        NSString* currCost = [NSString stringWithFormat:@"%@", dictionary.cost_all];
+
         madinaCost = [currCost integerValue];
         self.formObj.MadinaHotelData = dictionary;
     }
@@ -469,11 +499,24 @@
     
     else if ([[segue identifier] isEqualToString:@"showHotelDetails"]){
         HotelDetailsVC* vc = segue.destinationViewController;
-        NSDictionary *hotelDictionary=[hotelArrays objectAtIndex:chosenHotelIndex];
-        vc.hotelCost=[hotelDictionary objectForKey:@"Cost"];
-        vc.starsNumber=[[hotelDictionary objectForKey:@"Stars"] integerValue];
-        vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)[hotelDictionary objectForKey:@"Image"]], nil ];
-        vc.hotelName=[hotelDictionary objectForKey:@"Title"];
+        if (self.listingType == ListingTypeMekka){
+            HotelEntity *hotelDictionary=[hotelArrays objectAtIndex:chosenHotelIndex];
+            vc.hotelCost=[NSString stringWithFormat:@"%@", hotelDictionary.cost];
+            vc.starsNumber=[hotelDictionary.stars intValue];
+            vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)hotelDictionary.image], nil ];
+            vc.hotelName=hotelDictionary.title;
+
+
+        }
+        else if (self.listingType == ListingTypeMadina){
+            HotelMadinaEntity *hotelDictionary=[hotelArrays objectAtIndex:chosenHotelIndex];
+            vc.hotelCost=[NSString stringWithFormat:@"%@", hotelDictionary.cost];
+            vc.starsNumber=[hotelDictionary.stars intValue];
+            vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)hotelDictionary.image], nil ];
+            vc.hotelName=hotelDictionary.title;
+            
+
+        }
         
     }
 }

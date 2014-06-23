@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 
 @interface HomeViewController ()
+
 {
     NSMutableArray* listMenu;
 }
@@ -19,6 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     [self.pageTitle setFont:[UIFont mediumGeSSOfSize:20]];
     self.navigationController.title = @"الهنوف للحجوزات";
@@ -143,7 +145,6 @@
 - (IBAction)carsBtnPrss:(id)sender {
     
     [self performSegueWithIdentifier:@"showCarFormVC" sender:self];
-
     /*
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
     [alert show];
@@ -164,8 +165,8 @@
 }
 
 - (IBAction)bookingsBtnPrss:(id)sender {
-//    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"هذه الخدمة غير متوفرة حاليا" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
-//    [alert show];
+    
+    
     return;
 }
 @end
