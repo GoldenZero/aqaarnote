@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UserDataViewController.h"
 #import "MenuCell.h"
+#import "BookingEntity.h"
 
 @interface TimeLineViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 

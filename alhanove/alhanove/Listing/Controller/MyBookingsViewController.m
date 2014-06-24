@@ -10,6 +10,7 @@
 #import "FormObject.h"
 #import "BookingCell.h"
 #import "UIScrollView+SVPullToRefresh.h"
+#import "BookingEntity.h"
 
 @interface MyBookingsViewController (){
     
@@ -32,8 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self fillWithData];
+    
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    self.managedObjectContext = appDelegate.managedObjectContext;
+
+    bookingsArray=[[NSMutableArray alloc] initWithArray:[appDelegate getAllBookings]];
     [self.bookingsTable reloadData];
+    
 //    [self geAccessToken];
 //    __block MyBookingsViewController* hvc = self;
 //
@@ -82,32 +88,6 @@
 
 }
 
-- (void) fillWithData{
-    bookingsArray=[[NSMutableArray alloc] init];
-    
-    NSDictionary *MenuDict = @{@"FromPlace" : @"Dubai",
-                               @"ToPlace" : @"Abu Dhabi",
-                               @"carType" : @"cheverolet spark",
-                               @"carCost" : @"38",
-                               @"fromDate": @"2014/3/3",
-                               @"toDate"  : @"2014/5/5",
-                               @"Note" : @" Doors : 5 , AC : Yes , Auto : YES"};
-    
-    [bookingsArray addObject:MenuDict];
-    
-    MenuDict = nil;
-
-    MenuDict = @{@"FromPlace" : @"Dubai",
-                               @"ToPlace" : @"Abu Dhabi",
-                               @"carType" : @"cheverolet spark",
-                               @"carCost" : @"38",
-                               @"fromDate": @"2014/3/3",
-                               @"toDate"  : @"2014/5/5",
-                               @"Note" : @" Doors : 5 , AC : Yes , Auto : YES"};
-    
-    [bookingsArray addObject:MenuDict];
-
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -151,7 +131,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"BookingCell";
-    NSDictionary* dictionary = [bookingsArray objectAtIndex:indexPath.row];
+    BookingEntity* dictionary = [bookingsArray objectAtIndex:indexPath.row];
     
     BookingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -164,7 +144,21 @@
         cell = [topLevelObjects objectAtIndex:0];
         
     }
+    cell.startPointLabel.text=dictionary.fromPlace;
     
+    cell.endPointLabel.text=dictionary.toPlace;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+   
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+
+    cell.dateLabel.text=[dateFormat stringFromDate:dictionary.fromDate];
+    
+    cell.timeLabel.text=[dateFormat stringFromDate:dictionary.toDate];
+    
+    cell.costLabel.text=[NSString stringWithFormat:@"%@", dictionary.carData.cost_all];
+    
+    cell.carTypeLabel.text= dictionary.carData.type;
     
     [cell.cancelButton addTarget:self action:@selector(cancelBooking:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -178,13 +172,13 @@
 {
     UIButton* btn = (UIButton*)sender;
     NSInteger index = btn.tag;
-    
-    NSDictionary* booking = _bookings[index];
-    __block NSInteger idx = index;
-    
-    NSString *message = NSLocalizedString(@"booking_cancel_confirmation_message", @"");
-    
-    NSInteger cancelFeeThreshold = 1;
+
+//    NSDictionary* booking = _bookings[index];
+//    __block NSInteger idx = index;
+//    
+//    NSString *message = NSLocalizedString(@"booking_cancel_confirmation_message", @"");
+//    
+//    NSInteger cancelFeeThreshold = 1;
 //    if ( cancelFeeThreshold > 0 ) {
 //        
 //        NSString* pickupTime = booking[@"pickup_time"];
@@ -292,7 +286,10 @@
                 NSInteger index = alertView.tag;
                 
                 __block NSInteger idx = index;
-                
+                [self.managedObjectContext deleteObject:[bookingsArray objectAtIndex:index]];
+                [bookingsArray removeObjectAtIndex:index];
+                [self.bookingsTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSNumber numberWithInteger:index]] withRowAnimation:UITableViewRowAnimationFade];
+/*
                 [[NetworkEngine getInstance] cancelBooking:booking[@"id"]
                                     WithcancellationReason:self.reasonText.text
                                            completionBlock:^(NSObject *object) {
@@ -322,7 +319,7 @@
                 if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] onErrorScreen]) {
                     
                 }
-                
+             */   
             }
             else
                 alertView.hidden = YES;

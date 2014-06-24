@@ -134,7 +134,7 @@
     dict = [NSMutableDictionary new];
     dict[@"sectionDate"] = @"2014/05/29";
     MenuDict = @{@"Title" : @"تفاصيل الحجز",
-                 @"guestsNumber" : [NSNumber numberWithInt:self.formObj.guestsNumber],
+                 @"guestsNumber" : [NSNumber numberWithInt: self.formObj.guestsNumber],
                  @"roomsNumber" : [NSNumber numberWithInt: self.formObj.roomsNumber],
                  @"date" : self.formObj.fromDate,
                  @"Type" : @"step_2"};
@@ -173,7 +173,7 @@
     dict = [NSMutableDictionary new];
     dict[@"sectionDate"] = @"2014/06/06";
     MenuDict = @{@"Title" : @"المجموع",
-                 @"Price": [NSNumber numberWithInt:[self.formObj.BookingCost integerValue] + [self.formObj.FlightCost integerValue]],
+                 @"Price": [NSNumber numberWithInt:[self.formObj.BookingCost intValue] + [self.formObj.FlightCost intValue]],
                  @"Type" : @"step_5"};
     menuDictArr = [NSMutableArray new];
     [menuDictArr addObject:MenuDict];

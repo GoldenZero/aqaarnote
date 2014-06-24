@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSMutableArray* bookings;
 @property (strong, nonatomic) UITextField* reasonText;
 
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)backBtnPrss:(id)sender;
 

@@ -111,6 +111,7 @@
 		7C182E8D193389C900DE2FE3 /* total_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E25193389C900DE2FE3 /* total_box@2x.png */; };
 		7C182E8E193389C900DE2FE3 /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E26193389C900DE2FE3 /* visa.png */; };
 		7C182E8F193389C900DE2FE3 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C182E27193389C900DE2FE3 /* visa@2x.png */; };
+		7C2236D11959705800A328D7 /* BookingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2236D01959705800A328D7 /* BookingEntity.m */; };
 		7C2F736E1950249D00B9BB1F /* SearchDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F736D1950249D00B9BB1F /* SearchDetailCell.m */; };
 		7C2F737D19502B1A00B9BB1F /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F737B19502B1A00B9BB1F /* airplane.png */; };
 		7C2F737E19502B1A00B9BB1F /* airplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2F737C19502B1A00B9BB1F /* airplane@2x.png */; };
@@ -191,7 +192,6 @@
 		7CB4DFE6192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4DFE5192E7FFB00B2A9F2 /* Screen Shot 2014-05-22 at 11.55.06 AM.png */; };
 		7CC9C8D4195838390015D3ED /* CarEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9C8D3195838390015D3ED /* CarEntity.m */; };
 		7CC9C8D7195838390015D3ED /* HotelEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9C8D6195838390015D3ED /* HotelEntity.m */; };
-		7CC9C8DA195838390015D3ED /* BookingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9C8D9195838390015D3ED /* BookingEntity.m */; };
 		7CC9C8DD19584E550015D3ED /* HotelMadinaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC9C8DC19584E550015D3ED /* HotelMadinaEntity.m */; };
 		7CD7778F194F0575005C3A9D /* chevrolet_aveo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77780194F0575005C3A9D /* chevrolet_aveo_1.jpg */; };
 		7CD77790194F0575005C3A9D /* chevrolet_aveo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7CD77781194F0575005C3A9D /* chevrolet_aveo_2.jpg */; };
@@ -465,6 +465,8 @@
 		7C182E25193389C900DE2FE3 /* total_box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "total_box@2x.png"; sourceTree = "<group>"; };
 		7C182E26193389C900DE2FE3 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
 		7C182E27193389C900DE2FE3 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
+		7C2236CF1959705800A328D7 /* BookingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingEntity.h; sourceTree = "<group>"; };
+		7C2236D01959705800A328D7 /* BookingEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingEntity.m; sourceTree = "<group>"; };
 		7C2F736C1950249D00B9BB1F /* SearchDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDetailCell.h; sourceTree = "<group>"; };
 		7C2F736D1950249D00B9BB1F /* SearchDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDetailCell.m; sourceTree = "<group>"; };
 		7C2F737B19502B1A00B9BB1F /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
@@ -572,8 +574,6 @@
 		7CC9C8D3195838390015D3ED /* CarEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarEntity.m; sourceTree = "<group>"; };
 		7CC9C8D5195838390015D3ED /* HotelEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelEntity.h; sourceTree = "<group>"; };
 		7CC9C8D6195838390015D3ED /* HotelEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelEntity.m; sourceTree = "<group>"; };
-		7CC9C8D8195838390015D3ED /* BookingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingEntity.h; sourceTree = "<group>"; };
-		7CC9C8D9195838390015D3ED /* BookingEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingEntity.m; sourceTree = "<group>"; };
 		7CC9C8DB19584E550015D3ED /* HotelMadinaEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelMadinaEntity.h; sourceTree = "<group>"; };
 		7CC9C8DC19584E550015D3ED /* HotelMadinaEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelMadinaEntity.m; sourceTree = "<group>"; };
 		7CD77780194F0575005C3A9D /* chevrolet_aveo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chevrolet_aveo_1.jpg; sourceTree = "<group>"; };
@@ -1382,14 +1382,14 @@
 			isa = PBXGroup;
 			children = (
 				7C3AF67D1956FE0500E852C7 /* Data.xcdatamodeld */,
-				7CC9C8D8195838390015D3ED /* BookingEntity.h */,
-				7CC9C8D9195838390015D3ED /* BookingEntity.m */,
 				7CC9C8D5195838390015D3ED /* HotelEntity.h */,
 				7CC9C8D6195838390015D3ED /* HotelEntity.m */,
 				7CC9C8D2195838390015D3ED /* CarEntity.h */,
 				7CC9C8D3195838390015D3ED /* CarEntity.m */,
 				7CC9C8DB19584E550015D3ED /* HotelMadinaEntity.h */,
 				7CC9C8DC19584E550015D3ED /* HotelMadinaEntity.m */,
+				7C2236CF1959705800A328D7 /* BookingEntity.h */,
+				7C2236D01959705800A328D7 /* BookingEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2099,6 +2099,7 @@
 				84C294B0192B7CAB0027E782 /* HotelCell.m in Sources */,
 				84C294A1192B753B0027E782 /* HotelListingViewController.m in Sources */,
 				84EFCFE7194DA5EE0034140B /* MKNetworkEngine.m in Sources */,
+				7C2236D11959705800A328D7 /* BookingEntity.m in Sources */,
 				84CA94DD192CCC65002CA3B4 /* TimeLineViewController.m in Sources */,
 				847D997D193338B5000CBDFA /* TwoLineCell.m in Sources */,
 				84EFD026194DC7600034140B /* MKAnnotationView+WebCache.m in Sources */,
@@ -2110,7 +2111,6 @@
 				84EFD02D194DC7600034140B /* SDWebImageManager.m in Sources */,
 				84EFD033194DC7600034140B /* UIImageView+WebCache.m in Sources */,
 				84EFCFE1194DA5EE0034140B /* NSData+MKBase64.m in Sources */,
-				7CC9C8DA195838390015D3ED /* BookingEntity.m in Sources */,
 				7C2F736E1950249D00B9BB1F /* SearchDetailCell.m in Sources */,
 				7C3F74A7192D498200DBA803 /* AGPhotoBrowserOverlayView.m in Sources */,
 				7C2F73A019507EA700B9BB1F /* ForgetPasswordViewController.m in Sources */,

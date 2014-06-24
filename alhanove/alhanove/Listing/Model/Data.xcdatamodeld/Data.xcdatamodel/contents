@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BookingEntity" representedClassName="BookingEntity" syncable="YES">
-        <attribute name="bookingID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="formPlace" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bookingCost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="bookingDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="bookingType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="carType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flightClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flightCost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="fromDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fromPlace" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="guestsNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="passportImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="personalImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="rentalDays" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="roomsNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="toDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="toPlace" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CarEntity" syncable="YES"/>
+        <attribute name="userAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userMobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="carData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CarEntity" syncable="YES"/>
+        <relationship name="madinaHotel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HotelMadinaEntity" syncable="YES"/>
+        <relationship name="mekkaHotel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HotelEntity" syncable="YES"/>
     </entity>
     <entity name="CarEntity" representedClassName="CarEntity" syncable="YES">
         <attribute name="airCond" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -38,9 +54,9 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="BookingEntity" positionX="0" positionY="81" width="128" height="375"/>
         <element name="CarEntity" positionX="-9" positionY="36" width="128" height="178"/>
         <element name="HotelEntity" positionX="-9" positionY="72" width="128" height="148"/>
-        <element name="BookingEntity" positionX="0" positionY="81" width="128" height="133"/>
         <element name="HotelMadinaEntity" positionX="9" positionY="126" width="128" height="148"/>
     </elements>
 </model>

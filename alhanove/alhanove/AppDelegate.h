@@ -19,7 +19,9 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator ;
 
 - (BOOL) onErrorScreen;
-- (NSArray*)getAllCarsRecords;
-- (NSArray*)getAllHotels;
-- (NSArray*)getAllMadinaHotels;
+- (NSArray*) getAllCarsRecords;
+- (NSArray*) getAllHotels;
+- (NSArray*) getAllMadinaHotels;
+- (NSArray*) getAllBookings;
+
 @end

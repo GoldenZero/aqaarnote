@@ -10,6 +10,7 @@
 #import "HotelCell.h"
 #import "SBPickerSelector.h"
 #import "TimeLineViewController.h"
+#import "BookingEntity.h"
 
 typedef enum ListingType
 {

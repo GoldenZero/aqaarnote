@@ -7,6 +7,7 @@
 //
 
 #import "FormViewController.h"
+#import "BookingEntity.h"
 
 @interface FormViewController (){
     
@@ -116,7 +117,7 @@
 }
 
 - (IBAction)lessRoomsBtnPrss:(id)sender {
-    if (form.roomsNumber!=1) {
+    if (form.guestsNumber!=1) {
         form.roomsNumber--;
         self.roomsLabel.text=[NSString stringWithFormat:@"%i",form.roomsNumber];
 
@@ -191,13 +192,13 @@
     
     switch (idx) {
         case 0:
-            form.FlightCost = @"4000";
+            form.FlightCost =@"4000";
             break;
         case 1:
-            form.FlightCost = @"2500";
+            form.FlightCost =@"2500";
             break;
         case 2:
-            form.FlightCost = @"1000";
+            form.FlightCost =@"1000";
             break;
         default:
             break;

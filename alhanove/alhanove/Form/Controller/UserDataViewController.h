@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SBPickerSelector.h"
+#import "BookingEntity.h"
 
 @interface UserDataViewController : UIViewController<SBPickerSelectorDelegate,EnhancedKeyboardDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
 
@@ -29,6 +30,8 @@
 @property (strong, nonatomic) NSString *tripCost;
 @property (strong, nonatomic) FormObject* formObj;
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
+
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)backInvoked:(id)sender;
 - (IBAction)homeInvoked:(id)sender;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SBPickerSelector.h"
+#import "BookingEntity.h"
 
 @interface CarUserDataViewController : UIViewController<SBPickerSelectorDelegate,EnhancedKeyboardDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate>
 
@@ -34,6 +35,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *checkInsuranceBtn;
 @property (strong, nonatomic) IBOutlet UIButton *checkGPSBtn;
 @property (strong, nonatomic) IBOutlet UIButton *checkChildBtn;
+
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)backInvoked:(id)sender;
 - (IBAction)homeInvoked:(id)sender;

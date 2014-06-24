@@ -36,6 +36,9 @@
 {
     [super viewDidLoad];
     
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    self.managedObjectContext = appDelegate.managedObjectContext;
+
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
     enhancedKeyboard.delegate = self;
 
@@ -158,7 +161,35 @@
     self.formObj.UserMobile = self.MobileText.text;
     self.formObj.PassportImage = passportImage;
     self.formObj.PersonalImage = personalImage;
-    self.formObj.BookingDate = [df stringFromDate:chosenDate];
+    self.formObj.BookingDate = chosenDate;
+    
+    BookingEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"BookingEntity"
+                                                         inManagedObjectContext:self.managedObjectContext];
+    
+    newEntry.mekkaHotel=self.formObj.MekkaHotelData;
+    newEntry.madinaHotel=self.formObj.MadinaHotelData;
+    newEntry.bookingType=self.formObj.BookingType;
+    newEntry.fromDate=self.formObj.fromDate;
+    newEntry.toDate=self.formObj.toDate;
+    newEntry.flightClass=self.formObj.FlightClass;
+    newEntry.flightCost=[NSNumber numberWithInteger:[self.formObj.FlightCost integerValue]];
+    newEntry.guestsNumber=[NSNumber numberWithInt:self.formObj.guestsNumber];
+    newEntry.roomsNumber=[NSNumber numberWithInt:self.formObj.roomsNumber];
+    newEntry.rentalDays=[NSNumber numberWithInteger:self.formObj.rentalDays];
+    
+    newEntry.userName=self.formObj.UserName;
+    newEntry.userAddress=self.formObj.UserAddress;
+    newEntry.userEmail=self.formObj.UserEmail;
+    newEntry.userMobile=self.formObj.UserMobile;
+    newEntry.bookingDate=self.formObj.BookingDate;
+    newEntry.passportImage=UIImagePNGRepresentation(self.formObj.PassportImage);
+    newEntry.personalImage=UIImagePNGRepresentation(self.formObj.PersonalImage);
+    
+    newEntry.fromPlace=self.formObj.FromPlace;
+    newEntry.toPlace=self.formObj.ToPlace;
+    newEntry.carData=self.formObj.CarData;
+    newEntry.carType=self.formObj.carType;
+    
 }
 
 
