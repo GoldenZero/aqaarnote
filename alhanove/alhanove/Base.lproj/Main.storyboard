@@ -2537,6 +2537,7 @@
                                         </state>
                                         <connections>
                                             <action selector="homeInvoked:" destination="FfA-xc-et6" eventType="touchUpInside" id="F2d-zZ-rhk"/>
+                                            <segue destination="vXZ-lx-hvc" kind="modal" identifier="BackToHome" id="WHO-XZ-LJk"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3005,11 +3006,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="djM-dg-d5Q"/>
-        <segue reference="cl0-bd-xyr"/>
-        <segue reference="tda-7z-m7O"/>
-        <segue reference="aDk-Bc-JZa"/>
         <segue reference="YyB-gV-x4h"/>
+        <segue reference="WHO-XZ-LJk"/>
+        <segue reference="aDk-Bc-JZa"/>
         <segue reference="fj8-ro-EdL"/>
+        <segue reference="tda-7z-m7O"/>
+        <segue reference="cl0-bd-xyr"/>
     </inferredMetricsTieBreakers>
 </document>
