@@ -256,7 +256,7 @@
 - (BOOL)photoBrowser:(AGPhotoBrowserView *)photoBrowser willDisplayActionButtonAtIndex:(NSInteger)index
 {
     
-    return YES;
+    return NO;
 }
 
 
@@ -279,6 +279,7 @@
 		_browserView = [[AGPhotoBrowserView alloc] initWithFrame:CGRectZero];
 		_browserView.delegate = self;
 		_browserView.dataSource = self;
+        
 	}
 	
 	return _browserView;

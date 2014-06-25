@@ -291,7 +291,7 @@
 - (BOOL)photoBrowser:(AGPhotoBrowserView *)photoBrowser willDisplayActionButtonAtIndex:(NSInteger)index
 {
     
-    return YES;
+    return NO;
 }
 
 
@@ -341,10 +341,10 @@
 {
     UILabel *label = [[UILabel alloc] init];
     if (section==0) {
-         label.text= @"معدات";
+         label.text= @"السعة";
     }
     else{
-         label.text= @"السعة";
+         label.text= @"معدات";
     }
     [label setFont:[UIFont lightGeSSOfSize:12]];
 

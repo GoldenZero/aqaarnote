@@ -32,5 +32,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *noteHead;
 @property (strong, nonatomic) IBOutlet UILabel *carTypeHead;
 @property (strong, nonatomic) IBOutlet UILabel *bookNumHead;
+@property (strong, nonatomic) IBOutlet UILabel *toDate;
+@property (strong, nonatomic) IBOutlet UILabel *fromDate;
+@property (strong, nonatomic) IBOutlet UILabel *acLabel;
+@property (strong, nonatomic) IBOutlet UILabel *autoLabel;
+@property (strong, nonatomic) IBOutlet UILabel *passengersLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *doorsLabel;
 @end

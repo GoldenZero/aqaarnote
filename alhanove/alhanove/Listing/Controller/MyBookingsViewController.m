@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
     
+    [self.titleLabel setFont:[UIFont mediumGeSSOfSize:17]];
+
     AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     self.managedObjectContext = appDelegate.managedObjectContext;
 
@@ -156,7 +158,7 @@
     
     cell.timeLabel.text=[dateFormat stringFromDate:dictionary.toDate];
     
-    cell.costLabel.text=[NSString stringWithFormat:@"%@", dictionary.carData.cost_all];
+    cell.paymentLabel.text=[NSString stringWithFormat:@"%@", dictionary.carData.cost_all];
     
     cell.carTypeLabel.text= dictionary.carData.type;
     
@@ -192,7 +194,6 @@
 //    }
 //    
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"dialog_confirmation_title", @"") message:[NSString stringWithFormat:@"%@ , %@",NSLocalizedString(@"booking_cancel_confirmation_message", @""),NSLocalizedString(@"booking_cancel_reason_hint", @"")] delegate:self cancelButtonTitle:NSLocalizedString(@"dialog_button_yes", @"") otherButtonTitles:NSLocalizedString(@"dialog_button_no", @""), nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     alert.tag = index;
     [alert show];
     return;
@@ -288,7 +289,7 @@
                 __block NSInteger idx = index;
                 [self.managedObjectContext deleteObject:[bookingsArray objectAtIndex:index]];
                 [bookingsArray removeObjectAtIndex:index];
-                [self.bookingsTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSNumber numberWithInteger:index]] withRowAnimation:UITableViewRowAnimationFade];
+                [self.bookingsTable reloadData];
 /*
                 [[NetworkEngine getInstance] cancelBooking:booking[@"id"]
                                     WithcancellationReason:self.reasonText.text

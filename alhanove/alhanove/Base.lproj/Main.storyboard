@@ -277,10 +277,10 @@
                                         <rect key="frame" x="247" y="25" width="31" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wjr-mZ-kXB">
-                                        <rect key="frame" x="14" y="28" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wjr-mZ-kXB">
+                                        <rect key="frame" x="0.0" y="20" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Login">
+                                        <state key="normal" image="login.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1348,7 +1348,7 @@
                                         <rect key="frame" x="280" y="233" width="13" height="8"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bet-wj-QfP">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Bet-wj-QfP">
                                         <rect key="frame" x="100" y="441" width="121" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <state key="normal" image="next_hotel_details.png">
@@ -2427,7 +2427,7 @@
                                         <rect key="frame" x="280" y="167" width="13" height="8"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="g3J-Cg-pZK">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="g3J-Cg-pZK">
                                         <rect key="frame" x="100" y="441" width="121" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <state key="normal" image="next_hotel_details.png">
@@ -2754,7 +2754,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cnm-TK-dwL">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cnm-TK-dwL">
                                         <rect key="frame" x="270" y="18" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <state key="normal" image="edit.png">
@@ -2980,6 +2980,7 @@
         <image name="less.png" width="66" height="58"/>
         <image name="line_separative.png" width="35" height="35"/>
         <image name="location_icon_right.png" width="13" height="20"/>
+        <image name="login.png" width="24" height="24"/>
         <image name="map_left.png" width="64" height="67"/>
         <image name="more.png" width="66" height="58"/>
         <image name="my_res.png" width="160" height="168"/>
@@ -3006,10 +3007,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YyB-gV-x4h"/>
-        <segue reference="WHO-XZ-LJk"/>
-        <segue reference="aDk-Bc-JZa"/>
         <segue reference="fj8-ro-EdL"/>
+        <segue reference="k4Y-Vf-G4L"/>
+        <segue reference="WHO-XZ-LJk"/>
+        <segue reference="YyB-gV-x4h"/>
         <segue reference="tda-7z-m7O"/>
         <segue reference="cl0-bd-xyr"/>
     </inferredMetricsTieBreakers>

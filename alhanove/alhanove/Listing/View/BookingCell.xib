@@ -157,14 +157,14 @@
                         <rect key="frame" x="79" y="130" width="15" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2/2014/5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fS6-sx-dje">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2/2014/5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fS6-sx-dje">
                         <rect key="frame" x="152" y="127" width="67" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2/2014/5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rah-LQ-Oky">
-                        <rect key="frame" x="20" y="127" width="51" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2/2014/5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rah-LQ-Oky">
+                        <rect key="frame" x="8" y="127" width="63" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="highlightedColor"/>
@@ -215,6 +215,8 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="acLabel" destination="neT-2Z-M8N" id="rV7-NG-Ll1"/>
+                <outlet property="autoLabel" destination="DRj-sf-jSU" id="Q8N-hD-V5r"/>
                 <outlet property="bookNumHead" destination="qgF-gj-pUV" id="f95-v5-i5f"/>
                 <outlet property="bookingNumberLabel" destination="IFT-c5-gxL" id="MLe-hr-e8g"/>
                 <outlet property="cancelButton" destination="iIK-p2-Wl7" id="CJr-5A-dml"/>
@@ -223,14 +225,17 @@
                 <outlet property="continueButton" destination="CIV-Ha-ak5" id="QNP-Ph-P2q"/>
                 <outlet property="costLabel" destination="ZRK-Xi-hTq" id="xIQ-OS-I8Y"/>
                 <outlet property="dateLabel" destination="fS6-sx-dje" id="dYM-QY-DCT"/>
+                <outlet property="doorsLabel" destination="KDZ-Ji-jUH" id="2x8-66-Pam"/>
                 <outlet property="dropoffHead" destination="cOe-Pb-BSr" id="PaY-hh-1mn"/>
                 <outlet property="endPointLabel" destination="XAd-u4-gkP" id="Rsb-OU-Zxm"/>
+                <outlet property="fromDate" destination="5gR-IJ-oGk" id="9oe-py-C70"/>
                 <outlet property="noteHead" destination="Ofe-gS-sZ3" id="46z-xX-QAT"/>
+                <outlet property="passengersLabel" destination="y9w-mV-dqA" id="ByK-4U-QEw"/>
                 <outlet property="paymentLabel" destination="YgN-1l-z2p" id="zib-bR-gWm"/>
                 <outlet property="pickupHead" destination="yGZ-zJ-fWJ" id="PHp-8m-r3A"/>
-                <outlet property="priceHead" destination="ZRK-Xi-hTq" id="dM9-pG-ku1"/>
                 <outlet property="startPointLabel" destination="9yS-lm-It7" id="Qo1-NM-fSv"/>
                 <outlet property="timeLabel" destination="rah-LQ-Oky" id="qHX-RZ-Vd2"/>
+                <outlet property="toDate" destination="krZ-Cf-7DV" id="lIP-WS-bur"/>
             </connections>
         </tableViewCell>
     </objects>

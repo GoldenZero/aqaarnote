@@ -117,7 +117,11 @@
     NSString *allphoneNumber = [NSString stringWithFormat:@"%@%@",phoneKey,phoneNum];
     
     
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"thanks_title", @"") message:NSLocalizedString(@"login_success", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"dialog_button_ok", @"") otherButtonTitles:nil, nil];
+    [alert show];
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+/*
     //TODO call api to login
     [[NetworkEngine getInstance] getRefreshToken:@"200" withUser:allphoneNumber password:self.passwordTxtField.text completionBlock:^(NSObject* response)
      {
@@ -155,6 +159,8 @@
     if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] onErrorScreen]) {
 
     }
+ 
+ */
     
 }
 

@@ -162,7 +162,7 @@
     self.formObj.PassportImage = passportImage;
     self.formObj.PersonalImage = personalImage;
     self.formObj.BookingDate = chosenDate;
-    
+    /*
     BookingEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"BookingEntity"
                                                          inManagedObjectContext:self.managedObjectContext];
     
@@ -189,6 +189,7 @@
     newEntry.toPlace=self.formObj.ToPlace;
     newEntry.carData=self.formObj.CarData;
     newEntry.carType=self.formObj.carType;
+     */
     
 }
 
