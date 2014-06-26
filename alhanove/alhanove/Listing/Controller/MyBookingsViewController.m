@@ -11,10 +11,12 @@
 #import "BookingCell.h"
 #import "UIScrollView+SVPullToRefresh.h"
 #import "BookingEntity.h"
+#import "CarFormViewController.h"
 
 @interface MyBookingsViewController (){
     
     NSMutableArray * bookingsArray;
+    FormObject *formObj;
 }
 
 @end
@@ -103,8 +105,13 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"showEditCarFormVC"])   //parameter to login page
+    {
+        
+        CarFormViewController* vc = segue.destinationViewController;
+        vc.form =formObj ;
+    }
+
 }
 
 
@@ -204,16 +211,29 @@
 {
     UIButton* btn = (UIButton*)sender;
     NSInteger index = btn.tag;
-    NSDictionary* booking = _bookings[index];
-    NSString* pt = booking[@"type"];
-    if ([pt isEqualToString:@"0"]) {
-        //go to fast jaziil for update
-        [self performSegueWithIdentifier:@"showFastUpdate" sender:sender];
-        
-    }else{
-        //go to jaziil for update
-        [self performSegueWithIdentifier:@"showMapFromUpdate" sender:sender];
-    }
+    BookingEntity *dic=[bookingsArray objectAtIndex:index];
+    formObj=[[FormObject alloc] init];
+    formObj.FromPlace=dic.fromPlace;
+    formObj.ToPlace=dic.toPlace;
+    formObj.fromDate=dic.fromDate;
+    formObj.toDate=dic.toDate;
+    formObj.FlightClass=dic.flightClass;
+    formObj.FlightCost=[NSString stringWithFormat:@"%@", dic.flightCost];
+    formObj.carType=dic.carType;
+    formObj.CarData=dic.carData;
+    formObj.UserAddress=dic.userAddress;
+    formObj.UserEmail=dic.userEmail;
+    formObj.UserMobile=dic.userMobile;
+    formObj.UserName=dic.userName;
+    formObj.MekkaHotelData=dic.mekkaHotel;
+    formObj.MadinaHotelData=dic.madinaHotel;
+    formObj.guestsNumber=[dic.guestsNumber intValue];
+    formObj.roomsNumber=[dic.roomsNumber intValue];
+    formObj.rentalDays=[dic.rentalDays integerValue];
+    formObj.PassportImage=[UIImage imageWithData:dic.passportImage];
+    formObj.PersonalImage=[UIImage imageWithData:dic.personalImage];
+    [self performSegueWithIdentifier:@"showEditCarFormVC" sender:self];
+
     
 
 }

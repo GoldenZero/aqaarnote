@@ -14,7 +14,6 @@
     SBPickerSelector *ToDatePicker;
     SBPickerSelector *carTypePicker;
 
-    FormObject * form;
     
     BOOL dateFromFlag;
     BOOL dateFromChoosed;
@@ -37,6 +36,7 @@
 @end
 
 @implementation CarFormViewController
+@synthesize form;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -63,10 +63,12 @@
     
     
     carTypesArray=[[NSArray alloc] initWithObjects:@"سيارة اقتصادية",@"سيارة متوسطة الحجم",@"سيارة عائلية",@"سيارة فخمة", nil];
-    
-    form=[[FormObject alloc] init];
-    form.guestsNumber=1;
-    form.roomsNumber=1;
+    if (form==nil) {
+        form=[[FormObject alloc] init];
+        form.guestsNumber=1;
+        form.roomsNumber=1;
+    }
+
     
     // Set picker view
     FromDatePicker = [SBPickerSelector picker];
@@ -108,12 +110,45 @@
     //NSDate *today = [NSDate date];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    self.fromDateLabel.text = @"حدد التاريخ";
-    self.toDateLabel.text = @"حدد التاريخ";
-    self.fromPlaceLabel.text = @"حدد المكان";
-    self.toPlaceLabel.text = @"حدد المكان";
-    self.carTypeLabel.text = @"حدد الفئة";
+    if (form.fromDate!=nil) {
+        self.fromDateLabel.text = [dateFormat stringFromDate:form.fromDate];
+    }
+    else{
+        self.fromDateLabel.text = @"حدد التاريخ";
+
+    }
     
+    if (form.toDate!=nil) {
+        self.toDateLabel.text = [dateFormat stringFromDate:form.toDate];
+    }
+    else{
+        self.toDateLabel.text = @"حدد التاريخ";
+        
+    }
+
+    if (form.FromPlace!=nil) {
+        self.fromPlaceLabel.text =form.FromPlace;
+    }
+    else{
+        self.fromPlaceLabel.text = @"حدد المكان";
+        
+    }
+    
+    if (form.ToPlace!=nil) {
+        self.toPlaceLabel.text =form.ToPlace;
+    }
+    else{
+        self.toPlaceLabel.text = @"حدد المكان";
+        
+    }
+ 
+    if (form.carType!=nil) {
+        self.carTypeLabel.text =form.carType;
+    }
+    else{
+        self.carTypeLabel.text = @"حدد الفئة";
+        
+    }
     
 }
 

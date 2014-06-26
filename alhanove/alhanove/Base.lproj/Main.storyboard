@@ -432,6 +432,7 @@
                     <connections>
                         <outlet property="bookingsTable" destination="ZYY-1G-VBQ" id="0fZ-tp-Dbk"/>
                         <outlet property="titleLabel" destination="NTe-6R-OQV" id="dsD-Ws-e5e"/>
+                        <segue destination="ri5-Va-JDu" kind="modal" identifier="showEditCarFormVC" id="Jjo-a7-u3d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grm-pI-ldF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3005,6 +3006,6 @@
         <segue reference="3zr-9d-ced"/>
         <segue reference="tda-7z-m7O"/>
         <segue reference="cl0-bd-xyr"/>
-        <segue reference="k4Y-Vf-G4L"/>
+        <segue reference="Jjo-a7-u3d"/>
     </inferredMetricsTieBreakers>
 </document>

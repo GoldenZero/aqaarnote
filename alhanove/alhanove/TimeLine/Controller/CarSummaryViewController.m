@@ -8,6 +8,8 @@
 
 #import "CarSummaryViewController.h"
 #import "CarUserDataViewController.h"
+#import "CarFormViewController.h"
+
 @interface CarSummaryViewController ()
 
 @end
@@ -86,7 +88,15 @@
  
         CarUserDataViewController* vc = segue.destinationViewController;
         vc.formObj = self.formObj;
-    }}
+    }
+    else  if ([[segue identifier] isEqualToString:@"showEditCarFormVC"])   //parameter to login page
+    {
+        
+        CarFormViewController* vc = segue.destinationViewController;
+        vc.form = self.formObj;
+    }
+
+}
 
 
 - (IBAction)nextBtnPrss:(id)sender {

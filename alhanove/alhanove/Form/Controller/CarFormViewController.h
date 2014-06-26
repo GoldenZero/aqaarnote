@@ -34,6 +34,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *carTypeLabel;
 
+@property (strong, nonatomic)  FormObject * form;
+
 #pragma mark - Buttons Actions
 
 - (IBAction)backBtnPrss:(id)sender;
