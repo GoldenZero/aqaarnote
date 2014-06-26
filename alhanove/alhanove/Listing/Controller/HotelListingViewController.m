@@ -414,7 +414,8 @@
             vc.starsNumber=[hotelDictionary.stars intValue];
             vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)hotelDictionary.image], nil ];
             vc.hotelName=hotelDictionary.title;
-
+            vc.locationTxtView.text=hotelDictionary.location;
+            vc.describTxtView.text=hotelDictionary.notes;
 
         }
         else if (self.listingType == ListingTypeMadina){
@@ -423,7 +424,8 @@
             vc.starsNumber=[hotelDictionary.stars intValue];
             vc.pageImages=[[NSMutableArray alloc] initWithObjects:[UIImage imageNamed:(NSString*)hotelDictionary.image], nil ];
             vc.hotelName=hotelDictionary.title;
-            
+            vc.locationTxtView.text=hotelDictionary.location;
+            vc.describTxtView.text=hotelDictionary.notes;
 
         }
         

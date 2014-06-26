@@ -62,10 +62,10 @@
     self.carTypeLabel.text=self.formObj.carType;
     self.daysLabel.text=[NSString stringWithFormat:@"%li Days" ,(long)self.formObj.rentalDays];
     self.carImage.image=[UIImage imageNamed:self.formObj.CarData.image];
-    self.carDoorsLabel.text=@"4";//[self.formObj.CarData objectForKey:@""];
-    self.passengersLabel.text=@"5";//[self.formObj.CarData objectForKey:@""];
-    self.autoLabel.text=@"Auto";//[self.formObj.CarData objectForKey:@""];
-    self.acLabel.text=@"Yes";//[self.formObj.CarData objectForKey:@""];
+    self.carDoorsLabel.text=[NSString stringWithFormat:@"%@", self.formObj.CarData.doors];
+    self.passengersLabel.text=[NSString stringWithFormat:@"%@", self.formObj.CarData.passengers];
+    self.autoLabel.text=[NSString stringWithFormat:@"%@", [self.formObj.CarData.automatic boolValue] ? @"Yes" : @"No"];
+    self.acLabel.text=[NSString stringWithFormat:@"%@",[self.formObj.CarData.airCond boolValue] ? @"Yes" : @"No"];
     self.costLabel.text=[NSString stringWithFormat:@"%@ SR",self.formObj.carCost];
     self.fromPlaceLabel.text=self.formObj.FromPlace;
     self.toPlaceLabel.text=self.formObj.ToPlace;

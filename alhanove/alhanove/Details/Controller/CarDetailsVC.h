@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
 @property (strong, nonatomic) IBOutlet UILabel *reviewLabel;
+@property (strong, nonatomic) CarEntity *carDetails;
 
 @property (strong, nonatomic) NSMutableArray *pageImages;
 @property (strong,nonatomic) NSString *hotelName;

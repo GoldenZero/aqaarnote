@@ -58,7 +58,7 @@
     capacityArray=[[NSMutableArray alloc] init];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"عدد الراكبين" forKey:@"Label"];
-    [dic setObject:@"٥" forKey:@"Value"];
+    [dic setObject:[NSString stringWithFormat:@"%@", self.carDetails.passengers] forKey:@"Value"];
     [dic setObject:@"passenger" forKey:@"Image"];
     [capacityArray addObject:dic];
     
@@ -71,13 +71,13 @@
     equipmentArray=[[NSMutableArray alloc] init];
     dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"عدد الأبواب" forKey:@"Label"];
-    [dic setObject:@"٤" forKey:@"Value"];
+    [dic setObject:[NSString stringWithFormat:@"%@", self.carDetails.doors] forKey:@"Value"];
     [dic setObject:@"car" forKey:@"Image"];
     [equipmentArray addObject:dic];
 
     dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"تكييف" forKey:@"Label"];
-    [dic setObject:@"متوفر" forKey:@"Value"];
+    [dic setObject:[NSString stringWithFormat:@"%@",[self.carDetails.airCond boolValue] ? @"Yes" : @"No"] forKey:@"Value"];
     [dic setObject:@"AC" forKey:@"Image"];
     [equipmentArray addObject:dic];
 
@@ -89,7 +89,7 @@
  
     dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"Automatic" forKey:@"Label"];
-    [dic setObject:@"متوفر" forKey:@"Value"];
+    [dic setObject:[NSString stringWithFormat:@"%@",[self.carDetails.automatic boolValue] ? @"Yes" : @"No"] forKey:@"Value"];
     [dic setObject:@"gear_shift" forKey:@"Image"];
     [equipmentArray addObject:dic];
     
