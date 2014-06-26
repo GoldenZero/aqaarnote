@@ -23,7 +23,8 @@
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
+    self.titleLabel.font = [UIFont mediumGeSSOfSize:12];
+    
+    self.subtitleLabel.font = [UIFont lightGeSSOfSize:13];}
 
 @end

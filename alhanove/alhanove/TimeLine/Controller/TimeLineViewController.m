@@ -247,7 +247,7 @@
     UILabel* lbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     [lbl setTextAlignment:NSTextAlignmentRight];
     [lbl setText:dictionaryArray[@"sectionDate"]];
-    
+    lbl.font=[UIFont mediumGeSSOfSize:14];
     return lbl;
 
 }
@@ -274,9 +274,7 @@
         }
         [cell.iconImg setImage:[UIImage imageNamed:rowDictionary[@"Type"]]];
         cell.titleLabel.text = rowDictionary[@"Title"];
-        [cell.titleLabel setFont:[UIFont mediumGeSSOfSize:12]];
         cell.subtitleLabel.text=rowDictionary[@"Text"];
-        [cell.subtitleLabel setFont:[UIFont lightGeSSOfSize:12]];
         
 
         return cell;

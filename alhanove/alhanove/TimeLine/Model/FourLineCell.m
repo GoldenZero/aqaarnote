@@ -23,7 +23,16 @@
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    self.detailsLabel.font = [UIFont mediumGeSSOfSize:12];
+    self.dateLabel.font = [UIFont mediumGeSSOfSize:12];
+
+    self.guestsNumLabel.font = [UIFont mediumGeSSOfSize:12];
+    self.roomsNumLabel.font = [UIFont mediumGeSSOfSize:12];
+
+    self.dateTitleLabel.font = [UIFont lightGeSSOfSize:13];
+    self.guestsTitleLabel.font = [UIFont lightGeSSOfSize:13];
+    self.roomsTitleLabel.font = [UIFont lightGeSSOfSize:13];
+
 }
 
 @end

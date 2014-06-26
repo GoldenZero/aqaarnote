@@ -23,7 +23,9 @@
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    self.totalLabel.font = [UIFont mediumGeSSOfSize:12];
+    
+    self.totalNumberLabel.font = [UIFont lightGeSSOfSize:13];
 }
 
 @end

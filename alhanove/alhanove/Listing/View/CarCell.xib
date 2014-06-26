@@ -45,14 +45,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="345" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47h-Ln-kFv">
-                        <rect key="frame" x="65" y="49" width="62" height="21"/>
+                        <rect key="frame" x="80" y="49" width="62" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBf-Al-1UY">
-                        <rect key="frame" x="20" y="49" width="42" height="21"/>
+                        <rect key="frame" x="20" y="49" width="52" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.78093112239999996" green="0.78093112239999996" blue="0.78093112239999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -102,9 +102,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="77" maxY="0.0"/>
             <connections>
+                <outlet property="acLabel" destination="tDa-nf-oms" id="khh-ik-f13"/>
+                <outlet property="autoLabel" destination="XhX-Lr-doC" id="lSF-4n-K53"/>
                 <outlet property="costLbl" destination="47h-Ln-kFv" id="sZz-sI-VjC"/>
+                <outlet property="doorsLabel" destination="Cde-cs-AyX" id="pl9-ou-JWh"/>
                 <outlet property="imgButton" destination="mRP-WK-hnz" id="GSF-PD-zmt"/>
                 <outlet property="menuImg" destination="4Xk-Oq-aA4" id="j7V-gl-Frh"/>
+                <outlet property="passengersLabel" destination="gR2-n7-wFS" id="7Vp-a9-vkU"/>
                 <outlet property="rentalDaysLbl" destination="mBf-Al-1UY" id="tC4-Of-U6k"/>
                 <outlet property="titleLbl" destination="iIb-QJ-5O4" id="aIH-sd-Lr9"/>
                 <outlet property="typeLbl" destination="QtR-Gh-lu1" id="5Zv-mG-ph8"/>

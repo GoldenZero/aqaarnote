@@ -15,5 +15,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *costLbl;
 @property (strong, nonatomic) IBOutlet UIButton *imgButton;
 @property (strong, nonatomic) IBOutlet UILabel *rentalDaysLbl;
+@property (strong, nonatomic) IBOutlet UILabel *acLabel;
+@property (strong, nonatomic) IBOutlet UILabel *autoLabel;
+@property (strong, nonatomic) IBOutlet UILabel *passengersLabel;
+@property (strong, nonatomic) IBOutlet UILabel *doorsLabel;
 
 @end

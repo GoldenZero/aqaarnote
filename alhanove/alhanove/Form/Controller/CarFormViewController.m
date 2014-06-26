@@ -156,7 +156,7 @@
         return;
     }
     
-    form.rentalDays = [self daysBetweenDate:form.toDate andDate:form.fromDate];
+    form.rentalDays = [self daysBetweenDate:form.fromDate andDate:form.toDate];
     
     [self performSegueWithIdentifier:@"showCarsList" sender:self];
 }
@@ -213,7 +213,7 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     if (dateFromFlag) {
-        if (date>form.toDate) {
+        if ((date>form.toDate)&&(dateToChoosed)) {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"تاريخ الانطلاق تالي للعودة!" message:@"الرجاء تحديد تاريخ الإنطلاق" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
             [alert show];
             dateFromChoosed = NO;
@@ -225,7 +225,7 @@
 
     }
     else if (dateToFlag) {
-        if (date<form.fromDate) {
+        if ((date<form.fromDate)&&(dateFromChoosed)) {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"تاريخ العودة سابق للانطلاق!" message:@"الرجاء تحديد تاريخ العودة من جديد" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
             [alert show];
             dateToChoosed = NO;

@@ -136,16 +136,19 @@
 
 - (IBAction)payNowInvoked:(id)sender
 {
-    [self initializeFormObject];
-    //show the credit card dialog page
-    [self performSegueWithIdentifier:@"showPayNow" sender:self];
+    if ([self checkFields]) {
+        [self initializeFormObject];
+        [self performSegueWithIdentifier:@"showPayNow" sender:self];
+
+    }
 }
 
 - (IBAction)payLaterInvoked:(id)sender
 {
-    [self initializeFormObject];
-    // show pay later page
-    [self performSegueWithIdentifier:@"showPayLater" sender:self];
+    if ([self checkFields]) {
+        [self initializeFormObject];
+        [self performSegueWithIdentifier:@"showPayLater" sender:self];
+    }
 
 }
 
@@ -333,9 +336,39 @@
 //if the user cancel the picker
 -(void) SBPickerSelector:(SBPickerSelector *)selector cancelPicker:(BOOL)cancel
 {
-    
+
 }
 
+- (BOOL) checkFields{
+    if ([self.NameText.text isEqualToString:@""]) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء إدخال اسم المستخدم" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        [alert show];
+        return false;
+        
+    }
+    else if ([self.AddressText.text isEqualToString:@""]) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء إدخال العنوان" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        [alert show];
+        return false;
+        
+    }
+
+    else if ([self.EmailText.text isEqualToString:@""]) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء إدخال البريد الالكتروني" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        [alert show];
+        return false;
+        
+    }
+    else if ([self.MobileText.text isEqualToString:@""]) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء إدخال رقم الموبايل" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
+        [alert show];
+        return false;
+        
+    }
+    else{
+        return true;
+    }
+}
 /*
 #pragma mark - Navigation
 
