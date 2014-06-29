@@ -598,11 +598,11 @@
                                                 <rect key="frame" x="25" y="91" width="100" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VVG-7J-160">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VVG-7J-160">
                                                         <rect key="frame" x="37" y="1" width="63" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <state key="normal" image="flag_back.png">
+                                                        <state key="normal" title="Code" backgroundImage="flag_back.png">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -748,7 +748,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OkZ-Tz-ywx">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OkZ-Tz-ywx">
                                         <rect key="frame" x="175" y="428" width="125" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -761,7 +761,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="createAccountButtonPressed:" destination="vpg-1D-HZM" eventType="touchUpInside" id="GRL-NX-OUP"/>
+                                            <action selector="createAccountButtonPressed:" destination="vpg-1D-HZM" eventType="touchUpInside" id="1Fz-rp-V93"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="spG-4N-5R6">
@@ -816,7 +816,7 @@
                         <outlet property="checkTermsBtn" destination="LC7-p3-51u" id="nRj-Is-ZQt"/>
                         <outlet property="confirmPasswordTextField" destination="8z4-2j-aqw" id="sU2-tm-xmS"/>
                         <outlet property="countryKeyBtn" destination="VVG-7J-160" id="wec-tQ-WRZ"/>
-                        <outlet property="createAccountButton" destination="OkZ-Tz-ywx" id="NfU-br-StB"/>
+                        <outlet property="createAccountButton" destination="OkZ-Tz-ywx" id="3Is-vL-dDM"/>
                         <outlet property="emailTextField" destination="HHH-QQ-zP3" id="E9A-x2-UrE"/>
                         <outlet property="firstNameTextField" destination="Lpu-8t-RKC" id="Wfd-TI-rUD"/>
                         <outlet property="flagImage" destination="P5T-Ac-E2h" id="7Fx-73-eAs"/>
@@ -3004,8 +3004,8 @@
         <segue reference="YyB-gV-x4h"/>
         <segue reference="qS8-E4-kbI"/>
         <segue reference="3zr-9d-ced"/>
-        <segue reference="tda-7z-m7O"/>
-        <segue reference="cl0-bd-xyr"/>
         <segue reference="Jjo-a7-u3d"/>
+        <segue reference="Vou-9j-aU0"/>
+        <segue reference="tda-7z-m7O"/>
     </inferredMetricsTieBreakers>
 </document>

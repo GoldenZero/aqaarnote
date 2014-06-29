@@ -31,7 +31,6 @@
     SBPickerSelector *genderPicker;
     SBPickerSelector *birthdayPicker;
 
-    
 }
 
 @end
@@ -88,6 +87,7 @@
     birthdayPicker = [SBPickerSelector picker];
     birthdayPicker.delegate = self;
     birthdayPicker.pickerType=SBPickerSelectorTypeDate;
+    birthdayPicker.onlyDayPicker = YES;
     birthdayPicker.doneButtonTitle = @"تم";
     birthdayPicker.cancelButtonTitle = @"إغلاق";
     // Set font
@@ -96,12 +96,12 @@
     // Set intial code
     NSMutableDictionary* dict= [NSMutableDictionary new];
     dict[@"name"] = @"Saudi Arabia";
-    dict[@"dial_code"] = @"+962";
-    dict[@"code"] = @"SA";
+    dict[@"dial_code"] = @"+966";
+    dict[@"code"] = @"sa";
     _selectedCountry = [[Country alloc] initWithDictionary:dict];
-    [self.countryKeyBtn setTitle:_selectedCountry.dialCode forState:UIControlStateNormal];
+    [self.countryKeyBtn setTitle:[dict objectForKey:@"dial_code"] forState:UIControlStateNormal];
     [self.genderBtn setTitle:selectedGender forState:UIControlStateNormal];
-    
+    self.flagImage.image=[UIImage imageNamed:[dict objectForKey:@"code"]];
     
 
 }
@@ -219,10 +219,10 @@
         return;
         
     }
-
+ 
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-    [df setDateFormat:@"yyyy'-'MM'-'dd HH':'mm':'ss"];
+    [df setDateFormat:@"dd/MM/yyyy"];
     
    
     [[NetworkEngine getInstance] createAccount:_firstNameTextField.text
