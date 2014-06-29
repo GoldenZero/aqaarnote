@@ -167,7 +167,7 @@
     
     cell.paymentLabel.text=[NSString stringWithFormat:@"%@", dictionary.carData.cost_all];
     
-    cell.carTypeLabel.text= dictionary.carData.type;
+    cell.carTypeLabel.text= dictionary.carType;
     
     [cell.cancelButton addTarget:self action:@selector(cancelBooking:) forControlEvents:UIControlEventTouchUpInside];
 
