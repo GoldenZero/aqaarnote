@@ -56,11 +56,11 @@
     // Set intial code
     NSMutableDictionary* dict= [NSMutableDictionary new];
     dict[@"name"] = @"Saudi Arabia";
-    dict[@"dial_code"] = @"+962";
-    dict[@"code"] = @"SA";
+    dict[@"dial_code"] = @"+966";
+    dict[@"code"] = @"sa";
     _selectedCountry = [[Country alloc] initWithDictionary:dict];
     [_countriesButton setTitle:_selectedCountry.dialCode forState:UIControlStateNormal];
-
+    _countryImgView.image=[UIImage imageNamed:_selectedCountry.code];
 
 }
 
