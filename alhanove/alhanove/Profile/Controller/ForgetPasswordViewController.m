@@ -55,7 +55,9 @@
     
     // Set intial code
     self.phoneTxtField.text=self.mobNumber;
-    [_countriesButton setTitle:self.countryCode forState:UIControlStateNormal];
+    
+    [_countriesButton setTitle:_selectedCountry.dialCode forState:UIControlStateNormal];
+    [self.flagImeg setImage:[UIImage imageNamed:[_selectedCountry.code lowercaseString]]];
 
 }
 

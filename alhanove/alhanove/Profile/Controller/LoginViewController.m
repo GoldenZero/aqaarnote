@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "ForgetPasswordViewController.h"
+
 @interface LoginViewController (){
     
     SBPickerSelector *countriesPicker;
@@ -76,7 +78,11 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
+    if ([[segue identifier] isEqualToString:@"ShowForgetPassView"])   //parameter to login page
+    {
+        ForgetPasswordViewController* vc = segue.destinationViewController;
+        vc.selectedCountry=_selectedCountry;
+    }
 }
 
 
