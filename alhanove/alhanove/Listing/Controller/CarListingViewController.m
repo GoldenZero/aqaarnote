@@ -165,7 +165,7 @@
         cell = [topLevelObjects objectAtIndex:0];
         
     }
-    cell.titleLbl.text = car.type;
+    cell.titleLbl.text = self.formObj.carType;
     cell.typeLbl.text = car.title;
     cell.acLabel.text=[NSString stringWithFormat:@"%@", [car.airCond boolValue] ? @"Yes" : @"No"];
     cell.autoLabel.text=[NSString stringWithFormat:@"%@",[car.automatic boolValue] ? @"Yes" : @"No"];
