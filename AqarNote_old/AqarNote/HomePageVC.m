@@ -31,7 +31,22 @@
 {
     [super viewDidLoad];
  
+    // Initialize button
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+        if([UIScreen mainScreen].bounds.size.height == 568){
+            [self.signupButton setFrame:CGRectMake(43, 413, 235, 45)];
+            [self.loginButton setFrame:CGRectMake(43, 466, 235, 45)];
+
+        }
+        else{
+            [self.signupButton setFrame:CGRectMake(43, 360, 235, 45)];
+            [self.loginButton setFrame:CGRectMake(43, 413, 235, 45)];        }
+     
+    }
     
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:66.0/255 green:151.0/255 blue:56.0/255 alpha:1.0f]];
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:66.0/255 green:151.0/255 blue:56.0/255 alpha:1.0f]];
+
     // 1- initialize data
     propertiesArray = [NSMutableArray new];
     propertiesImagesArray = [NSMutableArray new];

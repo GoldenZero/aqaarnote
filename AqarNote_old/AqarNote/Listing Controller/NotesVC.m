@@ -57,10 +57,10 @@ CGFloat animatedDistance;
     [self.aboutTxtView setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
     countriesPicker = [SBPickerSelector picker];
     
-    self.passwordLabel.hidden=YES;
-    self.confirmPassLabel.hidden=YES;
-    self.passwordTxtField.hidden=YES;
-    self.confirmPasswordTxtField.hidden=YES;
+  //  self.passwordLabel.hidden=YES;
+  //  self.confirmPassLabel.hidden=YES;
+    self.passwordTxtField.hidden=NO;
+    self.confirmPasswordTxtField.hidden=NO;
 
     // Set custom font
     self.backButton.titleLabel.font=[UIFont fontWithName:@"HacenSudan" size:14];
@@ -123,6 +123,14 @@ CGFloat animatedDistance;
             
             
         }
+        
+        else if (([self.confirmPasswordTxtField.text isEqualToString:self.passwordTxtField.text]) &&([self.passwordTxtField.text isEqual:@""])) {
+            AlertView *alert1=[[AlertView alloc] initWithTitle:@"كلمة المرور ناقصة" message:@"الرجاء إدخال كلمة المرور  " cancelButtonTitle:@"موافق" WithFont:@"Tahoma"];
+            alert1.titleFont=[UIFont fontWithName:@"Tahoma" size:16];
+            alert1.cancelButtonFont=[UIFont fontWithName:@"Tahoma" size:16];
+            [alert1 show];
+
+        }
         else{
 
             isEdit=false;
@@ -134,10 +142,6 @@ CGFloat animatedDistance;
             self.countryButton.hidden=YES;
             self.logoutButton.hidden=NO;
             [self.confirmPasswordTxtField setEnabled:NO];
-            self.passwordLabel.hidden=YES;
-            self.confirmPassLabel.hidden=YES;
-            self.passwordTxtField.hidden=YES;
-            self.confirmPasswordTxtField.hidden=YES;
             [self.aboutTxtView setEditable:NO];
             [self updateUserInfo];
 
@@ -176,10 +180,8 @@ CGFloat animatedDistance;
     [self.confirmPasswordTxtField setEnabled:NO];
     [self.aboutTxtView setEditable:NO];
     self.countryButton.hidden=YES;
-    self.passwordLabel.hidden=YES;
-    self.confirmPassLabel.hidden=YES;
-    self.passwordTxtField.hidden=YES;
-    self.confirmPasswordTxtField.hidden=YES;
+    self.confirmPasswordTxtField.text=@"123456";
+    self.passwordTxtField.text=@"123456";
     [self SBPickerSelector:countriesPicker cancelPicker:YES];
     [self loadUserInfo];
 }
@@ -427,8 +429,7 @@ CGFloat animatedDistance;
     self.nameTxtField.text=(NSString*)[[PFUser currentUser] objectForKey:@"additional"];
     self.countryTxtField.text=(NSString*)[[PFUser currentUser] objectForKey:@"Country"];
     self.emailTxtField.text=(NSString*)[[PFUser currentUser] username];
-    self.passwordTxtField.text=(NSString*)[[PFUser currentUser]password];
-    self.confirmPasswordTxtField.text=(NSString*)[[PFUser currentUser] password];
+
     if (![[[PFUser currentUser] objectForKey:@"AboutUser"] isEqualToString:@""]) {
         self.aboutTxtView.text=[[PFUser currentUser] objectForKey:@"AboutUser"];
     }

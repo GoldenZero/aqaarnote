@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EnhancedKeyboard.h"
 
-@interface SignUpVC : PFSignUpViewController<EnhancedKeyboardDelegate>
+@interface SignUpVC : PFSignUpViewController
 
 @end

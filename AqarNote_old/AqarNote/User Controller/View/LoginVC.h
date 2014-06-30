@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EnhancedKeyboard.h"
 
-
-@interface LoginVC : PFLogInViewController<EnhancedKeyboardDelegate,UIAlertViewDelegate>
+@interface LoginVC : PFLogInViewController<UIAlertViewDelegate>
 
 @end

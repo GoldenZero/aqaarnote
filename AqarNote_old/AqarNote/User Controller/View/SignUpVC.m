@@ -10,20 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface SignUpVC (){
-    EnhancedKeyboard *enhancedKeyboard;
     
 }
 @property (nonatomic, strong) UIImageView *fieldsBackground;
 
 @end
-
-// Variables for moving UI up 
-static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
-static const CGFloat MINIMUM_SCROLL_FRACTION = 0.1;
-static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.9;
-static const CGFloat PORTRAIT_KEYBOARD_HEIGHT = 216;
-static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 140;
-CGFloat animatedDistance;
 
 @implementation SignUpVC
 
@@ -31,8 +22,6 @@ CGFloat animatedDistance;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    enhancedKeyboard = [[EnhancedKeyboard alloc] init];
-    enhancedKeyboard.delegate = self;
 
    [self.signUpView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"homebkg.png"]]];
     [self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header_logo"]]];
@@ -62,11 +51,6 @@ CGFloat animatedDistance;
     [self.signUpView.usernameField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     [self.signUpView.passwordField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
     [self.signUpView.additionalField setTextColor:[UIColor colorWithRed:135.0f/255.0f green:118.0f/255.0f blue:92.0f/255.0f alpha:1.0]];
-    
-    
-    [self.signUpView.usernameField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-    [self.signUpView.passwordField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
-    [self.signUpView.additionalField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
 
     
 }
@@ -81,7 +65,7 @@ CGFloat animatedDistance;
     
     [self.signUpView.dismissButton setFrame:CGRectMake(0.0f, 0.0f, 50.0f, 50.0f)];
     [self.signUpView.logo setFrame:CGRectMake(145.0f, 15.0f, 25.0f, 28.0f)];
-    [self.signUpView.signUpButton setFrame:CGRectMake(45.0f, 200.0f, 235.0f, 45.0f)];
+    [self.signUpView.signUpButton setFrame:CGRectMake(270.0f, 0.0f, 50.0f, 50.0f)];
     [self.fieldsBackground setFrame:CGRectMake(0.0f, 50.0f,320.0f,41*4)];
     
 
@@ -119,26 +103,6 @@ CGFloat animatedDistance;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)doneDidTouchDown
-{
-    if ([self.signUpView.usernameField isEditing]) {
-        [self.signUpView.usernameField resignFirstResponder];
-    }
-    
-    else if ([self.signUpView.passwordField isEditing]) {
-        [self.signUpView.passwordField resignFirstResponder];
-    }
-   
-    else if ([self.signUpView.additionalField isEditing]) {
-        [self.signUpView.additionalField resignFirstResponder];
-    }
-    
-//    else{
-//        [self.signUpView.additionalField resignFirstResponder];
-//    }
-    
 }
 
 
