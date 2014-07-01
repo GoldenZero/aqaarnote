@@ -46,6 +46,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UILabel *sesctionsLabel;
+@property (strong, nonatomic) IBOutlet UIButton *addnewSectionButton;
 
 @property (nonatomic, strong) AGPhotoBrowserView *browserView;
 

@@ -624,7 +624,7 @@
                                 <color key="backgroundColor" red="0.40392160420000001" green="0.68627452850000004" blue="0.2823529541" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="khx-rg-lbv" userLabel="Content Scroll">
-                                <rect key="frame" x="0.0" y="50" width="320" height="478"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="518"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="المدينة..." textAlignment="right" minimumFontSize="17" id="Efv-aN-eXT">
@@ -748,22 +748,22 @@
                                             <action selector="prevImgBtnPrss:" destination="gLd-EQ-14C" eventType="touchUpInside" id="aZQ-wS-flU"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="H7C-7I-Bc6">
+                                        <rect key="frame" x="0.0" y="478" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <state key="normal" image="orange_bar_addnew_section.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addSectionBtnPrss:" destination="gLd-EQ-14C" eventType="touchUpInside" id="mVa-xa-qIp"/>
+                                            <segue destination="e5h-kl-iVC" kind="modal" identifier="showAddSection" id="b8h-Ww-Ndd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <connections>
                                     <outlet property="delegate" destination="gLd-EQ-14C" id="TRC-ny-zCp"/>
                                 </connections>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="H7C-7I-Bc6">
-                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                <state key="normal" image="orange_bar_addnew_section.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addSectionBtnPrss:" destination="gLd-EQ-14C" eventType="touchUpInside" id="mVa-xa-qIp"/>
-                                    <segue destination="e5h-kl-iVC" kind="modal" identifier="showAddSection" id="b8h-Ww-Ndd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -771,6 +771,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="addImgesButton" destination="CtS-a3-VCa" id="wvU-pU-9HD"/>
+                        <outlet property="addnewSectionButton" destination="H7C-7I-Bc6" id="gRX-Tb-sht"/>
                         <outlet property="cancelButton" destination="hWu-cb-tXY" id="xpM-ll-Swi"/>
                         <outlet property="city" destination="Efv-aN-eXT" id="dxn-59-BoN"/>
                         <outlet property="contentScrollView" destination="khx-rg-lbv" id="kUB-Qy-T2M"/>

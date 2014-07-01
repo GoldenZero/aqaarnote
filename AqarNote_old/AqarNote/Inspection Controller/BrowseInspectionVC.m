@@ -93,12 +93,13 @@ CGFloat animatedDistance;
     [HUD show:YES];
     
     // Set note view
-    NSString *note=[self.sectionID objectForKey:@"note"];
-    if (![note isEqualToString:@""]) {
-        self.noteTextView.text=note;
+    NSString *note=(NSString*)[self.sectionID objectForKey:@"note"];
+    if (!note) {
+        self.noteTextView.text=@"ملاحظات...";
     }
     else{
-        self.noteTextView.text=@"ملاحظات...";
+        self.noteTextView.text=[NSString stringWithFormat:@"ملاحظات : %@ " ,note];
+
     }
     
     // Set section status

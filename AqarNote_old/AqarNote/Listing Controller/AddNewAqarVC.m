@@ -226,7 +226,8 @@ CGFloat animatedDistance;
     scrollViewHeight+=self.city.frame.size.height;
     scrollViewHeight+=self.country.frame.size.height;
     scrollViewHeight+=self.sectionsTableView.frame.size.height;
-    
+    scrollViewHeight+=self.addnewSectionButton.frame.size.height;
+    self.addnewSectionButton.frame=CGRectMake(0, self.sectionsTableView.frame.size.height+self.sectionsTableView.frame.origin.y, 320, self.addnewSectionButton.frame.size.height);
     [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
 
     [HUD hide:YES];
@@ -891,13 +892,22 @@ CGFloat animatedDistance;
     CGRect viewFrame = self.view.frame;
     viewFrame.origin.y -= animatedDistance;
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    float width = self.contentScrollView.frame.size.width;
+    float height = self.contentScrollView.frame.size.height;
+    float newPosition = self.contentScrollView.contentOffset.x+width;
+    CGRect toVisible = CGRectMake(viewFrame.origin.x, viewFrame.origin.y, width, height);
     
-    [self.view setFrame:viewFrame];
+    [self.contentScrollView scrollRectToVisible:toVisible animated:YES];
     
-    [UIView commitAnimations];
+    //[UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationBeginsFromCurrentState:YES];
+//    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+//    
+ //   [self.contentScrollView setContentOffset:CGPointMake(viewFrame.origin.x, viewFrame.origin.y) animated:YES];
+
+ //   [self.view setFrame:viewFrame];
+    
+   // [UIView commitAnimations];
 }
 
 #pragma mark - UITextFieldDelegate protocol
@@ -926,6 +936,45 @@ CGFloat animatedDistance;
     [self SBPickerSelector:countriesPicker cancelPicker:YES];
     
     [textField setInputAccessoryView:[enhancedKeyboard getToolbarWithDoneEnabled:YES]];
+    
+    textField.text=@"";
+    [self SBPickerSelector:countriesPicker cancelPicker:YES];
+    
+    CGRect textViewRect = [self.view.window convertRect:textField.bounds fromView:textField];
+    CGRect viewRect = [self.view.window convertRect:self.view.bounds fromView:self.view];
+    CGFloat midline = textViewRect.origin.y + 0.5 * textViewRect.size.height;
+    CGFloat numerator = midline - viewRect.origin.y - MINIMUM_SCROLL_FRACTION * viewRect.size.height;
+    CGFloat denominator = (MAXIMUM_SCROLL_FRACTION - MINIMUM_SCROLL_FRACTION) * viewRect.size.height;
+    CGFloat heightFraction = numerator / denominator;
+    
+    if (heightFraction < 0.0) {
+        heightFraction = 0.0;
+    }
+    else if (heightFraction > 1.0) {
+        heightFraction = 1.0;
+    }
+    
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (orientation == UIInterfaceOrientationPortrait ||
+        orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        animatedDistance = floor(PORTRAIT_KEYBOARD_HEIGHT * heightFraction);
+    }
+    else {
+        animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
+    }
+    
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y -= animatedDistance;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    [self.contentScrollView setContentOffset:CGPointMake(viewFrame.origin.x,- viewFrame.origin.y) animated:YES];
+    
+//    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
+
 
 }
 
@@ -1126,6 +1175,7 @@ CGFloat animatedDistance;
         scrollViewHeight+=self.city.frame.size.height;
         scrollViewHeight+=self.country.frame.size.height;
         scrollViewHeight+=self.sectionsTableView.frame.size.height;
+        scrollViewHeight+=self.addnewSectionButton.frame.size.height;
         NSLog(@"height of sections table %f",self.sectionsTableView.frame.size.height);
 
 //        CGFloat scrollViewHeight = 0.0f;
@@ -1134,6 +1184,8 @@ CGFloat animatedDistance;
 //            scrollViewHeight += view.frame.size.height;
 //        }
         
+        self.addnewSectionButton.frame=CGRectMake(0, self.sectionsTableView.frame.size.height+self.sectionsTableView.frame.origin.y, 320, self.addnewSectionButton.frame.size.height);
+
         [self.contentScrollView setContentSize:(CGSizeMake(320, scrollViewHeight))];
    
     }
@@ -1211,7 +1263,7 @@ CGFloat animatedDistance;
     photoAction.tag=index;
     
     
-    	[photoAction showInView:self.view];
+    [photoAction showInView:self.view];
 }
 
 
