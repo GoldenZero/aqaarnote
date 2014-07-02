@@ -177,6 +177,10 @@
 		7C945FBA18D11B4B0042DF7D /* no_inspections_tit.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C945FB818D11B4B0042DF7D /* no_inspections_tit.png */; };
 		7C945FBB18D11B4B0042DF7D /* no_inspections_tit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C945FB918D11B4B0042DF7D /* no_inspections_tit@2x.png */; };
 		7C96EC5F1925183100F01C1D /* EditPropertyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C96EC5E1925183100F01C1D /* EditPropertyVC.m */; };
+		7C9BA8441964189800FC4AD5 /* LDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BA8411964189800FC4AD5 /* LDProgressView.m */; };
+		7C9BA8451964189800FC4AD5 /* UIColor+RGBValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9BA8431964189800FC4AD5 /* UIColor+RGBValues.m */; };
+		7C9BA848196426A600FC4AD5 /* name_country.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C9BA846196426A600FC4AD5 /* name_country.png */; };
+		7C9BA849196426A600FC4AD5 /* name_country@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C9BA847196426A600FC4AD5 /* name_country@2x.png */; };
 		7CA107651908251200F7B581 /* Default-690.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA107631908251200F7B581 /* Default-690.png */; };
 		7CA107661908251200F7B581 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA107641908251200F7B581 /* Default.png */; };
 		7CA1076919082B3700F7B581 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CA1076B19082B3700F7B581 /* Localizable.strings */; };
@@ -468,6 +472,12 @@
 		7C945FB918D11B4B0042DF7D /* no_inspections_tit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no_inspections_tit@2x.png"; sourceTree = "<group>"; };
 		7C96EC5D1925183100F01C1D /* EditPropertyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPropertyVC.h; sourceTree = "<group>"; };
 		7C96EC5E1925183100F01C1D /* EditPropertyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPropertyVC.m; sourceTree = "<group>"; };
+		7C9BA8401964189800FC4AD5 /* LDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDProgressView.h; sourceTree = "<group>"; };
+		7C9BA8411964189800FC4AD5 /* LDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDProgressView.m; sourceTree = "<group>"; };
+		7C9BA8421964189800FC4AD5 /* UIColor+RGBValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBValues.h"; sourceTree = "<group>"; };
+		7C9BA8431964189800FC4AD5 /* UIColor+RGBValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBValues.m"; sourceTree = "<group>"; };
+		7C9BA846196426A600FC4AD5 /* name_country.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = name_country.png; sourceTree = "<group>"; };
+		7C9BA847196426A600FC4AD5 /* name_country@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "name_country@2x.png"; sourceTree = "<group>"; };
 		7CA107631908251200F7B581 /* Default-690.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-690.png"; sourceTree = "<group>"; };
 		7CA107641908251200F7B581 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		7CA1076A19082B3700F7B581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -891,6 +901,17 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		7C9BA83F1964189800FC4AD5 /* LDProgress */ = {
+			isa = PBXGroup;
+			children = (
+				7C9BA8401964189800FC4AD5 /* LDProgressView.h */,
+				7C9BA8411964189800FC4AD5 /* LDProgressView.m */,
+				7C9BA8421964189800FC4AD5 /* UIColor+RGBValues.h */,
+				7C9BA8431964189800FC4AD5 /* UIColor+RGBValues.m */,
+			);
+			path = LDProgress;
+			sourceTree = "<group>";
+		};
 		7CBC4F041922B3F100519B07 /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1094,6 +1115,7 @@
 		84BFB567189E5F0F0069A87A /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7C9BA83F1964189800FC4AD5 /* LDProgress */,
 				7CBC4F041922B3F100519B07 /* AlertView */,
 				7CC4229F191BDF8E00AD701C /* BaseVC */,
 				7CC422A2191BDF8E00AD701C /* Check internet connection */,
@@ -1113,6 +1135,8 @@
 		84BFB56D189E7CC00069A87A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7C9BA846196426A600FC4AD5 /* name_country.png */,
+				7C9BA847196426A600FC4AD5 /* name_country@2x.png */,
 				7C57AA0518CF8EAE00DE6259 /* AqarNote_iPhone_assets */,
 				84B904FE18A22F57003771E1 /* app icons */,
 				84B9051618A26356003771E1 /* takePhotobkg.png */,
@@ -1285,6 +1309,7 @@
 				7C57AA8718CF8EAE00DE6259 /* forgot_password_tit@2x.png in Resources */,
 				7C57AAAA18CF8EAE00DE6259 /* orange_bar_addnew_section.png in Resources */,
 				7C57AA8218CF8EAE00DE6259 /* dirty_circle_btn.png in Resources */,
+				7C9BA849196426A600FC4AD5 /* name_country@2x.png in Resources */,
 				7CA107661908251200F7B581 /* Default.png in Resources */,
 				84B904F518A1FAC0003771E1 /* Accessory_left.png in Resources */,
 				7C57AA7018CF8EAE00DE6259 /* big_logo_white.png in Resources */,
@@ -1305,6 +1330,7 @@
 				7C57AAA418CF8EAE00DE6259 /* notice_circle_green_btn.png in Resources */,
 				7C304220190D5B6B00A77FA4 /* 40.png in Resources */,
 				7C57AAC518CF8EAE00DE6259 /* text_green_field@2x.png in Resources */,
+				7C9BA848196426A600FC4AD5 /* name_country.png in Resources */,
 				7C57AAAB18CF8EAE00DE6259 /* orange_bar_addnew_section@2x.png in Resources */,
 				84BFB51A189E12FD0069A87A /* InfoPlist.strings in Resources */,
 				7C57AA6F18CF8EAE00DE6259 /* bathroom_icon@2x.png in Resources */,
@@ -1481,6 +1507,8 @@
 				8496101C18A10C1100A94088 /* BrowseInspectionVC.m in Sources */,
 				7C0F81F3190EE4B700047EA9 /* SDWebImageManager.m in Sources */,
 				7C0F81F8190EE4B700047EA9 /* UIImage+WebP.m in Sources */,
+				7C9BA8441964189800FC4AD5 /* LDProgressView.m in Sources */,
+				7C9BA8451964189800FC4AD5 /* UIColor+RGBValues.m in Sources */,
 				7C72AF1C1916A80B003D00ED /* AGPhotoBrowserView.m in Sources */,
 				7CE1E56519291D900004066D /* PropertyImageObj.m in Sources */,
 				84BFB51C189E12FD0069A87A /* main.m in Sources */,

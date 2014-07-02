@@ -91,7 +91,8 @@
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Properties"];
     [postQuery whereKey:@"userID" equalTo:[PFUser currentUser]];
     [postQuery orderByDescending:@"createdAt"];
-    [postQuery whereKey:@"lastInspectionDate" equalTo:[NSNull null]];
+    [postQuery whereKeyDoesNotExist:@"lastInspectionDate"];
+   // [postQuery whereKey:@"lastInspectionDate" equalTo:[NSNull null]];
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error) {
             propertiesArray = [[NSMutableArray alloc]initWithArray:objects];

@@ -11,6 +11,8 @@
 #import "AddNewInspectionVC.h"
 #import "ODRefreshControl.h"
 #import "Globals.h"
+#import "LDProgressView.h"
+
 @interface InspectionsVC ()
 {
     NSMutableArray* inspectionsArray;
@@ -208,8 +210,7 @@
                 
                 cell.propertyImage.file = (PFFile *)theImage;
                 [cell.propertyImage loadInBackground];
-                
-            }
+             }
         });
 
         cell.propertyImage.contentMode = UIViewContentModeScaleAspectFit;
@@ -230,6 +231,20 @@
         cell.propertyDate.font=[UIFont fontWithName:@"HacenSudan" size:12];
         
         [cell.progressLabel setText:[NSString  stringWithFormat:@"%@ %% ",[post objectForKey:@"InspectionRate"]]];
+
+        if (!cell.progressView) {
+            
+            LDProgressView *progress = [[LDProgressView alloc] initWithFrame:CGRectMake(190, 141, 100, 10)];
+            progress.animate = @NO;
+            progress.color = [UIColor whiteColor];
+            progress.backgroundColor=[UIColor clearColor];
+            progress.textAlignment=NSTextAlignmentLeft;
+            progress.showBackgroundInnerShadow=@NO;
+            progress.progress = [[post objectForKey:@"InspectionRate"] floatValue]/ 100;
+            [cell.contentView insertSubview:progress aboveSubview:cell.progressImage];
+            cell.progressView = progress;
+            
+        }
         cell.progressLabel.font=[UIFont fontWithName:@"HacenSudan" size:12];
         if ([[post objectForKey:@"InspectionRate"]integerValue]<50) {
            [cell.progressImage setImage:[UIImage imageNamed:@""]];
@@ -255,7 +270,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:myImage];
     imageView.contentMode = UIViewContentModeCenter;
 
-    imageView.frame = CGRectMake(0,0,195,31);
+    imageView.frame = CGRectMake(0,4,195,31);
     imageView.image=myImage;
     return imageView;
     

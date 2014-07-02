@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LDProgressView.h"
 
 @interface InspectionCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet PFImageView *propertyImage;
@@ -18,4 +19,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *progressImage;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
+@property (strong, nonatomic) LDProgressView *progressView;
+
 @end

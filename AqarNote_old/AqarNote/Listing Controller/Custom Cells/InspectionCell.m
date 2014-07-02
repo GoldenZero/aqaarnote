@@ -18,6 +18,7 @@
         self.propertyImage.image = [UIImage imageNamed:@"default_image_home.png"];
         self.propertyImage.contentMode  = UIViewContentModeScaleAspectFit;
         
+
     }
     return self;
 }
@@ -26,7 +27,7 @@
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+
 }
 
 @end

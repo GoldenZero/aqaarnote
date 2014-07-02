@@ -42,7 +42,7 @@
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                             </imageView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="180" sectionHeaderHeight="31" sectionFooterHeight="22" id="Wfq-D6-EWb">
-                                <rect key="frame" x="0.0" y="49" width="320" height="469"/>
+                                <rect key="frame" x="0.0" y="58" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -217,12 +217,12 @@
                                 <rect key="frame" x="0.0" y="52" width="320" height="464"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_top.png" id="nHJ-9A-VRm">
-                                        <rect key="frame" x="20" y="20" width="280" height="166"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="name_country.png" id="nHJ-9A-VRm">
+                                        <rect key="frame" x="10" y="20" width="301" height="87"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاسم" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YW8-mp-z53">
-                                        <rect key="frame" x="256" y="28" width="34" height="30"/>
+                                        <rect key="frame" x="258" y="28" width="34" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -238,14 +238,14 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الدولة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JmG-Ao-dV9">
-                                        <rect key="frame" x="256" y="150" width="34" height="30"/>
+                                        <rect key="frame" x="258" y="72" width="34" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="الدولة" textAlignment="right" minimumFontSize="17" id="MXj-Bs-6QF">
-                                        <rect key="frame" x="36" y="150" width="193" height="30"/>
+                                        <rect key="frame" x="36" y="72" width="193" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -254,7 +254,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kbA-6P-3hr">
-                                        <rect key="frame" x="34" y="150" width="223" height="30"/>
+                                        <rect key="frame" x="36" y="72" width="223" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal">
@@ -265,25 +265,25 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حسابي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DGO-dX-LmB">
-                                        <rect key="frame" x="20" y="194" width="280" height="28"/>
+                                        <rect key="frame" x="20" y="145" width="280" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <color key="textColor" red="0.2588235438" green="0.59215688710000003" blue="0.2196078598" alpha="1" colorSpace="deviceRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_bottom.png" id="dwK-oC-QbN">
-                                        <rect key="frame" x="20" y="230" width="280" height="138"/>
+                                        <rect key="frame" x="20" y="181" width="280" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="البريد الإلكتروني" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MmE-BB-S70">
-                                        <rect key="frame" x="202" y="235" width="88" height="30"/>
+                                        <rect key="frame" x="202" y="186" width="88" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="PrR-cf-OUO">
-                                        <rect key="frame" x="36" y="235" width="158" height="30"/>
+                                        <rect key="frame" x="36" y="186" width="158" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -292,14 +292,14 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="كلمة المرور" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cco-bh-AML">
-                                        <rect key="frame" x="209" y="284" width="81" height="30"/>
+                                        <rect key="frame" x="209" y="235" width="81" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" clearsOnBeginEditing="YES" minimumFontSize="17" id="PUk-ZN-pgb">
-                                        <rect key="frame" x="36" y="284" width="149" height="30"/>
+                                        <rect key="frame" x="36" y="235" width="149" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -308,14 +308,14 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="كلمة المرور الجديدة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TEQ-se-4yk">
-                                        <rect key="frame" x="193" y="322" width="97" height="30"/>
+                                        <rect key="frame" x="193" y="273" width="97" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" clearsOnBeginEditing="YES" minimumFontSize="17" id="q53-Il-uXm">
-                                        <rect key="frame" x="34" y="322" width="149" height="30"/>
+                                        <rect key="frame" x="34" y="273" width="149" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -324,7 +324,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iYW-mI-1Lq">
-                                        <rect key="frame" x="20" y="392" width="280" height="40"/>
+                                        <rect key="frame" x="20" y="385" width="280" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1589,6 +1589,7 @@
         <image name="homebkg.png" width="320" height="596"/>
         <image name="left.png" width="9" height="16"/>
         <image name="logout.png" width="320" height="40"/>
+        <image name="name_country.png" width="301" height="87"/>
         <image name="no_inspections_tit.png" width="139" height="24"/>
         <image name="note_write_field.png" width="276" height="86"/>
         <image name="notice_circle_btn.png" width="77" height="77"/>
@@ -1601,7 +1602,6 @@
         <image name="profile_bottom.png" width="301" height="123"/>
         <image name="profile_icon.png" width="26" height="27"/>
         <image name="profile_off.png" width="27" height="38"/>
-        <image name="profile_top.png" width="301" height="154"/>
         <image name="register_new_account_btn.png" width="235" height="45"/>
         <image name="right.png" width="9" height="16"/>
         <image name="sign_in_btn.png" width="235" height="45"/>
@@ -1616,7 +1616,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="xO4-no-NUW"/>
-        <segue reference="V6h-qe-NuI"/>
         <segue reference="b8h-Ww-Ndd"/>
+        <segue reference="yRB-Ic-eoT"/>
     </inferredMetricsTieBreakers>
 </document>
