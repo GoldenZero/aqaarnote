@@ -170,6 +170,10 @@
     cell.carTypeLabel.text= dictionary.carType;
     
     [cell.cancelButton addTarget:self action:@selector(cancelBooking:) forControlEvents:UIControlEventTouchUpInside];
+    
+    cell.cancelButton.tag=indexPath.row;
+    
+    cell.continueButton.tag=indexPath.row;
 
     [cell.continueButton addTarget:self action:@selector(updateBooking:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -229,7 +233,8 @@
     formObj.MadinaHotelData=dic.madinaHotel;
     formObj.guestsNumber=[dic.guestsNumber intValue];
     formObj.roomsNumber=[dic.roomsNumber intValue];
-    formObj.rentalDays=[dic.rentalDays integerValue];
+    formObj.rentalDays=[dic.rentalDays intValue];
+    formObj.bookingID=[dic.bookingID intValue];
     formObj.PassportImage=[UIImage imageWithData:dic.passportImage];
     formObj.PersonalImage=[UIImage imageWithData:dic.personalImage];
     [self performSegueWithIdentifier:@"showEditCarFormVC" sender:self];
@@ -300,7 +305,6 @@
             [self performSegueWithIdentifier:@"showLoginPage" sender:self];
         }
         else{
-            self.reasonText = [alertView textFieldAtIndex:0];
             
             if (buttonIndex == 0) {
                 NSDictionary* booking = _bookings[alertView.tag];

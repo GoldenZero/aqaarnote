@@ -112,6 +112,8 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     if (form.fromDate!=nil) {
         self.fromDateLabel.text = [dateFormat stringFromDate:form.fromDate];
+        dateFromChoosed=YES;
+        
     }
     else{
         self.fromDateLabel.text = @"حدد التاريخ";
@@ -120,6 +122,7 @@
     
     if (form.toDate!=nil) {
         self.toDateLabel.text = [dateFormat stringFromDate:form.toDate];
+        dateToChoosed=YES;
     }
     else{
         self.toDateLabel.text = @"حدد التاريخ";
@@ -128,6 +131,8 @@
 
     if (form.FromPlace!=nil) {
         self.fromPlaceLabel.text =form.FromPlace;
+        placeFromChoosed=YES;
+        
     }
     else{
         self.fromPlaceLabel.text = @"حدد المكان";
@@ -136,6 +141,7 @@
     
     if (form.ToPlace!=nil) {
         self.toPlaceLabel.text =form.ToPlace;
+        placeToChoosed=YES;
     }
     else{
         self.toPlaceLabel.text = @"حدد المكان";
@@ -144,6 +150,7 @@
  
     if (form.carType!=nil) {
         self.carTypeLabel.text =form.carType;
+        carTypeChoosed=YES;
     }
     else{
         self.carTypeLabel.text = @"حدد الفئة";

@@ -11,6 +11,8 @@
 {
     BOOL imageForPassport;
     
+    BOOL isUpdating;
+    
     EnhancedKeyboard *enhancedKeyboard;
     SBPickerSelector *BookDatePicker;
     
@@ -40,7 +42,9 @@
 {
     [super viewDidLoad];
     
+    //1
     AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    //2
     self.managedObjectContext = appDelegate.managedObjectContext;
     
     enhancedKeyboard = [[EnhancedKeyboard alloc] init];
@@ -74,6 +78,22 @@
     [self.TotalLbl setFont:[UIFont lightGeSSOfSize:12]];
     //[self.PriceLbl setFont:[UIFont lightGeSSOfSize:12]];
     
+    if (self.formObj.UserName!=nil) {
+        isUpdating=YES;
+        self.NameText.text=self.formObj.UserName;
+    }
+    
+    if (self.formObj.UserEmail!=nil) {
+        self.EmailText.text=self.formObj.UserEmail;
+    }
+    
+    if (self.formObj.UserAddress!=nil) {
+        self.AddressText.text=self.formObj.UserAddress;
+    }
+    
+    if (self.formObj.UserMobile!=nil) {
+        self.MobileText.text=self.formObj.UserMobile;
+    }
     //prepare the pickers
     [self preparePickers];
 }
@@ -405,37 +425,105 @@
 
 -(void)saveFormData
 {
+    NSError *error;
+
+    if (isUpdating) {
+        
+        
+        NSFetchRequest *fetchRequest=[NSFetchRequest fetchRequestWithEntityName:@"BookingEntity"];
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"bookingID==%@",[NSNumber numberWithInt:self.formObj.bookingID]];
+        fetchRequest.predicate=predicate;
+        
+        NSManagedObject *newEntry=[[self.managedObjectContext executeFetchRequest:fetchRequest error:nil] firstObject];
     
-    BookingEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"BookingEntity"
-                                                         inManagedObjectContext:self.managedObjectContext];
-    
-    newEntry.mekkaHotel=self.formObj.MekkaHotelData;
-    newEntry.madinaHotel=self.formObj.MadinaHotelData;
-    newEntry.bookingType=self.formObj.BookingType;
-    newEntry.fromDate=self.formObj.fromDate;
-    newEntry.toDate=self.formObj.toDate;
-    newEntry.flightClass=self.formObj.FlightClass;
-    newEntry.flightCost=[NSNumber numberWithInteger:[self.formObj.FlightCost integerValue]];
-    newEntry.guestsNumber=[NSNumber numberWithInt:self.formObj.guestsNumber];
-    newEntry.roomsNumber=[NSNumber numberWithInt:self.formObj.roomsNumber];
-    newEntry.rentalDays=[NSNumber numberWithInteger:self.formObj.rentalDays];
-    
-    newEntry.userName=self.formObj.UserName;
-    newEntry.userAddress=self.formObj.UserAddress;
-    newEntry.userEmail=self.formObj.UserEmail;
-    newEntry.userMobile=self.formObj.UserMobile;
-    newEntry.bookingDate=self.formObj.BookingDate;
-    newEntry.passportImage=UIImagePNGRepresentation(self.formObj.PassportImage);
-    newEntry.personalImage=UIImagePNGRepresentation(self.formObj.PersonalImage);
-    
-    newEntry.fromPlace=self.formObj.FromPlace;
-    newEntry.toPlace=self.formObj.ToPlace;
-    newEntry.carData=self.formObj.CarData;
-    newEntry.carType=self.formObj.carType;
-    
+        [newEntry setValue:self.formObj.MekkaHotelData forKey:@"mekkaHotel"];
+        //newEntry.mekkaHotel=self.formObj.MekkaHotelData;
+        [newEntry setValue:self.formObj.MadinaHotelData forKey:@"madinaHotel"];
+        //newEntry.madinaHotel=self.formObj.MadinaHotelData;
+        [newEntry setValue:self.formObj.BookingType forKey:@"bookingType"];
+        //newEntry.bookingType=self.formObj.BookingType;
+        [newEntry setValue:self.formObj.fromDate forKey:@"fromDate"];
+        //newEntry.fromDate=self.formObj.fromDate;
+        [newEntry setValue:self.formObj.toDate forKey:@"toDate"];
+        //newEntry.toDate=self.formObj.toDate;
+        [newEntry setValue:self.formObj.FlightClass forKey:@"flightClass"];
+        //newEntry.flightClass=self.formObj.FlightClass;
+        [newEntry setValue:[NSNumber numberWithInteger:[self.formObj.FlightCost integerValue]] forKey:@"flightCost"];
+        //newEntry.flightCost=[NSNumber numberWithInteger:[self.formObj.FlightCost integerValue]];
+        [newEntry setValue:[NSNumber numberWithInteger:self.formObj.guestsNumber] forKey:@"guestsNumber"];
+        //newEntry.guestsNumber=[NSNumber numberWithInt:self.formObj.guestsNumber];
+        [newEntry setValue:[NSNumber numberWithInteger:self.formObj.roomsNumber] forKey:@"roomsNumber"];
+        //newEntry.roomsNumber=[NSNumber numberWithInt:self.formObj.roomsNumber];
+        [newEntry setValue:[NSNumber numberWithInteger:self.formObj.rentalDays] forKey:@"rentalDays"];
+        //newEntry.rentalDays=[NSNumber numberWithInteger:self.formObj.rentalDays];
+        [newEntry setValue:[NSNumber numberWithInt:self.formObj.bookingID] forKey:@"bookingID"];
+        //newEntry.bookingID=[NSNumber numberWithInteger:self.formObj.bookingID];
+
+        [newEntry setValue:self.formObj.UserName forKey:@"userName"];
+        //newEntry.userName=self.formObj.UserName;
+        [newEntry setValue:self.formObj.UserAddress forKey:@"userAddress"];
+        //newEntry.userAddress=self.formObj.UserAddress;
+        [newEntry setValue:self.formObj.UserEmail forKey:@"userEmail"];
+        //newEntry.userEmail=self.formObj.UserEmail;
+        [newEntry setValue:self.formObj.UserMobile forKey:@"userMobile"];
+        //newEntry.userMobile=self.formObj.UserMobile;
+        [newEntry setValue:self.formObj.BookingDate forKey:@"bookingDate"];
+        //newEntry.bookingDate=self.formObj.BookingDate;
+        
+        [newEntry setValue:UIImagePNGRepresentation(self.formObj.PassportImage) forKey:@"passportImage"];
+        //newEntry.passportImage=UIImagePNGRepresentation(self.formObj.PassportImage);
+        [newEntry setValue:UIImagePNGRepresentation(self.formObj.PersonalImage) forKey:@"personalImage"];
+        //newEntry.personalImage=UIImagePNGRepresentation(self.formObj.PersonalImage);
+        
+        [newEntry setValue:self.formObj.FromPlace forKey:@"fromPlace"];
+        //newEntry.fromPlace=self.formObj.FromPlace;
+        [newEntry setValue:self.formObj.ToPlace forKey:@"toPlace"];
+        //newEntry.toPlace=self.formObj.ToPlace;
+        [newEntry setValue:self.formObj.CarData forKey:@"carData"];
+        //newEntry.carData=self.formObj.CarData;
+        [newEntry setValue:self.formObj.carType forKey:@"carType"];
+        //newEntry.carType=self.formObj.carType;
+
+        if (![[self managedObjectContext] save:&error]) {
+            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+        }
+    }
+    else{
+        self.formObj.bookingID= rand();
+        BookingEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"BookingEntity" inManagedObjectContext:self.managedObjectContext];
+        
+        newEntry.mekkaHotel=self.formObj.MekkaHotelData;
+        newEntry.madinaHotel=self.formObj.MadinaHotelData;
+        newEntry.bookingType=self.formObj.BookingType;
+        newEntry.fromDate=self.formObj.fromDate;
+        newEntry.toDate=self.formObj.toDate;
+        newEntry.flightClass=self.formObj.FlightClass;
+        newEntry.flightCost=[NSNumber numberWithInteger:[self.formObj.FlightCost integerValue]];
+        newEntry.guestsNumber=[NSNumber numberWithInt:self.formObj.guestsNumber];
+        newEntry.roomsNumber=[NSNumber numberWithInt:self.formObj.roomsNumber];
+        newEntry.rentalDays=[NSNumber numberWithInteger:self.formObj.rentalDays];
+        newEntry.bookingID=[NSNumber numberWithInteger:self.formObj.bookingID];
+        newEntry.userName=self.formObj.UserName;
+        newEntry.userAddress=self.formObj.UserAddress;
+        newEntry.userEmail=self.formObj.UserEmail;
+        newEntry.userMobile=self.formObj.UserMobile;
+        newEntry.bookingDate=self.formObj.BookingDate;
+
+        newEntry.passportImage=UIImagePNGRepresentation(self.formObj.PassportImage);
+        newEntry.personalImage=UIImagePNGRepresentation(self.formObj.PersonalImage);
+        
+        newEntry.fromPlace=self.formObj.FromPlace;
+        newEntry.toPlace=self.formObj.ToPlace;
+        newEntry.carData=self.formObj.CarData;
+        newEntry.carType=self.formObj.carType;
+        
+        NSError *error;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
 
 }
-
+}
 - (BOOL) checkFields{
     if ([self.NameText.text isEqualToString:@""]) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"عذرا" message:@"الرجاء إدخال اسم المستخدم" delegate:nil cancelButtonTitle:@"موافق" otherButtonTitles:nil, nil];
@@ -466,4 +554,6 @@
         return true;
     }
 }
+
+
 @end

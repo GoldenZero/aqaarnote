@@ -3,6 +3,7 @@
     <entity name="BookingEntity" representedClassName="BookingEntity" syncable="YES">
         <attribute name="bookingCost" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="bookingDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="bookingID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="bookingType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="carType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="flightClass" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,7 +55,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BookingEntity" positionX="0" positionY="81" width="128" height="375"/>
+        <element name="BookingEntity" positionX="0" positionY="81" width="128" height="390"/>
         <element name="CarEntity" positionX="-9" positionY="36" width="128" height="178"/>
         <element name="HotelEntity" positionX="-9" positionY="72" width="128" height="148"/>
         <element name="HotelMadinaEntity" positionX="9" positionY="126" width="128" height="148"/>

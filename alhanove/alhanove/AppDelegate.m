@@ -72,7 +72,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self saveContext];
 }
 
 - (BOOL) onErrorScreen {
@@ -86,6 +86,7 @@
     return NO;
 }
 
+// 1
 - (NSManagedObjectContext *) managedObjectContext {
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
@@ -99,6 +100,7 @@
     return _managedObjectContext;
 }
 
+//2
 - (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
@@ -108,6 +110,7 @@
     return _managedObjectModel;
 }
 
+//3
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
@@ -123,6 +126,10 @@
     }
     
     return _persistentStoreCoordinator;
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 - (NSArray*) getAllBookings{
@@ -201,7 +208,8 @@
 
 -(void)saveCarsData
 {
-    
+    NSError *error;
+   
     CarEntity * newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
                                                          inManagedObjectContext:self.managedObjectContext];
     
@@ -215,9 +223,9 @@
     newEntry.cost=[NSNumber numberWithInt:38];
     newEntry.cost_all=[NSNumber numberWithLong:38 * 1];
     
-    
+
     newEntry=nil;
-    
+
     newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
                                             inManagedObjectContext:self.managedObjectContext];
     
@@ -231,9 +239,9 @@
     newEntry.cost=[NSNumber numberWithInt:42];
     newEntry.cost_all=[NSNumber numberWithLong:42 * 1];
     
-    
+
     newEntry=nil;
-    
+
     newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
                                             inManagedObjectContext:self.managedObjectContext];
     
@@ -247,10 +255,9 @@
     newEntry.cost=[NSNumber numberWithInt:46];
     newEntry.cost_all=[NSNumber numberWithLong:46 * 1];
     
-    
-    
+
     newEntry=nil;
-    
+
     newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
                                             inManagedObjectContext:self.managedObjectContext];
     
@@ -264,9 +271,9 @@
     newEntry.cost=[NSNumber numberWithInt:80];
     newEntry.cost_all=[NSNumber numberWithLong:80 * 1];
     
-    
+
     newEntry=nil;
-    
+
     newEntry= [NSEntityDescription insertNewObjectForEntityForName:@"CarEntity"
                                             inManagedObjectContext:self.managedObjectContext];
     
@@ -279,7 +286,8 @@
     newEntry.passengers=[NSNumber numberWithInt:4];
     newEntry.cost=[NSNumber numberWithInt:89];
     newEntry.cost_all=[NSNumber numberWithLong:89 * 1];
-    
+
+
 }
 
 - (void) saveMekkaHotelsData{
@@ -440,7 +448,19 @@
     newEntry.cost_all=[NSNumber numberWithLong:520 * 1];
 
 }
-- (NSString *)applicationDocumentsDirectory {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+
+- (void)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
 }
+ 
 @end

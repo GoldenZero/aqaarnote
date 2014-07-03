@@ -25,7 +25,8 @@
 @property (nonatomic,strong) NSString* FlightCost;
 @property int guestsNumber;
 @property int roomsNumber;
-@property (nonatomic) NSInteger rentalDays;
+@property int rentalDays;
+@property int bookingID;
 
 
 //User Data
