@@ -49,19 +49,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
+    static NSString *SearchCellIdentifier = @"SearchCell";
     
-    SearchDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[SearchDetailCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                     reuseIdentifier:CellIdentifier];
-    }
+    SearchDetailCell *cell;
     NSDictionary *term;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
+        cell = [tableView dequeueReusableCellWithIdentifier:SearchCellIdentifier];
         term =[searchsArray objectAtIndex:indexPath.row];
         
     } else {
         term =[dataArray objectAtIndex:indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
+    
+    
+    if (cell == nil) {
+        cell = [[SearchDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        NSArray* topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SearchDetailCell" owner:self options:nil];
+        cell = [topLevelObjects objectAtIndex:0];
+    }
+    
     
 
     cell.title.text=term[@"name"];
@@ -108,7 +115,9 @@
              [searchsArray addObject:t];
          }
          [self.searchsTableView setNeedsDisplay];
-         [self.searchsTableView reloadData];
+         [self.searchDisplayController.searchResultsTableView setNeedsDisplay];
+         [self.searchDisplayController.searchResultsTableView reloadData];
+         
 
 
      }failureBlock:^(NSError* error)

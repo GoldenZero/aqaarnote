@@ -473,6 +473,7 @@
 		7CD777B7194F265D005C3A9D /* gps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD777AB194F265D005C3A9D /* gps@2x.png */; };
 		7CD777B8194F265D005C3A9D /* passenger.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD777AC194F265D005C3A9D /* passenger.png */; };
 		7CD777B9194F265D005C3A9D /* passenger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CD777AD194F265D005C3A9D /* passenger@2x.png */; };
+		840172BD19652D35007366E5 /* SearchDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840172BC19652D35007366E5 /* SearchDetailCell.xib */; };
 		847D9979193338B5000CBDFA /* FourLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D9971193338B5000CBDFA /* FourLineCell.m */; };
 		847D997A193338B5000CBDFA /* FourLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D9972193338B5000CBDFA /* FourLineCell.xib */; };
 		847D997B193338B5000CBDFA /* TotalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D9974193338B5000CBDFA /* TotalCell.m */; };
@@ -1109,6 +1110,7 @@
 		7CD777AB194F265D005C3A9D /* gps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps@2x.png"; sourceTree = "<group>"; };
 		7CD777AC194F265D005C3A9D /* passenger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passenger.png; sourceTree = "<group>"; };
 		7CD777AD194F265D005C3A9D /* passenger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "passenger@2x.png"; sourceTree = "<group>"; };
+		840172BC19652D35007366E5 /* SearchDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchDetailCell.xib; sourceTree = "<group>"; };
 		847D9970193338B5000CBDFA /* FourLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourLineCell.h; sourceTree = "<group>"; };
 		847D9971193338B5000CBDFA /* FourLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourLineCell.m; sourceTree = "<group>"; };
 		847D9972193338B5000CBDFA /* FourLineCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourLineCell.xib; sourceTree = "<group>"; };
@@ -2073,6 +2075,7 @@
 				7CD7779F194F23EC005C3A9D /* CarFeatureCell.m */,
 				7C2F736C1950249D00B9BB1F /* SearchDetailCell.h */,
 				7C2F736D1950249D00B9BB1F /* SearchDetailCell.m */,
+				840172BC19652D35007366E5 /* SearchDetailCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3065,6 +3068,7 @@
 				7C2F738D1950480B00B9BB1F /* people2.png in Resources */,
 				7C2F739419504C1F00B9BB1F /* edit.png in Resources */,
 				7C182E7F193389C900DE2FE3 /* splashscreen 1.png in Resources */,
+				840172BD19652D35007366E5 /* SearchDetailCell.xib in Resources */,
 				7C182E38193389C900DE2FE3 /* date.png in Resources */,
 				7C96EAEE195FEE8100E768A7 /* bb.png in Resources */,
 				7C96EBC9195FEE8100E768A7 /* vc.png in Resources */,
